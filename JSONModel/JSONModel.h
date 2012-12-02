@@ -17,45 +17,137 @@
 #import <Foundation/Foundation.h>
 #import "JSONValueTransformer.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma mark - Optional property protocol
+/** Protocol for defining optional properties in a JSON Model class */
 @protocol Optional
 @end
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 #pragma mark - Type not allowed exception
+/** 
+ * Exception, thrown when a property's type is not handled
+ * by the built in or custom JSON value transformers 
+ */
 @interface JSONModelTypeNotAllowedException: NSException
 @end
 
 #pragma mark - Type not allowed exception
+/**
+ * Exception, thrown when the input JSON object does not have
+ * valid structure, that can be imported into the model
+ */
 @interface JSONModelInvalidDataException: NSException
 @end
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModelClassProperty interface
+/** 
+ * Class to contain the information, representing a class property
+ * It features the property's name, type, whether it's a required property, and (optionally) the class protocol
+ */
 @interface JSONModelClassProperty : NSObject
+
+  /** The name of the declared property (not the ivar name) */
   @property (strong, nonatomic) NSString* name;
+
+  /** A primitive type name ("float", "short", etc) or a class name  */
   @property (strong, nonatomic) NSString* type;
+
+  /** The name of the protocol the property conforms to (or nil) */
   @property (strong, nonatomic) NSString* protocol;
+
+  /** If true, it can be missing in the input data, and the input would be still valid */
   @property (assign, nonatomic) BOOL isOptional;
+
 @end
 
+/////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModel protocol
+/**
+ * A protocol describing an abstract JSONModel class
+ * JSONModel conforms to this protocol, so it can use itself abstractly
+ */
 @protocol AbstractJSONModelProtocol <NSObject>
 
 @required
+  /** 
+   * All JSONModel classes should implement initWithDictionary:
+   *
+   * For most classes the default initWithDictionary: inherited from JSONModel itself
+   * should suffice, but developers have the option ot also overwrite it if needed.
+   *
+   * @param NSDictionary* d a dictionary holding JSON objects, to be imported in the model.
+   */
   -(id)initWithDictionary:(NSDictionary*)d;
+
+  /**
+   * All JSONModel classes should be able to export themselves as a dictioanry of
+   * JSON compliant objects. 
+   *
+   * For most classes the inherited from JSONModel default toDictionary implementation
+   * should suffice.
+   *
+   * @return NSDictionary dictionary of JSON compliant objects
+   */
   -(NSDictionary*)toDictionary;
 @end
 
+/////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModel interface
+/**
+ * The JSONModel is an abstract model class, you should ot instantiate it directly,
+ * as it does not have any properties, and therefore cannot serve as a data model.
+ * Instead you should subclass it, and define the properties you want your data model
+ * to have as properties of your own class.
+ */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol>
+  /**
+   * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
+   * @param s JSON text data
+   * @see initWithString:usingEncoding: for use of custom text encodings
+   */
   -(id)initWithString:(NSString*)s;
-  -(id)initWithDictionary:(NSDictionary*)d;
+
+  /**
+   * Create a new model instance and initialize it with the JSON from a text parameter using the given encoding.
+   * @param s JSON text data
+   * @param encoding the text encoding to use when parsing the string (see NSStringEncoding)
+   */
   -(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding;
 
+  -(id)initWithDictionary:(NSDictionary*)d;
+
   -(NSDictionary*)toDictionary;
+
+  /**
+   * Export the whole object to a JSON data text string
+   * @return JSON text describing the data model
+   */
   -(NSString*)toJSON;
 
+  /**
+   * If you have a list of dictionaries in a JSON feed, you can use this method to create an NSArray
+   * of model objects. Handy when importing JSON data lists.
+   * This method will loop over the input list and initialize a data model for every dictionary in the list.
+   *
+   * @param a list of dictionaries to be imported as models
+   * @return list of initialized data model objects
+   * 
+   * @see arrayOfDictionariesFromObjects:
+   */
   +(NSMutableArray*)arrayOfObjectsFromDictionaries:(NSArray*)a;
+
+  /**
+   * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
+   * matching dictionaries. This method does the opposite of arrayOfObjectsFromDictionaries:
+   * @param a list of JSONModel objects
+   * @return a list of NSDictionary objects
+   * 
+   * @see arrayOfObjectsFromDictionaries:
+   */
   +(NSMutableArray*)arrayOfDictionariesFromObjects:(NSArray*)a;
 
 @end
