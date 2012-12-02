@@ -1,0 +1,11 @@
+{
+    "isItYesOrNo": 1,
+
+    "unorderedList": ["1","5","7","2"],
+    "dynamicUnorderedList": ["a", "3"],
+
+    "stringFromNumber": 19.95,
+    "numberFromString": "1230.99",
+
+    "importantEvent": "2012-11-26T10:00:01+02:00"
+}

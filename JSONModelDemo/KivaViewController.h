@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  KivaViewController.h
 //  JSONModelDemo
 //
 //  Created by Marin Todorov on 02/12/2012.
@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController
+@interface KivaViewController : UIViewController
+
 @end

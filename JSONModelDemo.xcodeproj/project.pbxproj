@@ -17,14 +17,65 @@
 		9CBBBEF1166B6CF0008B4326 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBEF0166B6CF0008B4326 /* Default@2x.png */; };
 		9CBBBEF3166B6CF0008B4326 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBEF2166B6CF0008B4326 /* Default-568h@2x.png */; };
 		9CBBBEF6166B6CF0008B4326 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBEF5166B6CF0008B4326 /* MasterViewController.m */; };
-		9CBBBEF9166B6CF0008B4326 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBEF8166B6CF0008B4326 /* DetailViewController.m */; };
 		9CBBBEFC166B6CF0008B4326 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBEFA166B6CF0008B4326 /* MasterViewController.xib */; };
-		9CBBBEFF166B6CF0008B4326 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBEFD166B6CF0008B4326 /* DetailViewController.xib */; };
 		9CBBBF07166B6CF0008B4326 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBF06166B6CF0008B4326 /* SenTestingKit.framework */; };
 		9CBBBF08166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
 		9CBBBF09166B6CF0008B4326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDE166B6CF0008B4326 /* Foundation.framework */; };
 		9CBBBF11166B6CF0008B4326 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF0F166B6CF0008B4326 /* InfoPlist.strings */; };
-		9CBBBF14166B6CF0008B4326 /* JSONModelDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF13166B6CF0008B4326 /* JSONModelDemoTests.m */; };
+		9CBBBF22166B6D10008B4326 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF1F166B6D10008B4326 /* JSONModel.m */; };
+		9CBBBF23166B6D10008B4326 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF1F166B6D10008B4326 /* JSONModel.m */; };
+		9CBBBF24166B6D10008B4326 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */; };
+		9CBBBF25166B6D10008B4326 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */; };
+		9CBBBF29166B6DA5008B4326 /* primitives.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF28166B6DA5008B4326 /* primitives.json */; };
+		9CBBBF2D166B6E01008B4326 /* PrimitivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF2C166B6E01008B4326 /* PrimitivesModel.m */; };
+		9CBBBF31166B6E58008B4326 /* PrimitiveTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF30166B6E58008B4326 /* PrimitiveTypesReadTests.m */; };
+		9CBBBF32166B7369008B4326 /* primitives.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF28166B6DA5008B4326 /* primitives.json */; };
+		9CBBBF36166B73D3008B4326 /* JSONTypesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF35166B73D3008B4326 /* JSONTypesModel.m */; };
+		9CBBBF38166B73EE008B4326 /* jsonTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF37166B73EE008B4326 /* jsonTypes.json */; };
+		9CBBBF39166B73EE008B4326 /* jsonTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF37166B73EE008B4326 /* jsonTypes.json */; };
+		9CBBBF3C166B74C0008B4326 /* JSONTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF3B166B74C0008B4326 /* JSONTypesReadTests.m */; };
+		9CBBBF40166B7E2F008B4326 /* BuiltInConversionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF3F166B7E2F008B4326 /* BuiltInConversionsModel.m */; };
+		9CBBBF42166B7E41008B4326 /* converts.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF41166B7E41008B4326 /* converts.json */; };
+		9CBBBF43166B7E41008B4326 /* converts.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF41166B7E41008B4326 /* converts.json */; };
+		9CBBBF46166B7F02008B4326 /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF45166B7F02008B4326 /* BuiltInConversionsTests.m */; };
+		9CBBBF49166B87C7008B4326 /* withOptProp.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF48166B87C7008B4326 /* withOptProp.json */; };
+		9CBBBF4A166B87C7008B4326 /* withOptProp.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF48166B87C7008B4326 /* withOptProp.json */; };
+		9CBBBF4C166B87D8008B4326 /* withoutOptProp.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF4B166B87D8008B4326 /* withoutOptProp.json */; };
+		9CBBBF4D166B87D8008B4326 /* withoutOptProp.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF4B166B87D8008B4326 /* withoutOptProp.json */; };
+		9CBBBF50166B87EC008B4326 /* OptionalPropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF4F166B87EC008B4326 /* OptionalPropModel.m */; };
+		9CBBBF53166B885C008B4326 /* OptionalPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF52166B885B008B4326 /* OptionalPropertiesTests.m */; };
+		9CBBBF58166B89B2008B4326 /* NestedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF57166B89B2008B4326 /* NestedModel.m */; };
+		9CBBBF5B166B89C6008B4326 /* CustomPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF5A166B89C6008B4326 /* CustomPropertyModel.m */; };
+		9CBBBF5E166B9B2D008B4326 /* JSONValueTransformer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF5D166B9B2D008B4326 /* JSONValueTransformer+UIColor.m */; };
+		9CBBBF60166B9B8C008B4326 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF5F166B9B8C008B4326 /* colors.json */; };
+		9CBBBF61166B9B8C008B4326 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF5F166B9B8C008B4326 /* colors.json */; };
+		9CBBBF64166B9C57008B4326 /* CustomPropsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF63166B9C57008B4326 /* CustomPropsTests.m */; };
+		9CBBBF65166B9E3E008B4326 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */; };
+		9CBBBF67166BA064008B4326 /* nestedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF66166BA064008B4326 /* nestedData.json */; };
+		9CBBBF68166BA064008B4326 /* nestedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF66166BA064008B4326 /* nestedData.json */; };
+		9CBBBF6B166BA0B8008B4326 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF6A166BA0B8008B4326 /* ImageModel.m */; };
+		9CBBBF6F166BA0E9008B4326 /* CopyrightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF6E166BA0E9008B4326 /* CopyrightModel.m */; };
+		9CBBBF72166BA16B008B4326 /* NestedModelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF71166BA16B008B4326 /* NestedModelsTests.m */; };
+		9CBBBF77166BA80F008B4326 /* KivaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF75166BA80F008B4326 /* KivaViewController.m */; };
+		9CBBBF78166BA80F008B4326 /* KivaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF76166BA80F008B4326 /* KivaViewController.xib */; };
+		9CBBBF80166BA86A008B4326 /* LoanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF7B166BA86A008B4326 /* LoanModel.m */; };
+		9CBBBF81166BA86A008B4326 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF7D166BA86A008B4326 /* LocationModel.m */; };
+		9CBBBF82166BA86A008B4326 /* KivaFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF7F166BA86A008B4326 /* KivaFeed.m */; };
+		9CBBBF8F166BAC54008B4326 /* btnCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF89166BAC54008B4326 /* btnCheck.png */; };
+		9CBBBF90166BAC54008B4326 /* btnCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF8A166BAC54008B4326 /* btnCheck@2x.png */; };
+		9CBBBF91166BAC54008B4326 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF8C166BAC54008B4326 /* HUD.m */; };
+		9CBBBF92166BAC54008B4326 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF8E166BAC54008B4326 /* MBProgressHUD.m */; };
+		9CBBBF97166BAED2008B4326 /* GitHubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF95166BAED2008B4326 /* GitHubViewController.m */; };
+		9CBBBF98166BAED2008B4326 /* GitHubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF96166BAED2008B4326 /* GitHubViewController.xib */; };
+		9CBBBF9C166BAEF5008B4326 /* GitHubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF9B166BAEF5008B4326 /* GitHubUserModel.m */; };
+		9CBBBFA1166BB29B008B4326 /* YouTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF9F166BB29B008B4326 /* YouTubeViewController.m */; };
+		9CBBBFA2166BB29B008B4326 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFA0166BB29B008B4326 /* YouTubeViewController.xib */; };
+		9CBBBFA5166BB2AD008B4326 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFA4166BB2AD008B4326 /* VideoModel.m */; };
+		9CBBBFA9166BB3E1008B4326 /* VideoTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFA8166BB3E1008B4326 /* VideoTitle.m */; };
+		9CBBBFAC166BB3EC008B4326 /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFAB166BB3EC008B4326 /* VideoLink.m */; };
+		9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB0166BBB05008B4326 /* MyDataModel.m */; };
+		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
+		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,16 +104,86 @@
 		9CBBBEF2166B6CF0008B4326 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9CBBBEF4166B6CF0008B4326 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		9CBBBEF5166B6CF0008B4326 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		9CBBBEF7166B6CF0008B4326 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		9CBBBEF8166B6CF0008B4326 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		9CBBBEFB166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
-		9CBBBEFE166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
 		9CBBBF05166B6CF0008B4326 /* JSONModelDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBF06166B6CF0008B4326 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9CBBBF0E166B6CF0008B4326 /* JSONModelDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9CBBBF10166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9CBBBF12166B6CF0008B4326 /* JSONModelDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONModelDemoTests.h; sourceTree = "<group>"; };
-		9CBBBF13166B6CF0008B4326 /* JSONModelDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONModelDemoTests.m; sourceTree = "<group>"; };
+		9CBBBF1E166B6D10008B4326 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		9CBBBF1F166B6D10008B4326 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		9CBBBF20166B6D10008B4326 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		9CBBBF28166B6DA5008B4326 /* primitives.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = primitives.json; path = DataFiles/primitives.json; sourceTree = "<group>"; };
+		9CBBBF2B166B6E01008B4326 /* PrimitivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimitivesModel.h; path = TestModels/PrimitivesModel.h; sourceTree = "<group>"; };
+		9CBBBF2C166B6E01008B4326 /* PrimitivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrimitivesModel.m; path = TestModels/PrimitivesModel.m; sourceTree = "<group>"; };
+		9CBBBF2F166B6E58008B4326 /* PrimitiveTypesReadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveTypesReadTests.h; sourceTree = "<group>"; };
+		9CBBBF30166B6E58008B4326 /* PrimitiveTypesReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveTypesReadTests.m; sourceTree = "<group>"; };
+		9CBBBF34166B73D3008B4326 /* JSONTypesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONTypesModel.h; path = TestModels/JSONTypesModel.h; sourceTree = "<group>"; };
+		9CBBBF35166B73D3008B4326 /* JSONTypesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONTypesModel.m; path = TestModels/JSONTypesModel.m; sourceTree = "<group>"; };
+		9CBBBF37166B73EE008B4326 /* jsonTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = jsonTypes.json; path = DataFiles/jsonTypes.json; sourceTree = "<group>"; };
+		9CBBBF3A166B74C0008B4326 /* JSONTypesReadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesReadTests.h; sourceTree = "<group>"; };
+		9CBBBF3B166B74C0008B4326 /* JSONTypesReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesReadTests.m; sourceTree = "<group>"; };
+		9CBBBF3E166B7E2F008B4326 /* BuiltInConversionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuiltInConversionsModel.h; path = TestModels/BuiltInConversionsModel.h; sourceTree = "<group>"; };
+		9CBBBF3F166B7E2F008B4326 /* BuiltInConversionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuiltInConversionsModel.m; path = TestModels/BuiltInConversionsModel.m; sourceTree = "<group>"; };
+		9CBBBF41166B7E41008B4326 /* converts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = converts.json; path = DataFiles/converts.json; sourceTree = "<group>"; };
+		9CBBBF44166B7F02008B4326 /* BuiltInConversionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsTests.h; sourceTree = "<group>"; };
+		9CBBBF45166B7F02008B4326 /* BuiltInConversionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsTests.m; sourceTree = "<group>"; };
+		9CBBBF48166B87C7008B4326 /* withOptProp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = withOptProp.json; path = DataFiles/withOptProp.json; sourceTree = "<group>"; };
+		9CBBBF4B166B87D8008B4326 /* withoutOptProp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = withoutOptProp.json; path = DataFiles/withoutOptProp.json; sourceTree = "<group>"; };
+		9CBBBF4E166B87EC008B4326 /* OptionalPropModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionalPropModel.h; path = TestModels/OptionalPropModel.h; sourceTree = "<group>"; };
+		9CBBBF4F166B87EC008B4326 /* OptionalPropModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionalPropModel.m; path = TestModels/OptionalPropModel.m; sourceTree = "<group>"; };
+		9CBBBF51166B885B008B4326 /* OptionalPropertiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalPropertiesTests.h; sourceTree = "<group>"; };
+		9CBBBF52166B885B008B4326 /* OptionalPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalPropertiesTests.m; sourceTree = "<group>"; };
+		9CBBBF56166B89B2008B4326 /* NestedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NestedModel.h; path = TestModels/NestedModel.h; sourceTree = "<group>"; };
+		9CBBBF57166B89B2008B4326 /* NestedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NestedModel.m; path = TestModels/NestedModel.m; sourceTree = "<group>"; };
+		9CBBBF59166B89C6008B4326 /* CustomPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPropertyModel.h; path = TestModels/CustomPropertyModel.h; sourceTree = "<group>"; };
+		9CBBBF5A166B89C6008B4326 /* CustomPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPropertyModel.m; path = TestModels/CustomPropertyModel.m; sourceTree = "<group>"; };
+		9CBBBF5C166B9B2D008B4326 /* JSONValueTransformer+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONValueTransformer+UIColor.h"; sourceTree = "<group>"; };
+		9CBBBF5D166B9B2D008B4326 /* JSONValueTransformer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONValueTransformer+UIColor.m"; sourceTree = "<group>"; };
+		9CBBBF5F166B9B8C008B4326 /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = colors.json; path = DataFiles/colors.json; sourceTree = "<group>"; };
+		9CBBBF62166B9C57008B4326 /* CustomPropsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPropsTests.h; sourceTree = "<group>"; };
+		9CBBBF63166B9C57008B4326 /* CustomPropsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPropsTests.m; sourceTree = "<group>"; };
+		9CBBBF66166BA064008B4326 /* nestedData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nestedData.json; path = DataFiles/nestedData.json; sourceTree = "<group>"; };
+		9CBBBF69166BA0B8008B4326 /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageModel.h; path = TestModels/ImageModel.h; sourceTree = "<group>"; };
+		9CBBBF6A166BA0B8008B4326 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = TestModels/ImageModel.m; sourceTree = "<group>"; };
+		9CBBBF6D166BA0E9008B4326 /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
+		9CBBBF6E166BA0E9008B4326 /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
+		9CBBBF70166BA16B008B4326 /* NestedModelsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedModelsTests.h; sourceTree = "<group>"; };
+		9CBBBF71166BA16B008B4326 /* NestedModelsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedModelsTests.m; sourceTree = "<group>"; };
+		9CBBBF74166BA80F008B4326 /* KivaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewController.h; sourceTree = "<group>"; };
+		9CBBBF75166BA80F008B4326 /* KivaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaViewController.m; sourceTree = "<group>"; };
+		9CBBBF76166BA80F008B4326 /* KivaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KivaViewController.xib; sourceTree = "<group>"; };
+		9CBBBF7A166BA86A008B4326 /* LoanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanModel.h; sourceTree = "<group>"; };
+		9CBBBF7B166BA86A008B4326 /* LoanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanModel.m; sourceTree = "<group>"; };
+		9CBBBF7C166BA86A008B4326 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
+		9CBBBF7D166BA86A008B4326 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		9CBBBF7E166BA86A008B4326 /* KivaFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaFeed.h; sourceTree = "<group>"; };
+		9CBBBF7F166BA86A008B4326 /* KivaFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaFeed.m; sourceTree = "<group>"; };
+		9CBBBF89166BAC54008B4326 /* btnCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCheck.png; sourceTree = "<group>"; };
+		9CBBBF8A166BAC54008B4326 /* btnCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnCheck@2x.png"; sourceTree = "<group>"; };
+		9CBBBF8B166BAC54008B4326 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
+		9CBBBF8C166BAC54008B4326 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
+		9CBBBF8D166BAC54008B4326 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		9CBBBF8E166BAC54008B4326 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		9CBBBF94166BAED2008B4326 /* GitHubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubViewController.h; sourceTree = "<group>"; };
+		9CBBBF95166BAED2008B4326 /* GitHubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubViewController.m; sourceTree = "<group>"; };
+		9CBBBF96166BAED2008B4326 /* GitHubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitHubViewController.xib; sourceTree = "<group>"; };
+		9CBBBF9A166BAEF5008B4326 /* GitHubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUserModel.h; sourceTree = "<group>"; };
+		9CBBBF9B166BAEF5008B4326 /* GitHubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUserModel.m; sourceTree = "<group>"; };
+		9CBBBF9E166BB29B008B4326 /* YouTubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeViewController.h; sourceTree = "<group>"; };
+		9CBBBF9F166BB29B008B4326 /* YouTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeViewController.m; sourceTree = "<group>"; };
+		9CBBBFA0166BB29B008B4326 /* YouTubeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouTubeViewController.xib; sourceTree = "<group>"; };
+		9CBBBFA3166BB2AD008B4326 /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
+		9CBBBFA4166BB2AD008B4326 /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
+		9CBBBFA7166BB3E1008B4326 /* VideoTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTitle.h; sourceTree = "<group>"; };
+		9CBBBFA8166BB3E1008B4326 /* VideoTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTitle.m; sourceTree = "<group>"; };
+		9CBBBFAA166BB3EC008B4326 /* VideoLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLink.h; sourceTree = "<group>"; };
+		9CBBBFAB166BB3EC008B4326 /* VideoLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoLink.m; sourceTree = "<group>"; };
+		9CBBBFAF166BBB05008B4326 /* MyDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataModel.h; sourceTree = "<group>"; };
+		9CBBBFB0166BBB05008B4326 /* MyDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataModel.m; sourceTree = "<group>"; };
+		9CBBBFB2166BBB21008B4326 /* StorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageViewController.h; sourceTree = "<group>"; };
+		9CBBBFB3166BBB21008B4326 /* StorageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageViewController.m; sourceTree = "<group>"; };
+		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBBBF65166B9E3E008B4326 /* CoreGraphics.framework in Frameworks */,
 				9CBBBF07166B6CF0008B4326 /* SenTestingKit.framework in Frameworks */,
 				9CBBBF08166B6CF0008B4326 /* UIKit.framework in Frameworks */,
 				9CBBBF09166B6CF0008B4326 /* Foundation.framework in Frameworks */,
@@ -92,8 +214,9 @@
 		9CBBBECD166B6CEF008B4326 = {
 			isa = PBXGroup;
 			children = (
+				9CBBBF1D166B6D10008B4326 /* JSONModel */,
+				9CBBBF0C166B6CF0008B4326 /* JSONModelTests */,
 				9CBBBEE2166B6CF0008B4326 /* JSONModelDemo */,
-				9CBBBF0C166B6CF0008B4326 /* JSONModelDemoTests */,
 				9CBBBEDB166B6CF0008B4326 /* Frameworks */,
 				9CBBBED9166B6CF0008B4326 /* Products */,
 			);
@@ -122,15 +245,12 @@
 		9CBBBEE2166B6CF0008B4326 /* JSONModelDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBBEEB166B6CF0008B4326 /* AppDelegate.h */,
-				9CBBBEEC166B6CF0008B4326 /* AppDelegate.m */,
-				9CBBBEF4166B6CF0008B4326 /* MasterViewController.h */,
-				9CBBBEF5166B6CF0008B4326 /* MasterViewController.m */,
-				9CBBBEF7166B6CF0008B4326 /* DetailViewController.h */,
-				9CBBBEF8166B6CF0008B4326 /* DetailViewController.m */,
-				9CBBBEFA166B6CF0008B4326 /* MasterViewController.xib */,
-				9CBBBEFD166B6CF0008B4326 /* DetailViewController.xib */,
-				9CBBBEE3166B6CF0008B4326 /* Supporting Files */,
+				9CBBBFAD166BB87B008B4326 /* DemoApp */,
+				9CBBBF87166BAC31008B4326 /* libs */,
+				9CBBBF9D166BB27E008B4326 /* YouTubeDemo */,
+				9CBBBF93166BAEB2008B4326 /* GitHubDemo */,
+				9CBBBFAE166BBADA008B4326 /* UsedAsStorageDemo */,
+				9CBBBF73166BA7E1008B4326 /* KivaJSONDemo */,
 			);
 			path = JSONModelDemo;
 			sourceTree = "<group>";
@@ -149,13 +269,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9CBBBF0C166B6CF0008B4326 /* JSONModelDemoTests */ = {
+		9CBBBF0C166B6CF0008B4326 /* JSONModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBBF12166B6CF0008B4326 /* JSONModelDemoTests.h */,
-				9CBBBF13166B6CF0008B4326 /* JSONModelDemoTests.m */,
+				9CBBBF2A166B6DDE008B4326 /* Models */,
+				9CBBBF26166B6D49008B4326 /* ReadingDataTestSuite */,
 				9CBBBF0D166B6CF0008B4326 /* Supporting Files */,
 			);
+			name = JSONModelTests;
 			path = JSONModelDemoTests;
 			sourceTree = "<group>";
 		};
@@ -166,6 +287,246 @@
 				9CBBBF0F166B6CF0008B4326 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9CBBBF1D166B6D10008B4326 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF1E166B6D10008B4326 /* JSONModel.h */,
+				9CBBBF1F166B6D10008B4326 /* JSONModel.m */,
+				9CBBBF20166B6D10008B4326 /* JSONValueTransformer.h */,
+				9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		9CBBBF26166B6D49008B4326 /* ReadingDataTestSuite */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF2F166B6E58008B4326 /* PrimitiveTypesReadTests.h */,
+				9CBBBF30166B6E58008B4326 /* PrimitiveTypesReadTests.m */,
+				9CBBBF3A166B74C0008B4326 /* JSONTypesReadTests.h */,
+				9CBBBF3B166B74C0008B4326 /* JSONTypesReadTests.m */,
+				9CBBBF44166B7F02008B4326 /* BuiltInConversionsTests.h */,
+				9CBBBF45166B7F02008B4326 /* BuiltInConversionsTests.m */,
+				9CBBBF51166B885B008B4326 /* OptionalPropertiesTests.h */,
+				9CBBBF52166B885B008B4326 /* OptionalPropertiesTests.m */,
+				9CBBBF62166B9C57008B4326 /* CustomPropsTests.h */,
+				9CBBBF63166B9C57008B4326 /* CustomPropsTests.m */,
+				9CBBBF70166BA16B008B4326 /* NestedModelsTests.h */,
+				9CBBBF71166BA16B008B4326 /* NestedModelsTests.m */,
+			);
+			name = ReadingDataTestSuite;
+			sourceTree = "<group>";
+		};
+		9CBBBF2A166B6DDE008B4326 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF55166B897B008B4326 /* CustomTransformers */,
+				9CBBBF54166B8972008B4326 /* NestedModels */,
+				9CBBBF47166B87A8008B4326 /* OptionalProperties */,
+				9CBBBF3D166B7E0D008B4326 /* BuiltInConversions */,
+				9CBBBF33166B73BA008B4326 /* JSONTypes */,
+				9CBBBF2E166B6E27008B4326 /* Primitives */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9CBBBF2E166B6E27008B4326 /* Primitives */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF28166B6DA5008B4326 /* primitives.json */,
+				9CBBBF2B166B6E01008B4326 /* PrimitivesModel.h */,
+				9CBBBF2C166B6E01008B4326 /* PrimitivesModel.m */,
+			);
+			name = Primitives;
+			sourceTree = "<group>";
+		};
+		9CBBBF33166B73BA008B4326 /* JSONTypes */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF37166B73EE008B4326 /* jsonTypes.json */,
+				9CBBBF34166B73D3008B4326 /* JSONTypesModel.h */,
+				9CBBBF35166B73D3008B4326 /* JSONTypesModel.m */,
+			);
+			name = JSONTypes;
+			sourceTree = "<group>";
+		};
+		9CBBBF3D166B7E0D008B4326 /* BuiltInConversions */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF41166B7E41008B4326 /* converts.json */,
+				9CBBBF3E166B7E2F008B4326 /* BuiltInConversionsModel.h */,
+				9CBBBF3F166B7E2F008B4326 /* BuiltInConversionsModel.m */,
+			);
+			name = BuiltInConversions;
+			sourceTree = "<group>";
+		};
+		9CBBBF47166B87A8008B4326 /* OptionalProperties */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF48166B87C7008B4326 /* withOptProp.json */,
+				9CBBBF4B166B87D8008B4326 /* withoutOptProp.json */,
+				9CBBBF4E166B87EC008B4326 /* OptionalPropModel.h */,
+				9CBBBF4F166B87EC008B4326 /* OptionalPropModel.m */,
+			);
+			name = OptionalProperties;
+			sourceTree = "<group>";
+		};
+		9CBBBF54166B8972008B4326 /* NestedModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF6C166BA0C0008B4326 /* SubModels */,
+				9CBBBF66166BA064008B4326 /* nestedData.json */,
+				9CBBBF56166B89B2008B4326 /* NestedModel.h */,
+				9CBBBF57166B89B2008B4326 /* NestedModel.m */,
+			);
+			name = NestedModels;
+			sourceTree = "<group>";
+		};
+		9CBBBF55166B897B008B4326 /* CustomTransformers */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF5F166B9B8C008B4326 /* colors.json */,
+				9CBBBF5C166B9B2D008B4326 /* JSONValueTransformer+UIColor.h */,
+				9CBBBF5D166B9B2D008B4326 /* JSONValueTransformer+UIColor.m */,
+				9CBBBF59166B89C6008B4326 /* CustomPropertyModel.h */,
+				9CBBBF5A166B89C6008B4326 /* CustomPropertyModel.m */,
+			);
+			name = CustomTransformers;
+			sourceTree = "<group>";
+		};
+		9CBBBF6C166BA0C0008B4326 /* SubModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF6D166BA0E9008B4326 /* CopyrightModel.h */,
+				9CBBBF6E166BA0E9008B4326 /* CopyrightModel.m */,
+				9CBBBF69166BA0B8008B4326 /* ImageModel.h */,
+				9CBBBF6A166BA0B8008B4326 /* ImageModel.m */,
+			);
+			name = SubModels;
+			sourceTree = "<group>";
+		};
+		9CBBBF73166BA7E1008B4326 /* KivaJSONDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF79166BA857008B4326 /* KivaModels */,
+				9CBBBF74166BA80F008B4326 /* KivaViewController.h */,
+				9CBBBF75166BA80F008B4326 /* KivaViewController.m */,
+				9CBBBF76166BA80F008B4326 /* KivaViewController.xib */,
+			);
+			name = KivaJSONDemo;
+			sourceTree = "<group>";
+		};
+		9CBBBF79166BA857008B4326 /* KivaModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF7A166BA86A008B4326 /* LoanModel.h */,
+				9CBBBF7B166BA86A008B4326 /* LoanModel.m */,
+				9CBBBF7C166BA86A008B4326 /* LocationModel.h */,
+				9CBBBF7D166BA86A008B4326 /* LocationModel.m */,
+				9CBBBF7E166BA86A008B4326 /* KivaFeed.h */,
+				9CBBBF7F166BA86A008B4326 /* KivaFeed.m */,
+			);
+			name = KivaModels;
+			sourceTree = "<group>";
+		};
+		9CBBBF87166BAC31008B4326 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF88166BAC43008B4326 /* HUD */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		9CBBBF88166BAC43008B4326 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF89166BAC54008B4326 /* btnCheck.png */,
+				9CBBBF8A166BAC54008B4326 /* btnCheck@2x.png */,
+				9CBBBF8B166BAC54008B4326 /* HUD.h */,
+				9CBBBF8C166BAC54008B4326 /* HUD.m */,
+				9CBBBF8D166BAC54008B4326 /* MBProgressHUD.h */,
+				9CBBBF8E166BAC54008B4326 /* MBProgressHUD.m */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
+		9CBBBF93166BAEB2008B4326 /* GitHubDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF99166BAEDF008B4326 /* GitHubModels */,
+				9CBBBF94166BAED2008B4326 /* GitHubViewController.h */,
+				9CBBBF95166BAED2008B4326 /* GitHubViewController.m */,
+				9CBBBF96166BAED2008B4326 /* GitHubViewController.xib */,
+			);
+			name = GitHubDemo;
+			sourceTree = "<group>";
+		};
+		9CBBBF99166BAEDF008B4326 /* GitHubModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBF9A166BAEF5008B4326 /* GitHubUserModel.h */,
+				9CBBBF9B166BAEF5008B4326 /* GitHubUserModel.m */,
+			);
+			name = GitHubModels;
+			sourceTree = "<group>";
+		};
+		9CBBBF9D166BB27E008B4326 /* YouTubeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBFA6166BB2B3008B4326 /* YouTubeModels */,
+				9CBBBF9E166BB29B008B4326 /* YouTubeViewController.h */,
+				9CBBBF9F166BB29B008B4326 /* YouTubeViewController.m */,
+				9CBBBFA0166BB29B008B4326 /* YouTubeViewController.xib */,
+			);
+			name = YouTubeDemo;
+			sourceTree = "<group>";
+		};
+		9CBBBFA6166BB2B3008B4326 /* YouTubeModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBFA3166BB2AD008B4326 /* VideoModel.h */,
+				9CBBBFA4166BB2AD008B4326 /* VideoModel.m */,
+				9CBBBFA7166BB3E1008B4326 /* VideoTitle.h */,
+				9CBBBFA8166BB3E1008B4326 /* VideoTitle.m */,
+				9CBBBFAA166BB3EC008B4326 /* VideoLink.h */,
+				9CBBBFAB166BB3EC008B4326 /* VideoLink.m */,
+			);
+			name = YouTubeModels;
+			sourceTree = "<group>";
+		};
+		9CBBBFAD166BB87B008B4326 /* DemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBEE3166B6CF0008B4326 /* Supporting Files */,
+				9CBBBEEB166B6CF0008B4326 /* AppDelegate.h */,
+				9CBBBEEC166B6CF0008B4326 /* AppDelegate.m */,
+				9CBBBEF4166B6CF0008B4326 /* MasterViewController.h */,
+				9CBBBEF5166B6CF0008B4326 /* MasterViewController.m */,
+				9CBBBEFA166B6CF0008B4326 /* MasterViewController.xib */,
+			);
+			name = DemoApp;
+			sourceTree = "<group>";
+		};
+		9CBBBFAE166BBADA008B4326 /* UsedAsStorageDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBFB7166BBB27008B4326 /* StorageModel */,
+				9CBBBFB2166BBB21008B4326 /* StorageViewController.h */,
+				9CBBBFB3166BBB21008B4326 /* StorageViewController.m */,
+				9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */,
+			);
+			name = UsedAsStorageDemo;
+			sourceTree = "<group>";
+		};
+		9CBBBFB7166BBB27008B4326 /* StorageModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CBBBFAF166BBB05008B4326 /* MyDataModel.h */,
+				9CBBBFB0166BBB05008B4326 /* MyDataModel.m */,
+			);
+			name = StorageModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,12 +600,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBBBF32166B7369008B4326 /* primitives.json in Resources */,
 				9CBBBEE7166B6CF0008B4326 /* InfoPlist.strings in Resources */,
 				9CBBBEEF166B6CF0008B4326 /* Default.png in Resources */,
 				9CBBBEF1166B6CF0008B4326 /* Default@2x.png in Resources */,
 				9CBBBEF3166B6CF0008B4326 /* Default-568h@2x.png in Resources */,
 				9CBBBEFC166B6CF0008B4326 /* MasterViewController.xib in Resources */,
-				9CBBBEFF166B6CF0008B4326 /* DetailViewController.xib in Resources */,
+				9CBBBF38166B73EE008B4326 /* jsonTypes.json in Resources */,
+				9CBBBF42166B7E41008B4326 /* converts.json in Resources */,
+				9CBBBF49166B87C7008B4326 /* withOptProp.json in Resources */,
+				9CBBBF4C166B87D8008B4326 /* withoutOptProp.json in Resources */,
+				9CBBBF60166B9B8C008B4326 /* colors.json in Resources */,
+				9CBBBF67166BA064008B4326 /* nestedData.json in Resources */,
+				9CBBBF78166BA80F008B4326 /* KivaViewController.xib in Resources */,
+				9CBBBF8F166BAC54008B4326 /* btnCheck.png in Resources */,
+				9CBBBF90166BAC54008B4326 /* btnCheck@2x.png in Resources */,
+				9CBBBF98166BAED2008B4326 /* GitHubViewController.xib in Resources */,
+				9CBBBFA2166BB29B008B4326 /* YouTubeViewController.xib in Resources */,
+				9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +626,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CBBBF11166B6CF0008B4326 /* InfoPlist.strings in Resources */,
+				9CBBBF29166B6DA5008B4326 /* primitives.json in Resources */,
+				9CBBBF39166B73EE008B4326 /* jsonTypes.json in Resources */,
+				9CBBBF43166B7E41008B4326 /* converts.json in Resources */,
+				9CBBBF4A166B87C7008B4326 /* withOptProp.json in Resources */,
+				9CBBBF4D166B87D8008B4326 /* withoutOptProp.json in Resources */,
+				9CBBBF61166B9B8C008B4326 /* colors.json in Resources */,
+				9CBBBF68166BA064008B4326 /* nestedData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +662,22 @@
 				9CBBBEE9166B6CF0008B4326 /* main.m in Sources */,
 				9CBBBEED166B6CF0008B4326 /* AppDelegate.m in Sources */,
 				9CBBBEF6166B6CF0008B4326 /* MasterViewController.m in Sources */,
-				9CBBBEF9166B6CF0008B4326 /* DetailViewController.m in Sources */,
+				9CBBBF22166B6D10008B4326 /* JSONModel.m in Sources */,
+				9CBBBF24166B6D10008B4326 /* JSONValueTransformer.m in Sources */,
+				9CBBBF77166BA80F008B4326 /* KivaViewController.m in Sources */,
+				9CBBBF80166BA86A008B4326 /* LoanModel.m in Sources */,
+				9CBBBF81166BA86A008B4326 /* LocationModel.m in Sources */,
+				9CBBBF82166BA86A008B4326 /* KivaFeed.m in Sources */,
+				9CBBBF91166BAC54008B4326 /* HUD.m in Sources */,
+				9CBBBF92166BAC54008B4326 /* MBProgressHUD.m in Sources */,
+				9CBBBF97166BAED2008B4326 /* GitHubViewController.m in Sources */,
+				9CBBBF9C166BAEF5008B4326 /* GitHubUserModel.m in Sources */,
+				9CBBBFA1166BB29B008B4326 /* YouTubeViewController.m in Sources */,
+				9CBBBFA5166BB2AD008B4326 /* VideoModel.m in Sources */,
+				9CBBBFA9166BB3E1008B4326 /* VideoTitle.m in Sources */,
+				9CBBBFAC166BB3EC008B4326 /* VideoLink.m in Sources */,
+				9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */,
+				9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +685,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CBBBF14166B6CF0008B4326 /* JSONModelDemoTests.m in Sources */,
+				9CBBBF23166B6D10008B4326 /* JSONModel.m in Sources */,
+				9CBBBF25166B6D10008B4326 /* JSONValueTransformer.m in Sources */,
+				9CBBBF2D166B6E01008B4326 /* PrimitivesModel.m in Sources */,
+				9CBBBF31166B6E58008B4326 /* PrimitiveTypesReadTests.m in Sources */,
+				9CBBBF36166B73D3008B4326 /* JSONTypesModel.m in Sources */,
+				9CBBBF3C166B74C0008B4326 /* JSONTypesReadTests.m in Sources */,
+				9CBBBF40166B7E2F008B4326 /* BuiltInConversionsModel.m in Sources */,
+				9CBBBF46166B7F02008B4326 /* BuiltInConversionsTests.m in Sources */,
+				9CBBBF50166B87EC008B4326 /* OptionalPropModel.m in Sources */,
+				9CBBBF53166B885C008B4326 /* OptionalPropertiesTests.m in Sources */,
+				9CBBBF58166B89B2008B4326 /* NestedModel.m in Sources */,
+				9CBBBF5B166B89C6008B4326 /* CustomPropertyModel.m in Sources */,
+				9CBBBF5E166B9B2D008B4326 /* JSONValueTransformer+UIColor.m in Sources */,
+				9CBBBF64166B9C57008B4326 /* CustomPropsTests.m in Sources */,
+				9CBBBF6B166BA0B8008B4326 /* ImageModel.m in Sources */,
+				9CBBBF6F166BA0E9008B4326 /* CopyrightModel.m in Sources */,
+				9CBBBF72166BA16B008B4326 /* NestedModelsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,14 +730,6 @@
 				9CBBBEFB166B6CF0008B4326 /* en */,
 			);
 			name = MasterViewController.xib;
-			sourceTree = "<group>";
-		};
-		9CBBBEFD166B6CF0008B4326 /* DetailViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9CBBBEFE166B6CF0008B4326 /* en */,
-			);
-			name = DetailViewController.xib;
 			sourceTree = "<group>";
 		};
 		9CBBBF0F166B6CF0008B4326 /* InfoPlist.strings */ = {
