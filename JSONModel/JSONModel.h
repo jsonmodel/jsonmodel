@@ -126,7 +126,7 @@
    * Export the whole object to a JSON data text string
    * @return JSON text describing the data model
    */
-  -(NSString*)toJSON;
+  -(NSString*)toJSONString;
 
   /**
    * If you have a list of dictionaries in a JSON feed, you can use this method to create an NSArray

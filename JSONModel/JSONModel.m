@@ -465,7 +465,7 @@ static JSONValueTransformer* valueTransformer = nil;
     return [NSDictionary dictionaryWithDictionary: tempDictionary];
 }
 
--(NSString*)toJSON
+-(NSString*)toJSONString
 {
     //let exceptions bubble up
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self toDictionary] options:kNilOptions error:nil];
