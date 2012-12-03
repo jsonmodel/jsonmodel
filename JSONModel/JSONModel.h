@@ -143,7 +143,8 @@
    *
    * @param a list of dictionaries to be imported as models
    * @return list of initialized data model objects
-   * 
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromObjects:
    */
   +(NSMutableArray*)arrayOfObjectsFromDictionaries:(NSArray*)a;
@@ -153,7 +154,7 @@
    * matching dictionaries. This method does the opposite of arrayOfObjectsFromDictionaries:
    * @param a list of JSONModel objects
    * @return a list of NSDictionary objects
-   * 
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see arrayOfObjectsFromDictionaries:
    */
   +(NSMutableArray*)arrayOfDictionariesFromObjects:(NSArray*)a;
