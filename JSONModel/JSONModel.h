@@ -80,6 +80,8 @@
    * should suffice, but developers have the option ot also overwrite it if needed.
    *
    * @param NSDictionary* d a dictionary holding JSON objects, to be imported in the model.
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    */
   -(id)initWithDictionary:(NSDictionary*)d;
 
@@ -91,6 +93,8 @@
    * should suffice.
    *
    * @return NSDictionary dictionary of JSON compliant objects
+   * @exception JSONModelTypeNotAllowedException thrown when one of your model's custom class properties does not have matching transformer method in an JSONValueTransformer.
+   * @see JSONValueTransformer JSONObjectFromNSURL: for an example how to export custom class property to a JSON compliant object
    */
   -(NSDictionary*)toDictionary;
 @end
@@ -107,6 +111,8 @@
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
    * @param s JSON text data
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see initWithString:usingEncoding: for use of custom text encodings
    */
   -(id)initWithString:(NSString*)s;
@@ -115,6 +121,8 @@
    * Create a new model instance and initialize it with the JSON from a text parameter using the given encoding.
    * @param s JSON text data
    * @param encoding the text encoding to use when parsing the string (see NSStringEncoding)
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    */
   -(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding;
 
