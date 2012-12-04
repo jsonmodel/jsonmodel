@@ -15,22 +15,21 @@ static long requestId = 0;
 
 +(id)getJSONFromURLWithString:(NSString*)urlString
 {
+    return [self getJSONFromURL:[NSURL URLWithString:urlString]];
+}
+
++(id)getJSONFromURL:(NSURL*)url
+{
     requestId++;
     
     NSString* semaphorKey = [NSString stringWithFormat:@"rid: %ld", requestId];
     
     __block NSDictionary* json = nil;
     
-    //1
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //code executed in the background
-        //2
-        NSData* ytData = [NSData dataWithContentsOfURL:
-                          [NSURL URLWithString:urlString]
-                          //[NSURL URLWithString:@"http://touch-code-magazine.com"]
-                          //[NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"]
-                          ];
-        //3
+
+        NSData* ytData = [NSData dataWithContentsOfURL: url];
+
         if (ytData) {
             
             //catch exception and lift flag
@@ -41,16 +40,9 @@ static long requestId = 0;
                     error:nil];
         }
         
-        //4
-        //dispatch_async(dispatch_get_main_queue(), ^{
-            //code executed on the main queue
-            //5
-            
-            [[JSONModelSemaphore sharedInstance] lift: semaphorKey ];
-        //});
+        [[JSONModelSemaphore sharedInstance] lift: semaphorKey ];
         
     });
-    
     
     [[JSONModelSemaphore sharedInstance] waitForKey: semaphorKey ];
     

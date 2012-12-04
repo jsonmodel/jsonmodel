@@ -12,5 +12,6 @@
 @interface JSONModel(networking)
 
 -(id)initWithURLString:(NSString*)urlString;
+-(id)initWithURL:(NSString*)url;
 
 @end

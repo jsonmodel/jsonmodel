@@ -11,13 +11,19 @@
 
 @implementation JSONModel(networking)
 
--(id)initWithURLString:(NSString*)urlString
+-(id)initWithURL:(NSURL*)url
 {
-    id jsonObject = [JSONModelHTTPClient getJSONFromURLWithString:urlString];
+    id jsonObject = [JSONModelHTTPClient getJSONFromURL:url];
     
     if (!jsonObject) return nil;
     
     return [self initWithDictionary:jsonObject];
+    
+}
+
+-(id)initWithURLString:(NSString*)urlString
+{
+    return [self initWithURL:[NSURL URLWithString:urlString]];
 }
 
 @end

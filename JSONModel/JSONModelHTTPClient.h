@@ -10,6 +10,7 @@
 
 @interface JSONModelHTTPClient : JSONModel
 
++(id)getJSONFromURL:(NSURL*)url;
 +(id)getJSONFromURLWithString:(NSString*)urlString;
 
 @end
