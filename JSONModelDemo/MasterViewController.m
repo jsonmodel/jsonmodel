@@ -12,6 +12,11 @@
 #import "GitHubViewController.h"
 #import "YouTubeViewController.h"
 #import "StorageViewController.h"
+#import "KivaViewControllerNetworking.h"
+
+
+#import "JSONModel+networking.h"
+#import "VideoModel.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -20,12 +25,25 @@
 
 @implementation MasterViewController
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"1st %@", [NSDate date]);
+    
+    NSDictionary* videoList = [JSONModelHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"];
+    VideoModel* model = [[VideoModel alloc] initWithDictionary:
+                         videoList[@"feed"][@"entry"][0]
+                         ];
+    
+    NSLog(@"2nd %@", [NSDate date]);
+    NSLog(@"model: %@", [model toJSONString]);
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Demos";
-        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage"]];
+        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage", @"Kiva.org + own networking"]];
     }
     return self;
 }
@@ -79,7 +97,12 @@
             StorageViewController* sc  = [[StorageViewController alloc] initWithNibName:@"StorageViewController" bundle:nil];
             [self.navigationController pushViewController:sc animated:YES];
         }break;
-            
+
+        case 4:{
+            KivaViewControllerNetworking* sc  = [[KivaViewControllerNetworking alloc] initWithNibName:@"KivaViewControllerNetworking" bundle:nil];
+            [self.navigationController pushViewController:sc animated:YES];
+        }break;
+
         default:
             break;
     }
