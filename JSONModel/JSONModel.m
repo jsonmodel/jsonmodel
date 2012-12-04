@@ -247,7 +247,7 @@ static JSONValueTransformer* valueTransformer = nil;
     NSMutableDictionary* tempDict = [NSMutableDictionary dictionary];
     
     Class class = [self class];
-    while (class != [NSObject class])
+    while (class != [JSONModel class])
     {
         //NSLog(@"retrospecting: %@", NSStringFromClass(class));
         
