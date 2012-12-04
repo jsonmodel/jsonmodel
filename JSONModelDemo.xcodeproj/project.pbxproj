@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C0D0231166E5EA7001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0230166E5EA7001EA645 /* JSONModel+networking.m */; };
-		9C0D0232166E5EA7001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0230166E5EA7001EA645 /* JSONModel+networking.m */; };
-		9C0D0236166E618B001EA645 /* JSONModelSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0235166E618B001EA645 /* JSONModelSemaphore.m */; };
-		9C0D0237166E618B001EA645 /* JSONModelSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0235166E618B001EA645 /* JSONModelSemaphore.m */; };
-		9C0D023A166E6746001EA645 /* JSONModelHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0239166E6746001EA645 /* JSONModelHTTPClient.m */; };
-		9C0D023B166E6746001EA645 /* JSONModelHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0239166E6746001EA645 /* JSONModelHTTPClient.m */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
+		9C0D024D166EBF0B001EA645 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0243166EBF0B001EA645 /* JSONModel.m */; };
+		9C0D024E166EBF0B001EA645 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0243166EBF0B001EA645 /* JSONModel.m */; };
+		9C0D024F166EBF0B001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0245166EBF0B001EA645 /* JSONModel+networking.m */; };
+		9C0D0250166EBF0B001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0245166EBF0B001EA645 /* JSONModel+networking.m */; };
+		9C0D0251166EBF0B001EA645 /* JSONModelHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0248166EBF0B001EA645 /* JSONModelHTTPClient.m */; };
+		9C0D0252166EBF0B001EA645 /* JSONModelHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0248166EBF0B001EA645 /* JSONModelHTTPClient.m */; };
+		9C0D0253166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */; };
+		9C0D0254166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */; };
+		9C0D0255166EBF0B001EA645 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */; };
+		9C0D0256166EBF0B001EA645 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
 		9CBBBEDF166B6CF0008B4326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDE166B6CF0008B4326 /* Foundation.framework */; };
 		9CBBBEE1166B6CF0008B4326 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */; };
@@ -30,10 +34,6 @@
 		9CBBBF08166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
 		9CBBBF09166B6CF0008B4326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDE166B6CF0008B4326 /* Foundation.framework */; };
 		9CBBBF11166B6CF0008B4326 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF0F166B6CF0008B4326 /* InfoPlist.strings */; };
-		9CBBBF22166B6D10008B4326 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF1F166B6D10008B4326 /* JSONModel.m */; };
-		9CBBBF23166B6D10008B4326 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF1F166B6D10008B4326 /* JSONModel.m */; };
-		9CBBBF24166B6D10008B4326 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */; };
-		9CBBBF25166B6D10008B4326 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */; };
 		9CBBBF29166B6DA5008B4326 /* primitives.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF28166B6DA5008B4326 /* primitives.json */; };
 		9CBBBF2D166B6E01008B4326 /* PrimitivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF2C166B6E01008B4326 /* PrimitivesModel.m */; };
 		9CBBBF31166B6E58008B4326 /* PrimitiveTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF30166B6E58008B4326 /* PrimitiveTypesReadTests.m */; };
@@ -97,15 +97,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9C0D022F166E5EA7001EA645 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
-		9C0D0230166E5EA7001EA645 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
-		9C0D0234166E618B001EA645 /* JSONModelSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelSemaphore.h; sourceTree = "<group>"; };
-		9C0D0235166E618B001EA645 /* JSONModelSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelSemaphore.m; sourceTree = "<group>"; };
-		9C0D0238166E6746001EA645 /* JSONModelHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelHTTPClient.h; sourceTree = "<group>"; };
-		9C0D0239166E6746001EA645 /* JSONModelHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelHTTPClient.m; sourceTree = "<group>"; };
 		9C0D023D166E6BBF001EA645 /* KivaViewControllerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewControllerNetworking.h; sourceTree = "<group>"; };
 		9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaViewControllerNetworking.m; sourceTree = "<group>"; };
 		9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KivaViewControllerNetworking.xib; sourceTree = "<group>"; };
+		9C0D0242166EBF0B001EA645 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		9C0D0243166EBF0B001EA645 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		9C0D0244166EBF0B001EA645 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		9C0D0245166EBF0B001EA645 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		9C0D0247166EBF0B001EA645 /* JSONModelHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelHTTPClient.h; sourceTree = "<group>"; };
+		9C0D0248166EBF0B001EA645 /* JSONModelHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelHTTPClient.m; sourceTree = "<group>"; };
+		9C0D0249166EBF0B001EA645 /* JSONModelSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelSemaphore.h; sourceTree = "<group>"; };
+		9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelSemaphore.m; sourceTree = "<group>"; };
+		9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBEDC166B6CF0008B4326 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CBBBEDE166B6CF0008B4326 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,10 +130,6 @@
 		9CBBBF06166B6CF0008B4326 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9CBBBF0E166B6CF0008B4326 /* JSONModelDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9CBBBF10166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9CBBBF1E166B6D10008B4326 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
-		9CBBBF1F166B6D10008B4326 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
-		9CBBBF20166B6D10008B4326 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
-		9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		9CBBBF28166B6DA5008B4326 /* primitives.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = primitives.json; path = DataFiles/primitives.json; sourceTree = "<group>"; };
 		9CBBBF2B166B6E01008B4326 /* PrimitivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimitivesModel.h; path = TestModels/PrimitivesModel.h; sourceTree = "<group>"; };
 		9CBBBF2C166B6E01008B4326 /* PrimitivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrimitivesModel.m; path = TestModels/PrimitivesModel.m; sourceTree = "<group>"; };
@@ -238,6 +238,17 @@
 			name = "KivaJSONDemo+networking";
 			sourceTree = "<group>";
 		};
+		9C0D0246166EBF0B001EA645 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				9C0D0247166EBF0B001EA645 /* JSONModelHTTPClient.h */,
+				9C0D0248166EBF0B001EA645 /* JSONModelHTTPClient.m */,
+				9C0D0249166EBF0B001EA645 /* JSONModelSemaphore.h */,
+				9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
 		9CBBBECD166B6CEF008B4326 = {
 			isa = PBXGroup;
 			children = (
@@ -320,16 +331,13 @@
 		9CBBBF1D166B6D10008B4326 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBBF1E166B6D10008B4326 /* JSONModel.h */,
-				9CBBBF1F166B6D10008B4326 /* JSONModel.m */,
-				9CBBBF20166B6D10008B4326 /* JSONValueTransformer.h */,
-				9CBBBF21166B6D10008B4326 /* JSONValueTransformer.m */,
-				9C0D022F166E5EA7001EA645 /* JSONModel+networking.h */,
-				9C0D0230166E5EA7001EA645 /* JSONModel+networking.m */,
-				9C0D0234166E618B001EA645 /* JSONModelSemaphore.h */,
-				9C0D0235166E618B001EA645 /* JSONModelSemaphore.m */,
-				9C0D0238166E6746001EA645 /* JSONModelHTTPClient.h */,
-				9C0D0239166E6746001EA645 /* JSONModelHTTPClient.m */,
+				9C0D0242166EBF0B001EA645 /* JSONModel.h */,
+				9C0D0243166EBF0B001EA645 /* JSONModel.m */,
+				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
+				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
+				9C0D0244166EBF0B001EA645 /* JSONModel+networking.h */,
+				9C0D0245166EBF0B001EA645 /* JSONModel+networking.m */,
+				9C0D0246166EBF0B001EA645 /* JSONModelNetworking */,
 			);
 			path = JSONModel;
 			sourceTree = "<group>";
@@ -697,8 +705,6 @@
 				9CBBBEE9166B6CF0008B4326 /* main.m in Sources */,
 				9CBBBEED166B6CF0008B4326 /* AppDelegate.m in Sources */,
 				9CBBBEF6166B6CF0008B4326 /* MasterViewController.m in Sources */,
-				9CBBBF22166B6D10008B4326 /* JSONModel.m in Sources */,
-				9CBBBF24166B6D10008B4326 /* JSONValueTransformer.m in Sources */,
 				9CBBBF77166BA80F008B4326 /* KivaViewController.m in Sources */,
 				9CBBBF80166BA86A008B4326 /* LoanModel.m in Sources */,
 				9CBBBF81166BA86A008B4326 /* LocationModel.m in Sources */,
@@ -713,10 +719,12 @@
 				9CBBBFAC166BB3EC008B4326 /* VideoLink.m in Sources */,
 				9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */,
 				9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */,
-				9C0D0231166E5EA7001EA645 /* JSONModel+networking.m in Sources */,
-				9C0D0236166E618B001EA645 /* JSONModelSemaphore.m in Sources */,
-				9C0D023A166E6746001EA645 /* JSONModelHTTPClient.m in Sources */,
 				9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */,
+				9C0D024D166EBF0B001EA645 /* JSONModel.m in Sources */,
+				9C0D024F166EBF0B001EA645 /* JSONModel+networking.m in Sources */,
+				9C0D0251166EBF0B001EA645 /* JSONModelHTTPClient.m in Sources */,
+				9C0D0253166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */,
+				9C0D0255166EBF0B001EA645 /* JSONValueTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,8 +732,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CBBBF23166B6D10008B4326 /* JSONModel.m in Sources */,
-				9CBBBF25166B6D10008B4326 /* JSONValueTransformer.m in Sources */,
 				9CBBBF2D166B6E01008B4326 /* PrimitivesModel.m in Sources */,
 				9CBBBF31166B6E58008B4326 /* PrimitiveTypesReadTests.m in Sources */,
 				9CBBBF36166B73D3008B4326 /* JSONTypesModel.m in Sources */,
@@ -741,9 +747,11 @@
 				9CBBBF6B166BA0B8008B4326 /* ImageModel.m in Sources */,
 				9CBBBF6F166BA0E9008B4326 /* CopyrightModel.m in Sources */,
 				9CBBBF72166BA16B008B4326 /* NestedModelsTests.m in Sources */,
-				9C0D0232166E5EA7001EA645 /* JSONModel+networking.m in Sources */,
-				9C0D0237166E618B001EA645 /* JSONModelSemaphore.m in Sources */,
-				9C0D023B166E6746001EA645 /* JSONModelHTTPClient.m in Sources */,
+				9C0D024E166EBF0B001EA645 /* JSONModel.m in Sources */,
+				9C0D0250166EBF0B001EA645 /* JSONModel+networking.m in Sources */,
+				9C0D0252166EBF0B001EA645 /* JSONModelHTTPClient.m in Sources */,
+				9C0D0254166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */,
+				9C0D0256166EBF0B001EA645 /* JSONValueTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
