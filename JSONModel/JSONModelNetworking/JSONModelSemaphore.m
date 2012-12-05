@@ -9,38 +9,35 @@
 #import "JSONModelSemaphore.h"
 
 static NSMutableDictionary* flags = nil;
+static JSONModelSemaphore *sharedInstance = nil;
 
 @implementation JSONModelSemaphore
 
-+(JSONModelSemaphore *)sharedInstance
++(void)initialize
 {   
-    static JSONModelSemaphore *sharedInstance = nil;
     static dispatch_once_t once;
-    
     dispatch_once(&once, ^{
         flags = [NSMutableDictionary dictionaryWithCapacity:10];
         sharedInstance = [[JSONModelSemaphore alloc] init];
     });
-    
-    return sharedInstance;
 }
 
--(BOOL)isLifted:(NSString*)key
++(BOOL)isLifted:(NSString*)key
 {
     return [flags objectForKey:key]!=nil;
 }
 
--(void)lift:(NSString*)key
++(void)lift:(NSString*)key
 {
     [flags setObject:@"YES" forKey: key];
 }
 
--(void)waitForKey:(NSString*)key
++(void)waitForKey:(NSString*)key
 {
     BOOL keepRunning = YES;
     
     while (keepRunning && [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]]) {
-        keepRunning = ![[JSONModelSemaphore sharedInstance] isLifted: key];
+        keepRunning = ![JSONModelSemaphore isLifted: key];
     }
 
     [flags removeObjectForKey:key];

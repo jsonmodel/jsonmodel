@@ -10,10 +10,8 @@
 
 @interface JSONModelSemaphore : NSObject
 
-+(JSONModelSemaphore *)sharedInstance;
-
--(BOOL)isLifted:(NSString*)key;
--(void)lift:(NSString*)key;
--(void)waitForKey:(NSString*)key;
++(BOOL)isLifted:(NSString*)key;
++(void)lift:(NSString*)key;
++(void)waitForKey:(NSString*)key;
 
 @end
