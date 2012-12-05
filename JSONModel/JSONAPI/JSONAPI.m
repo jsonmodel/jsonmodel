@@ -19,9 +19,11 @@ static JSONAPI* sharedInstance = nil;
 
 +(void)initialize
 {
-    sharedInstance = [[JSONAPI alloc] init];
-    sharedInstance.ctype = @"application/json";
-    
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        sharedInstance = [[JSONAPI alloc] init];
+        sharedInstance.ctype = @"application/json";
+    });
 }
 
 +(void)setAPIBaseURLWithString:(NSString*)base

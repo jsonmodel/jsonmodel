@@ -17,7 +17,10 @@ static NSMutableDictionary* requestHeaders = nil;
 
 +(void)initialize
 {
-    requestHeaders = [NSMutableDictionary dictionary];
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        requestHeaders = [NSMutableDictionary dictionary];
+    });
 }
 
 +(NSMutableDictionary*)requestHeaders
