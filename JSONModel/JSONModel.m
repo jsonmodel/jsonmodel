@@ -90,6 +90,9 @@ static JSONValueTransformer* valueTransformer = nil;
 
 -(id)initWithDictionary:(NSDictionary*)d
 {
+    //invalid input, just create empty instance
+    if (!d) return nil;
+
     //check for valid parameters
     self = [super init];
     
@@ -97,9 +100,6 @@ static JSONValueTransformer* valueTransformer = nil;
         
         //do initial class setup, retrospec properties
         [self _setup];
-        
-        //invalid input, just create empty instance
-        if (!d) return self;
         
         //check if all required properties are present
         NSArray* incomingKeysArray = [d allKeys];
