@@ -7,12 +7,11 @@
 //
 
 #import "JSONAPI.h"
-#import "JSONHTTPClient.h"
 
 static JSONAPI* sharedInstance = nil;
 
 @interface JSONAPI ()
-@property (strong, nonatomic) NSURL* baseURL;
+@property (strong, nonatomic) NSString* baseURLString;
 @property (strong, nonatomic) NSString* ctype;
 @end
 
@@ -27,7 +26,7 @@ static JSONAPI* sharedInstance = nil;
 
 +(void)setAPIBaseURLWithString:(NSString*)base
 {
-    sharedInstance.baseURL = [NSURL URLWithString:base];
+    sharedInstance.baseURLString = base;
 }
 
 +(void)setContentType:(NSString*)ctype
@@ -37,13 +36,17 @@ static JSONAPI* sharedInstance = nil;
 
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params
 {
-    NSURL* getURL = [NSURL URLWithString:path relativeToURL:sharedInstance.baseURL];
-    
+    NSMutableString* query = [NSMutableString stringWithString:@""];
     if (params) {
-        
+        [query appendFormat:@"?"];
+        for (NSString* key in [params allKeys]) {
+            [query appendFormat:@"%@=%@&", key, params[key]];
+        }
     }
     
-    id json = [JSONHTTPClient getJSONFromURL: getURL];
+    NSString* fullURL = [NSString stringWithFormat:@"%@%@%@", sharedInstance.baseURLString, path, query];
+    
+    id json = [JSONHTTPClient getJSONFromURLWithString: fullURL];
     return json;
 }
 
@@ -53,5 +56,14 @@ static JSONAPI* sharedInstance = nil;
     return nil;
 }
 
+-(NSString*)urlEncode:(NSString*)unescaped
+{
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+                                                                                 NULL,
+                                                                                 (__bridge CFStringRef) unescaped,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                 kCFStringEncodingUTF8));
+}
 
 @end

@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONHTTPClient.h"
 
 @interface JSONAPI : NSObject
 
-+(void)setAPIHost:(NSString*)host;
++(void)setAPIBaseURLWithString:(NSString*)base;
 +(void)setContentType:(NSString*)ctype;
 
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params;
