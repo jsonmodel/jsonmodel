@@ -22,29 +22,28 @@ static long requestId = 0;
 {
     requestId++;
     
-    NSString* semaphorKey = [NSString stringWithFormat:@"rid: %ld", requestId];
+    NSString* semaphoreKey = [NSString stringWithFormat:@"rid: %ld", requestId];
     
     __block NSDictionary* json = nil;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
         NSData* ytData = [NSData dataWithContentsOfURL: url];
-
-        if (ytData) {
-            
-            //catch exception and lift flag
-            
-            json = [NSJSONSerialization
-                    JSONObjectWithData:ytData
-                    options:kNilOptions
-                    error:nil];
+        
+        @try {
+            NSAssert(ytData, nil);
+            json = [NSJSONSerialization JSONObjectWithData:ytData options:kNilOptions error:nil];
+            NSAssert(json, nil);
+        }
+        @catch (NSException* e) {
+            //
         }
         
-        [[JSONModelSemaphore sharedInstance] lift: semaphorKey ];
+        [[JSONModelSemaphore sharedInstance] lift: semaphoreKey ];
         
     });
     
-    [[JSONModelSemaphore sharedInstance] waitForKey: semaphorKey ];
+    [[JSONModelSemaphore sharedInstance] waitForKey: semaphoreKey ];
     
     return json;
 }
