@@ -36,24 +36,18 @@ static JSONAPI* sharedInstance = nil;
 
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params
 {
-    NSMutableString* query = [NSMutableString stringWithString:@""];
-    if (params) {
-        [query appendFormat:@"?"];
-        for (NSString* key in [params allKeys]) {
-            [query appendFormat:@"%@=%@&", key, params[key]];
-        }
-    }
+    NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
     
-    NSString* fullURL = [NSString stringWithFormat:@"%@%@%@", sharedInstance.baseURLString, path, query];
-    
-    id json = [JSONHTTPClient getJSONFromURLWithString: fullURL];
+    id json = [JSONHTTPClient getJSONFromURLWithString: fullURL params:params];
     return json;
 }
 
 +(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params
 {
-    NSAssert(NO, @"not implemnted");
-    return nil;
+    NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
+    
+    id json = [JSONHTTPClient postJSONFromURLWithString: fullURL params:params];
+    return json;
 }
 
 @end

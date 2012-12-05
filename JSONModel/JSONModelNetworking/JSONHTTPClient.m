@@ -58,7 +58,8 @@ static NSMutableDictionary* requestHeaders = nil;
         NSData* responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
                                                      params: params];
-        NSLog(@"server response: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
+        
+        //NSLog(@"server response: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
         
         @try {
             NSAssert(responseData, nil);
@@ -93,17 +94,25 @@ static NSMutableDictionary* requestHeaders = nil;
     }
     
 	//create the request body
-    NSMutableString* bodyString = [NSMutableString stringWithString:@""];
+    NSMutableString* paramsString = [NSMutableString stringWithString:@""];
     if (params) {
         for (NSString* key in [params allKeys]) {
-            [bodyString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
+            [paramsString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
         }
     }
     
-    //set the request body
-    NSData* bodyData = [bodyString dataUsingEncoding:defaultTextEncoding];
-	[request setHTTPBody: bodyData];
-    [request addValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+    //set the request params
+    if ([method isEqualToString:kHTTPMethodGET]) {
+        //URL params
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:
+                                              @"%@?%@", [url absoluteString], paramsString
+                                              ]]];
+    } else {
+        //BODY params
+        NSData* bodyData = [paramsString dataUsingEncoding:defaultTextEncoding];
+        [request setHTTPBody: bodyData];
+        [request addValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+    }
 
     //prepare output
 	NSHTTPURLResponse* response = nil;
