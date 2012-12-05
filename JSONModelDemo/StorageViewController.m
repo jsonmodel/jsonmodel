@@ -37,6 +37,10 @@
     
     //initialize model with data
     data = [[MyDataModel alloc] initWithDictionary: object];
+
+    if (!data) {
+        data = [[MyDataModel alloc] init];
+    }
     
     //update the UI
     lblTimes.text = [NSString stringWithFormat:@"Times saved: %i", data.timesSaved];
