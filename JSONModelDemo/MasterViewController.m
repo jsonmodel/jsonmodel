@@ -14,9 +14,14 @@
 #import "StorageViewController.h"
 #import "KivaViewControllerNetworking.h"
 
-
 #import "JSONModel+networking.h"
 #import "VideoModel.h"
+
+@interface ColorsModel : JSONModel
+@property (strong, nonatomic) NSString* redColor;
+@end
+@implementation ColorsModel
+@end
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -29,13 +34,14 @@
 {
     NSLog(@"1st %@", [NSDate date]);
     
-    NSDictionary* videoList = [JSONHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"];
-    VideoModel* model = [[VideoModel alloc] initWithDictionary:
-                         videoList[@"feed"][@"entry"][0]
-                         ];
+    ColorsModel* model = [[ColorsModel alloc] initFromURLWithString:@"http://tcm.underplot/jsonmodel/samplejson/unittestsdata/colors.json"];
     
     NSLog(@"2nd %@", [NSDate date]);
     NSLog(@"model: %@", [model toJSONString]);
+    
+    id response = [JSONHTTPClient postJSONFromURLWithString:@"http://tcm.underplot/jsonmodel/samplejson/postecho/echo.php"
+                                                     params:@{@"key":@"value"}];
+    NSLog(@"response: %@", response);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

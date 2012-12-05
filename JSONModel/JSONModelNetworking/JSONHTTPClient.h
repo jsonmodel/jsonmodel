@@ -8,9 +8,18 @@
 
 #import "JSONModel.h"
 
+#define kHTTPMethodGET @"GET"
+#define kHTTPMethodPOST @"POST"
+
 @interface JSONHTTPClient : JSONModel
 
-+(id)getJSONFromURL:(NSURL*)url;
++(NSMutableDictionary*)requestHeaders;
++(void)setDefaultTextEncoding:(NSStringEncoding)encoding;
+
 +(id)getJSONFromURLWithString:(NSString*)urlString;
++(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
++(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
+
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
 
 @end

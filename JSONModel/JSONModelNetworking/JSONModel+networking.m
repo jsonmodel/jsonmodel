@@ -9,21 +9,16 @@
 #import "JSONModel+networking.h"
 #import "JSONHTTPClient.h"
 
+@interface JSONModel ()
+
+@end
+
 @implementation JSONModel(networking)
 
--(id)initWithURL:(NSURL*)url
+-(id)initFromURLWithString:(NSString*)urlString
 {
-    id jsonObject = [JSONHTTPClient getJSONFromURL:url];
-    
-    if (!jsonObject) return nil;
-    
+    id jsonObject = [JSONHTTPClient getJSONFromURLWithString:urlString];
     return [self initWithDictionary:jsonObject];
-    
-}
-
--(id)initWithURLString:(NSString*)urlString
-{
-    return [self initWithURL:[NSURL URLWithString:urlString]];
 }
 
 @end

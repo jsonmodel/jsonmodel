@@ -56,14 +56,4 @@ static JSONAPI* sharedInstance = nil;
     return nil;
 }
 
--(NSString*)urlEncode:(NSString*)unescaped
-{
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
-                                                                                 NULL,
-                                                                                 (__bridge CFStringRef) unescaped,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                 kCFStringEncodingUTF8));
-}
-
 @end
