@@ -10,7 +10,10 @@
 #import "JSONModelSemaphore.h"
 
 static long requestId = 0;
+
 static int defaultTextEncoding = NSUTF8StringEncoding;
+static int defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+
 static NSMutableDictionary* requestHeaders = nil;
 
 @implementation JSONHTTPClient
@@ -31,6 +34,11 @@ static NSMutableDictionary* requestHeaders = nil;
 +(void)setDefaultTextEncoding:(NSStringEncoding)encoding
 {
     defaultTextEncoding = encoding;
+}
+
++(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy
+{
+    
 }
 
 +(id)getJSONFromURLWithString:(NSString*)urlString
@@ -73,19 +81,18 @@ static NSMutableDictionary* requestHeaders = nil;
             //no need to do anything, will return nil by default
         }
         
-        [[JSONModelSemaphore sharedInstance] lift: semaphoreKey ];
+        [JSONModelSemaphore lift: semaphoreKey ];
         
     });
     
-    [[JSONModelSemaphore sharedInstance] waitForKey: semaphoreKey ];
-    
+    [JSONModelSemaphore waitForKey: semaphoreKey ];
     return json;
 }
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReloadRevalidatingCacheData
+                                                                cachePolicy:defaultCachePolicy
                                                             timeoutInterval:60];
 	[request setHTTPMethod:method];
 

@@ -15,6 +15,7 @@
 
 +(NSMutableDictionary*)requestHeaders;
 +(void)setDefaultTextEncoding:(NSStringEncoding)encoding;
++(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
 
 +(id)getJSONFromURLWithString:(NSString*)urlString;
 +(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
