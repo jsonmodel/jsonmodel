@@ -9,6 +9,7 @@
 #import "JSONAPI.h"
 
 static JSONAPI* sharedInstance = nil;
+static long jsonRpcId = 0;
 
 @interface JSONAPI ()
 @property (strong, nonatomic) NSString* baseURLString;
@@ -49,6 +50,26 @@ static JSONAPI* sharedInstance = nil;
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
     
     id json = [JSONHTTPClient postJSONFromURLWithString: fullURL params:params];
+    return json;
+}
+
++(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args
+{
+    if (!args) args = @[];
+    
+    NSDictionary* jsonRequest = @{
+        @"id": [NSNumber numberWithLong: ++jsonRpcId],
+        @"params": args,
+        @"method": method
+    };
+    
+    NSData* jsonRequestData = [NSJSONSerialization dataWithJSONObject:jsonRequest
+                                                              options:kNilOptions
+                                                                error:nil];
+    NSString* jsonRequestString = [[NSString alloc] initWithData:jsonRequestData encoding: NSUTF8StringEncoding];
+    
+    id json = [JSONHTTPClient postJSONFromURLWithString: sharedInstance.baseURLString
+                                             bodyString: jsonRequestString];
     return json;
 }
 

@@ -35,7 +35,7 @@
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
     feed = [[KivaFeed alloc] initWithDictionary:
-            [JSONAPI getWithPath:@"/loans/search.json" andParams:@{@"status":@"fundraising"}]
+            [JSONAPI getWithPath:@"/loans/search.json" andParams: @{@"status":@"fundraising"}]
             ];
     
     //feed = [[KivaFeed alloc] initWithURLString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"];

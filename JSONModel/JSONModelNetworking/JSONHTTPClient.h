@@ -20,7 +20,9 @@
 +(id)getJSONFromURLWithString:(NSString*)urlString;
 +(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
 +(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
++(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString;
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString;
 
 @end

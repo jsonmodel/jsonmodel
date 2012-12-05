@@ -17,4 +17,6 @@
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params;
 +(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params;
 
++(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args;
+
 @end
