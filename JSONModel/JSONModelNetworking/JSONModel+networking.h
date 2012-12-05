@@ -7,7 +7,7 @@
 //
 
 #import "JSONModel.h"
-#import "JSONModelHTTPClient.h"
+#import "JSONHTTPClient.h"
 
 @interface JSONModel(networking)
 

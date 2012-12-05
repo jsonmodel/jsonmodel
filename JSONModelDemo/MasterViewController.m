@@ -29,7 +29,7 @@
 {
     NSLog(@"1st %@", [NSDate date]);
     
-    NSDictionary* videoList = [JSONModelHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"];
+    NSDictionary* videoList = [JSONHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"];
     VideoModel* model = [[VideoModel alloc] initWithDictionary:
                          videoList[@"feed"][@"entry"][0]
                          ];

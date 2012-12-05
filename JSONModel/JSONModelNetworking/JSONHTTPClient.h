@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface JSONModelHTTPClient : JSONModel
+@interface JSONHTTPClient : JSONModel
 
 +(id)getJSONFromURL:(NSURL*)url;
 +(id)getJSONFromURLWithString:(NSString*)urlString;

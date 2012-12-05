@@ -7,13 +7,13 @@
 //
 
 #import "JSONModel+networking.h"
-#import "JSONModelHTTPClient.h"
+#import "JSONHTTPClient.h"
 
 @implementation JSONModel(networking)
 
 -(id)initWithURL:(NSURL*)url
 {
-    id jsonObject = [JSONModelHTTPClient getJSONFromURL:url];
+    id jsonObject = [JSONHTTPClient getJSONFromURL:url];
     
     if (!jsonObject) return nil;
     

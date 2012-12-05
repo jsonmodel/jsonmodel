@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Underplot ltd. All rights reserved.
 //
 
-#import "JSONModelHTTPClient.h"
+#import "JSONHTTPClient.h"
 #import "JSONModelSemaphore.h"
 
 static long requestId = 0;
 
-@implementation JSONModelHTTPClient
+@implementation JSONHTTPClient
 
 +(id)getJSONFromURLWithString:(NSString*)urlString
 {
