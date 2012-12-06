@@ -12,6 +12,7 @@
 
 #import "KivaFeed.h"
 #import "HUD.h"
+#import "JSONModel+networking.h"
 
 @interface KivaViewControllerNetworking () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -34,13 +35,13 @@
 
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-    feed = [[KivaFeed alloc] initWithDictionary:
-            [JSONAPI getWithPath:@"/loans/search.json" andParams: @{@"status":@"fundraising"}]
-            ];
+//    feed = [[KivaFeed alloc] initWithDictionary:
+//            [JSONAPI getWithPath:@"/loans/search.json" andParams: @{@"status":@"fundraising"}]
+//            ];
     
-    //feed = [[KivaFeed alloc] initWithURLString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"];
+    feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"];
 
-    [table reloadData];
+    [table reloadData]; 
     
     [HUD hideUIBlockingIndicator];
 }

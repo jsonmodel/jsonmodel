@@ -1,13 +1,22 @@
 //
 //  JSONModelHTTPClient.m
-//  JSONModelDemo
 //
-//  Created by Marin Todorov on 04/12/2012.
-//  Copyright (c) 2012 Underplot ltd. All rights reserved.
+//  @version 0.7
+//  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
+// Copyright (c) 2012 Marin Todorov, Underplot ltd.
+// This code is distributed under the terms and conditions of the MIT license.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
+
 #import "JSONHTTPClient.h"
-#import "JSONModelSemaphore.h"
+
+#pragma mark - static variables
 
 static long requestId = 0;
 
@@ -15,17 +24,22 @@ static int defaultTextEncoding = NSUTF8StringEncoding;
 static int defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 
 static NSMutableDictionary* requestHeaders = nil;
+static NSMutableDictionary* flags = nil;
+
 
 @implementation JSONHTTPClient
 
+#pragma mark - initialization
 +(void)initialize
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         requestHeaders = [NSMutableDictionary dictionary];
+        flags = [NSMutableDictionary dictionaryWithCapacity:10];
     });
 }
 
+#pragma mark - configuration methods
 +(NSMutableDictionary*)requestHeaders
 {
     return requestHeaders;
@@ -41,6 +55,7 @@ static NSMutableDictionary* requestHeaders = nil;
     defaultCachePolicy = policy;
 }
 
+#pragma mark - convenience methods for requests
 +(id)getJSONFromURLWithString:(NSString*)urlString
 {
     return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:nil orBodyString:nil];
@@ -61,6 +76,7 @@ static NSMutableDictionary* requestHeaders = nil;
     return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:bodyString];
 }
 
+#pragma mark - base request methods
 +(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString
 {
     requestId++;
@@ -96,11 +112,11 @@ static NSMutableDictionary* requestHeaders = nil;
             //no need to do anything, will return nil by default
         }
         
-        [JSONModelSemaphore lift: semaphoreKey ];
+        [self lift: semaphoreKey ];
         
     });
     
-    [JSONModelSemaphore waitForKey: semaphoreKey ];
+    [self waitForKey: semaphoreKey ];
     return json;
 }
 
@@ -111,8 +127,10 @@ static NSMutableDictionary* requestHeaders = nil;
                                                             timeoutInterval:60];
 	[request setHTTPMethod:method];
     
-	[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
-    [request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
+    if (bodyString) {
+        [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+        [request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
+    }
     
     for (NSString* key in [requestHeaders allKeys]) {
         [request addValue:requestHeaders[key] forHTTPHeaderField:key];
@@ -149,8 +167,9 @@ static NSMutableDictionary* requestHeaders = nil;
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params
 {
     //create the request body
-    NSMutableString* paramsString = [NSMutableString stringWithString:@""];
+    NSMutableString* paramsString = nil;
     if (params) {
+        paramsString = [NSMutableString stringWithString:@""];
         for (NSString* key in [params allKeys]) {
             [paramsString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
         }
@@ -161,7 +180,7 @@ static NSMutableDictionary* requestHeaders = nil;
     //set the request params
     if ([method isEqualToString:kHTTPMethodPOST]) {
         requestBodyString = paramsString;
-    } else {
+    } else if (paramsString) {
         //URL params
         url = [NSURL URLWithString:[NSString stringWithFormat:
                                     @"%@?%@", [url absoluteString], paramsString
@@ -171,6 +190,7 @@ static NSMutableDictionary* requestHeaders = nil;
     return [self syncRequestDataFromURL:url method:method requestBody:requestBodyString];
 }
 
+#pragma mark - helper methods
 +(NSString*)urlEncode:(NSString*)string
 {
     return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
@@ -179,6 +199,28 @@ static NSMutableDictionary* requestHeaders = nil;
                                                                                  NULL,
                                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                  kCFStringEncodingUTF8));
+}
+
+#pragma mark - Semaphore methods
++(BOOL)isLifted:(NSString*)key
+{
+    return [flags objectForKey:key]!=nil;
+}
+
++(void)lift:(NSString*)key
+{
+    [flags setObject:@"YES" forKey: key];
+}
+
++(void)waitForKey:(NSString*)key
+{
+    BOOL keepRunning = YES;
+    
+    while (keepRunning && [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]]) {
+        keepRunning = ![self isLifted: key];
+    }
+    
+    [flags removeObjectForKey:key];
 }
 
 @end

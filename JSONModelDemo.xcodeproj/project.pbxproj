@@ -13,8 +13,6 @@
 		9C0D024E166EBF0B001EA645 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0243166EBF0B001EA645 /* JSONModel.m */; };
 		9C0D0251166EBF0B001EA645 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0248166EBF0B001EA645 /* JSONHTTPClient.m */; };
 		9C0D0252166EBF0B001EA645 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0248166EBF0B001EA645 /* JSONHTTPClient.m */; };
-		9C0D0253166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */; };
-		9C0D0254166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */; };
 		9C0D0255166EBF0B001EA645 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */; };
 		9C0D0256166EBF0B001EA645 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */; };
 		9C0D0259166EBF7E001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0258166EBF7E001EA645 /* JSONModel+networking.m */; };
@@ -106,8 +104,6 @@
 		9C0D0243166EBF0B001EA645 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
 		9C0D0247166EBF0B001EA645 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
 		9C0D0248166EBF0B001EA645 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
-		9C0D0249166EBF0B001EA645 /* JSONModelSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelSemaphore.h; sourceTree = "<group>"; };
-		9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelSemaphore.m; sourceTree = "<group>"; };
 		9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		9C0D0257166EBF7E001EA645 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
@@ -249,8 +245,6 @@
 				9C0D0258166EBF7E001EA645 /* JSONModel+networking.m */,
 				9C0D0247166EBF0B001EA645 /* JSONHTTPClient.h */,
 				9C0D0248166EBF0B001EA645 /* JSONHTTPClient.m */,
-				9C0D0249166EBF0B001EA645 /* JSONModelSemaphore.h */,
-				9C0D024A166EBF0B001EA645 /* JSONModelSemaphore.m */,
 			);
 			path = JSONModelNetworking;
 			sourceTree = "<group>";
@@ -736,7 +730,6 @@
 				9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */,
 				9C0D024D166EBF0B001EA645 /* JSONModel.m in Sources */,
 				9C0D0251166EBF0B001EA645 /* JSONHTTPClient.m in Sources */,
-				9C0D0253166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */,
 				9C0D0255166EBF0B001EA645 /* JSONValueTransformer.m in Sources */,
 				9C0D0259166EBF7E001EA645 /* JSONModel+networking.m in Sources */,
 				9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */,
@@ -764,7 +757,6 @@
 				9CBBBF72166BA16B008B4326 /* NestedModelsTests.m in Sources */,
 				9C0D024E166EBF0B001EA645 /* JSONModel.m in Sources */,
 				9C0D0252166EBF0B001EA645 /* JSONHTTPClient.m in Sources */,
-				9C0D0254166EBF0B001EA645 /* JSONModelSemaphore.m in Sources */,
 				9C0D0256166EBF0B001EA645 /* JSONValueTransformer.m in Sources */,
 				9C0D025A166EBF7E001EA645 /* JSONModel+networking.m in Sources */,
 				9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */,

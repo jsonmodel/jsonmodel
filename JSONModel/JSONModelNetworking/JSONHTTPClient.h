@@ -1,25 +1,80 @@
 //
 //  JSONModelHTTPClient.h
-//  JSONModelDemo
 //
-//  Created by Marin Todorov on 04/12/2012.
-//  Copyright (c) 2012 Underplot ltd. All rights reserved.
+//  @version 0.7
+//  @author Marin Todorov, http://www.touch-code-magazine.com
 //
+
+// Copyright (c) 2012 Marin Todorov, Underplot ltd.
+// This code is distributed under the terms and conditions of the MIT license.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONModel.h"
 
 #define kHTTPMethodGET @"GET"
 #define kHTTPMethodPOST @"POST"
 
-@interface JSONHTTPClient : JSONModel
+/**
+ * A very thin HTTP client that can do GET and POST HTTP requests.
+ * It fetches only JSON data and also deserializes it using NSJSONSerialization.
+ *
+ * The methods of this class are **synchronious, but non-blocking**. That means you can call the methods synchroniously, but that won't block the execution of your other threads - like the UI and other threads you might have.
+ */
+@interface JSONHTTPClient : NSObject
 
+/**
+ * A dictioanry of HTTP headers the client sends along the requests
+ */
 +(NSMutableDictionary*)requestHeaders;
+
+/**
+ * Sets the default encoding of the request body.
+ * See NSStringEncoding for a list of supported encodings
+ * @param encoding text encoding constant
+ */
 +(void)setDefaultTextEncoding:(NSStringEncoding)encoding;
+
+/**
+ * Sets the policies for caching HTTP data
+ * See NSURLRequestCachePolicy for a list of the pre-defined policies
+ * @param policy the caching policy
+ */
 +(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
 
+/**
+ * Makes GET request to the given URL address and fetches a JSON response.
+ * @param urlString the URL as a string
+ * @return JSON compliant object or nil
+ */
 +(id)getJSONFromURLWithString:(NSString*)urlString;
+
+/**
+ * Makes GET request to the given URL address and fetches a JSON response. Sends the params as a query string variables.
+ * @param urlString the URL as a string
+ * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @return JSON compliant object or nil
+ */
 +(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
+
+/**
+ * Makes POST request to the given URL address and fetches a JSON response. Sends the params as url encoded variables via the POST body.
+ * @param urlString the URL as a string
+ * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @return JSON compliant object or nil
+ */
 +(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
+
+/**
+ * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
+ * @param urlString the URL as a string
+ * @param bodyString the body of the POST request as a string
+ * @return JSON compliant object or nil
+ */
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString;
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;

@@ -17,12 +17,6 @@
 #import "JSONModel+networking.h"
 #import "VideoModel.h"
 
-@interface ColorsModel : JSONModel
-@property (strong, nonatomic) NSString* redColor;
-@end
-@implementation ColorsModel
-@end
-
 @interface MasterViewController () {
     NSMutableArray *_objects;
 }
@@ -34,14 +28,10 @@
 {
     NSLog(@"1st %@", [NSDate date]);
     
-    ColorsModel* model = [[ColorsModel alloc] initFromURLWithString:@"http://tcm.underplot/jsonmodel/samplejson/unittestsdata/colors.json"];
     
     NSLog(@"2nd %@", [NSDate date]);
-    NSLog(@"model: %@", [model toJSONString]);
+//    NSLog(@"model: %@", [model toJSONString]);
     
-    id response = [JSONHTTPClient postJSONFromURLWithString:@"http://tcm.underplot/jsonmodel/samplejson/postecho/echo.php"
-                                                     params:@{@"key":@"value"}];
-    NSLog(@"response: %@", response);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
