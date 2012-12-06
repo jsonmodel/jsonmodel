@@ -114,6 +114,9 @@
  * to have as properties of your own class.
  */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol>
+
+/** @name Creating and initializing models */
+
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
    * @param s JSON text data
@@ -134,6 +137,8 @@
 
   -(id)initWithDictionary:(NSDictionary*)d;
 
+/** @name Exporting model contents */
+
   -(NSDictionary*)toDictionary;
 
   /**
@@ -141,6 +146,8 @@
    * @return JSON text describing the data model
    */
   -(NSString*)toJSONString;
+
+/** @name Batch model creationg */
 
   /**
    * If you have a list of dictionaries in a JSON feed, you can use this method to create an NSArray

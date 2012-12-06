@@ -27,6 +27,7 @@
  */
 @interface JSONHTTPClient : NSObject
 
+/** @name HTTP Client configuration */
 /**
  * A dictioanry of HTTP headers the client sends along the requests
  */
@@ -46,6 +47,7 @@
  */
 +(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
 
+/** @name Making HTTP requests */
 /**
  * Makes GET request to the given URL address and fetches a JSON response.
  * @param urlString the URL as a string

@@ -17,14 +17,47 @@
 #import <Foundation/Foundation.h>
 #import "JSONHTTPClient.h"
 
+/**
+ * Class for working with JSON APIs. It builds upon the JSONHTTPClient class
+ * and facilitates making requests to the same web host. Also features helper
+ * method for making calls to a JSON RPC service
+ */
 @interface JSONAPI : NSObject
 
+/** @name Configuring the API */
+/**
+ * Sets the API url
+ * @param base the API url as a string
+ */
 +(void)setAPIBaseURLWithString:(NSString*)base;
+
+/**
+ * Sets the default content type for the requests/responses
+ * @param ctype The content-type as a string. Some possible types, depending on the service: application/json, text/json, x-application/javascript, etc.
+ */
 +(void)setContentType:(NSString*)ctype;
 
+/** @name Making API requests */
+/**
+ * Makes a GET request to the API
+ * @param params the variables to pass to the API
+ * @return the JSON response as desrialized object
+ */
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params;
+
+/**
+ * Makes a POST request to the API
+ * @param params the variables to pass to the API
+ * @return the JSON response as desrialized object
+ */
 +(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params;
 
+/** @name JSON RPC (1.0) request method */
+/**
+ * Makes a JSON RPC request to the API
+ * @param args the list of arguments to pass to the API
+ * @return the JSON response as desrialized object
+ */
 +(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args;
 
 @end

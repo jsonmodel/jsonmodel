@@ -43,19 +43,21 @@ extern BOOL isNull(id value);
  */
 @interface JSONValueTransformer : NSObject
 
+@property (strong, nonatomic, readonly) NSDictionary* primitivesNames;
+
+/** @name Resolving cluster class names */
 /**
  * This method returns the ubmrella class for any standard class cluster members.
  * For example returns NSString when given as input NSString, NSMutableString, __CFString and __CFConstantString
  * The method currently looksup a pre-defined list.
+ * TODO: Is there a better way to do that? I could not find one as these class clusters seem like a not so greatly discussed topic
  * @param sourceClass the class to get the umrella class for
  * @return Class
- * @todo Is there a better way to do that? I could not find one as these class clusters seem like a not so greatly discussed topic
  */
 +(Class)classByResolvingClusterClasses:(Class)sourceClass;
 
-@property (strong, nonatomic, readonly) NSDictionary* primitivesNames;
-
 #pragma mark - NSMutableString <-> NSString
+/** @name Transforming to Mutable copies */
 /**
  * Trasnforms a string value to a mutable string value
  * @param string incoming string
@@ -80,6 +82,7 @@ extern BOOL isNull(id value);
 -(NSMutableDictionary*)NSMutableDictionaryFromNSDictionary:(NSDictionary*)dict;
 
 #pragma mark - NSSet <-> NSArray
+/** @name Transforming Sets */
 /**
  * Transforms an array to a set
  * @param array incoming array
@@ -109,6 +112,7 @@ extern BOOL isNull(id value);
 -(NSArray*)JSONObjectFromNSMutableSet:(NSMutableSet*)set;
 
 #pragma mark - BOOL <-> number
+/** @name Transforming JSON types */
 /**
  * Transforms a number object to a bool number object
  * @param number the number to convert
@@ -132,6 +136,7 @@ extern BOOL isNull(id value);
 -(NSString*)NSStringFromNSNumber:(NSNumber*)number;
 
 #pragma mark - string <-> url
+/** @name Transforming URLs */
 /**
  * Transforms a string object to an NSURL object
  * @param string the string to convert
@@ -147,6 +152,7 @@ extern BOOL isNull(id value);
 -(NSString*)JSONObjectFromNSURL:(NSURL*)url;
 
 #pragma mark - string <-> date
+/** @name Transforming Dates */
 /*  string <-> date using the W3C format ISO8601 */
 /**
  * Transforms a string object to an NSDate object, asuming the dates in the JSON feed are W3C (ISO8601) encoded.
