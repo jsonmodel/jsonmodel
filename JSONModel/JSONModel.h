@@ -20,7 +20,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Optional property protocol
-/** Protocol for defining optional properties in a JSON Model class */
+/** 
+ * Protocol for defining optional properties in a JSON Model class. Use like below to define 
+ * model properties that are not required to have values in the JSON input:
+ * 
+ * @property (strong, nonatomic) NSString&lt;Optional&gt;* propertyName;
+ *
+ */
 @protocol Optional
 @end
 
