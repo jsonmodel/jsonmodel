@@ -31,8 +31,13 @@
     
     feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising" completion:^(JSONModel *model) {
         
-        [table reloadData];
         [HUD hideUIBlockingIndicator];
+
+        if (model) {
+            [table reloadData];
+        } else {
+            [HUD showAlertWithTitle:@"Error" text:@"Can't fetch the JSON feed"];
+        }
         
     }];
 
