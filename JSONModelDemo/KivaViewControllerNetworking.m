@@ -8,11 +8,10 @@
 
 #import "KivaViewControllerNetworking.h"
 
-#import "JSONAPI.h"
-
-#import "KivaFeed.h"
-#import "HUD.h"
 #import "JSONModel+networking.h"
+#import "KivaFeed.h"
+
+#import "HUD.h"
 
 @interface KivaViewControllerNetworking () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -24,26 +23,19 @@
 
 @implementation KivaViewControllerNetworking
 
--(void)viewDidLoad
-{
-    [JSONAPI setAPIBaseURLWithString:@"http://api.kivaws.org/v1"];
-}
-
 -(void)viewDidAppear:(BOOL)animated
 {
     self.title = @"Kiva.org latest loans";
 
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-//    feed = [[KivaFeed alloc] initWithDictionary:
-//            [JSONAPI getWithPath:@"/loans/search.json" andParams: @{@"status":@"fundraising"}]
-//            ];
-    
-    feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"];
+    feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising" completion:^(JSONModel *model) {
+        
+        [table reloadData];
+        [HUD hideUIBlockingIndicator];
+        
+    }];
 
-    [table reloadData]; 
-    
-    [HUD hideUIBlockingIndicator];
 }
 
 #pragma mark - table methods
