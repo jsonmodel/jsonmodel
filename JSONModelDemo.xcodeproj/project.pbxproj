@@ -84,6 +84,9 @@
 		9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB0166BBB05008B4326 /* MyDataModel.m */; };
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
+		9CCF04551671C5D4005B05A2 /* NetworkingDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF04531671C5D4005B05A2 /* NetworkingDemoViewController.m */; };
+		9CCF04561671C5D4005B05A2 /* NetworkingDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CCF04541671C5D4005B05A2 /* NetworkingDemoViewController.xib */; };
+		9CCF04581671C74A005B05A2 /* icons_winter_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCF04571671C74A005B05A2 /* icons_winter_03.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +204,10 @@
 		9CBBBFB2166BBB21008B4326 /* StorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageViewController.h; sourceTree = "<group>"; };
 		9CBBBFB3166BBB21008B4326 /* StorageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageViewController.m; sourceTree = "<group>"; };
 		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
+		9CCF04521671C5D4005B05A2 /* NetworkingDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingDemoViewController.h; sourceTree = "<group>"; };
+		9CCF04531671C5D4005B05A2 /* NetworkingDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkingDemoViewController.m; sourceTree = "<group>"; };
+		9CCF04541671C5D4005B05A2 /* NetworkingDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkingDemoViewController.xib; sourceTree = "<group>"; };
+		9CCF04571671C74A005B05A2 /* icons_winter_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icons_winter_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +299,7 @@
 		9CBBBEE2166B6CF0008B4326 /* JSONModelDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9CCF04501671C5AA005B05A2 /* NetworkDemo */,
 				9C0D023C166E6B7A001EA645 /* KivaJSONDemo+networking */,
 				9CBBBFAD166BB87B008B4326 /* DemoApp */,
 				9CBBBF87166BAC31008B4326 /* libs */,
@@ -579,6 +587,17 @@
 			name = StorageModel;
 			sourceTree = "<group>";
 		};
+		9CCF04501671C5AA005B05A2 /* NetworkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CCF04571671C74A005B05A2 /* icons_winter_03.png */,
+				9CCF04521671C5D4005B05A2 /* NetworkingDemoViewController.h */,
+				9CCF04531671C5D4005B05A2 /* NetworkingDemoViewController.m */,
+				9CCF04541671C5D4005B05A2 /* NetworkingDemoViewController.xib */,
+			);
+			name = NetworkDemo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -669,6 +688,8 @@
 				9CBBBFA2166BB29B008B4326 /* YouTubeViewController.xib in Resources */,
 				9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */,
 				9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */,
+				9CCF04561671C5D4005B05A2 /* NetworkingDemoViewController.xib in Resources */,
+				9CCF04581671C74A005B05A2 /* icons_winter_03.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +754,7 @@
 				9C0D0255166EBF0B001EA645 /* JSONValueTransformer.m in Sources */,
 				9C0D0259166EBF7E001EA645 /* JSONModel+networking.m in Sources */,
 				9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */,
+				9CCF04551671C5D4005B05A2 /* NetworkingDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

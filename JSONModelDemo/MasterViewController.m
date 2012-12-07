@@ -13,6 +13,7 @@
 #import "YouTubeViewController.h"
 #import "StorageViewController.h"
 #import "KivaViewControllerNetworking.h"
+#import "NetworkingDemoViewController.h"
 
 #import "JSONModel+networking.h"
 #import "VideoModel.h"
@@ -39,7 +40,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Demos";
-        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage", @"Kiva.org + own networking"]];
+        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage", @"Kiva.org + own networking", @"Networking Demo"]];
     }
     return self;
 }
@@ -99,6 +100,12 @@
             [self.navigationController pushViewController:sc animated:YES];
         }break;
 
+        case 5:{
+            NetworkingDemoViewController* nd  = [[NetworkingDemoViewController alloc] initWithNibName:@"NetworkingDemoViewController" bundle:nil];
+            [self.navigationController pushViewController:nd animated:YES];
+        }break;
+            
+            
         default:
             break;
     }

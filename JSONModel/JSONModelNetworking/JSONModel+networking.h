@@ -17,6 +17,8 @@
 #import "JSONModel.h"
 #import "JSONHTTPClient.h"
 
+typedef void(^JSONModelBlock)(JSONModel* model);
+
 /**
  * The JSONModel(networking) class category adds networking to JSONModel.
  * It adds initFromURLWithString: initializer, which makes a GET http request 
@@ -25,6 +27,8 @@
  */
 @interface JSONModel(networking)
 
+@property (assign, nonatomic) BOOL isLoading;
+
 /**
  * Create a new model instance and initialize it with the JSON fetched from the given URL
  * @param urlString the absolute URL address of the JSON feed as a string
@@ -32,5 +36,7 @@
  * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
  */
 -(id)initFromURLWithString:(NSString*)urlString;
+
+-(id)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
 
 @end
