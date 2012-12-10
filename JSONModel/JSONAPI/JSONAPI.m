@@ -81,4 +81,27 @@ static long jsonRpcId = 0;
     return json;
 }
 
++(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock
+{
+    if (!args) args = @[];
+    
+    NSDictionary* jsonRequest = @{
+    @"id": [NSNumber numberWithLong: ++jsonRpcId],
+    @"params": args,
+    @"method": method
+    };
+    
+    NSData* jsonRequestData = [NSJSONSerialization dataWithJSONObject:jsonRequest
+                                                              options:kNilOptions
+                                                                error:nil];
+    NSString* jsonRequestString = [[NSString alloc] initWithData:jsonRequestData encoding: NSUTF8StringEncoding];
+    
+    [JSONHTTPClient postJSONFromURLWithString: sharedInstance.baseURLString
+                                   bodyString: jsonRequestString
+                                   completion:^(NSDictionary *json, NSException *e) {
+                                       //
+                                       completeBlock(json, e);
+                                   }];
+}
+
 @end

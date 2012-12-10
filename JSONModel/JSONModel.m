@@ -157,6 +157,13 @@ static JSONValueTransformer* valueTransformer = nil;
                     continue;
                 }
                 
+                // 0.5) handle nils
+                if (isNull(jsonValue)) {
+                    [self setValue:nil forKey:key];
+                    continue;
+                }
+
+                
                 // 1) check if property is itself a JSONModel
                 if ([[propertyClass class] isSubclassOfClass:[JSONModel class]]) {
                     

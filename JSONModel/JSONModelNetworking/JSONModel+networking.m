@@ -48,25 +48,23 @@ BOOL _isLoading;
         //initialization
         self.isLoading = YES;
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData* jsonData = [NSData dataWithContentsOfURL:
-                                [NSURL URLWithString: urlString]
-                                ];
-            
-            NSDictionary* jsonObject = nil;
-            if (jsonData) {
-                jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                blockSelf = [self initWithDictionary:jsonObject];
-                
-                if (completeBlock) {
-                    completeBlock(blockSelf);
-                }
-                
-                self.isLoading = NO;
-            });
-        });
+        [JSONHTTPClient getJSONFromURLWithString:urlString
+                                      completion:^(NSDictionary *json, NSException *e) {
+                                          
+                                          if (e!=nil) {
+                                              completeBlock(nil, e);
+                                              return;
+                                          }
+                                          
+                                          blockSelf = [self initWithDictionary:json];
+                                          
+                                          if (completeBlock) {
+                                              completeBlock(blockSelf, nil);
+                                          }
+                                          
+                                          self.isLoading = NO;
+                                          
+                                      }];
     }
     return self;
 }

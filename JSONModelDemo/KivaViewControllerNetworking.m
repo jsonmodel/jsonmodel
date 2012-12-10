@@ -29,7 +29,7 @@
 
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-    feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising" completion:^(JSONModel *model) {
+    feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising" completion:^(JSONModel *model, NSException* e) {
         
         [HUD hideUIBlockingIndicator];
 

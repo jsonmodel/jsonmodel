@@ -17,8 +17,6 @@
 #import "JSONModel.h"
 #import "JSONHTTPClient.h"
 
-typedef void(^JSONModelBlock)(JSONModel* model);
-
 /**
  * The JSONModel(networking) class category adds networking to JSONModel.
  * It adds initFromURLWithString: initializer, which makes a GET http request 

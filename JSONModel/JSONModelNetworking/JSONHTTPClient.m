@@ -128,8 +128,9 @@ static NSMutableDictionary* flags = nil;
 	[request setHTTPMethod:method];
     
     if (bodyString) {
-        [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
-        [request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
+        [request addValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        //[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+        //[request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
     }
     
     for (NSString* key in [requestHeaders allKeys]) {
@@ -221,6 +222,77 @@ static NSMutableDictionary* flags = nil;
     }
     
     [flags removeObjectForKey:key];
+}
+
+#pragma mark - Async calls
++(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSDictionary* jsonObject = nil;
+        NSException* jsonException = nil;
+        NSData* responseData = nil;
+        
+        @try {
+            if (bodyString) {
+                responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
+                                                     method: method
+                                                requestBody: bodyString];
+            } else {
+                responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
+                                                     method: method
+                                                     params: params];
+            }
+
+            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
+        }
+        @catch (NSException *exception) {
+            jsonException = exception;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completeBlock) {
+                completeBlock(jsonObject, jsonException);
+            }
+        });
+    });
+}
+
++(void)getJSONFromURLWithString:(NSString*)urlString completion:(JSONObjectBlock)completeBlock
+{
+    [self JSONFromURLWithString:urlString method:kHTTPMethodGET
+                         params:nil
+                   orBodyString:nil completion:^(NSDictionary *json, NSException *e) {
+                       if (completeBlock) completeBlock(json, e);
+                   }];
+}
+
++(void)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock
+{
+    [self JSONFromURLWithString:urlString method:kHTTPMethodGET
+                         params:params
+                   orBodyString:nil completion:^(NSDictionary *json, NSException *e) {
+                       if (completeBlock) completeBlock(json, e);
+                   }];
+}
+
++(void)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock
+{
+    [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
+                         params:params
+                   orBodyString:nil completion:^(NSDictionary *json, NSException *e) {
+                       if (completeBlock) completeBlock(json, e);
+                   }];
+
+}
+
++(void)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
+{
+    [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
+                         params:nil
+                   orBodyString:bodyString completion:^(NSDictionary *json, NSException *e) {
+                       if (completeBlock) completeBlock(json, e);
+                   }];
 }
 
 @end

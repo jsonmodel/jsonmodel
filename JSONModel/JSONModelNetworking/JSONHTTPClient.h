@@ -19,6 +19,9 @@
 #define kHTTPMethodGET @"GET"
 #define kHTTPMethodPOST @"POST"
 
+typedef void(^JSONModelBlock)(JSONModel* model, NSException* e);
+typedef void(^JSONObjectBlock)(NSDictionary* json, NSException* e);
+
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
  * It fetches only JSON data and also deserializes it using NSJSONSerialization.
@@ -47,7 +50,7 @@
  */
 +(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
 
-/** @name Making HTTP requests */
+/** @name Making synchronious HTTP requests */
 /**
  * Makes GET request to the given URL address and fetches a JSON response.
  * @param urlString the URL as a string
@@ -78,6 +81,12 @@
  * @return JSON compliant object or nil
  */
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString;
+
+/** @name Making asynchronious HTTP requests */
++(void)getJSONFromURLWithString:(NSString*)urlString completion:(JSONObjectBlock)completeBlock;
++(void)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
++(void)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
++(void)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock;
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString;

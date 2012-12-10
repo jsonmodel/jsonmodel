@@ -61,7 +61,7 @@
 -(IBAction)actionGetAsyncViaJSONHTTPClient:(id)sender
 {
     KivaFeed* model = [[KivaFeed alloc] initFromURLWithString:kKivaURL
-                                                   completion:^(JSONModel *model) {
+                                                   completion:^(JSONModel *model, NSException* e) {
                                                       
                                                        KivaFeed* kivaModel = (KivaFeed*)model;
                                                        
@@ -72,6 +72,7 @@
                                                                          otherButtonTitles: nil] show];
                                                        
                                                    }];
+    
 }
 
 @end

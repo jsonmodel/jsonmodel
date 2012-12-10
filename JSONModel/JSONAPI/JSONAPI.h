@@ -59,5 +59,6 @@
  * @return the JSON response as desrialized object
  */
 +(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args;
++(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock;
 
 @end
