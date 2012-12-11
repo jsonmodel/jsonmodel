@@ -32,20 +32,28 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark - Type not allowed exception
-/** 
+#pragma mark - JSONModel Exceptions
+
+/**
+ * An umrella exception class for all JSONModel exceptions
+ * for the cases when you don't need to distinguish between the concrete
+ * exception thrown
+ */
+@interface JSONModelException : NSException
+@end
+
+/**
  * Exception, thrown when a property's type is not handled
  * by the built in or custom JSON value transformers 
  */
-@interface JSONModelTypeNotAllowedException: NSException
+@interface JSONModelTypeNotAllowedException: JSONModelException
 @end
 
-#pragma mark - Type not allowed exception
 /**
  * Exception, thrown when the input JSON object does not have
  * valid structure, that can be imported into the model
  */
-@interface JSONModelInvalidDataException: NSException
+@interface JSONModelInvalidDataException: JSONModelException
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////

@@ -17,14 +17,10 @@
 #import <objc/runtime.h>
 #import "JSONModel.h"
 
-#pragma mark - type definitions
-#pragma mark JSONModelTypeNotAllowedException
-@implementation JSONModelTypeNotAllowedException
-@end
-
-#pragma mark JSONModelInvalidDataException
-@implementation JSONModelInvalidDataException
-@end
+#pragma mark - exceptions
+@implementation JSONModelException @end
+@implementation JSONModelTypeNotAllowedException @end
+@implementation JSONModelInvalidDataException @end
 
 #pragma mark JSONModelClassProperty
 @implementation JSONModelClassProperty
