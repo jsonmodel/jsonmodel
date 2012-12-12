@@ -33,25 +33,27 @@
                           [NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"]
                           ];
         //3
-        NSDictionary* json = nil;
-        if (ytData) {
-            json = [NSJSONSerialization
+        NSDictionary* json = [NSJSONSerialization
                     JSONObjectWithData:ytData
                     options:kNilOptions
                     error:nil];
-        }
-        
+
         //4
         dispatch_async(dispatch_get_main_queue(), ^{
             //code executed on the main queue
             //5
             
             items = [VideoModel arrayOfObjectsFromDictionaries:
-                     json[@"feed"][@"entry"]
+                     json[@"feed"][@"entry1"]
                      ];
             
-            [table reloadData];
             [HUD hideUIBlockingIndicator];
+
+            if (items) {
+                [table reloadData];
+            } else {
+                [HUD showAlertWithTitle:@"Error" text:@"Sorry, invalid JSON data"];
+            }
         });
         
     });
