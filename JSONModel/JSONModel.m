@@ -74,30 +74,43 @@ static JSONValueTransformer* valueTransformer = nil;
     return self;
 }
 
--(id)initWithString:(NSString*)s
+-(id)initWithString:(NSString*)s error:(JSONModelError**)err
 {
-    return [self initWithString:s usingEncoding:NSUTF8StringEncoding];
+    JSONModelError* initError;
+    id objModel = [self initWithString:s usingEncoding:NSUTF8StringEncoding error:&initError];
+    if (err) {
+        *err = initError;
+    }
+    return objModel;
 }
 
--(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding
+-(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err
 {
-    //let exceptions bubble up
+    JSONModelError* initError = nil;
     id obj = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:encoding]
                                              options:kNilOptions
-                                               error:nil];
-    return [self initWithDictionary:obj];
-}
-
--(id)initWithDictionary:(NSDictionary*)d
-{
-    NSError* initError;
-    return [self initWithDictionary:d error:&initError];
+                                               error:&initError];
+    if (initError) {
+        if (err) {
+            *err = initError;
+        }
+        return nil;
+    }
+    
+    id objModel = [self initWithDictionary:obj error:&initError];
+    if (err) {
+        *err = initError;
+    }
+    return objModel;
 }
 
 -(id)initWithDictionary:(NSDictionary*)d error:(NSError**)err
 {
     //invalid input, just create empty instance
-    if (!d) return nil;
+    if (!d || ![d isKindOfClass:[NSDictionary class]]) {
+        *err = [JSONModelError errorInvalidData];
+        return nil;
+    }
 
     //check for valid parameters
     self = [super init];
@@ -119,7 +132,9 @@ static JSONValueTransformer* valueTransformer = nil;
 
             //not all required properties are in - invalid input
             JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", _className, requiredProperties);
-            *err = [JSONModelError errorInvalidData];
+            if (err) {
+                *err = [JSONModelError errorInvalidData];
+            }
             return nil;
         }
         
@@ -139,7 +154,9 @@ static JSONValueTransformer* valueTransformer = nil;
             if (![allowedTypes containsObject:jsonClassName]) {
                 //type not allowed
                 JMLog(@"Type %@ is not allowed in JSON.", jsonClassName);
-                *err = [JSONModelError errorInvalidData];
+                if (err) {
+                    *err = [JSONModelError errorInvalidData];
+                }
                 return nil;
             }
             
@@ -172,10 +189,13 @@ static JSONValueTransformer* valueTransformer = nil;
                 if ([[propertyClass class] isSubclassOfClass:[JSONModel class]]) {
                     
                     //initialize the property's model, store it
-                    id value = [[[propertyClass class] alloc] initWithDictionary: jsonValue];
+                    NSError* initError;
+                    id value = [[[propertyClass class] alloc] initWithDictionary: jsonValue error:&initError];
 
                     if (!value) {
-                        *err = [JSONModelError errorInvalidData];
+                        if (err) {
+                            *err = [JSONModelError errorInvalidData];
+                        }
                         return nil;
                     }
                     [self setValue:value forKey:key];
@@ -192,7 +212,9 @@ static JSONValueTransformer* valueTransformer = nil;
                         //NSLog(@"proto: %@", p.protocol);
                         jsonValue = [self _transform:jsonValue forProperty:property];
                         if (!jsonValue) {
-                            *err = [JSONModelError errorInvalidData];
+                            if (err) {
+                                *err = [JSONModelError errorInvalidData];
+                            }
                             return nil;
                         }
                     }
@@ -539,10 +561,11 @@ static JSONValueTransformer* valueTransformer = nil;
     
     //parse dictionaries to objects
     NSMutableArray* list = [NSMutableArray arrayWithCapacity: [a count]];
+    JSONModelError* err = nil;
     
     for (NSDictionary* d in a) {
         
-        id obj = [[self alloc] initWithDictionary: d];
+        id obj = [[self alloc] initWithDictionary: d error:&err];
         if (!obj) {
             return nil;
         }

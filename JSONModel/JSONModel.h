@@ -69,16 +69,6 @@
 @protocol AbstractJSONModelProtocol <NSObject>
 
 @required
-  /** 
-   * All JSONModel classes should implement initWithDictionary:
-   *
-   * For most classes the default initWithDictionary: inherited from JSONModel itself
-   * should suffice, but developers have the option ot also overwrite it if needed.
-   *
-   * @param d a dictionary holding JSON objects, to be imported in the model.
-   */
-  -(id)initWithDictionary:(NSDictionary*)d;
-
   /**
    * All JSONModel classes should implement initWithDictionary:
    *
@@ -119,22 +109,22 @@
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
    * @param s JSON text data
+   * @param err an initialization error or nil
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
-   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
-   * @see initWithString:usingEncoding: for use of custom text encodings
+   * @see initWithString:usingEncoding:error: for use of custom text encodings
    */
-  -(id)initWithString:(NSString*)s;
+  -(id)initWithString:(NSString*)s error:(JSONModelError**)err;
 
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter using the given encoding.
    * @param s JSON text data
    * @param encoding the text encoding to use when parsing the string (see NSStringEncoding)
+   * @param err an initialization error or nil
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
-   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    */
-  -(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding;
+  -(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
 
-  -(id)initWithDictionary:(NSDictionary*)d;
+  -(id)initWithDictionary:(NSDictionary*)d error:(NSError **)err;
 
 /** @name Exporting model contents */
 
