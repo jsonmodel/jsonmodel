@@ -33,10 +33,15 @@ BOOL _isLoading;
     _isLoading = isLoading;
 }
 
--(id)initFromURLWithString:(NSString*)urlString
+-(id)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err
 {
     id jsonObject = [JSONHTTPClient getJSONFromURLWithString:urlString];
-    return [self initWithDictionary:jsonObject];
+    JSONModelError* initError = nil;
+    id objModel = [self initWithDictionary:jsonObject error:&initError];
+    if (err) {
+        *err = initError;
+    }
+    return objModel;
 }
 
 -(id)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock
