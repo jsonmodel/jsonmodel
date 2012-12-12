@@ -35,6 +35,12 @@
  */
 -(id)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err;
 
+/**
+ * Create a new model instance and initialize it with the JSON fetched from the given URL
+ * @param urlString the absolute URL address of the JSON feed as a string
+ * @param completeBlock JSONModelBlock executed upon completion
+ * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+ */
 -(id)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
 
 @end

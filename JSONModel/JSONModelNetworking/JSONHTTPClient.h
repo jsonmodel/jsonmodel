@@ -83,9 +83,39 @@ typedef void(^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString;
 
 /** @name Making asynchronious HTTP requests */
+/**
+ * Makes GET request to the given URL address and fetches a JSON response.
+ * @param urlString the URL as a string
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ * @return JSON compliant object or nil
+ */
 +(void)getJSONFromURLWithString:(NSString*)urlString completion:(JSONObjectBlock)completeBlock;
+
+/**
+ * Makes GET request to the given URL address and fetches a JSON response. Sends the params as a query string variables.
+ * @param urlString the URL as a string
+ * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ * @return JSON compliant object or nil
+ */
 +(void)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
+
+/**
+ * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
+ * @param urlString the URL as a string
+ * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ * @return JSON compliant object or nil
+ */
 +(void)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
+
+/**
+ * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
+ * @param urlString the URL as a string
+ * @param bodyString the body of the POST request as a string
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ * @return JSON compliant object or nil
+ */
 +(void)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock;
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
