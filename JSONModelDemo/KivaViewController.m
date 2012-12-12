@@ -33,13 +33,10 @@
                             [NSURL URLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"]
                             ];
         //3
-        NSDictionary* json = nil;
-        if (kivaData) {
-            json = [NSJSONSerialization
+         NSDictionary* json = [NSJSONSerialization
                     JSONObjectWithData:kivaData
                     options:kNilOptions
                     error:nil];
-        }
         
         //4
         dispatch_async(dispatch_get_main_queue(), ^{

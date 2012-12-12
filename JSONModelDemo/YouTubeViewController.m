@@ -44,7 +44,7 @@
             //5
             
             items = [VideoModel arrayOfObjectsFromDictionaries:
-                     json[@"feed"][@"entry1"]
+                     json[@"feed"][@"entry"]
                      ];
             
             [HUD hideUIBlockingIndicator];
