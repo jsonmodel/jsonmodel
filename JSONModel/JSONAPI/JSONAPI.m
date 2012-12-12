@@ -100,7 +100,8 @@ static long jsonRpcId = 0;
                                    bodyString: jsonRequestString
                                    completion:^(NSDictionary *json, NSException *e) {
                                        //
-                                       completeBlock(json, e);
+                                       NSDictionary* result = json[@"result"];
+                                       completeBlock(result, e);
                                    }];
 }
 
