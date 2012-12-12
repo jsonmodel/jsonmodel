@@ -306,7 +306,7 @@ static JSONValueTransformer* valueTransformer = nil;
                                  [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]
                                  ];
             
-            //NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
+            NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
             
             NSString* propertyType = nil;
             
@@ -326,32 +326,18 @@ static JSONValueTransformer* valueTransformer = nil;
                 //NSLog(@"type: %@", propertyClassName);
                 p.type = propertyType;
                 
-                //check if class name is followed by a protocol name
-                NSString* protocolName = nil;
-                [scanner scanString:@"<" intoString: &protocolName];
-                
-                if ([protocolName isEqualToString:@"<"]) {
+                //read through the property protocols
+                while ([scanner scanString:@"<" intoString:NULL]) {
                     
-                    //fetch the protocol(s) name(s)
+                    NSString* protocolName = nil;
+                    
                     [scanner scanUpToString:@">" intoString: &protocolName];
-                    
-                    if (protocolName) {
-                        NSMutableArray* protocols = [NSMutableArray arrayWithArray:
-                                                     [protocolName componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]]
-                                                     ];
-                        
-                        //the property is optional
-                        if ([protocols indexOfObject:@"Optional"]!=NSNotFound) {
-                            p.isOptional = YES;
-                            [protocols removeObject:@"Optional"];
-                        }
-                        
-                        //TODO: this code effectively handles only 1 protocol declaration (after Optional)
-                        // should it handle more? if yes - how
-                        if (protocols.count>0) {
-                            p.protocol = protocols[0];
-                        }
+                    if ([protocolName isEqualToString:@"Optional"]) {
+                        p.isOptional = YES;
+                    } else {
+                        p.protocol = protocolName;
                     }
+                    [scanner scanString:@">" intoString:NULL];
                 }
 
             } else {
