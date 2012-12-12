@@ -556,7 +556,7 @@ static JSONValueTransformer* valueTransformer = nil;
 {
     //bail early
     if (isNull(a)) {
-        return [NSMutableArray array];
+        return nil;
     }
     
     //parse dictionaries to objects
@@ -581,7 +581,7 @@ static JSONValueTransformer* valueTransformer = nil;
 {
     //bail early
     if (isNull(a)) {
-        return [NSMutableArray array];
+        return nil;
     }
     
     //convert to dictionaries
