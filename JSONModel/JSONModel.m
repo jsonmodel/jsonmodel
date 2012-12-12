@@ -305,7 +305,7 @@ static JSONValueTransformer* valueTransformer = nil;
                                  [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]
                                  ];
             
-            NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
+            //NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
             
             NSString* propertyType = nil;
             
