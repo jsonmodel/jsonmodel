@@ -26,12 +26,6 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"1st %@", [NSDate date]);
-    
-    
-    NSLog(@"2nd %@", [NSDate date]);
-//    NSLog(@"model: %@", [model toJSONString]);
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
