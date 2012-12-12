@@ -568,7 +568,7 @@ static JSONValueTransformer* valueTransformer = nil;
 //custom description method for debugging purposes
 -(NSString*)description
 {
-    NSMutableString* text = [NSMutableString stringWithFormat:@"[%@] ", NSStringFromClass([self class])];
+    NSMutableString* text = [NSMutableString stringWithFormat:@"\n[%@] \n", NSStringFromClass([self class])];
     NSArray* properties = [self _properties];
 
     for (int i=0;i<properties.count;i++) {
@@ -577,15 +577,12 @@ static JSONValueTransformer* valueTransformer = nil;
         id value = [self valueForKey:key];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
-        if ([valueDescription length]>10) valueDescription = [NSString stringWithFormat:@"%@...", [valueDescription substringToIndex:9]];
-        
-        [text appendFormat:@"%@: %@", key, valueDescription];
-        
-        if (i<properties.count-1) {
-            [text appendString:@", "];
-        }
+        if ([valueDescription length]>60) valueDescription = [NSString stringWithFormat:@"%@...", [valueDescription substringToIndex:59]];
+        valueDescription = [valueDescription stringByReplacingOccurrencesOfString:@"\n" withString:@"\n   "];
+        [text appendFormat:@"   [%@]: %@\n", key, valueDescription];
     }
     
+    [text appendFormat:@"[/%@]", NSStringFromClass([self class])];
     return text;
 }
 
