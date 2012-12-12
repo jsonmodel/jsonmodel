@@ -49,12 +49,11 @@ static JSONValueTransformer* valueTransformer = nil;
         
         allowedTypes = @[
           /* strings */  @"NSString",@"NSMutableString",@"__NSCFString",@"__NSCFConstantString",
-          /* numbers */  @"NSNumber",@"NSDecimalNumber",@"__NSCFNumber",
+          /* numbers */  @"NSNumber",@"NSDecimalNumber",@"__NSCFNumber", @"__NSCFBoolean",
           /* arrays */   @"NSArray", @"NSMutableArray", @"__NSArrayM", @"__NSArrayI",@"__NSCFArray",
           /* dictionaries */  @"NSDictionary",@"NSMutableDictionary",@"__NSDictionaryM",@"__NSDictionaryI",@"__NSCFDictionary",
           /* null */     @"NSNull",
-          /* boolean */  @"BOOL", @"__NSCFBoolean",
-          /* primitives */    @"float", @"int", @"long", @"double", @"short"
+          /* primitives */    @"BOOL", @"float", @"int", @"long", @"double", @"short"
         ];
         
         classProperties = [NSMutableDictionary dictionary];
