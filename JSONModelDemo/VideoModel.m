@@ -10,13 +10,13 @@
 
 @implementation VideoModel
 
--(id)initWithDictionary:(NSDictionary*)d
+-(id)initWithDictionary:(NSDictionary*)d error:(NSError *__autoreleasing *)err
 {
     self = [super init];
     
     if (self) {
-        self.title = [[VideoTitle alloc] initWithDictionary: d[@"title"]];
-        self.link = [[VideoLink alloc] initWithDictionary: d[@"link"][0]];
+        self.title = [[VideoTitle alloc] initWithDictionary: d[@"title"] error:err];
+        self.link = [[VideoLink alloc] initWithDictionary: d[@"link"][0] error:err];
     }
     
     return self;

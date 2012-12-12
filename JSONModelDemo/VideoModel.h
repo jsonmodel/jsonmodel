@@ -13,7 +13,7 @@
 
 @interface VideoModel : JSONModel
 
--(id)initWithDictionary:(NSDictionary*)d;
+-(id)initWithDictionary:(NSDictionary*)d error:(NSError *__autoreleasing *)err;
 
 @property (strong, nonatomic) VideoTitle* title;
 @property (strong, nonatomic) VideoLink* link;

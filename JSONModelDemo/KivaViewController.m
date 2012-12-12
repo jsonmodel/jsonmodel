@@ -45,7 +45,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //code executed on the main queue
             //5
-            feed = [[KivaFeed alloc] initWithDictionary: json];
+            feed = [[KivaFeed alloc] initWithDictionary: json error:nil];
+            
             [HUD hideUIBlockingIndicator];
             
             if (feed) {

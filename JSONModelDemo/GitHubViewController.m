@@ -45,7 +45,7 @@
             //code executed on the main queue
             //5
             
-            user = [[GitHubUserModel alloc] initWithDictionary:json];
+            user = [[GitHubUserModel alloc] initWithDictionary:json error:NULL];
             items = @[user.login, user.html_url, user.company, user.name, user.blog];
             
             [self.tableView reloadData];
