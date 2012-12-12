@@ -75,11 +75,20 @@
    * For most classes the default initWithDictionary: inherited from JSONModel itself
    * should suffice, but developers have the option ot also overwrite it if needed.
    *
-   * @param NSDictionary* d a dictionary holding JSON objects, to be imported in the model.
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
-   * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
+   * @param d a dictionary holding JSON objects, to be imported in the model.
    */
   -(id)initWithDictionary:(NSDictionary*)d;
+
+  /**
+   * All JSONModel classes should implement initWithDictionary:
+   *
+   * For most classes the default initWithDictionary: inherited from JSONModel itself
+   * should suffice, but developers have the option ot also overwrite it if needed.
+   *
+   * @param d a dictionary holding JSON objects, to be imported in the model.
+   * @param err an error or NULL
+   */
+  -(id)initWithDictionary:(NSDictionary*)d error:(NSError**)err;
 
   /**
    * All JSONModel classes should be able to export themselves as a dictioanry of

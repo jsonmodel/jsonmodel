@@ -51,15 +51,11 @@ BOOL _isLoading;
         [JSONHTTPClient getJSONFromURLWithString:urlString
                                       completion:^(NSDictionary *json, JSONModelError* e) {
                                           
-                                          if (e!=nil) {
-                                              completeBlock(nil, e);
-                                              return;
-                                          }
-                                          
-                                          blockSelf = [self initWithDictionary:json];
+                                          JSONModelError* initError = nil;
+                                          blockSelf = [self initWithDictionary:json error:&initError];
                                           
                                           if (completeBlock) {
-                                              completeBlock(blockSelf, nil);
+                                              completeBlock(blockSelf, e?e:initError );
                                           }
                                           
                                           self.isLoading = NO;

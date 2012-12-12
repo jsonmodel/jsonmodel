@@ -90,6 +90,12 @@ static JSONValueTransformer* valueTransformer = nil;
 
 -(id)initWithDictionary:(NSDictionary*)d
 {
+    NSError* initError;
+    return [self initWithDictionary:d error:&initError];
+}
+
+-(id)initWithDictionary:(NSDictionary*)d error:(NSError**)err
+{
     //invalid input, just create empty instance
     if (!d) return nil;
 
@@ -113,6 +119,7 @@ static JSONValueTransformer* valueTransformer = nil;
 
             //not all required properties are in - invalid input
             JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", _className, requiredProperties);
+            *err = [JSONModelError errorInvalidData];
             return nil;
         }
         
@@ -132,6 +139,7 @@ static JSONValueTransformer* valueTransformer = nil;
             if (![allowedTypes containsObject:jsonClassName]) {
                 //type not allowed
                 JMLog(@"Type %@ is not allowed in JSON.", jsonClassName);
+                *err = [JSONModelError errorInvalidData];
                 return nil;
             }
             
@@ -167,6 +175,7 @@ static JSONValueTransformer* valueTransformer = nil;
                     id value = [[[propertyClass class] alloc] initWithDictionary: jsonValue];
 
                     if (!value) {
+                        *err = [JSONModelError errorInvalidData];
                         return nil;
                     }
                     [self setValue:value forKey:key];
@@ -183,6 +192,7 @@ static JSONValueTransformer* valueTransformer = nil;
                         //NSLog(@"proto: %@", p.protocol);
                         jsonValue = [self _transform:jsonValue forProperty:property];
                         if (!jsonValue) {
+                            *err = [JSONModelError errorInvalidData];
                             return nil;
                         }
                     }
@@ -349,7 +359,7 @@ static JSONValueTransformer* valueTransformer = nil;
                 if (!p.type) {
                     
                     //type not allowed - programmer mistaked -> exception
-                    @throw [NSException exceptionWithName:@"JSONModelPropertyTypeNotAllowedException"
+                    @throw [NSException exceptionWithName:@"JSONModelProperty type not allowed"
                                                    reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", _className, p.name]
                                                  userInfo:nil];
                 }

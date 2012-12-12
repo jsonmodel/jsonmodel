@@ -18,18 +18,23 @@ NSString * const JSONModelErrorDomain = @"JSONModelErrorDomain";
     if (self) {
         //set the json model error type
         self.type = t;
+        
     }
     return self;
 }
 
 +(id)errorInvalidData
 {
-    return [[JSONModelError alloc] initWithType:kJSONModelErrorInvalidData];
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                                   code:kJSONModelErrorInvalidData
+                                                userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data"}];
 }
 
 +(id)errorBadResponse
 {
-    return [[JSONModelError alloc] initWithType:kJSONModelErrorBadResponse];
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                      code:kJSONModelErrorBadResponse
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Bad network response "}];
 }
 
 @end

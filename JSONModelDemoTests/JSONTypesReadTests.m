@@ -63,7 +63,7 @@
     [t.dynamicDictionary setValue:@"ADDED" forKey:@"newKey"];
     NSAssert([t.dynamicDictionary[@"newKey"] isEqualToString:@"ADDED"], @"dynamicDictionary key \"newKey\"'s value is not \"ADDED\"");
     
-    NSAssert(t.notAvailable, @"notAvailable is not nil");
+    NSAssert(!t.notAvailable, @"notAvailable is not nil");
 }
 
 
