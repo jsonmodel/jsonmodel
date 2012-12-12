@@ -161,7 +161,8 @@ extern BOOL isNull(id value)
 -(NSDate*)NSDateFromNSString:(NSString*)string
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+    string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
     
     return [dateFormatter dateFromString: string];
 }
