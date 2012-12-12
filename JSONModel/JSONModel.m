@@ -46,6 +46,7 @@ static JSONValueTransformer* valueTransformer = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         //initialize all class static objects
+        
         allowedTypes = @[
           /* strings */  @"NSString",@"NSMutableString",@"__NSCFString",@"__NSCFConstantString",
           /* numbers */  @"NSNumber",@"NSDecimalNumber",@"__NSCFNumber",
@@ -55,6 +56,7 @@ static JSONValueTransformer* valueTransformer = nil;
           /* boolean */  @"BOOL", @"__NSCFBoolean",
           /* primitives */    @"float", @"int", @"long", @"double", @"short"
         ];
+        
         classProperties = [NSMutableDictionary dictionary];
         classRequiredPropertyNames = [NSMutableDictionary dictionary];
         valueTransformer = [[JSONValueTransformer alloc] init];
