@@ -46,8 +46,18 @@
             //code executed on the main queue
             //5
             feed = [[KivaFeed alloc] initWithDictionary: json];
-            [table reloadData];
             [HUD hideUIBlockingIndicator];
+            
+            if (feed) {
+                [table reloadData];
+            } else {
+                //show error
+                [[[UIAlertView alloc] initWithTitle:@"Error"
+                                            message:@"Invalid JSON data input"
+                                           delegate:nil
+                                  cancelButtonTitle:@"Close"
+                                  otherButtonTitles:nil] show];
+            }
         });
         
     });

@@ -16,6 +16,11 @@
 
 #import "JSONHTTPClient.h"
 
+#pragma mark - constants
+NSString * const kHTTPMethodGET = @"GET";
+NSString * const kHTTPMethodPOST = @"POST";
+
+
 #pragma mark - static variables
 
 static long requestId = 0;
@@ -230,7 +235,7 @@ static NSMutableDictionary* flags = nil;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSDictionary* jsonObject = nil;
-        NSException* jsonException = nil;
+        JSONModelError* error = nil;
         NSData* responseData = nil;
         
         @try {
@@ -244,15 +249,15 @@ static NSMutableDictionary* flags = nil;
                                                      params: params];
             }
 
-            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
+            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
         }
         @catch (NSException *exception) {
-            jsonException = exception;
+            error = [JSONModelError errorBadResponse];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completeBlock) {
-                completeBlock(jsonObject, jsonException);
+                completeBlock(jsonObject, error);
             }
         });
     });
@@ -262,7 +267,7 @@ static NSMutableDictionary* flags = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodGET
                          params:nil
-                   orBodyString:nil completion:^(NSDictionary *json, NSException *e) {
+                   orBodyString:nil completion:^(NSDictionary *json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
@@ -271,7 +276,7 @@ static NSMutableDictionary* flags = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodGET
                          params:params
-                   orBodyString:nil completion:^(NSDictionary *json, NSException *e) {
+                   orBodyString:nil completion:^(NSDictionary *json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
@@ -280,7 +285,7 @@ static NSMutableDictionary* flags = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
                          params:params
-                   orBodyString:nil completion:^(NSDictionary *json, NSException *e) {
+                   orBodyString:nil completion:^(NSDictionary *json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 
@@ -290,7 +295,7 @@ static NSMutableDictionary* flags = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
                          params:nil
-                   orBodyString:bodyString completion:^(NSDictionary *json, NSException *e) {
+                   orBodyString:bodyString completion:^(NSDictionary *json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }

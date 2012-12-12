@@ -16,11 +16,11 @@
 
 #import "JSONModel.h"
 
-#define kHTTPMethodGET @"GET"
-#define kHTTPMethodPOST @"POST"
+extern NSString * const kHTTPMethodGET;
+extern NSString * const kHTTPMethodPOST;
 
-typedef void(^JSONModelBlock)(JSONModel* model, NSException* e);
-typedef void(^JSONObjectBlock)(NSDictionary* json, NSException* e);
+typedef void(^JSONModelBlock)(JSONModel* model, JSONModelError* e);
+typedef void(^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
 
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.

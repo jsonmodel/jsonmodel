@@ -98,7 +98,7 @@ static long jsonRpcId = 0;
     
     [JSONHTTPClient postJSONFromURLWithString: sharedInstance.baseURLString
                                    bodyString: jsonRequestString
-                                   completion:^(NSDictionary *json, NSException *e) {
+                                   completion:^(NSDictionary *json, JSONModelError* e) {
                                        //
                                        NSDictionary* result = json[@"result"];
                                        completeBlock(result, e);

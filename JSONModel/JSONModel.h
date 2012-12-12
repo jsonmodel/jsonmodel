@@ -15,7 +15,15 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import <Foundation/Foundation.h>
+#import "JSONModelError.h"
 #import "JSONValueTransformer.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+#if TARGET_IPHONE_SIMULATOR
+#define JMLog( s, ... ) NSLog( @"[%@:%d] %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define JMLog( s, ... )
+#endif
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,32 +36,6 @@
  *
  */
 @protocol Optional
-@end
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark - JSONModel Exceptions
-
-/**
- * An umrella exception class for all JSONModel exceptions
- * for the cases when you don't need to distinguish between the concrete
- * exception thrown
- */
-@interface JSONModelException : NSException
-@end
-
-/**
- * Exception, thrown when a property's type is not handled
- * by the built in or custom JSON value transformers 
- */
-@interface JSONModelTypeNotAllowedException: JSONModelException
-@end
-
-/**
- * Exception, thrown when the input JSON object does not have
- * valid structure, that can be imported into the model
- */
-@interface JSONModelInvalidDataException: JSONModelException
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////

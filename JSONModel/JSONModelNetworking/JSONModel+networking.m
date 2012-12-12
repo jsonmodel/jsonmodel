@@ -49,7 +49,7 @@ BOOL _isLoading;
         self.isLoading = YES;
         
         [JSONHTTPClient getJSONFromURLWithString:urlString
-                                      completion:^(NSDictionary *json, NSException *e) {
+                                      completion:^(NSDictionary *json, JSONModelError* e) {
                                           
                                           if (e!=nil) {
                                               completeBlock(nil, e);

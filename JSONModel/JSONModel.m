@@ -17,11 +17,6 @@
 #import <objc/runtime.h>
 #import "JSONModel.h"
 
-#pragma mark - exceptions
-@implementation JSONModelException @end
-@implementation JSONModelTypeNotAllowedException @end
-@implementation JSONModelInvalidDataException @end
-
 #pragma mark JSONModelClassProperty
 @implementation JSONModelClassProperty
 @end
@@ -117,9 +112,7 @@ static JSONValueTransformer* valueTransformer = nil;
             [requiredProperties minusSet:incomingKeys];
 
             //not all required properties are in - invalid input
-            @throw [JSONModelInvalidDataException exceptionWithName:@"JSONModelInvalidDataException"
-                                                             reason:[NSString stringWithFormat:@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", _className, requiredProperties]
-                                                           userInfo:nil];
+            JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", _className, requiredProperties);
             return nil;
         }
         
@@ -138,9 +131,7 @@ static JSONValueTransformer* valueTransformer = nil;
             
             if (![allowedTypes containsObject:jsonClassName]) {
                 //type not allowed
-                @throw [JSONModelTypeNotAllowedException exceptionWithName:@"JSONModelTypeNotAllowedException"
-                                                                    reason:[NSString stringWithFormat:@"Type %@ is not allowed in JSON.", jsonClassName]
-                                                                  userInfo:nil];
+                JMLog(@"Type %@ is not allowed in JSON.", jsonClassName);
                 return nil;
             }
             
@@ -174,6 +165,10 @@ static JSONValueTransformer* valueTransformer = nil;
                     
                     //initialize the property's model, store it
                     id value = [[[propertyClass class] alloc] initWithDictionary: jsonValue];
+
+                    if (!value) {
+                        return nil;
+                    }
                     [self setValue:value forKey:key];
                     
                     //for clarity, does the same without continue
@@ -187,6 +182,9 @@ static JSONValueTransformer* valueTransformer = nil;
                         
                         //NSLog(@"proto: %@", p.protocol);
                         jsonValue = [self _transform:jsonValue forProperty:property];
+                        if (!jsonValue) {
+                            return nil;
+                        }
                     }
                     
                     // 3) check if it's NOT a standard JSON data type
@@ -230,10 +228,11 @@ static JSONValueTransformer* valueTransformer = nil;
                             
                         } else {
                             
-                            // it's not a JSON data type, and there's no transformer for it - exception
-                            @throw [JSONModelTypeNotAllowedException exceptionWithName:@"Type not allowed"
-                                                                                reason:[NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name]
-                                                                              userInfo:nil];
+                            // it's not a JSON data type, and there's no transformer for it
+                            // if property type is not supported - that's a programmer mistaked -> exception
+                            @throw [NSException exceptionWithName:@"Type not allowed"
+                                                           reason:[NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name]
+                                                         userInfo:nil];
                             return nil;
                         }
                         
@@ -349,10 +348,10 @@ static JSONValueTransformer* valueTransformer = nil;
                 p.type = valueTransformer.primitivesNames[propertyType];
                 if (!p.type) {
                     
-                    //type not allowed
-                    @throw [JSONModelTypeNotAllowedException exceptionWithName:@"JSONModelPropertyTypeNotAllowedException"
-                                                                        reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", _className, p.name]
-                                                                      userInfo:nil];
+                    //type not allowed - programmer mistaked -> exception
+                    @throw [NSException exceptionWithName:@"JSONModelPropertyTypeNotAllowedException"
+                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", _className, p.name]
+                                                 userInfo:nil];
                 }
                 
             }
@@ -485,9 +484,9 @@ static JSONValueTransformer* valueTransformer = nil;
 
                     //in this case most probably a custom property was defined in a model
                     //but no default reverse transofrmer for it
-                    @throw [JSONModelTypeNotAllowedException exceptionWithName:@"Value transformer not found"
-                                                                        reason:[NSString stringWithFormat:@"[JSONValueTransformer %@] not found", selectorName]
-                                                                      userInfo:nil];
+                    @throw [NSException exceptionWithName:@"Value transformer not found"
+                                                   reason:[NSString stringWithFormat:@"[JSONValueTransformer %@] not found", selectorName]
+                                                 userInfo:nil];
                     return nil;
                 }
                 
@@ -532,9 +531,13 @@ static JSONValueTransformer* valueTransformer = nil;
     NSMutableArray* list = [NSMutableArray arrayWithCapacity: [a count]];
     
     for (NSDictionary* d in a) {
-        [list addObject:
-         [[self alloc] initWithDictionary: d]
-         ];
+        
+        id obj = [[self alloc] initWithDictionary: d];
+        if (!obj) {
+            return nil;
+        }
+        
+        [list addObject: obj];
     }
     
     return list;
@@ -552,9 +555,13 @@ static JSONValueTransformer* valueTransformer = nil;
     NSMutableArray* list = [NSMutableArray arrayWithCapacity: [a count]];
     
     for (id<AbstractJSONModelProtocol> object in a) {
-        [list addObject:
-         [object toDictionary]
-         ];
+        
+        id obj = [object toDictionary];
+        if (!obj) {
+            return nil;
+        }
+        
+        [list addObject: obj];
     }
     return list;
 }
