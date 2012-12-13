@@ -27,8 +27,6 @@ extern NSString * const JSONModelErrorDomain;
 
 @interface JSONModelError : NSError
 
-@property (assign, nonatomic) int type;
-
 +(id)errorInvalidData;
 +(id)errorBadResponse;
 +(id)errorBadJSON;

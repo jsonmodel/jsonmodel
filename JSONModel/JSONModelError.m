@@ -20,17 +20,6 @@ NSString * const JSONModelErrorDomain = @"JSONModelErrorDomain";
 
 @implementation JSONModelError
 
--(id)initWithType:(int)t
-{
-    self = [super init];
-    if (self) {
-        //set the json model error type
-        self.type = t;
-        
-    }
-    return self;
-}
-
 +(id)errorInvalidData
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
