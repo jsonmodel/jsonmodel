@@ -1,7 +1,7 @@
 //
 //  JSONModel+networking.h
 //
-//  @version 0.7
+//  @version 0.75
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
