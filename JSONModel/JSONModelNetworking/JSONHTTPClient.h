@@ -29,9 +29,9 @@ extern NSString * const kHTTPMethodPOST;
  * @param model the newly created JSONModel instance or nil
  * @param e JSONModelError or nil
  */
-typedef void(^JSONModelBlock)(JSONModel* model, JSONModelError* e);
+typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* e);
 
-typedef void(^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
+typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
 
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
