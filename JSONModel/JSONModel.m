@@ -28,11 +28,13 @@ static NSMutableDictionary* classRequiredPropertyNames = nil;
 
 static JSONValueTransformer* valueTransformer = nil;
 
+#pragma mark - JSONModel private interface
+@interface JSONModel()
+@property (strong, nonatomic, readonly) NSString* className;
+@end
+
 #pragma mark - JSONModel implementation
 @implementation JSONModel
-{
-    NSString* _className;
-}
 
 #pragma mark - initialization methods
 
@@ -131,7 +133,7 @@ static JSONValueTransformer* valueTransformer = nil;
             [requiredProperties minusSet:incomingKeys];
 
             //not all required properties are in - invalid input
-            JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", _className, requiredProperties);
+            JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.className, requiredProperties);
             if (err) {
                 *err = [JSONModelError errorInvalidData];
             }
@@ -161,7 +163,7 @@ static JSONValueTransformer* valueTransformer = nil;
             }
             
             //check if there's matching property in the model
-            JSONModelClassProperty* property = classProperties[_className][key];
+            JSONModelClassProperty* property = classProperties[self.className][key];
             
             if (property) {
                 
@@ -286,21 +288,21 @@ static JSONValueTransformer* valueTransformer = nil;
 //returns a set of the required keys for the model
 -(NSMutableSet*)_requiredPropertyNames
 {
-    if (!classRequiredPropertyNames[_className]) {
-        classRequiredPropertyNames[_className] = [NSMutableSet set];
+    if (!classRequiredPropertyNames[self.className]) {
+        classRequiredPropertyNames[self.className] = [NSMutableSet set];
         [[self _properties] enumerateObjectsUsingBlock:^(JSONModelClassProperty* p, NSUInteger idx, BOOL *stop) {
-            if (!p.isOptional) [classRequiredPropertyNames[_className] addObject:p.name];
+            if (!p.isOptional) [classRequiredPropertyNames[self.className] addObject:p.name];
         }];
     }
-    return classRequiredPropertyNames[_className];
+    return classRequiredPropertyNames[self.className];
 }
 
 //returns a list of the model's properties
 -(NSArray*)_properties
 {
-    if (classProperties[_className]) return [classProperties[_className] allValues];
+    if (classProperties[self.className]) return [classProperties[self.className] allValues];
     [self _restrospectProperties];
-    return [classProperties[_className] allValues];
+    return [classProperties[self.className] allValues];
 }
 
 //retrospects the class, get's a list of the class properties
@@ -382,7 +384,7 @@ static JSONValueTransformer* valueTransformer = nil;
                     
                     //type not allowed - programmer mistaked -> exception
                     @throw [NSException exceptionWithName:@"JSONModelProperty type not allowed"
-                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", _className, p.name]
+                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self.className, p.name]
                                                  userInfo:nil];
                 }
                 
@@ -400,7 +402,7 @@ static JSONValueTransformer* valueTransformer = nil;
     }
     
     //finally store the property index in the static property index
-    classProperties[_className] = propertyIndex;
+    classProperties[self.className] = propertyIndex;
 }
 
 #pragma mark - built-in transformer methods
