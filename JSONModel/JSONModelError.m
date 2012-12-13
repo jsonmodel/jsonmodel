@@ -1,7 +1,7 @@
 //
 //  JSONModelError.m
 //
-//  @version 0.7
+//  @version 0.75
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -43,6 +43,13 @@ NSString * const JSONModelErrorDomain = @"JSONModelErrorDomain";
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorBadResponse
                                   userInfo:@{NSLocalizedDescriptionKey:@"Bad network response "}];
+}
+
++(id)errorBadJSON
+{
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                      code:kJSONModelErrorBadJSON
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Malformed JSON"}];    
 }
 
 @end

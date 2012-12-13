@@ -1,7 +1,7 @@
 //
 //  JSONModel.m
 //
-//  @version 0.7
+//  @version 0.75
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -92,7 +92,7 @@ static JSONValueTransformer* valueTransformer = nil;
                                                error:&initError];
     if (initError) {
         if (err) {
-            *err = initError;
+            *err = [JSONModelError errorBadJSON];
         }
         return nil;
     }
@@ -421,8 +421,13 @@ static JSONValueTransformer* valueTransformer = nil;
         //check if it's a dictionary of models
         if ([p.type isEqualToString:@"NSDictionary"]) {
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
+            JSONModelError* initErr;
+            
             for (NSString* key in [value allKeys]) {
-                id obj = [[[protocolClass class] alloc] initWithDictionary:value[key]];
+                id obj = [[[protocolClass class] alloc] initWithDictionary:value[key] error:&initErr];
+                if (initErr) {
+                    return nil;
+                }
                 [res setValue:obj forKey:key];
             }
             value = [NSDictionary dictionaryWithDictionary:res];

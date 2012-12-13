@@ -1,7 +1,7 @@
 //
 //  JSONModelError.h
 //
-//  @version 0.7
+//  @version 0.75
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -19,7 +19,8 @@
 enum kJSONModelErrorTypes
 {
     kJSONModelErrorInvalidData = 1,
-    kJSONModelErrorBadResponse = 2
+    kJSONModelErrorBadResponse = 2,
+    kJSONModelErrorBadJSON = 3
 };
 
 extern NSString * const JSONModelErrorDomain;
@@ -30,6 +31,7 @@ extern NSString * const JSONModelErrorDomain;
 
 +(id)errorInvalidData;
 +(id)errorBadResponse;
++(id)errorBadJSON;
 
 @end
 
