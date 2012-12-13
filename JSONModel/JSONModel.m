@@ -31,7 +31,6 @@ static JSONValueTransformer* valueTransformer = nil;
 #pragma mark - JSONModel private interface
 @interface JSONModel()
 @property (strong, nonatomic, readonly) NSString* className;
-@property (strong, nonatomic, readonly) NSString* indexPropertyName;
 @end
 
 #pragma mark - JSONModel implementation

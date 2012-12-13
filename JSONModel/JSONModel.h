@@ -114,6 +114,13 @@
  */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol>
 
+/**
+ * The name of the model's property, which is considered the model's unique identifier.
+ * You can define Index property by using the Index protocol: 
+ * @property (strong, nonatomic) NSString&lt;Index&gt;* id;
+ */
+@property (strong, nonatomic, readonly) NSString* indexPropertyName;
+
 /** @name Creating and initializing models */
 
   /**
