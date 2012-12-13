@@ -23,6 +23,11 @@
 		9C732E08167A2BE500FE7335 /* primitivesWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E06167A2BE500FE7335 /* primitivesWithErrors.json */; };
 		9C732E0A167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E09167A2EB600FE7335 /* nestedDataWithErrors.json */; };
 		9C732E0B167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E09167A2EB600FE7335 /* nestedDataWithErrors.json */; };
+		9C732E22167A577C00FE7335 /* IdPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E20167A577C00FE7335 /* IdPropertyTests.m */; };
+		9C732E25167A57F100FE7335 /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E24167A57F100FE7335 /* post.json */; };
+		9C732E29167A585A00FE7335 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E27167A585A00FE7335 /* PostModel.m */; };
+		9C732E2A167A586100FE7335 /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E24167A57F100FE7335 /* post.json */; };
+		9C732E2E167A58A400FE7335 /* PostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E2C167A58A400FE7335 /* PostsModel.m */; };
 		9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
@@ -120,6 +125,13 @@
 		9C732DFF167A293D00FE7335 /* SimpleDataErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDataErrorTests.m; sourceTree = "<group>"; };
 		9C732E06167A2BE500FE7335 /* primitivesWithErrors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = primitivesWithErrors.json; path = DataFiles/primitivesWithErrors.json; sourceTree = "<group>"; };
 		9C732E09167A2EB600FE7335 /* nestedDataWithErrors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nestedDataWithErrors.json; path = DataFiles/nestedDataWithErrors.json; sourceTree = "<group>"; };
+		9C732E1F167A577C00FE7335 /* IdPropertyTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdPropertyTests.h; sourceTree = "<group>"; };
+		9C732E20167A577C00FE7335 /* IdPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdPropertyTests.m; sourceTree = "<group>"; };
+		9C732E24167A57F100FE7335 /* post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post.json; path = DataFiles/post.json; sourceTree = "<group>"; };
+		9C732E26167A585A00FE7335 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostModel.h; path = TestModels/PostModel.h; sourceTree = "<group>"; };
+		9C732E27167A585A00FE7335 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostModel.m; path = TestModels/PostModel.m; sourceTree = "<group>"; };
+		9C732E2B167A58A300FE7335 /* PostsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostsModel.h; path = TestModels/PostsModel.h; sourceTree = "<group>"; };
+		9C732E2C167A58A400FE7335 /* PostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostsModel.m; path = TestModels/PostsModel.m; sourceTree = "<group>"; };
 		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
 		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +282,27 @@
 			name = ErrorHandlingTestSuite;
 			sourceTree = "<group>";
 		};
+		9C732E14167A56D100FE7335 /* IdTestSuite */ = {
+			isa = PBXGroup;
+			children = (
+				9C732E1F167A577C00FE7335 /* IdPropertyTests.h */,
+				9C732E20167A577C00FE7335 /* IdPropertyTests.m */,
+			);
+			name = IdTestSuite;
+			sourceTree = "<group>";
+		};
+		9C732E23167A57B400FE7335 /* IndexModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C732E24167A57F100FE7335 /* post.json */,
+				9C732E26167A585A00FE7335 /* PostModel.h */,
+				9C732E27167A585A00FE7335 /* PostModel.m */,
+				9C732E2B167A58A300FE7335 /* PostsModel.h */,
+				9C732E2C167A58A400FE7335 /* PostsModel.m */,
+			);
+			name = IndexModel;
+			sourceTree = "<group>";
+		};
 		9C843A97166EC2CF004946F9 /* JSONAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +376,7 @@
 			children = (
 				9CBBBF2A166B6DDE008B4326 /* Models */,
 				9C732DFD167A28CA00FE7335 /* ErrorHandlingTestSuite */,
+				9C732E14167A56D100FE7335 /* IdTestSuite */,
 				9CBBBF26166B6D49008B4326 /* ReadingDataTestSuite */,
 				9CBBBF0D166B6CF0008B4326 /* Supporting Files */,
 			);
@@ -396,6 +430,7 @@
 		9CBBBF2A166B6DDE008B4326 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C732E23167A57B400FE7335 /* IndexModel */,
 				9CBBBF55166B897B008B4326 /* CustomTransformers */,
 				9CBBBF54166B8972008B4326 /* NestedModels */,
 				9CBBBF47166B87A8008B4326 /* OptionalProperties */,
@@ -697,6 +732,7 @@
 				9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */,
 				9C732E07167A2BE500FE7335 /* primitivesWithErrors.json in Resources */,
 				9C732E0A167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */,
+				9C732E25167A57F100FE7335 /* post.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +750,7 @@
 				9CBBBF68166BA064008B4326 /* nestedData.json in Resources */,
 				9C732E08167A2BE500FE7335 /* primitivesWithErrors.json in Resources */,
 				9C732E0B167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */,
+				9C732E2A167A586100FE7335 /* post.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +829,9 @@
 				9C0D025A166EBF7E001EA645 /* JSONModel+networking.m in Sources */,
 				9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */,
 				9C732E00167A293D00FE7335 /* SimpleDataErrorTests.m in Sources */,
+				9C732E22167A577C00FE7335 /* IdPropertyTests.m in Sources */,
+				9C732E29167A585A00FE7335 /* PostModel.m in Sources */,
+				9C732E2E167A58A400FE7335 /* PostsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

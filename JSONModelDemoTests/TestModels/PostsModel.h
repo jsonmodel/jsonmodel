@@ -7,7 +7,10 @@
 //
 
 #import "JSONModel.h"
+#import "PostModel.h"
 
 @interface PostsModel : JSONModel
+
+@property (strong, nonatomic) NSArray<PostModel>* posts;
 
 @end
