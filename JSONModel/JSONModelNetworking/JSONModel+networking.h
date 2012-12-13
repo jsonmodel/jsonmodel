@@ -33,7 +33,7 @@
  * @param err an initialization error or nil
  * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
  */
--(id)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err;
+-(instancetype)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err;
 
 /** @name Asynchroniously create a model over the network */
 /**
@@ -42,6 +42,6 @@
  * @param completeBlock JSONModelBlock executed upon completion
  * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
  */
--(id)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
+-(instancetype)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
 
 @end

@@ -78,7 +78,7 @@
    * @param d a dictionary holding JSON objects, to be imported in the model.
    * @param err an error or NULL
    */
-  -(id)initWithDictionary:(NSDictionary*)d error:(NSError**)err;
+  -(instancetype)initWithDictionary:(NSDictionary*)d error:(NSError**)err;
 
   /**
    * All JSONModel classes should be able to export themselves as a dictioanry of
@@ -113,7 +113,7 @@
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see initWithString:usingEncoding:error: for use of custom text encodings
    */
-  -(id)initWithString:(NSString*)s error:(JSONModelError**)err;
+  -(instancetype)initWithString:(NSString*)s error:(JSONModelError**)err;
 
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter using the given encoding.
@@ -122,9 +122,9 @@
    * @param err an initialization error or nil
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
    */
-  -(id)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
+  -(instancetype)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
 
-  -(id)initWithDictionary:(NSDictionary*)d error:(NSError **)err;
+  -(instancetype)initWithDictionary:(NSDictionary*)d error:(NSError **)err;
 
 /** @name Exporting model contents */
 
