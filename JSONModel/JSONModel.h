@@ -27,7 +27,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark - Optional property protocol
+#pragma mark - Property Protocols
 /** 
  * Protocol for defining optional properties in a JSON Model class. Use like below to define 
  * model properties that are not required to have values in the JSON input:
@@ -36,6 +36,16 @@
  *
  */
 @protocol Optional
+@end
+
+/**
+ * Protocol for defining index properties in a JSON Model class. Use like below to define
+ * model properties that are considered the Model's identifier (id).
+ *
+ * @property (strong, nonatomic) NSString&lt;Index&gt;* propertyName;
+ *
+ */
+@protocol Index
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////

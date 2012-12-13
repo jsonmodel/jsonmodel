@@ -31,6 +31,7 @@ static JSONValueTransformer* valueTransformer = nil;
 #pragma mark - JSONModel private interface
 @interface JSONModel()
 @property (strong, nonatomic, readonly) NSString* className;
+@property (strong, nonatomic, readonly) NSString* indexPropertyName;
 @end
 
 #pragma mark - JSONModel implementation
@@ -364,11 +365,15 @@ static JSONValueTransformer* valueTransformer = nil;
                     NSString* protocolName = nil;
                     
                     [scanner scanUpToString:@">" intoString: &protocolName];
+                    
                     if ([protocolName isEqualToString:@"Optional"]) {
                         p.isOptional = YES;
+                    } else if([protocolName isEqualToString:@"Index"]) {
+                        _indexPropertyName = p.name;
                     } else {
                         p.protocol = protocolName;
                     }
+                    
                     [scanner scanString:@">" intoString:NULL];
                 }
 
@@ -604,6 +609,24 @@ static JSONValueTransformer* valueTransformer = nil;
         [list addObject: obj];
     }
     return list;
+}
+
+#pragma mark - custom comparison method
+-(BOOL)isEqual:(id)object
+{
+    //bail early if different classes
+    if (![object isMemberOfClass:[self class]]) return NO;
+    
+    if (self.indexPropertyName) {
+        //there's a defined ID property
+        id objectId = [object valueForKey: self.indexPropertyName];
+        return [[self valueForKey: self.indexPropertyName] isEqual:objectId];
+    }
+    
+    //default isEqual implementation
+    //TODO: Option1 - export to JSON and compare the strings, great idea, but slow?
+    //TODO: Option2 - something else?
+    return [super isEqual:object];
 }
 
 #pragma mark - custom recursive description
