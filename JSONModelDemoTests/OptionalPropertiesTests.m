@@ -21,12 +21,10 @@
     
     NSAssert(jsonContents, @"Can't fetch test data file contents.");
     
-    @try {
-        o = [[OptionalPropModel alloc] initWithString: jsonContents];
-    }
-    @catch (NSException* e1) {
-        NSAssert1(NO, @"%@", [e1 debugDescription]);
-    }
+    NSError* err;
+    o = [[OptionalPropModel alloc] initWithString: jsonContents error:&err];
+    NSAssert(!err, [err localizedDescription]);
+
     
     NSAssert(o, @"Could not load the test data file.");
     NSAssert([o.notRequredProperty isEqualToString:@"I'm here this time!"], @"notRequredProperty' value is not 'I'm here this time!'");
@@ -39,12 +37,9 @@
     
     NSAssert(jsonContents, @"Can't fetch test data file contents.");
     
-    @try {
-        o = [[OptionalPropModel alloc] initWithString: jsonContents];
-    }
-    @catch (NSException* e1) {
-        NSAssert1(NO, @"%@", [e1 debugDescription]);
-    }
+    NSError* err;
+    o = [[OptionalPropModel alloc] initWithString: jsonContents error:&err];
+    NSAssert(!err, [err localizedDescription]);
     
     NSAssert(o, @"Could not load the test data file.");
     

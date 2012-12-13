@@ -23,13 +23,9 @@
     
     NSAssert(jsonContents, @"Can't fetch test data file contents.");
     
-    @try {
-        c = [[CustomPropertyModel alloc] initWithString: jsonContents];
-    }
-    @catch (NSException* e1) {
-        NSAssert1(NO, @"%@", [e1 debugDescription]);
-    }
-    
+    NSError* err;
+    c = [[CustomPropertyModel alloc] initWithString: jsonContents error:&err];
+    NSAssert(!err, [err localizedDescription]);
     
     NSAssert(c, @"Could not load the test data file.");
 }

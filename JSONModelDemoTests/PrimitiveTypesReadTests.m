@@ -23,12 +23,9 @@
     
     NSAssert(jsonContents, @"Can't fetch test data file contents.");
     
-    @try {
-        p = [[PrimitivesModel alloc] initWithString: jsonContents];
-    }
-    @catch (NSException* e1) {
-        NSAssert1(NO, @"%@", [e1 debugDescription]);
-    }
+    NSError* err;
+    p = [[PrimitivesModel alloc] initWithString: jsonContents error:&err];
+    NSAssert(!err, [err localizedDescription]);
     
     NSAssert(p, @"Could not load the test data file.");
 }
