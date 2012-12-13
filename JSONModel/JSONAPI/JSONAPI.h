@@ -54,11 +54,18 @@
 
 /** @name JSON RPC (1.0) request method */
 /**
- * Makes a JSON RPC request to the API
+ * Makes a synchronious JSON RPC request to the API
  * @param args the list of arguments to pass to the API
  * @return the JSON response as desrialized object
  */
 +(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args;
+
+/**
+ * Makes an asynchronious JSON RPC request to the API
+ * @param args the list of arguments to pass to the API
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ * @return the JSON response as desrialized object
+ */
 +(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock;
 
 @end

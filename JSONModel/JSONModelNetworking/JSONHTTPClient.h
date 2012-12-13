@@ -19,14 +19,24 @@
 extern NSString * const kHTTPMethodGET;
 extern NSString * const kHTTPMethodPOST;
 
+/**
+ * A block type to handle incoming JSONModel instance and an error. 
+ * You pass it to methods which create a model asynchroniously. When the operation is finished
+ * you receive back the initialized model (or nil) and an error (or nil)
+ *
+ * TODO: How do you document block type definitions? This doesn't work obviously.
+ *
+ * @param model the newly created JSONModel instance or nil
+ * @param e JSONModelError or nil
+ */
 typedef void(^JSONModelBlock)(JSONModel* model, JSONModelError* e);
+
 typedef void(^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
 
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
  * It fetches only JSON data and also deserializes it using NSJSONSerialization.
- *
- * The methods of this class are **synchronious, but non-blocking**. That means you can call the methods synchroniously, but that won't block the execution of your other threads - like the UI and other threads you might have.
+ * 
  */
 @interface JSONHTTPClient : NSObject
 
