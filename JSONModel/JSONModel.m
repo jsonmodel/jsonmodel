@@ -22,7 +22,8 @@
 @end
 
 #pragma mark - class static variables
-static NSArray* allowedTypes = nil;
+static NSArray* allowedJSONTypes = nil;
+static NSArray* allowedPrimitiveTypes = nil;
 static NSMutableDictionary* classProperties = nil;
 static NSMutableDictionary* classRequiredPropertyNames = nil;
 
@@ -44,14 +45,22 @@ static JSONValueTransformer* valueTransformer = nil;
     dispatch_once(&once, ^{
         //initialize all class static objects
         
-        allowedTypes = @[
-          /* strings */  @"NSString",@"NSMutableString",@"__NSCFString",@"__NSCFConstantString",
-          /* numbers */  @"NSNumber",@"NSDecimalNumber",@"__NSCFNumber", @"__NSCFBoolean",
-          /* arrays */   @"NSArray", @"NSMutableArray", @"__NSArrayM", @"__NSArrayI",@"__NSCFArray",
-          /* dictionaries */  @"NSDictionary",@"NSMutableDictionary",@"__NSDictionaryM",@"__NSDictionaryI",@"__NSCFDictionary",
-          /* null */     @"NSNull",
-          /* primitives */    @"BOOL", @"float", @"int", @"long", @"double", @"short"
+        allowedJSONTypes = @[
+            [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class]
         ];
+        
+        allowedPrimitiveTypes = @[
+            @"BOOL", @"float", @"int", @"long", @"double", @"short"
+        ];
+        
+//        allowedTypes = @[
+//          /* strings */  @"NSString",@"NSMutableString",@"__NSCFString",@"__NSCFConstantString",
+//          /* numbers */  @"NSNumber",@"NSDecimalNumber",@"__NSCFNumber", @"__NSCFBoolean",
+//          /* arrays */   @"NSArray", @"NSMutableArray", @"__NSArrayM", @"__NSArrayI",@"__NSCFArray",
+//          /* dictionaries */  @"NSDictionary",@"NSMutableDictionary",@"__NSDictionaryM",@"__NSDictionaryI",@"__NSCFDictionary",
+//          /* null */     @"NSNull",
+//          /* primitives */    @"BOOL", @"float", @"int", @"long", @"double", @"short"
+//        ];
         
         classProperties = [NSMutableDictionary dictionary];
         classRequiredPropertyNames = [NSMutableDictionary dictionary];
@@ -151,11 +160,24 @@ static JSONValueTransformer* valueTransformer = nil;
             
             //general check for data type compliance
             id jsonValue = d[key];
-            NSString* jsonClassName = NSStringFromClass([jsonValue class]);
+            //NSString* jsonClassName = NSStringFromClass([jsonValue class]);
             
-            if (![allowedTypes containsObject:jsonClassName]) {
+            //check if it's allowed JSON type
+            //TODO: redundant?
+            
+            Class jsonValueClass = [jsonValue class];
+            BOOL isValueOfAllowedType = NO;
+            
+            for (Class allowedType in allowedJSONTypes) {
+                if ( [jsonValueClass isSubclassOfClass: allowedType] ) {
+                    isValueOfAllowedType = YES;
+                    break;
+                }
+            }
+            
+            if (isValueOfAllowedType==NO) {
                 //type not allowed
-                JMLog(@"Type %@ is not allowed in JSON.", jsonClassName);
+                JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
                 if (err) {
                     *err = [JSONModelError errorInvalidData];
                 }
@@ -168,10 +190,10 @@ static JSONValueTransformer* valueTransformer = nil;
             if (property) {
                 
                 //get the property class
-                Class propertyClass = NSClassFromString(property.type);
+                //Class propertyClass = NSClassFromString(property.type);
                 
                 // 0) handle primitives
-                if (propertyClass == nil) {
+                if (property.type == nil) {
                     
                     //just copy the value
                     [self setValue:jsonValue forKey:key];
@@ -188,11 +210,11 @@ static JSONValueTransformer* valueTransformer = nil;
 
                 
                 // 1) check if property is itself a JSONModel
-                if ([[propertyClass class] isSubclassOfClass:[JSONModel class]]) {
+                if ([[property.type class] isSubclassOfClass:[JSONModel class]]) {
                     
                     //initialize the property's model, store it
                     NSError* initError;
-                    id value = [[[propertyClass class] alloc] initWithDictionary: jsonValue error:&initError];
+                    id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
 
                     if (!value) {
                         if (err) {
@@ -221,19 +243,24 @@ static JSONValueTransformer* valueTransformer = nil;
                         }
                     }
                     
-                    // 3) check if it's NOT a standard JSON data type
-                    //  ) if so, try to transform it
-                    //  ) OR if both values are JSON types BUT they are different
-                    //  ) OR it's a MUTABLE property
+                    // 3.1) handle standard JSON types
+                    if (property.isStandardJSONType) {
+                        [self setValue:jsonValue forKey:key];
+                        continue;
+                    }
+                    
+                    // 3.2) handle primitives
+                    if (property.type==nil) {
+                        [self setValue:jsonValue forKey:key];
+                        continue;
+                    }
+                    
+                    // 3.3) handle values to transform
                     if (
-                        //value is not a standard JSON type
-                        ![allowedTypes containsObject:property.type]
-                        ||
-                        //value type mismatch and is NOT null
-                        (![jsonValue isKindOfClass:propertyClass] && !isNull(jsonValue))
+                        (![jsonValue isKindOfClass:property.type] && !isNull(jsonValue))
                         ||
                         //the property is mutable
-                        [property.type rangeOfString:@"Mutable"].location != NSNotFound
+                        property.isMutable
                         ) {
                         
                         //TODO: searched around the web how to do this better
@@ -271,9 +298,7 @@ static JSONValueTransformer* valueTransformer = nil;
                         }
                         
                     } else {
-                        
-                        // OK: it's a compliant value, there's no transformers and other shizzle,
-                        // just copy the value
+                        // 3.4) handle "all other" cases (if any)
                         [self setValue:jsonValue forKey:key];
                     }
                 }
@@ -319,6 +344,8 @@ static JSONValueTransformer* valueTransformer = nil;
         unsigned int propertyCount;
         objc_property_t *properties = class_copyPropertyList(class, &propertyCount);
         
+        NSScanner *scanner = nil;
+        
         //loop over the class properties
         for (int i = 0; i < propertyCount; i++) {
             
@@ -334,9 +361,9 @@ static JSONValueTransformer* valueTransformer = nil;
             //get property attributes
             const char *attrs = property_getAttributes(property);
             
-            NSScanner *scanner= [NSScanner scannerWithString:
-                                 [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]
-                                 ];
+            scanner = [NSScanner scannerWithString:
+                       [NSString stringWithUTF8String:attrs]
+                       ];
             
             //NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
             
@@ -352,11 +379,16 @@ static JSONValueTransformer* valueTransformer = nil;
             if (isObject) {
                 
                 //fetch the class name
-                [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\"<"]
-                                        intoString:&propertyType];
+//                [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\"<"]
+//                                        intoString:&propertyType];
+                
+                [scanner scanCharactersFromSet:[NSCharacterSet alphanumericCharacterSet]
+                                    intoString:&propertyType];
                 
                 //NSLog(@"type: %@", propertyClassName);
-                p.type = propertyType;
+                p.type = NSClassFromString(propertyType);
+                p.isMutable = ([propertyType rangeOfString:@"Mutable"].location != NSNotFound);
+                p.isStandardJSONType = [allowedJSONTypes containsObject:p.type];
                 
                 //read through the property protocols
                 while ([scanner scanString:@"<" intoString:NULL]) {
@@ -420,12 +452,12 @@ static JSONValueTransformer* valueTransformer = nil;
     if ([[protocolClass class] isSubclassOfClass:[JSONModel class]]) {
 
         //check if it's a list of models
-        if ([p.type isEqualToString:@"NSArray"]) {
+        if ([p.type isSubclassOfClass:[NSArray class]]) {
             value = [[protocolClass class] arrayOfObjectsFromDictionaries: value];
         }
         
         //check if it's a dictionary of models
-        if ([p.type isEqualToString:@"NSDictionary"]) {
+        if ([p.type isSubclassOfClass:[NSDictionary class]]) {
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
             JSONModelError* initErr;
             
@@ -506,7 +538,7 @@ static JSONValueTransformer* valueTransformer = nil;
         } else {
             
             //check if the value is not in the list of handled class types
-            if (![allowedTypes containsObject:p.type]) {
+            if (!p.isStandardJSONType && ![allowedPrimitiveTypes containsObject:NSStringFromClass(p.type)]) {
                 
                 //create selector from the property's class name
                 NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", @"JSONObject", p.type];

@@ -60,13 +60,19 @@
   @property (strong, nonatomic) NSString* name;
 
   /** A primitive type name ("float", "short", etc) or a class name  */
-  @property (strong, nonatomic) NSString* type;
+  @property (assign, nonatomic) Class type;
 
   /** The name of the protocol the property conforms to (or nil) */
   @property (strong, nonatomic) NSString* protocol;
 
-  /** If true, it can be missing in the input data, and the input would be still valid */
+  /** If YES, it can be missing in the input data, and the input would be still valid */
   @property (assign, nonatomic) BOOL isOptional;
+
+  /** If YES - don't call any transformers on this property's value */
+  @property (assign, nonatomic) BOOL isStandardJSONType;
+
+  /** If YES - create a mutable object for the value of the property */
+  @property (assign, nonatomic) BOOL isMutable;
 
 @end
 
