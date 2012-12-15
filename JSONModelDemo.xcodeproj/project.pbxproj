@@ -359,13 +359,13 @@
 		9CBBBEE2166B6CF0008B4326 /* JSONModelDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9C0D023C166E6B7A001EA645 /* KivaJSONDemo+networking */,
 				9CBBBFAD166BB87B008B4326 /* DemoApp */,
 				9CBBBF87166BAC31008B4326 /* libs */,
 				9CBBBF9D166BB27E008B4326 /* YouTubeDemo */,
 				9CBBBF93166BAEB2008B4326 /* GitHubDemo */,
 				9CBBBFAE166BBADA008B4326 /* UsedAsStorageDemo */,
 				9CBBBF73166BA7E1008B4326 /* KivaJSONDemo */,
+				9C0D023C166E6B7A001EA645 /* KivaJSONDemo+networking */,
 			);
 			path = JSONModelDemo;
 			sourceTree = "<group>";
