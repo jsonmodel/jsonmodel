@@ -45,12 +45,13 @@
         
         benchObj = CFAbsoluteTimeGetCurrent();
         
+        //5
+        feed = [[KivaFeed alloc] initWithDictionary: json error:nil];
+        benchEnd = CFAbsoluteTimeGetCurrent();
+
         //4
         dispatch_async(dispatch_get_main_queue(), ^{
             //code executed on the main queue
-            //5
-            feed = [[KivaFeed alloc] initWithDictionary: json error:nil];
-            benchEnd = CFAbsoluteTimeGetCurrent();
             
             [HUD hideUIBlockingIndicator];
             
