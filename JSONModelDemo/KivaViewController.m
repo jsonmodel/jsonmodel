@@ -14,6 +14,10 @@
 {
     IBOutlet UITableView* table;
     KivaFeed* feed;
+    
+    double benchStart;
+    double benchObj;
+    double benchEnd;
 }
 
 @end
@@ -33,21 +37,27 @@
                             [NSURL URLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"]
                             ];
         //3
-         NSDictionary* json = [NSJSONSerialization
+        benchStart = CFAbsoluteTimeGetCurrent();
+        NSDictionary* json = [NSJSONSerialization
                     JSONObjectWithData:kivaData
                     options:kNilOptions
                     error:nil];
+        
+        benchObj = CFAbsoluteTimeGetCurrent();
         
         //4
         dispatch_async(dispatch_get_main_queue(), ^{
             //code executed on the main queue
             //5
             feed = [[KivaFeed alloc] initWithDictionary: json error:nil];
+            benchEnd = CFAbsoluteTimeGetCurrent();
             
             [HUD hideUIBlockingIndicator];
             
             if (feed) {
                 [table reloadData];
+                
+                [self logBenchmark];
             } else {
                 //show error
                 [[[UIAlertView alloc] initWithTitle:@"Error"
@@ -59,6 +69,16 @@
         });
         
     });
+}
+
+-(void)logBenchmark
+{
+    NSLog(@"start: %f", benchStart);
+    NSLog(@"obj: %f", benchObj);
+    NSLog(@"model: %f", benchEnd);
+    NSLog(@"-------------------------");
+    NSLog(@"json -> object: %.4f", benchObj-benchStart);
+    NSLog(@"obj -> model: %.4f", benchEnd - benchObj);
 }
 
 #pragma mark - table methods
