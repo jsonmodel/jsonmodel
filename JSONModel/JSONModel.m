@@ -639,7 +639,7 @@ static JSONValueTransformer* valueTransformer = nil;
     return list;
 }
 
-#pragma mark - custom comparison method
+#pragma mark - custom comparison methods
 -(BOOL)isEqual:(id)object
 {
     //bail early if different classes
@@ -655,6 +655,22 @@ static JSONValueTransformer* valueTransformer = nil;
     //TODO: Option1 - export to JSON and compare the strings, great idea, but slow?
     //TODO: Option2 - something else?
     return [super isEqual:object];
+}
+
+-(NSComparisonResult)compare:(id)object
+{
+    if (self.indexPropertyName) {
+        id objectId = [object valueForKey: self.indexPropertyName];
+        if ([objectId respondsToSelector:@selector(compare:)]) {
+            return [[self valueForKey:self.indexPropertyName] compare:objectId];
+        }
+    }
+
+    //on purpose postponing the asserts for speed optimization
+    //these should not happen anyway in production conditions
+    NSAssert(self.indexPropertyName, @"Can't compare models with no <Index> property");
+    NSAssert1(NO, @"The <Index> property of %@ is not comparable class.", [self className]);
+    return kNilOptions;
 }
 
 #pragma mark - custom recursive description

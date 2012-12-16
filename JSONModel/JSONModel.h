@@ -120,13 +120,6 @@
  */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol>
 
-/**
- * The name of the model's property, which is considered the model's unique identifier.
- * You can define Index property by using the Index protocol: 
- * @property (strong, nonatomic) NSString&lt;Index&gt;* id;
- */
-@property (strong, nonatomic, readonly) NSString* indexPropertyName;
-
 /** @name Creating and initializing models */
 
   /**
@@ -159,7 +152,7 @@
    */
   -(NSString*)toJSONString;
 
-/** @name Batch model creationg */
+/** @name Batch methods */
 
   /**
    * If you have a list of dictionaries in a JSON feed, you can use this method to create an NSArray
@@ -183,5 +176,28 @@
    * @see arrayOfObjectsFromDictionaries:
    */
   +(NSMutableArray*)arrayOfDictionariesFromObjects:(NSArray*)a;
+
+/** @name Comparing models */
+
+  /**
+   * The name of the model's property, which is considered the model's unique identifier.
+   * You can define Index property by using the Index protocol:
+   * @property (strong, nonatomic) NSString&lt;Index&gt;* id;
+   */
+  @property (strong, nonatomic, readonly) NSString* indexPropertyName;
+
+  /**
+   * Overriden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
+   * if an index property is defined.
+   */
+  -(BOOL)isEqual:(id)object;
+
+  /**
+   * Comparision method, which uses the defined &lt;Index&gt; property of the two models, to compare them.
+   * If there isn't an index property throws an exception. If the Index property does not have a compare: method
+   * also throws an exception. NSString and NSNumber have compare: methods, and in case the Index property is 
+   * a another custom class, the programmer should create a custom compare: method then.
+   */
+  -(NSComparisonResult)compare:(id)object;
 
 @end
