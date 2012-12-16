@@ -24,6 +24,7 @@
 #pragma mark - class static variables
 static NSArray* allowedJSONTypes = nil;
 static NSArray* allowedPrimitiveTypes = nil;
+
 static NSMutableDictionary* classProperties = nil;
 static NSMutableDictionary* classRequiredPropertyNames = nil;
 
@@ -39,28 +40,20 @@ static JSONValueTransformer* valueTransformer = nil;
 
 #pragma mark - initialization methods
 
-+(void)initialize
++(void)load
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         //initialize all class static objects
         
         allowedJSONTypes = @[
-            [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class]
+            [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
+            [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
         ];
         
         allowedPrimitiveTypes = @[
             @"BOOL", @"float", @"int", @"long", @"double", @"short"
         ];
-        
-//        allowedTypes = @[
-//          /* strings */  @"NSString",@"NSMutableString",@"__NSCFString",@"__NSCFConstantString",
-//          /* numbers */  @"NSNumber",@"NSDecimalNumber",@"__NSCFNumber", @"__NSCFBoolean",
-//          /* arrays */   @"NSArray", @"NSMutableArray", @"__NSArrayM", @"__NSArrayI",@"__NSCFArray",
-//          /* dictionaries */  @"NSDictionary",@"NSMutableDictionary",@"__NSDictionaryM",@"__NSDictionaryI",@"__NSCFDictionary",
-//          /* null */     @"NSNull",
-//          /* primitives */    @"BOOL", @"float", @"int", @"long", @"double", @"short"
-//        ];
         
         classProperties = [NSMutableDictionary dictionary];
         classRequiredPropertyNames = [NSMutableDictionary dictionary];
@@ -243,14 +236,15 @@ static JSONValueTransformer* valueTransformer = nil;
                         }
                     }
                     
-                    // 3.1) handle standard JSON types
-                    if (property.isStandardJSONType) {
-                        [self setValue:jsonValue forKey:key];
-                        continue;
-                    }
-                    
-                    // 3.2) handle primitives
-                    if (property.type==nil) {
+                    // 3.1) handle matching standard JSON types
+                    if (property.isStandardJSONType && [jsonValue isKindOfClass: property.type]) {
+                        
+                        //mutable properties
+                        if (property.isMutable) {
+                            jsonValue = [jsonValue mutableCopy];
+                        }
+                        
+                        //set the property value
                         [self setValue:jsonValue forKey:key];
                         continue;
                     }
@@ -335,7 +329,10 @@ static JSONValueTransformer* valueTransformer = nil;
 {
     NSMutableDictionary* propertyIndex = [NSMutableDictionary dictionary];
     
+    //temp variables for the loops
     Class class = [self class];
+    NSScanner* scanner = nil;
+    NSString* propertyType = nil;
     
     // retrospect inherited properties up to the JSONModel class
     while (class != [JSONModel class]) {
@@ -343,8 +340,6 @@ static JSONValueTransformer* valueTransformer = nil;
         
         unsigned int propertyCount;
         objc_property_t *properties = class_copyPropertyList(class, &propertyCount);
-        
-        NSScanner *scanner = nil;
         
         //loop over the class properties
         for (int i = 0; i < propertyCount; i++) {
@@ -354,7 +349,7 @@ static JSONValueTransformer* valueTransformer = nil;
             //get property name
             objc_property_t property = properties[i];
             const char *propertyName = property_getName(property);
-            p.name = [NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding];
+            p.name = [NSString stringWithUTF8String:propertyName];
             
             //NSLog(@"property: %@", p.name);
             
@@ -367,20 +362,11 @@ static JSONValueTransformer* valueTransformer = nil;
             
             //NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
             
-            NSString* propertyType = nil;
-            
             [scanner scanUpToString:@"T" intoString: nil];
             [scanner scanString:@"T" intoString:nil];
             
-            NSString* isObject = nil;
-            [scanner scanString:@"@\"" intoString: &isObject];
-            
             //check if the property is an instance of a class
-            if (isObject) {
-                
-                //fetch the class name
-//                [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\"<"]
-//                                        intoString:&propertyType];
+            if ([scanner scanString:@"@\"" intoString: &propertyType]) {
                 
                 [scanner scanCharactersFromSet:[NSCharacterSet alphanumericCharacterSet]
                                     intoString:&propertyType];
@@ -415,8 +401,12 @@ static JSONValueTransformer* valueTransformer = nil;
                                         intoString:&propertyType];
                 
                 //get the primitive type name out of the allowed primitive types index
-                p.type = valueTransformer.primitivesNames[propertyType];
-                if (!p.type) {
+                //p.type = valueTransformer.primitivesNames[propertyType];
+                
+                //get the full name of the primitive type
+                propertyType = valueTransformer.primitivesNames[propertyType];
+                
+                if (![allowedPrimitiveTypes containsObject:propertyType]) {
                     
                     //type not allowed - programmer mistaked -> exception
                     @throw [NSException exceptionWithName:@"JSONModelProperty type not allowed"
@@ -512,14 +502,15 @@ static JSONValueTransformer* valueTransformer = nil;
 //exports the model as a dictionary of JSON compliant objects
 -(NSDictionary*)toDictionary
 {
-    
     NSArray* properties = [self _properties];
     NSMutableDictionary* tempDictionary = [NSMutableDictionary dictionaryWithCapacity:properties.count];
 
+    id value;
+    
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
         
-        id value = [self valueForKey: p.name];
+        value = [self valueForKey: p.name];
 
         //skip nil values
         //TODO: should it rather skip nil values, or export null values?
@@ -537,8 +528,19 @@ static JSONValueTransformer* valueTransformer = nil;
             
         } else {
             
-            //check if the value is not in the list of handled class types
-            if (!p.isStandardJSONType && ![allowedPrimitiveTypes containsObject:NSStringFromClass(p.type)]) {
+            // 1) check for built-in transformation
+            if (p.protocol) {
+                value = [self _reverseTransform:value forProperty:p];
+            }
+            
+            // 2) check for standard types OR 2.1) primitives
+            if (p.isStandardJSONType || p.type==nil) {
+                [tempDictionary setValue:value forKey: p.name];
+                continue;
+            }
+            
+            // 3) try to apply a value transformer
+            if (YES) {
                 
                 //create selector from the property's class name
                 NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", @"JSONObject", p.type];
@@ -567,15 +569,6 @@ static JSONValueTransformer* valueTransformer = nil;
                 
                 
                 
-            } else {
-
-                //check for built-in transformation
-                if (p.protocol) {
-                    value = [self _reverseTransform:value forProperty:p];
-                }
-                
-                //straight JSON value - copy over
-                [tempDictionary setValue:value forKey: p.name];
             }
             
         }
