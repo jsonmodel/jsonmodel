@@ -512,9 +512,13 @@ static JSONValueTransformer* valueTransformer = nil;
         
         value = [self valueForKey: p.name];
 
-        //skip nil values
-        //TODO: should it rather skip nil values, or export null values?
-        if (!value) continue;
+        //export nil values as JSON null, so that the structure of the exported data
+        //is still valid if it's to be imported as a model again
+        if (isNull(value)) {
+            
+            [tempDictionary setValue:[NSNull null] forKey:p.name];
+            continue;
+        }
         
         //check if the property is another model
         if ([value isKindOfClass:[JSONModel class]]) {
