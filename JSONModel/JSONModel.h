@@ -57,13 +57,13 @@
 @interface JSONModelClassProperty : NSObject
 
   /** The name of the declared property (not the ivar name) */
-  @property (strong, nonatomic) NSString* name;
+  @property (copy, nonatomic) NSString* name;
 
   /** A primitive type name ("float", "short", etc) or a class name  */
   @property (assign, nonatomic) Class type;
 
   /** The name of the protocol the property conforms to (or nil) */
-  @property (strong, nonatomic) NSString* protocol;
+  @property (copy, nonatomic) NSString* protocol;
 
   /** If YES, it can be missing in the input data, and the input would be still valid */
   @property (assign, nonatomic) BOOL isOptional;
