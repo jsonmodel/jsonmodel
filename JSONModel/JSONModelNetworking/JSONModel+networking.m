@@ -19,7 +19,7 @@
 
 BOOL _isLoading;
 
-@implementation JSONModel(networking)
+@implementation JSONModel(Networking)
 
 @dynamic isLoading;
 

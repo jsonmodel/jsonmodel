@@ -23,7 +23,7 @@
  * to the URL given and initializes the model with the returned JSON.
  * Use #import "JSONModel+networking.h" to import networking capabilities.
  */
-@interface JSONModel(networking)
+@interface JSONModel(Networking)
 
 @property (assign, nonatomic) BOOL isLoading;
 /** @name Synchroniously create a model over the network */
