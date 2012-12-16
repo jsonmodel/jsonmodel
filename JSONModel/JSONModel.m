@@ -652,8 +652,6 @@ static JSONValueTransformer* valueTransformer = nil;
     }
     
     //default isEqual implementation
-    //TODO: Option1 - export to JSON and compare the strings, great idea, but slow?
-    //TODO: Option2 - something else?
     return [super isEqual:object];
 }
 
@@ -671,6 +669,15 @@ static JSONValueTransformer* valueTransformer = nil;
     NSAssert(self.indexPropertyName, @"Can't compare models with no <Index> property");
     NSAssert1(NO, @"The <Index> property of %@ is not comparable class.", [self className]);
     return kNilOptions;
+}
+
+- (NSUInteger)hash {
+    
+    if (self.indexPropertyName) {
+        return [self.indexPropertyName hash];
+    }
+    
+    return [super hash];
 }
 
 #pragma mark - custom recursive description
