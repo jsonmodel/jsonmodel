@@ -41,4 +41,11 @@ NSString * const JSONModelErrorDomain = @"JSONModelErrorDomain";
                                   userInfo:@{NSLocalizedDescriptionKey:@"Malformed JSON"}];    
 }
 
++(id)errorModelIsInvalid
+{
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                      code:kJSONModelErrorModelIsInvalid
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Model does not validate"}];
+}
+
 @end

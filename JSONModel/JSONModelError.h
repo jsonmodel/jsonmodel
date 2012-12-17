@@ -20,7 +20,8 @@ enum kJSONModelErrorTypes
 {
     kJSONModelErrorInvalidData = 1,
     kJSONModelErrorBadResponse = 2,
-    kJSONModelErrorBadJSON = 3
+    kJSONModelErrorBadJSON = 3,
+    kJSONModelErrorModelIsInvalid = 4
 };
 
 extern NSString * const JSONModelErrorDomain;
@@ -30,6 +31,7 @@ extern NSString * const JSONModelErrorDomain;
 +(id)errorInvalidData;
 +(id)errorBadResponse;
 +(id)errorBadJSON;
++(id)errorModelIsInvalid;
 
 @end
 
