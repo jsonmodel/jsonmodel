@@ -39,8 +39,8 @@
 /**
  * Asynchroniously create a model over the network. Create a new model instance and initialize it with the JSON fetched from the given URL
  * @param urlString the absolute URL address of the JSON feed as a string
- * @param completeBlock JSONModelBlock executed upon completion
- * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+ * @param completeBlock JSONModelBlock executed upon completion. The JSONModelBlock type is defined as: void (^JSONModelBlock)(JSONModel* model, JSONModelError* e); the first parameter is the initialized model or nil, 
+ * and second parameter holds the model initialization error, if any
  */
 -(instancetype)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
 
