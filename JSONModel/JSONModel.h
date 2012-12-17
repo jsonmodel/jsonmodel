@@ -200,4 +200,8 @@
    */
   -(NSComparisonResult)compare:(id)object;
 
+/** @name Validation */
+
+-(NSError*)validate;
+
 @end

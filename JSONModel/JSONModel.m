@@ -116,190 +116,202 @@ static JSONValueTransformer* valueTransformer = nil;
         return nil;
     }
 
-    //check for valid parameters
+    //create a class instance
     self = [super init];
+    if (!self) {
+        
+        //super init didn't succeed
+        *err = [JSONModelError errorModelIsInvalid];
+        return nil;
+    }
     
-    if (self) {
-        
-        //do initial class setup, retrospec properties
-        [self _setup];
-        
-        //check if all required properties are present
-        NSArray* incomingKeysArray = [d allKeys];
-        NSMutableSet* requiredProperties = [self _requiredPropertyNames];
-        NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
-        
-        if (![requiredProperties isSubsetOfSet:incomingKeys]) {
+    
+    //do initial class setup, retrospec properties
+    [self _setup];
+    
+    //check if all required properties are present
+    NSArray* incomingKeysArray = [d allKeys];
+    NSMutableSet* requiredProperties = [self _requiredPropertyNames];
+    NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
+    
+    if (![requiredProperties isSubsetOfSet:incomingKeys]) {
 
-            //get a list of the missing properties
-            [requiredProperties minusSet:incomingKeys];
+        //get a list of the missing properties
+        [requiredProperties minusSet:incomingKeys];
 
-            //not all required properties are in - invalid input
-            JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.className, requiredProperties);
+        //not all required properties are in - invalid input
+        JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.className, requiredProperties);
+        if (err) {
+            *err = [JSONModelError errorInvalidData];
+        }
+        return nil;
+    }
+    
+    //not needed anymore
+    incomingKeys= nil;
+    requiredProperties= nil;
+    
+    //loop over the incoming keys and set self's properties
+    for (NSString* key in incomingKeysArray) {
+        
+        //NSLog(@"key: %@", key);
+        
+        //general check for data type compliance
+        id jsonValue = d[key];
+        //NSString* jsonClassName = NSStringFromClass([jsonValue class]);
+        
+        //check if it's allowed JSON type
+        //TODO: redundant?
+        
+        Class jsonValueClass = [jsonValue class];
+        BOOL isValueOfAllowedType = NO;
+        
+        for (Class allowedType in allowedJSONTypes) {
+            if ( [jsonValueClass isSubclassOfClass: allowedType] ) {
+                isValueOfAllowedType = YES;
+                break;
+            }
+        }
+        
+        if (isValueOfAllowedType==NO) {
+            //type not allowed
+            JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
             if (err) {
                 *err = [JSONModelError errorInvalidData];
             }
             return nil;
         }
         
-        //not needed anymore
-        incomingKeys= nil;
-        requiredProperties= nil;
+        //check if there's matching property in the model
+        JSONModelClassProperty* property = classProperties[self.className][key];
         
-        //loop over the incoming keys and set self's properties
-        for (NSString* key in incomingKeysArray) {
+        if (property) {
             
-            //NSLog(@"key: %@", key);
+            //get the property class
+            //Class propertyClass = NSClassFromString(property.type);
             
-            //general check for data type compliance
-            id jsonValue = d[key];
-            //NSString* jsonClassName = NSStringFromClass([jsonValue class]);
-            
-            //check if it's allowed JSON type
-            //TODO: redundant?
-            
-            Class jsonValueClass = [jsonValue class];
-            BOOL isValueOfAllowedType = NO;
-            
-            for (Class allowedType in allowedJSONTypes) {
-                if ( [jsonValueClass isSubclassOfClass: allowedType] ) {
-                    isValueOfAllowedType = YES;
-                    break;
-                }
+            // 0) handle primitives
+            if (property.type == nil) {
+                
+                //just copy the value
+                [self setValue:jsonValue forKey:key];
+                
+                //skip directly to the next key
+                continue;
             }
             
-            if (isValueOfAllowedType==NO) {
-                //type not allowed
-                JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
-                if (err) {
-                    *err = [JSONModelError errorInvalidData];
-                }
-                return nil;
+            // 0.5) handle nils
+            if (isNull(jsonValue)) {
+                [self setValue:nil forKey:key];
+                continue;
             }
-            
-            //check if there's matching property in the model
-            JSONModelClassProperty* property = classProperties[self.className][key];
-            
-            if (property) {
-                
-                //get the property class
-                //Class propertyClass = NSClassFromString(property.type);
-                
-                // 0) handle primitives
-                if (property.type == nil) {
-                    
-                    //just copy the value
-                    [self setValue:jsonValue forKey:key];
-                    
-                    //skip directly to the next key
-                    continue;
-                }
-                
-                // 0.5) handle nils
-                if (isNull(jsonValue)) {
-                    [self setValue:nil forKey:key];
-                    continue;
-                }
 
+            
+            // 1) check if property is itself a JSONModel
+            if ([[property.type class] isSubclassOfClass:[JSONModel class]]) {
                 
-                // 1) check if property is itself a JSONModel
-                if ([[property.type class] isSubclassOfClass:[JSONModel class]]) {
-                    
-                    //initialize the property's model, store it
-                    NSError* initError;
-                    id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
+                //initialize the property's model, store it
+                NSError* initError;
+                id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
 
-                    if (!value) {
+                if (!value) {
+                    if (err) {
+                        *err = [JSONModelError errorInvalidData];
+                    }
+                    return nil;
+                }
+                [self setValue:value forKey:key];
+                
+                //for clarity, does the same without continue
+                continue;
+                
+            } else {
+                
+                // 2) check if there's a protocol to the property
+                //  ) might or not be the case there's a built in transofrm for it
+                if (property.protocol) {
+                    
+                    //NSLog(@"proto: %@", p.protocol);
+                    jsonValue = [self _transform:jsonValue forProperty:property];
+                    if (!jsonValue) {
                         if (err) {
                             *err = [JSONModelError errorInvalidData];
                         }
                         return nil;
                     }
-                    [self setValue:value forKey:key];
+                }
+                
+                // 3.1) handle matching standard JSON types
+                if (property.isStandardJSONType && [jsonValue isKindOfClass: property.type]) {
                     
-                    //for clarity, does the same without continue
+                    //mutable properties
+                    if (property.isMutable) {
+                        jsonValue = [jsonValue mutableCopy];
+                    }
+                    
+                    //set the property value
+                    [self setValue:jsonValue forKey:key];
                     continue;
+                }
+                
+                // 3.3) handle values to transform
+                if (
+                    (![jsonValue isKindOfClass:property.type] && !isNull(jsonValue))
+                    ||
+                    //the property is mutable
+                    property.isMutable
+                    ) {
                     
-                } else {
+                    //TODO: searched around the web how to do this better
+                    // but did not find any solution, maybe that's the best idea? (hardly)
+                    Class sourceClass = [JSONValueTransformer classByResolvingClusterClasses:[jsonValue class]];
                     
-                    // 2) check if there's a protocol to the property
-                    //  ) might or not be the case there's a built in transofrm for it
-                    if (property.protocol) {
-                        
-                        //NSLog(@"proto: %@", p.protocol);
-                        jsonValue = [self _transform:jsonValue forProperty:property];
-                        if (!jsonValue) {
-                            if (err) {
-                                *err = [JSONModelError errorInvalidData];
-                            }
-                            return nil;
-                        }
-                    }
+                    //NSLog(@"to type: %@", p.type);
+                    //NSLog(@"from type: %@", sourceClass);
+                    //NSLog(@"transformer: %@", selectorName);
                     
-                    // 3.1) handle matching standard JSON types
-                    if (property.isStandardJSONType && [jsonValue isKindOfClass: property.type]) {
-                        
-                        //mutable properties
-                        if (property.isMutable) {
-                            jsonValue = [jsonValue mutableCopy];
-                        }
-                        
-                        //set the property value
-                        [self setValue:jsonValue forKey:key];
-                        continue;
-                    }
+                    //build a method selector for the property and json object classes
+                    NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", property.type, sourceClass];
+                    SEL selector = NSSelectorFromString(selectorName);
                     
-                    // 3.3) handle values to transform
-                    if (
-                        (![jsonValue isKindOfClass:property.type] && !isNull(jsonValue))
-                        ||
-                        //the property is mutable
-                        property.isMutable
-                        ) {
+                    //check if there's a transformer with that name
+                    if ([valueTransformer respondsToSelector:selector]) {
                         
-                        //TODO: searched around the web how to do this better
-                        // but did not find any solution, maybe that's the best idea? (hardly)
-                        Class sourceClass = [JSONValueTransformer classByResolvingClusterClasses:[jsonValue class]];
-                        
-                        //NSLog(@"to type: %@", p.type);
-                        //NSLog(@"from type: %@", sourceClass);
-                        //NSLog(@"transformer: %@", selectorName);
-                        
-                        //build a method selector for the property and json object classes
-                        NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", property.type, sourceClass];
-                        SEL selector = NSSelectorFromString(selectorName);
-                        
-                        //check if there's a transformer with that name
-                        if ([valueTransformer respondsToSelector:selector]) {
-                            
-                            //it's OK, believe me...
+                        //it's OK, believe me...
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                            //transform the value
-                            jsonValue = [valueTransformer performSelector:selector withObject:jsonValue];
+                        //transform the value
+                        jsonValue = [valueTransformer performSelector:selector withObject:jsonValue];
 #pragma clang diagnostic pop
-                            
-                            [self setValue:jsonValue forKey:key];
-                            
-                        } else {
-                            
-                            // it's not a JSON data type, and there's no transformer for it
-                            // if property type is not supported - that's a programmer mistaked -> exception
-                            @throw [NSException exceptionWithName:@"Type not allowed"
-                                                           reason:[NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name]
-                                                         userInfo:nil];
-                            return nil;
-                        }
+                        
+                        [self setValue:jsonValue forKey:key];
                         
                     } else {
-                        // 3.4) handle "all other" cases (if any)
-                        [self setValue:jsonValue forKey:key];
+                        
+                        // it's not a JSON data type, and there's no transformer for it
+                        // if property type is not supported - that's a programmer mistaked -> exception
+                        @throw [NSException exceptionWithName:@"Type not allowed"
+                                                       reason:[NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name]
+                                                     userInfo:nil];
+                        return nil;
                     }
+                    
+                } else {
+                    // 3.4) handle "all other" cases (if any)
+                    [self setValue:jsonValue forKey:key];
                 }
             }
         }
     }
     
+    //run any custom model validation
+    NSError* validationError = [self validate];
+    if (validationError) {
+        *err = validationError;
+        return nil;
+    }
+    
+    //model is valid! yay!
     return self;
 }
 
@@ -678,6 +690,12 @@ static JSONValueTransformer* valueTransformer = nil;
     }
     
     return [super hash];
+}
+
+#pragma mark - custom data validation
+-(NSError*)validate
+{
+    return nil;
 }
 
 #pragma mark - custom recursive description
