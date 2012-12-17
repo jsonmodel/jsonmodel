@@ -43,7 +43,7 @@
             //code executed on the main queue
             //5
             
-            items = [VideoModel arrayOfObjectsFromDictionaries:
+            items = [VideoModel arrayOfModelsFromDictionaries:
                      json[@"feed"][@"entry"]
                      ];
             

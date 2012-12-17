@@ -455,7 +455,7 @@ static JSONValueTransformer* valueTransformer = nil;
 
         //check if it's a list of models
         if ([p.type isSubclassOfClass:[NSArray class]]) {
-            value = [[protocolClass class] arrayOfObjectsFromDictionaries: value];
+            value = [[protocolClass class] arrayOfModelsFromDictionaries: value];
         }
         
         //check if it's a dictionary of models
@@ -604,7 +604,7 @@ static JSONValueTransformer* valueTransformer = nil;
 
 #pragma mark - import/export of lists
 //loop over an NSArray of JSON objects and turn them into models
-+(NSMutableArray*)arrayOfObjectsFromDictionaries:(NSArray*)a
++(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)a
 {
     //bail early
     if (isNull(a)) {
@@ -629,7 +629,7 @@ static JSONValueTransformer* valueTransformer = nil;
 }
 
 //loop over NSArray of models and export them to JSON objects
-+(NSMutableArray*)arrayOfDictionariesFromObjects:(NSArray*)a
++(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)a
 {
     //bail early
     if (isNull(a)) {

@@ -165,7 +165,7 @@
    * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromObjects:
    */
-  +(NSMutableArray*)arrayOfObjectsFromDictionaries:(NSArray*)a;
+  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)a;
 
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
@@ -175,7 +175,7 @@
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see arrayOfObjectsFromDictionaries:
    */
-  +(NSMutableArray*)arrayOfDictionariesFromObjects:(NSArray*)a;
+  +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)a;
 
 /** @name Comparing models */
 
@@ -202,6 +202,13 @@
 
 /** @name Validation */
 
--(NSError*)validate;
+  /**
+   * Overwrite the validate method in your own models if you need to perform some custom validation over the model data.
+   * This method gets called at the very end of the JSONModel initializer, thus the model is in the state that you would
+   * get it back when initialzed. Check the values of any property that needs to be validated and if any invalid values
+   * are encountered return an NSError object. If the model is valid return nil.
+   * @return an NSError instance. You can use the convenience method [JSONModelError errorModelIsInvalid] to get an NSError instance.
+   */
+  -(NSError*)validate;
 
 @end
