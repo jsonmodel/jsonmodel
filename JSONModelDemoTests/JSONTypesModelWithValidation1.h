@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Underplot ltd. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "JSONTypesModel.h"
 
-@interface JSONTypesModelWithValidation1 : SenTestCase
+@interface JSONTypesModelWithValidation1 : JSONTypesModel
 
 @end
