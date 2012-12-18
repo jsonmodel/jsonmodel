@@ -457,17 +457,11 @@
 		9CBBBF1D166B6D10008B4326 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
+				9CFDF86116807DC500A3DF95 /* JSONModelLib.h */,
+				9CFDF8651680887A00A3DF95 /* JSONModel */,
 				9CFDF85B1680773200A3DF95 /* JSONModelArray */,
-				9C732E2F167A5F8600FE7335 /* Categories */,
-				9C0D0242166EBF0B001EA645 /* JSONModel.h */,
-				9C0D0243166EBF0B001EA645 /* JSONModel.m */,
-				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
-				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
-				9C732DBD1679247D00FE7335 /* JSONModelError.h */,
-				9C732DBE1679247D00FE7335 /* JSONModelError.m */,
 				9C843A97166EC2CF004946F9 /* JSONAPI */,
 				9C0D0246166EBF0B001EA645 /* JSONModelNetworking */,
-				9CFDF86116807DC500A3DF95 /* JSONModelLib.h */,
 			);
 			path = JSONModel;
 			sourceTree = "<group>";
@@ -708,10 +702,24 @@
 		9CFDF85B1680773200A3DF95 /* JSONModelArray */ = {
 			isa = PBXGroup;
 			children = (
+				9C732E2F167A5F8600FE7335 /* Categories */,
 				9CFDF85D1680776300A3DF95 /* JSONModelArray.h */,
 				9CFDF85E1680776300A3DF95 /* JSONModelArray.m */,
 			);
 			name = JSONModelArray;
+			sourceTree = "<group>";
+		};
+		9CFDF8651680887A00A3DF95 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C0D0242166EBF0B001EA645 /* JSONModel.h */,
+				9C0D0243166EBF0B001EA645 /* JSONModel.m */,
+				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
+				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
+				9C732DBD1679247D00FE7335 /* JSONModelError.h */,
+				9C732DBE1679247D00FE7335 /* JSONModelError.m */,
+			);
+			name = JSONModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
