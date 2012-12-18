@@ -19,7 +19,7 @@
 #import "JSONModel.h"
 
 /**
- * Adds methods to search and handle models within an NSArray
+ * Exposes invisible JSONModelArray methods
  */
 @interface NSArray(JSONModel)
 
@@ -33,6 +33,7 @@
  *
  * @param indexValue the id value to search for
  * @return the found model or nil
+ * @exception NSException throws exception if you call this method on an instance, which is not actually a JSONModelArray
  */
 - (id)modelWithIndexValue:(id)indexValue;
 
