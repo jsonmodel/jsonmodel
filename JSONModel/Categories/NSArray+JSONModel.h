@@ -34,6 +34,6 @@
  * @param indexValue the id value to search for
  * @return the found model or nil
  */
--(JSONModel*)jm_modelWithIndexValue:(id)indexValue;
+- (id)modelWithIndexValue:(id)indexValue;
 
 @end

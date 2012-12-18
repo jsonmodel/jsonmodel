@@ -19,17 +19,8 @@
 
 @implementation NSArray(JSONModel)
 
--(JSONModel*)jm_modelWithIndexValue:(id)indexValue
+- (id)modelWithIndexValue:(id)indexValue
 {
-    if (self.count==0) return nil;
-    if (![self[0] indexPropertyName]) return nil;
-    
-    for (JSONModel* model in self) {
-        if ([[model valueForKey:model.indexPropertyName] isEqual:indexValue]) {
-            return model;
-        }
-    }
-    
     return nil;
 }
 
