@@ -48,6 +48,12 @@
 @protocol Index
 @end
 
+/**
+ * ConvertOnDemand enables lazy model initialization in NSArrays
+ */
+@protocol ConvertOnDemand
+@end
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModelClassProperty interface
 /** 
@@ -73,6 +79,9 @@
 
   /** If YES - create a mutable object for the value of the property */
   @property (assign, nonatomic) BOOL isMutable;
+
+  /** If YES - create models on demand for the array members */
+  @property (assign, nonatomic) BOOL doesConvertOnDemand;
 
 @end
 

@@ -16,6 +16,7 @@
 
 #import <objc/runtime.h>
 #import "JSONModel.h"
+#import "JSONModelArray.h"
 
 #pragma mark JSONModelClassProperty
 @implementation JSONModelClassProperty
@@ -399,6 +400,8 @@ static JSONValueTransformer* valueTransformer = nil;
                         p.isOptional = YES;
                     } else if([protocolName isEqualToString:@"Index"]) {
                         _indexPropertyName = p.name;
+                    } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
+                        p.doesConvertOnDemand = YES;
                     } else {
                         p.protocol = protocolName;
                     }
@@ -455,8 +458,18 @@ static JSONValueTransformer* valueTransformer = nil;
 
         //check if it's a list of models
         if ([p.type isSubclassOfClass:[NSArray class]]) {
-            value = [[protocolClass class] arrayOfModelsFromDictionaries: value];
+            
+            if (p.doesConvertOnDemand) {
+                //on demand conversion
+                value = [[JSONModelArray alloc] initWithArray:value modelClass:[protocolClass class]];
+                
+            } else {
+                //one shot conversion
+                value = [[protocolClass class] arrayOfModelsFromDictionaries: value];
+            }
         }
+        
+        //TODO: add on demand conversion dictionaries
         
         //check if it's a dictionary of models
         if ([p.type isSubclassOfClass:[NSDictionary class]]) {
