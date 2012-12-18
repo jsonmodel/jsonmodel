@@ -49,7 +49,9 @@
 @end
 
 /**
- * ConvertOnDemand enables lazy model initialization in NSArrays
+ * ConvertOnDemand enables lazy model initialization for NSArrays of models
+ *
+ * @property (strong, nonatomic) NSArray&lt;JSONModel, ConvertOnDemand&gt;* propertyName;
  */
 @protocol ConvertOnDemand
 @end
