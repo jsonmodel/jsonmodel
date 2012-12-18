@@ -101,6 +101,8 @@
 		9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB0166BBB05008B4326 /* MyDataModel.m */; };
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
+		9CFDF85F1680776300A3DF95 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDF85E1680776300A3DF95 /* JSONModelArray.m */; };
+		9CFDF8601680776300A3DF95 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDF85E1680776300A3DF95 /* JSONModelArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +243,9 @@
 		9CBBBFB2166BBB21008B4326 /* StorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageViewController.h; sourceTree = "<group>"; };
 		9CBBBFB3166BBB21008B4326 /* StorageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageViewController.m; sourceTree = "<group>"; };
 		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
+		9CFDF85D1680776300A3DF95 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONModelArray.h; path = JSONModelArray/JSONModelArray.h; sourceTree = "<group>"; };
+		9CFDF85E1680776300A3DF95 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONModelArray.m; path = JSONModelArray/JSONModelArray.m; sourceTree = "<group>"; };
+		9CFDF86116807DC500A3DF95 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,6 +457,7 @@
 		9CBBBF1D166B6D10008B4326 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
+				9CFDF85B1680773200A3DF95 /* JSONModelArray */,
 				9C732E2F167A5F8600FE7335 /* Categories */,
 				9C0D0242166EBF0B001EA645 /* JSONModel.h */,
 				9C0D0243166EBF0B001EA645 /* JSONModel.m */,
@@ -461,6 +467,7 @@
 				9C732DBE1679247D00FE7335 /* JSONModelError.m */,
 				9C843A97166EC2CF004946F9 /* JSONAPI */,
 				9C0D0246166EBF0B001EA645 /* JSONModelNetworking */,
+				9CFDF86116807DC500A3DF95 /* JSONModelLib.h */,
 			);
 			path = JSONModel;
 			sourceTree = "<group>";
@@ -698,6 +705,15 @@
 			name = StorageModel;
 			sourceTree = "<group>";
 		};
+		9CFDF85B1680773200A3DF95 /* JSONModelArray */ = {
+			isa = PBXGroup;
+			children = (
+				9CFDF85D1680776300A3DF95 /* JSONModelArray.h */,
+				9CFDF85E1680776300A3DF95 /* JSONModelArray.m */,
+			);
+			name = JSONModelArray;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -860,6 +876,7 @@
 				9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */,
 				9C732DBF1679247D00FE7335 /* JSONModelError.m in Sources */,
 				9C732E32167A5FAC00FE7335 /* NSArray+JSONModel.m in Sources */,
+				9CFDF85F1680776300A3DF95 /* JSONModelArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,6 +913,7 @@
 				9C3E3D00167F275600EDF679 /* JSONTypesModelWithValidation1.m in Sources */,
 				9C3E3D04167F279800EDF679 /* ValidationTestSuite.m in Sources */,
 				9C3E3D07167F29F500EDF679 /* JSONTypesModelWithValidation2.m in Sources */,
+				9CFDF8601680776300A3DF95 /* JSONModelArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
