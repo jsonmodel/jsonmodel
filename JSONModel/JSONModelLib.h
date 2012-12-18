@@ -19,5 +19,6 @@
 #import "JSONAPI.h"
 
 //models array
+#import "NSArray+JSONModel.h"
 #import "JSONModelArray.h"
 
