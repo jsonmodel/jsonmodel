@@ -37,6 +37,19 @@
 		9C7DF09216822C5800A31A62 /* GitHubRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF08816822A8000A31A62 /* GitHubRepoModel.m */; };
 		9C7DF0951682593200A31A62 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0941682593200A31A62 /* JSONKeyMapper.m */; };
 		9C7DF0961682593200A31A62 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0941682593200A31A62 /* JSONKeyMapper.m */; };
+		9C7DF09F16827B3500A31A62 /* KeyMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF09E16827B3500A31A62 /* KeyMappingTests.m */; };
+		9C7DF0A216827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */; };
+		9C7DF0A316827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */; };
+		9C7DF0A416827DFB00A31A62 /* ValidationTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E3D03167F279800EDF679 /* ValidationTestSuite.m */; };
+		9C7DF0A516827DFF00A31A62 /* SimpleDataErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732DFF167A293D00FE7335 /* SimpleDataErrorTests.m */; };
+		9C7DF0A616827E0300A31A62 /* IdPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E20167A577C00FE7335 /* IdPropertyTests.m */; };
+		9C7DF0A716827E0800A31A62 /* PrimitiveTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF30166B6E58008B4326 /* PrimitiveTypesReadTests.m */; };
+		9C7DF0A816827E0A00A31A62 /* JSONTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF3B166B74C0008B4326 /* JSONTypesReadTests.m */; };
+		9C7DF0A916827E0E00A31A62 /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF45166B7F02008B4326 /* BuiltInConversionsTests.m */; };
+		9C7DF0AA16827E0E00A31A62 /* OptionalPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF52166B885B008B4326 /* OptionalPropertiesTests.m */; };
+		9C7DF0AB16827E0E00A31A62 /* CustomPropsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF63166B9C57008B4326 /* CustomPropsTests.m */; };
+		9C7DF0AC16827E0E00A31A62 /* NestedModelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF71166BA16B008B4326 /* NestedModelsTests.m */; };
+		9C7DF0AD16827E1200A31A62 /* PersistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C09B93E167DFC050032555D /* PersistTests.m */; };
 		9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
@@ -156,6 +169,10 @@
 		9C7DF08E16822C4700A31A62 /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReposModel.m; path = TestModels/ReposModel.m; sourceTree = "<group>"; };
 		9C7DF0931682593200A31A62 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
 		9C7DF0941682593200A31A62 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		9C7DF09D16827B3500A31A62 /* KeyMappingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyMappingTests.h; sourceTree = "<group>"; };
+		9C7DF09E16827B3500A31A62 /* KeyMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyMappingTests.m; sourceTree = "<group>"; };
+		9C7DF0A016827BE400A31A62 /* GitHubKeyMapRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubKeyMapRepoModel.h; path = TestModels/GitHubKeyMapRepoModel.h; sourceTree = "<group>"; };
+		9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubKeyMapRepoModel.m; path = TestModels/GitHubKeyMapRepoModel.m; sourceTree = "<group>"; };
 		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
 		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,8 +402,19 @@
 				9C7DF08816822A8000A31A62 /* GitHubRepoModel.m */,
 				9C7DF08D16822C4700A31A62 /* ReposModel.h */,
 				9C7DF08E16822C4700A31A62 /* ReposModel.m */,
+				9C7DF0A016827BE400A31A62 /* GitHubKeyMapRepoModel.h */,
+				9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */,
 			);
 			name = GitHub;
+			sourceTree = "<group>";
+		};
+		9C7DF09C16827B1B00A31A62 /* KeyMappingTestSuite */ = {
+			isa = PBXGroup;
+			children = (
+				9C7DF09D16827B3500A31A62 /* KeyMappingTests.h */,
+				9C7DF09E16827B3500A31A62 /* KeyMappingTests.m */,
+			);
+			name = KeyMappingTestSuite;
 			sourceTree = "<group>";
 		};
 		9C843A97166EC2CF004946F9 /* JSONAPI */ = {
@@ -461,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBBBF2A166B6DDE008B4326 /* Models */,
+				9C7DF09C16827B1B00A31A62 /* KeyMappingTestSuite */,
 				9C7DF081168226C700A31A62 /* JSONModelArrayTestSuite */,
 				9C3E3D01167F278100EDF679 /* ValidationTests */,
 				9C732DFD167A28CA00FE7335 /* ErrorHandlingTestSuite */,
@@ -919,6 +948,7 @@
 				9C732E32167A5FAC00FE7335 /* NSArray+JSONModel.m in Sources */,
 				9CFDF85F1680776300A3DF95 /* JSONModelArray.m in Sources */,
 				9C7DF0951682593200A31A62 /* JSONKeyMapper.m in Sources */,
+				9C7DF0A216827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +980,18 @@
 				9C7DF09116822C5500A31A62 /* ReposModel.m in Sources */,
 				9C7DF09216822C5800A31A62 /* GitHubRepoModel.m in Sources */,
 				9C7DF0961682593200A31A62 /* JSONKeyMapper.m in Sources */,
+				9C7DF09F16827B3500A31A62 /* KeyMappingTests.m in Sources */,
+				9C7DF0A316827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */,
+				9C7DF0A416827DFB00A31A62 /* ValidationTestSuite.m in Sources */,
+				9C7DF0A516827DFF00A31A62 /* SimpleDataErrorTests.m in Sources */,
+				9C7DF0A616827E0300A31A62 /* IdPropertyTests.m in Sources */,
+				9C7DF0A716827E0800A31A62 /* PrimitiveTypesReadTests.m in Sources */,
+				9C7DF0A816827E0A00A31A62 /* JSONTypesReadTests.m in Sources */,
+				9C7DF0A916827E0E00A31A62 /* BuiltInConversionsTests.m in Sources */,
+				9C7DF0AA16827E0E00A31A62 /* OptionalPropertiesTests.m in Sources */,
+				9C7DF0AB16827E0E00A31A62 /* CustomPropsTests.m in Sources */,
+				9C7DF0AC16827E0E00A31A62 /* NestedModelsTests.m in Sources */,
+				9C7DF0AD16827E1200A31A62 /* PersistTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
