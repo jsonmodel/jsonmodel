@@ -34,9 +34,8 @@
 
 -(void)testLoading
 {
-    NSLog(@"%@", repos.repositories[0]);
     NSAssert([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
-
+    NSAssert([repos.repositories[0] isMemberOfClass:[GitHubRepoModel class]], @".properties[0] is not a GitHubRepoModel");
 }
 
 @end
