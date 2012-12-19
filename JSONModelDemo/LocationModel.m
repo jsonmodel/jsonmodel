@@ -7,7 +7,13 @@
 //
 
 #import "LocationModel.h"
+#import "JSONKeyMapper.h"
 
 @implementation LocationModel
+
++(JSONKeyMapper*)keyMapper
+{
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
 
 @end
