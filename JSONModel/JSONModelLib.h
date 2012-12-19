@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+//JSONModel transformations
+#import "JSONValueTransformer.h"
+#import "JSONKeyMapper.h"
+
 //basic JSONModel classes
 #import "JSONModelError.h"
-#import "JSONValueTransformer.h"
 #import "JSONModel.h"
 
 //network classes
