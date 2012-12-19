@@ -33,7 +33,7 @@ static NSMutableDictionary* _toJSONMap  = nil;
 }
 
 -(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
-                       ModelToJSONBlock:(JSONModelKeyMapBlock)toJSON
+                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON
 {
     self = [self init];
     
@@ -127,7 +127,7 @@ static NSMutableDictionary* _toJSONMap  = nil;
     };
 
     return [[self alloc] initWithJSONToModelBlock:toModel
-                                 ModelToJSONBlock:toJSON];
+                                 modelToJSONBlock:toJSON];
     
 }
 

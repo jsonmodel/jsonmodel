@@ -24,7 +24,7 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 @property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock;
 
 -(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
-                       ModelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
+                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
 
 -(instancetype)initWithDictionary:(NSDictionary*)map;
 
