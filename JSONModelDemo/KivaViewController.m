@@ -80,6 +80,7 @@
     NSLog(@"-------------------------");
     NSLog(@"json -> object: %.4f", benchObj-benchStart);
     NSLog(@"obj -> model: %.4f", benchEnd - benchObj);
+    
 }
 
 #pragma mark - table methods
@@ -102,9 +103,9 @@
     }
 
     LoanModel* loan = feed.loans[indexPath.row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ from %@",
-                           loan.name, loan.location.country
+
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ from %@ (%@)",
+                           loan.name, loan.location.country, loan.location.countryCode
                            ];
     
     return cell;
@@ -116,8 +117,8 @@
     
     LoanModel* loan = feed.loans[indexPath.row];
     
-    NSString* message = [NSString stringWithFormat:@"%@ from %@ needs a loan %@",
-                           loan.name, loan.location.country, loan.use
+    NSString* message = [NSString stringWithFormat:@"%@ from %@(%@) needs a loan %@",
+                           loan.name, loan.location.country, loan.location.countryCode, loan.use
                            ];
     
 
