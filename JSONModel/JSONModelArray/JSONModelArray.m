@@ -71,4 +71,16 @@
     return nil;
 }
 
+#pragma mark - description
+-(NSString*)description
+{
+    NSMutableString* res = [NSMutableString stringWithFormat:@"<JSONModelArray[%@]>\n", [_targetClass description]];
+    for (id m in self) {
+        [res appendString: [m description]];
+        [res appendString: @",\n"];
+    }
+    [res appendFormat:@"\n</JSONModelArray>"];
+    return res;
+}
+
 @end
