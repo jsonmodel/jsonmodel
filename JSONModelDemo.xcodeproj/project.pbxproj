@@ -35,6 +35,8 @@
 		9C7DF08C16822B0B00A31A62 /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C7DF08A16822B0B00A31A62 /* github-iphone.json */; };
 		9C7DF09116822C5500A31A62 /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF08E16822C4700A31A62 /* ReposModel.m */; };
 		9C7DF09216822C5800A31A62 /* GitHubRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF08816822A8000A31A62 /* GitHubRepoModel.m */; };
+		9C7DF0951682593200A31A62 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0941682593200A31A62 /* JSONKeyMapper.m */; };
+		9C7DF0961682593200A31A62 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0941682593200A31A62 /* JSONKeyMapper.m */; };
 		9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
@@ -152,6 +154,8 @@
 		9C7DF08A16822B0B00A31A62 /* github-iphone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "github-iphone.json"; path = "DataFiles/github-iphone.json"; sourceTree = "<group>"; };
 		9C7DF08D16822C4700A31A62 /* ReposModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReposModel.h; path = TestModels/ReposModel.h; sourceTree = "<group>"; };
 		9C7DF08E16822C4700A31A62 /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReposModel.m; path = TestModels/ReposModel.m; sourceTree = "<group>"; };
+		9C7DF0931682593200A31A62 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		9C7DF0941682593200A31A62 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
 		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -739,10 +743,12 @@
 			children = (
 				9C0D0242166EBF0B001EA645 /* JSONModel.h */,
 				9C0D0243166EBF0B001EA645 /* JSONModel.m */,
-				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
-				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
 				9C732DBD1679247D00FE7335 /* JSONModelError.h */,
 				9C732DBE1679247D00FE7335 /* JSONModelError.m */,
+				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
+				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
+				9C7DF0931682593200A31A62 /* JSONKeyMapper.h */,
+				9C7DF0941682593200A31A62 /* JSONKeyMapper.m */,
 			);
 			name = JSONModel;
 			sourceTree = "<group>";
@@ -912,6 +918,7 @@
 				9C732DBF1679247D00FE7335 /* JSONModelError.m in Sources */,
 				9C732E32167A5FAC00FE7335 /* NSArray+JSONModel.m in Sources */,
 				9CFDF85F1680776300A3DF95 /* JSONModelArray.m in Sources */,
+				9C7DF0951682593200A31A62 /* JSONKeyMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +949,7 @@
 				9C7DF0851682270F00A31A62 /* ArrayTests.m in Sources */,
 				9C7DF09116822C5500A31A62 /* ReposModel.m in Sources */,
 				9C7DF09216822C5800A31A62 /* GitHubRepoModel.m in Sources */,
+				9C7DF0961682593200A31A62 /* JSONKeyMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
