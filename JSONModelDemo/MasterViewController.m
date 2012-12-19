@@ -25,13 +25,8 @@
 @implementation MasterViewController
 
 -(void)viewDidAppear:(BOOL)animated
-{
-    NSString* weird_name = @"my_image_id";
-    NSLog(@"non-camel: %@", weird_name);
-    NSString* camelCase = [weird_name capitalizedString];
-    camelCase = [camelCase stringByReplacingOccurrencesOfString:@"_" withString:@""];
-    camelCase = [camelCase stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[camelCase substringToIndex:1] lowercaseString] ];
-    NSLog(@"camel: %@", camelCase);
+{    
+    //[self tableView: self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
