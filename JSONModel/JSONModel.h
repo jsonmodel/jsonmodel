@@ -17,6 +17,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONModelError.h"
 #import "JSONValueTransformer.h"
+#import "JSONKeyMapper.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #if TARGET_IPHONE_SIMULATOR
@@ -221,5 +222,9 @@
    * @return an NSError instance. You can use the convenience method [JSONModelError errorModelIsInvalid] to get an NSError instance.
    */
   -(NSError*)validate;
+
+/** @name model keys mapping */
+
+  +(JSONKeyMapper*)keyMapper;
 
 @end

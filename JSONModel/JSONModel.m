@@ -30,10 +30,12 @@ static NSMutableDictionary* classProperties = nil;
 static NSMutableDictionary* classRequiredPropertyNames = nil;
 
 static JSONValueTransformer* valueTransformer = nil;
+static NSMutableDictionary* keyMappers = nil;
 
 #pragma mark - JSONModel private interface
 @interface JSONModel()
 @property (strong, nonatomic, readonly) NSString* className;
+@property (strong, nonatomic) JSONKeyMapper* keyMapper;
 @end
 
 #pragma mark - JSONModel implementation
@@ -59,6 +61,7 @@ static JSONValueTransformer* valueTransformer = nil;
         classProperties = [NSMutableDictionary dictionary];
         classRequiredPropertyNames = [NSMutableDictionary dictionary];
         valueTransformer = [[JSONValueTransformer alloc] init];
+        keyMappers = [NSMutableDictionary dictionary];
     });
 }
 
@@ -66,7 +69,21 @@ static JSONValueTransformer* valueTransformer = nil;
 {
     //minimum setup for the instance
     _className = NSStringFromClass([self class]);
-    [self _restrospectProperties];
+
+    //if first instnce of this model, generate the property list
+    if (!classProperties[_className]) {
+        [self _restrospectProperties];
+    }
+
+    //if first instnce of this model, generate the property mapper
+    if (!keyMappers[_className]) {
+        
+        id mapper = [[self class] keyMapper];
+        if (mapper) {
+            keyMappers[_className] = mapper;
+        }
+    }
+
 }
 
 -(id)init
@@ -134,8 +151,9 @@ static JSONValueTransformer* valueTransformer = nil;
     NSArray* incomingKeysArray = [d allKeys];
     NSMutableSet* requiredProperties = [self _requiredPropertyNames];
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
-    
-    if (![requiredProperties isSubsetOfSet:incomingKeys]) {
+   
+    //TODO: add mapper stuff here
+    if (NO && ![requiredProperties isSubsetOfSet:incomingKeys]) {
 
         //get a list of the missing properties
         [requiredProperties minusSet:incomingKeys];
@@ -152,17 +170,16 @@ static JSONValueTransformer* valueTransformer = nil;
     incomingKeys= nil;
     requiredProperties= nil;
     
+    //get the key mapper
+    JSONKeyMapper* keyMapper = keyMappers[_className];
+    
     //loop over the incoming keys and set self's properties
-    for (NSString* key in incomingKeysArray) {
+    for (__strong NSString* key in incomingKeysArray) {
         
         //NSLog(@"key: %@", key);
         
         //general check for data type compliance
         id jsonValue = d[key];
-        //NSString* jsonClassName = NSStringFromClass([jsonValue class]);
-        
-        //check if it's allowed JSON type
-        //TODO: redundant?
         
         Class jsonValueClass = [jsonValue class];
         BOOL isValueOfAllowedType = NO;
@@ -182,6 +199,9 @@ static JSONValueTransformer* valueTransformer = nil;
             }
             return nil;
         }
+        
+        //convert key name ot model keys, if a mapper is provided
+        if (keyMapper) key = keyMapper.JSONToModelKeyBlock(key);
         
         //check if there's matching property in the model
         JSONModelClassProperty* property = classProperties[self.className][key];
@@ -340,6 +360,8 @@ static JSONValueTransformer* valueTransformer = nil;
 //retrospects the class, get's a list of the class properties
 -(void)_restrospectProperties
 {
+    JMLog(@"Retrospect class: %@", [self class]);
+    
     NSMutableDictionary* propertyIndex = [NSMutableDictionary dictionary];
     
     //temp variables for the loops
@@ -541,17 +563,24 @@ static JSONValueTransformer* valueTransformer = nil;
     NSMutableDictionary* tempDictionary = [NSMutableDictionary dictionaryWithCapacity:properties.count];
 
     id value;
+
+    //get the key mapper
+    JSONKeyMapper* keyMapper = keyMappers[_className];
     
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
         
         value = [self valueForKey: p.name];
+        NSString* keyName = p.name;
 
+        //convert the key name, if a key mapper exists
+        if (keyMapper) keyName = keyMapper.modelToJSONKeyBlock(keyName);
+        
         //export nil values as JSON null, so that the structure of the exported data
         //is still valid if it's to be imported as a model again
         if (isNull(value)) {
             
-            [tempDictionary setValue:[NSNull null] forKey:p.name];
+            [tempDictionary setValue:[NSNull null] forKey:keyName];
             continue;
         }
         
@@ -560,7 +589,7 @@ static JSONValueTransformer* valueTransformer = nil;
 
             //recurse models
             value = [(JSONModel*)value toDictionary];
-            [tempDictionary setValue:value forKey: p.name];
+            [tempDictionary setValue:value forKey: keyName];
             
             //for clarity
             continue;
@@ -574,7 +603,7 @@ static JSONValueTransformer* valueTransformer = nil;
             
             // 2) check for standard types OR 2.1) primitives
             if (p.isStandardJSONType || p.type==nil) {
-                [tempDictionary setValue:value forKey: p.name];
+                [tempDictionary setValue:value forKey: keyName];
                 continue;
             }
             
@@ -594,7 +623,7 @@ static JSONValueTransformer* valueTransformer = nil;
                     value = [valueTransformer performSelector:selector withObject:value];
 #pragma clang diagnostic pop
                     
-                    [tempDictionary setValue:value forKey: p.name];
+                    [tempDictionary setValue:value forKey: keyName];
                     
                 } else {
 
@@ -746,6 +775,12 @@ static JSONValueTransformer* valueTransformer = nil;
     
     [text appendFormat:@"</%@>", NSStringFromClass([self class])];
     return text;
+}
+
+#pragma mark - key mapping
++(JSONKeyMapper*)keyMapper
+{
+    return nil;
 }
 
 @end
