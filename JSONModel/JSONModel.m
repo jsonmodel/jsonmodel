@@ -451,7 +451,17 @@ static JSONValueTransformer* valueTransformer = nil;
 -(id)_transform:(id)value forProperty:(JSONModelClassProperty*)p
 {
     Class protocolClass = NSClassFromString(p.protocol);
-    if (!protocolClass) return value;
+    if (!protocolClass) {
+
+        //no other protocols on arrays and dictionaries
+        //except JSONModel classes
+        if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) {
+            @throw [NSException exceptionWithName:@"Bad property protocol declaration"
+                                           reason:[NSString stringWithFormat:@"<%@> is not allowed JSONModel property protocol, and not a JSONModel class.", p.protocol]
+                                         userInfo:nil];
+        }
+        return value;
+    }
     
     //if the protocol is actually a JSONModel class
     if ([[protocolClass class] isSubclassOfClass:[JSONModel class]]) {
@@ -696,8 +706,8 @@ static JSONValueTransformer* valueTransformer = nil;
     return kNilOptions;
 }
 
-- (NSUInteger)hash {
-    
+- (NSUInteger)hash
+{
     if (self.indexPropertyName) {
         return [self.indexPropertyName hash];
     }
@@ -715,21 +725,26 @@ static JSONValueTransformer* valueTransformer = nil;
 //custom description method for debugging purposes
 -(NSString*)description
 {
-    NSMutableString* text = [NSMutableString stringWithFormat:@"\n[%@] \n", NSStringFromClass([self class])];
+    NSMutableString* text = [NSMutableString stringWithFormat:@"<%@> \n", NSStringFromClass([self class])];
     NSArray* properties = [self _properties];
 
     for (int i=0;i<properties.count;i++) {
         
-        NSString* key = [(JSONModelClassProperty*)properties[i] name];
-        id value = [self valueForKey:key];
+        JSONModelClassProperty* p = (JSONModelClassProperty*)properties[i];
+
+        id value = [self valueForKey:p.name];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
-        if ([valueDescription length]>60) valueDescription = [NSString stringWithFormat:@"%@...", [valueDescription substringToIndex:59]];
+        if (p.isStandardJSONType && [valueDescription length]>60 && !p.doesConvertOnDemand) {
+
+            //cap description for longer values
+            valueDescription = [NSString stringWithFormat:@"%@...", [valueDescription substringToIndex:59]];
+        }
         valueDescription = [valueDescription stringByReplacingOccurrencesOfString:@"\n" withString:@"\n   "];
-        [text appendFormat:@"   [%@]: %@\n", key, valueDescription];
+        [text appendFormat:@"   [%@]: %@\n", p.name, valueDescription];
     }
     
-    [text appendFormat:@"[/%@]", NSStringFromClass([self class])];
+    [text appendFormat:@"</%@>", NSStringFromClass([self class])];
     return text;
 }
 
