@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C09B905167DF5640032555D /* NestedModelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF71166BA16B008B4326 /* NestedModelsTests.m */; };
-		9C09B906167DF5660032555D /* CustomPropsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF63166B9C57008B4326 /* CustomPropsTests.m */; };
-		9C09B907167DF56A0032555D /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF45166B7F02008B4326 /* BuiltInConversionsTests.m */; };
-		9C09B908167DF56C0032555D /* JSONTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF3B166B74C0008B4326 /* JSONTypesReadTests.m */; };
-		9C09B909167DF56E0032555D /* PrimitiveTypesReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF30166B6E58008B4326 /* PrimitiveTypesReadTests.m */; };
-		9C09B93F167DFC050032555D /* PersistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C09B93E167DFC050032555D /* PersistTests.m */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
 		9C0D024D166EBF0B001EA645 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0243166EBF0B001EA645 /* JSONModel.m */; };
@@ -24,21 +18,23 @@
 		9C0D0259166EBF7E001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0258166EBF7E001EA645 /* JSONModel+networking.m */; };
 		9C0D025A166EBF7E001EA645 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D0258166EBF7E001EA645 /* JSONModel+networking.m */; };
 		9C3E3D00167F275600EDF679 /* JSONTypesModelWithValidation1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E3CFF167F275600EDF679 /* JSONTypesModelWithValidation1.m */; };
-		9C3E3D04167F279800EDF679 /* ValidationTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E3D03167F279800EDF679 /* ValidationTestSuite.m */; };
 		9C3E3D07167F29F500EDF679 /* JSONTypesModelWithValidation2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E3D06167F29F500EDF679 /* JSONTypesModelWithValidation2.m */; };
 		9C732DBF1679247D00FE7335 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732DBE1679247D00FE7335 /* JSONModelError.m */; };
-		9C732E00167A293D00FE7335 /* SimpleDataErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732DFF167A293D00FE7335 /* SimpleDataErrorTests.m */; };
 		9C732E07167A2BE500FE7335 /* primitivesWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E06167A2BE500FE7335 /* primitivesWithErrors.json */; };
 		9C732E08167A2BE500FE7335 /* primitivesWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E06167A2BE500FE7335 /* primitivesWithErrors.json */; };
 		9C732E0A167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E09167A2EB600FE7335 /* nestedDataWithErrors.json */; };
 		9C732E0B167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E09167A2EB600FE7335 /* nestedDataWithErrors.json */; };
-		9C732E22167A577C00FE7335 /* IdPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E20167A577C00FE7335 /* IdPropertyTests.m */; };
 		9C732E25167A57F100FE7335 /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E24167A57F100FE7335 /* post.json */; };
 		9C732E29167A585A00FE7335 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E27167A585A00FE7335 /* PostModel.m */; };
 		9C732E2A167A586100FE7335 /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C732E24167A57F100FE7335 /* post.json */; };
 		9C732E2E167A58A400FE7335 /* PostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E2C167A58A400FE7335 /* PostsModel.m */; };
 		9C732E32167A5FAC00FE7335 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E31167A5FAC00FE7335 /* NSArray+JSONModel.m */; };
 		9C732E33167A5FAC00FE7335 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C732E31167A5FAC00FE7335 /* NSArray+JSONModel.m */; };
+		9C7DF0851682270F00A31A62 /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF0841682270F00A31A62 /* ArrayTests.m */; };
+		9C7DF08B16822B0B00A31A62 /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C7DF08A16822B0B00A31A62 /* github-iphone.json */; };
+		9C7DF08C16822B0B00A31A62 /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C7DF08A16822B0B00A31A62 /* github-iphone.json */; };
+		9C7DF09116822C5500A31A62 /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF08E16822C4700A31A62 /* ReposModel.m */; };
+		9C7DF09216822C5800A31A62 /* GitHubRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF08816822A8000A31A62 /* GitHubRepoModel.m */; };
 		9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
@@ -70,7 +66,6 @@
 		9CBBBF4C166B87D8008B4326 /* withoutOptProp.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF4B166B87D8008B4326 /* withoutOptProp.json */; };
 		9CBBBF4D166B87D8008B4326 /* withoutOptProp.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF4B166B87D8008B4326 /* withoutOptProp.json */; };
 		9CBBBF50166B87EC008B4326 /* OptionalPropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF4F166B87EC008B4326 /* OptionalPropModel.m */; };
-		9CBBBF53166B885C008B4326 /* OptionalPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF52166B885B008B4326 /* OptionalPropertiesTests.m */; };
 		9CBBBF58166B89B2008B4326 /* NestedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF57166B89B2008B4326 /* NestedModel.m */; };
 		9CBBBF5B166B89C6008B4326 /* CustomPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF5A166B89C6008B4326 /* CustomPropertyModel.m */; };
 		9CBBBF5E166B9B2D008B4326 /* JSONValueTransformer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF5D166B9B2D008B4326 /* JSONValueTransformer+UIColor.m */; };
@@ -150,6 +145,13 @@
 		9C732E2C167A58A400FE7335 /* PostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostsModel.m; path = TestModels/PostsModel.m; sourceTree = "<group>"; };
 		9C732E30167A5FAC00FE7335 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+JSONModel.h"; path = "Categories/NSArray+JSONModel.h"; sourceTree = "<group>"; };
 		9C732E31167A5FAC00FE7335 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+JSONModel.m"; path = "Categories/NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		9C7DF0831682270F00A31A62 /* ArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayTests.h; sourceTree = "<group>"; };
+		9C7DF0841682270F00A31A62 /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayTests.m; sourceTree = "<group>"; };
+		9C7DF08716822A8000A31A62 /* GitHubRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubRepoModel.h; path = TestModels/GitHubRepoModel.h; sourceTree = "<group>"; };
+		9C7DF08816822A8000A31A62 /* GitHubRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubRepoModel.m; path = TestModels/GitHubRepoModel.m; sourceTree = "<group>"; };
+		9C7DF08A16822B0B00A31A62 /* github-iphone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "github-iphone.json"; path = "DataFiles/github-iphone.json"; sourceTree = "<group>"; };
+		9C7DF08D16822C4700A31A62 /* ReposModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReposModel.h; path = TestModels/ReposModel.h; sourceTree = "<group>"; };
+		9C7DF08E16822C4700A31A62 /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReposModel.m; path = TestModels/ReposModel.m; sourceTree = "<group>"; };
 		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
 		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,6 +364,27 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		9C7DF081168226C700A31A62 /* JSONModelArrayTestSuite */ = {
+			isa = PBXGroup;
+			children = (
+				9C7DF0831682270F00A31A62 /* ArrayTests.h */,
+				9C7DF0841682270F00A31A62 /* ArrayTests.m */,
+			);
+			name = JSONModelArrayTestSuite;
+			sourceTree = "<group>";
+		};
+		9C7DF08616822A6000A31A62 /* GitHub */ = {
+			isa = PBXGroup;
+			children = (
+				9C7DF08A16822B0B00A31A62 /* github-iphone.json */,
+				9C7DF08716822A8000A31A62 /* GitHubRepoModel.h */,
+				9C7DF08816822A8000A31A62 /* GitHubRepoModel.m */,
+				9C7DF08D16822C4700A31A62 /* ReposModel.h */,
+				9C7DF08E16822C4700A31A62 /* ReposModel.m */,
+			);
+			name = GitHub;
+			sourceTree = "<group>";
+		};
 		9C843A97166EC2CF004946F9 /* JSONAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBBBF2A166B6DDE008B4326 /* Models */,
+				9C7DF081168226C700A31A62 /* JSONModelArrayTestSuite */,
 				9C3E3D01167F278100EDF679 /* ValidationTests */,
 				9C732DFD167A28CA00FE7335 /* ErrorHandlingTestSuite */,
 				9C732E14167A56D100FE7335 /* IdTestSuite */,
@@ -488,6 +512,7 @@
 		9CBBBF2A166B6DDE008B4326 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C7DF08616822A6000A31A62 /* GitHub */,
 				9C3E3CFC167F272900EDF679 /* CustomValidation */,
 				9C732E23167A57B400FE7335 /* IndexModel */,
 				9CBBBF55166B897B008B4326 /* CustomTransformers */,
@@ -815,6 +840,7 @@
 				9C732E07167A2BE500FE7335 /* primitivesWithErrors.json in Resources */,
 				9C732E0A167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */,
 				9C732E25167A57F100FE7335 /* post.json in Resources */,
+				9C7DF08B16822B0B00A31A62 /* github-iphone.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +859,7 @@
 				9C732E08167A2BE500FE7335 /* primitivesWithErrors.json in Resources */,
 				9C732E0B167A2EB600FE7335 /* nestedDataWithErrors.json in Resources */,
 				9C732E2A167A586100FE7335 /* post.json in Resources */,
+				9C7DF08C16822B0B00A31A62 /* github-iphone.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,7 +923,6 @@
 				9CBBBF36166B73D3008B4326 /* JSONTypesModel.m in Sources */,
 				9CBBBF40166B7E2F008B4326 /* BuiltInConversionsModel.m in Sources */,
 				9CBBBF50166B87EC008B4326 /* OptionalPropModel.m in Sources */,
-				9CBBBF53166B885C008B4326 /* OptionalPropertiesTests.m in Sources */,
 				9CBBBF58166B89B2008B4326 /* NestedModel.m in Sources */,
 				9CBBBF5B166B89C6008B4326 /* CustomPropertyModel.m in Sources */,
 				9CBBBF5E166B9B2D008B4326 /* JSONValueTransformer+UIColor.m in Sources */,
@@ -907,21 +933,15 @@
 				9C0D0256166EBF0B001EA645 /* JSONValueTransformer.m in Sources */,
 				9C0D025A166EBF7E001EA645 /* JSONModel+networking.m in Sources */,
 				9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */,
-				9C732E00167A293D00FE7335 /* SimpleDataErrorTests.m in Sources */,
-				9C732E22167A577C00FE7335 /* IdPropertyTests.m in Sources */,
 				9C732E29167A585A00FE7335 /* PostModel.m in Sources */,
 				9C732E2E167A58A400FE7335 /* PostsModel.m in Sources */,
 				9C732E33167A5FAC00FE7335 /* NSArray+JSONModel.m in Sources */,
-				9C09B905167DF5640032555D /* NestedModelsTests.m in Sources */,
-				9C09B906167DF5660032555D /* CustomPropsTests.m in Sources */,
-				9C09B907167DF56A0032555D /* BuiltInConversionsTests.m in Sources */,
-				9C09B908167DF56C0032555D /* JSONTypesReadTests.m in Sources */,
-				9C09B909167DF56E0032555D /* PrimitiveTypesReadTests.m in Sources */,
-				9C09B93F167DFC050032555D /* PersistTests.m in Sources */,
 				9C3E3D00167F275600EDF679 /* JSONTypesModelWithValidation1.m in Sources */,
-				9C3E3D04167F279800EDF679 /* ValidationTestSuite.m in Sources */,
 				9C3E3D07167F29F500EDF679 /* JSONTypesModelWithValidation2.m in Sources */,
 				9CFDF8601680776300A3DF95 /* JSONModelArray.m in Sources */,
+				9C7DF0851682270F00A31A62 /* ArrayTests.m in Sources */,
+				9C7DF09116822C5500A31A62 /* ReposModel.m in Sources */,
+				9C7DF09216822C5800A31A62 /* GitHubRepoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
