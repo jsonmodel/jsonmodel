@@ -28,6 +28,7 @@ static NSArray* allowedPrimitiveTypes = nil;
 
 static NSMutableDictionary* classProperties = nil;
 static NSMutableDictionary* classRequiredPropertyNames = nil;
+static NSMutableDictionary* classIndexes = nil;
 
 static JSONValueTransformer* valueTransformer = nil;
 static NSMutableDictionary* keyMappers = nil;
@@ -60,6 +61,7 @@ static NSMutableDictionary* keyMappers = nil;
         
         classProperties = [NSMutableDictionary dictionary];
         classRequiredPropertyNames = [NSMutableDictionary dictionary];
+        classIndexes = [NSMutableDictionary dictionary];
         valueTransformer = [[JSONValueTransformer alloc] init];
         keyMappers = [NSMutableDictionary dictionary];
     });
@@ -75,6 +77,9 @@ static NSMutableDictionary* keyMappers = nil;
         [self _restrospectProperties];
     }
 
+    //load the class index name
+    _indexPropertyName = classIndexes[_className];
+    
     //if first instnce of this model, generate the property mapper
     if (!keyMappers[_className]) {
         
@@ -421,7 +426,7 @@ static NSMutableDictionary* keyMappers = nil;
                     if ([protocolName isEqualToString:@"Optional"]) {
                         p.isOptional = YES;
                     } else if([protocolName isEqualToString:@"Index"]) {
-                        _indexPropertyName = p.name;
+                        classIndexes[_className] = p.name;
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.doesConvertOnDemand = YES;
                     } else {
