@@ -9,6 +9,7 @@
 #import "KeyMappingTests.h"
 #import "JSONModelLib.h"
 #import "GitHubKeyMapRepoModel.h"
+#import "GitHubKeyMapRepoModelDict.h"
 
 @implementation KeyMappingTests
 {
@@ -38,6 +39,15 @@
 {
     NSDictionary* repo1 = json[0];
     GitHubKeyMapRepoModel* model1 = [[GitHubKeyMapRepoModel alloc] initWithDictionary:repo1 error:nil];
+    NSAssert(model1, @"Could not initialize model");
+    NSAssert(model1.__description, @"__description is nil");
+    NSAssert([model1.__description isEqualToString:repo1[@"description"]], @"__description was not mapped properly");
+}
+
+-(void)testKeyMappingWithDict
+{
+    NSDictionary* repo1 = json[0];
+    GitHubKeyMapRepoModelDict* model1 = [[GitHubKeyMapRepoModelDict alloc] initWithDictionary:repo1 error:nil];
     NSAssert(model1, @"Could not initialize model");
     NSAssert(model1.__description, @"__description is nil");
     NSAssert([model1.__description isEqualToString:repo1[@"description"]], @"__description was not mapped properly");

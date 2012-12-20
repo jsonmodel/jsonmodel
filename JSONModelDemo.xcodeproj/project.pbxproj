@@ -111,6 +111,7 @@
 		9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB0166BBB05008B4326 /* MyDataModel.m */; };
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
+		9CC3B30F1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3B30E1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m */; };
 		9CFDF85F1680776300A3DF95 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDF85E1680776300A3DF95 /* JSONModelArray.m */; };
 		9CFDF8601680776300A3DF95 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDF85E1680776300A3DF95 /* JSONModelArray.m */; };
 /* End PBXBuildFile section */
@@ -266,6 +267,8 @@
 		9CBBBFB2166BBB21008B4326 /* StorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageViewController.h; sourceTree = "<group>"; };
 		9CBBBFB3166BBB21008B4326 /* StorageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageViewController.m; sourceTree = "<group>"; };
 		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
+		9CC3B30D1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubKeyMapRepoModelDict.h; path = TestModels/GitHubKeyMapRepoModelDict.h; sourceTree = "<group>"; };
+		9CC3B30E1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubKeyMapRepoModelDict.m; path = TestModels/GitHubKeyMapRepoModelDict.m; sourceTree = "<group>"; };
 		9CFDF85D1680776300A3DF95 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONModelArray.h; path = JSONModelArray/JSONModelArray.h; sourceTree = "<group>"; };
 		9CFDF85E1680776300A3DF95 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONModelArray.m; path = JSONModelArray/JSONModelArray.m; sourceTree = "<group>"; };
 		9CFDF86116807DC500A3DF95 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				9C7DF08E16822C4700A31A62 /* ReposModel.m */,
 				9C7DF0A016827BE400A31A62 /* GitHubKeyMapRepoModel.h */,
 				9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */,
+				9CC3B30D1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.h */,
+				9CC3B30E1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m */,
 			);
 			name = GitHub;
 			sourceTree = "<group>";
@@ -949,6 +954,7 @@
 				9CFDF85F1680776300A3DF95 /* JSONModelArray.m in Sources */,
 				9C7DF0951682593200A31A62 /* JSONKeyMapper.m in Sources */,
 				9C7DF0A216827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */,
+				9CC3B30F1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
