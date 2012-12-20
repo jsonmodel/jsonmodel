@@ -223,8 +223,11 @@
    */
   -(NSError*)validate;
 
-/** @name model keys mapping */
-
+/** @name Key mapping */
+  /**
+   * Overwrite in your models if your property names don't match your JSON key names.
+   * Lookup JSONKeyMapper docs for more details.
+   */
   +(JSONKeyMapper*)keyMapper;
 
 @end

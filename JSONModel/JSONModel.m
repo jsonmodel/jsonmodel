@@ -227,9 +227,6 @@ static NSMutableDictionary* keyMappers = nil;
         
         if (property) {
             
-            //get the property class
-            //Class propertyClass = NSClassFromString(property.type);
-            
             // 0) handle primitives
             if (property.type == nil) {
                 
