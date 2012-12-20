@@ -26,17 +26,18 @@
 static NSArray* allowedJSONTypes = nil;
 static NSArray* allowedPrimitiveTypes = nil;
 
+static JSONValueTransformer* valueTransformer = nil;
+
+#pragma mark - model cache
 static NSMutableDictionary* classProperties = nil;
 static NSMutableDictionary* classRequiredPropertyNames = nil;
 static NSMutableDictionary* classIndexes = nil;
 
-static JSONValueTransformer* valueTransformer = nil;
 static NSMutableDictionary* keyMappers = nil;
 
 #pragma mark - JSONModel private interface
 @interface JSONModel()
 @property (strong, nonatomic, readonly) NSString* className;
-@property (strong, nonatomic) JSONKeyMapper* keyMapper;
 @end
 
 #pragma mark - JSONModel implementation
