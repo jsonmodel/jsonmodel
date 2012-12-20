@@ -156,9 +156,25 @@ static NSMutableDictionary* keyMappers = nil;
     NSArray* incomingKeysArray = [d allKeys];
     NSMutableSet* requiredProperties = [self _requiredPropertyNames];
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
-   
-    //TODO: add mapper stuff here
-    if (NO && ![requiredProperties isSubsetOfSet:incomingKeys]) {
+    
+    //get the key mapper
+    JSONKeyMapper* keyMapper = keyMappers[_className];
+    
+    //transform the key names, if neccessary
+    if (keyMapper) {
+        NSMutableSet* transformedIncomingKeys = [NSMutableSet setWithCapacity: incomingKeys.count];
+        
+        for (NSString* keyName in incomingKeysArray) {
+            [transformedIncomingKeys addObject:
+             keyMapper.JSONToModelKeyBlock(keyName)
+             ];
+        }
+        
+        incomingKeys = transformedIncomingKeys;
+    }
+    
+    //check for missing input keys
+    if (![requiredProperties isSubsetOfSet:incomingKeys]) {
 
         //get a list of the missing properties
         [requiredProperties minusSet:incomingKeys];
@@ -175,13 +191,10 @@ static NSMutableDictionary* keyMappers = nil;
     incomingKeys= nil;
     requiredProperties= nil;
     
-    //get the key mapper
-    JSONKeyMapper* keyMapper = keyMappers[_className];
-    
     //loop over the incoming keys and set self's properties
     for (__strong NSString* key in incomingKeysArray) {
         
-        //NSLog(@"key: %@", key);
+        //JMLog(@"key: %@", key);
         
         //general check for data type compliance
         id jsonValue = d[key];
@@ -257,7 +270,7 @@ static NSMutableDictionary* keyMappers = nil;
                 //  ) might or not be the case there's a built in transofrm for it
                 if (property.protocol) {
                     
-                    //NSLog(@"proto: %@", p.protocol);
+                    //JMLog(@"proto: %@", p.protocol);
                     jsonValue = [self _transform:jsonValue forProperty:property];
                     if (!jsonValue) {
                         if (err) {
@@ -288,13 +301,13 @@ static NSMutableDictionary* keyMappers = nil;
                     property.isMutable
                     ) {
                     
-                    //TODO: searched around the web how to do this better
+                    // searched around the web how to do this better
                     // but did not find any solution, maybe that's the best idea? (hardly)
                     Class sourceClass = [JSONValueTransformer classByResolvingClusterClasses:[jsonValue class]];
                     
-                    //NSLog(@"to type: %@", p.type);
-                    //NSLog(@"from type: %@", sourceClass);
-                    //NSLog(@"transformer: %@", selectorName);
+                    //JMLog(@"to type: %@", p.type);
+                    //JMLog(@"from type: %@", sourceClass);
+                    //JMLog(@"transformer: %@", selectorName);
                     
                     //build a method selector for the property and json object classes
                     NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", property.type, sourceClass];
@@ -365,7 +378,7 @@ static NSMutableDictionary* keyMappers = nil;
 //retrospects the class, get's a list of the class properties
 -(void)_restrospectProperties
 {
-    JMLog(@"Retrospect class: %@", [self class]);
+    //JMLog(@"Retrospect class: %@", [self class]);
     
     NSMutableDictionary* propertyIndex = [NSMutableDictionary dictionary];
     
@@ -376,7 +389,7 @@ static NSMutableDictionary* keyMappers = nil;
     
     // retrospect inherited properties up to the JSONModel class
     while (class != [JSONModel class]) {
-        //NSLog(@"retrospecting: %@", NSStringFromClass(class));
+        //JMLog(@"retrospecting: %@", NSStringFromClass(class));
         
         unsigned int propertyCount;
         objc_property_t *properties = class_copyPropertyList(class, &propertyCount);
@@ -391,7 +404,7 @@ static NSMutableDictionary* keyMappers = nil;
             const char *propertyName = property_getName(property);
             p.name = [NSString stringWithUTF8String:propertyName];
             
-            //NSLog(@"property: %@", p.name);
+            //JMLog(@"property: %@", p.name);
             
             //get property attributes
             const char *attrs = property_getAttributes(property);
@@ -400,7 +413,7 @@ static NSMutableDictionary* keyMappers = nil;
                        [NSString stringWithUTF8String:attrs]
                        ];
             
-            //NSLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
+            //JMLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
             
             [scanner scanUpToString:@"T" intoString: nil];
             [scanner scanString:@"T" intoString:nil];
@@ -411,7 +424,7 @@ static NSMutableDictionary* keyMappers = nil;
                 [scanner scanCharactersFromSet:[NSCharacterSet alphanumericCharacterSet]
                                     intoString:&propertyType];
                 
-                //NSLog(@"type: %@", propertyClassName);
+                //JMLog(@"type: %@", propertyClassName);
                 p.type = NSClassFromString(propertyType);
                 p.isMutable = ([propertyType rangeOfString:@"Mutable"].location != NSNotFound);
                 p.isStandardJSONType = [allowedJSONTypes containsObject:p.type];
@@ -482,7 +495,7 @@ static NSMutableDictionary* keyMappers = nil;
 
         //no other protocols on arrays and dictionaries
         //except JSONModel classes
-        if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) {
+        if ([value isKindOfClass:[NSArray class]]) {
             @throw [NSException exceptionWithName:@"Bad property protocol declaration"
                                            reason:[NSString stringWithFormat:@"<%@> is not allowed JSONModel property protocol, and not a JSONModel class.", p.protocol]
                                          userInfo:nil];
@@ -505,8 +518,6 @@ static NSMutableDictionary* keyMappers = nil;
                 value = [[protocolClass class] arrayOfModelsFromDictionaries: value];
             }
         }
-        
-        //TODO: add on demand conversion dictionaries
         
         //check if it's a dictionary of models
         if ([p.type isSubclassOfClass:[NSDictionary class]]) {
