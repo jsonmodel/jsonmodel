@@ -16,15 +16,23 @@
 
 #import "JSONAPI.h"
 
+#pragma mark - static variables
+
 static JSONAPI* sharedInstance = nil;
 static long jsonRpcId = 0;
+
+#pragma mark - JSONAPI() private interface
 
 @interface JSONAPI ()
 @property (strong, nonatomic) NSString* baseURLString;
 @property (strong, nonatomic) NSString* ctype;
 @end
 
+#pragma mark - JSONAPI implementation
+
 @implementation JSONAPI
+
+#pragma mark - initialize
 
 +(void)initialize
 {
@@ -34,6 +42,8 @@ static long jsonRpcId = 0;
         sharedInstance.ctype = @"application/json";
     });
 }
+
+#pragma mark - api config methods
 
 +(void)setAPIBaseURLWithString:(NSString*)base
 {
@@ -45,6 +55,8 @@ static long jsonRpcId = 0;
     sharedInstance.ctype = ctype;
 }
 
+#pragma mark - GET methods
+
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params
 {
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
@@ -53,6 +65,17 @@ static long jsonRpcId = 0;
     return json;
 }
 
++(void)getWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock
+{
+    NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
+    
+    [JSONHTTPClient getJSONFromURLWithString: fullURL params:params completion:^(NSDictionary *json, JSONModelError *e) {
+        completeBlock(json, e);
+    }];
+}
+
+#pragma mark - POST methods
+
 +(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params
 {
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
@@ -60,6 +83,17 @@ static long jsonRpcId = 0;
     id json = [JSONHTTPClient postJSONFromURLWithString: fullURL params:params];
     return json;
 }
+
++(void)postWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock
+{
+    NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
+    
+    [JSONHTTPClient postJSONFromURLWithString: fullURL params:params completion:^(NSDictionary *json, JSONModelError *e) {
+        completeBlock(json, e);
+    }];
+}
+
+#pragma mark - RPC 1.0 methods
 
 +(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args
 {

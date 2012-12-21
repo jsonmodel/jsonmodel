@@ -59,6 +59,14 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 
 /** @name Creating a key mapper */
 
+/**
+ * Creates a JSONKeyMapper instance, based on the two blocks you provide this initializer.
+ * The two parameters take in a JSONModelKeyMapBlock block:
+ * <pre>NSString* (^JSONModelKeyMapBlock)(NSString* keyName)</pre>
+ * The block takes in a string and returns the transformed (if at all) string.
+ * @param toModel transforms JSON key name to your model property name
+ * @param toJSON transforms your model property name to a JSON key
+ */
 -(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
                        modelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
 

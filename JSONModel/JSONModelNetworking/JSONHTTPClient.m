@@ -20,7 +20,6 @@
 NSString * const kHTTPMethodGET = @"GET";
 NSString * const kHTTPMethodPOST = @"POST";
 
-
 #pragma mark - static variables
 
 static long requestId = 0;
@@ -31,6 +30,12 @@ static int defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 static NSMutableDictionary* requestHeaders = nil;
 static NSMutableDictionary* flags = nil;
 
+@interface JSONHTTPClient()
+
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString;
+
+@end
 
 @implementation JSONHTTPClient
 

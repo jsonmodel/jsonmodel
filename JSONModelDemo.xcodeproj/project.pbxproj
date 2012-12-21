@@ -53,6 +53,7 @@
 		9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C8C3389168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C3388168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m */; };
+		9C8C338D16850B3200C0B3E5 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C338C16850B3200C0B3E5 /* JSONModelClassProperty.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
 		9CBBBEDF166B6CF0008B4326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDE166B6CF0008B4326 /* Foundation.framework */; };
 		9CBBBEE1166B6CF0008B4326 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */; };
@@ -175,10 +176,12 @@
 		9C7DF09E16827B3500A31A62 /* KeyMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyMappingTests.m; sourceTree = "<group>"; };
 		9C7DF0A016827BE400A31A62 /* GitHubKeyMapRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubKeyMapRepoModel.h; path = TestModels/GitHubKeyMapRepoModel.h; sourceTree = "<group>"; };
 		9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubKeyMapRepoModel.m; path = TestModels/GitHubKeyMapRepoModel.m; sourceTree = "<group>"; };
-		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
-		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
+		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = ../JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
+		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = ../JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
 		9C8C3387168505F100C0B3E5 /* GitHubRepoModelForUSMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubRepoModelForUSMapper.h; path = TestModels/GitHubRepoModelForUSMapper.h; sourceTree = "<group>"; };
 		9C8C3388168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubRepoModelForUSMapper.m; path = TestModels/GitHubRepoModelForUSMapper.m; sourceTree = "<group>"; };
+		9C8C338B16850B3200C0B3E5 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		9C8C338C16850B3200C0B3E5 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBEDC166B6CF0008B4326 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CBBBEDE166B6CF0008B4326 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -328,6 +331,8 @@
 				9C0D0258166EBF7E001EA645 /* JSONModel+networking.m */,
 				9C0D0247166EBF0B001EA645 /* JSONHTTPClient.h */,
 				9C0D0248166EBF0B001EA645 /* JSONHTTPClient.m */,
+				9C843A99166EC309004946F9 /* JSONAPI.h */,
+				9C843A9A166EC309004946F9 /* JSONAPI.m */,
 			);
 			path = JSONModelNetworking;
 			sourceTree = "<group>";
@@ -427,13 +432,15 @@
 			name = KeyMappingTestSuite;
 			sourceTree = "<group>";
 		};
-		9C843A97166EC2CF004946F9 /* JSONAPI */ = {
+		9C8C338E16850BE600C0B3E5 /* JSONTransformations */ = {
 			isa = PBXGroup;
 			children = (
-				9C843A99166EC309004946F9 /* JSONAPI.h */,
-				9C843A9A166EC309004946F9 /* JSONAPI.m */,
+				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
+				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
+				9C7DF0931682593200A31A62 /* JSONKeyMapper.h */,
+				9C7DF0941682593200A31A62 /* JSONKeyMapper.m */,
 			);
-			name = JSONAPI;
+			name = JSONTransformations;
 			sourceTree = "<group>";
 		};
 		9CBBBECD166B6CEF008B4326 = {
@@ -526,8 +533,8 @@
 			children = (
 				9CFDF86116807DC500A3DF95 /* JSONModelLib.h */,
 				9CFDF8651680887A00A3DF95 /* JSONModel */,
+				9C8C338E16850BE600C0B3E5 /* JSONTransformations */,
 				9CFDF85B1680773200A3DF95 /* JSONModelArray */,
-				9C843A97166EC2CF004946F9 /* JSONAPI */,
 				9C0D0246166EBF0B001EA645 /* JSONModelNetworking */,
 			);
 			path = JSONModel;
@@ -784,10 +791,8 @@
 				9C0D0243166EBF0B001EA645 /* JSONModel.m */,
 				9C732DBD1679247D00FE7335 /* JSONModelError.h */,
 				9C732DBE1679247D00FE7335 /* JSONModelError.m */,
-				9C0D024B166EBF0B001EA645 /* JSONValueTransformer.h */,
-				9C0D024C166EBF0B001EA645 /* JSONValueTransformer.m */,
-				9C7DF0931682593200A31A62 /* JSONKeyMapper.h */,
-				9C7DF0941682593200A31A62 /* JSONKeyMapper.m */,
+				9C8C338B16850B3200C0B3E5 /* JSONModelClassProperty.h */,
+				9C8C338C16850B3200C0B3E5 /* JSONModelClassProperty.m */,
 			);
 			name = JSONModel;
 			sourceTree = "<group>";
@@ -961,6 +966,7 @@
 				9C7DF0A216827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */,
 				9CC3B30F1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m in Sources */,
 				9C8C3389168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m in Sources */,
+				9C8C338D16850B3200C0B3E5 /* JSONModelClassProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

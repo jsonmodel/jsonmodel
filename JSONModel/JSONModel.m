@@ -15,12 +15,10 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import <objc/runtime.h>
-#import "JSONModel.h"
-#import "JSONModelArray.h"
 
-#pragma mark JSONModelClassProperty
-@implementation JSONModelClassProperty
-@end
+#import "JSONModel.h"
+#import "JSONModelClassProperty.h"
+#import "JSONModelArray.h"
 
 #pragma mark - class static variables
 static NSArray* allowedJSONTypes = nil;
@@ -49,7 +47,8 @@ static NSMutableDictionary* keyMappers = nil;
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        //initialize all class static objects
+        // initialize all class static objects,
+        // which are common for ALL JSONModel subclasses
         
         allowedJSONTypes = @[
             [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
@@ -70,7 +69,7 @@ static NSMutableDictionary* keyMappers = nil;
 
 -(void)_setup
 {
-    //minimum setup for the instance
+    //fetch the class name for faster access
     _className = NSStringFromClass([self class]);
 
     //if first instnce of this model, generate the property list
@@ -106,9 +105,7 @@ static NSMutableDictionary* keyMappers = nil;
 {
     JSONModelError* initError;
     id objModel = [self initWithString:s usingEncoding:NSUTF8StringEncoding error:&initError];
-    if (err) {
-        *err = initError;
-    }
+    if (err) *err = initError;
     return objModel;
 }
 
@@ -118,17 +115,14 @@ static NSMutableDictionary* keyMappers = nil;
     id obj = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:encoding]
                                              options:kNilOptions
                                                error:&initError];
+
     if (initError) {
-        if (err) {
-            *err = [JSONModelError errorBadJSON];
-        }
+        if (err) *err = [JSONModelError errorBadJSON];
         return nil;
     }
     
     id objModel = [self initWithDictionary:obj error:&initError];
-    if (err) {
-        *err = initError;
-    }
+    if (err) *err = initError;
     return objModel;
 }
 
@@ -252,9 +246,7 @@ static NSMutableDictionary* keyMappers = nil;
                 id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
 
                 if (!value) {
-                    if (err) {
-                        *err = [JSONModelError errorInvalidData];
-                    }
+                    if (err) *err = [JSONModelError errorInvalidData];
                     return nil;
                 }
                 [self setValue:value forKey:key];
@@ -271,9 +263,7 @@ static NSMutableDictionary* keyMappers = nil;
                     //JMLog(@"proto: %@", p.protocol);
                     jsonValue = [self _transform:jsonValue forProperty:property];
                     if (!jsonValue) {
-                        if (err) {
-                            *err = [JSONModelError errorInvalidData];
-                        }
+                        if (err) *err = [JSONModelError errorInvalidData];
                         return nil;
                     }
                 }
@@ -303,9 +293,7 @@ static NSMutableDictionary* keyMappers = nil;
                     // but did not find any solution, maybe that's the best idea? (hardly)
                     Class sourceClass = [JSONValueTransformer classByResolvingClusterClasses:[jsonValue class]];
                     
-                    //JMLog(@"to type: %@", p.type);
-                    //JMLog(@"from type: %@", sourceClass);
-                    //JMLog(@"transformer: %@", selectorName);
+                    //JMLog(@"to type: [%@] from type: [%@] transformer: [%@]", p.type, sourceClass, selectorName);
                     
                     //build a method selector for the property and json object classes
                     NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", property.type, sourceClass];
@@ -452,9 +440,6 @@ static NSMutableDictionary* keyMappers = nil;
                 //the property contains a primitive data type
                 [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@","]
                                         intoString:&propertyType];
-                
-                //get the primitive type name out of the allowed primitive types index
-                //p.type = valueTransformer.primitivesNames[propertyType];
                 
                 //get the full name of the primitive type
                 propertyType = valueTransformer.primitivesNames[propertyType];
@@ -673,9 +658,7 @@ static NSMutableDictionary* keyMappers = nil;
 +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)a
 {
     //bail early
-    if (isNull(a)) {
-        return nil;
-    }
+    if (isNull(a)) return nil;
     
     //parse dictionaries to objects
     NSMutableArray* list = [NSMutableArray arrayWithCapacity: [a count]];
@@ -684,9 +667,7 @@ static NSMutableDictionary* keyMappers = nil;
     for (NSDictionary* d in a) {
         
         id obj = [[self alloc] initWithDictionary: d error:&err];
-        if (!obj) {
-            return nil;
-        }
+        if (!obj) return nil;
         
         [list addObject: obj];
     }
@@ -698,19 +679,15 @@ static NSMutableDictionary* keyMappers = nil;
 +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)a
 {
     //bail early
-    if (isNull(a)) {
-        return nil;
-    }
-    
+    if (isNull(a)) return nil;
+
     //convert to dictionaries
     NSMutableArray* list = [NSMutableArray arrayWithCapacity: [a count]];
     
     for (id<AbstractJSONModelProtocol> object in a) {
         
         id obj = [object toDictionary];
-        if (!obj) {
-            return nil;
-        }
+        if (!obj) return nil;
         
         [list addObject: obj];
     }

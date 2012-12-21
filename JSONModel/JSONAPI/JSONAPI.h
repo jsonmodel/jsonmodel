@@ -17,12 +17,16 @@
 #import <Foundation/Foundation.h>
 #import "JSONHTTPClient.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Class for working with JSON APIs. It builds upon the JSONHTTPClient class
  * and facilitates making requests to the same web host. Also features helper
  * method for making calls to a JSON RPC service
  */
 @interface JSONAPI : NSObject
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 /** @name Configuring the API */
 /**
@@ -33,24 +37,48 @@
 
 /**
  * Sets the default content type for the requests/responses
- * @param ctype The content-type as a string. Some possible types, depending on the service: application/json, text/json, x-application/javascript, etc.
+ * @param ctype The content-type as a string. Some possible types, 
+ * depending on the service: application/json, text/json, x-application/javascript, etc.
  */
 +(void)setContentType:(NSString*)ctype;
 
-/** @name Making API requests */
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+/** @name Making GET API requests */
 /**
- * Makes a GET request to the API
+ * Makes a synchronious GET request to the API
  * @param params the variables to pass to the API
  * @return the JSON response as desrialized object
  */
 +(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params;
 
 /**
+ * Makes an asynchronious GET request to the API
+ * @param params the variables to pass to the API
+ * @param completeBlock a JSONObjectBlock block to execute upon completion
+ * @return the JSON response as desrialized object
+ */
++(void)getWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+/** @name Making POST API requests */
+/**
  * Makes a POST request to the API
  * @param params the variables to pass to the API
  * @return the JSON response as desrialized object
  */
 +(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params;
+
+/**
+ * Makes a POST request to the API
+ * @param params the variables to pass to the API
+ * @param completeBlock a JSONObjectBlock block to execute upon completion
+ * @return the JSON response as desrialized object
+ */
++(void)postWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 /** @name JSON RPC (1.0) request method */
 /**
@@ -67,5 +95,7 @@
  * @return the JSON response as desrialized object
  */
 +(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 @end

@@ -15,6 +15,7 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import <Foundation/Foundation.h>
+
 #import "JSONModelError.h"
 #import "JSONValueTransformer.h"
 #import "JSONKeyMapper.h"
@@ -55,37 +56,6 @@
  * @property (strong, nonatomic) NSArray&lt;JSONModel, ConvertOnDemand&gt;* propertyName;
  */
 @protocol ConvertOnDemand
-@end
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - JSONModelClassProperty interface
-/** 
- * Class to contain the information, representing a class property
- * It features the property's name, type, whether it's a required property, and (optionally) the class protocol
- */
-@interface JSONModelClassProperty : NSObject
-
-  /** The name of the declared property (not the ivar name) */
-  @property (copy, nonatomic) NSString* name;
-
-  /** A primitive type name ("float", "short", etc) or a class name  */
-  @property (assign, nonatomic) Class type;
-
-  /** The name of the protocol the property conforms to (or nil) */
-  @property (copy, nonatomic) NSString* protocol;
-
-  /** If YES, it can be missing in the input data, and the input would be still valid */
-  @property (assign, nonatomic) BOOL isOptional;
-
-  /** If YES - don't call any transformers on this property's value */
-  @property (assign, nonatomic) BOOL isStandardJSONType;
-
-  /** If YES - create a mutable object for the value of the property */
-  @property (assign, nonatomic) BOOL isMutable;
-
-  /** If YES - create models on demand for the array members */
-  @property (assign, nonatomic) BOOL doesConvertOnDemand;
-
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////

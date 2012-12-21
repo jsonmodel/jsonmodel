@@ -33,12 +33,16 @@ typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* e);
 
 typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
  * It fetches only JSON data and also deserializes it using NSJSONSerialization.
  * 
  */
 @interface JSONHTTPClient : NSObject
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 /** @name HTTP Client configuration */
 /**
@@ -60,6 +64,8 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
  */
 +(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 /** @name Making synchronious HTTP requests */
 /**
  * Makes GET request to the given URL address and fetches a JSON response.
@@ -76,6 +82,8 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
  */
 +(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params;
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Makes POST request to the given URL address and fetches a JSON response. Sends the params as url encoded variables via the POST body.
  * @param urlString the URL as a string
@@ -91,6 +99,8 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
  * @return JSON compliant object or nil
  */
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 /** @name Making asynchronious HTTP requests */
 /**
@@ -110,6 +120,8 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
  */
 +(void)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
  * @param urlString the URL as a string
@@ -127,8 +139,5 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
  * @return JSON compliant object or nil
  */
 +(void)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock;
-
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString;
 
 @end

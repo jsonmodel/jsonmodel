@@ -1,5 +1,5 @@
 //
-//  JSONModelError.h
+//  JSONModelClassProperty.h
 //
 //  @version 0.75
 //  @author Marin Todorov, http://www.touch-code-magazine.com
@@ -16,42 +16,31 @@
 
 #import <Foundation/Foundation.h>
 
-enum kJSONModelErrorTypes
-{
-    kJSONModelErrorInvalidData = 1,
-    kJSONModelErrorBadResponse = 2,
-    kJSONModelErrorBadJSON = 3,
-    kJSONModelErrorModelIsInvalid = 4
-};
-
-extern NSString * const JSONModelErrorDomain;
-
 /**
- * Custom NSError subclass with shortcut methods for creating 
- * the common JSONModel errors
+ * Class to contain the information, representing a class property
+ * It features the property's name, type, whether it's a required property, and (optionally) the class protocol
  */
-@interface JSONModelError : NSError
+@interface JSONModelClassProperty : NSObject
 
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
- */
-+(id)errorInvalidData;
+/** The name of the declared property (not the ivar name) */
+@property (copy, nonatomic) NSString* name;
 
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorBadResponse = 2
- */
-+(id)errorBadResponse;
+/** A primitive type name ("float", "short", etc) or a class name  */
+@property (assign, nonatomic) Class type;
 
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorBadJSON = 3
- */
-+(id)errorBadJSON;
+/** The name of the protocol the property conforms to (or nil) */
+@property (copy, nonatomic) NSString* protocol;
 
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorModelIsInvalid = 4
- */
-+(id)errorModelIsInvalid;
+/** If YES, it can be missing in the input data, and the input would be still valid */
+@property (assign, nonatomic) BOOL isOptional;
+
+/** If YES - don't call any transformers on this property's value */
+@property (assign, nonatomic) BOOL isStandardJSONType;
+
+/** If YES - create a mutable object for the value of the property */
+@property (assign, nonatomic) BOOL isMutable;
+
+/** If YES - create models on demand for the array members */
+@property (assign, nonatomic) BOOL doesConvertOnDemand;
 
 @end
-
-

@@ -1,5 +1,5 @@
 //
-//  JSONModelError.h
+//  JSONModelClassProperty.m
 //
 //  @version 0.75
 //  @author Marin Todorov, http://www.touch-code-magazine.com
@@ -14,44 +14,7 @@
 //
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
-#import <Foundation/Foundation.h>
+#import "JSONModelClassProperty.h"
 
-enum kJSONModelErrorTypes
-{
-    kJSONModelErrorInvalidData = 1,
-    kJSONModelErrorBadResponse = 2,
-    kJSONModelErrorBadJSON = 3,
-    kJSONModelErrorModelIsInvalid = 4
-};
-
-extern NSString * const JSONModelErrorDomain;
-
-/**
- * Custom NSError subclass with shortcut methods for creating 
- * the common JSONModel errors
- */
-@interface JSONModelError : NSError
-
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
- */
-+(id)errorInvalidData;
-
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorBadResponse = 2
- */
-+(id)errorBadResponse;
-
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorBadJSON = 3
- */
-+(id)errorBadJSON;
-
-/**
- * Creates a JSONModelError instance with code kJSONModelErrorModelIsInvalid = 4
- */
-+(id)errorModelIsInvalid;
-
+@implementation JSONModelClassProperty
 @end
-
-

@@ -14,6 +14,7 @@
 
 //basic JSONModel classes
 #import "JSONModelError.h"
+#import "JSONModelClassProperty.h"
 #import "JSONModel.h"
 
 //network classes
