@@ -52,6 +52,7 @@
 		9C7DF0AD16827E1200A31A62 /* PersistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C09B93E167DFC050032555D /* PersistTests.m */; };
 		9C843A9B166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
 		9C843A9C166EC309004946F9 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C843A9A166EC309004946F9 /* JSONAPI.m */; };
+		9C8C3389168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C3388168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
 		9CBBBEDF166B6CF0008B4326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDE166B6CF0008B4326 /* Foundation.framework */; };
 		9CBBBEE1166B6CF0008B4326 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */; };
@@ -176,6 +177,8 @@
 		9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubKeyMapRepoModel.m; path = TestModels/GitHubKeyMapRepoModel.m; sourceTree = "<group>"; };
 		9C843A99166EC309004946F9 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONAPI/JSONAPI.h; sourceTree = "<group>"; };
 		9C843A9A166EC309004946F9 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONAPI/JSONAPI.m; sourceTree = "<group>"; };
+		9C8C3387168505F100C0B3E5 /* GitHubRepoModelForUSMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubRepoModelForUSMapper.h; path = TestModels/GitHubRepoModelForUSMapper.h; sourceTree = "<group>"; };
+		9C8C3388168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubRepoModelForUSMapper.m; path = TestModels/GitHubRepoModelForUSMapper.m; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBEDC166B6CF0008B4326 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CBBBEDE166B6CF0008B4326 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -409,6 +412,8 @@
 				9C7DF0A116827BE400A31A62 /* GitHubKeyMapRepoModel.m */,
 				9CC3B30D1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.h */,
 				9CC3B30E1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m */,
+				9C8C3387168505F100C0B3E5 /* GitHubRepoModelForUSMapper.h */,
+				9C8C3388168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m */,
 			);
 			name = GitHub;
 			sourceTree = "<group>";
@@ -955,6 +960,7 @@
 				9C7DF0951682593200A31A62 /* JSONKeyMapper.m in Sources */,
 				9C7DF0A216827BE400A31A62 /* GitHubKeyMapRepoModel.m in Sources */,
 				9CC3B30F1683284000EE4DC2 /* GitHubKeyMapRepoModelDict.m in Sources */,
+				9C8C3389168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
