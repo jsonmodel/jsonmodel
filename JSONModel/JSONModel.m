@@ -40,7 +40,7 @@ static JSONValueTransformer* valueTransformer = nil;
 
 #pragma mark - initialization methods
 
-+(void)load
++(void)initialize
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
