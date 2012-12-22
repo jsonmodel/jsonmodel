@@ -25,6 +25,11 @@
     NSAssert(err, @"No error when keys are missing.");
     
     NSAssert(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
+    NSArray* missingKeys = err.userInfo[kJSONModelMissingKeys];
+    missingKeys = [missingKeys sortedArrayUsingSelector:@selector(compare:)];
+    NSAssert(missingKeys, @"error does not have kJSONModelMissingKeys keys in user info");
+    NSAssert([missingKeys[0] isEqualToString:@"intNumber"],@"missing field intNumber not found in missingKeys");
+    NSAssert([missingKeys[1] isEqualToString:@"longNumber"],@"missing field longNumber not found in missingKeys");
 }
 
 -(void)testBrokenJSON

@@ -16,7 +16,8 @@
 
 #import "JSONModelError.h"
 
-NSString * const JSONModelErrorDomain = @"JSONModelErrorDomain";
+NSString* const JSONModelErrorDomain = @"JSONModelErrorDomain";
+NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
 
 @implementation JSONModelError
 
@@ -25,6 +26,13 @@ NSString * const JSONModelErrorDomain = @"JSONModelErrorDomain";
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                                    code:kJSONModelErrorInvalidData
                                                 userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data"}];
+}
+
++(id)errorInvalidDataWithMissingKeys:(NSSet *)keys
+{
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                      code:kJSONModelErrorInvalidData
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data",kJSONModelMissingKeys:[keys allObjects]}];
 }
 
 +(id)errorBadResponse

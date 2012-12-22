@@ -24,7 +24,8 @@ enum kJSONModelErrorTypes
     kJSONModelErrorModelIsInvalid = 4
 };
 
-extern NSString * const JSONModelErrorDomain;
+extern NSString* const JSONModelErrorDomain;
+extern NSString* const kJSONModelMissingKeys;
 
 /**
  * Custom NSError subclass with shortcut methods for creating 
@@ -36,6 +37,11 @@ extern NSString * const JSONModelErrorDomain;
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
  */
 +(id)errorInvalidData;
+
+/**
+ * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
+ */
++(id)errorInvalidDataWithMissingKeys:(NSSet*)keys;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorBadResponse = 2
