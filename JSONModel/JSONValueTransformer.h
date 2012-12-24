@@ -29,13 +29,13 @@ extern BOOL isNull(id value);
 
 #pragma mark - JSONValueTransformer interface
 /**
+ * **You don't need to call methods of this class manually.** 
+ *
  * Class providing methods to transform values from one class to another.
  * You are given a number of built-in transformers, but you are encouraged to
  * extend this class with your own categories to add further value transformers.
  * Just few examples of what can you add to JSONValueTransformer: hex colors in JSON to UIColor,
  * hex numbers in JSON to NSNumber model properties, base64 encoded strings in JSON to UIImage properties, and more.
- *
- * **You don't need to call methods of this class manually.** 
  *
  * The class is invoked by JSONModel while transforming incoming
  * JSON types into your target class property classes, and vice versa.
@@ -50,7 +50,6 @@ extern BOOL isNull(id value);
  * This method returns the ubmrella class for any standard class cluster members.
  * For example returns NSString when given as input NSString, NSMutableString, __CFString and __CFConstantString
  * The method currently looksup a pre-defined list.
- * TODO: Is there a better way to do that? I could not find one as these class clusters seem like a not so greatly discussed topic
  * @param sourceClass the class to get the umrella class for
  * @return Class
  */
