@@ -22,7 +22,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #if TARGET_IPHONE_SIMULATOR
-#define JMLog( s, ... ) NSLog( @"[%@:%d] %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define JMLog( s, ... ) NSLog( @"[%@:%d] %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], \
+__LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
 #define JMLog( s, ... )
 #endif
@@ -86,7 +87,8 @@
    * should suffice.
    *
    * @return NSDictionary dictionary of JSON compliant objects
-   * @exception JSONModelTypeNotAllowedException thrown when one of your model's custom class properties does not have matching transformer method in an JSONValueTransformer.
+   * @exception JSONModelTypeNotAllowedException thrown when one of your model's custom class properties 
+   * does not have matching transformer method in an JSONValueTransformer.
    * @see JSONValueTransformer JSONObjectFromNSURL: for an example how to export custom class property to a JSON compliant object
    */
   -(NSDictionary*)toDictionary;
@@ -108,7 +110,8 @@
    * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
    * @param s JSON text data
    * @param err an initialization error or nil
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see initWithString:usingEncoding:error: for use of custom text encodings
    */
   -(instancetype)initWithString:(NSString*)s error:(JSONModelError**)err;
@@ -118,7 +121,8 @@
    * @param s JSON text data
    * @param encoding the text encoding to use when parsing the string (see NSStringEncoding)
    * @param err an initialization error or nil
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * or a property type in your model is not supported by JSONValueTransformer and its categories
    */
   -(instancetype)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
 
@@ -143,7 +147,8 @@
    *
    * @param a list of dictionaries to be imported as models
    * @return list of initialized data model objects
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromModels:
    */
@@ -154,7 +159,8 @@
    * matching dictionaries. This method does the opposite of arrayOfObjectsFromDictionaries:
    * @param a list of JSONModel objects
    * @return a list of NSDictionary objects
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see arrayOfModelsFromDictionaries:
    */
   +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)a;

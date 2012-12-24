@@ -17,8 +17,12 @@
 #import <Foundation/Foundation.h>
 
 /**
+ * **You do not need to instantiate this class yourself.** This class is used internally by JSONModel
+ * to inspect the declared properties of your model class.
+ *
  * Class to contain the information, representing a class property
- * It features the property's name, type, whether it's a required property, and (optionally) the class protocol
+ * It features the property's name, type, whether it's a required property, 
+ * and (optionally) the class protocol
  */
 @interface JSONModelClassProperty : NSObject
 
