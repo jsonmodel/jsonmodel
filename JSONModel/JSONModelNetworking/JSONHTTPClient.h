@@ -64,6 +64,15 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
  */
 +(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
 
+/**
+ * A method to enable/disable automatic network indicator showing. 
+ * Set to YES by default.
+ * @param doesControlIndicator if YES, the library shows and hides the
+ * system network indicator automatically on begin and end of 
+ * network operations
+ */
++(void)setControlsNetworkIndicator:(BOOL)doesControlIndicator;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 /** @name Making synchronious HTTP requests */

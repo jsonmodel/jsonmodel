@@ -32,6 +32,8 @@ static long defaultTextEncoding = NSUTF8StringEncoding;
 static long defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 #endif
 
+static BOOL doesControlIndicator = YES;
+
 static NSMutableDictionary* requestHeaders = nil;
 static NSMutableDictionary* flags = nil;
 
@@ -72,6 +74,11 @@ static NSMutableDictionary* flags = nil;
     defaultCachePolicy = policy;
 }
 
++(void)setControlsNetworkIndicator:(BOOL)does
+{
+    doesControlIndicator = does;
+}
+
 #pragma mark - convenience methods for requests
 +(id)getJSONFromURLWithString:(NSString*)urlString
 {
@@ -95,7 +102,7 @@ static NSMutableDictionary* flags = nil;
 
 #pragma mark - base request methods
 +(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString
-{
+{    
     requestId++;
     
     NSString* semaphoreKey = [NSString stringWithFormat:@"rid: %ld", requestId];
@@ -139,6 +146,8 @@ static NSMutableDictionary* flags = nil;
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString
 {
+    if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
                                                                 cachePolicy:defaultCachePolicy
                                                             timeoutInterval:60];
@@ -173,6 +182,8 @@ static NSMutableDictionary* flags = nil;
 	NSData *responseData = [NSURLConnection sendSynchronousRequest: request
                                                  returningResponse: &response
                                                              error: &error];
+    
+    if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
 	if ([response statusCode] >= 200 && [response statusCode] < 300) {
         //OK - codes 2xx
