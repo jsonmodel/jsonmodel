@@ -24,8 +24,13 @@ NSString * const kHTTPMethodPOST = @"POST";
 
 static long requestId = 0;
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 static int defaultTextEncoding = NSUTF8StringEncoding;
 static int defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+#else
+static long defaultTextEncoding = NSUTF8StringEncoding;
+static long defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+#endif
 
 static NSMutableDictionary* requestHeaders = nil;
 static NSMutableDictionary* flags = nil;
@@ -153,7 +158,11 @@ static NSMutableDictionary* flags = nil;
         //BODY params
         NSData* bodyData = [bodyString dataUsingEncoding:defaultTextEncoding];
         [request setHTTPBody: bodyData];
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
         [request addValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+#else
+        [request addValue:[NSString stringWithFormat:@"%ld", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+#endif
     }
     
     //prepare output
@@ -309,7 +318,9 @@ static NSMutableDictionary* flags = nil;
 
 +(void)setNetworkIndicatorVisible:(BOOL)isVisible
 {
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isVisible];
+#endif
 }
 
 @end
