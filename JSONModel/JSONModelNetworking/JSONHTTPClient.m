@@ -1,7 +1,7 @@
 //
 //  JSONModelHTTPClient.m
 //
-//  @version 0.78
+//  @version 0.7.8
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -34,6 +34,8 @@ static NSMutableDictionary* flags = nil;
 
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString;
+
++(void)setNetworkIndicatorVisible:(BOOL)isVisible;
 
 @end
 
@@ -303,6 +305,11 @@ static NSMutableDictionary* flags = nil;
                    orBodyString:bodyString completion:^(NSDictionary *json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
+}
+
++(void)setNetworkIndicatorVisible:(BOOL)isVisible
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isVisible];
 }
 
 @end

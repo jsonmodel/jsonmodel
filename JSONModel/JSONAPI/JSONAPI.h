@@ -1,7 +1,7 @@
 //
 //  JSONAPI.h
 //
-//  @version 0.78
+//  @version 0.7.8
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
