@@ -186,10 +186,9 @@ static NSMutableDictionary* flags = nil;
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
 	if ([response statusCode] >= 200 && [response statusCode] < 300) {
-        //OK - codes 2xx
-        //NSString *result = [[NSString alloc] initWithData:responseData encoding: defaultTextEncoding];
-        
+        //OK HTTP responses
         return responseData;
+        
 	} else {
         
         //HTTP errors
