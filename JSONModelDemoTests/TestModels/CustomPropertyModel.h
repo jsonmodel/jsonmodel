@@ -14,8 +14,12 @@
 @interface CustomPropertyModel : JSONModel
 
 /* custom transformer from JSONValueTransformer+UIColor.h */
-@property (strong, nonatomic) Color* redColor;
-@property (strong, nonatomic) Color* blueColor;
-
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+@property (strong, nonatomic) UIColor* redColor;
+@property (strong, nonatomic) UIColor* blueColor;
+#else
+@property (strong, nonatomic) NSColor* redColor;
+@property (strong, nonatomic) NSColor* blueColor;
+#endif
 
 @end

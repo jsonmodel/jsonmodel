@@ -10,7 +10,11 @@
 
 @implementation JSONValueTransformer(UIColor)
 
--(Color*)ColorFromNSString:(NSString *)string
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+-(UIColor*)UIColorFromNSString:(NSString *)string
+#else
+-(NSColor*)NSColorFromNSString:(NSString *)string
+#endif
 {
     //
     // http://stackoverflow.com/a/13648705
@@ -33,7 +37,11 @@
 #endif
 }
 
--(id)JSONObjectFromColor:(Color*)color
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+-(id)JSONObjectFromUIColor:(UIColor*)color
+#else
+-(id)JSONObjectFromNSColor:(NSColor*)color
+#endif
 {
     //
     // http://softteco.blogspot.de/2011/06/extract-hex-rgb-color-from-uicolor.html

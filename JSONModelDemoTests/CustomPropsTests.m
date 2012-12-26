@@ -32,15 +32,14 @@
 
 -(void)testColors
 {
-    NSAssert([c.redColor isKindOfClass:[Color class]], @"redColor is not a Color instance");
-    NSLog(@"red : %@", c.redColor);
-
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    Color* redColor = [UIColor redColor].CGColor;
+    NSAssert([c.redColor isKindOfClass:[UIColor class]], @"redColor is not a Color instance");
+    CGColorRef redColor = [UIColor redColor].CGColor;
 #else
+    NSAssert([c.redColor isKindOfClass:[NSColor class]], @"redColor is not a Color instance");
     CGColorRef redColor = [NSColor redColor].CGColor;
 #endif
-    
+
     NSAssert(CGColorEqualToColor(c.redColor.CGColor, redColor), @"redColor's value is not red color");
 }
 

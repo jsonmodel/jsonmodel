@@ -182,14 +182,14 @@
 		9C8C3388168505F100C0B3E5 /* GitHubRepoModelForUSMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubRepoModelForUSMapper.m; path = TestModels/GitHubRepoModelForUSMapper.m; sourceTree = "<group>"; };
 		9C8C338B16850B3200C0B3E5 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
 		9C8C338C16850B3200C0B3E5 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
-		9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CBBBED8166B6CF0008B4326 /* JSONModelDemo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBEDC166B6CF0008B4326 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CBBBEDE166B6CF0008B4326 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9CBBBEE4166B6CF0008B4326 /* JSONModelDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemo-Info.plist"; sourceTree = "<group>"; };
+		9CBBBEE4166B6CF0008B4326 /* JSONModelDemo_iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemo_iOS-Info.plist"; sourceTree = "<group>"; };
 		9CBBBEE6166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CBBBEE8166B6CF0008B4326 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9CBBBEEA166B6CF0008B4326 /* JSONModelDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONModelDemo-Prefix.pch"; sourceTree = "<group>"; };
+		9CBBBEEA166B6CF0008B4326 /* JSONModelDemo_iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONModelDemo_iOS-Prefix.pch"; sourceTree = "<group>"; };
 		9CBBBEEB166B6CF0008B4326 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9CBBBEEC166B6CF0008B4326 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9CBBBEEE166B6CF0008B4326 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -198,9 +198,9 @@
 		9CBBBEF4166B6CF0008B4326 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		9CBBBEF5166B6CF0008B4326 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		9CBBBEFB166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
-		9CBBBF05166B6CF0008B4326 /* JSONModelDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CBBBF05166B6CF0008B4326 /* JSONModelDemo_iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemo_iOSTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBF06166B6CF0008B4326 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9CBBBF0E166B6CF0008B4326 /* JSONModelDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemoTests-Info.plist"; sourceTree = "<group>"; };
+		9CBBBF0E166B6CF0008B4326 /* JSONModelDemo_iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemo_iOSTests-Info.plist"; sourceTree = "<group>"; };
 		9CBBBF10166B6CF0008B4326 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CBBBF28166B6DA5008B4326 /* primitives.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = primitives.json; path = DataFiles/primitives.json; sourceTree = "<group>"; };
 		9CBBBF2B166B6E01008B4326 /* PrimitivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimitivesModel.h; path = TestModels/PrimitivesModel.h; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 			children = (
 				9CBBBF1D166B6D10008B4326 /* JSONModel */,
 				9CBBBF0C166B6CF0008B4326 /* JSONModelTests */,
-				9CBBBEE2166B6CF0008B4326 /* JSONModelDemo */,
+				9CBBBEE2166B6CF0008B4326 /* JSONModelDemo_iOS */,
 				9CBBBEDB166B6CF0008B4326 /* Frameworks */,
 				9CBBBED9166B6CF0008B4326 /* Products */,
 			);
@@ -457,8 +457,8 @@
 		9CBBBED9166B6CF0008B4326 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */,
-				9CBBBF05166B6CF0008B4326 /* JSONModelDemoTests.octest */,
+				9CBBBED8166B6CF0008B4326 /* JSONModelDemo_iOS.app */,
+				9CBBBF05166B6CF0008B4326 /* JSONModelDemo_iOSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9CBBBEE2166B6CF0008B4326 /* JSONModelDemo */ = {
+		9CBBBEE2166B6CF0008B4326 /* JSONModelDemo_iOS */ = {
 			isa = PBXGroup;
 			children = (
 				9CBBBFAD166BB87B008B4326 /* DemoApp */,
@@ -485,16 +485,17 @@
 				9CBBBF73166BA7E1008B4326 /* KivaJSONDemo */,
 				9C0D023C166E6B7A001EA645 /* KivaJSONDemo+networking */,
 			);
-			path = JSONModelDemo;
+			name = JSONModelDemo_iOS;
+			path = JSONModelDemo_iOS;
 			sourceTree = "<group>";
 		};
 		9CBBBEE3166B6CF0008B4326 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBBEE4166B6CF0008B4326 /* JSONModelDemo-Info.plist */,
+				9CBBBEE4166B6CF0008B4326 /* JSONModelDemo_iOS-Info.plist */,
 				9CBBBEE5166B6CF0008B4326 /* InfoPlist.strings */,
 				9CBBBEE8166B6CF0008B4326 /* main.m */,
-				9CBBBEEA166B6CF0008B4326 /* JSONModelDemo-Prefix.pch */,
+				9CBBBEEA166B6CF0008B4326 /* JSONModelDemo_iOS-Prefix.pch */,
 				9CBBBEEE166B6CF0008B4326 /* Default.png */,
 				9CBBBEF0166B6CF0008B4326 /* Default@2x.png */,
 				9CBBBEF2166B6CF0008B4326 /* Default-568h@2x.png */,
@@ -522,7 +523,7 @@
 		9CBBBF0D166B6CF0008B4326 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9CBBBF0E166B6CF0008B4326 /* JSONModelDemoTests-Info.plist */,
+				9CBBBF0E166B6CF0008B4326 /* JSONModelDemo_iOSTests-Info.plist */,
 				9CBBBF0F166B6CF0008B4326 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -800,9 +801,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9CBBBED7166B6CF0008B4326 /* JSONModelDemo */ = {
+		9CBBBED7166B6CF0008B4326 /* JSONModelDemo_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CBBBF17166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemo" */;
+			buildConfigurationList = 9CBBBF17166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemo_iOS" */;
 			buildPhases = (
 				9CBBBED4166B6CF0008B4326 /* Sources */,
 				9CBBBED5166B6CF0008B4326 /* Frameworks */,
@@ -812,14 +813,14 @@
 			);
 			dependencies = (
 			);
-			name = JSONModelDemo;
+			name = JSONModelDemo_iOS;
 			productName = JSONModelDemo;
-			productReference = 9CBBBED8166B6CF0008B4326 /* JSONModelDemo.app */;
+			productReference = 9CBBBED8166B6CF0008B4326 /* JSONModelDemo_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9CBBBF04166B6CF0008B4326 /* JSONModelDemoTests */ = {
+		9CBBBF04166B6CF0008B4326 /* JSONModelDemo_iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CBBBF1A166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemoTests" */;
+			buildConfigurationList = 9CBBBF1A166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemo_iOSTests" */;
 			buildPhases = (
 				9CBBBF00166B6CF0008B4326 /* Sources */,
 				9CBBBF01166B6CF0008B4326 /* Frameworks */,
@@ -831,9 +832,9 @@
 			dependencies = (
 				9CBBBF0B166B6CF0008B4326 /* PBXTargetDependency */,
 			);
-			name = JSONModelDemoTests;
+			name = JSONModelDemo_iOSTests;
 			productName = JSONModelDemoTests;
-			productReference = 9CBBBF05166B6CF0008B4326 /* JSONModelDemoTests.octest */;
+			productReference = 9CBBBF05166B6CF0008B4326 /* JSONModelDemo_iOSTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -845,7 +846,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Underplot ltd.";
 			};
-			buildConfigurationList = 9CBBBED2166B6CEF008B4326 /* Build configuration list for PBXProject "JSONModelDemo" */;
+			buildConfigurationList = 9CBBBED2166B6CEF008B4326 /* Build configuration list for PBXProject "JSONModelDemo_iOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -857,8 +858,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CBBBED7166B6CF0008B4326 /* JSONModelDemo */,
-				9CBBBF04166B6CF0008B4326 /* JSONModelDemoTests */,
+				9CBBBED7166B6CF0008B4326 /* JSONModelDemo_iOS */,
+				9CBBBF04166B6CF0008B4326 /* JSONModelDemo_iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1018,7 +1019,7 @@
 /* Begin PBXTargetDependency section */
 		9CBBBF0B166B6CF0008B4326 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CBBBED7166B6CF0008B4326 /* JSONModelDemo */;
+			target = 9CBBBED7166B6CF0008B4326 /* JSONModelDemo_iOS */;
 			targetProxy = 9CBBBF0A166B6CF0008B4326 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1104,9 +1105,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JSONModelDemo/JSONModelDemo-Prefix.pch";
-				INFOPLIST_FILE = "JSONModelDemo/JSONModelDemo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
+				INFOPLIST_FILE = "JSONModelDemo_iOS/JSONModelDemo_iOS-Info.plist";
+				PRODUCT_NAME = JSONModelDemo_iOS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1115,9 +1116,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JSONModelDemo/JSONModelDemo-Prefix.pch";
-				INFOPLIST_FILE = "JSONModelDemo/JSONModelDemo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
+				INFOPLIST_FILE = "JSONModelDemo_iOS/JSONModelDemo_iOS-Info.plist";
+				PRODUCT_NAME = JSONModelDemo_iOS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1125,15 +1126,15 @@
 		9CBBBF1B166B6CF0008B4326 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo.app/JSONModelDemo";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo_iOS.app/JSONModelDemo_iOS";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JSONModelDemo/JSONModelDemo-Prefix.pch";
-				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
+				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
+				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1142,15 +1143,15 @@
 		9CBBBF1C166B6CF0008B4326 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo.app/JSONModelDemo";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo_iOS.app/JSONModelDemo_iOS";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JSONModelDemo/JSONModelDemo-Prefix.pch";
-				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
+				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
+				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1159,7 +1160,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9CBBBED2166B6CEF008B4326 /* Build configuration list for PBXProject "JSONModelDemo" */ = {
+		9CBBBED2166B6CEF008B4326 /* Build configuration list for PBXProject "JSONModelDemo_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CBBBF15166B6CF0008B4326 /* Debug */,
@@ -1168,7 +1169,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CBBBF17166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemo" */ = {
+		9CBBBF17166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemo_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CBBBF18166B6CF0008B4326 /* Debug */,
@@ -1177,7 +1178,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CBBBF1A166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemoTests" */ = {
+		9CBBBF1A166B6CF0008B4326 /* Build configuration list for PBXNativeTarget "JSONModelDemo_iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CBBBF1B166B6CF0008B4326 /* Debug */,
