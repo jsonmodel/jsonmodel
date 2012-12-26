@@ -9,12 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "JSONValueTransformer.h"
 
-@interface JSONValueTransformer(UIColor)
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+@compatibility_alias Color UIColor;
+#else
+@compatibility_alias Color NSColor;
+#endif
+
+@interface JSONValueTransformer(Color)
 
 #pragma mark - uicolor <-> hex color
 /*  uicolor <-> hex color for converting text hex representations to actual color objects */
 
--(UIColor*)UIColorFromNSString:(NSString*)string;
--(id)JSONObjectFromUIColor:(UIColor*)color;
+-(Color*)ColorFromNSString:(NSString*)string;
+-(id)JSONObjectFromColor:(Color*)color;
 
 @end

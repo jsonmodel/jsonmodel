@@ -39,8 +39,13 @@
     
     NSAssert([b.dynamicUnorderedList isKindOfClass:[NSMutableSet class]], @"dynamicUnorderedList is not an NSMutableSet object");
     NSAssert([b.dynamicUnorderedList anyObject], @"dynamicUnorderedList don't have any objects");
-    
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
     int nrOfObjects = [b.dynamicUnorderedList allObjects].count;
+#else
+    NSUInteger nrOfObjects = [b.dynamicUnorderedList allObjects].count;
+#endif
+    
     [b.dynamicUnorderedList addObject:@"ADDED"];
     NSAssert(nrOfObjects + 1 == [b.dynamicUnorderedList allObjects].count, @"dynamicUnorderedList didn't add an object");
     

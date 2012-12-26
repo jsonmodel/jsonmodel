@@ -14,8 +14,8 @@
 @interface CustomPropertyModel : JSONModel
 
 /* custom transformer from JSONValueTransformer+UIColor.h */
-@property (strong, nonatomic) UIColor* redColor;
-@property (strong, nonatomic) UIColor* blueColor;
+@property (strong, nonatomic) Color* redColor;
+@property (strong, nonatomic) Color* blueColor;
 
 
 @end

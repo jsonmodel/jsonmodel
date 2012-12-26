@@ -1,5 +1,5 @@
 //
-//  JSONValueTransformer+UIColor.m
+//  JSONValueTransformer+Color.m
 //  JSONModel_Demo
 //
 //  Created by Marin Todorov on 26/11/2012.
@@ -10,7 +10,7 @@
 
 @implementation JSONValueTransformer(UIColor)
 
--(UIColor*)UIColorFromNSString:(NSString *)string
+-(Color*)ColorFromNSString:(NSString *)string
 {
     //
     // http://stackoverflow.com/a/13648705
@@ -25,11 +25,15 @@
     int r = (hex >> 16) & 0xFF;
     int g = (hex >> 8) & 0xFF;
     int b = (hex) & 0xFF;
-    
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
     return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+#else
+    return [NSColor colorWithCalibratedRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+#endif
 }
 
--(id)JSONObjectFromUIColor:(UIColor*)color
+-(id)JSONObjectFromColor:(Color*)color
 {
     //
     // http://softteco.blogspot.de/2011/06/extract-hex-rgb-color-from-uicolor.html
