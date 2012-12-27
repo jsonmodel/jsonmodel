@@ -22,12 +22,15 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #if TARGET_IPHONE_SIMULATOR
-#define JMLog( s, ... ) NSLog( @"[%@:%d] %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], \
-__LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define JMLog( s, ... ) NSLog( @"[%@:%d] %@", [[NSString stringWithUTF8String:__FILE__] \
+lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
 #define JMLog( s, ... )
 #endif
-
+/////////////////////////////////////////////////////////////////////////////////////////////
+#if !__has_feature(objc_arc)
+#error The JSONMOdel framework is ARC only, you can enable ARC on per file basis.
+#endif
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Property Protocols
