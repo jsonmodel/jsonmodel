@@ -25,35 +25,35 @@ NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                                    code:kJSONModelErrorInvalidData
-                                                userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data"}];
+                                                userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data. Malformed JSON, server response invalid or other reason for invalid input to a JSONModel class."}];
 }
 
 +(id)errorInvalidDataWithMissingKeys:(NSSet *)keys
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorInvalidData
-                                  userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data",kJSONModelMissingKeys:[keys allObjects]}];
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data. Required JSON keys are missing from the input. Check the error user information.",kJSONModelMissingKeys:[keys allObjects]}];
 }
 
 +(id)errorBadResponse
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorBadResponse
-                                  userInfo:@{NSLocalizedDescriptionKey:@"Bad network response "}];
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Bad network response. Probably the JSON URL is unreachable."}];
 }
 
 +(id)errorBadJSON
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorBadJSON
-                                  userInfo:@{NSLocalizedDescriptionKey:@"Malformed JSON"}];    
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Malformed JSON. Check the JSONModel data input."}];    
 }
 
 +(id)errorModelIsInvalid
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorModelIsInvalid
-                                  userInfo:@{NSLocalizedDescriptionKey:@"Model does not validate"}];
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Model does not validate. The custom validation for the input data failed."}];
 }
 
 @end
