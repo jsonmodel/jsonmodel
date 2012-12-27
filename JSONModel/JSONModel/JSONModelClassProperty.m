@@ -17,4 +17,10 @@
 #import "JSONModelClassProperty.h"
 
 @implementation JSONModelClassProperty
+
+-(NSString*)description
+{
+    return [NSString stringWithFormat:@"%@[@%@]<%@> %@ %@ %@ %@", self.name, self.type?self.type:@"primitive", self.protocol?self.protocol:@"", self.isOptional?@"Optional,":@"",self.isMutable?@"Mutable,":@"",self.doesConvertOnDemand?@"ConvertOnDemand,":@"",self.isStandardJSONType?@"JSONType":@""];
+}
+
 @end
