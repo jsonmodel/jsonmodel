@@ -33,7 +33,7 @@
 
 -(void)testEquality
 {
-    NSString* filePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"post.json"];
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"post.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
 
     PostsModel* posts1 = [[PostsModel alloc] initWithString: jsonContents error:nil];
