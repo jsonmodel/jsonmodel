@@ -9,6 +9,8 @@
 #import "CustomPropsTests.h"
 #import "CustomPropertyModel.h"
 
+#import "QuartzCore/QuartzCore.h"
+
 @implementation CustomPropsTests
 {
     CustomPropertyModel* c;
