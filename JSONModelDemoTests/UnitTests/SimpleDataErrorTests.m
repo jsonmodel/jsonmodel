@@ -14,7 +14,7 @@
 
 -(void)testMissingKeysError
 {    
-    NSString* filePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"primitivesWithErrors.json"];
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"primitivesWithErrors.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
     NSAssert(jsonContents, @"Can't fetch test data file contents.");

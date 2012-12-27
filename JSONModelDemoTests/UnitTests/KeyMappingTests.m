@@ -21,7 +21,7 @@
 {
     [super setUp];
     
-    NSString* filePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"github-iphone.json"];
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"github-iphone.json"];
     NSData* jsonData = [NSData dataWithContentsOfFile:filePath];
     
     NSAssert(jsonData, @"Can't fetch test data file contents.");

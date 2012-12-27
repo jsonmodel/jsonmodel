@@ -16,7 +16,7 @@
 
 -(void)testPropertyPresent
 {
-    NSString* filePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"withOptProp.json"];
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"withOptProp.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
     NSAssert(jsonContents, @"Can't fetch test data file contents.");
