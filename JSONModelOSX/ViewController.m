@@ -91,6 +91,10 @@ enum kServices {
     kiva = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"
             completion:^(JSONModel *model, JSONModelError *e) {
                 [table reloadData];
+                
+                if (e) {
+                    [[NSAlert alertWithError:e] beginSheetModalForWindow:self.view.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+                }
             }];
     
 }
