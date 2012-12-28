@@ -400,8 +400,6 @@ static NSMutableDictionary* keyMappers = nil;
                        ];
             
             //JMLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
-            NSString* propt = [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding];
-            
             [scanner scanUpToString:@"T" intoString: nil];
             [scanner scanString:@"T" intoString:nil];
             
