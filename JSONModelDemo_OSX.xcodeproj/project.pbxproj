@@ -82,6 +82,10 @@
 		9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DFF5168CF09A0015CCDF /* JSONValueTransformer.m */; };
 		9C97441C168CF255004DA333 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C97441B168CF255004DA333 /* Cocoa.framework */; };
 		9C97441E168CF264004DA333 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C97441D168CF264004DA333 /* Cocoa.framework */; };
+		9CB6BC28168DE35E0002535B /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC23168DE35E0002535B /* VideoLink.m */; };
+		9CB6BC29168DE35E0002535B /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC25168DE35E0002535B /* VideoModel.m */; };
+		9CB6BC2A168DE35E0002535B /* VideoTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC27168DE35E0002535B /* VideoTitle.m */; };
+		9CB6BC2E168E07730002535B /* GitHubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC2D168E07730002535B /* GitHubUserModel.m */; };
 		9CC27C9C1689B7BE008B5411 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CC27C9A1689B7BE008B5411 /* InfoPlist.strings */; };
 		9CC27C9E1689B7BE008B5411 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC27C9D1689B7BE008B5411 /* main.m */; };
 		9CC27CA21689B7BE008B5411 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC27CA01689B7BE008B5411 /* Credits.rtf */; };
@@ -192,6 +196,14 @@
 		9C66DFF5168CF09A0015CCDF /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		9C97441B168CF255004DA333 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C97441D168CF264004DA333 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		9CB6BC22168DE35E0002535B /* VideoLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoLink.h; path = JSONModelDemo_iOS/VideoLink.h; sourceTree = SOURCE_ROOT; };
+		9CB6BC23168DE35E0002535B /* VideoLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoLink.m; path = JSONModelDemo_iOS/VideoLink.m; sourceTree = SOURCE_ROOT; };
+		9CB6BC24168DE35E0002535B /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoModel.h; path = JSONModelDemo_iOS/VideoModel.h; sourceTree = SOURCE_ROOT; };
+		9CB6BC25168DE35E0002535B /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoModel.m; path = JSONModelDemo_iOS/VideoModel.m; sourceTree = SOURCE_ROOT; };
+		9CB6BC26168DE35E0002535B /* VideoTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoTitle.h; path = JSONModelDemo_iOS/VideoTitle.h; sourceTree = SOURCE_ROOT; };
+		9CB6BC27168DE35E0002535B /* VideoTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoTitle.m; path = JSONModelDemo_iOS/VideoTitle.m; sourceTree = SOURCE_ROOT; };
+		9CB6BC2C168E07730002535B /* GitHubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubUserModel.h; path = JSONModelDemo_iOS/GitHubUserModel.h; sourceTree = SOURCE_ROOT; };
+		9CB6BC2D168E07730002535B /* GitHubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubUserModel.m; path = JSONModelDemo_iOS/GitHubUserModel.m; sourceTree = SOURCE_ROOT; };
 		9CC27C8D1689B7BE008B5411 /* JSONModelDemo_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC27C941689B7BE008B5411 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9CC27C951689B7BE008B5411 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -409,6 +421,28 @@
 			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
+		9CB6BC21168DE3250002535B /* YoutubeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CB6BC22168DE35E0002535B /* VideoLink.h */,
+				9CB6BC23168DE35E0002535B /* VideoLink.m */,
+				9CB6BC24168DE35E0002535B /* VideoModel.h */,
+				9CB6BC25168DE35E0002535B /* VideoModel.m */,
+				9CB6BC26168DE35E0002535B /* VideoTitle.h */,
+				9CB6BC27168DE35E0002535B /* VideoTitle.m */,
+			);
+			name = YoutubeDemo;
+			sourceTree = "<group>";
+		};
+		9CB6BC2B168E07640002535B /* GithubDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9CB6BC2C168E07730002535B /* GitHubUserModel.h */,
+				9CB6BC2D168E07730002535B /* GitHubUserModel.m */,
+			);
+			name = GithubDemo;
+			sourceTree = "<group>";
+		};
 		9CC27C821689B7BE008B5411 = {
 			isa = PBXGroup;
 			children = (
@@ -454,7 +488,6 @@
 			isa = PBXGroup;
 			children = (
 				9CC2FCB2168CE6F00059FE67 /* DemoApp */,
-				9CC2FCB1168CE6E60059FE67 /* KivaDemo */,
 			);
 			name = JSONModelDemo_OSX;
 			path = JSONModelOSX;
@@ -498,6 +531,9 @@
 		9CC2FCB2168CE6F00059FE67 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				9CB6BC2B168E07640002535B /* GithubDemo */,
+				9CB6BC21168DE3250002535B /* YoutubeDemo */,
+				9CC2FCB1168CE6E60059FE67 /* KivaDemo */,
 				9CC27CC91689B8EE008B5411 /* ViewController */,
 				9CC27CA31689B7BE008B5411 /* AppDelegate.h */,
 				9CC27CA41689B7BE008B5411 /* AppDelegate.m */,
@@ -699,6 +735,10 @@
 				9C66E004168CF09A0015CCDF /* JSONModel+networking.m in Sources */,
 				9C66E006168CF09A0015CCDF /* JSONKeyMapper.m in Sources */,
 				9C66E008168CF09A0015CCDF /* JSONValueTransformer.m in Sources */,
+				9CB6BC28168DE35E0002535B /* VideoLink.m in Sources */,
+				9CB6BC29168DE35E0002535B /* VideoModel.m in Sources */,
+				9CB6BC2A168DE35E0002535B /* VideoTitle.m in Sources */,
+				9CB6BC2E168E07730002535B /* GitHubUserModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

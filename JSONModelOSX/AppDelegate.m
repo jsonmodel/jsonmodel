@@ -14,7 +14,6 @@
 @end
 
 
-
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -27,6 +26,10 @@
     self.controller.view.frame = ((NSView*)self.window.contentView).bounds;
     self.controller.view.autoresizingMask = NSViewWidthSizable |  NSViewHeightSizable;
     
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+    return YES;
 }
 
 @end
