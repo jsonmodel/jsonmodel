@@ -60,7 +60,9 @@ BOOL _isLoading;
                                           blockSelf = [self initWithDictionary:json error:&initError];
                                           
                                           if (completeBlock) {
-                                              completeBlock(blockSelf, e?e:initError );
+                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
+                                                  completeBlock(blockSelf, e?e:initError );
+                                              });
                                           }
                                           
                                           self.isLoading = NO;
