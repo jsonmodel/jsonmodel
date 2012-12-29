@@ -36,7 +36,8 @@
     NSDictionary* object = [NSDictionary dictionaryWithContentsOfFile:filePath];
     
     //initialize model with data
-    data = [[MyDataModel alloc] initWithDictionary: object error:NULL];
+    JSONModelError* initError;
+    data = [[MyDataModel alloc] initWithDictionary: object error:&initError];
 
     if (!data) {
         data = [[MyDataModel alloc] init];
