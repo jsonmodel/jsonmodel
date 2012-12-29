@@ -30,8 +30,8 @@ enum kServices {
 
 @interface ViewController ()
 {
-    NSArray* list;
     IBOutlet NSTableView* table;
+    IBOutlet NSProgressIndicator* spinner;
     
     int currentService;
 
@@ -51,26 +51,27 @@ enum kServices {
 
 @implementation ViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(void)awakeFromNib
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-        list = @[];
-    }
-    
-    return self;
+    [spinner setHidden:YES];
+}
+
+-(void)setLoaderVisible:(BOOL)isVis
+{
+    [spinner setHidden:!isVis];
+    if (isVis) [spinner startAnimation:nil];
+    else [spinner stopAnimation:nil];
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     
-    if ( [tableColumn.identifier isEqualToString:@"MyCol"] )
-    {
         switch (currentService) {
             case kServiceKiva:
             {
+                if (row>=kiva.loans.count) return nil;
+                
                 LoanModel* loan = kiva.loans[row];
                 NSString* message = [NSString stringWithFormat:@"%@ from %@(%@) needs a loan %@",
                                      loan.name, loan.location.country, loan.location.countryCode, loan.use
@@ -82,6 +83,8 @@ enum kServices {
                 
             case kServiceYoutube:
             {
+                if (row>=videos.count) return nil;
+                
                 VideoModel* video = videos[row];
                 NSString* message = [NSString stringWithFormat:@"%@",
                                      video.title.$t
@@ -92,7 +95,8 @@ enum kServices {
             
             case kServiceGithub:
             {
-                cellView.textField.stringValue = items[row];
+                if (row>=items.count) return nil;
+                cellView.textField.stringValue = [items[row] description];
                 
             }   break;
                 
@@ -101,9 +105,6 @@ enum kServices {
                 break;
         }
         
-        return cellView;
-    }
-    
     return cellView;
 }
 
@@ -135,6 +136,15 @@ enum kServices {
             [[NSWorkspace sharedWorkspace] openURL:video.link.href];
             
         }   break;
+        
+        case kServiceGithub:
+        {
+            id item = items[rowIndex];
+            if ([item isKindOfClass:[NSURL class]]) {
+                [[NSWorkspace sharedWorkspace] openURL:item];
+            }
+            
+        }   break;
             
         default:
             break;
@@ -146,6 +156,7 @@ enum kServices {
 -(IBAction)actionKiva:(id)sender
 {
     currentService = kServiceKiva;
+    [self setLoaderVisible:YES];
     
     kiva = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"
             completion:^(JSONModel *model, JSONModelError *e) {
@@ -156,6 +167,7 @@ enum kServices {
                     [[NSAlert alertWithError:e] beginSheetModalForWindow:self.view.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
                 }
                 
+                [self setLoaderVisible:NO];
             }];
     
 }
@@ -163,6 +175,7 @@ enum kServices {
 -(IBAction)actionYoutube:(id)sender
 {
     currentService = kServiceYoutube;
+    [self setLoaderVisible:YES];
     
     [JSONHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"
                                   completion:^(NSDictionary *json, JSONModelError *e) {
@@ -175,23 +188,26 @@ enum kServices {
                                           [[NSAlert alertWithError:e] beginSheetModalForWindow:self.view.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
                                       }
                                       
+                                      [self setLoaderVisible:NO];
                                   }];
 }
 
 -(IBAction)actionGithub:(id)sender
 {
     currentService = kServiceGithub;
+    [self setLoaderVisible:YES];
     
     user = [[GitHubUserModel alloc] initFromURLWithString:@"https://api.github.com/users/icanzilb"
                                                completion:^(JSONModel *model, JSONModelError *e) {
 
                                                    items = @[user.login, user.html_url, user.company, user.name, user.blog];
-                                                   [table reloadData];
+                                                   [table performSelector:@selector(reloadData) withObject:nil afterDelay:0.1];
                                                    
                                                    if (e) {
                                                        [[NSAlert alertWithError:e] beginSheetModalForWindow:self.view.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
                                                    }
                                                    
+                                                   [self setLoaderVisible:NO];
                                                }];
     
 }
