@@ -8,6 +8,16 @@ JSONModel is a library, which allows rapid creation of smart data models. You ca
 [![](http://jsonmodel.com/img/jm_ios_screen.png)](http://jsonmodel.com/img/jm_ios_screen.png)
 [![](http://jsonmodel.com/img/jm_osx_screen.png)](http://jsonmodel.com/img/jm_osx_screen.png)
 
+The core task of JSONModel is to help you reduce your Objective-C code to parse and import JSON values to Objective-C objects.
+
+JSONModel automatically introspects your model classes and the structure of your JSON input and reduces drastically the amount of code.
+
+The core task of JSONModel is to import, convert, store and export data - through the JSON data types bottleneck:
+
+[![](http://www.touch-code-magazine.com/img/json.png)](http://www.touch-code-magazine.com/img/json.png)
+
+Besides this core task JSONModel does also a whole bunch of other tasks, to help you **automate as much as possible** working with local or remote JSON data.
+
 ------------------------------------
 Requirements
 ====================================
