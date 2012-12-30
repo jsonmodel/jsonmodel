@@ -127,6 +127,10 @@ This code is distributed under the terms and conditions of the MIT license.
 Change-log
 ==========
 
+**Version 0.8.1** @ 2012-12-31
+
+- Fixed Xcode workspace for the demo apps
+
 **Version 0.8.0** @ 2012-12-31
 
 - OSX support, test and demos
