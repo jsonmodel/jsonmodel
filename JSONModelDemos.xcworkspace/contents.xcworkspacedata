@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "JSONModel">
+      <FileRef
+         location = "group:JSONModel/JSONModelLib.h">
+      </FileRef>
+      <Group
+         location = "group:JSONModel/JSONModel"
+         name = "JSONModel">
+         <FileRef
+            location = "group:JSONModel.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModel.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModelArray.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModelArray.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModelClassProperty.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModelClassProperty.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModelError.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModelError.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:JSONModel/JSONModelCategories"
+         name = "JSONModelCategories">
+         <FileRef
+            location = "group:NSArray+JSONModel.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSArray+JSONModel.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:JSONModel/JSONModelNetworking"
+         name = "JSONModelNetworking">
+         <FileRef
+            location = "group:JSONAPI.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONAPI.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONHTTPClient.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONHTTPClient.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModel+networking.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONModel+networking.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:JSONModel/JSONModelTransformations"
+         name = "JSONModelTransformations">
+         <FileRef
+            location = "group:JSONKeyMapper.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONKeyMapper.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONValueTransformer.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONValueTransformer.m">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:JSONModelDemo_OSX.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:JSONModelDemo_iOS.xcodeproj">
+   </FileRef>
+</Workspace>
