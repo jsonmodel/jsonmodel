@@ -80,6 +80,23 @@ LocationModel* location = [[LocationModel alloc] initFromURLWithString:@"http://
                               NSLog("Country: %@, error: %@", location.country, [e localizedDescription]);
                           }];
 ```
--------------------------------------
-(Beta) Documentation:
+
+-------
+Detailed documentation and tutorials
+=======
+
 http://www.touch-code-magazine.com/JSONModel/
+
+-------
+License
+=======
+
+This code is distributed under the terms and conditions of the MIT license. 
+
+----------
+Change-log
+==========
+
+**Version 0.7.8** @ 2012-12-25
+
+- Initial release with semantic versioning
