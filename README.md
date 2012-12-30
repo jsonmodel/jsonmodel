@@ -85,7 +85,8 @@ LocationModel* location = [[LocationModel alloc] initFromURLWithString:@"http://
 Detailed documentation and tutorials
 =======
 
-http://www.touch-code-magazine.com/JSONModel/
+Information and examples: http://www.touch-code-magazine.com/JSONModel/
+Official website: http://www.jsonmodel.com
 
 -------
 License
