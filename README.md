@@ -86,6 +86,7 @@ Detailed documentation and tutorials
 =======
 
 Information and examples: http://www.touch-code-magazine.com/JSONModel/
+
 Official website: http://www.jsonmodel.com
 
 -------
