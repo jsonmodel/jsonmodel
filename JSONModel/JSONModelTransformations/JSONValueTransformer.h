@@ -1,7 +1,7 @@
 //
 //  JSONValueTransformer.h
 //
-//  @version 0.8.0
+//  @version 0.8.2
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 

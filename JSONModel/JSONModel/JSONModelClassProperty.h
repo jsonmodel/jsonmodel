@@ -1,7 +1,7 @@
 //
 //  JSONModelClassProperty.h
 //
-//  @version 0.8.0
+//  @version 0.8.2
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -45,6 +45,6 @@
 @property (assign, nonatomic) BOOL isMutable;
 
 /** If YES - create models on demand for the array members */
-@property (assign, nonatomic) BOOL doesConvertOnDemand;
+@property (assign, nonatomic) BOOL convertsOnDemand;
 
 @end

@@ -1,7 +1,7 @@
 //
 //  JSONModelHTTPClient.h
 //
-//  @version 0.8.0
+//  @version 0.8.2
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -29,9 +29,9 @@ extern NSString * const kHTTPMethodPOST;
  * @param model the newly created JSONModel instance or nil
  * @param e JSONModelError or nil
  */
-typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* e);
+typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
 
-typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* e);
+typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

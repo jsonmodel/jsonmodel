@@ -1,7 +1,7 @@
 //
 //  JSONModel.h
 //
-//  @version 0.8.0
+//  @version 0.8.2
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -80,7 +80,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @param d a dictionary holding JSON objects, to be imported in the model.
    * @param err an error or NULL
    */
-  -(instancetype)initWithDictionary:(NSDictionary*)d error:(NSError**)err;
+  -(instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError**)err;
 
   /**
    * All JSONModel classes should be able to export themselves as a dictioanry of
@@ -117,7 +117,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see initWithString:usingEncoding:error: for use of custom text encodings
    */
-  -(instancetype)initWithString:(NSString*)s error:(JSONModelError**)err;
+  -(instancetype)initWithString:(NSString*)string error:(JSONModelError**)err;
 
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter using the given encoding.
@@ -127,9 +127,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    */
-  -(instancetype)initWithString:(NSString *)s usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
+  -(instancetype)initWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
 
-  -(instancetype)initWithDictionary:(NSDictionary*)d error:(NSError **)err;
+  -(instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError **)err;
 
 /** @name Exporting model contents */
 
@@ -155,7 +155,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromModels:
    */
-  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)a;
+  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array;
 
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
@@ -166,7 +166,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see arrayOfModelsFromDictionaries:
    */
-  +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)a;
+  +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array;
 
 /** @name Comparing models */
 
