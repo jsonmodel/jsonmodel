@@ -30,11 +30,6 @@ Requirements
 Adding JSONModel to your project
 ====================================
 
-Cocoa pod
-------------
-
-* coming soon ...
-
 Source files
 ------------
 
@@ -42,6 +37,22 @@ Source files
 2. Copy the JSONModel sub-folder into your Xcode project
 3. Build your project and check that there are no compile time errors 
 (if your project is non-arc for example, you will get a compile time error from the JSONModel library)
+
+Cocoa pod
+------------
+
+1. Be sure to update your pods specs:
+
+```bash
+pod setup
+```
+
+2. In your **Podfile** add the JSONModel pod:
+
+```ruby
+pod 'JSONModel'
+```
+That's it!
 
 ------------------------------------
 Basic usage
@@ -126,6 +137,10 @@ This code is distributed under the terms and conditions of the MIT license.
 ----------
 Change-log
 ==========
+
+**Version 0.8.2** @ 2013-01-01
+
+- Added distribution as a Cocoa Pod
 
 **Version 0.8.1** @ 2012-12-31
 
