@@ -52,7 +52,7 @@ Basic usage
 
 If you are parsing this JSON:
 ```javascript
-{countryCode:"DE", country:"Germany"}
+{"countryCode":"DE", "country":"Germany"}
 ```
 
 Create the following properties:
