@@ -54,6 +54,8 @@ pod 'JSONModel'
 ```
 That's it!
 
+If you want to read more about CocoaPods, have a look at [this great tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
+
 ------------------------------------
 Basic usage
 ====================================
