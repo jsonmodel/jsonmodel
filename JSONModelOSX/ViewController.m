@@ -177,7 +177,7 @@ enum kServices {
     currentService = kServiceYoutube;
     [self setLoaderVisible:YES];
     
-    [JSONHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"
+    [JSONHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=50&alt=json"
                                   completion:^(NSDictionary *json, JSONModelError *e) {
                                       
                                       videos = [VideoModel arrayOfModelsFromDictionaries:

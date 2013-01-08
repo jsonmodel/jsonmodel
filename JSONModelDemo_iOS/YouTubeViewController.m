@@ -30,7 +30,7 @@
         //code executed in the background
         //2
         NSData* ytData = [NSData dataWithContentsOfURL:
-                          [NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=15&alt=json"]
+                          [NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=50&alt=json"]
                           ];
         //3
         NSDictionary* json = [NSJSONSerialization
