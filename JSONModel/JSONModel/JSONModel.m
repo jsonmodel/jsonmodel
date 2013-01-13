@@ -357,6 +357,8 @@ static NSMutableDictionary* keyMappers = nil;
 -(NSArray*)__properties__
 {
     if (classProperties[self.className]) return [classProperties[self.className] allValues];
+
+    if (!self.className) [self __setup__];
     [self __restrospectProperties];
     return [classProperties[self.className] allValues];
 }
@@ -424,7 +426,7 @@ static NSMutableDictionary* keyMappers = nil;
                     if ([protocolName isEqualToString:@"Optional"]) {
                         p.isOptional = YES;
                     } else if([protocolName isEqualToString:@"Index"]) {
-                        classIndexes[_className] = p.name;
+                        classIndexes[self.className] = p.name;
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.convertsOnDemand = YES;
                     } else {
