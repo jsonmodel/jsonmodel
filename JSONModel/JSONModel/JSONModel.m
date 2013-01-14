@@ -105,7 +105,7 @@ static NSMutableDictionary* keyMappers = nil;
 {
     JSONModelError* initError;
     id objModel = [self initWithString:string usingEncoding:NSUTF8StringEncoding error:&initError];
-    if (err) *err = initError;
+    if (initError) *err = initError;
     return objModel;
 }
 
