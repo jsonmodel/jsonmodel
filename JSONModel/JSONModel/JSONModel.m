@@ -117,12 +117,12 @@ static NSMutableDictionary* keyMappers = nil;
                                                error:&initError];
 
     if (initError) {
-        if (err) *err = [JSONModelError errorBadJSON];
+        *err = [JSONModelError errorBadJSON];
         return nil;
     }
     
     id objModel = [self initWithDictionary:obj error:&initError];
-    if (err) *err = initError;
+    if (initError) *err = initError;
     return objModel;
 }
 
