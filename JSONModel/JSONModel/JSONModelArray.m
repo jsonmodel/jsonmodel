@@ -38,7 +38,7 @@
 {
     id obj = _storage[index];
     if (![obj isMemberOfClass:_targetClass]) {
-        NSError* err;
+        NSError* err = nil;
         obj = [[_targetClass alloc] initWithDictionary:obj error:&err];
         if (obj) {
             _storage[index] = obj;
