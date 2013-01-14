@@ -200,7 +200,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * are encountered return an NSError object. If the model is valid return nil.
    * @return an NSError instance. You can use the convenience method [JSONModelError errorModelIsInvalid] to get an NSError instance.
    */
-  -(NSError*)validate;
+-(void)validate:(NSError**)err;
 
 /** @name Key mapping */
   /**
