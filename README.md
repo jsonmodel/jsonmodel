@@ -138,6 +138,12 @@ License
 
 This code is distributed under the terms and conditions of the MIT license. 
 
+-------
+Contribution guidelines
+=======
+
+* if you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging
+
 ----------
 Change-log
 ==========
