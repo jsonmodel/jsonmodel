@@ -103,7 +103,7 @@ static NSMutableDictionary* keyMappers = nil;
 
 -(id)initWithString:(NSString*)string error:(JSONModelError**)err
 {
-    JSONModelError* initError;
+    JSONModelError* initError = nil;
     id objModel = [self initWithString:string usingEncoding:NSUTF8StringEncoding error:&initError];
     if (initError) *err = initError;
     return objModel;
@@ -504,7 +504,7 @@ static NSMutableDictionary* keyMappers = nil;
         //check if it's a dictionary of models
         if ([property.type isSubclassOfClass:[NSDictionary class]]) {
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
-            JSONModelError* initErr;
+            JSONModelError* initErr = nil;
             
             for (NSString* key in [value allKeys]) {
                 id obj = [[[protocolClass class] alloc] initWithDictionary:value[key] error:&initErr];
