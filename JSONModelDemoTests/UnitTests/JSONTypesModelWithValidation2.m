@@ -10,13 +10,10 @@
 
 @implementation JSONTypesModelWithValidation2
 
--(NSError*)validate
+-(void)validate:(NSError**)err
 {
-    if ([self.year intValue]<2011 || [self.pi floatValue]<3.10) {
-        return nil;
-    } else {
-        return [JSONModelError errorModelIsInvalid];
-    }
-}
+    if (!([self.year intValue]<2011 || [self.pi floatValue]<3.10)) {
+        *err = [JSONModelError errorModelIsInvalid];
+    } }
 
 @end
