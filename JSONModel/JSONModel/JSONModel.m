@@ -176,9 +176,8 @@ static NSMutableDictionary* keyMappers = nil;
 
         //not all required properties are in - invalid input
         JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.className, requiredProperties);
-        if (err) {
-            *err = [JSONModelError errorInvalidDataWithMissingKeys:requiredProperties];
-        }
+        
+        *err = [JSONModelError errorInvalidDataWithMissingKeys:requiredProperties];
         return nil;
     }
     
@@ -207,9 +206,8 @@ static NSMutableDictionary* keyMappers = nil;
         if (isValueOfAllowedType==NO) {
             //type not allowed
             JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
-            if (err) {
-                *err = [JSONModelError errorInvalidData];
-            }
+
+            *err = [JSONModelError errorInvalidData];
             return nil;
         }
         
@@ -242,11 +240,11 @@ static NSMutableDictionary* keyMappers = nil;
             if ([[property.type class] isSubclassOfClass:[JSONModel class]]) {
                 
                 //initialize the property's model, store it
-                NSError* initError;
+                NSError* initError = nil;
                 id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
 
                 if (!value) {
-                    if (err) *err = [JSONModelError errorInvalidData];
+                    if (initError) *err = [JSONModelError errorInvalidData];
                     return nil;
                 }
                 [self setValue:value forKey:key];
@@ -263,7 +261,7 @@ static NSMutableDictionary* keyMappers = nil;
                     //JMLog(@"proto: %@", p.protocol);
                     jsonValue = [self __transform:jsonValue forProperty:property];
                     if (!jsonValue) {
-                        if (err) *err = [JSONModelError errorInvalidData];
+                        *err = [JSONModelError errorInvalidData];
                         return nil;
                     }
                 }
