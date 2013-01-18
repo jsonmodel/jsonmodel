@@ -110,27 +110,35 @@ LocationModel* location = [[LocationModel alloc] initFromURLWithString:@"http://
 Detailed documentation and tutorials
 =======
 
-JSONModel includes tons of functionality: 
+Information and examples: http://www.touch-code-magazine.com/JSONModel/
+
+Official website: http://www.jsonmodel.com
+
+## JSONModel features
+
+#### [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/) [tutorial]
+
+* automatic data mapping
+* model cascading (models including models)
+* model collections
+
+#### [Performance optimisation for working with JSON feeds via JSONModel](http://www.touch-code-magazine.com/performance-optimisation-for-working-with-json-feeds-via-jsonmodel/)  [tutorial]
+* one-shot or on-demand JSON to model objects conversion
+
+More tutorials to come on ...
+
 * json validation
 * key mapping
 * data transformations
-* automatic data mapping
 * error handling
 * custom data validation
 * automatic underscore_naming to camelCaseNaming mapping
 * synchronious and asynchronious networking
 * JSON API client
 * JSON RPC 1.0 client
-* one-shot or on-demand JSON to model objects conversion
-* model cascading (models including models)
-* model collections
 * automatic compare and equality features
 * export models back to NSDictionary or JSON text
 * and more.
-
-Information and examples: http://www.touch-code-magazine.com/JSONModel/
-
-Official website: http://www.jsonmodel.com
 
 -------
 License
