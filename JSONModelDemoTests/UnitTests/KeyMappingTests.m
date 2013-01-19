@@ -80,4 +80,16 @@
     
 }
 
+-(void)testKeyMapperCaching
+{
+    //simulate fetching different models, so the keyMapper cache is used
+    
+    [self testUnderscoreMapper];
+    [self testKeyMapping];
+    [self testUnderscoreMapper];
+    [self testKeyMapping];
+    [self testUnderscoreMapper];
+    [self testKeyMapping];
+}
+
 @end
