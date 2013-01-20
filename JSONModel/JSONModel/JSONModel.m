@@ -531,7 +531,7 @@ static NSMutableDictionary* keyMappers = nil;
     if ([[protocolClass class] isSubclassOfClass:[JSONModel class]]) {
 
         //check if should export list of dictionaries
-        if ([property.type isEqualToString:@"NSArray"]) {
+	if ([property isKindOfClass:[NSArray class]]) {
 
             NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity: [(NSArray*)value count] ];
             for (id<AbstractJSONModelProtocol> model in (NSArray*)value) {
@@ -541,7 +541,7 @@ static NSMutableDictionary* keyMappers = nil;
         }
         
         //check if should export dictionary of dictionaries
-        if ([property.type isEqualToString:@"NSDictionary"]) {
+	if ([property isKindOfClass:[NSDictionary class]]) {
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
             for (NSString* key in [(NSDictionary*)value allKeys]) {
                 id<AbstractJSONModelProtocol> model = value[key];
