@@ -531,8 +531,7 @@ static NSMutableDictionary* keyMappers = nil;
     if ([[protocolClass class] isSubclassOfClass:[JSONModel class]]) {
 
         //check if should export list of dictionaries
-        if (p.type == [NSArray class]) {
-
+        if ([property isKindOfClass:[NSArray class]]) {
             NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity: [(NSArray*)value count] ];
             for (id<AbstractJSONModelProtocol> model in (NSArray*)value) {
                 [tempArray addObject: [model toDictionary] ];
@@ -541,7 +540,7 @@ static NSMutableDictionary* keyMappers = nil;
         }
         
         //check if should export dictionary of dictionaries
-        if (p.type == [NSDictionary class]) {
+        if ([property isKindOfClass:[NSDictionary class]]) {
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
             for (NSString* key in [(NSDictionary*)value allKeys]) {
                 id<AbstractJSONModelProtocol> model = value[key];
@@ -648,8 +647,19 @@ static NSMutableDictionary* keyMappers = nil;
 //exports model to a dictionary and then to a JSON string
 -(NSString*)toJSONString
 {
-    //let exceptions bubble up
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:[self toDictionary] options:kNilOptions error:nil];
+    NSData* jsonData = nil;
+    NSError* jsonError = nil;
+    
+    @try {
+        jsonData = [NSJSONSerialization dataWithJSONObject:[self toDictionary] options:kNilOptions error:&jsonError];
+    }
+    @catch (NSException *exception) {
+        //this should not happen in properly design JSONModel
+        //usually means there was no reverse transformer for a custom property
+        JMLog(@"EXCEPTION: %@", exception.description);
+        return nil;
+    }
+    
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
