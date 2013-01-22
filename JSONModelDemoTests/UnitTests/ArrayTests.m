@@ -38,4 +38,22 @@
     NSAssert([repos.repositories[0] isMemberOfClass:[GitHubRepoModel class]], @".properties[0] is not a GitHubRepoModel");
 }
 
+/*
+ * https://github.com/icanzilb/JSONModel/pull/14
+ */
+-(void)testArrayReverseTransformGitHubIssue_14
+{
+    NSDictionary* dict = [repos toDictionary];
+    NSAssert(dict, @"Could not convert ReposModel back to an NSDictionary");
+}
+
+/*
+ * https://github.com/icanzilb/JSONModel/issues/15
+ */
+-(void)testArrayReverseTransformGitHubIssue_15
+{
+    NSString* string = [repos toJSONString];
+    NSAssert(string, @"Could not convert ReposModel back to a string");
+}
+
 @end

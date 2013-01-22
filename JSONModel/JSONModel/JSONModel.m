@@ -531,7 +531,7 @@ static NSMutableDictionary* keyMappers = nil;
     if ([[protocolClass class] isSubclassOfClass:[JSONModel class]]) {
 
         //check if should export list of dictionaries
-        if ([property isKindOfClass:[NSArray class]]) {
+        if (property.type == [NSArray class]) {
             NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity: [(NSArray*)value count] ];
             for (id<AbstractJSONModelProtocol> model in (NSArray*)value) {
                 [tempArray addObject: [model toDictionary] ];
@@ -540,7 +540,7 @@ static NSMutableDictionary* keyMappers = nil;
         }
         
         //check if should export dictionary of dictionaries
-        if ([property isKindOfClass:[NSDictionary class]]) {
+        if (property.type == [NSDictionary class]) {
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
             for (NSString* key in [(NSDictionary*)value allKeys]) {
                 id<AbstractJSONModelProtocol> model = value[key];
@@ -651,7 +651,8 @@ static NSMutableDictionary* keyMappers = nil;
     NSError* jsonError = nil;
     
     @try {
-        jsonData = [NSJSONSerialization dataWithJSONObject:[self toDictionary] options:kNilOptions error:&jsonError];
+        NSDictionary* dict = [self toDictionary];
+        jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
     }
     @catch (NSException *exception) {
         //this should not happen in properly design JSONModel
