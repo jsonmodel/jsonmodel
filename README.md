@@ -152,6 +152,13 @@ Contribution guidelines
 
 * if you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging
 
+-------
+Contributors
+=======
+
+Author: Marin Todorov
+Contributors: Christian Hoffmann, Mark Joslin
+
 ----------
 Change-log
 ==========
