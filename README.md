@@ -157,6 +157,7 @@ Contributors
 =======
 
 Author: Marin Todorov
+
 Contributors: Christian Hoffmann, Mark Joslin
 
 ----------
