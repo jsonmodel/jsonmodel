@@ -7,8 +7,8 @@ JSONModel is a library, which allows rapid creation of smart data models. You ca
 
 **JSONModel does NOT pre-write your code** as many other libs do, instead it uses performance optimized code to introspect your model classes at run-time, thus being way more flexible when you need to do changes.
 
-[![](http://jsonmodel.com/img/jm_ios_screen.png)](http://jsonmodel.com/img/jm_ios_screen.png)
-[![](http://jsonmodel.com/img/jm_osx_screen.png)](http://jsonmodel.com/img/jm_osx_screen.png)
+[![](http://jsonmodel.com/img/screen_ios.png)](http://jsonmodel.com/img/screen_ios.png)
+[![](http://jsonmodel.com/img/screen_osx.png)](http://jsonmodel.com/img/screen_osx.png)
 
 The core task of JSONModel is to help you reduce your Objective-C code to parse and import JSON values to Objective-C objects.
 
