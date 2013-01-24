@@ -1,7 +1,7 @@
 //
 //  JSONModelHTTPClient.m
 //
-//  @version 0.8.2
+//  @version 0.8.3
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
