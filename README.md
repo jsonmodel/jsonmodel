@@ -164,6 +164,10 @@ Contributors: Christian Hoffmann, Mark Joslin
 Change-log
 ==========
 
+**Version 0.8.3** @ 2013-01-24
+
+- Bug fixes, optimisation and clean up. Github issues up to #15
+
 **Version 0.8.2** @ 2013-01-01
 
 - Added distribution as a Cocoa Pod
