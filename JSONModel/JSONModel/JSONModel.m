@@ -157,14 +157,23 @@ static NSMutableDictionary* keyMappers = nil;
     
     //transform the key names, if neccessary
     if (keyMapper) {
-        NSMutableSet* transformedIncomingKeys = [NSMutableSet setWithCapacity: incomingKeys.count];
-        
-        for (NSString* keyName in incomingKeysArray) {
-            [transformedIncomingKeys addObject:
-             keyMapper.JSONToModelKeyBlock(keyName)
-             ];
+
+        NSMutableSet* transformedIncomingKeys = [NSMutableSet setWithCapacity: requiredProperties.count];
+        NSString* transformedName = nil;
+
+        //loop over the required properties list
+        for (NSString* requiredPropertyName in requiredProperties) {
+
+            //get the mapped key path
+            transformedName = keyMapper.modelToJSONKeyBlock(requiredPropertyName);
+            
+            //chek if exists and if so, add to incoming keys
+            if ([dict valueForKeyPath:transformedName]) {
+                [transformedIncomingKeys addObject: requiredPropertyName];
+            }
         }
         
+        //overwrite the raw incoming list with the mapped key names
         incomingKeys = transformedIncomingKeys;
     }
     
@@ -186,12 +195,16 @@ static NSMutableDictionary* keyMappers = nil;
     requiredProperties= nil;
     
     //loop over the incoming keys and set self's properties
-    for (__strong NSString* key in incomingKeysArray) {
-        
-        //JMLog(@"key: %@", key);
+    for (JSONModelClassProperty* property in [self __properties__]) {
+
+        //convert key name ot model keys, if a mapper is provided
+        NSString* jsonKeyPath = property.name;
+        if (keyMapper) jsonKeyPath = keyMapper.modelToJSONKeyBlock( property.name );
+
+        JMLog(@"keyPath: %@", jsonKeyPath);
         
         //general check for data type compliance
-        id jsonValue = dict[key];
+        id jsonValue = [dict valueForKeyPath: jsonKeyPath];
         
         Class jsonValueClass = [jsonValue class];
         BOOL isValueOfAllowedType = NO;
@@ -210,12 +223,9 @@ static NSMutableDictionary* keyMappers = nil;
             if (err) *err = [JSONModelError errorInvalidData];
             return nil;
         }
-        
-        //convert key name ot model keys, if a mapper is provided
-        if (keyMapper) key = keyMapper.JSONToModelKeyBlock(key);
-        
+                
         //check if there's matching property in the model
-        JSONModelClassProperty* property = classProperties[self.className][key];
+        //JSONModelClassProperty* property = classProperties[self.className][key];
         
         if (property) {
             
@@ -223,7 +233,7 @@ static NSMutableDictionary* keyMappers = nil;
             if (property.type == nil) {
                 
                 //just copy the value
-                [self setValue:jsonValue forKey:key];
+                [self setValue:jsonValue forKey: property.name];
                 
                 //skip directly to the next key
                 continue;
@@ -231,7 +241,7 @@ static NSMutableDictionary* keyMappers = nil;
             
             // 0.5) handle nils
             if (isNull(jsonValue)) {
-                [self setValue:nil forKey:key];
+                [self setValue:nil forKey: property.name];
                 continue;
             }
 
@@ -247,7 +257,7 @@ static NSMutableDictionary* keyMappers = nil;
                     if (initError && err) *err = [JSONModelError errorInvalidData];
                     return nil;
                 }
-                [self setValue:value forKey:key];
+                [self setValue:value forKey: property.name];
                 
                 //for clarity, does the same without continue
                 continue;
@@ -275,7 +285,7 @@ static NSMutableDictionary* keyMappers = nil;
                     }
                     
                     //set the property value
-                    [self setValue:jsonValue forKey:key];
+                    [self setValue:jsonValue forKey: property.name];
                     continue;
                 }
                 
@@ -307,7 +317,7 @@ static NSMutableDictionary* keyMappers = nil;
                         jsonValue = [valueTransformer performSelector:selector withObject:jsonValue];
 #pragma clang diagnostic pop
                         
-                        [self setValue:jsonValue forKey:key];
+                        [self setValue:jsonValue forKey: property.name];
                         
                     } else {
                         
@@ -321,7 +331,7 @@ static NSMutableDictionary* keyMappers = nil;
                     
                 } else {
                     // 3.4) handle "all other" cases (if any)
-                    [self setValue:jsonValue forKey:key];
+                    [self setValue:jsonValue forKey: property.name];
                 }
             }
         }
