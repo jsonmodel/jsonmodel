@@ -105,7 +105,7 @@ static NSMutableDictionary* keyMappers = nil;
 {
     JSONModelError* initError = nil;
     id objModel = [self initWithString:string usingEncoding:NSUTF8StringEncoding error:&initError];
-    if (initError) *err = initError;
+    if (initError && err) *err = initError;
     return objModel;
 }
 
@@ -117,12 +117,12 @@ static NSMutableDictionary* keyMappers = nil;
                                                error:&initError];
 
     if (initError) {
-        *err = [JSONModelError errorBadJSON];
+        if (err) *err = [JSONModelError errorBadJSON];
         return nil;
     }
     
     id objModel = [self initWithDictionary:obj error:&initError];
-    if (initError) *err = initError;
+    if (initError && err) *err = initError;
     return objModel;
 }
 
@@ -130,7 +130,7 @@ static NSMutableDictionary* keyMappers = nil;
 {
     //invalid input, just create empty instance
     if (!dict || ![dict isKindOfClass:[NSDictionary class]]) {
-        *err = [JSONModelError errorInvalidData];
+        if (err) *err = [JSONModelError errorInvalidData];
         return nil;
     }
 
@@ -139,7 +139,7 @@ static NSMutableDictionary* keyMappers = nil;
     if (!self) {
         
         //super init didn't succeed
-        *err = [JSONModelError errorModelIsInvalid];
+        if (err) *err = [JSONModelError errorModelIsInvalid];
         return nil;
     }
     
@@ -177,7 +177,7 @@ static NSMutableDictionary* keyMappers = nil;
         //not all required properties are in - invalid input
         JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.className, requiredProperties);
         
-        *err = [JSONModelError errorInvalidDataWithMissingKeys:requiredProperties];
+        if (err) *err = [JSONModelError errorInvalidDataWithMissingKeys:requiredProperties];
         return nil;
     }
     
@@ -207,7 +207,7 @@ static NSMutableDictionary* keyMappers = nil;
             //type not allowed
             JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
 
-            *err = [JSONModelError errorInvalidData];
+            if (err) *err = [JSONModelError errorInvalidData];
             return nil;
         }
         
@@ -244,7 +244,7 @@ static NSMutableDictionary* keyMappers = nil;
                 id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
 
                 if (!value) {
-                    if (initError) *err = [JSONModelError errorInvalidData];
+                    if (initError && err) *err = [JSONModelError errorInvalidData];
                     return nil;
                 }
                 [self setValue:value forKey:key];
@@ -261,7 +261,7 @@ static NSMutableDictionary* keyMappers = nil;
                     //JMLog(@"proto: %@", p.protocol);
                     jsonValue = [self __transform:jsonValue forProperty:property];
                     if (!jsonValue) {
-                        *err = [JSONModelError errorInvalidData];
+                        if (err) *err = [JSONModelError errorInvalidData];
                         return nil;
                     }
                 }
@@ -331,7 +331,7 @@ static NSMutableDictionary* keyMappers = nil;
     NSError* validationError = nil;
     [self validate:&validationError];
     if (validationError) {
-        *err = validationError;
+        if (err) *err = validationError;
         return nil;
     }
     
