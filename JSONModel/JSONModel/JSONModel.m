@@ -201,10 +201,16 @@ static NSMutableDictionary* keyMappers = nil;
         NSString* jsonKeyPath = property.name;
         if (keyMapper) jsonKeyPath = keyMapper.modelToJSONKeyBlock( property.name );
 
-        JMLog(@"keyPath: %@", jsonKeyPath);
+        //JMLog(@"keyPath: %@", jsonKeyPath);
         
         //general check for data type compliance
         id jsonValue = [dict valueForKeyPath: jsonKeyPath];
+        
+        //check for Optional properties
+        if (jsonValue==nil && property.isOptional==YES) {
+            //skip this property, continue with next property
+            continue;
+        }
         
         Class jsonValueClass = [jsonValue class];
         BOOL isValueOfAllowedType = NO;
@@ -567,7 +573,7 @@ static NSMutableDictionary* keyMappers = nil;
 -(void)__createDictionariesForKeyPath:(NSString*)keyPath inDictionary:(NSMutableDictionary**)dict
 {
     //find if there's a dot left in the keyPath
-    int dotLocation = [keyPath rangeOfString:@"."].location;
+    NSUInteger dotLocation = [keyPath rangeOfString:@"."].location;
     if (dotLocation==NSNotFound) return;
     
     //inspect next level
@@ -601,14 +607,15 @@ static NSMutableDictionary* keyMappers = nil;
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
         
-        JMLog(@"toDictionary[%@]", p.name);
-        
-        value = [self valueForKey: p.name];
+        //fetch key and value
         NSString* keyPath = p.name;
-
+        value = [self valueForKey: p.name];
+        
         //convert the key name, if a key mapper exists
         if (keyMapper) keyPath = keyMapper.modelToJSONKeyBlock(keyPath);
-        
+
+        //JMLog(@"toDictionary[%@]->[%@] = '%@'", p.name, keyPath, value);
+
         if ([keyPath rangeOfString:@"."].location != NSNotFound) {
             //there are sub-keys, introduce dictionaries for them
             [self __createDictionariesForKeyPath:keyPath inDictionary:&tempDictionary];
