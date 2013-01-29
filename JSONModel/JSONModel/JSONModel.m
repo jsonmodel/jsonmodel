@@ -564,6 +564,29 @@ static NSMutableDictionary* keyMappers = nil;
 }
 
 #pragma mark - persistance
+-(void)__createDictionariesForKeyPath:(NSString*)keyPath inDictionary:(NSMutableDictionary**)dict
+{
+    //find if there's a dot left in the keyPath
+    int dotLocation = [keyPath rangeOfString:@"."].location;
+    if (dotLocation==NSNotFound) return;
+    
+    //inspect next level
+    NSString* nextHierarchyLevelKeyName = [keyPath substringToIndex: dotLocation];
+    NSDictionary* nextLevelDictionary = [*dict objectForKey:nextHierarchyLevelKeyName];
+
+    if (nextLevelDictionary==nil) {
+        //create non-existing next level here
+        nextLevelDictionary = [NSMutableDictionary dictionary];
+    }
+    
+    //recurse levels
+    [self __createDictionariesForKeyPath:[keyPath substringFromIndex: dotLocation+1]
+                            inDictionary:&nextLevelDictionary ];
+    
+    //create the hierarchy level
+    [*dict setValue:nextLevelDictionary  forKeyPath: nextHierarchyLevelKeyName];
+}
+
 //exports the model as a dictionary of JSON compliant objects
 -(NSDictionary*)toDictionary
 {
@@ -578,17 +601,24 @@ static NSMutableDictionary* keyMappers = nil;
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
         
+        JMLog(@"toDictionary[%@]", p.name);
+        
         value = [self valueForKey: p.name];
-        NSString* keyName = p.name;
+        NSString* keyPath = p.name;
 
         //convert the key name, if a key mapper exists
-        if (keyMapper) keyName = keyMapper.modelToJSONKeyBlock(keyName);
+        if (keyMapper) keyPath = keyMapper.modelToJSONKeyBlock(keyPath);
+        
+        if ([keyPath rangeOfString:@"."].location != NSNotFound) {
+            //there are sub-keys, introduce dictionaries for them
+            [self __createDictionariesForKeyPath:keyPath inDictionary:&tempDictionary];
+        }
         
         //export nil values as JSON null, so that the structure of the exported data
         //is still valid if it's to be imported as a model again
         if (isNull(value)) {
             
-            [tempDictionary setValue:[NSNull null] forKey:keyName];
+            [tempDictionary setValue:[NSNull null] forKeyPath:keyPath];
             continue;
         }
         
@@ -597,7 +627,7 @@ static NSMutableDictionary* keyMappers = nil;
 
             //recurse models
             value = [(JSONModel*)value toDictionary];
-            [tempDictionary setValue:value forKey: keyName];
+            [tempDictionary setValue:value forKeyPath: keyPath];
             
             //for clarity
             continue;
@@ -611,7 +641,7 @@ static NSMutableDictionary* keyMappers = nil;
             
             // 2) check for standard types OR 2.1) primitives
             if (p.isStandardJSONType || p.type==nil) {
-                [tempDictionary setValue:value forKey: keyName];
+                [tempDictionary setValue:value forKeyPath: keyPath];
                 continue;
             }
             
@@ -631,7 +661,7 @@ static NSMutableDictionary* keyMappers = nil;
                     value = [valueTransformer performSelector:selector withObject:value];
 #pragma clang diagnostic pop
                     
-                    [tempDictionary setValue:value forKey: keyName];
+                    [tempDictionary setValue:value forKeyPath: keyPath];
                     
                 } else {
 
