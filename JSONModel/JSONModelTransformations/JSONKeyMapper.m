@@ -27,8 +27,8 @@
     self = [super init];
     if (self) {
         //initialization
-        _toModelMap = [NSMutableDictionary dictionaryWithCapacity:10];
-        _toJSONMap  = [NSMutableDictionary dictionaryWithCapacity:10];
+        _toModelMap = [NSMutableDictionary dictionary];
+        _toJSONMap  = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -74,20 +74,20 @@
     if (self) {
         //initialize
 
-        _toModelMap = [NSMutableDictionary dictionaryWithDictionary:map];
-        _toJSONMap  = [NSMutableDictionary dictionaryWithCapacity: map.count];
+        NSMutableDictionary* userToModelMap = [NSMutableDictionary dictionaryWithDictionary: map];
+        NSMutableDictionary* userToJSONMap  = [NSMutableDictionary dictionaryWithCapacity: map.count];
         
         for (NSString* key in map) {
-            _toJSONMap[ map[key] ] = key;
+            userToJSONMap[ map[key] ] = key;
         }
         
         _JSONToModelKeyBlock = ^NSString*(NSString* keyName) {
-            NSString* result = _toModelMap[keyName];
+            NSString* result = [userToModelMap valueForKeyPath: keyName];
             return result?result:keyName;
         };
         
         _modelToJSONKeyBlock = ^NSString*(NSString* keyName) {
-            NSString* result = _toJSONMap[keyName];
+            NSString* result = [userToJSONMap valueForKeyPath: keyName];
             return result?result:keyName;
         };
         
