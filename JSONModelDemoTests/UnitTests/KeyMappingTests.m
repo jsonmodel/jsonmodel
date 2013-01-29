@@ -12,6 +12,28 @@
 #import "GitHubKeyMapRepoModelDict.h"
 #import "GitHubRepoModelForUSMapper.h"
 
+
+#pragma mark - TestModel class
+@interface TestModel: JSONModel
+
+@property (strong, nonatomic) NSString* text1;
+@property (strong, nonatomic) NSString<Optional>* text2;
+
+@end
+@implementation TestModel
+
++(JSONKeyMapper*)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+            @"texts.text1": @"text1",
+            @"texts.text2.value": @"text2"
+            }];
+}
+
+@end
+
+#pragma mark - KeyMappingTests unit test
+
 @implementation KeyMappingTests
 {
     NSArray* json;
@@ -90,6 +112,31 @@
     [self testKeyMapping];
     [self testUnderscoreMapper];
     [self testKeyMapping];
+}
+
+-(void)testKeyPathKeyMapping
+{
+    //input dictioanry for TestModel
+    NSDictionary* dict = @{
+        @"texts": @{
+            @"text1": @"TEST!!!",
+            @"text2": @{@"value":@"MEST"}
+        }
+    };
+    
+    NSError* err = nil;
+    TestModel* model = [[TestModel alloc] initWithDictionary:dict error:&err];
+    
+    NSAssert1(err==nil, @"Error creating TestModel: %@", [err localizedDescription]);
+    NSAssert(model!=nil, @"TestModel instance is nil");
+    
+    NSAssert([model.text1 isEqualToString:@"TEST!!!"], @"text1 is not 'TEST!!!'");
+    NSAssert([model.text2 isEqualToString:@"MEST"], @"text1 is not 'MEST'");
+    
+    NSDictionary* toDict = [model toDictionary];
+    
+    NSAssert([toDict[@"texts"][@"text1"] isEqualToString:@"TEST!!!"], @"toDict.texts.text1 is not 'TEST!!!'");
+    NSAssert([toDict[@"texts"][@"text2"][@"value"] isEqualToString:@"MEST"], @"toDict.texts.text2.value is not 'MEST'");
 }
 
 @end
