@@ -158,7 +158,7 @@ Contributors
 
 Author: Marin Todorov
 
-Contributors: Christian Hoffmann, Mark Joslin
+Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali
 
 ----------
 Change-log
