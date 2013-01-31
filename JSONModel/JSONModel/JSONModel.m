@@ -50,20 +50,22 @@ static NSMutableDictionary* keyMappers = nil;
         // initialize all class static objects,
         // which are common for ALL JSONModel subclasses
         
-        allowedJSONTypes = @[
-            [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
-            [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
-        ];
-        
-        allowedPrimitiveTypes = @[
-            @"BOOL", @"float", @"int", @"long", @"double", @"short"
-        ];
-        
-        classProperties = [NSMutableDictionary dictionary];
-        classRequiredPropertyNames = [NSMutableDictionary dictionary];
-        classIndexes = [NSMutableDictionary dictionary];
-        valueTransformer = [[JSONValueTransformer alloc] init];
-        keyMappers = [NSMutableDictionary dictionary];
+		@autoreleasepool {
+            allowedJSONTypes = @[
+                [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
+                [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
+            ];
+            
+            allowedPrimitiveTypes = @[
+                @"BOOL", @"float", @"int", @"long", @"double", @"short"
+            ];
+            
+            classProperties = [NSMutableDictionary dictionary];
+            classRequiredPropertyNames = [NSMutableDictionary dictionary];
+            classIndexes = [NSMutableDictionary dictionary];
+            valueTransformer = [[JSONValueTransformer alloc] init];
+            keyMappers = [NSMutableDictionary dictionary];
+		}
     });
 }
 
