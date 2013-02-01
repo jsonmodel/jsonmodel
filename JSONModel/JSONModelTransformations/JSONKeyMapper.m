@@ -22,14 +22,14 @@
 @end
 
 @implementation JSONKeyMapper
-@synthesize toModelMap = _toModelMap;
+
 -(instancetype)init
 {
     self = [super init];
     if (self) {
         //initialization
-        _toModelMap = [NSMutableDictionary dictionary];
-        _toJSONMap  = [NSMutableDictionary dictionary];
+        self.toModelMap = [NSMutableDictionary dictionary];
+        self.toJSONMap  = [NSMutableDictionary dictionary];
     }
     return self;
 }
