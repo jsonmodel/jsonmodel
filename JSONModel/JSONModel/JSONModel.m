@@ -347,8 +347,9 @@ static NSMutableDictionary* keyMappers = nil;
     
     //run any custom model validation
     NSError* validationError = nil;
-    [self validate:&validationError];
-    if (validationError) {
+    BOOL doesModelDataValidate = [self validate:&validationError];
+    
+    if (doesModelDataValidate == NO) {
         if (err) *err = validationError;
         return nil;
     }
@@ -796,9 +797,9 @@ static NSMutableDictionary* keyMappers = nil;
 }
 
 #pragma mark - custom data validation
--(void)validate:(NSError**)error
+-(BOOL)validate:(NSError**)error
 {
-    
+    return YES;
 }
 
 #pragma mark - custom recursive description

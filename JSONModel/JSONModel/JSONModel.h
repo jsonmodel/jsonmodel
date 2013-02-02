@@ -197,16 +197,20 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * Overwrite the validate method in your own models if you need to perform some custom validation over the model data.
    * This method gets called at the very end of the JSONModel initializer, thus the model is in the state that you would
    * get it back when initialzed. Check the values of any property that needs to be validated and if any invalid values
-   * are encountered return an NSError object. If the model is valid return nil.
-   * @return an NSError instance. You can use the convenience method [JSONModelError errorModelIsInvalid] to get an NSError instance.
+   * are encountered return NO and set the error parameter to an NSError object. If the model is valid return YES.
+   *
+   * NB: Only setting the error parameter is not enough to fail the validation, you also need to return a NO value.
+   *
+   * @return a BOOL result, showing whether the model data validates or not. You can use the convenience method
+   * [JSONModelError errorModelIsInvalid] to set the NSError param if the data fails your custom validation
    */
--(void)validate:(NSError**)err;
+-(BOOL)validate:(NSError**)error;
 
 /** @name Key mapping */
   /**
    * Overwrite in your models if your property names don't match your JSON key names.
    * Lookup JSONKeyMapper docs for more details.
    */
-  +(JSONKeyMapper*)keyMapper;
++(JSONKeyMapper*)keyMapper;
 
 @end

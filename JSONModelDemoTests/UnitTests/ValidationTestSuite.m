@@ -41,4 +41,26 @@
     
 }
 
+-(void)testBOOLValidationResult
+{
+    NSError* err;
+    JSONTypesModelWithValidation1* val1 = [[JSONTypesModelWithValidation1 alloc] initWithString:jsonContents error:&err];
+    val1.pi = @1.0;
+    
+    NSError* valError = nil;
+    BOOL res = [val1 validate: &valError];
+    
+    NSAssert(res==NO, @"JSONTypesModelWithValidation1 validate failed to return false");
+    NSAssert(valError!=nil, @"JSONTypesModelWithValidation1 validate failed to return an error object");
+    
+    val1.pi = @3.15;
+
+    valError = nil;
+    res = [val1 validate: &valError];
+    
+    NSAssert(res==YES, @"JSONTypesModelWithValidation1 validate failed to return true");
+    NSAssert(valError==nil, @"JSONTypesModelWithValidation1 validate failed to return a nil error object");
+    
+}
+
 @end
