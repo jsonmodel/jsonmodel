@@ -125,10 +125,14 @@ Official website: http://www.jsonmodel.com
 #### [Performance optimisation for working with JSON feeds via JSONModel](http://www.touch-code-magazine.com/performance-optimisation-for-working-with-json-feeds-via-jsonmodel/)  [tutorial]
 * one-shot or on-demand JSON to model objects conversion
 
+#### [How to make a YouTube app using MGBox and JSONModel](http://www.touch-code-magazine.com/how-to-make-a-youtube-app-using-mgbox-and-jsonmodel/)  [tutorial]
+* key mapping - map JSON keys from deeper levels or with mismatching names easily
+* JSON HTTP client - a thin HTTP client for simple async JSON requests
+
 More tutorials to come on ...
 
 * json validation
-* key mapping
+
 * data transformations
 * error handling
 * custom data validation
