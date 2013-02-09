@@ -35,7 +35,7 @@ BOOL _isLoading;
 
 -(id)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err
 {
-    id jsonObject = [JSONHTTPClient getJSONFromURLWithString:urlString];
+    id jsonObject = [JSONHTTPClient getJSONFromURLWithString:urlString error: err];
     JSONModelError* initError = nil;
     id objModel = [self initWithDictionary:jsonObject error:&initError];
     if (err) {
