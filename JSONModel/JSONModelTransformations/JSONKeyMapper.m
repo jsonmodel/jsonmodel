@@ -1,7 +1,7 @@
 //
 //  JSONKeyMapper.m
 //
-//  @version 0.8.3
+//  @version 0.8.4
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
