@@ -92,53 +92,52 @@ static NSMutableDictionary* requestHeaders = nil;
 }
 
 #pragma mark - convenience methods for requests
-+(id)getJSONFromURLWithString:(NSString*)urlString
++(id)getJSONFromURLWithString:(NSString*)urlString error:(NSError**)err
 {
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:nil orBodyString:nil];
+    return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:nil orBodyString:nil error: err];
 }
 
-+(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params
++(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err
 {
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:params orBodyString:nil];
+    return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:params orBodyString:nil error: err];
 }
 
-+(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params
++(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err
 {
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:params orBodyString:nil];
+    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:params orBodyString:nil error: err];
 }
 
-+(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString
++(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err
 {
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:bodyString];
+    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:bodyString error: err];
 }
 
 #pragma mark - base request methods
-+(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString
++(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString error:(NSError**)err
 {
     //define local vars
     NSDictionary* json = nil;
     NSData* responseData = nil;
-    NSError* err = nil;
     
     if (bodyString) {
         //fetch data via request with given body (specific for POSTs)
         responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                              method: method
                                         requestBody: bodyString
-                                              error: &err];
+                                              error: err];
     } else {
         //fetch data via request with given dictionary with parameters
         responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                              method: method
                                              params: params
-                                              error: &err];
+                                              error: err];
     }
     
     JMLog(@"server response: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
     
     //check for valid data response
     if (responseData==nil) {
-        err = [JSONModelError errorBadResponse];
+        if (err) *err = [JSONModelError errorBadResponse];
         return nil;
     }
 
@@ -149,7 +148,7 @@ static NSMutableDictionary* requestHeaders = nil;
     }
     @catch (NSException* e) {
         //no need to do anything, will return nil by default
-        err = [JSONModelError errorInvalidData];
+        if (err) *err = [JSONModelError errorInvalidData];
     }
     
     return json;
