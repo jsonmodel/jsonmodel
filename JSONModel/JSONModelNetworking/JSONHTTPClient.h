@@ -16,6 +16,8 @@
 
 #import "JSONModel.h"
 
+#pragma mark - definitions
+
 extern NSString * const kHTTPMethodGET;
 extern NSString * const kHTTPMethodPOST;
 
@@ -23,8 +25,6 @@ extern NSString * const kHTTPMethodPOST;
  * A block type to handle incoming JSONModel instance and an error. 
  * You pass it to methods which create a model asynchroniously. When the operation is finished
  * you receive back the initialized model (or nil) and an error (or nil)
- *
- * TODO: How do you document block type definitions? This doesn't work obviously.
  *
  * @param model the newly created JSONModel instance or nil
  * @param e JSONModelError or nil
@@ -34,6 +34,7 @@ typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
 typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - configuration methods
 
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
@@ -43,6 +44,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 @interface JSONHTTPClient : NSObject
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /** @name HTTP Client configuration */
 /**
@@ -80,6 +82,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 +(void)setControlsNetworkIndicator:(BOOL)doesControlIndicator;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - GET synchronious JSON calls
 
 /** @name Making synchronious HTTP requests */
 /**
@@ -98,6 +101,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 +(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - POST synchronious JSON calls
 
 /**
  * Makes POST request to the given URL address and fetches a JSON response. Sends the params as url encoded variables via the POST body.
@@ -116,6 +120,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - GET asynchronious JSON calls
 
 /** @name Making asynchronious HTTP requests */
 /**
@@ -136,6 +141,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 +(void)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - POST synchronious JSON calls
 
 /**
  * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
