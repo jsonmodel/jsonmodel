@@ -22,8 +22,9 @@ NSString * const kHTTPMethodPOST = @"POST";
 
 #pragma mark - static variables
 
-static long requestId = 0;
-
+/**
+ * Defaults for HTTP requests
+ */
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 static int defaultTextEncoding = NSUTF8StringEncoding;
 static int defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
@@ -32,20 +33,27 @@ static long defaultTextEncoding = NSUTF8StringEncoding;
 static long defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 #endif
 
+static int defaultTimeoutInSeconds = 60;
+
+/**
+ * Whether the iPhone net indicator automatically shows when making requests
+ */
 static BOOL doesControlIndicator = YES;
 
+/**
+ * Custom HTTP headers to send over with *each* request
+ */
 static NSMutableDictionary* requestHeaders = nil;
-static NSMutableDictionary* flags = nil;
 
+#pragma mark - private methods
 @interface JSONHTTPClient()
-
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params;
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString;
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params error:(NSError**)err;
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString error:(NSError**)err;
 
 +(void)setNetworkIndicatorVisible:(BOOL)isVisible;
-
 @end
 
+#pragma mark - implementation
 @implementation JSONHTTPClient
 
 #pragma mark - initialization
@@ -54,7 +62,6 @@ static NSMutableDictionary* flags = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         requestHeaders = [NSMutableDictionary dictionary];
-        flags = [NSMutableDictionary dictionaryWithCapacity:10];
     });
 }
 
@@ -69,9 +76,14 @@ static NSMutableDictionary* flags = nil;
     defaultTextEncoding = encoding;
 }
 
-+(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy
++(void)setCachingPolicy:(NSURLRequestCachePolicy)policy
 {
     defaultCachePolicy = policy;
+}
+
++(void)setTimeoutInSeconds:(int)seconds
+{
+    defaultTimeoutInSeconds = seconds;
 }
 
 +(void)setControlsNetworkIndicator:(BOOL)does
@@ -102,63 +114,65 @@ static NSMutableDictionary* flags = nil;
 
 #pragma mark - base request methods
 +(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString
-{    
-    requestId++;
+{
+    //define local vars
+    NSDictionary* json = nil;
+    NSData* responseData = nil;
+    NSError* err = nil;
     
-    NSString* semaphoreKey = [NSString stringWithFormat:@"rid: %ld", requestId];
+    if (bodyString) {
+        //fetch data via request with given body (specific for POSTs)
+        responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
+                                             method: method
+                                        requestBody: bodyString
+                                              error: &err];
+    } else {
+        //fetch data via request with given dictionary with parameters
+        responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
+                                             method: method
+                                             params: params
+                                              error: &err];
+    }
     
-    __block NSDictionary* json = nil;
+    JMLog(@"server response: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSData* responseData = nil;
-        
-        if (bodyString) {
-            
-            responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
-                                                 method: method
-                                            requestBody: bodyString];
-        } else {
-            
-            responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
-                                                 method: method
-                                                 params: params];
-        }
-        
-        //NSLog(@"server response: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
-        
-        @try {
-            NSAssert(responseData, nil);
-            json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
-            NSAssert(json, nil);
-        }
-        @catch (NSException* e) {
-            //no need to do anything, will return nil by default
-        }
-        
-        [self lift: semaphoreKey ];
-        
-    });
+    //check for valid data response
+    if (responseData==nil) {
+        err = [JSONModelError errorBadResponse];
+        return nil;
+    }
+
+    //try to get an object out of response data
+    @try {
+        json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
+        NSAssert(json, nil);
+    }
+    @catch (NSException* e) {
+        //no need to do anything, will return nil by default
+        err = [JSONModelError errorInvalidData];
+    }
     
-    [self waitForKey: semaphoreKey ];
     return json;
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString error:(NSError**)err
 {
+    //turn on network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
 
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:defaultCachePolicy
-                                                            timeoutInterval:60];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url
+                                                                cachePolicy: defaultCachePolicy
+                                                            timeoutInterval: defaultTimeoutInSeconds];
 	[request setHTTPMethod:method];
     
     if (bodyString) {
-        [request addValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        //[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
-        //[request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
+        //fetch the charset name from the default string encoding
+        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+        [request addValue:[NSString stringWithFormat:@"application/json; charset=%@", charset]
+       forHTTPHeaderField:@"Content-Type"];
     }
     
+    //add all the custom headers defined
     for (NSString* key in [requestHeaders allKeys]) {
         [request addValue:requestHeaders[key] forHTTPHeaderField:key];
     }
@@ -166,52 +180,55 @@ static NSMutableDictionary* flags = nil;
     if (bodyString) {
         //BODY params
         NSData* bodyData = [bodyString dataUsingEncoding:defaultTextEncoding];
+        
         [request setHTTPBody: bodyData];
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
         [request addValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 #else
         [request addValue:[NSString stringWithFormat:@"%ld", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 #endif
+        
     }
     
     //prepare output
 	NSHTTPURLResponse* response = nil;
-	NSError* error = nil;
     
     //fire the request
 	NSData *responseData = [NSURLConnection sendSynchronousRequest: request
                                                  returningResponse: &response
-                                                             error: &error];
-    
+                                                             error: err];
+    //turn off network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
+    //check for successful status
 	if ([response statusCode] >= 200 && [response statusCode] < 300) {
-        //OK HTTP responses
+        //success
         return responseData;
-        
 	} else {
-        
-        //HTTP errors
+        //error, for now just return nil
         return nil;
     }
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params error:(NSError**)err
 {
     //create the request body
     NSMutableString* paramsString = nil;
     if (params) {
+        //build a simple url encoded param string
         paramsString = [NSMutableString stringWithString:@""];
         for (NSString* key in [params allKeys]) {
             [paramsString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
         }
     }
     
+    //request body
     NSString* requestBodyString = nil;
     
     //set the request params
     if ([method isEqualToString:kHTTPMethodPOST]) {
         requestBodyString = paramsString;
+        
     } else if (paramsString) {
         //URL params
         url = [NSURL URLWithString:[NSString stringWithFormat:
@@ -219,7 +236,8 @@ static NSMutableDictionary* flags = nil;
                                     ]];
     }
     
-    return [self syncRequestDataFromURL:url method:method requestBody:requestBodyString];
+    //call the more general synq request method
+    return [self syncRequestDataFromURL:url method:method requestBody:requestBodyString error: err];
 }
 
 #pragma mark - helper methods
@@ -231,28 +249,6 @@ static NSMutableDictionary* flags = nil;
                                                                                  NULL,
                                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                  kCFStringEncodingUTF8));
-}
-
-#pragma mark - Semaphore methods
-+(BOOL)isLifted:(NSString*)key
-{
-    return [flags objectForKey:key]!=nil;
-}
-
-+(void)lift:(NSString*)key
-{
-    [flags setObject:@"YES" forKey: key];
-}
-
-+(void)waitForKey:(NSString*)key
-{
-    BOOL keepRunning = YES;
-    
-    while (keepRunning && [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]]) {
-        keepRunning = ![self isLifted: key];
-    }
-    
-    [flags removeObjectForKey:key];
 }
 
 #pragma mark - Async calls
@@ -268,11 +264,13 @@ static NSMutableDictionary* flags = nil;
             if (bodyString) {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
-                                                requestBody: bodyString];
+                                                requestBody: bodyString
+                                                      error: &error];
             } else {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
-                                                     params: params];
+                                                     params: params
+                                                      error: &error];
             }
 
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];

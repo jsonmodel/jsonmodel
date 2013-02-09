@@ -62,7 +62,13 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * See NSURLRequestCachePolicy for a list of the pre-defined policies
  * @param policy the caching policy
  */
-+(void)setDefaultCachingPolicy:(NSURLRequestCachePolicy)policy;
++(void)setCachingPolicy:(NSURLRequestCachePolicy)policy;
+
+/**
+ * Sets the timeout for network calls
+ * @param seconds the amount of seconds to wait before considering the call failed
+ */
++(void)setTimeoutInSeconds:(int)seconds;
 
 /**
  * A method to enable/disable automatic network indicator showing. 
