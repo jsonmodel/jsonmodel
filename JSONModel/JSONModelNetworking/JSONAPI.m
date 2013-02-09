@@ -57,11 +57,11 @@ static long jsonRpcId = 0;
 
 #pragma mark - GET methods
 
-+(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params
++(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err
 {
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
     
-    id json = [JSONHTTPClient getJSONFromURLWithString: fullURL params:params];
+    id json = [JSONHTTPClient getJSONFromURLWithString: fullURL params:params error:err];
     return json;
 }
 
@@ -76,11 +76,11 @@ static long jsonRpcId = 0;
 
 #pragma mark - POST methods
 
-+(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params
++(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err
 {
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
     
-    id json = [JSONHTTPClient postJSONFromURLWithString: fullURL params:params];
+    id json = [JSONHTTPClient postJSONFromURLWithString: fullURL params:params error:err];
     return json;
 }
 
@@ -95,7 +95,7 @@ static long jsonRpcId = 0;
 
 #pragma mark - RPC 1.0 methods
 
-+(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args
++(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args error:(NSError**)err
 {
     if (!args) args = @[];
     
@@ -111,7 +111,8 @@ static long jsonRpcId = 0;
     NSString* jsonRequestString = [[NSString alloc] initWithData:jsonRequestData encoding: NSUTF8StringEncoding];
     
     id json = [JSONHTTPClient postJSONFromURLWithString: sharedInstance.baseURLString
-                                             bodyString: jsonRequestString];
+                                             bodyString: jsonRequestString
+                                                  error: err];
     return json;
 }
 

@@ -48,9 +48,10 @@
 /**
  * Makes a synchronious GET request to the API
  * @param params the variables to pass to the API
+ * @param err pointer to an NSError object to pass back an error if needed
  * @return the JSON response as desrialized object
  */
-+(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params;
++(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err;
 
 /**
  * Makes an asynchronious GET request to the API
@@ -66,9 +67,10 @@
 /**
  * Makes a POST request to the API
  * @param params the variables to pass to the API
+ * @param err pointer to an NSError object to pass back an error if needed
  * @return the JSON response as desrialized object
  */
-+(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params;
++(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err;
 
 /**
  * Makes a POST request to the API
@@ -84,9 +86,10 @@
 /**
  * Makes a synchronious JSON RPC request to the API
  * @param args the list of arguments to pass to the API
+ * @param err pointer to an NSError object to pass back an error if needed
  * @return the JSON response as desrialized object
  */
-+(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args;
++(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args error:(NSError**)err;
 
 /**
  * Makes an asynchronious JSON RPC request to the API
