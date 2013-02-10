@@ -88,6 +88,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 /**
  * Makes GET request to the given URL address and fetches a JSON response.
  * @param urlString the URL as a string
+ * @param err a pointer to an NSError object, to pass back an error if needed
  * @return JSON compliant object or nil
  */
 +(id)getJSONFromURLWithString:(NSString*)urlString error:(NSError**)err;
@@ -96,6 +97,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * Makes GET request to the given URL address and fetches a JSON response. Sends the params as a query string variables.
  * @param urlString the URL as a string
  * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @param err a pointer to an NSError object, to pass back an error if needed
  * @return JSON compliant object or nil
  */
 +(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err;
@@ -107,6 +109,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * Makes POST request to the given URL address and fetches a JSON response. Sends the params as url encoded variables via the POST body.
  * @param urlString the URL as a string
  * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @param err a pointer to an NSError object, to pass back an error if needed
  * @return JSON compliant object or nil
  */
 +(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err;
@@ -115,6 +118,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
  * @param urlString the URL as a string
  * @param bodyString the body of the POST request as a string
+ * @param err a pointer to an NSError object, to pass back an error if needed
  * @return JSON compliant object or nil
  */
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err;

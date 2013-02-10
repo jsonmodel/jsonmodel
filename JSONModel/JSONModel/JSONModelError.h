@@ -51,6 +51,7 @@ extern NSString* const kJSONModelMissingKeys;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
+ * @param keys a set of field names that were required, but not found in the input
  */
 +(id)errorInvalidDataWithMissingKeys:(NSSet*)keys;
 

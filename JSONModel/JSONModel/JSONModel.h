@@ -111,7 +111,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
-   * @param s JSON text data
+   * @param string JSON text data
    * @param err an initialization error or nil
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
    * or a property type in your model is not supported by JSONValueTransformer and its categories
@@ -121,7 +121,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
   /**
    * Create a new model instance and initialize it with the JSON from a text parameter using the given encoding.
-   * @param s JSON text data
+   * @param string JSON text data
    * @param encoding the text encoding to use when parsing the string (see NSStringEncoding)
    * @param err an initialization error or nil
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
@@ -148,7 +148,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * of model objects. Handy when importing JSON data lists.
    * This method will loop over the input list and initialize a data model for every dictionary in the list.
    *
-   * @param a list of dictionaries to be imported as models
+   * @param array list of dictionaries to be imported as models
    * @return list of initialized data model objects
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
    * or a property type in your model is not supported by JSONValueTransformer and its categories
@@ -160,7 +160,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
    * matching dictionaries. This method does the opposite of arrayOfObjectsFromDictionaries:
-   * @param a list of JSONModel objects
+   * @param array list of JSONModel objects
    * @return a list of NSDictionary objects
    * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
    * or a property type in your model is not supported by JSONValueTransformer and its categories
@@ -180,6 +180,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   /**
    * Overriden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
    * if an index property is defined.
+   * @param object a JSONModel instance to compare to for equality
    */
   -(BOOL)isEqual:(id)object;
 
@@ -188,6 +189,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * If there isn't an index property throws an exception. If the Index property does not have a compare: method
    * also throws an exception. NSString and NSNumber have compare: methods, and in case the Index property is 
    * a another custom class, the programmer should create a custom compare: method then.
+   * @param object a JSONModel instance to compare to
    */
   -(NSComparisonResult)compare:(id)object;
 
@@ -201,6 +203,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    *
    * NB: Only setting the error parameter is not enough to fail the validation, you also need to return a NO value.
    *
+   * @param error a pointer to an NSError object, to pass back an error if needed
    * @return a BOOL result, showing whether the model data validates or not. You can use the convenience method
    * [JSONModelError errorModelIsInvalid] to set the NSError param if the data fails your custom validation
    */

@@ -47,6 +47,7 @@
 /** @name Making GET API requests */
 /**
  * Makes a synchronious GET request to the API
+ * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param err pointer to an NSError object to pass back an error if needed
  * @return the JSON response as desrialized object
@@ -55,6 +56,7 @@
 
 /**
  * Makes an asynchronious GET request to the API
+ * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param completeBlock a JSONObjectBlock block to execute upon completion
  * @return the JSON response as desrialized object
@@ -66,6 +68,7 @@
 /** @name Making POST API requests */
 /**
  * Makes a POST request to the API
+ * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param err pointer to an NSError object to pass back an error if needed
  * @return the JSON response as desrialized object
@@ -74,6 +77,7 @@
 
 /**
  * Makes a POST request to the API
+ * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param completeBlock a JSONObjectBlock block to execute upon completion
  * @return the JSON response as desrialized object
@@ -85,6 +89,7 @@
 /** @name JSON RPC (1.0) request method */
 /**
  * Makes a synchronious JSON RPC request to the API
+ * @param method the HTTP method name; GET or POST only
  * @param args the list of arguments to pass to the API
  * @param err pointer to an NSError object to pass back an error if needed
  * @return the JSON response as desrialized object
@@ -93,6 +98,7 @@
 
 /**
  * Makes an asynchronious JSON RPC request to the API
+ * @param method the HTTP method name; GET or POST only
  * @param args the list of arguments to pass to the API
  * @param completeBlock JSONObjectBlock to execute upon completion
  * @return the JSON response as desrialized object
