@@ -271,11 +271,14 @@ static NSMutableDictionary* requestHeaders = nil;
                                                      params: params
                                                       error: &error];
             }
-
-            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
         }
         @catch (NSException *exception) {
             error = [JSONModelError errorBadResponse];
+        }
+        
+        if (error==nil) {
+            //data fetched successfuly from the net
+            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
