@@ -22,7 +22,8 @@ enum kJSONModelErrorTypes
     kJSONModelErrorInvalidData = 1,
     kJSONModelErrorBadResponse = 2,
     kJSONModelErrorBadJSON = 3,
-    kJSONModelErrorModelIsInvalid = 4
+    kJSONModelErrorModelIsInvalid = 4,
+    kJSONModelErrorNilInput = 5
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,6 +70,11 @@ extern NSString* const kJSONModelMissingKeys;
  * Creates a JSONModelError instance with code kJSONModelErrorModelIsInvalid = 4
  */
 +(id)errorModelIsInvalid;
+
+/**
+ * Creates a JSONModelError instance with code kJSONModelErrorNilInput = 5
+ */
++(id)errorInputIsNil;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 @end

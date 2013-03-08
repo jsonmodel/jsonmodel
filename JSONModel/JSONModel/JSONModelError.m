@@ -56,4 +56,12 @@ NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
                                   userInfo:@{NSLocalizedDescriptionKey:@"Model does not validate. The custom validation for the input data failed."}];
 }
 
++(id)errorInputIsNil
+{
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                      code:kJSONModelErrorNilInput
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Initializing model with nil input object."}];
+}
+
+
 @end

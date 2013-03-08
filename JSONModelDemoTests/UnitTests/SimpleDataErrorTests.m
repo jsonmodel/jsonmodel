@@ -9,6 +9,7 @@
 #import "SimpleDataErrorTests.h"
 #import "PrimitivesModel.h"
 #import "NestedModel.h"
+#import "CopyrightModel.h"
 
 @implementation SimpleDataErrorTests
 
@@ -57,6 +58,32 @@
     
     NSAssert(!n, @"Model is not nil, when invalid data input");
     NSAssert(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
+}
+
+-(void)testForNilInputFromString
+{
+    JSONModelError* err = nil;
+    
+    //test for nil string input
+    CopyrightModel* cpModel = [[CopyrightModel alloc] initWithString:nil
+                                                               error:&err];
+    cpModel=nil;
+    
+    NSAssert(err!=nil, @"No error returned when initialized with nil string");
+    NSAssert(err.code == kJSONModelErrorNilInput, @"Wrong error for nil string input");
+}
+
+-(void)testForNilInputFromDictionary
+{
+    JSONModelError* err = nil;
+    
+    //test for nil string input
+    CopyrightModel* cpModel = [[CopyrightModel alloc] initWithDictionary:nil
+                                                                   error:&err];
+    cpModel=nil;
+    
+    NSAssert(err!=nil, @"No error returned when initialized with nil dictionary");
+    NSAssert(err.code == kJSONModelErrorNilInput, @"Wrong error for nil dictionary input");
 }
 
 @end

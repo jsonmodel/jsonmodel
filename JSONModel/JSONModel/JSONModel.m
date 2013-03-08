@@ -113,6 +113,13 @@ static NSMutableDictionary* keyMappers = nil;
 
 -(id)initWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err
 {
+    //check for nil input
+    if (!string) {
+        if (err) *err = [JSONModelError errorInputIsNil];
+        return nil;
+    }
+    
+    //read the json
     JSONModelError* initError = nil;
     id obj = [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:encoding]
                                              options:kNilOptions
@@ -123,6 +130,7 @@ static NSMutableDictionary* keyMappers = nil;
         return nil;
     }
     
+    //init with dictionary
     id objModel = [self initWithDictionary:obj error:&initError];
     if (initError && err) *err = initError;
     return objModel;
@@ -130,8 +138,14 @@ static NSMutableDictionary* keyMappers = nil;
 
 -(id)initWithDictionary:(NSDictionary*)dict error:(NSError**)err
 {
+    //check for nil input
+    if (!dict) {
+        if (err) *err = [JSONModelError errorInputIsNil];
+        return nil;
+    }
+
     //invalid input, just create empty instance
-    if (!dict || ![dict isKindOfClass:[NSDictionary class]]) {
+    if (![dict isKindOfClass:[NSDictionary class]]) {
         if (err) *err = [JSONModelError errorInvalidData];
         return nil;
     }
