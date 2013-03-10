@@ -279,7 +279,6 @@ static NSMutableDictionary* requestHeaders = nil;
         if (!responseData) {
             //check for false response, but no network error
             error = [JSONModelError errorBadResponse];
-            return;
         }
         
         if (error==nil) {
