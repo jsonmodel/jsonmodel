@@ -276,6 +276,12 @@ static NSMutableDictionary* requestHeaders = nil;
             error = [JSONModelError errorBadResponse];
         }
         
+        if (!responseData) {
+            //check for false response, but no network error
+            error = [JSONModelError errorBadResponse];
+            return;
+        }
+        
         if (error==nil) {
             //data fetched successfuly from the net
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
