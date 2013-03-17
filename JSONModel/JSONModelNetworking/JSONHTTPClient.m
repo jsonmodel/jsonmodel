@@ -17,8 +17,13 @@
 #import "JSONHTTPClient.h"
 
 #pragma mark - constants
-NSString * const kHTTPMethodGET = @"GET";
-NSString * const kHTTPMethodPOST = @"POST";
+NSString* const kHTTPMethodGET = @"GET";
+NSString* const kHTTPMethodPOST = @"POST";
+
+NSString* const kContentTypeAutomatic    = @"jsonmodel/automatic";
+NSString* const kContentTypeJSON         = @"application/json";
+NSString* const kContentTypeWWWEncoded   = @"application/x-www-form-urlencoded";
+
 
 #pragma mark - static variables
 
@@ -45,6 +50,12 @@ static BOOL doesControlIndicator = YES;
  */
 static NSMutableDictionary* requestHeaders = nil;
 
+/**
+ * Default request content type
+ */
+static NSString* requestContentType = nil;
+
+
 #pragma mark - private methods
 @interface JSONHTTPClient()
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params error:(NSError**)err;
@@ -62,6 +73,7 @@ static NSMutableDictionary* requestHeaders = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         requestHeaders = [NSMutableDictionary dictionary];
+        requestContentType = kContentTypeAutomatic;
     });
 }
 
@@ -91,6 +103,11 @@ static NSMutableDictionary* requestHeaders = nil;
     doesControlIndicator = does;
 }
 
++(void)setRequestContentType:(NSString*)contentTypeString
+{
+    requestContentType = contentTypeString;
+}
+
 #pragma mark - convenience methods for requests
 +(id)getJSONFromURLWithString:(NSString*)urlString error:(NSError**)err
 {
@@ -110,6 +127,11 @@ static NSMutableDictionary* requestHeaders = nil;
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err
 {
     return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:bodyString error: err];
+}
+
++(id)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData error:(NSError**)err
+{
+    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:[[NSString alloc] initWithData:bodyData encoding:defaultTextEncoding] error: err];
 }
 
 #pragma mark - base request methods
@@ -154,6 +176,32 @@ static NSMutableDictionary* requestHeaders = nil;
     return json;
 }
 
++(NSString*)contentTypeForRequestString:(NSString*)requestString
+{
+    //fetch the charset name from the default string encoding
+    NSString* contentType = requestContentType;
+
+    if ([contentType isEqualToString:kContentTypeAutomatic]) {
+        //check for "eventual" JSON array or dictionary
+        NSString* firstAndLastChar = [NSString stringWithFormat:@"%@%@",
+                                      [requestString substringToIndex:1],
+                                      [requestString substringFromIndex: requestString.length -1]
+                                      ];
+        
+        if ([firstAndLastChar isEqualToString:@"{}"] || [firstAndLastChar isEqualToString:@"[]"]) {
+            //guessing for a JSON request
+            contentType = kContentTypeJSON;
+        } else {
+            //fallback to www form encoded params
+            contentType = kContentTypeWWWEncoded;
+        }
+    }
+
+    //type is set, just add charset
+    NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    return [NSString stringWithFormat:@"%@; charset=%@", contentType, charset];
+}
+
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString error:(NSError**)err
 {
     //turn on network indicator
@@ -165,10 +213,7 @@ static NSMutableDictionary* requestHeaders = nil;
 	[request setHTTPMethod:method];
     
     if (bodyString) {
-        //fetch the charset name from the default string encoding
-        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-        [request addValue:[NSString stringWithFormat:@"application/json; charset=%@", charset]
-       forHTTPHeaderField:@"Content-Type"];
+        [request addValue: [self contentTypeForRequestString: bodyString] forHTTPHeaderField:@"Content-type"];
     }
     
     //add all the custom headers defined
@@ -328,6 +373,16 @@ static NSMutableDictionary* requestHeaders = nil;
     [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
                          params:nil
                    orBodyString:bodyString completion:^(NSDictionary *json, JSONModelError* e) {
+                       if (completeBlock) completeBlock(json, e);
+                   }];
+}
+
++(void)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData completion:(JSONObjectBlock)completeBlock
+{
+    [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
+                         params:nil
+                   orBodyString:[[NSString alloc] initWithData:bodyData encoding:defaultTextEncoding]
+                                 completion:^(NSDictionary *json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
