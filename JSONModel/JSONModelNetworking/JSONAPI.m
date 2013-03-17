@@ -39,7 +39,7 @@ static long jsonRpcId = 0;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         sharedInstance = [[JSONAPI alloc] init];
-        sharedInstance.ctype = @"application/json";
+        sharedInstance.ctype = kContentTypeJSON;
     });
 }
 
