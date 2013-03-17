@@ -213,30 +213,31 @@ static NSMutableDictionary* requestHeaders = nil;
 {
     //create the request body
     NSMutableString* paramsString = nil;
+
     if (params) {
         //build a simple url encoded param string
         paramsString = [NSMutableString stringWithString:@""];
         for (NSString* key in [params allKeys]) {
             [paramsString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
-        }
+        }        
     }
     
-    //request body
-    NSString* requestBodyString = nil;
-    
     //set the request params
-    if ([method isEqualToString:kHTTPMethodPOST]) {
-        requestBodyString = paramsString;
-        
-    } else if (paramsString) {
-        //URL params
-        url = [NSURL URLWithString:[NSString stringWithFormat:
-                                    @"%@?%@", [url absoluteString], paramsString
+    if ([method isEqualToString:kHTTPMethodGET]) {
+
+        //add GET params to the query string
+        url = [NSURL URLWithString:[NSString stringWithFormat: @"%@%@%@",
+                                    [url absoluteString],
+                                    [url query] ? @"&" : @"?",
+                                    paramsString
                                     ]];
     }
     
     //call the more general synq request method
-    return [self syncRequestDataFromURL:url method:method requestBody:requestBodyString error: err];
+    return [self syncRequestDataFromURL: url
+                                 method: method
+                            requestBody: [method isEqualToString:kHTTPMethodPOST]?paramsString:nil
+                                  error: err];
 }
 
 #pragma mark - helper methods
