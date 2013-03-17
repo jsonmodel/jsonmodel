@@ -18,8 +18,18 @@
 
 #pragma mark - definitions
 
-extern NSString * const kHTTPMethodGET;
-extern NSString * const kHTTPMethodPOST;
+/**
+ * HTTP Request methods
+ */
+extern NSString* const kHTTPMethodGET;
+extern NSString* const kHTTPMethodPOST;
+
+/**
+ * Content-type strings
+ */
+extern NSString* const kContentTypeAutomatic;
+extern NSString* const kContentTypeJSON;
+extern NSString* const kContentTypeWWWEncoded;
 
 /**
  * A block type to handle incoming JSONModel instance and an error. 
@@ -81,6 +91,14 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  */
 +(void)setControlsNetworkIndicator:(BOOL)doesControlIndicator;
 
+/**
+ * A method to set the default conent type of the request body
+ * By default the content type is set to kContentTypeAutomatic
+ * which checks the body request and decides between "application/json"
+ * and "application/x-www-form-urlencoded"
+ */
++(void)setRequestContentType:(NSString*)contentTypeString;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - GET synchronious JSON calls
 
@@ -123,6 +141,15 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  */
 +(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err;
 
+/**
+ * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
+ * @param urlString the URL as a string
+ * @param bodyData the body of the POST request as an NSData object
+ * @param err a pointer to an NSError object, to pass back an error if needed
+ * @return JSON compliant object or nil
+ */
++(id)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData error:(NSError**)err;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - GET asynchronious JSON calls
 
@@ -164,5 +191,15 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * @return JSON compliant object or nil
  */
 +(void)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock;
+
+/**
+ * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
+ * @param urlString the URL as a string
+ * @param bodyData the body of the POST request as an NSData object
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ * @return JSON compliant object or nil
+ */
++(void)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData completion:(JSONObjectBlock)completeBlock;
+
 
 @end
