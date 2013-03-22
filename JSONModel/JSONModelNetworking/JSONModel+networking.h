@@ -16,6 +16,7 @@
 
 #import "JSONModel.h"
 #import "JSONHTTPClient.h"
+#import "JSONCache.h"
 
 /**
  * The JSONModel(networking) class category adds networking to JSONModel.

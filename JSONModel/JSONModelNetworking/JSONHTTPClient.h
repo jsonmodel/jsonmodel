@@ -15,6 +15,7 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONModel.h"
+#import "JSONCache.h"
 
 #pragma mark - definitions
 
@@ -98,6 +99,8 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * and "application/x-www-form-urlencoded"
  */
 +(void)setRequestContentType:(NSString*)contentTypeString;
+
++(void)setIsUsingJSONCache:(BOOL)doesUse;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - GET synchronious JSON calls

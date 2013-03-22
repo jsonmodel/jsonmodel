@@ -1,6 +1,6 @@
 //
-//  JSONModelLib.h
-//
+//  JSONCache.h
+//  
 //  @version 0.8.4
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
@@ -16,22 +16,30 @@
 
 #import <Foundation/Foundation.h>
 
-//JSONModel transformations
-#import "JSONValueTransformer.h"
-#import "JSONKeyMapper.h"
+@interface JSONCache : NSObject
 
-//basic JSONModel classes
-#import "JSONModelError.h"
-#import "JSONModelClassProperty.h"
-#import "JSONModel.h"
+@property (assign, nonatomic) int expirationTimeInHours;
+@property (assign, nonatomic) int expirationTimeInHoursWhenOffline;
 
-//network classes
-#import "JSONCache.h"
-#import "JSONHTTPClient.h"
-#import "JSONModel+networking.h"
-#import "JSONAPI.h"
+@property (assign, nonatomic) BOOL isOfflineCacheEnabled;
+@property (assign, nonatomic, readonly) BOOL isOnline;
 
-//models array
-#import "NSArray+JSONModel.h"
-#import "JSONModelArray.h"
++(instancetype)sharedCache;
 
+-(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params;
+-(id)objectForMethod:(NSString*)method andParams:(id)params;
+
+-(void)trimExpiredObjects;
+-(void)trimObjectForKey:(NSString*)key;
+
+-(void)purgeCache;
+
+@end
+
+#pragma mark - helper cache classes
+@interface JSONCacheFile : NSObject
+
+@property (strong, nonatomic) NSString* name;
+@property (assign, nonatomic) NSTimeInterval modificationTime;
+
+@end

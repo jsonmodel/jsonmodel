@@ -55,6 +55,7 @@ static NSMutableDictionary* requestHeaders = nil;
  */
 static NSString* requestContentType = nil;
 
+static BOOL isUsingJSONCache = NO;
 
 #pragma mark - private methods
 @interface JSONHTTPClient()
@@ -108,6 +109,11 @@ static NSString* requestContentType = nil;
     requestContentType = contentTypeString;
 }
 
++(void)setIsUsingJSONCache:(BOOL)doesUse
+{
+    isUsingJSONCache = doesUse;
+}
+
 #pragma mark - convenience methods for requests
 +(id)getJSONFromURLWithString:(NSString*)urlString error:(NSError**)err
 {
@@ -137,6 +143,12 @@ static NSString* requestContentType = nil;
 #pragma mark - base request methods
 +(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString error:(NSError**)err
 {
+    if (isUsingJSONCache==YES) {
+        //cache should kick in here
+        id cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
+        if (cachedResult) return cachedResult;
+    }
+    
     //define local vars
     NSDictionary* json = nil;
     NSData* responseData = nil;
@@ -171,6 +183,11 @@ static NSString* requestContentType = nil;
     @catch (NSException* e) {
         //no need to do anything, will return nil by default
         if (err) *err = [JSONModelError errorInvalidData];
+    }
+    
+    if (isUsingJSONCache==YES && json!=nil && err==nil) {
+        //successfull call, cache it
+        [[JSONCache sharedCache] addObject:json forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
     }
     
     return json;
@@ -299,6 +316,16 @@ static NSString* requestContentType = nil;
 #pragma mark - Async calls
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
 {
+    if (isUsingJSONCache==YES) {
+        //cache should kick in here
+        id cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
+        if (cachedResult) {
+            JMLog(@"CACHED RESULT");
+            if (completeBlock) completeBlock(cachedResult, nil);
+            return;
+        }
+    }
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSDictionary* jsonObject = nil;
@@ -335,6 +362,11 @@ static NSString* requestContentType = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completeBlock) {
                 completeBlock(jsonObject, error);
+            }
+            
+            if (isUsingJSONCache==YES && jsonObject!=nil && error==nil) {
+                //successfull call, cache it
+                [[JSONCache sharedCache] addObject:jsonObject forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
             }
         });
     });
