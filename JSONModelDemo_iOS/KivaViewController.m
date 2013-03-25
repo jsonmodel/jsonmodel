@@ -30,11 +30,12 @@
     self.title = @"Kiva.org latest loans";
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-    [JSONCache sharedCache].isOfflineCacheEnabled = NO;
-    [JSONCache sharedCache].expirationTimeInHours = 0;
-    [JSONCache sharedCache].expirationTimeInHoursWhenOffline = 0;
+    [JSONCache sharedCache].isOfflineCacheEnabled = YES;
+    [JSONCache sharedCache].expirationTimeInHours = 10;
+    [JSONCache sharedCache].expirationTimeInHoursWhenOffline = 10;
+    [JSONCache sharedCache].revalidateCacheFromServerAfterTimeInHours = 0;
     
-    [JSONHTTPClient setIsUsingJSONCache: NO];
+    [JSONHTTPClient setIsUsingJSONCache: YES];
     
     [JSONHTTPClient getJSONFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json"
                                       params:@{@"status":@"fundraising"}

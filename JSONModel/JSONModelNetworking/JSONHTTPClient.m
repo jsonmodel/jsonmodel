@@ -24,6 +24,7 @@ NSString* const kContentTypeAutomatic    = @"jsonmodel/automatic";
 NSString* const kContentTypeJSON         = @"application/json";
 NSString* const kContentTypeWWWEncoded   = @"application/x-www-form-urlencoded";
 
+NSData* kUseCachedObjectResponse = nil;
 
 #pragma mark - static variables
 
@@ -59,8 +60,8 @@ static BOOL isUsingJSONCache = NO;
 
 #pragma mark - private methods
 @interface JSONHTTPClient()
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params error:(NSError**)err;
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString error:(NSError**)err;
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers error:(NSError**)err;
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers error:(NSError**)err;
 
 +(void)setNetworkIndicatorVisible:(BOOL)isVisible;
 @end
@@ -75,6 +76,7 @@ static BOOL isUsingJSONCache = NO;
     dispatch_once(&once, ^{
         requestHeaders = [NSMutableDictionary dictionary];
         requestContentType = kContentTypeAutomatic;
+        kUseCachedObjectResponse = [NSData data];
     });
 }
 
@@ -143,10 +145,22 @@ static BOOL isUsingJSONCache = NO;
 #pragma mark - base request methods
 +(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString error:(NSError**)err
 {
+    NSDictionary* customHeaders= nil;
+    JSONCacheResponse* cachedResult = nil;
+    
     if (isUsingJSONCache==YES) {
         //cache should kick in here
-        id cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
-        if (cachedResult) return cachedResult;
+        cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
+
+        if (cachedResult) {
+            if (cachedResult.mustRevalidate==NO) {
+                //return hard cached object
+                return cachedResult.object;
+            } else {
+                //check for revalidation
+                customHeaders = cachedResult.revalidateHeaders;
+            }
+        }
     }
     
     //define local vars
@@ -158,12 +172,14 @@ static BOOL isUsingJSONCache = NO;
         responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                              method: method
                                         requestBody: bodyString
+                                            headers: customHeaders
                                               error: err];
     } else {
         //fetch data via request with given dictionary with parameters
         responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                              method: method
                                              params: params
+                                            headers: customHeaders
                                               error: err];
     }
     
@@ -175,6 +191,11 @@ static BOOL isUsingJSONCache = NO;
         return nil;
     }
 
+    if (isUsingJSONCache==YES && responseData==kUseCachedObjectResponse) {
+        //return cached object immediately
+        return cachedResult.object;
+    }
+    
     //try to get an object out of response data
     @try {
         json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
@@ -219,7 +240,7 @@ static BOOL isUsingJSONCache = NO;
     return [NSString stringWithFormat:@"%@; charset=%@", contentType, charset];
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString error:(NSError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers error:(NSError**)err
 {
     //turn on network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
@@ -236,6 +257,11 @@ static BOOL isUsingJSONCache = NO;
     //add all the custom headers defined
     for (NSString* key in [requestHeaders allKeys]) {
         [request addValue:requestHeaders[key] forHTTPHeaderField:key];
+    }
+    
+    //add the custom headers
+    for (NSString* key in [headers allKeys]) {
+        [request addValue:headers[key] forHTTPHeaderField:key];
     }
     
     if (bodyString) {
@@ -265,13 +291,16 @@ static BOOL isUsingJSONCache = NO;
 	if ([response statusCode] >= 200 && [response statusCode] < 300) {
         //success
         return responseData;
-	} else {
+	} if ([response statusCode] == 304) {
+        //cached version is still fresh
+        return kUseCachedObjectResponse;
+    } else {
         //error, for now just return nil
         return nil;
     }
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params error:(NSError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers error:(NSError**)err
 {
     //create the request body
     NSMutableString* paramsString = nil;
@@ -285,7 +314,7 @@ static BOOL isUsingJSONCache = NO;
     }
     
     //set the request params
-    if ([method isEqualToString:kHTTPMethodGET]) {
+    if ([method isEqualToString:kHTTPMethodGET] && params) {
 
         //add GET params to the query string
         url = [NSURL URLWithString:[NSString stringWithFormat: @"%@%@%@",
@@ -299,6 +328,7 @@ static BOOL isUsingJSONCache = NO;
     return [self syncRequestDataFromURL: url
                                  method: method
                             requestBody: [method isEqualToString:kHTTPMethodPOST]?paramsString:nil
+                                headers: headers
                                   error: err];
 }
 
@@ -316,13 +346,21 @@ static BOOL isUsingJSONCache = NO;
 #pragma mark - Async calls
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
 {
+    NSDictionary* customHeaders = nil;
+    JSONCacheResponse* cachedResult = nil;
+    
     if (isUsingJSONCache==YES) {
         //cache should kick in here
-        id cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
+        cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
         if (cachedResult) {
-            JMLog(@"CACHED RESULT");
-            if (completeBlock) completeBlock(cachedResult, nil);
-            return;
+            if (cachedResult.mustRevalidate==NO) {
+                //return hard cached object
+                if (completeBlock) completeBlock(cachedResult.object, nil);
+                return;
+            } else {
+                //revalidate from server
+                customHeaders = cachedResult.revalidateHeaders;
+            }
         }
     }
 
@@ -337,11 +375,13 @@ static BOOL isUsingJSONCache = NO;
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
                                                 requestBody: bodyString
+                                                    headers: customHeaders
                                                       error: &error];
             } else {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
                                                      params: params
+                                                    headers: customHeaders
                                                       error: &error];
             }
         }
@@ -353,8 +393,13 @@ static BOOL isUsingJSONCache = NO;
             //check for false response, but no network error
             error = [JSONModelError errorBadResponse];
         }
-        
-        if (error==nil) {
+
+        if (isUsingJSONCache==YES && responseData == kUseCachedObjectResponse) {
+            //check for not-modified response
+            //return cached object
+            jsonObject = cachedResult.object;
+            
+        } else if (error==nil) {
             //data fetched successfuly from the net
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
         }
@@ -364,7 +409,7 @@ static BOOL isUsingJSONCache = NO;
                 completeBlock(jsonObject, error);
             }
             
-            if (isUsingJSONCache==YES && jsonObject!=nil && error==nil) {
+            if (isUsingJSONCache==YES && jsonObject!=nil && error==nil && responseData != kUseCachedObjectResponse) {
                 //successfull call, cache it
                 [[JSONCache sharedCache] addObject:jsonObject forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
             }

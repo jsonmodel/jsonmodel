@@ -10,4 +10,38 @@
 
 @implementation JSONCacheFile
 
+-(instancetype)initWithKey:(NSString*)key andEtag:(NSString*)etag
+{
+    self = [super init];
+    if (self!=nil) {
+        if (etag!=nil) {
+            self.fileName = [NSString stringWithFormat:@"%@~%@~etag",key,etag];
+        } else {
+            self.fileName = key;
+        }
+        self.modificationTime = [[NSDate date] timeIntervalSinceReferenceDate];
+    }
+    return self;
+}
+
+-(void)setFileName:(NSString *)fileName
+{
+    _fileName = fileName;
+    if ([_fileName hasSuffix:@"etag"]) {
+        //etag attached to object name
+        NSArray* nameParts = [_fileName componentsSeparatedByString:@"~"];
+        if (nameParts.count>2) {
+            _etag = nameParts[nameParts.count-2];
+            _key = nameParts[nameParts.count-3];
+        }
+    } else {
+        _key = fileName;
+    }
+}
+
+-(NSString*)description
+{
+    return self.fileName;
+}
+
 @end

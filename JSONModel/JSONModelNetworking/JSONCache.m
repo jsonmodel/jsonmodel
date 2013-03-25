@@ -22,9 +22,21 @@
 #import <netinet/in.h>
 #import <netinet6/in6.h>
 
+int kNeverRevalidate = INT_MAX;
+int kAlwaysRevalidate = 0;
+
+int kNeverExpire = INT_MAX;
+int kImmediatelyExpire = 0;
+
 #define kJSONCacheDirectory @"JSONCache"
 #define kDefaultExpirationTimeInHours 1 //1 day
 #define kDefaultExpirationTimeInHoursWhenOffline 168 //1 week
+
+#define kIfModifiedSinceHTTPHeaderName @"If-Modified-Since"
+#define kETagHTTPHeaderName @"ETag"
+
+#define kIfModifiedSinceHTTPHeaderNameXd @"X-If-Modified-Since"
+#define kETagHTTPHeaderNameXd @"X-ETag"
 
 static JSONCache* instance = nil;
 
@@ -39,6 +51,9 @@ static JSONCache* instance = nil;
     
     NSTimeInterval _expirationOnlineTimeInterval;
     NSTimeInterval _expirationOfflineTimeInterval;
+    
+    NSTimeInterval _revalidateFromServerTimeInterval;
+    NSTimeInterval _revalidateFromServerWithETagTimeInterval;
     
     SCNetworkReachabilityRef reachabilityRef;
     BOOL observingConnection;
@@ -68,6 +83,12 @@ static JSONCache* instance = nil;
         self.expirationTimeInHours = kDefaultExpirationTimeInHours;
         self.expirationTimeInHoursWhenOffline = kDefaultExpirationTimeInHoursWhenOffline;
         
+        self.revalidateCacheFromServerAfterTimeInHours = kNeverRevalidate;
+        self.revalidateCacheViaETagAfterTimeInHours = kNeverRevalidate;
+        
+        self.isUsingXdHTTPHeaderNames = YES;
+        _isOnline = YES;
+        
         //setup the directories
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory , NSUserDomainMask, YES);
         cacheDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:kJSONCacheDirectory];
@@ -88,12 +109,13 @@ static JSONCache* instance = nil;
             
             //read the current cache contents
             for (NSString* fileName in directoryContents) {
+                JMLog(@"cache file: %@", fileName);
                 NSString* fullFilePath = [cacheDirectory stringByAppendingPathComponent: fileName];
                 NSDate* modifiedDate = [[fm attributesOfItemAtPath:fullFilePath error:NULL] fileModificationDate];
                 
                 JSONCacheFile* file = [[JSONCacheFile alloc] init];
                 file.modificationTime= [modifiedDate timeIntervalSinceReferenceDate];
-                file.name = fileName;
+                file.fileName = fileName;
                 
                 [cacheFiles setValue:file forKey:fileName];
             }
@@ -105,7 +127,7 @@ static JSONCache* instance = nil;
         if (cacheFiles.count>0 && observingConnection==NO) {
             //observe connectivity changes
             [self startConnectivityObserver];
-            JMLog(@"JSONCache.isOnline = %@", _isOnline?@"YES":@"NO");
+            JMLog(@"JSONCache.isOnline = %@", _isOnline?@"YES":@"NO" );
         }
     }
     
@@ -113,6 +135,12 @@ static JSONCache* instance = nil;
 }
 
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params
+{
+    return [self addObject:object forMethod:method andParams:params etag:nil];
+}
+
+
+-(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params etag:(NSString*)etag
 {
     //expire objects
     [self trimExpiredObjects];
@@ -127,9 +155,7 @@ static JSONCache* instance = nil;
     BOOL success = [data writeToFile:filePath atomically:YES];
     if (success) {
         //save the cache file
-        JSONCacheFile* file = [[JSONCacheFile alloc] init];
-        file.name = key;
-        file.modificationTime = [[NSDate date] timeIntervalSinceReferenceDate];
+        JSONCacheFile* file = [[JSONCacheFile alloc] initWithKey:key andEtag:etag];
         [cacheFiles setValue: file forKey:key];
     }
     
@@ -142,7 +168,7 @@ static JSONCache* instance = nil;
     return success;
 }
 
--(id)objectForMethod:(NSString*)method andParams:(id)params
+-(JSONCacheResponse*)objectForMethod:(NSString*)method andParams:(id)params
 {
     NSString* key = [self keyForMethod:method andParams:params];
     JSONCacheFile* file = cacheFiles[key];
@@ -157,8 +183,52 @@ static JSONCache* instance = nil;
     
     NSString* filePath = [cacheDirectory stringByAppendingPathComponent:key];
     NSData* data = [NSData dataWithContentsOfFile: filePath];
-    id result = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    return result;
+
+    id object;
+    @try {
+        object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    } @catch (NSException* e) {
+        return nil;
+    }
+    
+    JSONCacheResponse* response = [[JSONCacheResponse alloc] init];
+    response.object = object;
+    response.isOfflineVersion = !self.isOnline;
+    
+    if (self.isOnline && self.revalidateCacheFromServerAfterTimeInHours!=kNeverRevalidate) {
+
+        //check for revalidation rules
+        NSTimeInterval now = [[NSDate date] timeIntervalSinceReferenceDate];
+        NSTimeInterval expiration = _revalidateFromServerTimeInterval;
+        if (now > file.modificationTime + expiration) {
+            response.mustRevalidate = YES;
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+            NSDate* lastModificationDate = [NSDate dateWithTimeIntervalSinceReferenceDate:file.modificationTime];
+            
+            [response.revalidateHeaders setValue: [dateFormatter stringFromDate: lastModificationDate]
+                                          forKey: self.isUsingXdHTTPHeaderNames? kIfModifiedSinceHTTPHeaderNameXd: kIfModifiedSinceHTTPHeaderName ];
+        }
+    }
+    
+    if (self.isOnline && self.revalidateCacheViaETagAfterTimeInHours!=kNeverRevalidate) {
+        //check for the revalidation rules
+        NSTimeInterval now = [[NSDate date] timeIntervalSinceReferenceDate];
+        NSTimeInterval expiration =  now + _revalidateFromServerWithETagTimeInterval;
+        
+        if (now > file.modificationTime + expiration) {
+            response.mustRevalidate = YES;
+        
+            if (file.etag != nil) {
+                [response.revalidateHeaders setValue: file.etag
+                                              forKey: self.isUsingXdHTTPHeaderNames? kETagHTTPHeaderNameXd: kETagHTTPHeaderName ];
+            }
+        }
+    }
+    
+    NSLog(@"CASHED RESULT!!!");
+    return response;
 }
 
 -(NSString*)keyForMethod:(NSString*)method andParams:(id)params
@@ -176,7 +246,7 @@ static JSONCache* instance = nil;
 {
     for (NSString* key in [cacheFiles allKeys]) {
         if ([self isObjectExpired: cacheFiles[key]]) {
-            //expired content
+           //expired content
             [self trimObjectForKey: key];
         }
     }
@@ -184,6 +254,7 @@ static JSONCache* instance = nil;
 
 -(void)trimObjectForKey:(NSString*)key
 {
+    NSLog(@"delete file: %@", key);
     NSString* filePath = [cacheDirectory stringByAppendingPathComponent:key];
     [fm removeItemAtPath:filePath error:NULL];
     [cacheFiles removeObjectForKey: key];
@@ -286,22 +357,19 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     NSTimeInterval expiration = 0;
     
     if (self.isOnline==NO && self.isOfflineCacheEnabled==NO) {
-        
+        NSLog(@"expire %@ for Offline:offline disabled", object.key);
         //it's always expired
         return YES;
         
     } else if (self.isOnline==YES && self.isOfflineCacheEnabled==NO) {
-        
         //online cache expiration
         expiration = _expirationOnlineTimeInterval;
         
     } else if (self.isOnline==YES && self.isOfflineCacheEnabled==YES) {
-
         //offline expiration time
         expiration = _expirationOfflineTimeInterval;
         
     } else {
-        
         //just return the longer of the two exp. times
         expiration = MAX(_expirationOfflineTimeInterval, _expirationOnlineTimeInterval);
         
@@ -342,12 +410,16 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     _expirationOfflineTimeInterval = expirationTimeInHoursWhenOffline * 360;
 }
 
-@end
-
-#pragma mark - helper classes
-@implementation JSONCacheFile
--(NSString*)description
+-(void)setRevalidateCacheFromServerAfterTimeInHours:(int)hrs
 {
-    return self.name;
+    _revalidateCacheFromServerAfterTimeInHours = hrs;
+    _revalidateFromServerTimeInterval = hrs * 360;
 }
+
+-(void)setRevalidateCacheViaETagAfterTimeInHours:(int)hrs
+{
+    _revalidateCacheViaETagAfterTimeInHours = hrs;
+    _revalidateFromServerWithETagTimeInterval = hrs * 360;
+}
+
 @end

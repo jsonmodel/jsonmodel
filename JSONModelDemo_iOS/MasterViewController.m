@@ -25,8 +25,20 @@
 @implementation MasterViewController
 
 -(void)viewDidAppear:(BOOL)animated
-{    
+{
     //[self tableView: self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    
+    [JSONCache sharedCache].expirationTimeInHours = 100;
+    [JSONHTTPClient setIsUsingJSONCache: YES];
+    NSLog(@"cache: %@", [JSONCache sharedCache]);
+    
+    [JSONHTTPClient getJSONFromURLWithString:@"http://localhost/testapi/test.php"
+                                  completion:^(NSDictionary *json, JSONModelError *err) {
+                                      
+                                      NSLog(@"got: %@", json);
+                                      
+                                  }];
+ 
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

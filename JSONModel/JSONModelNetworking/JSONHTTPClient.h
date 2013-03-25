@@ -32,6 +32,8 @@ extern NSString* const kContentTypeAutomatic;
 extern NSString* const kContentTypeJSON;
 extern NSString* const kContentTypeWWWEncoded;
 
+extern NSData* kUseCachedObjectResponse;
+
 /**
  * A block type to handle incoming JSONModel instance and an error. 
  * You pass it to methods which create a model asynchroniously. When the operation is finished

@@ -121,6 +121,8 @@
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
 		9CC2FD2B168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */; };
+		9CD67CFA17005D4C005BED58 /* JSONCacheResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD67CF917005D4C005BED58 /* JSONCacheResponse.m */; };
+		9CD67CFD170088E8005BED58 /* JSONCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD67CFC170088E8005BED58 /* JSONCacheFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +288,10 @@
 		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
 		9CC2FCD2168CE7830059FE67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JSONModelDemo_iOSTests-Info.plist"; sourceTree = "<group>"; };
+		9CD67CF817005D4C005BED58 /* JSONCacheResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheResponse.h; sourceTree = "<group>"; };
+		9CD67CF917005D4C005BED58 /* JSONCacheResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCacheResponse.m; sourceTree = "<group>"; };
+		9CD67CFB170088E8005BED58 /* JSONCacheFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheFile.h; sourceTree = "<group>"; };
+		9CD67CFC170088E8005BED58 /* JSONCacheFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCacheFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -475,6 +481,10 @@
 				9C66E01E168CF0AA0015CCDF /* JSONModel+networking.m */,
 				9CB9ED7816F8EE2100ACA924 /* JSONCache.h */,
 				9CB9ED7916F8EE2100ACA924 /* JSONCache.m */,
+				9CD67CF817005D4C005BED58 /* JSONCacheResponse.h */,
+				9CD67CF917005D4C005BED58 /* JSONCacheResponse.m */,
+				9CD67CFB170088E8005BED58 /* JSONCacheFile.h */,
+				9CD67CFC170088E8005BED58 /* JSONCacheFile.m */,
 			);
 			path = JSONModelNetworking;
 			sourceTree = "<group>";
@@ -849,6 +859,8 @@
 				9C66E034168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */,
 				9C66E036168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */,
 				9CB9ED7A16F8EE2100ACA924 /* JSONCache.m in Sources */,
+				9CD67CFA17005D4C005BED58 /* JSONCacheResponse.m in Sources */,
+				9CD67CFD170088E8005BED58 /* JSONCacheFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

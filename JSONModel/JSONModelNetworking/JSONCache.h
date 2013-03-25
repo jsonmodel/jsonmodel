@@ -15,31 +15,37 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import <Foundation/Foundation.h>
+#import "JSONCacheFile.h"
+#import "JSONCacheResponse.h"
+
+extern int kNeverRevalidate;
+extern int kAlwaysRevalidate;
+
+extern int kNeverExpire;
+extern int kImmediatelyExpire;
 
 @interface JSONCache : NSObject
+
+@property (assign, nonatomic, readonly) BOOL isOnline;
 
 @property (assign, nonatomic) int expirationTimeInHours;
 @property (assign, nonatomic) int expirationTimeInHoursWhenOffline;
 
 @property (assign, nonatomic) BOOL isOfflineCacheEnabled;
-@property (assign, nonatomic, readonly) BOOL isOnline;
+
+@property (assign, nonatomic) int revalidateCacheFromServerAfterTimeInHours;
+@property (assign, nonatomic) int revalidateCacheViaETagAfterTimeInHours;
+
+@property (assign, nonatomic) BOOL isUsingXdHTTPHeaderNames;
 
 +(instancetype)sharedCache;
 
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params;
--(id)objectForMethod:(NSString*)method andParams:(id)params;
+-(JSONCacheResponse*)objectForMethod:(NSString*)method andParams:(id)params;
 
 -(void)trimExpiredObjects;
 -(void)trimObjectForKey:(NSString*)key;
 
 -(void)purgeCache;
-
-@end
-
-#pragma mark - helper cache classes
-@interface JSONCacheFile : NSObject
-
-@property (strong, nonatomic) NSString* name;
-@property (assign, nonatomic) NSTimeInterval modificationTime;
 
 @end

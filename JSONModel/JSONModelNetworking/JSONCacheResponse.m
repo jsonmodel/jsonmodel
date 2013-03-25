@@ -10,4 +10,16 @@
 
 @implementation JSONCacheResponse
 
+-(instancetype)init
+{
+    self = [super init];
+    if (self!=nil) {
+        self.object = nil;
+        self.isOfflineVersion = YES;
+        self.mustRevalidate = NO;
+        self.revalidateHeaders = [NSMutableDictionary dictionaryWithCapacity:2];
+    }
+    return self;
+}
+
 @end

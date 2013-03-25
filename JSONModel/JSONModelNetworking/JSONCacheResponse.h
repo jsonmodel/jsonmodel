@@ -10,4 +10,9 @@
 
 @interface JSONCacheResponse : NSObject
 
+@property (strong, nonatomic) id object;
+@property (assign, nonatomic) BOOL mustRevalidate;
+@property (assign, nonatomic) BOOL isOfflineVersion;
+@property (strong, nonatomic) NSMutableDictionary* revalidateHeaders;
+
 @end
