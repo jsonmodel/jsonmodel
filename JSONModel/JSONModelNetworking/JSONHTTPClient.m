@@ -155,9 +155,15 @@ static BOOL isUsingJSONCache = NO;
                                                                 cachePolicy: defaultCachePolicy
                                                             timeoutInterval: defaultTimeoutInSeconds];
 	[request setHTTPMethod:method];
-    
-    if (bodyString) {
-        [request addValue: [self contentTypeForRequestString: bodyString] forHTTPHeaderField:@"Content-type"];
+
+    if ([requestContentType isEqualToString:kContentTypeAutomatic]) {
+        //automatic content type
+        if (bodyString) {
+            [request addValue: [self contentTypeForRequestString: bodyString] forHTTPHeaderField:@"Content-type"];
+        }
+    } else {
+        //user set content type
+        [request addValue: requestContentType forHTTPHeaderField:@"Content-type"];
     }
     
     //add all the custom headers defined
@@ -169,6 +175,8 @@ static BOOL isUsingJSONCache = NO;
     for (NSString* key in [headers allKeys]) {
         [request addValue:headers[key] forHTTPHeaderField:key];
     }
+    
+    NSLog(@"request headers: %@", [request allHTTPHeaderFields]);
     
     if (bodyString) {
         //BODY params
@@ -225,7 +233,10 @@ static BOOL isUsingJSONCache = NO;
         paramsString = [NSMutableString stringWithString:@""];
         for (NSString* key in [params allKeys]) {
             [paramsString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
-        }        
+        }
+        if ([paramsString hasSuffix:@"&"]) {
+            paramsString = [[NSMutableString alloc] initWithString: [paramsString substringToIndex: paramsString.length-1]];
+        }
     }
     
     //set the request params
@@ -260,11 +271,14 @@ static BOOL isUsingJSONCache = NO;
         if (cachedResult) {
             if (cachedResult.mustRevalidate==NO) {
                 //return hard cached object
+                NSLog(@"hard cached, no revalidate");
                 if (completeBlock) completeBlock(cachedResult.object, nil);
                 return;
             } else {
                 //revalidate from server
+                NSLog(@"soft cached, do revalidate");
                 customHeaders = cachedResult.revalidateHeaders;
+                NSLog(@"custom headers: %@", customHeaders);
             }
         }
     }
@@ -304,11 +318,12 @@ static BOOL isUsingJSONCache = NO;
 
         if (isUsingJSONCache==YES && responseData == kUseCachedObjectResponse) {
             //check for not-modified response
-            //return cached object
+            NSLog(@"using the soft cached object");
             jsonObject = cachedResult.object;
             
         } else if (error==nil) {
             //data fetched successfuly from the net
+            NSLog(@"use server response");
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
         }
         
@@ -319,6 +334,7 @@ static BOOL isUsingJSONCache = NO;
             
             if (isUsingJSONCache==YES && jsonObject!=nil && error==nil && responseData != kUseCachedObjectResponse) {
                 //successfull call, cache it
+                NSLog(@"add server response to cache, etag: %@", etag);
                 [[JSONCache sharedCache] addObject:jsonObject forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""] etag: etag];
             }
         });
