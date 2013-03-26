@@ -49,6 +49,12 @@
 		9C05B465168CEB220054215E /* PrimitivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B43A168CEB220054215E /* PrimitivesModel.m */; };
 		9C05B466168CEB220054215E /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B43C168CEB220054215E /* ReposModel.m */; };
 		9C05B467168CEB220054215E /* ValidationTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B43E168CEB220054215E /* ValidationTestSuite.m */; };
+		9C3DDE6717025546001CA4AA /* JSONCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3DDE6217025546001CA4AA /* JSONCache.m */; };
+		9C3DDE6817025546001CA4AA /* JSONCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3DDE6217025546001CA4AA /* JSONCache.m */; };
+		9C3DDE6917025546001CA4AA /* JSONCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3DDE6417025546001CA4AA /* JSONCacheFile.m */; };
+		9C3DDE6A17025546001CA4AA /* JSONCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3DDE6417025546001CA4AA /* JSONCacheFile.m */; };
+		9C3DDE6B17025546001CA4AA /* JSONCacheResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3DDE6617025546001CA4AA /* JSONCacheResponse.m */; };
+		9C3DDE6C17025546001CA4AA /* JSONCacheResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3DDE6617025546001CA4AA /* JSONCacheResponse.m */; };
 		9C66DF47168CEECF0015CCDF /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B3FF168CEB220054215E /* colors.json */; };
 		9C66DF48168CEECF0015CCDF /* converts.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B400168CEB220054215E /* converts.json */; };
 		9C66DF49168CEECF0015CCDF /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B401168CEB220054215E /* github-iphone.json */; };
@@ -176,6 +182,12 @@
 		9C05B43C168CEB220054215E /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposModel.m; sourceTree = "<group>"; };
 		9C05B43D168CEB220054215E /* ValidationTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationTestSuite.h; sourceTree = "<group>"; };
 		9C05B43E168CEB220054215E /* ValidationTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationTestSuite.m; sourceTree = "<group>"; };
+		9C3DDE6117025546001CA4AA /* JSONCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCache.h; sourceTree = "<group>"; };
+		9C3DDE6217025546001CA4AA /* JSONCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCache.m; sourceTree = "<group>"; };
+		9C3DDE6317025546001CA4AA /* JSONCacheFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheFile.h; sourceTree = "<group>"; };
+		9C3DDE6417025546001CA4AA /* JSONCacheFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCacheFile.m; sourceTree = "<group>"; };
+		9C3DDE6517025546001CA4AA /* JSONCacheResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheResponse.h; sourceTree = "<group>"; };
+		9C3DDE6617025546001CA4AA /* JSONCacheResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCacheResponse.m; sourceTree = "<group>"; };
 		9C66DFDE168CF09A0015CCDF /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		9C66DFDF168CF09A0015CCDF /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
 		9C66DFE0168CF09A0015CCDF /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
@@ -418,6 +430,12 @@
 				9C66DFEE168CF09A0015CCDF /* JSONHTTPClient.m */,
 				9C66DFEF168CF09A0015CCDF /* JSONModel+networking.h */,
 				9C66DFF0168CF09A0015CCDF /* JSONModel+networking.m */,
+				9C3DDE6117025546001CA4AA /* JSONCache.h */,
+				9C3DDE6217025546001CA4AA /* JSONCache.m */,
+				9C3DDE6317025546001CA4AA /* JSONCacheFile.h */,
+				9C3DDE6417025546001CA4AA /* JSONCacheFile.m */,
+				9C3DDE6517025546001CA4AA /* JSONCacheResponse.h */,
+				9C3DDE6617025546001CA4AA /* JSONCacheResponse.m */,
 			);
 			path = JSONModelNetworking;
 			sourceTree = "<group>";
@@ -738,6 +756,9 @@
 				9CD425861702224F00A42AA1 /* HTTPClientSuite.m in Sources */,
 				9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */,
 				9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */,
+				9C3DDE6817025546001CA4AA /* JSONCache.m in Sources */,
+				9C3DDE6A17025546001CA4AA /* JSONCacheFile.m in Sources */,
+				9C3DDE6C17025546001CA4AA /* JSONCacheResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +786,9 @@
 				9CB6BC29168DE35E0002535B /* VideoModel.m in Sources */,
 				9CB6BC2A168DE35E0002535B /* VideoTitle.m in Sources */,
 				9CB6BC2E168E07730002535B /* GitHubUserModel.m in Sources */,
+				9C3DDE6717025546001CA4AA /* JSONCache.m in Sources */,
+				9C3DDE6917025546001CA4AA /* JSONCacheFile.m in Sources */,
+				9C3DDE6B17025546001CA4AA /* JSONCacheResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

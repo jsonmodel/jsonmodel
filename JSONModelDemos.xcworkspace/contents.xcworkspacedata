@@ -72,6 +72,18 @@
          <FileRef
             location = "group:JSONCache.m">
          </FileRef>
+         <FileRef
+            location = "group:JSONCacheFile.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONCacheFile.m">
+         </FileRef>
+         <FileRef
+            location = "group:JSONCacheResponse.h">
+         </FileRef>
+         <FileRef
+            location = "group:JSONCacheResponse.m">
+         </FileRef>
       </Group>
       <Group
          location = "group:JSONModel/JSONModelTransformations"
