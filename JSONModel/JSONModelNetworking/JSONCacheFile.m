@@ -41,7 +41,7 @@
 
 -(NSString*)description
 {
-    return self.fileName;
+    return [@{@"key":self.key,@"name":self.fileName,@"etag":self.etag} debugDescription];
 }
 
 @end
