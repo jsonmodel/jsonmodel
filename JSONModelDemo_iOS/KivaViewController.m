@@ -30,7 +30,6 @@
     self.title = @"Kiva.org latest loans";
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-    [JSONCache sharedCache].isOfflineCacheEnabled = YES;
     [JSONCache sharedCache].expirationTimeInHours = 10;
     [JSONCache sharedCache].expirationTimeInHoursWhenOffline = 10;
     [JSONCache sharedCache].revalidateCacheFromServerAfterTimeInHours = 0;

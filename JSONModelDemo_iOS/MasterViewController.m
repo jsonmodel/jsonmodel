@@ -30,11 +30,14 @@
     
     [JSONCache sharedCache].expirationTimeInHours = kImmediatelyExpire;
     [JSONCache sharedCache].expirationTimeInHoursWhenOffline = kNeverExpire;
-    [JSONCache sharedCache].revalidateCacheViaETagAfterTimeInHours = 0;
-    [JSONHTTPClient setIsUsingJSONCache: YES];
-    NSLog(@"cache: %@", [JSONCache sharedCache]);
+    [JSONCache sharedCache].revalidateCacheViaETagAfterTimeInHours = kAlwaysRevalidate;
+    [JSONCache sharedCache].revalidateCacheFromServerAfterTimeInHours = kAlwaysRevalidate;
     
     [[JSONCache sharedCache] loadCacheFromDisc];
+
+    NSLog(@"cache: %@", [JSONCache sharedCache]);
+    
+    [JSONHTTPClient setIsUsingJSONCache: YES];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(actionLoadCall:)];
 }
@@ -44,7 +47,7 @@
     [JSONHTTPClient getJSONFromURLWithString:@"http://localhost/testapi/test.php"
                                   completion:^(NSDictionary *json, JSONModelError *err) {
                                       
-                                      NSLog(@"GOT: %@", json);
+                                      NSLog(@"GOT: %@", [json allKeys]);
                                       
                                   }];
 }
