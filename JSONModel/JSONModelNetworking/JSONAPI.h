@@ -1,7 +1,7 @@
 //
 //  JSONAPI.h
 //
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -46,15 +46,6 @@
 
 /** @name Making GET API requests */
 /**
- * Makes a synchronious GET request to the API
- * @param path the URL path to add to the base API URL for this HTTP call
- * @param params the variables to pass to the API
- * @param err pointer to an NSError object to pass back an error if needed
- * @return the JSON response as desrialized object
- */
-+(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err;
-
-/**
  * Makes an asynchronious GET request to the API
  * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
@@ -70,15 +61,6 @@
  * Makes a POST request to the API
  * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
- * @param err pointer to an NSError object to pass back an error if needed
- * @return the JSON response as desrialized object
- */
-+(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err;
-
-/**
- * Makes a POST request to the API
- * @param path the URL path to add to the base API URL for this HTTP call
- * @param params the variables to pass to the API
  * @param completeBlock a JSONObjectBlock block to execute upon completion
  * @return the JSON response as desrialized object
  */
@@ -87,15 +69,6 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 /** @name JSON RPC (1.0) request method */
-/**
- * Makes a synchronious JSON RPC request to the API
- * @param method the HTTP method name; GET or POST only
- * @param args the list of arguments to pass to the API
- * @param err pointer to an NSError object to pass back an error if needed
- * @return the JSON response as desrialized object
- */
-+(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args error:(NSError**)err;
-
 /**
  * Makes an asynchronious JSON RPC request to the API
  * @param method the HTTP method name; GET or POST only

@@ -1,7 +1,7 @@
 //
 //  JSONModel+networking.h
 //
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -27,15 +27,6 @@
 @interface JSONModel(Networking)
 
 @property (assign, nonatomic) BOOL isLoading;
-/** @name Synchroniously create a model over the network */
-/**
- * Synchroniously create a model over the network. Create a new model instance and initialize it with the JSON fetched from the given URL
- * @param urlString the absolute URL address of the JSON feed as a string
- * @param err an initialization error or nil
- * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, or a property type in your model is not supported by JSONValueTransformer and its categories
- */
--(instancetype)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err;
-
 /** @name Asynchroniously create a model over the network */
 /**
  * Asynchroniously create a model over the network. Create a new model instance and initialize it with the JSON fetched from the given URL

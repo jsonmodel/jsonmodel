@@ -1,7 +1,7 @@
 //
 //  JSONAPI.m
 //
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -56,15 +56,6 @@ static long jsonRpcId = 0;
 }
 
 #pragma mark - GET methods
-
-+(id)getWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err
-{
-    NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
-    
-    id json = [JSONHTTPClient getJSONFromURLWithString: fullURL params:params error:err];
-    return json;
-}
-
 +(void)getWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock
 {
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
@@ -75,15 +66,6 @@ static long jsonRpcId = 0;
 }
 
 #pragma mark - POST methods
-
-+(id)postWithPath:(NSString*)path andParams:(NSDictionary*)params error:(NSError**)err
-{
-    NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
-    
-    id json = [JSONHTTPClient postJSONFromURLWithString: fullURL params:params error:err];
-    return json;
-}
-
 +(void)postWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock
 {
     NSString* fullURL = [NSString stringWithFormat:@"%@%@", sharedInstance.baseURLString, path];
@@ -94,28 +76,6 @@ static long jsonRpcId = 0;
 }
 
 #pragma mark - RPC 1.0 methods
-
-+(id)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args error:(NSError**)err
-{
-    if (!args) args = @[];
-    
-    NSDictionary* jsonRequest = @{
-        @"id": [NSNumber numberWithLong: ++jsonRpcId],
-        @"params": args,
-        @"method": method
-    };
-    
-    NSData* jsonRequestData = [NSJSONSerialization dataWithJSONObject:jsonRequest
-                                                              options:kNilOptions
-                                                                error:nil];
-    NSString* jsonRequestString = [[NSString alloc] initWithData:jsonRequestData encoding: NSUTF8StringEncoding];
-    
-    id json = [JSONHTTPClient postJSONFromURLWithString: sharedInstance.baseURLString
-                                             bodyString: jsonRequestString
-                                                  error: err];
-    return json;
-}
-
 +(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock
 {
     if (!args) args = @[];

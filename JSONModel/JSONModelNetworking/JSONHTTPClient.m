@@ -1,7 +1,7 @@
 //
 //  JSONModelHTTPClient.m
 //
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -58,14 +58,6 @@ static NSString* requestContentType = nil;
 
 static BOOL isUsingJSONCache = NO;
 
-#pragma mark - private methods
-@interface JSONHTTPClient()
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers error:(NSError**)err;
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers error:(NSError**)err;
-
-+(void)setNetworkIndicatorVisible:(BOOL)isVisible;
-@end
-
 #pragma mark - implementation
 @implementation JSONHTTPClient
 
@@ -116,104 +108,7 @@ static BOOL isUsingJSONCache = NO;
     isUsingJSONCache = doesUse;
 }
 
-#pragma mark - convenience methods for requests
-+(id)getJSONFromURLWithString:(NSString*)urlString error:(NSError**)err
-{
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:nil orBodyString:nil error: err];
-}
-
-+(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err
-{
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodGET params:params orBodyString:nil error: err];
-}
-
-+(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err
-{
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:params orBodyString:nil error: err];
-}
-
-+(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err
-{
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:bodyString error: err];
-}
-
-+(id)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData error:(NSError**)err
-{
-    return [self JSONFromURLWithString:urlString method:kHTTPMethodPOST params:nil orBodyString:[[NSString alloc] initWithData:bodyData encoding:defaultTextEncoding] error: err];
-}
-
-#pragma mark - base request methods
-+(id)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString error:(NSError**)err
-{
-    NSDictionary* customHeaders= nil;
-    JSONCacheResponse* cachedResult = nil;
-    
-    if (isUsingJSONCache==YES) {
-        //cache should kick in here
-        cachedResult = [[JSONCache sharedCache] objectForMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
-
-        if (cachedResult) {
-            if (cachedResult.mustRevalidate==NO) {
-                //return hard cached object
-                return cachedResult.object;
-            } else {
-                //check for revalidation
-                customHeaders = cachedResult.revalidateHeaders;
-            }
-        }
-    }
-    
-    //define local vars
-    NSDictionary* json = nil;
-    NSData* responseData = nil;
-    
-    if (bodyString) {
-        //fetch data via request with given body (specific for POSTs)
-        responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
-                                             method: method
-                                        requestBody: bodyString
-                                            headers: customHeaders
-                                              error: err];
-    } else {
-        //fetch data via request with given dictionary with parameters
-        responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
-                                             method: method
-                                             params: params
-                                            headers: customHeaders
-                                              error: err];
-    }
-    
-    JMLog(@"server response: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
-    
-    //check for valid data response
-    if (responseData==nil) {
-        if (err) *err = [JSONModelError errorBadResponse];
-        return nil;
-    }
-
-    if (isUsingJSONCache==YES && responseData==kUseCachedObjectResponse) {
-        //return cached object immediately
-        return cachedResult.object;
-    }
-    
-    //try to get an object out of response data
-    @try {
-        json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
-        NSAssert(json, nil);
-    }
-    @catch (NSException* e) {
-        //no need to do anything, will return nil by default
-        if (err) *err = [JSONModelError errorInvalidData];
-    }
-    
-    if (isUsingJSONCache==YES && json!=nil && err==nil) {
-        //successfull call, cache it
-        [[JSONCache sharedCache] addObject:json forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
-    }
-    
-    return json;
-}
-
+#pragma mark - helper methods
 +(NSString*)contentTypeForRequestString:(NSString*)requestString
 {
     //fetch the charset name from the default string encoding
@@ -240,7 +135,18 @@ static BOOL isUsingJSONCache = NO;
     return [NSString stringWithFormat:@"%@; charset=%@", contentType, charset];
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers error:(NSError**)err
++(NSString*)urlEncode:(NSString*)string
+{
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+                                                                                 NULL,
+                                                                                 (__bridge CFStringRef) string,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                 kCFStringEncodingUTF8));
+}
+
+#pragma mark - networking worker methods
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers etag:(NSString**)etag error:(NSError**)err
 {
     //turn on network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
@@ -288,10 +194,19 @@ static BOOL isUsingJSONCache = NO;
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
     //check for successful status
-	if ([response statusCode] >= 200 && [response statusCode] < 300) {
+	if (response.statusCode >= 200 && response.statusCode < 300) {
         //success
+        if (isUsingJSONCache==YES ) {
+            NSDictionary* responseHeaders = response.allHeaderFields;
+            NSString* eTagHeaderName = [JSONCache sharedCache].etagHeaderName;
+            NSString* etagValue = responseHeaders[eTagHeaderName];
+            if (etagValue) {
+                *etag = etagValue;
+            }
+        }
+        
         return responseData;
-	} if ([response statusCode] == 304) {
+	} if (response.statusCode == 304) {
         //cached version is still fresh
         return kUseCachedObjectResponse;
     } else {
@@ -300,7 +215,7 @@ static BOOL isUsingJSONCache = NO;
     }
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers error:(NSError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers etag:(NSString**)etag error:(NSError**)err
 {
     //create the request body
     NSMutableString* paramsString = nil;
@@ -329,21 +244,11 @@ static BOOL isUsingJSONCache = NO;
                                  method: method
                             requestBody: [method isEqualToString:kHTTPMethodPOST]?paramsString:nil
                                 headers: headers
+                                   etag: etag
                                   error: err];
 }
 
-#pragma mark - helper methods
-+(NSString*)urlEncode:(NSString*)string
-{
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
-                                                                                 NULL,
-                                                                                 (__bridge CFStringRef) string,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                 kCFStringEncodingUTF8));
-}
-
-#pragma mark - Async calls
+#pragma mark - Async network request
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
 {
     NSDictionary* customHeaders = nil;
@@ -369,6 +274,7 @@ static BOOL isUsingJSONCache = NO;
         NSDictionary* jsonObject = nil;
         JSONModelError* error = nil;
         NSData* responseData = nil;
+        NSString* etag = nil;
         
         @try {
             if (bodyString) {
@@ -376,12 +282,14 @@ static BOOL isUsingJSONCache = NO;
                                                      method: method
                                                 requestBody: bodyString
                                                     headers: customHeaders
+                                                       etag: &etag
                                                       error: &error];
             } else {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
                                                      params: params
                                                     headers: customHeaders
+                                                       etag: &etag
                                                       error: &error];
             }
         }
@@ -411,12 +319,13 @@ static BOOL isUsingJSONCache = NO;
             
             if (isUsingJSONCache==YES && jsonObject!=nil && error==nil && responseData != kUseCachedObjectResponse) {
                 //successfull call, cache it
-                [[JSONCache sharedCache] addObject:jsonObject forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""]];
+                [[JSONCache sharedCache] addObject:jsonObject forMethod:method andParams:@[method, params?params:@{}, bodyString?bodyString:@""] etag: etag];
             }
         });
     });
 }
 
+#pragma mark - request aliases
 +(void)getJSONFromURLWithString:(NSString*)urlString completion:(JSONObjectBlock)completeBlock
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodGET
@@ -464,6 +373,7 @@ static BOOL isUsingJSONCache = NO;
                    }];
 }
 
+#pragma mark - iOS UI helper
 +(void)setNetworkIndicatorVisible:(BOOL)isVisible
 {
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED

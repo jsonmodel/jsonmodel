@@ -1,7 +1,7 @@
 //
 //  JSONCache.m
 //  
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -149,13 +149,15 @@ static JSONCache* instance = nil;
     NSString* key = [self keyForMethod:method andParams:params];
     
     //store the file
-    NSString* filePath = [cacheDirectory stringByAppendingPathComponent:key];
     NSData * data = [NSKeyedArchiver archivedDataWithRootObject:object];
 
+    //save the cache file
+    JSONCacheFile* file = [[JSONCacheFile alloc] initWithKey:key andEtag:etag];
+    NSString* filePath = [cacheDirectory stringByAppendingPathComponent: file.fileName];
+    
     BOOL success = [data writeToFile:filePath atomically:YES];
+    
     if (success) {
-        //save the cache file
-        JSONCacheFile* file = [[JSONCacheFile alloc] initWithKey:key andEtag:etag];
         [cacheFiles setValue: file forKey:key];
     }
     
@@ -398,6 +400,13 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     return [cacheFiles description];
 }
 
+#pragma mark - custom property getters
+-(NSString*)etagHeaderName
+{
+    return self.isUsingXdHTTPHeaderNames? kETagHTTPHeaderNameXd: kETagHTTPHeaderName;
+}
+
+#pragma mark - custom property setters
 -(void)setExpirationTimeInHours:(int)expirationTimeInHours
 {
     _expirationTimeInHours = expirationTimeInHours;

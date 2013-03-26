@@ -1,7 +1,7 @@
 //
 //  JSONCache.h
 //  
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -41,11 +41,16 @@ extern int kImmediatelyExpire;
 +(instancetype)sharedCache;
 
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params;
+-(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params etag:(NSString*)etag;
+
 -(JSONCacheResponse*)objectForMethod:(NSString*)method andParams:(id)params;
 
 -(void)trimExpiredObjects;
 -(void)trimObjectForKey:(NSString*)key;
 
 -(void)purgeCache;
+
+//helper methods
+-(NSString*)etagHeaderName;
 
 @end
