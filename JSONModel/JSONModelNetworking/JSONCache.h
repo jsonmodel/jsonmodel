@@ -40,6 +40,8 @@ extern int kImmediatelyExpire;
 
 +(instancetype)sharedCache;
 
+-(void)loadCacheFromDisc;
+
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params;
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params etag:(NSString*)etag;
 

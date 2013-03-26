@@ -28,17 +28,25 @@
 {
     //[self tableView: self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     
-    [JSONCache sharedCache].expirationTimeInHours = 100;
+    [JSONCache sharedCache].expirationTimeInHours = kImmediatelyExpire;
+    [JSONCache sharedCache].expirationTimeInHoursWhenOffline = kNeverExpire;
+    [JSONCache sharedCache].revalidateCacheViaETagAfterTimeInHours = 0;
     [JSONHTTPClient setIsUsingJSONCache: YES];
     NSLog(@"cache: %@", [JSONCache sharedCache]);
     
+    [[JSONCache sharedCache] loadCacheFromDisc];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(actionLoadCall:)];
+}
+
+-(IBAction)actionLoadCall:(id)sender
+{
     [JSONHTTPClient getJSONFromURLWithString:@"http://localhost/testapi/test.php"
                                   completion:^(NSDictionary *json, JSONModelError *err) {
                                       
-                                      NSLog(@"got: %@", json);
+                                      NSLog(@"GOT: %@", json);
                                       
                                   }];
- 
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

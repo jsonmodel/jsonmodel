@@ -88,50 +88,53 @@ static JSONCache* instance = nil;
         
         self.isUsingXdHTTPHeaderNames = YES;
         _isOnline = YES;
-        
-        //setup the directories
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory , NSUserDomainMask, YES);
-        cacheDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:kJSONCacheDirectory];
-        
-        fm = [[NSFileManager alloc] init];
-        
-        //create the cache directory
-        if (![fm fileExistsAtPath:cacheDirectory]) {
-            //empty cache
-            [fm createDirectoryAtPath:cacheDirectory withIntermediateDirectories:YES attributes:nil error:nil];
-            cacheFiles = [[NSMutableDictionary alloc] initWithCapacity:10];
-            
-        } else {
-            //read the current cache folder
-            NSArray *directoryContents = [fm contentsOfDirectoryAtPath:cacheDirectory error:nil];
-            
-            cacheFiles = [[NSMutableDictionary alloc] initWithCapacity: directoryContents.count];
-            
-            //read the current cache contents
-            for (NSString* fileName in directoryContents) {
-                JMLog(@"cache file: %@", fileName);
-                NSString* fullFilePath = [cacheDirectory stringByAppendingPathComponent: fileName];
-                NSDate* modifiedDate = [[fm attributesOfItemAtPath:fullFilePath error:NULL] fileModificationDate];
-                
-                JSONCacheFile* file = [[JSONCacheFile alloc] init];
-                file.modificationTime= [modifiedDate timeIntervalSinceReferenceDate];
-                file.fileName = fileName;
-                
-                [cacheFiles setValue:file forKey:fileName];
-            }
-            
-            //trim the cache
-            [self trimExpiredObjects];
-        }
-        
-        if (cacheFiles.count>0 && observingConnection==NO) {
-            //observe connectivity changes
-            [self startConnectivityObserver];
-            JMLog(@"JSONCache.isOnline = %@", _isOnline?@"YES":@"NO" );
-        }
     }
     
     return self;
+}
+
+-(void)loadCacheFromDisc
+{
+    //setup the directories
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory , NSUserDomainMask, YES);
+    cacheDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:kJSONCacheDirectory];
+    
+    fm = [[NSFileManager alloc] init];
+    
+    //create the cache directory
+    if (![fm fileExistsAtPath:cacheDirectory]) {
+        //empty cache
+        [fm createDirectoryAtPath:cacheDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+        cacheFiles = [[NSMutableDictionary alloc] initWithCapacity:10];
+        
+    } else {
+        //read the current cache folder
+        NSArray *directoryContents = [fm contentsOfDirectoryAtPath:cacheDirectory error:nil];
+        
+        cacheFiles = [[NSMutableDictionary alloc] initWithCapacity: directoryContents.count];
+        
+        //read the current cache contents
+        for (NSString* fileName in directoryContents) {
+            JMLog(@"cache file: %@", fileName);
+            NSString* fullFilePath = [cacheDirectory stringByAppendingPathComponent: fileName];
+            NSDate* modifiedDate = [[fm attributesOfItemAtPath:fullFilePath error:NULL] fileModificationDate];
+            
+            JSONCacheFile* file = [[JSONCacheFile alloc] init];
+            file.modificationTime= [modifiedDate timeIntervalSinceReferenceDate];
+            file.fileName = fileName;
+            
+            [cacheFiles setValue:file forKey:file.key];
+        }
+        
+        //trim the cache
+        [self trimExpiredObjects];
+    }
+    
+    if (cacheFiles.count>0 && observingConnection==NO) {
+        //observe connectivity changes
+        [self startConnectivityObserver];
+        JMLog(@"JSONCache.isOnline = %@", _isOnline?@"YES":@"NO" );
+    }    
 }
 
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params
@@ -183,7 +186,7 @@ static JSONCache* instance = nil;
         return nil;
     }
     
-    NSString* filePath = [cacheDirectory stringByAppendingPathComponent:key];
+    NSString* filePath = [cacheDirectory stringByAppendingPathComponent:file.fileName];
     NSData* data = [NSData dataWithContentsOfFile: filePath];
 
     id object;
@@ -365,14 +368,17 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
         
     } else if (self.isOnline==YES && self.isOfflineCacheEnabled==NO) {
         //online cache expiration
+        NSLog(@"check expiration online with time: %.f", _expirationOnlineTimeInterval);
         expiration = _expirationOnlineTimeInterval;
         
     } else if (self.isOnline==YES && self.isOfflineCacheEnabled==YES) {
         //offline expiration time
+        NSLog(@"check expiration offline with time: %.f", _expirationOfflineTimeInterval);
         expiration = _expirationOfflineTimeInterval;
         
     } else {
         //just return the longer of the two exp. times
+        NSLog(@"check expiration combined with time: %.f", MAX(_expirationOfflineTimeInterval, _expirationOnlineTimeInterval));
         expiration = MAX(_expirationOfflineTimeInterval, _expirationOnlineTimeInterval);
         
     }
