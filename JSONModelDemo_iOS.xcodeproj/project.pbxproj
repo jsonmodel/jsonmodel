@@ -121,6 +121,9 @@
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
 		9CC2FD2B168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */; };
+		9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */; };
+		9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */; };
+		9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */; };
 		9CD67CFA17005D4C005BED58 /* JSONCacheResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD67CF917005D4C005BED58 /* JSONCacheResponse.m */; };
 		9CD67CFD170088E8005BED58 /* JSONCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD67CFC170088E8005BED58 /* JSONCacheFile.m */; };
 /* End PBXBuildFile section */
@@ -143,8 +146,8 @@
 		9C66DF60168CEF420015CCDF /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayTests.m; sourceTree = "<group>"; };
 		9C66DF61168CEF420015CCDF /* BuiltInConversionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsTests.h; sourceTree = "<group>"; };
 		9C66DF62168CEF420015CCDF /* BuiltInConversionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsTests.m; sourceTree = "<group>"; };
-		9C66DF63168CEF420015CCDF /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
-		9C66DF64168CEF420015CCDF /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
+		9C66DF63168CEF420015CCDF /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CopyrightModel.h; path = ../CopyrightModel.h; sourceTree = "<group>"; };
+		9C66DF64168CEF420015CCDF /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CopyrightModel.m; path = ../CopyrightModel.m; sourceTree = "<group>"; };
 		9C66DF65168CEF420015CCDF /* CustomPropsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPropsTests.h; sourceTree = "<group>"; };
 		9C66DF66168CEF420015CCDF /* CustomPropsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPropsTests.m; sourceTree = "<group>"; };
 		9C66DF68168CEF420015CCDF /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
@@ -288,6 +291,12 @@
 		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
 		9CC2FCD2168CE7830059FE67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JSONModelDemo_iOSTests-Info.plist"; sourceTree = "<group>"; };
+		9CD425721701FDE500A42AA1 /* HTTPClientSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClientSuite.h; sourceTree = "<group>"; };
+		9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClientSuite.m; sourceTree = "<group>"; };
+		9CD425761701FF2100A42AA1 /* MTTestSemaphor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestSemaphor.h; sourceTree = "<group>"; };
+		9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestSemaphor.m; sourceTree = "<group>"; };
+		9CD425791702002900A42AA1 /* MockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockNSURLConnection.h; sourceTree = "<group>"; };
+		9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockNSURLConnection.m; sourceTree = "<group>"; };
 		9CD67CF817005D4C005BED58 /* JSONCacheResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheResponse.h; sourceTree = "<group>"; };
 		9CD67CF917005D4C005BED58 /* JSONCacheResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCacheResponse.m; sourceTree = "<group>"; };
 		9CD67CFB170088E8005BED58 /* JSONCacheFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheFile.h; sourceTree = "<group>"; };
@@ -347,11 +356,8 @@
 				9C66DF60168CEF420015CCDF /* ArrayTests.m */,
 				9C66DF61168CEF420015CCDF /* BuiltInConversionsTests.h */,
 				9C66DF62168CEF420015CCDF /* BuiltInConversionsTests.m */,
-				9C66DF63168CEF420015CCDF /* CopyrightModel.h */,
-				9C66DF64168CEF420015CCDF /* CopyrightModel.m */,
 				9C66DF65168CEF420015CCDF /* CustomPropsTests.h */,
 				9C66DF66168CEF420015CCDF /* CustomPropsTests.m */,
-				9C66DF67168CEF420015CCDF /* DataFiles */,
 				9C66DF73168CEF420015CCDF /* IdPropertyTests.h */,
 				9C66DF74168CEF420015CCDF /* IdPropertyTests.m */,
 				9C66DF75168CEF420015CCDF /* JSONTypesModelWithValidation1.h */,
@@ -374,9 +380,10 @@
 				9C66DF86168CEF420015CCDF /* PrimitiveTypesReadTests.m */,
 				9C66DF87168CEF420015CCDF /* SimpleDataErrorTests.h */,
 				9C66DF88168CEF420015CCDF /* SimpleDataErrorTests.m */,
-				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DFA6168CEF420015CCDF /* ValidationTestSuite.h */,
 				9C66DFA7168CEF420015CCDF /* ValidationTestSuite.m */,
+				9CD425721701FDE500A42AA1 /* HTTPClientSuite.h */,
+				9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -396,12 +403,15 @@
 				9C66DF71168CEF420015CCDF /* withOptProp.json */,
 				9C66DF72168CEF420015CCDF /* withoutOptProp.json */,
 			);
-			path = DataFiles;
+			name = DataFiles;
+			path = UnitTests/DataFiles;
 			sourceTree = "<group>";
 		};
 		9C66DF89168CEF420015CCDF /* TestModels */ = {
 			isa = PBXGroup;
 			children = (
+				9C66DF63168CEF420015CCDF /* CopyrightModel.h */,
+				9C66DF64168CEF420015CCDF /* CopyrightModel.m */,
 				9C66DF8A168CEF420015CCDF /* BuiltInConversionsModel.h */,
 				9C66DF8B168CEF420015CCDF /* BuiltInConversionsModel.m */,
 				9C66DF8C168CEF420015CCDF /* CustomPropertyModel.h */,
@@ -431,7 +441,8 @@
 				9C66DFA4168CEF420015CCDF /* ReposModel.h */,
 				9C66DFA5168CEF420015CCDF /* ReposModel.m */,
 			);
-			path = TestModels;
+			name = TestModels;
+			path = UnitTests/TestModels;
 			sourceTree = "<group>";
 		};
 		9C66E00A168CF0AA0015CCDF /* JSONModel */ = {
@@ -685,10 +696,24 @@
 		9CC2FCBC168CE7830059FE67 /* JSONModelDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				9CD4257C1702003600A42AA1 /* Class */,
+				9C66DF67168CEF420015CCDF /* DataFiles */,
+				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DF5E168CEF420015CCDF /* UnitTests */,
 				9C05B2BB168CE9DE0054215E /* Supporting Files */,
 			);
 			path = JSONModelDemoTests;
+			sourceTree = "<group>";
+		};
+		9CD4257C1702003600A42AA1 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				9CD425791702002900A42AA1 /* MockNSURLConnection.h */,
+				9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */,
+				9CD425761701FF2100A42AA1 /* MTTestSemaphor.h */,
+				9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -909,6 +934,9 @@
 				9C66E035168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */,
 				9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */,
 				9CB9ED7B16F8EE2100ACA924 /* JSONCache.m in Sources */,
+				9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */,
+				9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */,
+				9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
