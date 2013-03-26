@@ -31,8 +31,6 @@ extern int kImmediatelyExpire;
 @property (assign, nonatomic) int expirationTimeInHours;
 @property (assign, nonatomic) int expirationTimeInHoursWhenOffline;
 
-@property (assign, nonatomic) BOOL isOfflineCacheEnabled;
-
 @property (assign, nonatomic) int revalidateCacheFromServerAfterTimeInHours;
 @property (assign, nonatomic) int revalidateCacheViaETagAfterTimeInHours;
 
