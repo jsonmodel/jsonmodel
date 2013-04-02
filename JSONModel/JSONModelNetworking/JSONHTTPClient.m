@@ -212,7 +212,6 @@ static BOOL isUsingJSONCache = NO;
                 *etag = etagValue;
             }
         }
-        
         return responseData;
 	} if (response.statusCode == 304) {
         //cached version is still fresh
@@ -311,27 +310,39 @@ static BOOL isUsingJSONCache = NO;
             error = [JSONModelError errorBadResponse];
         }
         
-        if (!responseData && !error) {
-            //check for false response, but no network error
-            error = [JSONModelError errorBadResponse];
-        }
-
+        //step 1: check for cached header, and return from cache
         if (isUsingJSONCache==YES && responseData == kUseCachedObjectResponse) {
             //check for not-modified response
             NSLog(@"using the soft cached object");
             jsonObject = cachedResult.object;
-            
-        } else if (error==nil) {
-            //data fetched successfuly from the net
+        }
+        //step 2: check for nil response, but avaialble cached object
+        else if (isUsingJSONCache==YES && responseData==nil && cachedResult.object!=nil) {
+            //request timed out, but there's a cached version
+            NSLog(@"using cached object for timed out request");
+            jsonObject = cachedResult.object;
+        }
+        
+        //step 3: if there's no response so far, return a basic error
+        if (!responseData && !jsonObject) {
+            //check for false response, but no network error
+            error = [JSONModelError errorBadResponse];
+        }
+
+        //step 4: if there's a response at this and no errors, convert to object
+        if (error==nil && jsonObject==nil) {
+            //convert to an object
             NSLog(@"use server response");
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
         }
         
+        //step 5: invoke the complete block
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completeBlock) {
                 completeBlock(jsonObject, error);
             }
             
+            //step 6: add to cache for successful requests
             if (isUsingJSONCache==YES && jsonObject!=nil && error==nil && responseData != kUseCachedObjectResponse) {
                 //successfull call, cache it
                 NSLog(@"add server response to cache, etag: %@", etag);
