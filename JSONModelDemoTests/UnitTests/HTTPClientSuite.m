@@ -30,6 +30,34 @@
     NSAssert(jsonContents, @"Can't fetch test data file contents.");
 }
 
+-(void)testRequestHeaders
+{
+    NSString* headerName = @"CustomHeader";
+    NSString* headerValue = @"CustomValue";
+    NSMutableDictionary* headers = [JSONHTTPClient requestHeaders];
+    headers[headerName] = headerValue;
+    
+    //check if the header is saved
+    NSMutableDictionary* newHeadersReference = [JSONHTTPClient requestHeaders];
+    NSAssert([headerValue isEqualToString: newHeadersReference[headerName]], @"the custom header was not persisted");
+    
+    //check if the header is sent along the http request
+    NSString* jsonURLString = @"http://localhost/test.json";
+    NSString* semaphorKey = @"testRequestHeaders";
+    
+    [JSONHTTPClient postJSONFromURLWithString:jsonURLString
+                                       params:nil
+                                   completion:^(NSDictionary *json, JSONModelError *err) {
+                                       NSURLRequest* request = [NSURLConnection lastRequest];
+                                       NSAssert([[request valueForHTTPHeaderField:headerName] isEqualToString: headerValue], @"the custom header was not sent along the http request");
+                                       
+                                       [[MTTestSemaphor semaphore] lift: semaphorKey];
+                                   }];
+    
+    [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
+    
+}
+
 -(void)testContentType
 {
     NSString* jsonURLString = @"http://localhost/test.json";
@@ -49,6 +77,52 @@
                                    }];
     
     [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
+}
+
+-(void)testCachingPolicy
+{
+    //check if the header is sent along the http request
+    NSString* jsonURLString = @"http://localhost/test.json";
+    NSString* semaphorKey = @"testCachingPolicy";
+    
+    [JSONHTTPClient setCachingPolicy:NSURLCacheStorageAllowed];
+    
+    [JSONHTTPClient postJSONFromURLWithString:jsonURLString
+                                       params:nil
+                                   completion:^(NSDictionary *json, JSONModelError *err) {
+                                       NSURLRequest* request = [NSURLConnection lastRequest];
+                                       NSAssert(request.cachePolicy==NSURLCacheStorageAllowed, @"user set caching policy was not set in request");
+                                       //NSAssert([[request valueForHTTPHeaderField:headerName] isEqualToString: headerValue], @"the custom header was not sent along the http request");
+                                       
+                                       [[MTTestSemaphor semaphore] lift: semaphorKey];
+                                   }];
+    
+    [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
+}
+
+-(void)testRequestTimeout
+{
+    //check if the header is sent along the http request
+    NSString* jsonURLString = @"http://localhost/test.json";
+    NSString* semaphorKey = @"testRequestTimeout";
+    
+    //the request will take 10 seconds
+    [NSURLConnection setResponseDelay: 10];
+
+    //set the client timeout for 5 seconds
+    [JSONHTTPClient setTimeoutInSeconds:1];
+    [JSONHTTPClient postJSONFromURLWithString:jsonURLString
+                                       params:nil
+                                   completion:^(NSDictionary *json, JSONModelError *err) {
+                                       NSURLRequest* request = [NSURLConnection lastRequest];
+
+                                       NSLog(@"then %@",[NSDate date]);
+                                       
+                                       
+                                       [[MTTestSemaphor semaphore] lift: semaphorKey];
+                                   }];
+    
+    [[MTTestSemaphor semaphore] waitForKey: semaphorKey];    
 }
 
 -(void)testGetJSONFromURLNoParams
