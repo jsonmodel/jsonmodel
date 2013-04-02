@@ -27,6 +27,13 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     //[self tableView: self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+/*
+    [JSONHTTPClient setTimeoutInSeconds:2];
+    [JSONHTTPClient getJSONFromURLWithString:@"http://localhost/testapi/test.php"
+                                  completion:^(NSDictionary *json, JSONModelError *err) {
+                                      NSLog(@"success: got json %@", json);
+                                      NSLog(@"error: got %@", [err localizedDescription]);
+                                  }];
     
     [JSONCache sharedCache].expirationTimeInHours = kImmediatelyExpire;
     [JSONCache sharedCache].expirationTimeInHoursWhenOffline = kNeverExpire;
@@ -40,6 +47,7 @@
     [JSONHTTPClient setIsUsingJSONCache: YES];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(actionLoadCall:)];
+ */
 }
 
 -(IBAction)actionLoadCall:(id)sender
