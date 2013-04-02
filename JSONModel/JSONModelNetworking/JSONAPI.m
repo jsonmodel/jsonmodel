@@ -25,7 +25,6 @@ static long jsonRpcId = 0;
 
 @interface JSONAPI ()
 @property (strong, nonatomic) NSString* baseURLString;
-@property (strong, nonatomic) NSString* ctype;
 @end
 
 #pragma mark - JSONAPI implementation
@@ -39,7 +38,6 @@ static long jsonRpcId = 0;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         sharedInstance = [[JSONAPI alloc] init];
-        sharedInstance.ctype = kContentTypeJSON;
     });
 }
 
@@ -52,7 +50,7 @@ static long jsonRpcId = 0;
 
 +(void)setContentType:(NSString*)ctype
 {
-    sharedInstance.ctype = ctype;
+    [JSONHTTPClient setRequestContentType: ctype];
 }
 
 #pragma mark - GET methods
