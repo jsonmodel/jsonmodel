@@ -168,6 +168,14 @@ Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali
 Change-log
 ==========
 
+**Coming soon - Version 0.9** @ tbd
+
+- Refactor of all networking code
+- Removing all sync request methods
+- Adding network level caching
+- Bug fixes up to issue #22
+- breaking changes due big cleanup and optimization
+
 **Version 0.8.3** @ 2013-01-24
 
 - Bug fixes, optimisation and clean up. Github issues up to #15
