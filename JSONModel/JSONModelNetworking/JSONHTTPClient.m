@@ -311,7 +311,7 @@ static BOOL isUsingJSONCache = NO;
             error = [JSONModelError errorBadResponse];
         }
         
-        if (!responseData) {
+        if (!responseData && !error) {
             //check for false response, but no network error
             error = [JSONModelError errorBadResponse];
         }
