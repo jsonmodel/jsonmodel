@@ -25,8 +25,7 @@
     static dispatch_once_t once;
     
     dispatch_once(&once, ^{
-        sharedInstance = [MTTestSemaphor alloc];
-        sharedInstance = [sharedInstance _initPrivate];
+        sharedInstance = [[MTTestSemaphor alloc] _initPrivate];
     });
     
     return sharedInstance;
@@ -36,39 +35,41 @@
 {
     self = [super init];
     if (self != nil) {
-        @synchronized (flags) {
-            flags = [NSMutableDictionary dictionaryWithCapacity:10];
-        }
+        flags = [NSMutableDictionary dictionaryWithCapacity:10];
     }
     return self;
 }
 
 -(BOOL)isLifted:(NSString*)key
 {
-    @synchronized (flags) {
-        NSLog(@"check key: %@", key);
-        NSLog(@"key value: %@", flags[key]);
-        return [flags objectForKey:key]!=nil;
-    }
+    NSLog(@"check key: %@", key);
+    NSLog(@"key value: %@", flags[key]);
+    return [flags objectForKey:key]==nil;
 }
 
 -(void)lift:(NSString*)key
 {
-    @synchronized (flags) {
-        [flags setObject:@"YES" forKey: key];
-    }
+    NSLog(@"lift key '%@'", key);
+    [flags removeObjectForKey: key];
 }
 
 -(void)waitForKey:(NSString*)key
 {
-    NSLog(@"begin flags '%@' : %@", key, flags);
+    NSLog(@"begin waiting on '%@' : %@", key, flags);
+    [flags setObject:@"YES" forKey: key];
     
     BOOL keepRunning = YES;
-    while (keepRunning && [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]]) {
+    while (keepRunning) {
+        [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
         keepRunning = ![[MTTestSemaphor semaphore] isLifted: key];
     }
-    NSLog(@"end flags '%@': %@",key, flags);
+    
+    NSLog(@"end waiting on '%@': %@",key, flags);
+}
 
+-(NSDictionary*)flags
+{
+    return flags;
 }
 
 @end

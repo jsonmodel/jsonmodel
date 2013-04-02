@@ -21,5 +21,6 @@
 -(BOOL)isLifted:(NSString*)key;
 -(void)lift:(NSString*)key;
 -(void)waitForKey:(NSString*)key;
+-(NSDictionary*)flags;
 
 @end
