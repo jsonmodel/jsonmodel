@@ -104,25 +104,21 @@
     [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
 }
 
--(void)aaatestRequestTimeout
+-(void)testRequestTimeout
 {
     //check if the header is sent along the http request
     NSString* jsonURLString = @"http://localhost/test.json?testRequestTimeout";
     NSString* semaphorKey = @"testRequestTimeout";
     
-    //the request will take 10 seconds
-    [NSURLConnection setResponseDelay: 10];
-
     //set the client timeout for 5 seconds
-    [JSONHTTPClient setTimeoutInSeconds:1];
-    [JSONHTTPClient postJSONFromURLWithString:jsonURLString
-                                       params:nil
-                                   completion:^(NSDictionary *json, JSONModelError *err) {
+    [JSONHTTPClient setTimeoutInSeconds:2];
+    [JSONHTTPClient postJSONFromURLWithString: jsonURLString
+                                       params: nil
+                                   completion: ^(NSDictionary *json, JSONModelError *err) {
+                                       
                                        NSURLRequest* request = [NSURLConnection lastRequest];
+                                       NSAssert(request.timeoutInterval == 2, @"custom set timeout was not set to the request");
 
-                                       NSLog(@"then %@",[NSDate date]);
-                                       
-                                       
                                        [[MTTestSemaphor semaphore] lift: semaphorKey];
                                    }];
     
