@@ -7,11 +7,16 @@
 //
 
 #import "MockNSURLConnection.h"
+#import "MTTestSemaphor.h"
 
 static NSURLResponse* nextResponse = nil;
 static NSError* nextError = nil;
 static NSData* nextData = nil;
 static NSURLRequest* lastRequest = nil;
+
+static int responseDelayInSeconds = 0;
+
+NSString* const kDelayingResponseSemaphoreKey = @"kDelayingResponseSemaphoreKey";
 
 @interface NSURLConnection (MockPrivate)
 
@@ -33,10 +38,19 @@ static NSURLRequest* lastRequest = nil;
 
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error
 {
+    if (responseDelayInSeconds>0) {
+        [NSThread sleepForTimeInterval: responseDelayInSeconds];
+    }
+    
     lastRequest = request;
     *response = nextResponse;
     *error = nextError;
     return nextData;
+}
+
++(void)setResponseDelay:(int)seconds
+{
+    responseDelayInSeconds = seconds;
 }
 
 @end

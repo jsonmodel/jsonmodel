@@ -13,4 +13,6 @@
 +(void)setNextResponse:(NSURLResponse*)response data:(NSData*)data error:(NSError*)error;
 +(NSURLRequest*)lastRequest;
 
++(void)setResponseDelay:(int)seconds;
+
 @end
