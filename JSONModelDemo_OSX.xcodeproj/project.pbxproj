@@ -88,6 +88,7 @@
 		9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DFF5168CF09A0015CCDF /* JSONValueTransformer.m */; };
 		9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D66170B717F00FF96F5 /* JSONAPITests.m */; };
 		9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */; };
+		9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D72170C048C00FF96F5 /* InitFromWebTests.m */; };
 		9C97441C168CF255004DA333 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C97441B168CF255004DA333 /* Cocoa.framework */; };
 		9C97441E168CF264004DA333 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C97441D168CF264004DA333 /* Cocoa.framework */; };
 		9CB6BC28168DE35E0002535B /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC23168DE35E0002535B /* VideoLink.m */; };
@@ -215,6 +216,8 @@
 		9C735D66170B717F00FF96F5 /* JSONAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPITests.m; sourceTree = "<group>"; };
 		9C735D6B170B7A2D00FF96F5 /* RpcRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RpcRequestModel.h; sourceTree = "<group>"; };
 		9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
+		9C735D71170C048C00FF96F5 /* InitFromWebTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitFromWebTests.h; sourceTree = "<group>"; };
+		9C735D72170C048C00FF96F5 /* InitFromWebTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitFromWebTests.m; sourceTree = "<group>"; };
 		9C97441B168CF255004DA333 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C97441D168CF264004DA333 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		9CB6BC22168DE35E0002535B /* VideoLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoLink.h; path = JSONModelDemo_iOS/VideoLink.h; sourceTree = SOURCE_ROOT; };
@@ -336,6 +339,8 @@
 				9CD425851702224F00A42AA1 /* HTTPClientSuite.m */,
 				9C735D65170B717F00FF96F5 /* JSONAPITests.h */,
 				9C735D66170B717F00FF96F5 /* JSONAPITests.m */,
+				9C735D71170C048C00FF96F5 /* InitFromWebTests.h */,
+				9C735D72170C048C00FF96F5 /* InitFromWebTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				9C3DDE6C17025546001CA4AA /* JSONCacheResponse.m in Sources */,
 				9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */,
 				9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */,
+				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

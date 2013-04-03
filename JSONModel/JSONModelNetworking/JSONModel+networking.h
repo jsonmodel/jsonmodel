@@ -18,6 +18,8 @@
 #import "JSONHTTPClient.h"
 #import "JSONCache.h"
 
+typedef void (^JSONModelBlock)(id model, JSONModelError* err);
+
 /**
  * The JSONModel(networking) class category adds networking to JSONModel.
  * It adds initFromURLWithString: initializer, which makes a GET http request 

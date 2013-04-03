@@ -35,15 +35,13 @@ extern NSString* const kContentTypeWWWEncoded;
 extern NSData* kUseCachedObjectResponse;
 
 /**
- * A block type to handle incoming JSONModel instance and an error. 
- * You pass it to methods which create a model asynchroniously. When the operation is finished
- * you receive back the initialized model (or nil) and an error (or nil)
+ * A block type to handle incoming JSON object and an error. 
+ * You pass it to methods which fetch JSON asynchroniously. When the operation is finished
+ * you receive back the fetched JSON (or nil) and an error (or nil)
  *
- * @param model the newly created JSONModel instance or nil
- * @param e JSONModelError or nil
+ * @param json object derived from a JSON string
+ * @param err JSONModelError or nil
  */
-typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
-
 typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
