@@ -42,10 +42,14 @@ extern float kImmediatelyExpire;
  * caching API responses for 30 minutes, but keep all objects practicly forever cached
  * when the user is not connected to Internet (aka providing offline mode for your app)
  * <pre>
+ * //config expiration times
  * [JSONCache sharedCache].expirationTimeInHours = 0.5;
  * [JSONCache sharedCache].expirationTimeInHoursWhenOffline = kNeverExpire;
+ *
+ * //tell JSONHTTPClient to use JSONCache
  * [JSONHTTPClient setIsUsingJSONCache: YES];
  *
+ * //load the currently cached on disc objects
  * [[JSONCache sharedCache] loadCacheFromDisc];
  *
  * [JSONAPI postWithPath:@"/getObjects" andParams:nil completion:... 
@@ -67,31 +71,82 @@ extern float kImmediatelyExpire;
  */
 @interface JSONCache : NSObject
 
+/** 
+ * Indicates whether a network connection is available. 
+ *
+ * This property also indicates whether the cache is using currently
+ * the offline or online expiration age for the objects in the cache
+ */
 @property (assign, nonatomic, readonly) BOOL isOnline;
 
+/** The expiration age in hours of the cached objects when Online */
 @property (assign, nonatomic) float expirationTimeInHours;
+
+/** The expiration age in hours of the cached objects when Offline */
 @property (assign, nonatomic) float expirationTimeInHoursWhenOffline;
 
+/** 
+ * When set, the cache returns a cached object, but instructs the client it should
+ * revalidate with the server, using time based revalidation.
+ *
+ * When the cached object is older than the set age JSONHTTPClient will send an HTTP header like this:
+ * <pre>If-Modified-Since: 2012-11-05T08:15:30-05:00</pre>
+ * and if **isUsingXdHTTPHeaderNames** is set to YES the header has a "X-" prefix:
+ * <pre>X-If-Modified-Since: 2012-11-05T08:15:30-05:00</pre>
+ */
 @property (assign, nonatomic) float revalidateCacheFromServerAfterTimeInHours;
+
+/**
+ * When set, the cache returns a cached object, but instructs the client it should
+ * revalidate with the server; using the etag for that object that the client received from the server.
+ *
+ * When the cached object is older than the set age JSONHTTPClient will send an HTTP header like this:
+ * <pre>ETag: akjfk248488kejfh-199999</pre>
+ * and if **isUsingXdHTTPHeaderNames** is set to YES the header has a "X-" prefix:
+ * <pre>X-ETag: akjfk248488kejfh-199999</pre>
+ */
 @property (assign, nonatomic) float revalidateCacheViaETagAfterTimeInHours;
 
+/**
+ * When set to YES the HTTP headers sent for revalidation at the server side
+ * are prefixed with an "X-"; the "ETag" and "If-Modified-Since" headers become
+ * "X-ETag" and "X-If-Modified-Since"
+ */
 @property (assign, nonatomic) BOOL isUsingXdHTTPHeaderNames;
 
+/** Shared instance for you to use */
 +(instancetype)sharedCache;
 
+/** Load the cached objects persisted on disc */
 -(void)loadCacheFromDisc;
 
+/**  */
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params;
+
+/**  */
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params etag:(NSString*)etag;
 
+/**  */
 -(JSONCacheResponse*)objectForMethod:(NSString*)method andParams:(id)params;
 
+/** Delete the objects from the cache that are expired as of now */
 -(void)trimExpiredObjects;
+/** 
+ * Delete an object from the cache for the given key
+ * @param key the key of the given object to delete
+ */
 -(void)trimObjectForKey:(NSString*)key;
 
+/** Delete all objects currently in the cache */
 -(void)purgeCache;
 
-//helper methods
+/** 
+ * Returns either "ETag" or "X-ETag" depending on the value of **isUsingXdHTTPHeaderNames** 
+ * 
+ * JSONHTTPClient uses this method when fetching the etag for objects coming from the API. 
+ * Normally you won't need to call this method.
+ * @return The etag header name used: "ETag" or "X-ETag"
+ */
 -(NSString*)etagHeaderName;
 
 @end
