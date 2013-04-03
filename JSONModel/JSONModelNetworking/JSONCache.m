@@ -21,14 +21,14 @@
 #import <netinet/in.h>
 #import <netinet6/in6.h>
 
-int kNeverRevalidate = INT_MAX;
-int kAlwaysRevalidate = 0;
+float kNeverRevalidate = FLT_MAX;
+float kAlwaysRevalidate = 0.0f;
 
-int kNeverExpire = INT_MAX;
-int kImmediatelyExpire = 0;
+float kNeverExpire = FLT_MAX;
+float kImmediatelyExpire = 0.0f;
 
 #define kJSONCacheDirectory @"JSONCache"
-#define kDefaultExpirationTimeInHours 1 //1 day
+#define kDefaultExpirationTimeInHours 1 //1 hour
 #define kDefaultExpirationTimeInHoursWhenOffline 168 //1 week
 
 #define kIfModifiedSinceHTTPHeaderName @"If-Modified-Since"
@@ -36,6 +36,8 @@ int kImmediatelyExpire = 0;
 
 #define kIfModifiedSinceHTTPHeaderNameXd @"X-If-Modified-Since"
 #define kETagHTTPHeaderNameXd @"X-ETag"
+
+BOOL JCFEqual(f1, f2) { return (fabs((f1) - (f2)) < FLT_EPSILON); }
 
 static JSONCache* instance = nil;
 
@@ -205,7 +207,7 @@ static JSONCache* instance = nil;
 
     NSTimeInterval now = [[NSDate date] timeIntervalSinceReferenceDate] + 1;
 
-    if (self.isOnline && self.revalidateCacheFromServerAfterTimeInHours!=kNeverRevalidate) {
+    if (self.isOnline && JCFEqual(self.revalidateCacheFromServerAfterTimeInHours, kNeverRevalidate)) {
 
         //check for revalidation rules
         NSTimeInterval expiration = _revalidateFromServerTimeInterval;
@@ -221,7 +223,7 @@ static JSONCache* instance = nil;
         }
     }
     
-    if (self.isOnline && self.revalidateCacheViaETagAfterTimeInHours!=kNeverRevalidate) {
+    if (self.isOnline && JCFEqual(self.revalidateCacheViaETagAfterTimeInHours,kNeverRevalidate)==NO ) {
         //check for the revalidation rules
         NSTimeInterval expiration =  _revalidateFromServerWithETagTimeInterval;
         
@@ -377,12 +379,12 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     NSTimeInterval now = [[NSDate date] timeIntervalSinceReferenceDate];
     NSTimeInterval expiration = 0;
     
-    if (self.isOnline==NO && self.expirationTimeInHoursWhenOffline==kImmediatelyExpire) {
+    if (self.isOnline==NO && JCFEqual(self.expirationTimeInHoursWhenOffline, kImmediatelyExpire) ) {
         NSLog(@"expire %@ for Offline:offline disabled", object.key);
         //it's always expired
         return YES;
         
-    } else if (self.isOnline==YES && self.expirationTimeInHoursWhenOffline==kImmediatelyExpire) {
+    } else if (self.isOnline==YES && JCFEqual(self.expirationTimeInHoursWhenOffline, kImmediatelyExpire) ) {
         //online cache expiration
         NSLog(@"check expiration online with time: %.f", _expirationOnlineTimeInterval);
         expiration = _expirationOnlineTimeInterval;
@@ -429,29 +431,29 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 }
 
 #pragma mark - custom property setters
--(void)setExpirationTimeInHours:(int)hrs
+-(void)setExpirationTimeInHours:(float)hrs
 {
     _expirationTimeInHours = hrs;
-    _expirationOnlineTimeInterval = (hrs==INT_MAX)?INT_MAX: hrs * 360;
+    _expirationOnlineTimeInterval = (JCFEqual(hrs,kNeverExpire))?kNeverExpire: hrs * 360;
 }
 
--(void)setExpirationTimeInHoursWhenOffline:(int)hrs
+-(void)setExpirationTimeInHoursWhenOffline:(float)hrs
 {
     _expirationTimeInHoursWhenOffline = hrs;
-    _expirationOfflineTimeInterval = (hrs==INT_MAX)?INT_MAX: hrs * 360;
+    _expirationOfflineTimeInterval = (JCFEqual(hrs, kNeverExpire))?kNeverExpire: hrs * 360;
     NSLog(@"exp. offline time: %.f", _expirationOfflineTimeInterval);
 }
 
--(void)setRevalidateCacheFromServerAfterTimeInHours:(int)hrs
+-(void)setRevalidateCacheFromServerAfterTimeInHours:(float)hrs
 {
     _revalidateCacheFromServerAfterTimeInHours = hrs;
-    _revalidateFromServerTimeInterval = (hrs==INT_MAX)?INT_MAX: hrs * 360;
+    _revalidateFromServerTimeInterval = (JCFEqual(hrs, kNeverRevalidate))?kNeverRevalidate: hrs * 360;
 }
 
--(void)setRevalidateCacheViaETagAfterTimeInHours:(int)hrs
+-(void)setRevalidateCacheViaETagAfterTimeInHours:(float)hrs
 {
     _revalidateCacheViaETagAfterTimeInHours = hrs;
-    _revalidateFromServerWithETagTimeInterval = (hrs==INT_MAX)?INT_MAX: hrs * 360;
+    _revalidateFromServerWithETagTimeInterval = (JCFEqual(hrs, kNeverRevalidate))?kNeverRevalidate: hrs * 360;
 }
 
 @end
