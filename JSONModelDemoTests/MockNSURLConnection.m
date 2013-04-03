@@ -16,12 +16,6 @@ static NSURLRequest* lastRequest = nil;
 
 static int responseDelayInSeconds = 0;
 
-NSString* const kDelayingResponseSemaphoreKey = @"kDelayingResponseSemaphoreKey";
-
-@interface NSURLConnection (MockPrivate)
-
-@end
-
 @implementation NSURLConnection(Mock)
 
 +(void)setNextResponse:(NSURLResponse*)response data:(NSData*)data error:(NSError*)error
