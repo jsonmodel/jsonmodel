@@ -21,6 +21,8 @@
 #import <netinet/in.h>
 #import <netinet6/in6.h>
 
+#pragma mark - constants
+
 float kNeverRevalidate = FLT_MAX;
 float kAlwaysRevalidate = 0.0f;
 
@@ -60,6 +62,7 @@ static JSONCache* instance = nil;
     BOOL observingConnection;
 }
 
+#pragma mark - initializers
 -(instancetype)init
 {
     NSAssert(NO, @"use [JSONCache sharedCache] instead");
@@ -96,6 +99,7 @@ static JSONCache* instance = nil;
     return instance;
 }
 
+#pragma mark - load cached objects
 -(void)loadCacheFromDisc
 {
     //setup the directories
@@ -138,6 +142,7 @@ static JSONCache* instance = nil;
     }    
 }
 
+#pragma mark - manage cache objects
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params
 {
     return [self addObject:object forMethod:method andParams:params etag:nil];
@@ -270,6 +275,11 @@ static JSONCache* instance = nil;
             [self trimObjectForKey: key];
         }
     }
+}
+
+-(void)trimObjectForMethod:(NSString*)method andParams:(id)params
+{
+    [self trimObjectForKey: [self keyForMethod:method andParams:params] ];
 }
 
 -(void)trimObjectForKey:(NSString*)key

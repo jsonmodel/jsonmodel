@@ -50,7 +50,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
  * It fetches only JSON data and also deserializes it using NSJSONSerialization.
- * 
  */
 @interface JSONHTTPClient : NSObject
 

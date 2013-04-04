@@ -18,6 +18,7 @@
 #import "JSONCacheFile.h"
 #import "JSONCacheResponse.h"
 
+#pragma mark - expire/revalidate constants
 //use these when setting the cache revalidation times
 extern float kNeverRevalidate;
 extern float kAlwaysRevalidate;
@@ -26,6 +27,7 @@ extern float kAlwaysRevalidate;
 extern float kNeverExpire;
 extern float kImmediatelyExpire;
 
+#pragma mark - interface
 /**
  * Cache engine for your JSON based API - it helps you easily get local cache,
  * offline cache, and also get time or etag based server revalidation.
@@ -71,7 +73,13 @@ extern float kImmediatelyExpire;
  */
 @interface JSONCache : NSObject
 
-/** 
+/** @name Shared singleton instance */
+/** Shared instance for you to use */
++(instancetype)sharedCache;
+
+#pragma mark - network status
+/** @name JSONCache network status */
+/**
  * Indicates whether a network connection is available. 
  *
  * This property also indicates whether the cache is using currently
@@ -79,6 +87,8 @@ extern float kImmediatelyExpire;
  */
 @property (assign, nonatomic, readonly) BOOL isOnline;
 
+#pragma mark - configuration
+/** @name Configuring JSONCache */
 /** The expiration age in hours of the cached objects when Online */
 @property (assign, nonatomic) float expirationTimeInHours;
 
@@ -114,33 +124,74 @@ extern float kImmediatelyExpire;
  */
 @property (assign, nonatomic) BOOL isUsingXdHTTPHeaderNames;
 
-/** Shared instance for you to use */
-+(instancetype)sharedCache;
-
+#pragma mark - load existing files
+/** @name Load the existing cached files */
 /** Load the cached objects persisted on disc */
 -(void)loadCacheFromDisc;
 
-/**  */
+#pragma mark - manage cache objects
+/** @name Manage cached objects */
+/**
+ * Add an object to the cache
+ *
+ * This is how you add an object to the cache; this object could be a JSON string, NSDictionary or other.
+ * The **method** and **params** are suited for HTTP calls, ie. GET method and nil params, or POST method
+ * and the POST params: @{@"name":@"user1", @"address":@"125 Locker Str"}, etc. The combination of the method
+ * and parameters are used to uniquely identify the cached object in the cache.
+ *
+ * **NB**: If you use [<JSONHTTPClient> isUsingJSONCache:YES], then you don't need to call this method yourself,
+ * it's invoked automatically by JSONHTTPClient
+ * @param object The object to add
+ * @param method The method used to get the object
+ * @param params Any object representing the params used to get the object
+ * @return Whether the object was added successfuly
+ */
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params;
 
-/**  */
+/**  
+ * Add an object to the cache with an etag attached to it.
+ *
+ * Look at documentation of <[JSONCache addObject:forMethod:andParams:]>; the only benefit of this method
+ * is that you can also supply an etag to attached to the cached object.
+ *
+ * **NB**: If you use [<JSONHTTPClient> isUsingJSONCache:YES], then you don't need to call this method yourself,
+ * it's invoked automatically by JSONHTTPClient
+ * @param object The object to add
+ * @param method The method used to get the object
+ * @param params Any object representing the params used to get the object
+ * @param etag An ETag string to identify the cached object when revalidating with the server
+ * @return Whether the object was added successfuly
+ */
 -(BOOL)addObject:(id)object forMethod:(NSString*)method andParams:(id)params etag:(NSString*)etag;
 
-/**  */
+/**
+ * Fetch a cache response object for given method and parameters. Use this method to look for cached objects in the cache.
+ *
+ * **NB**: If you use [<JSONHTTPClient> isUsingJSONCache:YES], then you don't need to call this method yourself,
+ * it's invoked automatically by JSONHTTPClient
+ * @param method The method used to get the object
+ * @param params Any object representing the params used to get the object
+ * @return Response object from the cache of class <JSONCacheResponse>. It includes the cached object
+ * if one is found, headers to send to the server if revalidating, etc.
+ */
 -(JSONCacheResponse*)objectForMethod:(NSString*)method andParams:(id)params;
 
 /** Delete the objects from the cache that are expired as of now */
 -(void)trimExpiredObjects;
-/** 
- * Delete an object from the cache for the given key
- * @param key the key of the given object to delete
+
+/**
+ * Delete a specific object from the cache
+ * @param method The method used to get the object
+ * @param params Any object representing the params used to get the object
  */
--(void)trimObjectForKey:(NSString*)key;
+-(void)trimObjectForMethod:(NSString*)method andParams:(id)params;
 
 /** Delete all objects currently in the cache */
 -(void)purgeCache;
 
-/** 
+#pragma mark - helpers
+/** @name Client helper methods */
+/**
  * Returns either "ETag" or "X-ETag" depending on the value of **isUsingXdHTTPHeaderNames** 
  * 
  * JSONHTTPClient uses this method when fetching the etag for objects coming from the API. 
