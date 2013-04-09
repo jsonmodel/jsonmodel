@@ -370,12 +370,13 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
                     return;
                 }
             }
-            
+#if	TARGET_OS_IPHONE
             if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)
             {
                 _isOnline = YES;
                 return;
             }
+#endif
         }
     }
     
@@ -419,7 +420,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     
     const char *cStr = [string UTF8String];
     unsigned char result[16];
-    CC_MD5( cStr, strlen(cStr), result );
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), result );
     return [NSString stringWithFormat:
             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             result[0], result[1], result[2], result[3],

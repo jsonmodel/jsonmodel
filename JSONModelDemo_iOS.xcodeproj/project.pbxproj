@@ -81,6 +81,7 @@
 		9C66E035168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E021168CF0AA0015CCDF /* JSONKeyMapper.m */; };
 		9C66E036168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */; };
 		9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */; };
+		9C72A498171444C50047C6AE /* JSONCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A497171444C50047C6AE /* JSONCacheTests.m */; };
 		9C735D64170B716300FF96F5 /* JSONAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D63170B716300FF96F5 /* JSONAPITests.m */; };
 		9C735D6A170B781000FF96F5 /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D69170B781000FF96F5 /* RpcRequestModel.m */; };
 		9C735D70170C007900FF96F5 /* InitFromWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D6F170C007900FF96F5 /* InitFromWebTests.m */; };
@@ -237,6 +238,8 @@
 		9C66E021168CF0AA0015CCDF /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		9C66E022168CF0AA0015CCDF /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		9C72A496171444C50047C6AE /* JSONCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONCacheTests.h; sourceTree = "<group>"; };
+		9C72A497171444C50047C6AE /* JSONCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONCacheTests.m; sourceTree = "<group>"; };
 		9C735D62170B716300FF96F5 /* JSONAPITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPITests.h; sourceTree = "<group>"; };
 		9C735D63170B716300FF96F5 /* JSONAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPITests.m; sourceTree = "<group>"; };
 		9C735D68170B781000FF96F5 /* RpcRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RpcRequestModel.h; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				9C735D63170B716300FF96F5 /* JSONAPITests.m */,
 				9C735D6E170C007900FF96F5 /* InitFromWebTests.h */,
 				9C735D6F170C007900FF96F5 /* InitFromWebTests.m */,
+				9C72A496171444C50047C6AE /* JSONCacheTests.h */,
+				9C72A497171444C50047C6AE /* JSONCacheTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -955,6 +960,7 @@
 				9C735D64170B716300FF96F5 /* JSONAPITests.m in Sources */,
 				9C735D6A170B781000FF96F5 /* RpcRequestModel.m in Sources */,
 				9C735D70170C007900FF96F5 /* InitFromWebTests.m in Sources */,
+				9C72A498171444C50047C6AE /* JSONCacheTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

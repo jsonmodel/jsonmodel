@@ -59,11 +59,11 @@ extern float kImmediatelyExpire;
  * ... the cache is already working with them with the config you've set ...
  * </pre>
  *
- * NB: If you are persisting your cache between app sessions (the common case) for apps
+ * **NB**: If you are persisting your cache between app sessions (the common case) for apps
  * with offline mode, do not forget after configuring the cache, to load the cached files
  * from the device's disc: [[JSONCache sharedCache] loadCacheFromDisc]
  * 
- * If you want to check what are the cached objects in the cache right now: 
+ * If you want to check what's in the cache right now: 
  * <pre>
  * NSLog(@"Cache: %@", [JSONCache sharedCache]);
  * </pre>
@@ -73,12 +73,12 @@ extern float kImmediatelyExpire;
  */
 @interface JSONCache : NSObject
 
-/** @name Shared singleton instance */
+/** @name Access shared cache */
 /** Shared instance for you to use */
 +(instancetype)sharedCache;
 
 #pragma mark - network status
-/** @name JSONCache network status */
+/** @name Check network status */
 /**
  * Indicates whether a network connection is available. 
  *
@@ -190,7 +190,7 @@ extern float kImmediatelyExpire;
 -(void)purgeCache;
 
 #pragma mark - helpers
-/** @name Client helper methods */
+/** @name Get the etag header name */
 /**
  * Returns either "ETag" or "X-ETag" depending on the value of **isUsingXdHTTPHeaderNames** 
  * 

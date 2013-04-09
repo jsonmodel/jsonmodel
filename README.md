@@ -1,16 +1,14 @@
 JSONModel
 ====================================
 ------------------------------------
-**Magical Data Modelling Framework for JSON**
+Magical Data Modelling Framework for JSON
+------------------------------------
+
+![JSONModel for iOS and OSX](http://jsonmodel.com/img/jsonmodel_logolike.png)
 
 JSONModel is a library, which allows rapid creation of smart data models. You can use it in your iOS or OSX apps.
 
 **JSONModel does NOT pre-write your code** as many other libs do, instead it uses performance optimized code to introspect your model classes at run-time, thus being way more flexible when you need to do changes.
-
-[![](http://jsonmodel.com/img/screen_ios.png)](http://jsonmodel.com/img/screen_ios.png)
-[![](http://jsonmodel.com/img/screen_osx.png)](http://jsonmodel.com/img/screen_osx.png)
-
-The core task of JSONModel is to help you reduce your Objective-C code to parse and import JSON values to Objective-C objects.
 
 JSONModel automatically introspects your model classes and the structure of your JSON input and reduces drastically the amount of code.
 
@@ -18,7 +16,9 @@ The core task of JSONModel is to import, convert, store and export data - throug
 
 [![](http://www.touch-code-magazine.com/img/json.png)](http://www.touch-code-magazine.com/img/json.png)
 
-Besides this core task JSONModel does also a whole bunch of other tasks, to help you **automate as much as possible** working with local or remote JSON data.
+Besides this core task JSONModel does also a whole bunch of other tasks, to help you **automate as much as possible** working with local or remote JSON data; it also does provide for you a networking layer, so you don't need to depend on 3rd party networking library (except if you don't want to)
+
+![JSONModel Class schema](http://jsonmodel.com/img/jsonschema.png)
 
 ------------------------------------
 Requirements
