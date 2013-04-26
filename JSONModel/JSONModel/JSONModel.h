@@ -77,7 +77,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * For most classes the default initWithDictionary: inherited from JSONModel itself
    * should suffice, but developers have the option ot also overwrite it if needed.
    *
-   * @param d a dictionary holding JSON objects, to be imported in the model.
+   * @param dict a dictionary holding JSON objects, to be imported in the model.
    * @param err an error or NULL
    */
   -(instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError**)err;

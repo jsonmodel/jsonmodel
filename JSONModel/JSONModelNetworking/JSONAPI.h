@@ -59,7 +59,6 @@
  * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param completeBlock a JSONObjectBlock block to execute upon completion
- * @return the JSON response as desrialized object
  */
 +(void)getWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
 
@@ -80,7 +79,6 @@
  * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param completeBlock a JSONObjectBlock block to execute upon completion
- * @return the JSON response as desrialized object
  */
 +(void)postWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
 
@@ -101,7 +99,6 @@
  * @param method the HTTP method name; GET or POST only
  * @param args the list of arguments to pass to the API
  * @param completeBlock JSONObjectBlock to execute upon completion
- * @return the JSON response as desrialized object
  */
 +(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock;
 
