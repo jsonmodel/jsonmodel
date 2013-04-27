@@ -96,6 +96,10 @@
 		9CC2FCB9168CE7340059FE67 /* KivaFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB4168CE7340059FE67 /* KivaFeed.m */; };
 		9CC2FCBA168CE7340059FE67 /* LoanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB6168CE7340059FE67 /* LoanModel.m */; };
 		9CC2FCBB168CE7340059FE67 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB8168CE7340059FE67 /* LocationModel.m */; };
+		D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */; };
+		D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */; };
+		D5F918EE172ADAF900AC2C8E /* SpecialPropertyNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918ED172ADAF800AC2C8E /* SpecialPropertyNameTests.m */; };
+		D5F918EF172ADC2400AC2C8E /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +230,11 @@
 		9CC2FCB6168CE7340059FE67 /* LoanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanModel.m; sourceTree = "<group>"; };
 		9CC2FCB7168CE7340059FE67 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
 		9CC2FCB8168CE7340059FE67 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = specialPropertyName.json; sourceTree = "<group>"; };
+		D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
+		D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		D5F918EC172ADAF800AC2C8E /* SpecialPropertyNameTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyNameTests.h; sourceTree = "<group>"; };
+		D5F918ED172ADAF800AC2C8E /* SpecialPropertyNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyNameTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +310,8 @@
 				9C05B41D168CEB220054215E /* PrimitiveTypesReadTests.m */,
 				9C05B41E168CEB220054215E /* SimpleDataErrorTests.h */,
 				9C05B41F168CEB220054215E /* SimpleDataErrorTests.m */,
+				D5F918EC172ADAF800AC2C8E /* SpecialPropertyNameTests.h */,
+				D5F918ED172ADAF800AC2C8E /* SpecialPropertyNameTests.m */,
 				9C05B420168CEB220054215E /* TestModels */,
 				9C05B43D168CEB220054215E /* ValidationTestSuite.h */,
 				9C05B43E168CEB220054215E /* ValidationTestSuite.m */,
@@ -320,6 +331,7 @@
 				9C05B405168CEB220054215E /* post.json */,
 				9C05B406168CEB220054215E /* primitives.json */,
 				9C05B407168CEB220054215E /* primitivesWithErrors.json */,
+				D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */,
 				9C05B408168CEB220054215E /* withOptProp.json */,
 				9C05B409168CEB220054215E /* withoutOptProp.json */,
 			);
@@ -357,6 +369,8 @@
 				9C05B43A168CEB220054215E /* PrimitivesModel.m */,
 				9C05B43B168CEB220054215E /* ReposModel.h */,
 				9C05B43C168CEB220054215E /* ReposModel.m */,
+				D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */,
+				D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -622,6 +636,7 @@
 				9C05B449168CEB220054215E /* post.json in Resources */,
 				9C05B44A168CEB220054215E /* primitives.json in Resources */,
 				9C05B44B168CEB220054215E /* primitivesWithErrors.json in Resources */,
+				D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */,
 				9C05B44C168CEB220054215E /* withOptProp.json in Resources */,
 				9C05B44D168CEB220054215E /* withoutOptProp.json in Resources */,
 			);
@@ -644,6 +659,7 @@
 				9C66DF4D168CEECF0015CCDF /* post.json in Resources */,
 				9C66DF4E168CEECF0015CCDF /* primitives.json in Resources */,
 				9C66DF4F168CEECF0015CCDF /* primitivesWithErrors.json in Resources */,
+				D5F918EF172ADC2400AC2C8E /* specialPropertyName.json in Resources */,
 				9C66DF50168CEECF0015CCDF /* withOptProp.json in Resources */,
 				9C66DF51168CEECF0015CCDF /* withoutOptProp.json in Resources */,
 			);
@@ -712,6 +728,8 @@
 				9C66E005168CF09A0015CCDF /* JSONModel+networking.m in Sources */,
 				9C66E007168CF09A0015CCDF /* JSONKeyMapper.m in Sources */,
 				9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */,
+				D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */,
+				D5F918EE172ADAF900AC2C8E /* SpecialPropertyNameTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
