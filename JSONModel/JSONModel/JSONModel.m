@@ -35,7 +35,7 @@ static NSMutableDictionary* keyMappers = nil;
 
 #pragma mark - JSONModel private interface
 @interface JSONModel()
-@property (strong, nonatomic, readonly) NSString* className;
+@property (strong, nonatomic, readonly) NSString* _className_;
 @end
 
 #pragma mark - JSONModel implementation
@@ -72,22 +72,22 @@ static NSMutableDictionary* keyMappers = nil;
 -(void)__setup__
 {
     //fetch the class name for faster access
-    _className = NSStringFromClass([self class]);
+    __className_ = NSStringFromClass([self class]);
 
     //if first instnce of this model, generate the property list
-    if (!classProperties[_className]) {
+    if (!classProperties[__className_]) {
         [self __restrospectProperties];
     }
 
     //load the class index name
-    _indexPropertyName = classIndexes[_className];
+    _indexPropertyName = classIndexes[__className_];
     
     //if first instnce of this model, generate the property mapper
-    if (!keyMappers[_className]) {
+    if (!keyMappers[__className_]) {
         
         id mapper = [[self class] keyMapper];
         if (mapper) {
-            keyMappers[_className] = mapper;
+            keyMappers[__className_] = mapper;
         }
     }
 
@@ -169,7 +169,7 @@ static NSMutableDictionary* keyMappers = nil;
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
     
     //get the key mapper
-    JSONKeyMapper* keyMapper = keyMappers[_className];
+    JSONKeyMapper* keyMapper = keyMappers[__className_];
     
     //transform the key names, if neccessary
     if (keyMapper) {
@@ -376,23 +376,23 @@ static NSMutableDictionary* keyMappers = nil;
 //returns a set of the required keys for the model
 -(NSMutableSet*)__requiredPropertyNames
 {
-    if (!classRequiredPropertyNames[self.className]) {
-        classRequiredPropertyNames[self.className] = [NSMutableSet set];
+    if (!classRequiredPropertyNames[self._className_]) {
+        classRequiredPropertyNames[self._className_] = [NSMutableSet set];
         [[self __properties__] enumerateObjectsUsingBlock:^(JSONModelClassProperty* p, NSUInteger idx, BOOL *stop) {
-            if (!p.isOptional) [classRequiredPropertyNames[self.className] addObject:p.name];
+            if (!p.isOptional) [classRequiredPropertyNames[self._className_] addObject:p.name];
         }];
     }
-    return classRequiredPropertyNames[self.className];
+    return classRequiredPropertyNames[self._className_];
 }
 
 //returns a list of the model's properties
 -(NSArray*)__properties__
 {
-    if (classProperties[self.className]) return [classProperties[self.className] allValues];
+    if (classProperties[self._className_]) return [classProperties[self._className_] allValues];
 
-    if (!self.className) [self __setup__];
+    if (!self._className_) [self __setup__];
     [self __restrospectProperties];
-    return [classProperties[self.className] allValues];
+    return [classProperties[self._className_] allValues];
 }
 
 //retrospects the class, get's a list of the class properties
@@ -458,7 +458,7 @@ static NSMutableDictionary* keyMappers = nil;
                     if ([protocolName isEqualToString:@"Optional"]) {
                         p.isOptional = YES;
                     } else if([protocolName isEqualToString:@"Index"]) {
-                        classIndexes[self.className] = p.name;
+                        classIndexes[self._className_] = p.name;
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.convertsOnDemand = YES;
                     } else {
@@ -481,7 +481,7 @@ static NSMutableDictionary* keyMappers = nil;
                     
                     //type not allowed - programmer mistaked -> exception
                     @throw [NSException exceptionWithName:@"JSONModelProperty type not allowed"
-                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self.className, p.name]
+                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self._className_, p.name]
                                                  userInfo:nil];
                 }
                 
@@ -499,7 +499,7 @@ static NSMutableDictionary* keyMappers = nil;
     }
     
     //finally store the property index in the static property index
-    classProperties[self.className] = propertyIndex;
+    classProperties[self._className_] = propertyIndex;
 }
 
 #pragma mark - built-in transformer methods
@@ -619,7 +619,7 @@ static NSMutableDictionary* keyMappers = nil;
     id value;
 
     //get the key mapper
-    JSONKeyMapper* keyMapper = keyMappers[_className];
+    JSONKeyMapper* keyMapper = keyMappers[__className_];
     
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
@@ -797,7 +797,7 @@ static NSMutableDictionary* keyMappers = nil;
     //on purpose postponing the asserts for speed optimization
     //these should not happen anyway in production conditions
     NSAssert(self.indexPropertyName, @"Can't compare models with no <Index> property");
-    NSAssert1(NO, @"The <Index> property of %@ is not comparable class.", [self className]);
+    NSAssert1(NO, @"The <Index> property of %@ is not comparable class.", [self class]);
     return kNilOptions;
 }
 
