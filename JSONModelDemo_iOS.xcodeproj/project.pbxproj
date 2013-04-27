@@ -81,6 +81,9 @@
 		9C66E035168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E021168CF0AA0015CCDF /* JSONKeyMapper.m */; };
 		9C66E036168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */; };
 		9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */; };
+		9CB1EE42172C1136004BAA07 /* SpecialPropertyNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1EE41172C1136004BAA07 /* SpecialPropertyNameTests.m */; };
+		9CB1EE45172C11D5004BAA07 /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1EE44172C11D5004BAA07 /* SpecialPropertyModel.m */; };
+		9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CB1EE46172C1205004BAA07 /* specialPropertyName.json */; };
 		9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDC166B6CF0008B4326 /* UIKit.framework */; };
 		9CBBBEDF166B6CF0008B4326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEDE166B6CF0008B4326 /* Foundation.framework */; };
 		9CBBBEE1166B6CF0008B4326 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */; };
@@ -225,6 +228,11 @@
 		9C66E021168CF0AA0015CCDF /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		9C66E022168CF0AA0015CCDF /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		9CB1EE40172C1136004BAA07 /* SpecialPropertyNameTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyNameTests.h; sourceTree = "<group>"; };
+		9CB1EE41172C1136004BAA07 /* SpecialPropertyNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyNameTests.m; sourceTree = "<group>"; };
+		9CB1EE43172C11D5004BAA07 /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
+		9CB1EE44172C11D5004BAA07 /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		9CB1EE46172C1205004BAA07 /* specialPropertyName.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = specialPropertyName.json; sourceTree = "<group>"; };
 		9CBBBED8166B6CF0008B4326 /* JSONModelDemo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBBBEDC166B6CF0008B4326 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CBBBEDE166B6CF0008B4326 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -359,6 +367,8 @@
 				9C66DF86168CEF420015CCDF /* PrimitiveTypesReadTests.m */,
 				9C66DF87168CEF420015CCDF /* SimpleDataErrorTests.h */,
 				9C66DF88168CEF420015CCDF /* SimpleDataErrorTests.m */,
+				9CB1EE40172C1136004BAA07 /* SpecialPropertyNameTests.h */,
+				9CB1EE41172C1136004BAA07 /* SpecialPropertyNameTests.m */,
 				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DFA6168CEF420015CCDF /* ValidationTestSuite.h */,
 				9C66DFA7168CEF420015CCDF /* ValidationTestSuite.m */,
@@ -380,6 +390,7 @@
 				9C66DF70168CEF420015CCDF /* primitivesWithErrors.json */,
 				9C66DF71168CEF420015CCDF /* withOptProp.json */,
 				9C66DF72168CEF420015CCDF /* withoutOptProp.json */,
+				9CB1EE46172C1205004BAA07 /* specialPropertyName.json */,
 			);
 			path = DataFiles;
 			sourceTree = "<group>";
@@ -415,6 +426,8 @@
 				9C66DFA3168CEF420015CCDF /* PrimitivesModel.m */,
 				9C66DFA4168CEF420015CCDF /* ReposModel.h */,
 				9C66DFA5168CEF420015CCDF /* ReposModel.m */,
+				9CB1EE43172C11D5004BAA07 /* SpecialPropertyModel.h */,
+				9CB1EE44172C11D5004BAA07 /* SpecialPropertyModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -782,6 +795,7 @@
 				9C66DFB4168CEF420015CCDF /* primitivesWithErrors.json in Resources */,
 				9C66DFB5168CEF420015CCDF /* withOptProp.json in Resources */,
 				9C66DFB6168CEF420015CCDF /* withoutOptProp.json in Resources */,
+				9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +897,8 @@
 				9C66E033168CF0AA0015CCDF /* JSONModel+networking.m in Sources */,
 				9C66E035168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */,
 				9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */,
+				9CB1EE42172C1136004BAA07 /* SpecialPropertyNameTests.m in Sources */,
+				9CB1EE45172C11D5004BAA07 /* SpecialPropertyModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

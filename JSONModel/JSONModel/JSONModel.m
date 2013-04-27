@@ -200,7 +200,7 @@ static NSMutableDictionary* keyMappers = nil;
         [requiredProperties minusSet:incomingKeys];
 
         //not all required properties are in - invalid input
-        JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.className, requiredProperties);
+        JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self._className_, requiredProperties);
         
         if (err) *err = [JSONModelError errorInvalidDataWithMissingKeys:requiredProperties];
         return nil;
