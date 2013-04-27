@@ -979,6 +979,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemo_iOS/JSONModelDemo_iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = JSONModelDemo_iOS;
 				WRAPPER_EXTENSION = app;
 			};
@@ -990,6 +991,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemo_iOS/JSONModelDemo_iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = JSONModelDemo_iOS;
 				WRAPPER_EXTENSION = app;
 			};
