@@ -37,7 +37,7 @@ extern NSString* const kContentTypeWWWEncoded;
  * you receive back the initialized model (or nil) and an error (or nil)
  *
  * @param model the newly created JSONModel instance or nil
- * @param e JSONModelError or nil
+ * @param err JSONModelError or nil
  */
 typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
 
@@ -158,7 +158,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * Makes GET request to the given URL address and fetches a JSON response.
  * @param urlString the URL as a string
  * @param completeBlock JSONObjectBlock to execute upon completion
- * @return JSON compliant object or nil
  */
 +(void)getJSONFromURLWithString:(NSString*)urlString completion:(JSONObjectBlock)completeBlock;
 
@@ -167,7 +166,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * @param urlString the URL as a string
  * @param params a dictionary of key / value pairs to be send as variables to the request
  * @param completeBlock JSONObjectBlock to execute upon completion
- * @return JSON compliant object or nil
  */
 +(void)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
 
@@ -179,7 +177,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * @param urlString the URL as a string
  * @param params a dictionary of key / value pairs to be send as variables to the request
  * @param completeBlock JSONObjectBlock to execute upon completion
- * @return JSON compliant object or nil
  */
 +(void)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock;
 
@@ -188,7 +185,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * @param urlString the URL as a string
  * @param bodyString the body of the POST request as a string
  * @param completeBlock JSONObjectBlock to execute upon completion
- * @return JSON compliant object or nil
  */
 +(void)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock;
 
@@ -197,7 +193,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * @param urlString the URL as a string
  * @param bodyData the body of the POST request as an NSData object
  * @param completeBlock JSONObjectBlock to execute upon completion
- * @return JSON compliant object or nil
  */
 +(void)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData completion:(JSONObjectBlock)completeBlock;
 
