@@ -251,14 +251,6 @@ static NSMutableDictionary* keyMappers = nil;
         
         if (property) {
             
-            // 0.0) handle structs
-            if (property.structName) {
-                NSLog(@"struct found: %@", property.structName);
-                
-                //continue to next property
-                //continue;
-            }
-            
             // 0) handle primitives
             if (property.type == nil && property.structName==nil) {
                 
