@@ -820,13 +820,9 @@ static NSMutableDictionary* keyMappers = nil;
 //custom description method for debugging purposes
 -(NSString*)description
 {
-    NSMutableString* text = [NSMutableString stringWithFormat:@"<%@> \n", NSStringFromClass([self class])];
-    NSArray* properties = [self __properties__];
-
-    for (int i=0;i<properties.count;i++) {
-        
-        JSONModelClassProperty* p = (JSONModelClassProperty*)properties[i];
-
+    NSMutableString* text = [NSMutableString stringWithFormat:@"<%@> \n", [self class]];
+    
+    for (JSONModelClassProperty *p in [self __properties__]) {        
         id value = [self valueForKey:p.name];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
@@ -839,7 +835,7 @@ static NSMutableDictionary* keyMappers = nil;
         [text appendFormat:@"   [%@]: %@\n", p.name, valueDescription];
     }
     
-    [text appendFormat:@"</%@>", NSStringFromClass([self class])];
+    [text appendFormat:@"</%@>", [self class]];
     return text;
 }
 
