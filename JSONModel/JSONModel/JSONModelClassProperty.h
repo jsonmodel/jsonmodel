@@ -29,8 +29,11 @@
 /** The name of the declared property (not the ivar name) */
 @property (copy, nonatomic) NSString* name;
 
-/** A primitive type name ("float", "short", etc) or a class name  */
+/** A property class type  */
 @property (assign, nonatomic) Class type;
+
+/** Struct name if a struct */
+@property (strong, nonatomic) NSString* structName;
 
 /** The name of the protocol the property conforms to (or nil) */
 @property (copy, nonatomic) NSString* protocol;

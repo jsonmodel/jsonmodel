@@ -20,7 +20,7 @@
 
 -(NSString*)description
 {
-    return [NSString stringWithFormat:@"%@[@%@]<%@> %@ %@ %@ %@", self.name, self.type?self.type:@"primitive", self.protocol?self.protocol:@"", self.isOptional?@"Optional,":@"",self.isMutable?@"Mutable,":@"",self.convertsOnDemand?@"ConvertOnDemand,":@"",self.isStandardJSONType?@"JSONType":@""];
+    return [NSString stringWithFormat:@"%@[@%@]<%@> %@ %@ %@ %@", self.name, self.type?self.type:(self.structName?self.structName:@"primitive"), self.protocol?self.protocol:@"", self.isOptional?@"Optional,":@"",self.isMutable?@"Mutable,":@"",self.convertsOnDemand?@"ConvertOnDemand,":@"",self.isStandardJSONType?@"JSONType":@""];
 }
 
 @end

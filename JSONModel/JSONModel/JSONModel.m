@@ -251,8 +251,16 @@ static NSMutableDictionary* keyMappers = nil;
         
         if (property) {
             
+            // 0.0) handle structs
+            if (property.structName) {
+                NSLog(@"struct found: %@", property.structName);
+                
+                //continue to next property
+                //continue;
+            }
+            
             // 0) handle primitives
-            if (property.type == nil) {
+            if (property.type == nil && property.structName==nil) {
                 
                 //just copy the value
                 [self setValue:jsonValue forKey: property.name];
@@ -326,7 +334,9 @@ static NSMutableDictionary* keyMappers = nil;
                     //JMLog(@"to type: [%@] from type: [%@] transformer: [%@]", p.type, sourceClass, selectorName);
                     
                     //build a method selector for the property and json object classes
-                    NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", property.type, sourceClass];
+                    NSString* selectorName = [NSString stringWithFormat:@"%@From%@:",
+                                              (property.structName? property.structName : property.type), //target name
+                                              sourceClass]; //source name
                     SEL selector = NSSelectorFromString(selectorName);
                     
                     //check if there's a transformer with that name
@@ -468,7 +478,18 @@ static NSMutableDictionary* keyMappers = nil;
                     [scanner scanString:@">" intoString:NULL];
                 }
 
-            } else {
+            }
+            //check if the property is a structure
+            else if ([scanner scanString:@"{" intoString: &propertyType]) {
+                [scanner scanCharactersFromSet:[NSCharacterSet alphanumericCharacterSet]
+                                    intoString:&propertyType];
+                
+                p.isStandardJSONType = NO;
+                p.structName = propertyType;
+                
+            }
+            //the property must be a primitive
+            else {
 
                 //the property contains a primitive data type
                 [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@","]
@@ -664,7 +685,7 @@ static NSMutableDictionary* keyMappers = nil;
             }
             
             // 2) check for standard types OR 2.1) primitives
-            if (p.isStandardJSONType || p.type==nil) {
+            if (p.structName==nil && (p.isStandardJSONType || p.type==nil)) {
                 [tempDictionary setValue:value forKeyPath: keyPath];
                 continue;
             }
@@ -673,7 +694,7 @@ static NSMutableDictionary* keyMappers = nil;
             if (YES) {
                 
                 //create selector from the property's class name
-                NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", @"JSONObject", p.type];
+                NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", @"JSONObject", p.type?p.type:p.structName];
                 SEL selector = NSSelectorFromString(selectorName);
                 
                 //check if there's a transformer declared
