@@ -265,17 +265,17 @@ static NSString* requestContentType = nil;
         for (NSString* key in [params allKeys]) {
             [paramsString appendFormat:@"%@=%@&", key, [self urlEncode:params[key]] ];
         }        
-    }
     
-    //set the request params
-    if ([method isEqualToString:kHTTPMethodGET]) {
-
-        //add GET params to the query string
-        url = [NSURL URLWithString:[NSString stringWithFormat: @"%@%@%@",
-                                    [url absoluteString],
-                                    [url query] ? @"&" : @"?",
-                                    paramsString
-                                    ]];
+        //set the request params
+        if ([method isEqualToString:kHTTPMethodGET]) {
+            
+            //add GET params to the query string
+            url = [NSURL URLWithString:[NSString stringWithFormat: @"%@%@%@",
+                                        [url absoluteString],
+                                        [url query] ? @"&" : @"?",
+                                        paramsString
+                                        ]];
+        }
     }
     
     //call the more general synq request method
