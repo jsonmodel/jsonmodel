@@ -415,8 +415,8 @@ static NSMutableDictionary* keyMappers = nil;
         objc_property_t *properties = class_copyPropertyList(class, &propertyCount);
         
         //loop over the class properties
-        for (int i = 0; i < propertyCount; i++) {
-            
+        for (unsigned int i = 0; i < propertyCount; i++) {
+
             JSONModelClassProperty* p = [[JSONModelClassProperty alloc] init];
 
             //get property name
