@@ -163,18 +163,17 @@ Contributors
 
 Author: Marin Todorov
 
-Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali
+Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z
 
 ----------
 Change-log
 ==========
 
-**Coming soon - Version 0.9** @ tbd
+**Version 0.9** @ 2013-05-01
 
 - Refactor of all networking code
 - Removing all sync request methods
-- Adding network level caching
-- Bug fixes up to issue #22
+- Bug fixes up to issue #37
 
 **Version 0.8.3** @ 2013-01-24
 
