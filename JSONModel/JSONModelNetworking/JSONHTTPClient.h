@@ -45,7 +45,7 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 #pragma mark - configuration methods
 
 /**
- * A very thin HTTP client that can do GET and POST HTTP requests.
+ * @discussion A very thin HTTP client that can do GET and POST HTTP requests.
  * It fetches only JSON data and also deserializes it using NSJSONSerialization.
  */
 @interface JSONHTTPClient : NSObject
@@ -55,7 +55,13 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 
 /** @name HTTP Client configuration */
 /**
- * A dictioanry of HTTP headers the client sends along the requests
+ * Returns a modifyable dictionary of the client's default HTTP headers.
+ * @result A mutable dictionary of pairs - HTTP header names and values.
+ * @discussion You can use the result to modify the http client headers like so:
+ * <pre>
+ * NSMutableDictionary* headers = [JSONHTTPClient requestHeaders];
+ * headers[@"APIToken"] = @"MySecretTokenValue";
+ * </pre>
  */
 +(NSMutableDictionary*)requestHeaders;
 
