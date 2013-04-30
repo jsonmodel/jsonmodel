@@ -1,7 +1,7 @@
 //
 //  JSONModel+networking.m
 //
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -31,17 +31,6 @@ BOOL _isLoading;
 -(void)setIsLoading:(BOOL)isLoading
 {
     _isLoading = isLoading;
-}
-
--(id)initFromURLWithString:(NSString*)urlString error:(JSONModelError**)err
-{
-    id jsonObject = [JSONHTTPClient getJSONFromURLWithString:urlString error: err];
-    JSONModelError* initError = nil;
-    id objModel = [self initWithDictionary:jsonObject error:&initError];
-    if (err) {
-        *err = initError;
-    }
-    return objModel;
 }
 
 -(id)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock

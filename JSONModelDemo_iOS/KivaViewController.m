@@ -9,6 +9,7 @@
 #import "KivaViewController.h"
 #import "KivaFeed.h"
 #import "HUD.h"
+#import "JSONModel+networking.h"
 
 @interface KivaViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -29,58 +30,37 @@
     self.title = @"Kiva.org latest loans";
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-    //1
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //code executed in the background
-        //2
-        NSData* kivaData = [NSData dataWithContentsOfURL:
-                            [NSURL URLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"]
-                            ];
-        //3
-        benchStart = CFAbsoluteTimeGetCurrent();
-        NSDictionary* json = [NSJSONSerialization
-                    JSONObjectWithData:kivaData
-                    options:kNilOptions
-                    error:nil];
-        
-        benchObj = CFAbsoluteTimeGetCurrent();
-        
-        //5
-        feed = [[KivaFeed alloc] initWithDictionary: json error:nil];
-        benchEnd = CFAbsoluteTimeGetCurrent();
-
-        //4
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //code executed on the main queue
-            
-            [HUD hideUIBlockingIndicator];
-            
-            if (feed) {
-                [table reloadData];
-                
-                [self logBenchmark];
-            } else {
-                //show error
-                [[[UIAlertView alloc] initWithTitle:@"Error"
-                                            message:@"Invalid JSON data input"
-                                           delegate:nil
-                                  cancelButtonTitle:@"Close"
-                                  otherButtonTitles:nil] show];
-            }
-        });
-        
-    });
+    [JSONHTTPClient getJSONFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json"
+                                      params:@{@"status":@"fundraising"}
+                                  completion:^(NSDictionary *json, JSONModelError *err) {
+                                                                            
+                                      benchStart = CFAbsoluteTimeGetCurrent();
+                                      feed = [[KivaFeed alloc] initWithDictionary: json error:nil];
+                                      benchEnd = CFAbsoluteTimeGetCurrent();
+                                      
+                                      [HUD hideUIBlockingIndicator];
+                                      
+                                      if (feed) {
+                                          [table reloadData];
+                                          
+                                          [self logBenchmark];
+                                      } else {
+                                          //show error
+                                          [[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                      message:[err localizedDescription]
+                                                                     delegate:nil
+                                                            cancelButtonTitle:@"Close"
+                                                            otherButtonTitles:nil] show];
+                                      }
+                                  }];
 }
 
 -(void)logBenchmark
 {
     NSLog(@"start: %f", benchStart);
-    NSLog(@"obj: %f", benchObj);
     NSLog(@"model: %f", benchEnd);
     NSLog(@"-------------------------");
-    NSLog(@"json -> object: %.4f", benchObj-benchStart);
-    NSLog(@"obj -> model: %.4f", benchEnd - benchObj);
-    
+    NSLog(@"json -> model: %.4f", benchEnd - benchStart);
 }
 
 #pragma mark - table methods

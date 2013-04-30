@@ -80,6 +80,10 @@
 		9C66E007168CF09A0015CCDF /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DFF3168CF09A0015CCDF /* JSONKeyMapper.m */; };
 		9C66E008168CF09A0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DFF5168CF09A0015CCDF /* JSONValueTransformer.m */; };
 		9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DFF5168CF09A0015CCDF /* JSONValueTransformer.m */; };
+		9C72A49D171447F70047C6AE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C72A49C171447F70047C6AE /* SystemConfiguration.framework */; };
+		9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D66170B717F00FF96F5 /* JSONAPITests.m */; };
+		9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */; };
+		9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D72170C048C00FF96F5 /* InitFromWebTests.m */; };
 		9C97441C168CF255004DA333 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C97441B168CF255004DA333 /* Cocoa.framework */; };
 		9C97441E168CF264004DA333 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C97441D168CF264004DA333 /* Cocoa.framework */; };
 		9CB6BC28168DE35E0002535B /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC23168DE35E0002535B /* VideoLink.m */; };
@@ -96,6 +100,9 @@
 		9CC2FCB9168CE7340059FE67 /* KivaFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB4168CE7340059FE67 /* KivaFeed.m */; };
 		9CC2FCBA168CE7340059FE67 /* LoanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB6168CE7340059FE67 /* LoanModel.m */; };
 		9CC2FCBB168CE7340059FE67 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB8168CE7340059FE67 /* LocationModel.m */; };
+		9CD425861702224F00A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425851702224F00A42AA1 /* HTTPClientSuite.m */; };
+		9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */; };
+		9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */; };
 		D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */; };
 		D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */; };
 		D5F918EE172ADAF900AC2C8E /* SpecialPropertyNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918ED172ADAF800AC2C8E /* SpecialPropertyNameTests.m */; };
@@ -198,6 +205,13 @@
 		9C66DFF3168CF09A0015CCDF /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		9C66DFF4168CF09A0015CCDF /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		9C66DFF5168CF09A0015CCDF /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		9C72A49C171447F70047C6AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9C735D65170B717F00FF96F5 /* JSONAPITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPITests.h; sourceTree = "<group>"; };
+		9C735D66170B717F00FF96F5 /* JSONAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPITests.m; sourceTree = "<group>"; };
+		9C735D6B170B7A2D00FF96F5 /* RpcRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RpcRequestModel.h; sourceTree = "<group>"; };
+		9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
+		9C735D71170C048C00FF96F5 /* InitFromWebTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitFromWebTests.h; sourceTree = "<group>"; };
+		9C735D72170C048C00FF96F5 /* InitFromWebTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitFromWebTests.m; sourceTree = "<group>"; };
 		9C97441B168CF255004DA333 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9C97441D168CF264004DA333 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		9CB6BC22168DE35E0002535B /* VideoLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoLink.h; path = JSONModelDemo_iOS/VideoLink.h; sourceTree = SOURCE_ROOT; };
@@ -230,6 +244,12 @@
 		9CC2FCB6168CE7340059FE67 /* LoanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanModel.m; sourceTree = "<group>"; };
 		9CC2FCB7168CE7340059FE67 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
 		9CC2FCB8168CE7340059FE67 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		9CD425841702224F00A42AA1 /* HTTPClientSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClientSuite.h; sourceTree = "<group>"; };
+		9CD425851702224F00A42AA1 /* HTTPClientSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClientSuite.m; sourceTree = "<group>"; };
+		9CD42587170222AF00A42AA1 /* MockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MockNSURLConnection.h; path = JSONModelDemoTests/MockNSURLConnection.h; sourceTree = SOURCE_ROOT; };
+		9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MockNSURLConnection.m; path = JSONModelDemoTests/MockNSURLConnection.m; sourceTree = SOURCE_ROOT; };
+		9CD42589170222AF00A42AA1 /* MTTestSemaphor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTTestSemaphor.h; path = JSONModelDemoTests/MTTestSemaphor.h; sourceTree = SOURCE_ROOT; };
+		9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTTestSemaphor.m; path = JSONModelDemoTests/MTTestSemaphor.m; sourceTree = SOURCE_ROOT; };
 		D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = specialPropertyName.json; sourceTree = "<group>"; };
 		D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
@@ -251,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C72A49D171447F70047C6AE /* SystemConfiguration.framework in Frameworks */,
 				9C97441C168CF255004DA333 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +300,9 @@
 		9C05B3F5168CEB220054215E /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				9CD4257D1702220300A42AA1 /* Class */,
+				9C05B3FE168CEB220054215E /* DataFiles */,
+				9C05B420168CEB220054215E /* TestModels */,
 				9C05B3F6168CEB220054215E /* ArrayTests.h */,
 				9C05B3F7168CEB220054215E /* ArrayTests.m */,
 				9C05B3F8168CEB220054215E /* BuiltInConversionsTests.h */,
@@ -287,7 +311,6 @@
 				9C05B3FB168CEB220054215E /* CopyrightModel.m */,
 				9C05B3FC168CEB220054215E /* CustomPropsTests.h */,
 				9C05B3FD168CEB220054215E /* CustomPropsTests.m */,
-				9C05B3FE168CEB220054215E /* DataFiles */,
 				9C05B40A168CEB220054215E /* IdPropertyTests.h */,
 				9C05B40B168CEB220054215E /* IdPropertyTests.m */,
 				9C05B40C168CEB220054215E /* JSONTypesModelWithValidation1.h */,
@@ -315,6 +338,12 @@
 				9C05B420168CEB220054215E /* TestModels */,
 				9C05B43D168CEB220054215E /* ValidationTestSuite.h */,
 				9C05B43E168CEB220054215E /* ValidationTestSuite.m */,
+				9CD425841702224F00A42AA1 /* HTTPClientSuite.h */,
+				9CD425851702224F00A42AA1 /* HTTPClientSuite.m */,
+				9C735D65170B717F00FF96F5 /* JSONAPITests.h */,
+				9C735D66170B717F00FF96F5 /* JSONAPITests.m */,
+				9C735D71170C048C00FF96F5 /* InitFromWebTests.h */,
+				9C735D72170C048C00FF96F5 /* InitFromWebTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -371,6 +400,8 @@
 				9C05B43C168CEB220054215E /* ReposModel.m */,
 				D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */,
 				D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */,
+				9C735D6B170B7A2D00FF96F5 /* RpcRequestModel.h */,
+				9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -480,6 +511,7 @@
 		9CC27C901689B7BE008B5411 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C72A49C171447F70047C6AE /* SystemConfiguration.framework */,
 				9C97441D168CF264004DA333 /* Cocoa.framework */,
 				9C97441B168CF255004DA333 /* Cocoa.framework */,
 				9CC27CAF1689B7BE008B5411 /* SenTestingKit.framework */,
@@ -555,6 +587,17 @@
 				9CC27C981689B7BE008B5411 /* Supporting Files */,
 			);
 			name = DemoApp;
+			sourceTree = "<group>";
+		};
+		9CD4257D1702220300A42AA1 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				9CD42587170222AF00A42AA1 /* MockNSURLConnection.h */,
+				9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */,
+				9CD42589170222AF00A42AA1 /* MTTestSemaphor.h */,
+				9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -730,6 +773,12 @@
 				9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */,
 				D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */,
 				D5F918EE172ADAF900AC2C8E /* SpecialPropertyNameTests.m in Sources */,
+				9CD425861702224F00A42AA1 /* HTTPClientSuite.m in Sources */,
+				9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */,
+				9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */,
+				9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */,
+				9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */,
+				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

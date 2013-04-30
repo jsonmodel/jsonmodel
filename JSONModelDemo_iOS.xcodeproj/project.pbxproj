@@ -81,6 +81,11 @@
 		9C66E035168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E021168CF0AA0015CCDF /* JSONKeyMapper.m */; };
 		9C66E036168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */; };
 		9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */; };
+		9C735D64170B716300FF96F5 /* JSONAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D63170B716300FF96F5 /* JSONAPITests.m */; };
+		9C735D6A170B781000FF96F5 /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D69170B781000FF96F5 /* RpcRequestModel.m */; };
+		9C735D70170C007900FF96F5 /* InitFromWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C735D6F170C007900FF96F5 /* InitFromWebTests.m */; };
+		9CA6B10016FCA5B400B3E78E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B0FF16FCA5B400B3E78E /* SystemConfiguration.framework */; };
+		9CA6B10216FCAAEE00B3E78E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B0FF16FCA5B400B3E78E /* SystemConfiguration.framework */; };
 		9CB1EE42172C1136004BAA07 /* SpecialPropertyNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1EE41172C1136004BAA07 /* SpecialPropertyNameTests.m */; };
 		9CB1EE45172C11D5004BAA07 /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1EE44172C11D5004BAA07 /* SpecialPropertyModel.m */; };
 		9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CB1EE46172C1205004BAA07 /* specialPropertyName.json */; };
@@ -120,6 +125,9 @@
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
 		9CC2FD2B168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */; };
+		9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */; };
+		9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */; };
+		9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,8 +148,8 @@
 		9C66DF60168CEF420015CCDF /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayTests.m; sourceTree = "<group>"; };
 		9C66DF61168CEF420015CCDF /* BuiltInConversionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsTests.h; sourceTree = "<group>"; };
 		9C66DF62168CEF420015CCDF /* BuiltInConversionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsTests.m; sourceTree = "<group>"; };
-		9C66DF63168CEF420015CCDF /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
-		9C66DF64168CEF420015CCDF /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
+		9C66DF63168CEF420015CCDF /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CopyrightModel.h; path = ../CopyrightModel.h; sourceTree = "<group>"; };
+		9C66DF64168CEF420015CCDF /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CopyrightModel.m; path = ../CopyrightModel.m; sourceTree = "<group>"; };
 		9C66DF65168CEF420015CCDF /* CustomPropsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPropsTests.h; sourceTree = "<group>"; };
 		9C66DF66168CEF420015CCDF /* CustomPropsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPropsTests.m; sourceTree = "<group>"; };
 		9C66DF68168CEF420015CCDF /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
@@ -228,6 +236,13 @@
 		9C66E021168CF0AA0015CCDF /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		9C66E022168CF0AA0015CCDF /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		9C66E023168CF0AA0015CCDF /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		9C735D62170B716300FF96F5 /* JSONAPITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPITests.h; sourceTree = "<group>"; };
+		9C735D63170B716300FF96F5 /* JSONAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPITests.m; sourceTree = "<group>"; };
+		9C735D68170B781000FF96F5 /* RpcRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RpcRequestModel.h; sourceTree = "<group>"; };
+		9C735D69170B781000FF96F5 /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
+		9C735D6E170C007900FF96F5 /* InitFromWebTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitFromWebTests.h; sourceTree = "<group>"; };
+		9C735D6F170C007900FF96F5 /* InitFromWebTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitFromWebTests.m; sourceTree = "<group>"; };
+		9CA6B0FF16FCA5B400B3E78E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9CB1EE40172C1136004BAA07 /* SpecialPropertyNameTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyNameTests.h; sourceTree = "<group>"; };
 		9CB1EE41172C1136004BAA07 /* SpecialPropertyNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyNameTests.m; sourceTree = "<group>"; };
 		9CB1EE43172C11D5004BAA07 /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
@@ -287,6 +302,12 @@
 		9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageViewController.xib; sourceTree = "<group>"; };
 		9CC2FCD2168CE7830059FE67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JSONModelDemo_iOSTests-Info.plist"; sourceTree = "<group>"; };
+		9CD425721701FDE500A42AA1 /* HTTPClientSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClientSuite.h; sourceTree = "<group>"; };
+		9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClientSuite.m; sourceTree = "<group>"; };
+		9CD425761701FF2100A42AA1 /* MTTestSemaphor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestSemaphor.h; sourceTree = "<group>"; };
+		9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestSemaphor.m; sourceTree = "<group>"; };
+		9CD425791702002900A42AA1 /* MockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockNSURLConnection.h; sourceTree = "<group>"; };
+		9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockNSURLConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +315,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA6B10216FCAAEE00B3E78E /* SystemConfiguration.framework in Frameworks */,
 				9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */,
 				9CBBBEDF166B6CF0008B4326 /* Foundation.framework in Frameworks */,
 				9CBBBEE1166B6CF0008B4326 /* CoreGraphics.framework in Frameworks */,
@@ -304,6 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA6B10016FCA5B400B3E78E /* SystemConfiguration.framework in Frameworks */,
 				9CBBBF65166B9E3E008B4326 /* CoreGraphics.framework in Frameworks */,
 				9CBBBF07166B6CF0008B4326 /* SenTestingKit.framework in Frameworks */,
 				9CBBBF08166B6CF0008B4326 /* UIKit.framework in Frameworks */,
@@ -340,11 +363,8 @@
 				9C66DF60168CEF420015CCDF /* ArrayTests.m */,
 				9C66DF61168CEF420015CCDF /* BuiltInConversionsTests.h */,
 				9C66DF62168CEF420015CCDF /* BuiltInConversionsTests.m */,
-				9C66DF63168CEF420015CCDF /* CopyrightModel.h */,
-				9C66DF64168CEF420015CCDF /* CopyrightModel.m */,
 				9C66DF65168CEF420015CCDF /* CustomPropsTests.h */,
 				9C66DF66168CEF420015CCDF /* CustomPropsTests.m */,
-				9C66DF67168CEF420015CCDF /* DataFiles */,
 				9C66DF73168CEF420015CCDF /* IdPropertyTests.h */,
 				9C66DF74168CEF420015CCDF /* IdPropertyTests.m */,
 				9C66DF75168CEF420015CCDF /* JSONTypesModelWithValidation1.h */,
@@ -372,6 +392,12 @@
 				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DFA6168CEF420015CCDF /* ValidationTestSuite.h */,
 				9C66DFA7168CEF420015CCDF /* ValidationTestSuite.m */,
+				9CD425721701FDE500A42AA1 /* HTTPClientSuite.h */,
+				9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */,
+				9C735D62170B716300FF96F5 /* JSONAPITests.h */,
+				9C735D63170B716300FF96F5 /* JSONAPITests.m */,
+				9C735D6E170C007900FF96F5 /* InitFromWebTests.h */,
+				9C735D6F170C007900FF96F5 /* InitFromWebTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -392,12 +418,15 @@
 				9C66DF72168CEF420015CCDF /* withoutOptProp.json */,
 				9CB1EE46172C1205004BAA07 /* specialPropertyName.json */,
 			);
-			path = DataFiles;
+			name = DataFiles;
+			path = UnitTests/DataFiles;
 			sourceTree = "<group>";
 		};
 		9C66DF89168CEF420015CCDF /* TestModels */ = {
 			isa = PBXGroup;
 			children = (
+				9C66DF63168CEF420015CCDF /* CopyrightModel.h */,
+				9C66DF64168CEF420015CCDF /* CopyrightModel.m */,
 				9C66DF8A168CEF420015CCDF /* BuiltInConversionsModel.h */,
 				9C66DF8B168CEF420015CCDF /* BuiltInConversionsModel.m */,
 				9C66DF8C168CEF420015CCDF /* CustomPropertyModel.h */,
@@ -428,8 +457,11 @@
 				9C66DFA5168CEF420015CCDF /* ReposModel.m */,
 				9CB1EE43172C11D5004BAA07 /* SpecialPropertyModel.h */,
 				9CB1EE44172C11D5004BAA07 /* SpecialPropertyModel.m */,
+				9C735D68170B781000FF96F5 /* RpcRequestModel.h */,
+				9C735D69170B781000FF96F5 /* RpcRequestModel.m */,
 			);
-			path = TestModels;
+			name = TestModels;
+			path = UnitTests/TestModels;
 			sourceTree = "<group>";
 		};
 		9C66E00A168CF0AA0015CCDF /* JSONModel */ = {
@@ -515,6 +547,7 @@
 		9CBBBEDB166B6CF0008B4326 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CA6B0FF16FCA5B400B3E78E /* SystemConfiguration.framework */,
 				9CBBBEDC166B6CF0008B4326 /* UIKit.framework */,
 				9CBBBEDE166B6CF0008B4326 /* Foundation.framework */,
 				9CBBBEE0166B6CF0008B4326 /* CoreGraphics.framework */,
@@ -676,10 +709,24 @@
 		9CC2FCBC168CE7830059FE67 /* JSONModelDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				9CD4257C1702003600A42AA1 /* Class */,
+				9C66DF67168CEF420015CCDF /* DataFiles */,
+				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DF5E168CEF420015CCDF /* UnitTests */,
 				9C05B2BB168CE9DE0054215E /* Supporting Files */,
 			);
 			path = JSONModelDemoTests;
+			sourceTree = "<group>";
+		};
+		9CD4257C1702003600A42AA1 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				9CD425791702002900A42AA1 /* MockNSURLConnection.h */,
+				9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */,
+				9CD425761701FF2100A42AA1 /* MTTestSemaphor.h */,
+				9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -899,6 +946,12 @@
 				9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */,
 				9CB1EE42172C1136004BAA07 /* SpecialPropertyNameTests.m in Sources */,
 				9CB1EE45172C11D5004BAA07 /* SpecialPropertyModel.m in Sources */,
+				9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */,
+				9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */,
+				9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */,
+				9C735D64170B716300FF96F5 /* JSONAPITests.m in Sources */,
+				9C735D6A170B781000FF96F5 /* RpcRequestModel.m in Sources */,
+				9C735D70170C007900FF96F5 /* InitFromWebTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

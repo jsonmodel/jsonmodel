@@ -1,7 +1,7 @@
 //
 //  JSONModelHTTPClient.h
 //
-//  @version 0.8.4
+//  @version 0.9.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -32,15 +32,13 @@ extern NSString* const kContentTypeJSON;
 extern NSString* const kContentTypeWWWEncoded;
 
 /**
- * A block type to handle incoming JSONModel instance and an error. 
- * You pass it to methods which create a model asynchroniously. When the operation is finished
- * you receive back the initialized model (or nil) and an error (or nil)
+ * A block type to handle incoming JSON object and an error. 
+ * You pass it to methods which fetch JSON asynchroniously. When the operation is finished
+ * you receive back the fetched JSON (or nil) and an error (or nil)
  *
- * @param model the newly created JSONModel instance or nil
+ * @param json object derived from a JSON string
  * @param err JSONModelError or nil
  */
-typedef void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
-
 typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +47,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
 /**
  * A very thin HTTP client that can do GET and POST HTTP requests.
  * It fetches only JSON data and also deserializes it using NSJSONSerialization.
- * 
  */
 @interface JSONHTTPClient : NSObject
 
@@ -98,57 +95,6 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  * and "application/x-www-form-urlencoded"
  */
 +(void)setRequestContentType:(NSString*)contentTypeString;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - GET synchronious JSON calls
-
-/** @name Making synchronious HTTP requests */
-/**
- * Makes GET request to the given URL address and fetches a JSON response.
- * @param urlString the URL as a string
- * @param err a pointer to an NSError object, to pass back an error if needed
- * @return JSON compliant object or nil
- */
-+(id)getJSONFromURLWithString:(NSString*)urlString error:(NSError**)err;
-
-/**
- * Makes GET request to the given URL address and fetches a JSON response. Sends the params as a query string variables.
- * @param urlString the URL as a string
- * @param params a dictionary of key / value pairs to be send as variables to the request
- * @param err a pointer to an NSError object, to pass back an error if needed
- * @return JSON compliant object or nil
- */
-+(id)getJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - POST synchronious JSON calls
-
-/**
- * Makes POST request to the given URL address and fetches a JSON response. Sends the params as url encoded variables via the POST body.
- * @param urlString the URL as a string
- * @param params a dictionary of key / value pairs to be send as variables to the request
- * @param err a pointer to an NSError object, to pass back an error if needed
- * @return JSON compliant object or nil
- */
-+(id)postJSONFromURLWithString:(NSString*)urlString params:(NSDictionary*)params error:(NSError**)err;
-
-/**
- * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
- * @param urlString the URL as a string
- * @param bodyString the body of the POST request as a string
- * @param err a pointer to an NSError object, to pass back an error if needed
- * @return JSON compliant object or nil
- */
-+(id)postJSONFromURLWithString:(NSString*)urlString bodyString:(NSString*)bodyString error:(NSError**)err;
-
-/**
- * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.
- * @param urlString the URL as a string
- * @param bodyData the body of the POST request as an NSData object
- * @param err a pointer to an NSError object, to pass back an error if needed
- * @return JSON compliant object or nil
- */
-+(id)postJSONFromURLWithString:(NSString*)urlString bodyData:(NSData*)bodyData error:(NSError**)err;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - GET asynchronious JSON calls
