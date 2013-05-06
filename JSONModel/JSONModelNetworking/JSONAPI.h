@@ -66,14 +66,24 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-/** @name JSON RPC (1.0) request method */
+/** @name JSON RPC methods */
 /**
- * Makes an asynchronious JSON RPC request to the API
+ * Makes an asynchronious JSON RPC request to the API. Read more: http://www.jsonrpc.org
  * @param method the HTTP method name; GET or POST only
  * @param args the list of arguments to pass to the API
  * @param completeBlock JSONObjectBlock to execute upon completion
  */
 +(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock;
+
+/** @name JSON RPC (2.0) request method */
+/**
+ * Makes an asynchronious JSON RPC 2.0 request to the API. Read more: http://www.jsonrpc.org
+ * @param method the HTTP method name; GET or POST only
+ * @param params the params to pass to the API - an NSArray or an NSDictionary, 
+ * depending whether you're using named or unnamed parameters
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ */
++(void)rpc2WithMethodName:(NSString*)method andParams:(id)params completion:(JSONObjectBlock)completeBlock;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
