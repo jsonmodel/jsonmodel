@@ -166,8 +166,6 @@ static NSString* requestContentType = nil;
         [request addValue:headers[key] forHTTPHeaderField:key];
     }
     
-    NSLog(@"request headers: %@", [request allHTTPHeaderFields]);
-    
     if (bodyString) {
         //BODY params
         NSData* bodyData = [bodyString dataUsingEncoding:defaultTextEncoding];
