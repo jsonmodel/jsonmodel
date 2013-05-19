@@ -584,7 +584,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
         if (property.type == [NSArray class] || property.type == [NSMutableArray class]) {
             NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity: [(NSArray*)value count] ];
             for (id<AbstractJSONModelProtocol> model in (NSArray*)value) {
-                [tempArray addObject: [model toDictionary] ];
+                if ([model respondsToSelector:@selector(toDictionary)]) {
+                    [tempArray addObject: [model toDictionary]];
+                } else
+                    [tempArray addObject: model];
             }
             return [NSArray arrayWithArray: tempArray];
         }
