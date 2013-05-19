@@ -10,7 +10,6 @@
 		9C05B2A9168CE9600054215E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC27CAF1689B7BE008B5411 /* SenTestingKit.framework */; };
 		9C05B43F168CEB220054215E /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F7168CEB220054215E /* ArrayTests.m */; };
 		9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */; };
-		9C05B441168CEB220054215E /* CopyrightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3FB168CEB220054215E /* CopyrightModel.m */; };
 		9C05B442168CEB220054215E /* CustomPropsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3FD168CEB220054215E /* CustomPropsTests.m */; };
 		9C05B443168CEB220054215E /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B3FF168CEB220054215E /* colors.json */; };
 		9C05B444168CEB220054215E /* converts.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B400168CEB220054215E /* converts.json */; };
@@ -49,6 +48,7 @@
 		9C05B465168CEB220054215E /* PrimitivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B43A168CEB220054215E /* PrimitivesModel.m */; };
 		9C05B466168CEB220054215E /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B43C168CEB220054215E /* ReposModel.m */; };
 		9C05B467168CEB220054215E /* ValidationTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B43E168CEB220054215E /* ValidationTestSuite.m */; };
+		9C08C1AF1749750100AA8CC9 /* CopyrightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C1AE1749750100AA8CC9 /* CopyrightModel.m */; };
 		9C66DF47168CEECF0015CCDF /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B3FF168CEB220054215E /* colors.json */; };
 		9C66DF48168CEECF0015CCDF /* converts.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B400168CEB220054215E /* converts.json */; };
 		9C66DF49168CEECF0015CCDF /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B401168CEB220054215E /* github-iphone.json */; };
@@ -117,8 +117,6 @@
 		9C05B3F7168CEB220054215E /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayTests.m; sourceTree = "<group>"; };
 		9C05B3F8168CEB220054215E /* BuiltInConversionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsTests.h; sourceTree = "<group>"; };
 		9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsTests.m; sourceTree = "<group>"; };
-		9C05B3FA168CEB220054215E /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
-		9C05B3FB168CEB220054215E /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
 		9C05B3FC168CEB220054215E /* CustomPropsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPropsTests.h; sourceTree = "<group>"; };
 		9C05B3FD168CEB220054215E /* CustomPropsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPropsTests.m; sourceTree = "<group>"; };
 		9C05B3FF168CEB220054215E /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
@@ -184,6 +182,8 @@
 		9C05B43C168CEB220054215E /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposModel.m; sourceTree = "<group>"; };
 		9C05B43D168CEB220054215E /* ValidationTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationTestSuite.h; sourceTree = "<group>"; };
 		9C05B43E168CEB220054215E /* ValidationTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationTestSuite.m; sourceTree = "<group>"; };
+		9C08C1AD1749750100AA8CC9 /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
+		9C08C1AE1749750100AA8CC9 /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
 		9C66DFDE168CF09A0015CCDF /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		9C66DFDF168CF09A0015CCDF /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
 		9C66DFE0168CF09A0015CCDF /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
@@ -307,8 +307,6 @@
 				9C05B3F7168CEB220054215E /* ArrayTests.m */,
 				9C05B3F8168CEB220054215E /* BuiltInConversionsTests.h */,
 				9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */,
-				9C05B3FA168CEB220054215E /* CopyrightModel.h */,
-				9C05B3FB168CEB220054215E /* CopyrightModel.m */,
 				9C05B3FC168CEB220054215E /* CustomPropsTests.h */,
 				9C05B3FD168CEB220054215E /* CustomPropsTests.m */,
 				9C05B40A168CEB220054215E /* IdPropertyTests.h */,
@@ -370,6 +368,8 @@
 		9C05B420168CEB220054215E /* TestModels */ = {
 			isa = PBXGroup;
 			children = (
+				9C08C1AD1749750100AA8CC9 /* CopyrightModel.h */,
+				9C08C1AE1749750100AA8CC9 /* CopyrightModel.m */,
 				9C05B421168CEB220054215E /* BuiltInConversionsModel.h */,
 				9C05B422168CEB220054215E /* BuiltInConversionsModel.m */,
 				9C05B423168CEB220054215E /* CustomPropertyModel.h */,
@@ -733,7 +733,6 @@
 			files = (
 				9C05B43F168CEB220054215E /* ArrayTests.m in Sources */,
 				9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */,
-				9C05B441168CEB220054215E /* CopyrightModel.m in Sources */,
 				9C05B442168CEB220054215E /* CustomPropsTests.m in Sources */,
 				9C05B44E168CEB220054215E /* IdPropertyTests.m in Sources */,
 				9C05B44F168CEB220054215E /* JSONTypesModelWithValidation1.m in Sources */,
@@ -779,6 +778,7 @@
 				9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */,
 				9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */,
 				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
+				9C08C1AF1749750100AA8CC9 /* CopyrightModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
