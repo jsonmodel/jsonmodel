@@ -32,6 +32,7 @@ static NSMutableDictionary* classRequiredPropertyNames = nil;
 static NSMutableDictionary* classIndexes = nil;
 
 static NSMutableDictionary* keyMappers = nil;
+static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - JSONModel private interface
 @interface JSONModel()
@@ -168,8 +169,11 @@ static NSMutableDictionary* keyMappers = nil;
     NSMutableSet* requiredProperties = [self __requiredPropertyNames];
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
     
-    //get the key mapper
+    //get the model key mapper
     JSONKeyMapper* keyMapper = keyMappers[__className_];
+    
+    //if no custom mapper, check for a global mapper
+    if (keyMapper==nil && globalKeyMapper!=nil) keyMapper = globalKeyMapper;
     
     //transform the key names, if neccessary
     if (keyMapper) {
@@ -856,6 +860,11 @@ static NSMutableDictionary* keyMappers = nil;
 +(JSONKeyMapper*)keyMapper
 {
     return nil;
+}
+
++(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapperParam
+{
+    globalKeyMapper = globalKeyMapperParam;
 }
 
 @end

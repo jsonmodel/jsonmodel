@@ -216,4 +216,15 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    */
 +(JSONKeyMapper*)keyMapper;
 
+/**
+ * Sets a key mapper which affects ALL the models in your project. Use this if you need only one mapper to work
+ * with your API. For example if you are using the [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase] it is more
+ * likely that you will need to use it with ALL of your models.
+ * NB: Custom key mappers take precendence over the global key mapper.
+ * @param globalKeyMapper a key mapper to apply to all models in your project.
+ *
+ * Lookup JSONKeyMapper docs for more details.
+ */
++(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper;
+
 @end

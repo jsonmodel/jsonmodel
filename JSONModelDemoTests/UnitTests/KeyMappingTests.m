@@ -32,6 +32,13 @@
 
 @end
 
+#pragma mark - global key mapper test model
+@interface GlobalModel: JSONModel
+@property (strong, nonatomic) NSString* name;
+@end
+@implementation GlobalModel
+@end
+
 #pragma mark - KeyMappingTests unit test
 
 @implementation KeyMappingTests
@@ -137,6 +144,29 @@
     
     NSAssert([toDict[@"texts"][@"text1"] isEqualToString:@"TEST!!!"], @"toDict.texts.text1 is not 'TEST!!!'");
     NSAssert([toDict[@"texts"][@"text2"][@"value"] isEqualToString:@"MEST"], @"toDict.texts.text2.value is not 'MEST'");
+}
+
+-(void)testGlobalKeyMapper
+{
+    NSString* jsonString1 = @"{\"name\": \"NAME IN CAPITALS\"}";
+    GlobalModel* global1 = [[GlobalModel alloc] initWithString:jsonString1
+                                                         error:nil];
+    NSAssert(global1, @"model did not initialize with proper json");
+    
+    [JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@{
+        @"name1":@"name"
+     }]];
+    
+    NSString* jsonString2 = @"{\"name1\": \"NAME IN CAPITALS\"}";
+    GlobalModel* global2 = [[GlobalModel alloc] initWithString:jsonString2
+                                                         error:nil];
+    NSAssert(global2, @"model did not initialize with proper json");
+    
+    [JSONModel setGlobalKeyMapper:nil];
+
+    GlobalModel* global3 = [[GlobalModel alloc] initWithString:jsonString2
+                                                         error:nil];
+    NSAssert(global3==nil, @"model supposed to be nil");
 }
 
 @end
