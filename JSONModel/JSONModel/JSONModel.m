@@ -161,7 +161,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
     
     
-    //do initial class setup, retrospec properties
+    //do initial class setup, retrospect properties
     [self __setup__];
     
     //check if all required properties are present
@@ -589,7 +589,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 } else
                     [tempArray addObject: model];
             }
-            return [NSArray arrayWithArray: tempArray];
+            return [tempArray copy];
         }
         
         //check if should export dictionary of dictionaries
