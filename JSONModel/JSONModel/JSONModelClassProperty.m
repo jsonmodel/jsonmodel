@@ -20,7 +20,24 @@
 
 -(NSString*)description
 {
-    return [NSString stringWithFormat:@"%@[@%@]<%@> %@ %@ %@ %@", self.name, self.type?self.type:(self.structName?self.structName:@"primitive"), self.protocol?self.protocol:@"", self.isOptional?@"Optional,":@"",self.isMutable?@"Mutable,":@"",self.convertsOnDemand?@"ConvertOnDemand,":@"",self.isStandardJSONType?@"JSONType":@""];
+    NSMutableArray* properties = [NSMutableArray arrayWithCapacity:4];
+
+    if (self.isOptional) [properties addObject:@"Optional"];
+    if (self.isMutable) [properties addObject:@"Mutable"];
+    if (self.convertsOnDemand) [properties addObject:@"ConvertOnDemand"];
+    if (self.isStandardJSONType) [properties addObject:@"Standard JSON type"];
+    
+    NSString* propertiesString = nil;
+    if (properties.count) {
+        propertiesString = [NSString stringWithFormat:@"(%@)", [properties componentsJoinedByString:@", "]];
+    }
+    
+    return [NSString stringWithFormat:@"@property %@%@ %@ %@",
+            self.type?[NSString stringWithFormat:@"%@*",self.type]:(self.structName?self.structName:@"primitive"),
+            self.protocol?[NSString stringWithFormat:@"<%@>", self.protocol]:@"",
+            self.name,
+            propertiesString
+            ];
 }
 
 @end
