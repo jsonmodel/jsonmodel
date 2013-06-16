@@ -33,11 +33,6 @@ static NSArray* allowedPrimitiveTypes = nil;
 static JSONValueTransformer* valueTransformer = nil;
 
 #pragma mark - model cache
-
-//static NSMutableDictionary* classProperties = nil;
-//static NSMutableDictionary* classRequiredPropertyNames = nil;
-
-//static NSMutableDictionary* keyMappers = nil;
 static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - JSONModel private interface
@@ -67,10 +62,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 @"BOOL", @"float", @"int", @"long", @"double", @"short"
             ];
             
-            //classProperties = [NSMutableDictionary dictionary];
-            //classRequiredPropertyNames = [NSMutableDictionary dictionary];
             valueTransformer = [[JSONValueTransformer alloc] init];
-            //keyMappers = [NSMutableDictionary dictionary];
 		}
     });
 }
@@ -254,8 +246,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
         }
                 
         //check if there's matching property in the model
-        //JSONModelClassProperty* property = classProperties[self.className][key];
-        
         if (property) {
             
             // 0) handle primitives
@@ -542,7 +532,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
     
     //finally store the property index in the static property index
-    //classProperties[self._className_] = propertyIndex;
     objc_setAssociatedObject(
                              self.class,
                              &kClassPropertiesKey,
