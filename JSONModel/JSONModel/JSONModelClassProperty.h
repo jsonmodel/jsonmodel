@@ -50,4 +50,7 @@
 /** If YES - create models on demand for the array members */
 @property (assign, nonatomic) BOOL convertsOnDemand;
 
+/** If YES - the value of this property determines equality to other models */
+@property (assign, nonatomic) BOOL isIndex;
+
 @end

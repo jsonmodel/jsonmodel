@@ -22,7 +22,8 @@
 {
     //build the properties string for the current class property
     NSMutableArray* properties = [NSMutableArray arrayWithCapacity:4];
-
+    
+    if (self.isIndex) [properties addObject:@"Index"];
     if (self.isOptional) [properties addObject:@"Optional"];
     if (self.isMutable) [properties addObject:@"Mutable"];
     if (self.convertsOnDemand) [properties addObject:@"ConvertOnDemand"];
