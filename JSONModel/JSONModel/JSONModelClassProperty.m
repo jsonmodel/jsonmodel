@@ -20,6 +20,7 @@
 
 -(NSString*)description
 {
+    //build the properties string for the current class property
     NSMutableArray* properties = [NSMutableArray arrayWithCapacity:4];
 
     if (self.isOptional) [properties addObject:@"Optional"];
@@ -32,6 +33,7 @@
         propertiesString = [NSString stringWithFormat:@"(%@)", [properties componentsJoinedByString:@", "]];
     }
     
+    //return the name, type and additional properties
     return [NSString stringWithFormat:@"@property %@%@ %@ %@",
             self.type?[NSString stringWithFormat:@"%@*",self.type]:(self.structName?self.structName:@"primitive"),
             self.protocol?[NSString stringWithFormat:@"<%@>", self.protocol]:@"",
