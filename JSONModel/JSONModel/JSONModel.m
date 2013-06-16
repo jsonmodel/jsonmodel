@@ -24,6 +24,7 @@
 static char * kMapperObjectKey;
 static char * kClassPropertiesKey;
 static char * kClassRequiredPropertyNamesKey;
+static char * kIndexPropertyNameKey;
 
 #pragma mark - class static variables
 static NSArray* allowedJSONTypes = nil;
@@ -483,7 +484,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     if ([protocolName isEqualToString:@"Optional"]) {
                         p.isOptional = YES;
                     } else if([protocolName isEqualToString:@"Index"]) {
-                        _indexPropertyName = p.name;
+                        p.isIndex = YES;
+                        objc_setAssociatedObject(
+                                                 self.class,
+                                                 &kIndexPropertyNameKey,
+                                                 p.name,
+                                                 OBJC_ASSOCIATION_RETAIN // This is atomic
+                                                 );
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.convertsOnDemand = YES;
                     } else {
@@ -815,6 +822,12 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - custom comparison methods
+-(NSString*)indexPropertyName
+{
+    //custom getter for an associated object
+    return objc_getAssociatedObject(self.class, &kIndexPropertyNameKey);
+}
+
 -(BOOL)isEqual:(id)object
 {
     //bail early if different classes
