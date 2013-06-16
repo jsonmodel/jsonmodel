@@ -21,10 +21,10 @@
 #import "JSONModelArray.h"
 
 #pragma mark - associated objects names
-static char * kMapperObjectKey;
-static char * kClassPropertiesKey;
-static char * kClassRequiredPropertyNamesKey;
-static char * kIndexPropertyNameKey;
+static const char * kMapperObjectKey;
+static const char * kClassPropertiesKey;
+static const char * kClassRequiredPropertyNamesKey;
+static const char * kIndexPropertyNameKey;
 
 #pragma mark - class static variables
 static NSArray* allowedJSONTypes = nil;
@@ -34,11 +34,6 @@ static JSONValueTransformer* valueTransformer = nil;
 
 #pragma mark - model cache
 static JSONKeyMapper* globalKeyMapper = nil;
-
-#pragma mark - JSONModel private interface
-@interface JSONModel()
-@property (strong, nonatomic, readonly) NSString* _className_;
-@end
 
 #pragma mark - JSONModel implementation
 @implementation JSONModel
@@ -69,9 +64,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 -(void)__setup__
 {
-    //fetch the class name for faster access
-    __className_ = NSStringFromClass([self class]);
-
     //if first instance of this model, generate the property list
     if (!objc_getAssociatedObject(self.class, &kClassPropertiesKey)) {
         [self __restrospectProperties];
@@ -199,7 +191,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         [requiredProperties minusSet:incomingKeys];
 
         //not all required properties are in - invalid input
-        JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self._className_, requiredProperties);
+        JMLog(@"Incoming data was invalid [%@ initWithDictionary:]. Keys missing: %@", self.class, requiredProperties);
         
         if (err) *err = [JSONModelError errorInvalidDataWithMissingKeys:requiredProperties];
         return nil;
@@ -402,9 +394,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSDictionary* classProperties = objc_getAssociatedObject(self.class, &kClassPropertiesKey);
     if (classProperties) return [classProperties allValues];
 
-    //do setup if needed
-    if (!self._className_) [self __setup__];
-    [self __restrospectProperties];
+    //if here, the class needs to retrospect itself
+    [self __setup__];
     
     //return the property list
     classProperties = objc_getAssociatedObject(self.class, &kClassPropertiesKey);
@@ -514,7 +505,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     
                     //type not allowed - programmer mistaked -> exception
                     @throw [NSException exceptionWithName:@"JSONModelProperty type not allowed"
-                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self._className_, p.name]
+                                                   reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self.class, p.name]
                                                  userInfo:nil];
                 }
                 
