@@ -187,7 +187,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * You can define Index property by using the Index protocol:
    * @property (strong, nonatomic) NSString&lt;Index&gt;* id;
    */
-  @property (strong, nonatomic, readonly) NSString* indexPropertyName;
+  -(NSString*)indexPropertyName;
 
   /**
    * Overriden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
