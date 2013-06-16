@@ -29,7 +29,6 @@ static const char * kIndexPropertyNameKey;
 #pragma mark - class static variables
 static NSArray* allowedJSONTypes = nil;
 static NSArray* allowedPrimitiveTypes = nil;
-
 static JSONValueTransformer* valueTransformer = nil;
 
 #pragma mark - model cache
@@ -860,7 +859,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 {
     NSMutableString* text = [NSMutableString stringWithFormat:@"<%@> \n", [self class]];
     
-    for (JSONModelClassProperty *p in [self __properties__]) {        
+    for (JSONModelClassProperty *p in [self __properties__]) {
         id value = [self valueForKey:p.name];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
