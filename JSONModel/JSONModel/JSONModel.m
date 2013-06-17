@@ -239,28 +239,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //check if there's matching property in the model
         if (property) {
             
+            // check for custom setter, than the model doesn't need to do any guessing
+            // how to read the property's value from JSON
+            if ([self __customSetValue:jsonValue forProperty:property]) {
+                //skit to next JSON key
+                continue;
+            };
+            
             // 0) handle primitives
             if (property.type == nil && property.structName==nil) {
                 
-                //TODO: optimize and cache this check
-                NSString* ucfirstName = [property.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                               withString:[[property.name substringToIndex:1] uppercaseString]];
-                NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName,
-                                          [JSONValueTransformer classByResolvingClusterClasses:[jsonValue class]]
-                                          ];
-                SEL customPropertySetter = NSSelectorFromString(selectorName);
-                if ([self respondsToSelector: customPropertySetter]) {
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    //call the custom setter
-                    [self performSelector:customPropertySetter withObject:jsonValue];
-#pragma clang diagnostic pop
-
-                } else {
-                    //generic setter - just copy the value over
-                    [self setValue:jsonValue forKey: property.name];
-                }
+                //generic setter
+                [self setValue:jsonValue forKey: property.name];
 
                 //skip directly to the next key
                 continue;
@@ -634,6 +624,75 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return value;
 }
 
+#pragma mark - custom transformations
+-(BOOL)__customSetValue:(id<NSObject>)value forProperty:(JSONModelClassProperty*)property
+{
+    if (property.setterType == kNotInspected) {
+        //check for a custom property setter method
+        NSString* ucfirstName = [property.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                       withString:[[property.name substringToIndex:1] uppercaseString]];
+        NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName,
+                                  [JSONValueTransformer classByResolvingClusterClasses:[value class]]
+                                  ];
+
+        SEL customPropertySetter = NSSelectorFromString(selectorName);
+        
+        //check if there's a custom selector like this
+        if (![self respondsToSelector: customPropertySetter]) {
+            property.setterType = kNo;
+            return NO;
+        }
+        
+        //cache the custom setter selector
+        property.setterType = kCustom;
+        property.customSetter = customPropertySetter;
+    }
+    
+    if (property.setterType==kCustom) {
+        //call the custom setter
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:property.customSetter withObject:value];
+        #pragma clang diagnostic pop
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(BOOL)__customGetValue:(id<NSObject>*)value forProperty:(JSONModelClassProperty*)property
+{
+    if (property.getterType == kNotInspected) {
+        //check for a custom property getter method
+        NSString* ucfirstName = [property.name stringByReplacingCharactersInRange: NSMakeRange(0,1)
+                                                                       withString: [[property.name substringToIndex:1] uppercaseString]];
+        NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@", ucfirstName];
+        
+        SEL customPropertyGetter = NSSelectorFromString(selectorName);
+        if (![self respondsToSelector: customPropertyGetter]) {
+            property.getterType = kNo;
+            return NO;
+        }
+        
+        property.getterType = kCustom;
+        property.customGetter = customPropertyGetter;
+
+    }
+    
+    if (property.getterType==kCustom) {
+        //call the custom getter
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        
+        *value = [self performSelector:property.customGetter withObject:nil];
+        
+        #pragma clang diagnostic pop
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark - persistance
 -(void)__createDictionariesForKeyPath:(NSString*)keyPath inDictionary:(NSMutableDictionary**)dict
 {
@@ -686,6 +745,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
             [self __createDictionariesForKeyPath:keyPath inDictionary:&tempDictionary];
         }
         
+        //check for custom getter
+        if ([self __customGetValue:&value forProperty:p]) {
+            //custom getter, all done
+            [tempDictionary setValue:value forKey:keyPath];
+            continue;
+        }
+        
         //export nil values as JSON null, so that the structure of the exported data
         //is still valid if it's to be imported as a model again
         if (isNull(value)) {
@@ -713,26 +779,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             // 2) check for standard types OR 2.1) primitives
             if (p.structName==nil && (p.isStandardJSONType || p.type==nil)) {
-                
-                //TODO: optimize and cache this check
-                NSString* ucfirstName = [p.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                               withString:[[p.name substringToIndex:1] uppercaseString]];
-                NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@",
-                                          ucfirstName
-                                          ];
-                SEL customPropertyGetter = NSSelectorFromString(selectorName);
-                if ([self respondsToSelector: customPropertyGetter]) {
-                    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    //call the custom setter
-                    [tempDictionary setValue: [self performSelector:customPropertyGetter withObject:value]
-                                      forKey: keyPath];
-#pragma clang diagnostic pop
-                } else {
-                    //generic get value
-                    [tempDictionary setValue:value forKeyPath: keyPath];
-                }
+
+                //generic get value
+                [tempDictionary setValue:value forKeyPath: keyPath];
                 
                 continue;
             }
