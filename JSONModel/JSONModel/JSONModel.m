@@ -717,16 +717,16 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 //TODO: optimize and cache this check
                 NSString* ucfirstName = [p.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
                                                                                withString:[[p.name substringToIndex:1] uppercaseString]];
-                NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@:",
+                NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@",
                                           ucfirstName
                                           ];
-                SEL customPropertySetter = NSSelectorFromString(selectorName);
-                if ([self respondsToSelector: customPropertySetter]) {
+                SEL customPropertyGetter = NSSelectorFromString(selectorName);
+                if ([self respondsToSelector: customPropertyGetter]) {
                     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     //call the custom setter
-                    [tempDictionary setValue: [self performSelector:customPropertySetter withObject:value]
+                    [tempDictionary setValue: [self performSelector:customPropertyGetter withObject:value]
                                       forKey: keyPath];
 #pragma clang diagnostic pop
                 } else {

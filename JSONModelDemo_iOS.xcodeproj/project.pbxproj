@@ -7,23 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C08C19A174974BC00AA8CC9 /* BuiltInConversionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C17B174974BC00AA8CC9 /* BuiltInConversionsModel.m */; };
-		9C08C19B174974BC00AA8CC9 /* CustomPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C17D174974BC00AA8CC9 /* CustomPropertyModel.m */; };
-		9C08C19C174974BC00AA8CC9 /* GitHubKeyMapRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C17F174974BC00AA8CC9 /* GitHubKeyMapRepoModel.m */; };
-		9C08C19D174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C181174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.m */; };
-		9C08C19E174974BC00AA8CC9 /* GitHubRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C183174974BC00AA8CC9 /* GitHubRepoModel.m */; };
-		9C08C19F174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C185174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.m */; };
-		9C08C1A0174974BC00AA8CC9 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C187174974BC00AA8CC9 /* ImageModel.m */; };
-		9C08C1A1174974BC00AA8CC9 /* JSONTypesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C189174974BC00AA8CC9 /* JSONTypesModel.m */; };
-		9C08C1A2174974BC00AA8CC9 /* NestedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C18B174974BC00AA8CC9 /* NestedModel.m */; };
-		9C08C1A3174974BC00AA8CC9 /* OptionalPropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C18D174974BC00AA8CC9 /* OptionalPropModel.m */; };
-		9C08C1A4174974BC00AA8CC9 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C18F174974BC00AA8CC9 /* PostModel.m */; };
-		9C08C1A5174974BC00AA8CC9 /* PostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C191174974BC00AA8CC9 /* PostsModel.m */; };
-		9C08C1A6174974BC00AA8CC9 /* PrimitivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C193174974BC00AA8CC9 /* PrimitivesModel.m */; };
-		9C08C1A7174974BC00AA8CC9 /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C195174974BC00AA8CC9 /* ReposModel.m */; };
-		9C08C1A8174974BC00AA8CC9 /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C197174974BC00AA8CC9 /* RpcRequestModel.m */; };
-		9C08C1A9174974BC00AA8CC9 /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C199174974BC00AA8CC9 /* SpecialPropertyModel.m */; };
-		9C08C1AC174974DE00AA8CC9 /* CopyrightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C08C1AB174974DE00AA8CC9 /* CopyrightModel.m */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
 		9C66DFA8168CEF420015CCDF /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DF60168CEF420015CCDF /* ArrayTests.m */; };
@@ -128,6 +111,24 @@
 		9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */; };
 		9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */; };
 		9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */; };
+		9CFDD0CA176E977C007B7DFA /* BuiltInConversionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A7176E977C007B7DFA /* BuiltInConversionsModel.m */; };
+		9CFDD0CB176E977C007B7DFA /* CopyrightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A9176E977C007B7DFA /* CopyrightModel.m */; };
+		9CFDD0CC176E977C007B7DFA /* CustomPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0AB176E977C007B7DFA /* CustomPropertyModel.m */; };
+		9CFDD0CD176E977C007B7DFA /* EnumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0AD176E977C007B7DFA /* EnumModel.m */; };
+		9CFDD0CE176E977C007B7DFA /* GitHubKeyMapRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0AF176E977C007B7DFA /* GitHubKeyMapRepoModel.m */; };
+		9CFDD0CF176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0B1176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m */; };
+		9CFDD0D0176E977C007B7DFA /* GitHubRepoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0B3176E977C007B7DFA /* GitHubRepoModel.m */; };
+		9CFDD0D1176E977C007B7DFA /* GitHubRepoModelForUSMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0B5176E977C007B7DFA /* GitHubRepoModelForUSMapper.m */; };
+		9CFDD0D2176E977C007B7DFA /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0B7176E977C007B7DFA /* ImageModel.m */; };
+		9CFDD0D3176E977C007B7DFA /* JSONTypesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0B9176E977C007B7DFA /* JSONTypesModel.m */; };
+		9CFDD0D4176E977C007B7DFA /* NestedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0BB176E977C007B7DFA /* NestedModel.m */; };
+		9CFDD0D5176E977C007B7DFA /* OptionalPropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0BD176E977C007B7DFA /* OptionalPropModel.m */; };
+		9CFDD0D6176E977C007B7DFA /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0BF176E977C007B7DFA /* PostModel.m */; };
+		9CFDD0D7176E977C007B7DFA /* PostsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C1176E977C007B7DFA /* PostsModel.m */; };
+		9CFDD0D8176E977C007B7DFA /* PrimitivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C3176E977C007B7DFA /* PrimitivesModel.m */; };
+		9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C5176E977C007B7DFA /* ReposModel.m */; };
+		9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */; };
+		9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,40 +142,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9C08C17A174974BC00AA8CC9 /* BuiltInConversionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsModel.h; sourceTree = "<group>"; };
-		9C08C17B174974BC00AA8CC9 /* BuiltInConversionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsModel.m; sourceTree = "<group>"; };
-		9C08C17C174974BC00AA8CC9 /* CustomPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPropertyModel.h; sourceTree = "<group>"; };
-		9C08C17D174974BC00AA8CC9 /* CustomPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPropertyModel.m; sourceTree = "<group>"; };
-		9C08C17E174974BC00AA8CC9 /* GitHubKeyMapRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubKeyMapRepoModel.h; sourceTree = "<group>"; };
-		9C08C17F174974BC00AA8CC9 /* GitHubKeyMapRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubKeyMapRepoModel.m; sourceTree = "<group>"; };
-		9C08C180174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubKeyMapRepoModelDict.h; sourceTree = "<group>"; };
-		9C08C181174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubKeyMapRepoModelDict.m; sourceTree = "<group>"; };
-		9C08C182174974BC00AA8CC9 /* GitHubRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRepoModel.h; sourceTree = "<group>"; };
-		9C08C183174974BC00AA8CC9 /* GitHubRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubRepoModel.m; sourceTree = "<group>"; };
-		9C08C184174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRepoModelForUSMapper.h; sourceTree = "<group>"; };
-		9C08C185174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubRepoModelForUSMapper.m; sourceTree = "<group>"; };
-		9C08C186174974BC00AA8CC9 /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
-		9C08C187174974BC00AA8CC9 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
-		9C08C188174974BC00AA8CC9 /* JSONTypesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesModel.h; sourceTree = "<group>"; };
-		9C08C189174974BC00AA8CC9 /* JSONTypesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesModel.m; sourceTree = "<group>"; };
-		9C08C18A174974BC00AA8CC9 /* NestedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedModel.h; sourceTree = "<group>"; };
-		9C08C18B174974BC00AA8CC9 /* NestedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedModel.m; sourceTree = "<group>"; };
-		9C08C18C174974BC00AA8CC9 /* OptionalPropModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalPropModel.h; sourceTree = "<group>"; };
-		9C08C18D174974BC00AA8CC9 /* OptionalPropModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalPropModel.m; sourceTree = "<group>"; };
-		9C08C18E174974BC00AA8CC9 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
-		9C08C18F174974BC00AA8CC9 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
-		9C08C190174974BC00AA8CC9 /* PostsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsModel.h; sourceTree = "<group>"; };
-		9C08C191174974BC00AA8CC9 /* PostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsModel.m; sourceTree = "<group>"; };
-		9C08C192174974BC00AA8CC9 /* PrimitivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitivesModel.h; sourceTree = "<group>"; };
-		9C08C193174974BC00AA8CC9 /* PrimitivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitivesModel.m; sourceTree = "<group>"; };
-		9C08C194174974BC00AA8CC9 /* ReposModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReposModel.h; sourceTree = "<group>"; };
-		9C08C195174974BC00AA8CC9 /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposModel.m; sourceTree = "<group>"; };
-		9C08C196174974BC00AA8CC9 /* RpcRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RpcRequestModel.h; sourceTree = "<group>"; };
-		9C08C197174974BC00AA8CC9 /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
-		9C08C198174974BC00AA8CC9 /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
-		9C08C199174974BC00AA8CC9 /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
-		9C08C1AA174974DE00AA8CC9 /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
-		9C08C1AB174974DE00AA8CC9 /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
 		9C0D023D166E6BBF001EA645 /* KivaViewControllerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewControllerNetworking.h; sourceTree = "<group>"; };
 		9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaViewControllerNetworking.m; sourceTree = "<group>"; };
 		9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KivaViewControllerNetworking.xib; sourceTree = "<group>"; };
@@ -308,6 +275,42 @@
 		9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestSemaphor.m; sourceTree = "<group>"; };
 		9CD425791702002900A42AA1 /* MockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockNSURLConnection.h; sourceTree = "<group>"; };
 		9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockNSURLConnection.m; sourceTree = "<group>"; };
+		9CFDD0A6176E977C007B7DFA /* BuiltInConversionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsModel.h; sourceTree = "<group>"; };
+		9CFDD0A7176E977C007B7DFA /* BuiltInConversionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsModel.m; sourceTree = "<group>"; };
+		9CFDD0A8176E977C007B7DFA /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
+		9CFDD0A9176E977C007B7DFA /* CopyrightModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightModel.m; sourceTree = "<group>"; };
+		9CFDD0AA176E977C007B7DFA /* CustomPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPropertyModel.h; sourceTree = "<group>"; };
+		9CFDD0AB176E977C007B7DFA /* CustomPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPropertyModel.m; sourceTree = "<group>"; };
+		9CFDD0AC176E977C007B7DFA /* EnumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumModel.h; sourceTree = "<group>"; };
+		9CFDD0AD176E977C007B7DFA /* EnumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumModel.m; sourceTree = "<group>"; };
+		9CFDD0AE176E977C007B7DFA /* GitHubKeyMapRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubKeyMapRepoModel.h; sourceTree = "<group>"; };
+		9CFDD0AF176E977C007B7DFA /* GitHubKeyMapRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubKeyMapRepoModel.m; sourceTree = "<group>"; };
+		9CFDD0B0176E977C007B7DFA /* GitHubKeyMapRepoModelDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubKeyMapRepoModelDict.h; sourceTree = "<group>"; };
+		9CFDD0B1176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubKeyMapRepoModelDict.m; sourceTree = "<group>"; };
+		9CFDD0B2176E977C007B7DFA /* GitHubRepoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRepoModel.h; sourceTree = "<group>"; };
+		9CFDD0B3176E977C007B7DFA /* GitHubRepoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubRepoModel.m; sourceTree = "<group>"; };
+		9CFDD0B4176E977C007B7DFA /* GitHubRepoModelForUSMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRepoModelForUSMapper.h; sourceTree = "<group>"; };
+		9CFDD0B5176E977C007B7DFA /* GitHubRepoModelForUSMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubRepoModelForUSMapper.m; sourceTree = "<group>"; };
+		9CFDD0B6176E977C007B7DFA /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
+		9CFDD0B7176E977C007B7DFA /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		9CFDD0B8176E977C007B7DFA /* JSONTypesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesModel.h; sourceTree = "<group>"; };
+		9CFDD0B9176E977C007B7DFA /* JSONTypesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesModel.m; sourceTree = "<group>"; };
+		9CFDD0BA176E977C007B7DFA /* NestedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedModel.h; sourceTree = "<group>"; };
+		9CFDD0BB176E977C007B7DFA /* NestedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedModel.m; sourceTree = "<group>"; };
+		9CFDD0BC176E977C007B7DFA /* OptionalPropModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalPropModel.h; sourceTree = "<group>"; };
+		9CFDD0BD176E977C007B7DFA /* OptionalPropModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalPropModel.m; sourceTree = "<group>"; };
+		9CFDD0BE176E977C007B7DFA /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
+		9CFDD0BF176E977C007B7DFA /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
+		9CFDD0C0176E977C007B7DFA /* PostsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsModel.h; sourceTree = "<group>"; };
+		9CFDD0C1176E977C007B7DFA /* PostsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsModel.m; sourceTree = "<group>"; };
+		9CFDD0C2176E977C007B7DFA /* PrimitivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitivesModel.h; sourceTree = "<group>"; };
+		9CFDD0C3176E977C007B7DFA /* PrimitivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitivesModel.m; sourceTree = "<group>"; };
+		9CFDD0C4176E977C007B7DFA /* ReposModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReposModel.h; sourceTree = "<group>"; };
+		9CFDD0C5176E977C007B7DFA /* ReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposModel.m; sourceTree = "<group>"; };
+		9CFDD0C6176E977C007B7DFA /* RpcRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RpcRequestModel.h; sourceTree = "<group>"; };
+		9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
+		9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
+		9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +362,7 @@
 		9C66DF5E168CEF420015CCDF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				9CFDD0A5176E977B007B7DFA /* TestModels */,
 				9C66DF5F168CEF420015CCDF /* ArrayTests.h */,
 				9C66DF60168CEF420015CCDF /* ArrayTests.m */,
 				9C66DF61168CEF420015CCDF /* BuiltInConversionsTests.h */,
@@ -389,7 +393,6 @@
 				9C66DF88168CEF420015CCDF /* SimpleDataErrorTests.m */,
 				9CB1EE40172C1136004BAA07 /* SpecialPropertyNameTests.h */,
 				9CB1EE41172C1136004BAA07 /* SpecialPropertyNameTests.m */,
-				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DFA6168CEF420015CCDF /* ValidationTestSuite.h */,
 				9C66DFA7168CEF420015CCDF /* ValidationTestSuite.m */,
 				9CD425721701FDE500A42AA1 /* HTTPClientSuite.h */,
@@ -420,48 +423,6 @@
 			);
 			name = DataFiles;
 			path = UnitTests/DataFiles;
-			sourceTree = "<group>";
-		};
-		9C66DF89168CEF420015CCDF /* TestModels */ = {
-			isa = PBXGroup;
-			children = (
-				9C08C17A174974BC00AA8CC9 /* BuiltInConversionsModel.h */,
-				9C08C17B174974BC00AA8CC9 /* BuiltInConversionsModel.m */,
-				9C08C17C174974BC00AA8CC9 /* CustomPropertyModel.h */,
-				9C08C17D174974BC00AA8CC9 /* CustomPropertyModel.m */,
-				9C08C17E174974BC00AA8CC9 /* GitHubKeyMapRepoModel.h */,
-				9C08C17F174974BC00AA8CC9 /* GitHubKeyMapRepoModel.m */,
-				9C08C180174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.h */,
-				9C08C181174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.m */,
-				9C08C182174974BC00AA8CC9 /* GitHubRepoModel.h */,
-				9C08C183174974BC00AA8CC9 /* GitHubRepoModel.m */,
-				9C08C184174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.h */,
-				9C08C185174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.m */,
-				9C08C186174974BC00AA8CC9 /* ImageModel.h */,
-				9C08C187174974BC00AA8CC9 /* ImageModel.m */,
-				9C08C188174974BC00AA8CC9 /* JSONTypesModel.h */,
-				9C08C189174974BC00AA8CC9 /* JSONTypesModel.m */,
-				9C08C18A174974BC00AA8CC9 /* NestedModel.h */,
-				9C08C18B174974BC00AA8CC9 /* NestedModel.m */,
-				9C08C18C174974BC00AA8CC9 /* OptionalPropModel.h */,
-				9C08C18D174974BC00AA8CC9 /* OptionalPropModel.m */,
-				9C08C18E174974BC00AA8CC9 /* PostModel.h */,
-				9C08C18F174974BC00AA8CC9 /* PostModel.m */,
-				9C08C190174974BC00AA8CC9 /* PostsModel.h */,
-				9C08C191174974BC00AA8CC9 /* PostsModel.m */,
-				9C08C192174974BC00AA8CC9 /* PrimitivesModel.h */,
-				9C08C193174974BC00AA8CC9 /* PrimitivesModel.m */,
-				9C08C194174974BC00AA8CC9 /* ReposModel.h */,
-				9C08C195174974BC00AA8CC9 /* ReposModel.m */,
-				9C08C196174974BC00AA8CC9 /* RpcRequestModel.h */,
-				9C08C197174974BC00AA8CC9 /* RpcRequestModel.m */,
-				9C08C198174974BC00AA8CC9 /* SpecialPropertyModel.h */,
-				9C08C199174974BC00AA8CC9 /* SpecialPropertyModel.m */,
-				9C08C1AA174974DE00AA8CC9 /* CopyrightModel.h */,
-				9C08C1AB174974DE00AA8CC9 /* CopyrightModel.m */,
-			);
-			name = TestModels;
-			path = UnitTests/TestModels;
 			sourceTree = "<group>";
 		};
 		9C66E00A168CF0AA0015CCDF /* JSONModel */ = {
@@ -711,7 +672,6 @@
 			children = (
 				9CD4257C1702003600A42AA1 /* Class */,
 				9C66DF67168CEF420015CCDF /* DataFiles */,
-				9C66DF89168CEF420015CCDF /* TestModels */,
 				9C66DF5E168CEF420015CCDF /* UnitTests */,
 				9C05B2BB168CE9DE0054215E /* Supporting Files */,
 			);
@@ -727,6 +687,49 @@
 				9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */,
 			);
 			name = Class;
+			sourceTree = "<group>";
+		};
+		9CFDD0A5176E977B007B7DFA /* TestModels */ = {
+			isa = PBXGroup;
+			children = (
+				9CFDD0A6176E977C007B7DFA /* BuiltInConversionsModel.h */,
+				9CFDD0A7176E977C007B7DFA /* BuiltInConversionsModel.m */,
+				9CFDD0A8176E977C007B7DFA /* CopyrightModel.h */,
+				9CFDD0A9176E977C007B7DFA /* CopyrightModel.m */,
+				9CFDD0AA176E977C007B7DFA /* CustomPropertyModel.h */,
+				9CFDD0AB176E977C007B7DFA /* CustomPropertyModel.m */,
+				9CFDD0AC176E977C007B7DFA /* EnumModel.h */,
+				9CFDD0AD176E977C007B7DFA /* EnumModel.m */,
+				9CFDD0AE176E977C007B7DFA /* GitHubKeyMapRepoModel.h */,
+				9CFDD0AF176E977C007B7DFA /* GitHubKeyMapRepoModel.m */,
+				9CFDD0B0176E977C007B7DFA /* GitHubKeyMapRepoModelDict.h */,
+				9CFDD0B1176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m */,
+				9CFDD0B2176E977C007B7DFA /* GitHubRepoModel.h */,
+				9CFDD0B3176E977C007B7DFA /* GitHubRepoModel.m */,
+				9CFDD0B4176E977C007B7DFA /* GitHubRepoModelForUSMapper.h */,
+				9CFDD0B5176E977C007B7DFA /* GitHubRepoModelForUSMapper.m */,
+				9CFDD0B6176E977C007B7DFA /* ImageModel.h */,
+				9CFDD0B7176E977C007B7DFA /* ImageModel.m */,
+				9CFDD0B8176E977C007B7DFA /* JSONTypesModel.h */,
+				9CFDD0B9176E977C007B7DFA /* JSONTypesModel.m */,
+				9CFDD0BA176E977C007B7DFA /* NestedModel.h */,
+				9CFDD0BB176E977C007B7DFA /* NestedModel.m */,
+				9CFDD0BC176E977C007B7DFA /* OptionalPropModel.h */,
+				9CFDD0BD176E977C007B7DFA /* OptionalPropModel.m */,
+				9CFDD0BE176E977C007B7DFA /* PostModel.h */,
+				9CFDD0BF176E977C007B7DFA /* PostModel.m */,
+				9CFDD0C0176E977C007B7DFA /* PostsModel.h */,
+				9CFDD0C1176E977C007B7DFA /* PostsModel.m */,
+				9CFDD0C2176E977C007B7DFA /* PrimitivesModel.h */,
+				9CFDD0C3176E977C007B7DFA /* PrimitivesModel.m */,
+				9CFDD0C4176E977C007B7DFA /* ReposModel.h */,
+				9CFDD0C5176E977C007B7DFA /* ReposModel.m */,
+				9CFDD0C6176E977C007B7DFA /* RpcRequestModel.h */,
+				9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */,
+				9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */,
+				9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */,
+			);
+			path = TestModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -935,23 +938,24 @@
 				9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */,
 				9C735D64170B716300FF96F5 /* JSONAPITests.m in Sources */,
 				9C735D70170C007900FF96F5 /* InitFromWebTests.m in Sources */,
-				9C08C19A174974BC00AA8CC9 /* BuiltInConversionsModel.m in Sources */,
-				9C08C19B174974BC00AA8CC9 /* CustomPropertyModel.m in Sources */,
-				9C08C19C174974BC00AA8CC9 /* GitHubKeyMapRepoModel.m in Sources */,
-				9C08C19D174974BC00AA8CC9 /* GitHubKeyMapRepoModelDict.m in Sources */,
-				9C08C19E174974BC00AA8CC9 /* GitHubRepoModel.m in Sources */,
-				9C08C19F174974BC00AA8CC9 /* GitHubRepoModelForUSMapper.m in Sources */,
-				9C08C1A0174974BC00AA8CC9 /* ImageModel.m in Sources */,
-				9C08C1A1174974BC00AA8CC9 /* JSONTypesModel.m in Sources */,
-				9C08C1A2174974BC00AA8CC9 /* NestedModel.m in Sources */,
-				9C08C1A3174974BC00AA8CC9 /* OptionalPropModel.m in Sources */,
-				9C08C1A4174974BC00AA8CC9 /* PostModel.m in Sources */,
-				9C08C1A5174974BC00AA8CC9 /* PostsModel.m in Sources */,
-				9C08C1A6174974BC00AA8CC9 /* PrimitivesModel.m in Sources */,
-				9C08C1A7174974BC00AA8CC9 /* ReposModel.m in Sources */,
-				9C08C1A8174974BC00AA8CC9 /* RpcRequestModel.m in Sources */,
-				9C08C1A9174974BC00AA8CC9 /* SpecialPropertyModel.m in Sources */,
-				9C08C1AC174974DE00AA8CC9 /* CopyrightModel.m in Sources */,
+				9CFDD0CA176E977C007B7DFA /* BuiltInConversionsModel.m in Sources */,
+				9CFDD0CB176E977C007B7DFA /* CopyrightModel.m in Sources */,
+				9CFDD0CC176E977C007B7DFA /* CustomPropertyModel.m in Sources */,
+				9CFDD0CD176E977C007B7DFA /* EnumModel.m in Sources */,
+				9CFDD0CE176E977C007B7DFA /* GitHubKeyMapRepoModel.m in Sources */,
+				9CFDD0CF176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m in Sources */,
+				9CFDD0D0176E977C007B7DFA /* GitHubRepoModel.m in Sources */,
+				9CFDD0D1176E977C007B7DFA /* GitHubRepoModelForUSMapper.m in Sources */,
+				9CFDD0D2176E977C007B7DFA /* ImageModel.m in Sources */,
+				9CFDD0D3176E977C007B7DFA /* JSONTypesModel.m in Sources */,
+				9CFDD0D4176E977C007B7DFA /* NestedModel.m in Sources */,
+				9CFDD0D5176E977C007B7DFA /* OptionalPropModel.m in Sources */,
+				9CFDD0D6176E977C007B7DFA /* PostModel.m in Sources */,
+				9CFDD0D7176E977C007B7DFA /* PostsModel.m in Sources */,
+				9CFDD0D8176E977C007B7DFA /* PrimitivesModel.m in Sources */,
+				9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */,
+				9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */,
+				9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
