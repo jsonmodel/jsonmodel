@@ -29,8 +29,8 @@
     if (self.convertsOnDemand) [properties addObject:@"ConvertOnDemand"];
     if (self.isStandardJSONType) [properties addObject:@"Standard JSON type"];
     
-    NSString* propertiesString = nil;
-    if (properties.count) {
+    NSString* propertiesString = @"";
+    if (properties.count>0) {
         propertiesString = [NSString stringWithFormat:@"(%@)", [properties componentsJoinedByString:@", "]];
     }
     
