@@ -28,6 +28,8 @@
     if (self.isMutable) [properties addObject:@"Mutable"];
     if (self.convertsOnDemand) [properties addObject:@"ConvertOnDemand"];
     if (self.isStandardJSONType) [properties addObject:@"Standard JSON type"];
+    if (self.customSetter) [properties addObject:[NSString stringWithFormat: @"Setter = %@", NSStringFromSelector(self.customSetter)]];
+    if (self.customGetter) [properties addObject:[NSString stringWithFormat: @"Getter = %@", NSStringFromSelector(self.customGetter)]];
     
     NSString* propertiesString = @"";
     if (properties.count>0) {

@@ -16,6 +16,15 @@
 
 #import <Foundation/Foundation.h>
 
+enum kCustomizationTypes {
+    kNotInspected = 0,
+    kCustom,
+    kNo
+    };
+
+typedef enum kCustomizationTypes PropertySetterType;
+typedef enum kCustomizationTypes PropertyGetterType;
+
 /**
  * **You do not need to instantiate this class yourself.** This class is used internally by JSONModel
  * to inspect the declared properties of your model class.
@@ -52,5 +61,17 @@
 
 /** If YES - the value of this property determines equality to other models */
 @property (assign, nonatomic) BOOL isIndex;
+
+/** The status of property getter introspection in a model */
+@property (assign, nonatomic) PropertyGetterType getterType;
+
+/** a custom getter for this property, found in the owning model */
+@property (assign, nonatomic) SEL customGetter;
+
+/** The status of property setter introspection in a model */
+@property (assign, nonatomic) PropertySetterType setterType;
+
+/** a custom setter for this property, found in the owning model */
+@property (assign, nonatomic) SEL customSetter;
 
 @end
