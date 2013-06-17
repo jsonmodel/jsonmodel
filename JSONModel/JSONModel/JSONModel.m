@@ -242,9 +242,26 @@ static JSONKeyMapper* globalKeyMapper = nil;
             // 0) handle primitives
             if (property.type == nil && property.structName==nil) {
                 
-                //just copy the value
-                [self setValue:jsonValue forKey: property.name];
-                
+                //TODO: optimize and cache this check
+                NSString* ucfirstName = [property.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                               withString:[[property.name substringToIndex:1] uppercaseString]];
+                NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName,
+                                          [JSONValueTransformer classByResolvingClusterClasses:[jsonValue class]]
+                                          ];
+                SEL customPropertySetter = NSSelectorFromString(selectorName);
+                if ([self respondsToSelector: customPropertySetter]) {
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    //call the custom setter
+                    [self performSelector:customPropertySetter withObject:jsonValue];
+#pragma clang diagnostic pop
+
+                } else {
+                    //generic setter - just copy the value over
+                    [self setValue:jsonValue forKey: property.name];
+                }
+
                 //skip directly to the next key
                 continue;
             }
@@ -696,7 +713,27 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             // 2) check for standard types OR 2.1) primitives
             if (p.structName==nil && (p.isStandardJSONType || p.type==nil)) {
-                [tempDictionary setValue:value forKeyPath: keyPath];
+                
+                //TODO: optimize and cache this check
+                NSString* ucfirstName = [p.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                               withString:[[p.name substringToIndex:1] uppercaseString]];
+                NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@:",
+                                          ucfirstName
+                                          ];
+                SEL customPropertySetter = NSSelectorFromString(selectorName);
+                if ([self respondsToSelector: customPropertySetter]) {
+                    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    //call the custom setter
+                    [tempDictionary setValue: [self performSelector:customPropertySetter withObject:value]
+                                      forKey: keyPath];
+#pragma clang diagnostic pop
+                } else {
+                    //generic get value
+                    [tempDictionary setValue:value forKeyPath: keyPath];
+                }
+                
                 continue;
             }
             
@@ -727,16 +764,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                                  userInfo:nil];
                     return nil;
                 }
-                
-                
-                
             }
-            
         }
-        
     }
     
-    return [NSDictionary dictionaryWithDictionary: tempDictionary];
+    return [tempDictionary copy];
 }
 
 //exports model to a dictionary and then to a JSON string
