@@ -338,5 +338,37 @@
     [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
 }
 
+//https://github.com/icanzilb/JSONModel/issues/58
+-(void)testNumberQueryParams
+{
+    NSString* jsonURLString = @"http://localhost/test.json?testGetJSONFromURLWithParamsNumber";
+    NSString* semaphorKey = @"testGetJSONFromURLWithParamsNumber";
+    
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL URLWithString:jsonURLString]
+                                                              statusCode:200
+                                                             HTTPVersion:@"1.1"
+                                                            headerFields:nil];
+    
+    [NSURLConnection setNextResponse:response data:[jsonContents dataUsingEncoding:NSUTF8StringEncoding] error:nil];
+    
+    [JSONHTTPClient getJSONFromURLWithString:jsonURLString
+                                      params:@{@"key1":@100.56,@"key2":@"test"}
+                                  completion:^(NSDictionary *json, JSONModelError *err) {
+                                      
+                                      //check block parameters
+                                      NSAssert(json, @"getJSONFromURLWithString:completion: returned nil, object expected");
+                                      NSAssert(!err, @"getJSONFromURLWithString:completion: returned error, nil error expected");
+                                      
+                                      //check the request
+                                      NSURLRequest* request = [NSURLConnection lastRequest];
+                                      NSAssert([request.URL.absoluteString isEqualToString: @"http://localhost/test.json?testGetJSONFromURLWithParamsNumber&key1=100.56&key2=test"], @"request.URL did not match the request URL");
+                                      
+                                      //release the semaphore lock
+                                      [[MTTestSemaphor semaphore] lift: semaphorKey];
+                                  }];
+    
+    [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
+
+}
 
 @end
