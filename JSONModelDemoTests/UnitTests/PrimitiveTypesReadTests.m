@@ -47,7 +47,7 @@
 
 -(void)testEnumerationTypes
 {
-    NSString* jsonContents = @"{\"statusString\":\"open\"}";
+    NSString* jsonContents = @"{\"statusString\":\"open\",\"nsStatus\":\"closed\",\"nsuStatus\":\"open\"}";
     
     NSError* err1;
     EnumModel* p1 = [[EnumModel alloc] initWithString: jsonContents error:&err1];
@@ -55,7 +55,10 @@
     
     NSAssert(p1, @"Could not read input json text");
     
-    NSAssert(p1.status==StatusOpen, @"Status was not StatusOpen");
+    NSAssert(p1.status==StatusOpen, @"Status is not StatusOpen");
+    NSAssert(p1.nsStatus==NSE_StatusClosed, @"nsStatus is not NSE_StatusClosed");
+    NSAssert(p1.nsuStatus==NSEU_StatusOpen, @"nsuStatus is not NSEU_StatusOpen");
+
     NSAssert([[p1 toJSONString] isEqualToString: jsonContents], @"Exporting enum value didn't work out");
     
 }

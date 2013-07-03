@@ -14,9 +14,30 @@
 {
     _status = [statusString isEqualToString:@"open"]?StatusOpen:StatusClosed;
 }
+
+-(void)setNsStatusWithNSString:(NSString*)statusString
+{
+    _nsStatus = [statusString isEqualToString:@"open"]?NSE_StatusOpen:NSE_StatusClosed;
+}
+
+-(void)setNsuStatusWithNSString:(NSString*)statusString
+{
+    _nsuStatus = [statusString isEqualToString:@"open"]?NSEU_StatusOpen:NSEU_StatusClosed;
+}
+
 -(id)JSONObjectForStatus
 {
     return (self.status==StatusOpen)?@"open":@"closed";
+}
+
+-(id)JSONObjectForNsStatus
+{
+    return (self.nsStatus==NSE_StatusOpen)?@"open":@"closed";
+}
+
+-(id)JSONObjectForNsuStatus
+{
+    return (self.nsuStatus==NSEU_StatusOpen)?@"open":@"closed";
 }
 
 +(JSONKeyMapper*)keyMapper
