@@ -44,7 +44,13 @@
     //check if the header is sent along the http request
     NSString* jsonURLString = @"http://localhost/test.json?testRequestHeaders";
     NSString* semaphorKey = @"testRequestHeaders";
-    
+
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL URLWithString:jsonURLString]
+                                                              statusCode:200
+                                                             HTTPVersion:@"1.1"
+                                                            headerFields:nil];
+    [NSURLConnection setNextResponse:response data:[@"{}" dataUsingEncoding:NSUTF8StringEncoding] error:nil];
+
     [JSONHTTPClient postJSONFromURLWithString:jsonURLString
                                        params:nil
                                    completion:^(NSDictionary *json, JSONModelError *err) {
@@ -65,7 +71,13 @@
     NSString* ctype = @"text/plain";
     
     [JSONHTTPClient setRequestContentType: ctype];
-    
+
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL URLWithString:jsonURLString]
+                                                              statusCode:200
+                                                             HTTPVersion:@"1.1"
+                                                            headerFields:nil];
+    [NSURLConnection setNextResponse:response data:[@"{}" dataUsingEncoding:NSUTF8StringEncoding] error:nil];
+
     [JSONHTTPClient postJSONFromURLWithString:jsonURLString
                                        params:nil
                                    completion:^(NSDictionary *json, JSONModelError *err) {
@@ -86,6 +98,12 @@
     NSString* semaphorKey = @"testCachingPolicy";
     
     [JSONHTTPClient setCachingPolicy:NSURLCacheStorageAllowed];
+
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL URLWithString:jsonURLString]
+                                                              statusCode:200
+                                                             HTTPVersion:@"1.1"
+                                                            headerFields:nil];
+    [NSURLConnection setNextResponse:response data:[@"{}" dataUsingEncoding:NSUTF8StringEncoding] error:nil];
     
     [JSONHTTPClient postJSONFromURLWithString:jsonURLString
                                        params:nil
@@ -109,6 +127,12 @@
     //check if the header is sent along the http request
     NSString* jsonURLString = @"http://localhost/test.json?testRequestTimeout";
     NSString* semaphorKey = @"testRequestTimeout";
+    
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL URLWithString:jsonURLString]
+                                                              statusCode:200
+                                                             HTTPVersion:@"1.1"
+                                                            headerFields:nil];
+    [NSURLConnection setNextResponse:response data:[@"{}" dataUsingEncoding:NSUTF8StringEncoding] error:nil];
     
     //set the client timeout for 5 seconds
     [JSONHTTPClient setTimeoutInSeconds:2];
@@ -366,6 +390,37 @@
                                       //release the semaphore lock
                                       [[MTTestSemaphor semaphore] lift: semaphorKey];
                                   }];
+    
+    [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
+
+}
+
+//https://github.com/icanzilb/JSONModel/issues/59
+-(void)testHttpStatusCodes
+{
+    //check if the header is sent along the http request
+    NSString* jsonURLString = @"http://localhost/test.json?case=testHttpStatuses";
+    NSString* semaphorKey = @"testHttpStatuses";
+    
+    //set a custom http error status code
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL URLWithString:jsonURLString]
+                                                              statusCode:601
+                                                             HTTPVersion:@"1.1"
+                                                            headerFields:nil];
+    [NSURLConnection setNextResponse:response data:[@"{\"name\":123}" dataUsingEncoding:NSUTF8StringEncoding] error:nil];
+    
+    [JSONHTTPClient postJSONFromURLWithString:jsonURLString
+                                       params:nil
+                                   completion:^(NSDictionary *json, JSONModelError *err) {
+                                       
+                                       NSAssert(json, @"JSON content not fetched");
+                                       
+                                       NSAssert(err, @"No JSONModel error for HTTP response status 601");
+                                       NSAssert(err.httpResponse, @"No HTTP response along a bad response JSONModel error");
+                                       NSAssert(err.httpResponse.statusCode==601, @"The HTTP status code is not the set value of 601");
+                                       
+                                       [[MTTestSemaphor semaphore] lift: semaphorKey];
+                                   }];
     
     [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
 

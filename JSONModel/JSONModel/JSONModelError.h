@@ -17,7 +17,7 @@
 #import <Foundation/Foundation.h>
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-enum kJSONModelErrorTypes
+typedef NS_ENUM(int, kJSONModelErrorTypes)
 {
     kJSONModelErrorInvalidData = 1,
     kJSONModelErrorBadResponse = 2,
@@ -44,6 +44,8 @@ extern NSString* const kJSONModelMissingKeys;
  * the common JSONModel errors
  */
 @interface JSONModelError : NSError
+
+@property (strong, nonatomic) NSHTTPURLResponse* httpResponse;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1

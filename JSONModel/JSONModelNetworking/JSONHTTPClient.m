@@ -143,7 +143,7 @@ static NSString* requestContentType = nil;
 }
 
 #pragma mark - networking worker methods
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers etag:(NSString**)etag error:(NSError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
 {
     //turn on network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
@@ -193,19 +193,37 @@ static NSString* requestContentType = nil;
 	NSData *responseData = [NSURLConnection sendSynchronousRequest: request
                                                  returningResponse: &response
                                                              error: err];
+    //convert an NSError to a JSONModelError
+    if (*err != nil) {
+        NSError* errObj = *err;
+        *err = [JSONModelError errorWithDomain:errObj.domain code:errObj.code userInfo:errObj.userInfo];
+    }
+    
     //turn off network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
-    //check for successful status
-	if (response.statusCode >= 200 && response.statusCode < 300) {
-        return responseData;
-    } else {
-        //error, for now just return nil
-        return nil;
+    //if not OK status set the err to a JSONModelError instance
+	if (response.statusCode >= 300 || response.statusCode < 200) {
+        //create a new error
+        if (*err==nil) *err = [JSONModelError errorBadResponse];
     }
+    
+    //if there was an error, include the HTTP response and return
+    if (*err) {
+        //assign the response to the JSONModel instance
+        [*err setHttpResponse: [response copy]];
+
+        //empty respone, return nil instead
+        if ([responseData length]<1) {
+            return nil;
+        }
+    }
+    
+    //return the data fetched from web
+    return responseData;
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers etag:(NSString**)etag error:(NSError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
 {
     //create the request body
     NSMutableString* paramsString = nil;
@@ -283,8 +301,13 @@ static NSString* requestContentType = nil;
         //step 4: if there's a response at this and no errors, convert to object
         if (error==nil && jsonObject==nil) {
             //convert to an object
-            NSLog(@"use server response");
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+        }
+        
+        //step 4.5: cover an edge case in which meaningful content is return along an error HTTP status code
+        if (error && responseData && jsonObject==nil) {
+            //try to get the JSON object, while preserving the origianl error object
+            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
         }
         
         //step 5: invoke the complete block
