@@ -26,4 +26,7 @@
 /* predefined transformer */
 @property (strong, nonatomic) NSDate* importantEvent;
 
+/* URLs */
+@property (strong, nonatomic) NSURL* websiteURL;
+
 @end

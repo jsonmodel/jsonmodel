@@ -61,6 +61,10 @@
     NSAssert([b.importantEvent isKindOfClass:[NSDate class]], @"importantEvent is not an NSDate");
     NSAssert((long)[b.importantEvent timeIntervalSince1970] == 1353916801, @"importantEvent value was not read properly");
     
+    //test for a valid URL
+    //https://github.com/icanzilb/JSONModel/pull/60
+    NSAssert(b.websiteURL, @"URL parsing did return nil");
+    NSAssert(b.websiteURL.query, @"key1=test");
 }
 
 @end
