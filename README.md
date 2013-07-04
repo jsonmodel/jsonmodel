@@ -168,16 +168,19 @@ Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9
 ----------
 Change-log
 ==========
+**Version 0.9.1** @ 2013-07-04
+
+- Bug fixes up to issue #61
+- Custom name based conversions, more thread safety, new data types supported
 
 **Version 0.9** @ 2013-05-01
 
-- Refactor of all networking code
-- Removing all sync request methods
 - Bug fixes up to issue #37
+- Refactor of all networking code, Removing all sync request methods (breaking change)
 
 **Version 0.8.3** @ 2013-01-24
 
-- Bug fixes, optimisation and clean up. Github issues up to #15
+- Bug fixes up to issue #15
 
 **Version 0.8.2** @ 2013-01-01
 
@@ -189,10 +192,7 @@ Change-log
 
 **Version 0.8.0** @ 2012-12-31
 
-- OSX support, test and demos
-- automatic network indicator for iOS
-- bug fixes, speed improvements
-- added better README
+- OSX support, automatic network indicator for iOS, speed improvements, better README
 
 **Version 0.7.8** @ 2012-12-25
 
