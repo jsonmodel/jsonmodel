@@ -28,10 +28,6 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #define JMLog( s, ... )
 #endif
 /////////////////////////////////////////////////////////////////////////////////////////////
-#if !__has_feature(objc_arc)
-#error The JSONMOdel framework is ARC only, you can enable ARC on per file basis.
-#endif
-/////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Property Protocols
 /** 
