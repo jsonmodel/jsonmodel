@@ -49,6 +49,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 		@autoreleasepool {
             allowedJSONTypes = @[
                 [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
+                [NSDate class], //possible from plist sources
                 [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
             ];
             
