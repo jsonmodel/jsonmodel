@@ -945,7 +945,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         id value = [self valueForKey:p.name];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
-        if (p.isStandardJSONType && [valueDescription length]>60 && !p.convertsOnDemand) {
+        if (p.isStandardJSONType && ![value respondsToSelector:@selector(count)] && [valueDescription length]>60 && !p.convertsOnDemand) {
 
             //cap description for longer values
             valueDescription = [NSString stringWithFormat:@"%@...", [valueDescription substringToIndex:59]];
