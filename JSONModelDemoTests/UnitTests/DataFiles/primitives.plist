@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>shortNumber</key>
+	<integer>114</integer>
+	<key>intNumber</key>
+	<integer>12</integer>
+	<key>longNumber</key>
+	<integer>12124</integer>
+	<key>floatNumber</key>
+	<real>12.12</real>
+	<key>doubleNumber</key>
+	<real>121231312.124</real>
+	<key>boolYES</key>
+	<true/>
+	<key>boolNO</key>
+	<false/>
+</dict>
+</plist>

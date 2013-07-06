@@ -11,27 +11,47 @@
 #import "EnumModel.h"
 
 @implementation PrimitiveTypesReadTests
+
+-(void)testPrimitiveTypes
 {
     PrimitivesModel* p;
-}
 
--(void)setUp
-{
-    [super setUp];
-    
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"primitives.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    NSAssert(jsonContents, @"Can't fetch test data file contents. %@", filePath);
     
     NSError* err;
     p = [[PrimitivesModel alloc] initWithString: jsonContents error:&err];
     NSAssert(!err, [err localizedDescription]);
     
-    NSAssert(p, @"Could not load the test data file.");
+    NSAssert(p, @"Could not load the test data file. %@", filePath);
+
+    [self validateLoadedPrimitives:p];
 }
 
--(void)testPrimitiveTypes
+-(void)testPrimitiveTypesPlist
+{
+    PrimitivesModel* p;
+    
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"primitives.plist"];
+    NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    
+    NSAssert(jsonContents, @"Can't fetch test data file contents. %@", filePath);
+    
+    NSDictionary * sourceDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    NSAssert(sourceDict, @"Couldn't convert plist into dictionary (%@)", filePath);
+    
+    NSError* err;
+    p = [[PrimitivesModel alloc] initWithDictionary:sourceDict error:&err];
+    NSAssert(!err, [err localizedDescription]);
+    
+    NSAssert(p, @"Could not load the test data file. %@", filePath);
+    
+    [self validateLoadedPrimitives:p];
+}
+
+- (void)validateLoadedPrimitives:(PrimitivesModel *)p
 {
     NSAssert(p.shortNumber==114, @"shortNumber read fail");
     NSAssert(p.intNumber==12, @"intNumber read fail");
