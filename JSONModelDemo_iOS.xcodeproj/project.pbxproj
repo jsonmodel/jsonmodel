@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		647C701F1787C6AF00A5F074 /* primitives.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647C701E1787C6AF00A5F074 /* primitives.plist */; };
 		647C70231787C9BD00A5F074 /* primitives.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647C701E1787C6AF00A5F074 /* primitives.plist */; };
+		647C70271787D0EF00A5F074 /* dates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647C70261787D0EF00A5F074 /* dates.plist */; };
+		647C702A1787D11900A5F074 /* PlistDatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C70291787D11900A5F074 /* PlistDatesTests.m */; };
+		647C70321787D19700A5F074 /* DatesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C70311787D19700A5F074 /* DatesModel.m */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
 		9C66DFA8168CEF420015CCDF /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DF60168CEF420015CCDF /* ArrayTests.m */; };
@@ -145,6 +148,11 @@
 
 /* Begin PBXFileReference section */
 		647C701E1787C6AF00A5F074 /* primitives.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = primitives.plist; sourceTree = "<group>"; };
+		647C70261787D0EF00A5F074 /* dates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dates.plist; sourceTree = "<group>"; };
+		647C70281787D11900A5F074 /* PlistDatesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistDatesTests.h; sourceTree = "<group>"; };
+		647C70291787D11900A5F074 /* PlistDatesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistDatesTests.m; sourceTree = "<group>"; };
+		647C70301787D19700A5F074 /* DatesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatesModel.h; sourceTree = "<group>"; };
+		647C70311787D19700A5F074 /* DatesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatesModel.m; sourceTree = "<group>"; };
 		9C0D023D166E6BBF001EA645 /* KivaViewControllerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewControllerNetworking.h; sourceTree = "<group>"; };
 		9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaViewControllerNetworking.m; sourceTree = "<group>"; };
 		9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KivaViewControllerNetworking.xib; sourceTree = "<group>"; };
@@ -404,6 +412,8 @@
 				9C735D63170B716300FF96F5 /* JSONAPITests.m */,
 				9C735D6E170C007900FF96F5 /* InitFromWebTests.h */,
 				9C735D6F170C007900FF96F5 /* InitFromWebTests.m */,
+				647C70281787D11900A5F074 /* PlistDatesTests.h */,
+				647C70291787D11900A5F074 /* PlistDatesTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -424,6 +434,7 @@
 				9C66DF72168CEF420015CCDF /* withoutOptProp.json */,
 				9CB1EE46172C1205004BAA07 /* specialPropertyName.json */,
 				647C701E1787C6AF00A5F074 /* primitives.plist */,
+				647C70261787D0EF00A5F074 /* dates.plist */,
 			);
 			name = DataFiles;
 			path = UnitTests/DataFiles;
@@ -732,6 +743,8 @@
 				9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */,
 				9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */,
 				9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */,
+				647C70301787D19700A5F074 /* DatesModel.h */,
+				647C70311787D19700A5F074 /* DatesModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -852,6 +865,7 @@
 				9C66DFB6168CEF420015CCDF /* withoutOptProp.json in Resources */,
 				9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */,
 				647C701F1787C6AF00A5F074 /* primitives.plist in Resources */,
+				647C70271787D0EF00A5F074 /* dates.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,6 +976,8 @@
 				9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */,
 				9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */,
 				9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */,
+				647C702A1787D11900A5F074 /* PlistDatesTests.m in Sources */,
+				647C70321787D19700A5F074 /* DatesModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

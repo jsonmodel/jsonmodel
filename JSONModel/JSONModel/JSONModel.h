@@ -137,7 +137,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    */
   -(instancetype)initWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
 
-  -(instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError **)err;
+-(instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError **)err;
+-(instancetype)initWithDictionary:(NSDictionary*)dict allowedSourceTypes:(NSArray *)allowedSourceTypes error:(NSError **)err;
++(NSArray *)defaultAllowedSourceTypes;
 
 /** @name Exporting model contents */
 

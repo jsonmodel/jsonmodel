@@ -35,9 +35,6 @@
     PrimitivesModel* p;
     
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"primitives.plist"];
-    NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    
-    NSAssert(jsonContents, @"Can't fetch test data file contents. %@", filePath);
     
     NSDictionary * sourceDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
     NSAssert(sourceDict, @"Couldn't convert plist into dictionary (%@)", filePath);
@@ -68,7 +65,6 @@
     
     STAssertEqualObjects(generatedDict[@"boolNO"], [NSNumber numberWithBool:NO], @"boolNO toDictionary fail");
     STAssertEqualObjects(generatedDict[@"boolYES"], [NSNumber numberWithBool:YES], @"boolYES toDictionary fail");
-
 }
 
 - (void)validateLoadedPrimitives:(PrimitivesModel *)p

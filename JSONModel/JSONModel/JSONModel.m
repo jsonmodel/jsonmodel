@@ -32,7 +32,7 @@ static const char * kClassRequiredPropertyNamesKey;
 static const char * kIndexPropertyNameKey;
 
 #pragma mark - class static variables
-static NSArray* allowedJSONTypes = nil;
+static NSArray* defaultAllowedJSONTypes = nil;
 static NSArray* allowedPrimitiveTypes = nil;
 static JSONValueTransformer* valueTransformer = nil;
 
@@ -41,6 +41,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - JSONModel implementation
 @implementation JSONModel
+{
+    NSArray* allowedJSONTypes;
+}
 
 #pragma mark - initialization methods
 
@@ -52,7 +55,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         // which are common for ALL JSONModel subclasses
         
 		@autoreleasepool {
-            allowedJSONTypes = @[
+            defaultAllowedJSONTypes = @[
                 [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
                 [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
             ];
@@ -60,7 +63,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             allowedPrimitiveTypes = @[
                 @"BOOL", @"float", @"int", @"long", @"double", @"short",
                 //and some famous aliases
-                @"NSInteger", @"NSUInteger"
+                @"NSInteger", @"NSUInteger", @"CGFloat"
             ];
             
             valueTransformer = [[JSONValueTransformer alloc] init];
@@ -130,8 +133,20 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return objModel;
 }
 
++ (NSArray *)defaultAllowedSourceTypes
+{
+    return defaultAllowedJSONTypes;
+}
+
 -(id)initWithDictionary:(NSDictionary*)dict error:(NSError**)err
 {
+    return [self initWithDictionary:dict allowedSourceTypes:defaultAllowedJSONTypes error:err];
+}
+
+-(instancetype)initWithDictionary:(NSDictionary*)dict allowedSourceTypes:(NSArray *)allowedSourceTypes error:(NSError **)err;
+{
+    allowedJSONTypes = allowedSourceTypes;
+    
     //check for nil input
     if (!dict) {
         if (err) *err = [JSONModelError errorInputIsNil];
