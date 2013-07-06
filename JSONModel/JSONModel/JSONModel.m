@@ -14,6 +14,11 @@
 //
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
+#if !__has_feature(objc_arc)
+#error The JSONMOdel framework is ARC only, you can enable ARC on per file basis.
+#endif
+
+
 #import <objc/runtime.h>
 
 #import "JSONModel.h"
