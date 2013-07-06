@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		647C70251787C9F400A5F074 /* primitives.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647C70241787C9F400A5F074 /* primitives.plist */; };
+		647C702C1787D12900A5F074 /* dates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647C702B1787D12900A5F074 /* dates.plist */; };
+		647C702F1787D13400A5F074 /* PlistDatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C702E1787D13400A5F074 /* PlistDatesTests.m */; };
+		647C70351787D2A000A5F074 /* DatesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C70341787D2A000A5F074 /* DatesModel.m */; };
 		9C05B2A9168CE9600054215E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC27CAF1689B7BE008B5411 /* SenTestingKit.framework */; };
 		9C05B43F168CEB220054215E /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F7168CEB220054215E /* ArrayTests.m */; };
 		9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */; };
@@ -111,6 +115,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		647C70241787C9F400A5F074 /* primitives.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = primitives.plist; sourceTree = "<group>"; };
+		647C702B1787D12900A5F074 /* dates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dates.plist; sourceTree = "<group>"; };
+		647C702D1787D13400A5F074 /* PlistDatesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistDatesTests.h; sourceTree = "<group>"; };
+		647C702E1787D13400A5F074 /* PlistDatesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistDatesTests.m; sourceTree = "<group>"; };
+		647C70331787D2A000A5F074 /* DatesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatesModel.h; sourceTree = "<group>"; };
+		647C70341787D2A000A5F074 /* DatesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatesModel.m; sourceTree = "<group>"; };
 		9C05B2A8168CE9600054215E /* JSONModelDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C05B2B0168CE9600054215E /* JSONModelDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9C05B2B7168CE9600054215E /* JSONModelDemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONModelDemoTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -345,6 +355,8 @@
 				9C735D66170B717F00FF96F5 /* JSONAPITests.m */,
 				9C735D71170C048C00FF96F5 /* InitFromWebTests.h */,
 				9C735D72170C048C00FF96F5 /* InitFromWebTests.m */,
+				647C702D1787D13400A5F074 /* PlistDatesTests.h */,
+				647C702E1787D13400A5F074 /* PlistDatesTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -352,6 +364,7 @@
 		9C05B3FE168CEB220054215E /* DataFiles */ = {
 			isa = PBXGroup;
 			children = (
+				647C70241787C9F400A5F074 /* primitives.plist */,
 				9C05B3FF168CEB220054215E /* colors.json */,
 				9C05B400168CEB220054215E /* converts.json */,
 				9C05B401168CEB220054215E /* github-iphone.json */,
@@ -364,6 +377,7 @@
 				D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */,
 				9C05B408168CEB220054215E /* withOptProp.json */,
 				9C05B409168CEB220054215E /* withoutOptProp.json */,
+				647C702B1787D12900A5F074 /* dates.plist */,
 			);
 			path = DataFiles;
 			sourceTree = "<group>";
@@ -407,6 +421,8 @@
 				D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */,
 				9C735D6B170B7A2D00FF96F5 /* RpcRequestModel.h */,
 				9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */,
+				647C70331787D2A000A5F074 /* DatesModel.h */,
+				647C70341787D2A000A5F074 /* DatesModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -687,6 +703,8 @@
 				D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */,
 				9C05B44C168CEB220054215E /* withOptProp.json in Resources */,
 				9C05B44D168CEB220054215E /* withoutOptProp.json in Resources */,
+				647C70251787C9F400A5F074 /* primitives.plist in Resources */,
+				647C702C1787D12900A5F074 /* dates.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +803,8 @@
 				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
 				9C08C1AF1749750100AA8CC9 /* CopyrightModel.m in Sources */,
 				9CFDD0A4176E9742007B7DFA /* EnumModel.m in Sources */,
+				647C702F1787D13400A5F074 /* PlistDatesTests.m in Sources */,
+				647C70351787D2A000A5F074 /* DatesModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
