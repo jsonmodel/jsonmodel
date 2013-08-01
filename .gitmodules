@@ -1,0 +1,3 @@
+[submodule "JSONModel/Dependencies/IOS DateFormatter"]
+	path = JSONModel/Dependencies/IOS DateFormatter
+	url = https://github.com/boredzo/iso-8601-date-formatter/
