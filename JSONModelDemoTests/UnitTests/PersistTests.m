@@ -20,51 +20,49 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"jsonTypes.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     JSONTypesModel* t = [[JSONTypesModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!err, [err localizedDescription]);
-    
-    NSAssert(t, @"Could not load the test data file.");
+    STAssertNil(err, [err localizedDescription]);
+    STAssertNotNil(t, @"Could not load the test data file.");
 
     //---------------------------------------
     // export model to NSDictionary
     //---------------------------------------
     
     NSDictionary* d = [t toDictionary];
-    NSAssert(d, @"toDictionary returned nil");
-    NSAssert([d isKindOfClass:[NSDictionary class]], @"toDictionary didn't return NSDictionary object");
+    STAssertNotNil(d, @"toDictionary returned nil");
+    STAssertTrue([d isKindOfClass:[NSDictionary class]], @"toDictionary didn't return NSDictionary object");
     
-    NSAssert( [t.caption isEqualToString: d[@"caption"] ], @"caption key is not equal to exported value");
+    STAssertTrue( [t.caption isEqualToString: d[@"caption"] ], @"caption key is not equal to exported value");
     
     //---------------------------------------
     // turn NSDictionary to a model
     //---------------------------------------
 
     JSONTypesModel* t1 = [[JSONTypesModel alloc] initWithDictionary:d error:&err];
-    NSAssert(!err, [err localizedDescription]);
+    STAssertNil(err, [err localizedDescription]);
     
-    NSAssert( [t1.caption isEqualToString:t.caption], @"t1.caption != t.caption" );
-    NSAssert( t1.notAvailable==t.notAvailable, @"t1.notAvailable != t.notAvailable" );
+    STAssertTrue( [t1.caption isEqualToString:t.caption], @"t1.caption != t.caption" );
+    STAssertTrue( t1.notAvailable==t.notAvailable, @"t1.notAvailable != t.notAvailable" );
 
     //---------------------------------------
     // export model to JSON
     //---------------------------------------
     
     NSString* json = [t1 toJSONString];
-    NSAssert(json, @"Exported JSON is nil");
+    STAssertNotNil(json, @"Exported JSON is nil");
     
     //---------------------------------------
     // turn exported JSON to a model
     //---------------------------------------
     
     JSONTypesModel* t2 = [[JSONTypesModel alloc] initWithString:json error:&err];
-    NSAssert(!err, [err localizedDescription]);
+    STAssertNil(err, [err localizedDescription]);
 
-    NSAssert( [t1.caption isEqualToString:t2.caption], @"t1.caption != t2.caption" );
-    NSAssert( t1.notAvailable==t2.notAvailable, @"t1.notAvailable != t2.notAvailable" );
-
+    STAssertTrue([t1.caption isEqualToString:t2.caption], @"t1.caption != t2.caption" );
+    STAssertTrue(t1.notAvailable==t2.notAvailable, @"t1.notAvailable != t2.notAvailable" );
 }
 
 @end

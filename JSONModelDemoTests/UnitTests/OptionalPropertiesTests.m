@@ -19,15 +19,14 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"withOptProp.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     o = [[OptionalPropModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!err, [err localizedDescription]);
-
+    STAssertNil(err, [err localizedDescription]);
+    STAssertNotNil(o, @"Could not load the test data file.");
     
-    NSAssert(o, @"Could not load the test data file.");
-    NSAssert([o.notRequredProperty isEqualToString:@"I'm here this time!"], @"notRequredProperty' value is not 'I'm here this time!'");
+    STAssertTrue([o.notRequredProperty isEqualToString:@"I'm here this time!"], @"notRequredProperty' value is not 'I'm here this time!'");
 }
 
 -(void)testPropertyMissing
@@ -35,15 +34,14 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"withoutOptProp.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     o = [[OptionalPropModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!err, [err localizedDescription]);
+    STAssertNil(err, [err localizedDescription]);
+    STAssertNotNil(o, @"Could not load the test data file.");
     
-    NSAssert(o, @"Could not load the test data file.");
-    
-    NSAssert(!o.notRequredProperty, @"notRequredProperty' is not nil");
+    STAssertTrue(!o.notRequredProperty, @"notRequredProperty' is not nil");
 
 }
 

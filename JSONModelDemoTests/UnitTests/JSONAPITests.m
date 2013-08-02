@@ -28,7 +28,7 @@
                   
                   NSURLRequest* request = [NSURLConnection lastRequest];
                   NSString* absString = [request.URL absoluteString];
-                  NSAssert([absString hasPrefix: apiBaseUrlString], @"URL request not start with base URL");
+                  STAssertTrue([absString hasPrefix: apiBaseUrlString], @"URL request not start with base URL");
                   
                   [[MTTestSemaphor semaphore] lift: semaphorKey];
                   
@@ -52,7 +52,7 @@
               completion:^(NSDictionary *json, JSONModelError *err) {
                   
                   NSURLRequest* request = [NSURLConnection lastRequest];
-                  NSAssert([[request valueForHTTPHeaderField:@"Content-type"] hasPrefix:ctype], @"request content type was not MyCustomType");
+                  STAssertTrue([[request valueForHTTPHeaderField:@"Content-type"] hasPrefix:ctype], @"request content type was not MyCustomType");
                   
                   [[MTTestSemaphor semaphore] lift: semaphorKey];
                   [JSONHTTPClient setRequestContentType:kContentTypeAutomatic];
@@ -80,7 +80,7 @@
                   NSURLRequest* request = [NSURLConnection lastRequest];
                   NSString* absString = [request.URL absoluteString];
                   NSString* desiredString = @"http://localhost/test.json/testGetAPIRequests";
-                  NSAssert( [absString isEqualToString: desiredString] , @"URL does not match");
+                  STAssertTrue( [absString isEqualToString: desiredString] , @"URL does not match");
                   
                   [[MTTestSemaphor semaphore] lift: semaphorKey];
                   
@@ -95,7 +95,7 @@
                   NSURLRequest* request = [NSURLConnection lastRequest];
                   NSString* absString = [request.URL absoluteString];
                   NSString* desiredString = @"http://localhost/test.json/testGetAPIRequests?key1=ma%20rin&key2=marin";
-                  NSAssert( [absString isEqualToString: desiredString] , @"URL does not match");
+                  STAssertTrue( [absString isEqualToString: desiredString] , @"URL does not match");
                   
                   [[MTTestSemaphor semaphore] lift: semaphorKey];
                   
@@ -119,10 +119,10 @@
                   NSURLRequest* request = [NSURLConnection lastRequest];
                   NSString* absString = [request.URL absoluteString];
                   NSString* desiredString = @"http://localhost/test.json/testPostAPIRequests";
-                  NSAssert( [absString isEqualToString: desiredString] , @"URL does not match");
+                  STAssertTrue( [absString isEqualToString: desiredString] , @"URL does not match");
                 
                    NSString* paramsSent = [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding];
-                   NSAssert([paramsSent isEqualToString: @"key1=ma%20rin&key2=marin"], @"request body data did not match the post encoded params");
+                   STAssertTrue([paramsSent isEqualToString: @"key1=ma%20rin&key2=marin"], @"request body data did not match the post encoded params");
                   
                   [[MTTestSemaphor semaphore] lift: semaphorKey];
                   
@@ -146,15 +146,15 @@
                         NSURLRequest* request = [NSURLConnection lastRequest];
                         NSString* absString = [request.URL absoluteString];
                         NSString* desiredString = @"http://localhost/test.json/";
-                        NSAssert( [absString isEqualToString: desiredString] , @"URL does not match");
+                        STAssertTrue([absString isEqualToString: desiredString], @"URL does not match");
                         
                         NSString* jsonSent = [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding];
                         RpcRequestModel* jsonRequest = [[RpcRequestModel alloc] initWithString:jsonSent error:nil];
-                        NSAssert(jsonRequest, @"RPC request is not valid");
+                        STAssertNotNil(jsonRequest, @"RPC request is not valid");
                         
-                        NSAssert(jsonRequest.id, @"id is nil");
-                        NSAssert([jsonRequest.params count]==0, @"params not an empty array");
-                        NSAssert([jsonRequest.method isEqualToString: semaphorKey], @"method name does not match");
+                        STAssertNotNil(jsonRequest.id, @"id is nil");
+                        STAssertTrue([jsonRequest.params count]==0, @"params not an empty array");
+                        STAssertTrue([jsonRequest.method isEqualToString: semaphorKey], @"method name does not match");
                         
                         [[MTTestSemaphor semaphore] lift: semaphorKey];
                     }];
@@ -169,11 +169,11 @@
                         NSURLRequest* request = [NSURLConnection lastRequest];
                         NSString* jsonSent = [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding];
                         RpcRequestModel* jsonRequest = [[RpcRequestModel alloc] initWithString:jsonSent error:nil];
-                        NSAssert(jsonRequest, @"RPC request is not valid");
+                        STAssertNotNil(jsonRequest, @"RPC request is not valid");
                         
-                        NSAssert([jsonRequest.params[0] isEqualToString: @"chicken"], @"first param is not chicken");
-                        NSAssert([jsonRequest.params[1] isEqualToNumber:@1], @"second param is not 1");
-                        NSAssert([jsonRequest.params[2] count]==2, @"third param is not 2 element array");
+                        STAssertTrue([jsonRequest.params[0] isEqualToString: @"chicken"], @"first param is not chicken");
+                        STAssertTrue([jsonRequest.params[1] isEqualToNumber:@1], @"second param is not 1");
+                        STAssertTrue([jsonRequest.params[2] count]==2, @"third param is not 2 element array");
                         
                         [[MTTestSemaphor semaphore] lift: semaphorKey];
                     }];
