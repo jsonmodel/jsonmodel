@@ -24,30 +24,29 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedData.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     n = [[NestedModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!err, [err localizedDescription]);
-    
-    NSAssert(n, @"Could not load the test data file.");
+    STAssertNil(err, [err localizedDescription]);
+    STAssertNotNil(n, @"Could not load the test data file.");
 }
 
 -(void)testNestedStructures
 {
-    NSAssert([n.singleImage isKindOfClass:[ImageModel class]], @"singleImage is not an ImageModel instance");
-    NSAssert([n.singleImage.name isEqualToString:@"lake.jpg"], @"singleImage.name is not 'lake.jpg'");
+    STAssertTrue([n.singleImage isKindOfClass:[ImageModel class]], @"singleImage is not an ImageModel instance");
+    STAssertTrue([n.singleImage.name isEqualToString:@"lake.jpg"], @"singleImage.name is not 'lake.jpg'");
     
-    NSAssert([n.images isKindOfClass:[NSArray class]], @"images is not an NSArray");
-    NSAssert([n.images[0] isKindOfClass:[ImageModel class]], @"images[0] is not an ImageModel instance");
-    NSAssert([[n.images[0] name] isEqualToString:@"house.jpg"], @"images[0].name is not 'house.jpg'");
+    STAssertTrue([n.images isKindOfClass:[NSArray class]], @"images is not an NSArray");
+    STAssertTrue([n.images[0] isKindOfClass:[ImageModel class]], @"images[0] is not an ImageModel instance");
+    STAssertTrue([[n.images[0] name] isEqualToString:@"house.jpg"], @"images[0].name is not 'house.jpg'");
     CopyrightModel* copy = [n.images[0] copyright];
-    NSAssert([copy.author isEqualToString:@"Marin Todorov"], @"images[0].name.copyright is not 'Marin Todorov'");
+    STAssertTrue([copy.author isEqualToString:@"Marin Todorov"], @"images[0].name.copyright is not 'Marin Todorov'");
     
-    NSAssert([n.imagesObject isKindOfClass:[NSDictionary class]], @"imagesObject is not an NSDictionary");
+    STAssertTrue([n.imagesObject isKindOfClass:[NSDictionary class]], @"imagesObject is not an NSDictionary");
     ImageModel* img = n.imagesObject[@"image2"];
-    NSAssert([img isKindOfClass:[ImageModel class]], @"images[image2] is not an ImageModel instance");
-    NSAssert([img.name isEqualToString:@"lake.jpg"], @"imagesObject[image2].name is not 'lake.jpg'");
+    STAssertTrue([img isKindOfClass:[ImageModel class]], @"images[image2] is not an ImageModel instance");
+    STAssertTrue([img.name isEqualToString:@"lake.jpg"], @"imagesObject[image2].name is not 'lake.jpg'");
     
 }
 
