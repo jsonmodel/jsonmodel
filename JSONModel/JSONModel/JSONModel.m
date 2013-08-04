@@ -44,7 +44,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - initialization methods
 
-+(void)initialize
++(void)load
 {
     @autoreleasepool {
         // initialize all class static objects,
