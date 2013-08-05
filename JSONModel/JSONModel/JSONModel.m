@@ -501,7 +501,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 
                 p.isStandardJSONType = NO;
                 p.structName = propertyType;
-                
+
             }
             //the property must be a primitive
             else {
@@ -520,9 +520,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                                    reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self.class, p.name]
                                                  userInfo:nil];
                 }
-                
+
             }
-            
+
+            if([[self class] propertyIsOptional:[NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding]]){
+                    p.isOptional = YES;
+            }
+
             //add the property object to the temp index
             [propertyIndex setValue:p forKey:p.name];
         }
@@ -974,4 +978,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     globalKeyMapper = globalKeyMapperParam;
 }
 
++(BOOL)propertyIsOptional:(NSString*)propertyName{
+    return NO;
+}
 @end

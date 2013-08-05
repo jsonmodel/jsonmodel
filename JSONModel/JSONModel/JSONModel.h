@@ -235,4 +235,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  */
 +(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper;
 
+/**
+* Return value indicates whether one property is optional
+*/
++(BOOL)propertyIsOptional:(NSString*)propertyName;
+
 @end
