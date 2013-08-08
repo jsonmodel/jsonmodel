@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--project-name</key>
+	<string>JSONModel 0.9</string>
+	<key>--print-settings</key>
+	<true/>
+	<key>--project-company</key>
+	<string>Marin Todorov, Underplot</string>
+	<key>--company-id</key>
+	<string>com.underplot</string>
+	<key>--create-docset</key>
+	<true/>
+	<key>--verbose</key>
+	<integer>4</integer>
+	<key>--logformat</key>
+	<integer>1</integer>
+</dict>
+</plist>

@@ -41,6 +41,13 @@ Source files
 3. Build your project and check that there are no compile time errors 
 (if your project is non-arc for example, you will get a compile time error from the JSONModel library)
 
+Documentation
+-------------
+
+1. If you don't already have [appledoc](http://gentlebytes.com/appledoc/) installed, install it with [homebrew](http://brew.sh/) by typing `brew install appledoc`.
+2. Install the documentation into Xcode by typing `appledoc .` in the root directory of the repository.
+3. Restart Xcode if it's already running.
+
 Cocoa pod
 ------------
 
