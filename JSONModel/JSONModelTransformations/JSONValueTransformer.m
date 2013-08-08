@@ -172,7 +172,7 @@ extern BOOL isNull(id value)
 -(NSString*)JSONObjectFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
     
     return [dateFormatter stringFromDate:date];
 }
