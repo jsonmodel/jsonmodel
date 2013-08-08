@@ -758,11 +758,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
             continue;
         }
         
-        //export nil values as JSON null, so that the structure of the exported data
+        //export nil when they are not optional values as JSON null, so that the structure of the exported data
         //is still valid if it's to be imported as a model again
         if (isNull(value)) {
             
-            [tempDictionary setValue:[NSNull null] forKeyPath:keyPath];
+            if (p.isOptional)
+            {
+                [tempDictionary removeObjectForKey:keyPath];
+            }
+            else
+            {
+                [tempDictionary setValue:[NSNull null] forKeyPath:keyPath];
+            }
             continue;
         }
         
