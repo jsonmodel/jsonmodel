@@ -18,19 +18,19 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"primitivesWithErrors.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     PrimitivesModel* p = [[PrimitivesModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!p, @"Model is not nil, when input is invalid");
-    NSAssert(err, @"No error when keys are missing.");
+    STAssertNil(p, @"Model is not nil, when input is invalid");
+    STAssertNotNil(err, @"No error when keys are missing.");
     
-    NSAssert(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
+    STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
     NSArray* missingKeys = err.userInfo[kJSONModelMissingKeys];
     missingKeys = [missingKeys sortedArrayUsingSelector:@selector(compare:)];
-    NSAssert(missingKeys, @"error does not have kJSONModelMissingKeys keys in user info");
-    NSAssert([missingKeys[0] isEqualToString:@"intNumber"],@"missing field intNumber not found in missingKeys");
-    NSAssert([missingKeys[1] isEqualToString:@"longNumber"],@"missing field longNumber not found in missingKeys");
+    STAssertTrue(missingKeys, @"error does not have kJSONModelMissingKeys keys in user info");
+    STAssertTrue([missingKeys[0] isEqualToString:@"intNumber"],@"missing field intNumber not found in missingKeys");
+    STAssertTrue([missingKeys[1] isEqualToString:@"longNumber"],@"missing field longNumber not found in missingKeys");
 }
 
 -(void)testBrokenJSON
@@ -39,10 +39,10 @@
 
     NSError* err;
     PrimitivesModel* p = [[PrimitivesModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!p, @"Model is not nil, when input is invalid");
-    NSAssert(err, @"No error when keys are missing.");
+    STAssertNil(p, @"Model is not nil, when input is invalid");
+    STAssertNotNil(err, @"No error when keys are missing.");
     
-    NSAssert(err.code == kJSONModelErrorBadJSON, @"Wrong error for missing keys");
+    STAssertTrue(err.code == kJSONModelErrorBadJSON, @"Wrong error for missing keys");
 }
 
 -(void)testErrorsInNestedModels
@@ -50,14 +50,14 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedDataWithErrors.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     NestedModel* n = [[NestedModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(err, @"No error thrown when loading invalid data");
+    STAssertNotNil(err, @"No error thrown when loading invalid data");
     
-    NSAssert(!n, @"Model is not nil, when invalid data input");
-    NSAssert(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
+    STAssertNil(n, @"Model is not nil, when invalid data input");
+    STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
 }
 
 -(void)testForNilInputFromString
@@ -69,8 +69,8 @@
                                                                error:&err];
     cpModel=nil;
     
-    NSAssert(err!=nil, @"No error returned when initialized with nil string");
-    NSAssert(err.code == kJSONModelErrorNilInput, @"Wrong error for nil string input");
+    STAssertTrue(err!=nil, @"No error returned when initialized with nil string");
+    STAssertTrue(err.code == kJSONModelErrorNilInput, @"Wrong error for nil string input");
 }
 
 -(void)testForNilInputFromDictionary
@@ -82,8 +82,8 @@
                                                                    error:&err];
     cpModel=nil;
     
-    NSAssert(err!=nil, @"No error returned when initialized with nil dictionary");
-    NSAssert(err.code == kJSONModelErrorNilInput, @"Wrong error for nil dictionary input");
+    STAssertTrue(err!=nil, @"No error returned when initialized with nil dictionary");
+    STAssertTrue(err.code == kJSONModelErrorNilInput, @"Wrong error for nil dictionary input");
 }
 
 @end

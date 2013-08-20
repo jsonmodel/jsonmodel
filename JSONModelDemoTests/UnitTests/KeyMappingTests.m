@@ -53,59 +53,57 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"github-iphone.json"];
     NSData* jsonData = [NSData dataWithContentsOfFile:filePath];
     
-    NSAssert(jsonData, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonData, @"Can't fetch test data file contents.");
     
     NSError* err;
     NSDictionary* jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&err];
     json = jsonDict[@"repositories"];
     
-    NSAssert(!err, [err localizedDescription]);
-    
-    NSAssert(jsonData, @"Could not load the test data file.");
-    
+    STAssertNil(err, [err localizedDescription]);
+    STAssertNotNil(jsonData, @"Could not load the test data file.");
 }
 
 -(void)testKeyMapping
 {
     NSDictionary* repo1 = json[0];
     GitHubKeyMapRepoModel* model1 = [[GitHubKeyMapRepoModel alloc] initWithDictionary:repo1 error:nil];
-    NSAssert(model1, @"Could not initialize model");
-    NSAssert(model1.__description, @"__description is nil");
-    NSAssert([model1.__description isEqualToString:repo1[@"description"]], @"__description was not mapped properly");
+    STAssertNotNil(model1, @"Could not initialize model");
+    STAssertNotNil(model1.__description, @"__description is nil");
+    STAssertTrue([model1.__description isEqualToString:repo1[@"description"]], @"__description was not mapped properly");
     
     NSDictionary* dict = [model1 toDictionary];
-    NSAssert(dict[@"description"], @"description not exported properly");
+    STAssertNotNil(dict[@"description"], @"description not exported properly");
 }
 
 -(void)testKeyMappingWithDict
 {
     NSDictionary* repo1 = json[0];
     GitHubKeyMapRepoModelDict* model1 = [[GitHubKeyMapRepoModelDict alloc] initWithDictionary:repo1 error:nil];
-    NSAssert(model1, @"Could not initialize model");
-    NSAssert(model1.__description, @"__description is nil");
-    NSAssert([model1.__description isEqualToString:repo1[@"description"]], @"__description was not mapped properly");
+    STAssertNotNil(model1, @"Could not initialize model");
+    STAssertNotNil(model1.__description, @"__description is nil");
+    STAssertTrue([model1.__description isEqualToString:repo1[@"description"]], @"__description was not mapped properly");
 
     NSDictionary* dict = [model1 toDictionary];
-    NSAssert(dict[@"description"], @"description not exported properly");
+    STAssertNotNil(dict[@"description"], @"description not exported properly");
 }
 
 -(void)testUnderscoreMapper
 {
     NSString* jsonString = @"{\"pushed_at\":\"2012-12-18T19:21:35-08:00\",\"created_at\":\"2012-12-18T19:21:35-08:00\",\"a_very_long_property_name\":10000}";
     GitHubRepoModelForUSMapper* m = [[GitHubRepoModelForUSMapper alloc] initWithString:jsonString error:nil];
-    NSAssert(m, @"Could not initialize model from string");
+    STAssertNotNil(m, @"Could not initialize model from string");
     
-    NSAssert([m.pushedAt compare:[NSDate dateWithTimeIntervalSinceReferenceDate:0] ]==NSOrderedDescending, @"pushedAt is not initialized");
-    NSAssert([m.createdAt compare:[NSDate dateWithTimeIntervalSinceReferenceDate:0] ]==NSOrderedDescending, @"createdAt is not initialized");
-    NSAssert(m.aVeryLongPropertyName == 10000, @"aVeryLongPropertyName is not 10000");
+    STAssertTrue([m.pushedAt compare:[NSDate dateWithTimeIntervalSinceReferenceDate:0] ]==NSOrderedDescending, @"pushedAt is not initialized");
+    STAssertTrue([m.createdAt compare:[NSDate dateWithTimeIntervalSinceReferenceDate:0] ]==NSOrderedDescending, @"createdAt is not initialized");
+    STAssertTrue(m.aVeryLongPropertyName == 10000, @"aVeryLongPropertyName is not 10000");
     
     //export
     NSDictionary* dict = [m toDictionary];
-    NSAssert(dict, @"toDictionary failed");
+    STAssertNotNil(dict, @"toDictionary failed");
     
-    NSAssert(dict[@"pushed_at"], @"pushed_at not exported");
-    NSAssert(dict[@"created_at"], @"pushed_at not exported");
-    NSAssert([dict[@"a_very_long_property_name"] intValue]==10000,@"a_very_long_property_name not exported properly");
+    STAssertNotNil(dict[@"pushed_at"], @"pushed_at not exported");
+    STAssertNotNil(dict[@"created_at"], @"pushed_at not exported");
+    STAssertTrue([dict[@"a_very_long_property_name"] intValue]==10000,@"a_very_long_property_name not exported properly");
     
 }
 
@@ -134,16 +132,16 @@
     NSError* err = nil;
     TestModel* model = [[TestModel alloc] initWithDictionary:dict error:&err];
     
-    NSAssert1(err==nil, @"Error creating TestModel: %@", [err localizedDescription]);
-    NSAssert(model!=nil, @"TestModel instance is nil");
+    STAssertTrue(err==nil, @"Error creating TestModel: %@", [err localizedDescription]);
+    STAssertTrue(model!=nil, @"TestModel instance is nil");
     
-    NSAssert([model.text1 isEqualToString:@"TEST!!!"], @"text1 is not 'TEST!!!'");
-    NSAssert([model.text2 isEqualToString:@"MEST"], @"text1 is not 'MEST'");
+    STAssertTrue([model.text1 isEqualToString:@"TEST!!!"], @"text1 is not 'TEST!!!'");
+    STAssertTrue([model.text2 isEqualToString:@"MEST"], @"text1 is not 'MEST'");
     
     NSDictionary* toDict = [model toDictionary];
     
-    NSAssert([toDict[@"texts"][@"text1"] isEqualToString:@"TEST!!!"], @"toDict.texts.text1 is not 'TEST!!!'");
-    NSAssert([toDict[@"texts"][@"text2"][@"value"] isEqualToString:@"MEST"], @"toDict.texts.text2.value is not 'MEST'");
+    STAssertTrue([toDict[@"texts"][@"text1"] isEqualToString:@"TEST!!!"], @"toDict.texts.text1 is not 'TEST!!!'");
+    STAssertTrue([toDict[@"texts"][@"text2"][@"value"] isEqualToString:@"MEST"], @"toDict.texts.text2.value is not 'MEST'");
 }
 
 -(void)testGlobalKeyMapper
@@ -151,7 +149,7 @@
     NSString* jsonString1 = @"{\"name\": \"NAME IN CAPITALS\"}";
     GlobalModel* global1 = [[GlobalModel alloc] initWithString:jsonString1
                                                          error:nil];
-    NSAssert(global1, @"model did not initialize with proper json");
+    STAssertNotNil(global1, @"model did not initialize with proper json");
     
     [JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@{
         @"name1":@"name"
@@ -160,13 +158,13 @@
     NSString* jsonString2 = @"{\"name1\": \"NAME IN CAPITALS\"}";
     GlobalModel* global2 = [[GlobalModel alloc] initWithString:jsonString2
                                                          error:nil];
-    NSAssert(global2, @"model did not initialize with proper json");
+    STAssertNotNil(global2, @"model did not initialize with proper json");
     
     [JSONModel setGlobalKeyMapper:nil];
 
     GlobalModel* global3 = [[GlobalModel alloc] initWithString:jsonString2
                                                          error:nil];
-    NSAssert(global3==nil, @"model supposed to be nil");
+    STAssertNil(global3, @"model supposed to be nil");
 }
 
 @end

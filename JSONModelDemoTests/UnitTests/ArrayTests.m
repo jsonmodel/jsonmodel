@@ -22,20 +22,20 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"github-iphone.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    NSAssert(jsonContents, @"Can't fetch test data file contents.");
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     repos = [[ReposModel alloc] initWithString: jsonContents error:&err];
-    NSAssert(!err, [err localizedDescription]);
+    STAssertNil(err, [err localizedDescription]);
     
-    NSAssert(repos, @"Could not load the test data file.");
+    STAssertNotNil(repos, @"Could not load the test data file.");
 
 }
 
 -(void)testLoading
 {
-    NSAssert([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
-    NSAssert([repos.repositories[0] isMemberOfClass:[GitHubRepoModel class]], @".properties[0] is not a GitHubRepoModel");
+    STAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
+    STAssertTrue([repos.repositories[0] isMemberOfClass:[GitHubRepoModel class]], @".properties[0] is not a GitHubRepoModel");
 }
 
 /*
@@ -44,7 +44,7 @@
 -(void)testArrayReverseTransformGitHubIssue_14
 {
     NSDictionary* dict = [repos toDictionary];
-    NSAssert(dict, @"Could not convert ReposModel back to an NSDictionary");
+    STAssertNotNil(dict, @"Could not convert ReposModel back to an NSDictionary");
 }
 
 /*
@@ -53,7 +53,7 @@
 -(void)testArrayReverseTransformGitHubIssue_15
 {
     NSString* string = [repos toJSONString];
-    NSAssert(string, @"Could not convert ReposModel back to a string");
+    STAssertNotNil(string, @"Could not convert ReposModel back to a string");
 }
 
 @end
