@@ -10,4 +10,13 @@
 
 @implementation OptionalPropModel
 
++(BOOL)propertyIsOptional:(NSString*)propertyName{
+    if(![super propertyIsOptional:propertyName]){
+        if([@[@"notRequiredPoint"] containsObject:propertyName]){
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end
