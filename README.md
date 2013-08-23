@@ -36,20 +36,18 @@ Get it as source files
 or get it via Cocoa pods
 ------------
 
-1. Be sure to update your pods specs:
+Be sure to update your pods specs:
 
 ```bash
 pod setup
 ```
 
-2. In your **Podfile** add the JSONModel pod:
+In your **Podfile** add the JSONModel pod:
 
 ```ruby
 pod 'JSONModel'
 ```
-That's it!
-
-If you want to read more about CocoaPods, have a look at [this great tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
+That's it! If you want to read more about CocoaPods, have a look at [this great tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
 
 Source code documentation
 -------------
@@ -68,9 +66,8 @@ Consider you have a JSON like this:
 {id:"10", "country":"Germany", "dialCode": 49, "isInEurope":true}
 ```
 
-1. Create a new Objective-C class for your data model and make it inherit the JSONModel class. 
-
-2. Declare properties in your header file with the name of the JSON keys:
+ * Create a new Objective-C class for your data model and make it inherit the JSONModel class. 
+ * Declare properties in your header file with the name of the JSON keys:
 
 ```objective-c
 #import "JSONModel.h"
@@ -86,7 +83,7 @@ Consider you have a JSON like this:
 ```
 There's no need to do anything in the **.m** file.
 
-3. Initialize your model with data:
+ * Initialize your model with data:
 
 ```objective-c
 #import "CountryModel.h"
