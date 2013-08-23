@@ -8,32 +8,24 @@ Magical Data Modelling Framework for JSON
 
 JSONModel is a library, which allows rapid creation of smart data models. You can use it in your iOS or OSX apps.
 
-**JSONModel does NOT pre-write your code** as many other libs do, instead it uses performance optimized code to introspect your model classes at run-time, thus being way more flexible when you need to do changes.
-
-JSONModel automatically introspects your model classes and the structure of your JSON input and reduces drastically the amount of code.
-
-The core task of JSONModel is to import, convert, store and export data - through the JSON data types bottleneck:
+JSONModel automatically introspects your model classes and the structure of your JSON input and reduces drastically the amount of code you have to write.
 
 [![](http://www.touch-code-magazine.com/img/json.png)](http://www.touch-code-magazine.com/img/json.png)
 
-Besides this core task JSONModel does also a whole bunch of other tasks, to help you **automate as much as possible** working with local or remote JSON data; it also does provide for you a networking layer, so you don't need to depend on 3rd party networking library (except if you don't want to)
-
-![JSONModel Class schema](http://jsonmodel.com/img/jsonschema.png)
 
 ------------------------------------
-Requirements
+Adding JSONModel to your project
 ====================================
+
+Requirements
+------------
 
 * iOS 5.0+ (requires NSJSONSerialization)
 * OSX 10.7+ (requires NSJSONSerialization) 
 * ARC only
 * SystemConfiguration.framework
 
-------------------------------------
-Adding JSONModel to your project
-====================================
-
-Source files
+Get it as source files
 ------------
 
 1. Download the JSONModel repository as a zip file or clone it
@@ -41,14 +33,7 @@ Source files
 3. Build your project and check that there are no compile time errors 
 (if your project is non-arc for example, you will get a compile time error from the JSONModel library)
 
-Documentation
--------------
-
-1. If you don't already have [appledoc](http://gentlebytes.com/appledoc/) installed, install it with [homebrew](http://brew.sh/) by typing `brew install appledoc`.
-2. Install the documentation into Xcode by typing `appledoc .` in the root directory of the repository.
-3. Restart Xcode if it's already running.
-
-Cocoa pod
+or get it via Cocoa pods
 ------------
 
 1. Be sure to update your pods specs:
@@ -66,81 +51,90 @@ That's it!
 
 If you want to read more about CocoaPods, have a look at [this great tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
 
+Source code documentation
+-------------
+The source code includes class docs, which you can build yourself and import into Xcode:
+
+1. If you don't already have [appledoc](http://gentlebytes.com/appledoc/) installed, install it with [homebrew](http://brew.sh/) by typing `brew install appledoc`.
+2. Install the documentation into Xcode by typing `appledoc .` in the root directory of the repository.
+3. Restart Xcode if it's already running.
+
 ------------------------------------
 Basic usage
 ====================================
-1. Create a new Objective-C class for your data model and make it inherit the JSONModel class. 
 
-2. Declare properties in your header file with the name of the JSON keys you have coming in.
-
-If you are parsing this JSON:
+Consider you have a JSON like this:
 ```javascript
-{"countryCode":"DE", "country":"Germany"}
+{id:"10", "country":"Germany", "dialCode": 49, "isInEurope":true}
 ```
 
-Create the following properties:
+1. Create a new Objective-C class for your data model and make it inherit the JSONModel class. 
+
+2. Declare properties in your header file with the name of the JSON keys:
+
 ```objective-c
 #import "JSONModel.h"
 
-@interface LocationModel : JSONModel
+@interface CountryModel : JSONModel
 
-@property (strong, nonatomic) NSString* countryCode;
+@property (assign, nonatomic) int id;
 @property (strong, nonatomic) NSString* country;
+@property (strong, nonatomic) NSString* dialCode;
+@property (assign, nonatomic) BOOL isInEurope;
 
 @end
 ```
 There's no need to do anything in the **.m** file.
 
-3. In your app class include the JSONModel umbrella header:
-```objective-c
-#import "JSONModelLib.h"
-```
-
-4. Initialize your model with data:
+3. Initialize your model with data:
 
 ```objective-c
+#import "CountryModel.h"
+...
+
 NSString* json = (fetch here JSON from Internet) ... 
 NSError* err = nil;
-LocationModel* location = [[LocationModel alloc] initWithString:json error:&err];
-NSLog(@"Country: %@", location.country);
+CountryModel* country = [[CountryModel alloc] initWithString:json error:&err];
+
 ```
 
-or you can use the built-in async initializer to fetch JSON from the web:
+If the validation of the JSON passes you have all the corresponding properties in your model populated from the JSON. JSONModel will also try to convert as much data to the types you expect, in the example above it will:
 
-```objective-c
-LocationModel* location = [[LocationModel alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising" 
-                          completion: ^(JSONModel *model, JSONModelError* e) {
-                              NSLog("Country: %@, error: %@", location.country, [e localizedDescription]);
-                          }];
-```
+* convert "id" from string (in the JSON) to an int for your class
+* just copy country's value
+* convert dialCode from number (in the JSON) to an NSString value 
+* finally convert isInEurope to a BOOL for your BOOL property
+
+And the good news is all you had to do is define the properties and their expected types.
 
 -------
-Detailed documentation and tutorials
+Online tutorials
 =======
 
-Information and examples: http://www.touch-code-magazine.com/JSONModel/
+Official website: [http://www.jsonmodel.com](http://www.jsonmodel.com)
 
-Official website: http://www.jsonmodel.com
+Class docs online: [http://jsonmodel.com/docs/](http://jsonmodel.com/docs/)
 
-## JSONModel features
+Tutorial list:
 
-#### [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/) [tutorial]
+ * [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/) 
+
+ * [Performance optimisation for working with JSON feeds via JSONModel](http://www.touch-code-magazine.com/performance-optimisation-for-working-with-json-feeds-via-jsonmodel/)
+
+ * [How to make a YouTube app using MGBox and JSONModel](http://www.touch-code-magazine.com/how-to-make-a-youtube-app-using-mgbox-and-jsonmodel/)
+
+-------
+Documentation
+=======
+(This section will be rearranged soon to showcase code)
 
 * automatic data mapping
 * model cascading (models including models)
 * model collections
-
-#### [Performance optimisation for working with JSON feeds via JSONModel](http://www.touch-code-magazine.com/performance-optimisation-for-working-with-json-feeds-via-jsonmodel/)  [tutorial]
 * one-shot or on-demand JSON to model objects conversion
-
-#### [How to make a YouTube app using MGBox and JSONModel](http://www.touch-code-magazine.com/how-to-make-a-youtube-app-using-mgbox-and-jsonmodel/)  [tutorial]
 * key mapping - map JSON keys from deeper levels or with mismatching names easily
 * JSON HTTP client - a thin HTTP client for simple async JSON requests
-
-More tutorials to come on ...
-
 * json validation
-
 * data transformations
 * error handling
 * custom data validation
@@ -162,45 +156,15 @@ This code is distributed under the terms and conditions of the MIT license.
 Contribution guidelines
 =======
 
-* if you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging
+* **NB!** if you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging.
 
 -------
-Contributors
+Misc
 =======
 
 Author: Marin Todorov
 
-Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z
+Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
+Also everyone who did successful [pull requests](https://github.com/icanzilb/JSONModel/graphs/contributors).
 
-----------
-Change-log
-==========
-**Version 0.9.1** @ 2013-07-04
-
-- Bug fixes up to issue #61
-- Custom name based conversions, more thread safety, new data types supported
-
-**Version 0.9** @ 2013-05-01
-
-- Bug fixes up to issue #37
-- Refactor of all networking code, Removing all sync request methods (breaking change)
-
-**Version 0.8.3** @ 2013-01-24
-
-- Bug fixes up to issue #15
-
-**Version 0.8.2** @ 2013-01-01
-
-- Added distribution as a Cocoa Pod
-
-**Version 0.8.1** @ 2012-12-31
-
-- Fixed Xcode workspace for the demo apps
-
-**Version 0.8.0** @ 2012-12-31
-
-- OSX support, automatic network indicator for iOS, speed improvements, better README
-
-**Version 0.7.8** @ 2012-12-25
-
-- Initial release with semantic versioning
+Change log : [https://github.com/icanzilb/JSONModel/blob/master/Changelog.md](https://github.com/icanzilb/JSONModel/blob/master/Changelog.md)
