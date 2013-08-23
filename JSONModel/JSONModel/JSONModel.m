@@ -46,26 +46,23 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 +(void)load
 {
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
+    @autoreleasepool {
         // initialize all class static objects,
         // which are common for ALL JSONModel subclasses
         
-		@autoreleasepool {
-            allowedJSONTypes = @[
-                [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
-                [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
-            ];
-            
-            allowedPrimitiveTypes = @[
-                @"BOOL", @"float", @"int", @"long", @"double", @"short",
-                //and some famous aliases
-                @"NSInteger", @"NSUInteger"
-            ];
-            
-            valueTransformer = [[JSONValueTransformer alloc] init];
-		}
-    });
+        allowedJSONTypes = @[
+            [NSString class], [NSNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
+            [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
+        ];
+        
+        allowedPrimitiveTypes = @[
+            @"BOOL", @"float", @"int", @"long", @"double", @"short",
+            //and some famous aliases
+            @"NSInteger", @"NSUInteger"
+        ];
+        
+        valueTransformer = [[JSONValueTransformer alloc] init];
+    }
 }
 
 -(void)__setup__
