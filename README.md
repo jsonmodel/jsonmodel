@@ -152,7 +152,7 @@ Documentation
 }
 </pre>
 </td>
-<td>
+<td valign="top">
 <pre>
 @interface OrderModel
 @property (assign, nonatomic) int order_id;
