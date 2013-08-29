@@ -123,7 +123,7 @@ Documentation
 </td>
 <td>
 <pre>
-@interface ProductModel
+@interface ProductModel : JSONModel
 @property (assign, nonatomic) int id;
 @property (strong, nonatomic) NSString* name;
 @property (assign, nonatomic) float price;
@@ -154,7 +154,7 @@ Documentation
 </td>
 <td valign="top">
 <pre>
-@interface OrderModel
+@interface OrderModel : JSONModel
 @property (assign, nonatomic) int order_id;
 @property (assign, nonatomic) float total_price;
 @property (strong, nonatomic) ProductModel* product;
@@ -195,7 +195,7 @@ Documentation
 @protocol ProductModel
 @end
 
-@interface ProductModel
+@interface ProductModel : JSONModel
 @property (assign, nonatomic) int id;
 @property (strong, nonatomic) NSString* name;
 @property (assign, nonatomic) float price;
@@ -204,7 +204,7 @@ Documentation
 @implementation ProductModel
 @end
 
-@interface OrderModel
+@interface OrderModel : JSONModel
 @property (assign, nonatomic) int order_id;
 @property (assign, nonatomic) float total_price;
 @property (strong, nonatomic) NSArray&lt;ProductModel&gt;* products;
