@@ -20,34 +20,24 @@ Adding JSONModel to your project
 Requirements
 ------------
 
-* iOS 5.0+ (requires NSJSONSerialization)
-* OSX 10.7+ (requires NSJSONSerialization) 
-* ARC only
-* SystemConfiguration.framework
+* ARC only; iOS 5.0+ / OSX 10.7+
+* **SystemConfiguration.framework**
 
-Get it as source files
+Get it as: 1) source files
 ------------
 
-1. Download the JSONModel repository as a zip file or clone it
+1. Download the JSONModel repository as a [zip file](https://github.com/icanzilb/JSONModel/archive/master.zip) or clone it
 2. Copy the JSONModel sub-folder into your Xcode project
-3. Build your project and check that there are no compile time errors 
-(if your project is non-arc for example, you will get a compile time error from the JSONModel library)
 
-or get it via Cocoa pods
+or 2) via Cocoa pods
 ------------
 
-Be sure to update your pods specs:
-
-```bash
-pod setup
-```
-
-In your **Podfile** add the JSONModel pod:
+In your project's **Podfile** add the JSONModel pod:
 
 ```ruby
 pod 'JSONModel'
 ```
-That's it! If you want to read more about CocoaPods, have a look at [this great tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
+If you want to read more about CocoaPods, have a look at [this short tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
 
 Source code documentation
 -------------
