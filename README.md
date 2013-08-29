@@ -111,11 +111,29 @@ Documentation
 
 <table>
 <tr>
-<td>
-<b>automatic data mapping</b> <br>
-`JSON Code...`
+<td valign="top">
+<b>Automatic name based mapping</b> <br>
+Just create properties with matching names.
+<pre>
+{
+  "id": "123",
+  "name": "Product name",
+  "price": 12.95
+}
+</pre>
 </td>
-<td>Objc code…</td>
+<td>
+<pre>
+@interface ProductModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString* name;
+@property (assign, nonatomic) float price;
+@end
+
+@implementation ProductModel
+@end
+</pre>
+</td>
 </tr>
 </table>
 
