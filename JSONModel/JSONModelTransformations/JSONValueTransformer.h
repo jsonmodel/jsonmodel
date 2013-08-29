@@ -110,7 +110,7 @@ extern BOOL isNull(id value);
  */
 -(NSArray*)JSONObjectFromNSMutableSet:(NSMutableSet*)set;
 
-#pragma mark - BOOL <-> number
+#pragma mark - BOOL <-> number/string
 /** @name Transforming JSON types */
 /**
  * Transforms a number object to a bool number object
@@ -118,6 +118,20 @@ extern BOOL isNull(id value);
  * @return the resulting number
  */
 -(NSNumber*)BOOLFromNSNumber:(NSNumber*)number;
+
+/**
+ * Transforms a number object to a bool number object
+ * @param string the string value to convert, "0" converts to NO, everything else to YES
+ * @return the resulting number
+ */
+-(NSNumber*)BOOLFromNSString:(NSString*)string;
+
+/**
+ * Transforms a BOOL value to a bool number object
+ * @param number an NSNumber value coming from the model
+ * @return the result number
+ */
+-(NSNumber*)JSONObjectFromBOOL:(NSNumber*)number;
 
 #pragma mark - string <-> number
 /**

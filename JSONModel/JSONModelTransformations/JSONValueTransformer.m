@@ -109,10 +109,22 @@ extern BOOL isNull(id value)
 }
 
 
-#pragma mark - BOOL <-> number
+#pragma mark - BOOL <-> number/string
 -(NSNumber*)BOOLFromNSNumber:(NSNumber*)number
 {
     if (isNull(number)) return @0;
+    return number;
+}
+
+-(NSNumber*)BOOLFromNSString:(NSString*)string
+{
+    int val = [string intValue];
+    if (val!=0) val=1;
+    return @(val);
+}
+
+-(NSNumber*)JSONObjectFromBOOL:(NSNumber*)number
+{
     return number;
 }
 
