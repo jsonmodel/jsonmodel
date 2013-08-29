@@ -13,6 +13,10 @@
 /* BOOL automatically converted from a number */
 @property (assign, nonatomic) BOOL isItYesOrNo;
 
+@property (assign, nonatomic) BOOL boolFromString;
+@property (assign, nonatomic) BOOL boolFromNumber;
+@property (assign, nonatomic) BOOL boolFromBoolean;
+
 /* unordered list */
 @property (strong, nonatomic) NSSet* unorderedList;
 

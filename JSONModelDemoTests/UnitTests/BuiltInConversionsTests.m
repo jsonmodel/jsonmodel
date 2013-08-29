@@ -33,6 +33,11 @@
 {
     STAssertTrue(b.isItYesOrNo==YES, @"isItYesOrNo value is not YES");
     
+    STAssertTrue(b.boolFromBoolean==YES, @"boolFromBoolean is not YES");
+    STAssertTrue(b.boolFromNumber==YES, @"boolFromNumber is not YES");
+    STAssertTrue(b.boolFromString==YES, @"boolFromString is not YES");
+    
+    
     STAssertTrue([b.unorderedList isKindOfClass:[NSSet class]], @"unorderedList is not an NSSet object");
     STAssertTrue([b.unorderedList anyObject], @"unorderedList don't have any objects");
     

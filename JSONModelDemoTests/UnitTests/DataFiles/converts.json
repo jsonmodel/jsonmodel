@@ -1,5 +1,8 @@
 {
     "isItYesOrNo": 1,
+    "boolFromString" : "1",
+    "boolFromNumber" : 1,
+    "boolFromBoolean" : true,
 
     "unorderedList": ["1","5","7","2"],
     "dynamicUnorderedList": ["a", "3"],
