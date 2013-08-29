@@ -109,11 +109,10 @@ Documentation
 
 (This section will be rearranged soon to showcase code)
 
+#### Automatic name based mapping
 <table>
 <tr>
 <td valign="top">
-<b>Automatic name based mapping</b> <br>
-Just create properties with matching names.
 <pre>
 {
   "id": "123",
@@ -137,7 +136,39 @@ Just create properties with matching names.
 </tr>
 </table>
 
-* 
+#### Models including other models (parse cascading)
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "order_id": 104,
+  "total_price": 13.45,
+  "product" : {
+    "id": "123",
+    "name": "Product name",
+    "price": 12.95
+  }
+}
+</pre>
+</td>
+<td>
+<pre>
+@interface OrderModel
+@property (assign, nonatomic) int order_id;
+@property (assign, nonatomic) float total_price;
+@property (strong, nonatomic) ProductModel* product;
+@end
+
+@implementation OrderModel
+@end
+</pre>
+</td>
+</tr>
+</table>
+
+
+
 * model cascading (models including models)
 * model collections
 * one-shot or on-demand JSON to model objects conversion
