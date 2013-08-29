@@ -104,7 +104,7 @@ Tutorial list:
  * [How to make a YouTube app using MGBox and JSONModel](http://www.touch-code-magazine.com/how-to-make-a-youtube-app-using-mgbox-and-jsonmodel/)
 
 -------
-Documentation
+Examples
 =======
 
 (This section will be rearranged soon to showcase code)
@@ -217,16 +217,187 @@ Documentation
 </tr>
 </table>
 
+#### Key mapping
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "order_id": 104,
+  "order_details" : [
+    {
+      "name": "Product#1",
+      "price": {
+        "usd": 12.95
+      }
+    }
+  ]
+}
+</pre>
+</td>
+<td valign="top">
+<pre>
+@interface OrderModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (assign, nonatomic) float price;
+@property (strong, nonatomic) NSString* productName;
+@end
+
+@implementation OrderModel
+
++(JSONKeyMapper*)keyMapper
+{
+  return [[JSONKeyMapper alloc] initWithDictionary:@{
+    @"order_id": @"id",
+    @"order_details.name": @"productName",
+    @"order_details.price.usd": @"price"
+  }];
+}
+
+@end
+</pre>
+</td>
+</tr>
+</table>
+
+#### Global key mapping (applies to all models in your app)
+<table>
+<tr>
+<td valign="top">
+<pre>
+[JSONModel setGlobalKeyMapper:[
+    [JSONKeyMapper alloc] initWithDictionary:@{
+      @"item_id":@"ID",
+      @"item.name": @"itemName"
+   }]
+];
+
+</pre>
+</td>
+</tr>
+</table>
+
+#### Map automatically under_score case to camelCase
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "order_id": 104,
+  "order_product" : @"Product#1",
+  "order_price" : 12.95
+}
+</pre>
+</td>
+<td valign="top">
+<pre>
+@interface OrderModel : JSONModel
+
+@property (assign, nonatomic) int orderId;
+@property (assign, nonatomic) float orderPrice;
+@property (strong, nonatomic) NSString* orderProduct;
+
+@end
+
+@implementation OrderModel
+
++(JSONKeyMapper*)keyMapper
+{
+  return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
+@end
+</pre>
+</td>
+</tr>
+</table>
+
+#### Optional properties (i.e. can be missing or null)
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "id": "123",
+  "name": null,
+  "price": 12.95
+}
+</pre>
+</td>
+<td>
+<pre>
+@interface ProductModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString&lt;Optional&gt;* name;
+@property (assign, nonatomic) float price;
+@property (strong, nonatomic) NSNumber&lt;Optional&gt;* uuid;
+@end
+
+@implementation ProductModel
+@end
+</pre>
+</td>
+</tr>
+</table>
 
 
-* one-shot or on-demand JSON to model objects conversion
-* key mapping - map JSON keys from deeper levels or with mismatching names easily
+#### Lazy convert collection items from dictionaries to models
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "order_id": 104,
+  "total_price": 103.45,
+  "products" : [
+    {
+      "id": "123",
+      "name": "Product #1",
+      "price": 12.95
+    },
+    {
+      "id": "137",
+      "name": "Product #2",
+      "price": 82.95
+    }
+  ]
+}
+</pre>
+</td>
+<td valign="top">
+<pre>
+@protocol ProductModel
+@end
+
+@interface ProductModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString* name;
+@property (assign, nonatomic) float price;
+@end
+
+@implementation ProductModel
+@end
+
+@interface OrderModel : JSONModel
+@property (assign, nonatomic) int order_id;
+@property (assign, nonatomic) float total_price;
+@property (strong, nonatomic) NSArray&lt;ProductModel, ConvertOnDemand&gt;* products;
+@end
+
+@implementation OrderModel
+@end
+</pre>
+</td>
+</tr>
+</table>
+
+
+
 * JSON HTTP client - a thin HTTP client for simple async JSON requests
 * json validation
 * data transformations
 * error handling
 * custom data validation
-* automatic underscore_naming to camelCaseNaming mapping
 * synchronious and asynchronious networking
 * JSON API client
 * JSON RPC 1.0 client
