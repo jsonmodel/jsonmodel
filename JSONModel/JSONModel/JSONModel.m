@@ -448,9 +448,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             //get property attributes
             const char *attrs = property_getAttributes(property);
-            scanner = [NSScanner scannerWithString:
-                       [NSString stringWithUTF8String:attrs]
-                       ];
+            NSString* propertyAttributes = [NSString stringWithUTF8String:attrs];
+            
+            if ([propertyAttributes hasPrefix:@"Tc,"]) {
+                //mask BOOLs as structs so they can have custom convertors
+                p.structName = @"BOOL";
+            }
+            
+            scanner = [NSScanner scannerWithString: propertyAttributes];
             
             //JMLog(@"attr: %@", [NSString stringWithCString:attrs encoding:NSUTF8StringEncoding]);
             [scanner scanUpToString:@"T" intoString: nil];
