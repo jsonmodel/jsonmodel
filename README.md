@@ -1,8 +1,4 @@
-JSONModel
-====================================
-------------------------------------
-Magical Data Modelling Framework for JSON
-------------------------------------
+## Magical Data Modelling Framework for JSON
 
 ![JSONModel for iOS and OSX](http://jsonmodel.com/img/jsonmodel_logolike.png)
 
@@ -17,20 +13,18 @@ JSONModel automatically introspects your model classes and the structure of your
 Adding JSONModel to your project
 ====================================
 
-Requirements
-------------
+#### Requirements
 
 * ARC only; iOS 5.0+ / OSX 10.7+
 * **SystemConfiguration.framework**
 
-Get it as: 1) source files
-------------
+#### Get it as: 1) source files
 
 1. Download the JSONModel repository as a [zip file](https://github.com/icanzilb/JSONModel/archive/master.zip) or clone it
 2. Copy the JSONModel sub-folder into your Xcode project
+3. Link your app to SystemConfiguration.framework
 
-or 2) via Cocoa pods
-------------
+#### or 2) via Cocoa pods
 
 In your project's **Podfile** add the JSONModel pod:
 
@@ -39,8 +33,7 @@ pod 'JSONModel'
 ```
 If you want to read more about CocoaPods, have a look at [this short tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
 
-Source code documentation
--------------
+#### Source code documentation
 The source code includes class docs, which you can build yourself and import into Xcode:
 
 1. If you don't already have [appledoc](http://gentlebytes.com/appledoc/) installed, install it with [homebrew](http://brew.sh/) by typing `brew install appledoc`.
@@ -95,8 +88,8 @@ If the validation of the JSON passes you have all the corresponding properties i
 And the good news is all you had to do is define the properties and their expected types.
 
 -------
-Online tutorials
-=======
+#### Online tutorials
+
 
 Official website: [http://www.jsonmodel.com](http://www.jsonmodel.com)
 
@@ -113,9 +106,20 @@ Tutorial list:
 -------
 Documentation
 =======
+
 (This section will be rearranged soon to showcase code)
 
-* automatic data mapping
+<table>
+<tr>
+<td>
+<b>automatic data mapping</b> <br>
+`JSON Code...`
+</td>
+<td>Objc code…</td>
+</tr>
+</table>
+
+* 
 * model cascading (models including models)
 * model collections
 * one-shot or on-demand JSON to model objects conversion
@@ -134,18 +138,7 @@ Documentation
 * and more.
 
 -------
-License
-=======
 
-This code is distributed under the terms and conditions of the MIT license. 
-
--------
-Contribution guidelines
-=======
-
-* **NB!** if you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging.
-
--------
 Misc
 =======
 
@@ -155,3 +148,12 @@ Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9
 Also everyone who did successful [pull requests](https://github.com/icanzilb/JSONModel/graphs/contributors).
 
 Change log : [https://github.com/icanzilb/JSONModel/blob/master/Changelog.md](https://github.com/icanzilb/JSONModel/blob/master/Changelog.md)
+
+-------
+#### License
+This code is distributed under the terms and conditions of the MIT license. 
+
+-------
+#### Contribution guidelines
+
+**NB!** If you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging.
