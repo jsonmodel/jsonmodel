@@ -157,7 +157,7 @@ Examples
 @interface OrderModel : JSONModel
 @property (assign, nonatomic) int order_id;
 @property (assign, nonatomic) float total_price;
-@property (strong, nonatomic) ProductModel* product;
+@property (strong, nonatomic) <b>ProductModel*</b> product;
 @end
 
 @implementation OrderModel
@@ -192,8 +192,8 @@ Examples
 </td>
 <td valign="top">
 <pre>
-@protocol ProductModel
-@end
+<b>@protocol ProductModel
+@end</b>
 
 @interface ProductModel : JSONModel
 @property (assign, nonatomic) int id;
@@ -207,7 +207,7 @@ Examples
 @interface OrderModel : JSONModel
 @property (assign, nonatomic) int order_id;
 @property (assign, nonatomic) float total_price;
-@property (strong, nonatomic) NSArray&lt;ProductModel&gt;* products;
+@property (strong, nonatomic) <b>NSArray&lt;ProductModel&gt;*</b> products;
 @end
 
 @implementation OrderModel
@@ -248,9 +248,9 @@ Examples
 +(JSONKeyMapper*)keyMapper
 {
   return [[JSONKeyMapper alloc] initWithDictionary:@{
-    @"order_id": @"id",
+  <b>  @"order_id": @"id",
     @"order_details.name": @"productName",
-    @"order_details.price.usd": @"price"
+    @"order_details.price.usd": @"price"</b>
   }];
 }
 
@@ -265,12 +265,12 @@ Examples
 <tr>
 <td valign="top">
 <pre>
-[JSONModel setGlobalKeyMapper:[
+<b>[JSONModel setGlobalKeyMapper:[</b>
     [JSONKeyMapper alloc] initWithDictionary:@{
       @"item_id":@"ID",
       @"item.name": @"itemName"
    }]
-];
+<b>];</b>
 
 </pre>
 </td>
@@ -303,7 +303,7 @@ Examples
 
 +(JSONKeyMapper*)keyMapper
 {
-  return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+  return <b>[JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];</b>
 }
 
 @end
@@ -328,9 +328,9 @@ Examples
 <pre>
 @interface ProductModel : JSONModel
 @property (assign, nonatomic) int id;
-@property (strong, nonatomic) NSString&lt;Optional&gt;* name;
+@property (strong, nonatomic) NSString<b>&lt;Optional&gt;</b>* name;
 @property (assign, nonatomic) float price;
-@property (strong, nonatomic) NSNumber&lt;Optional&gt;* uuid;
+@property (strong, nonatomic) NSNumber<b>&lt;Optional&gt;</b>* uuid;
 @end
 
 @implementation ProductModel
@@ -381,7 +381,7 @@ Examples
 @interface OrderModel : JSONModel
 @property (assign, nonatomic) int order_id;
 @property (assign, nonatomic) float total_price;
-@property (strong, nonatomic) NSArray&lt;ProductModel, ConvertOnDemand&gt;* products;
+@property (strong, nonatomic) NSArray&lt;ProductModel, <b>ConvertOnDemand</b>&gt;* products;
 @end
 
 @implementation OrderModel
