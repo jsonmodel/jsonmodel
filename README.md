@@ -95,7 +95,7 @@ Official website: [http://www.jsonmodel.com](http://www.jsonmodel.com)
 
 Class docs online: [http://jsonmodel.com/docs/](http://jsonmodel.com/docs/)
 
-Tutorial list:
+Step-by-step tutorials:
 
  * [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/) 
 
@@ -106,8 +106,6 @@ Tutorial list:
 -------
 Examples
 =======
-
-(This section will be rearranged soon to showcase code)
 
 #### Automatic name based mapping
 <table>
@@ -410,7 +408,7 @@ Examples
 Misc
 =======
 
-Author: Marin Todorov
+Author: [Marin Todorov](http://www.touch-code-magazine.com)
 
 Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
 Also everyone who did successful [pull requests](https://github.com/icanzilb/JSONModel/graphs/contributors).
