@@ -1,7 +1,7 @@
 //
 //  JSONModelClassProperty.h
 //
-//  @version 0.9.0
+//  @version 0.9.2
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
