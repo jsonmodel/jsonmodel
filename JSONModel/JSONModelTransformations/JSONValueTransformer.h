@@ -166,23 +166,14 @@ extern BOOL isNull(id value);
 
 #pragma mark - string <-> date
 /** @name Transforming Dates */
-/*  string <-> date using the W3C format ISO8601 */
 /**
- * Transforms a string object to an NSDate object, asuming the dates in the JSON feed are W3C (ISO8601) encoded.
- * If the dates in your JSON are in different format, you should just create a category for JSONValueTransformer
- * and overwrite this method
- * @param string the string to convert
- * @return the resulting NSDate object
+ * The following two methods are not public. This way if there is a category on converting 
+ * dates it'll override them. If there isn't a category the default methods found in the .m
+ * file will be invoked. If these are public a warning is produced at the point of overriding
+ * them in a category, so they have to stay hidden here.
  */
--(NSDate*)NSDateFromNSString:(NSString*)string;
 
-/**
- * Transforms an NSDate object to an NSString object, using W3C (ISO8601) format.
- * If you want different date string format you should just create a category for JSONValueTransformer
- * and overwrite this method
- * @param date the date to convert
- * @return the resulting string object
- */
--(NSString*)JSONObjectFromNSDate:(NSDate*)date;
+//-(NSDate*)NSDateFromNSString:(NSString*)string;
+//-(NSString*)JSONObjectFromNSDate:(NSDate*)date;
 
 @end
