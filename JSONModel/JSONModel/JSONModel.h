@@ -236,8 +236,12 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 +(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper;
 
 /**
-* Return value indicates whether one property is optional
-*/
+ * Indicates whether the property with the given name is Optional.
+ * To have a model with all of its properties being Optional just return YES.
+ * This method returns by default NO, since the default behaviour is to have all propertoes required.
+ * @param propertyName the name of the property
+ * @return a BOOL result indicating whether the property is optional
+ */
 +(BOOL)propertyIsOptional:(NSString*)propertyName;
 
 @end

@@ -990,7 +990,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
     globalKeyMapper = globalKeyMapperParam;
 }
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName{
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
     return NO;
 }
+
 @end
