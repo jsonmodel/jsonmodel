@@ -338,6 +338,22 @@ Examples
 </tr>
 </table>
 
+#### Make all model properties optional (avoid if possible)
+<table>
+<tr>
+<td valign="top">
+<pre>
+@implementation ProductModel
+<b>+(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+  return YES;
+}</b>
+@end
+</pre>
+</td>
+</tr>
+</table>
+
 
 #### Lazy convert collection items from dictionaries to models
 <table>
