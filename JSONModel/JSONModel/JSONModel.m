@@ -293,9 +293,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 if (property.protocol) {
                     
                     //JMLog(@"proto: %@", p.protocol);
-                    jsonValue = [self __transform:jsonValue forProperty:property];
+                    jsonValue = [self __transform:jsonValue forProperty:property error:err];
                     if (!jsonValue) {
-                        if (err) *err = [JSONModelError errorInvalidData];
+                        if ((err != nil) && (*err == nil)) *err = [JSONModelError errorInvalidData];
                         return nil;
                     }
                 }
@@ -554,7 +554,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - built-in transformer methods
 //few built-in transformations
--(id)__transform:(id)value forProperty:(JSONModelClassProperty*)property
+-(id)__transform:(id)value forProperty:(JSONModelClassProperty*)property error:(NSError**)err
 {
     Class protocolClass = NSClassFromString(property.protocol);
     if (!protocolClass) {
@@ -574,7 +574,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
         //check if it's a list of models
         if ([property.type isSubclassOfClass:[NSArray class]]) {
-            
+
+			// Expecting an array, make sure 'value' is an array
+			if(![[value class] isSubclassOfClass:[NSArray class]])
+			{
+				if(err != nil)
+				{
+					NSString* mismatch = [NSString stringWithFormat:@"Property '%@' is declared as NSArray<%@>* but the corresponding JSON value is not a JSON Array.", property.name, property.protocol];
+					*err = [JSONModelError errorInvalidDataWithTypeMismatch:mismatch];
+				}
+				return nil;
+			}
+
             if (property.convertsOnDemand) {
                 //on demand conversion
                 value = [[JSONModelArray alloc] initWithArray:value modelClass:[protocolClass class]];
@@ -587,6 +598,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
         
         //check if it's a dictionary of models
         if ([property.type isSubclassOfClass:[NSDictionary class]]) {
+
+			// Expecting a dictionary, make sure 'value' is a dictionary
+			if(![[value class] isSubclassOfClass:[NSDictionary class]])
+			{
+				if(err != nil)
+				{
+					NSString* mismatch = [NSString stringWithFormat:@"Property '%@' is declared as NSDictionary<%@>* but the corresponding JSON value is not a JSON Object.", property.name, property.protocol];
+					*err = [JSONModelError errorInvalidDataWithTypeMismatch:mismatch];
+				}
+				return nil;
+			}
+
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
             JSONModelError* initErr = nil;
             

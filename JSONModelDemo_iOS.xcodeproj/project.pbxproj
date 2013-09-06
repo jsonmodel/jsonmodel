@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */; };
+		697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
 		9C66DFA8168CEF420015CCDF /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DF60168CEF420015CCDF /* ArrayTests.m */; };
@@ -142,6 +144,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImages.json; sourceTree = "<group>"; };
+		697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImagesObject.json; sourceTree = "<group>"; };
 		9C0D023D166E6BBF001EA645 /* KivaViewControllerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewControllerNetworking.h; sourceTree = "<group>"; };
 		9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaViewControllerNetworking.m; sourceTree = "<group>"; };
 		9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KivaViewControllerNetworking.xib; sourceTree = "<group>"; };
@@ -414,6 +418,8 @@
 				9C66DF6B168CEF420015CCDF /* jsonTypes.json */,
 				9C66DF6C168CEF420015CCDF /* nestedData.json */,
 				9C66DF6D168CEF420015CCDF /* nestedDataWithErrors.json */,
+				697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */,
+				697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */,
 				9C66DF6E168CEF420015CCDF /* post.json */,
 				9C66DF6F168CEF420015CCDF /* primitives.json */,
 				9C66DF70168CEF420015CCDF /* primitivesWithErrors.json */,
@@ -846,6 +852,8 @@
 				9C66DFB5168CEF420015CCDF /* withOptProp.json in Resources */,
 				9C66DFB6168CEF420015CCDF /* withoutOptProp.json in Resources */,
 				9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */,
+				697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */,
+				697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

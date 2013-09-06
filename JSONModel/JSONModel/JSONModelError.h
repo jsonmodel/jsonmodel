@@ -38,6 +38,14 @@ extern NSString* const JSONModelErrorDomain;
  */
 extern NSString* const kJSONModelMissingKeys;
 
+/**
+ * If JSON input has a different type than expected by the model, check the
+ * userInfo dictionary of the JSONModelError instance you get back -
+ * under the kJSONModelTypeMismatch key you will find a description
+ * of the mismatched types.
+ */
+extern NSString* const kJSONModelTypeMismatch;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * Custom NSError subclass with shortcut methods for creating 
@@ -57,6 +65,12 @@ extern NSString* const kJSONModelMissingKeys;
  * @param keys a set of field names that were required, but not found in the input
  */
 +(id)errorInvalidDataWithMissingKeys:(NSSet*)keys;
+
+/**
+ * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
+ * @param A description of the type mismatch that was encountered.
+ */
++(id)errorInvalidDataWithTypeMismatch:(NSString*)mismatchDescription;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorBadResponse = 2

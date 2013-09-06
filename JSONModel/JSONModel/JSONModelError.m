@@ -18,6 +18,7 @@
 
 NSString* const JSONModelErrorDomain = @"JSONModelErrorDomain";
 NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
+NSString* const kJSONModelTypeMismatch = @"kJSONModelTypeMismatch";
 
 @implementation JSONModelError
 
@@ -33,6 +34,13 @@ NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorInvalidData
                                   userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data. Required JSON keys are missing from the input. Check the error user information.",kJSONModelMissingKeys:[keys allObjects]}];
+}
+
++(id)errorInvalidDataWithTypeMismatch:(NSString*)mismatchDescription
+{
+    return [JSONModelError errorWithDomain:JSONModelErrorDomain
+                                      code:kJSONModelErrorInvalidData
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data. The JSON type mismatches the expected type. Check the error user information.",kJSONModelTypeMismatch:mismatchDescription}];
 }
 
 +(id)errorBadResponse

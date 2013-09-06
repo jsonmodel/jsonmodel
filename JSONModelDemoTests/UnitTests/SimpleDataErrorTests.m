@@ -33,6 +33,42 @@
     STAssertTrue([missingKeys[1] isEqualToString:@"longNumber"],@"missing field longNumber not found in missingKeys");
 }
 
+-(void)testTypeMismatchErrorImages
+{
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedDataWithTypeMismatchOnImages.json"];
+    NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+
+    NSError* err;
+    NestedModel* p = [[NestedModel alloc] initWithString: jsonContents error:&err];
+    STAssertNil(p, @"Model is not nil, when input is invalid");
+    STAssertNotNil(err, @"No error when types mismatch.");
+
+    STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error for type mismatch");
+    NSString* mismatchDescription = err.userInfo[kJSONModelTypeMismatch];
+    STAssertTrue(mismatchDescription, @"error does not have kJSONModelTypeMismatch key in user info");
+	STAssertTrue([mismatchDescription rangeOfString:@"'images'"].location != NSNotFound, @"error should mention that the 'images' property (expecting an Array) is mismatched.");
+}
+
+-(void)testTypeMismatchErrorImagesObject
+{
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedDataWithTypeMismatchOnImagesObject.json"];
+    NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+
+    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+
+    NSError* err;
+    NestedModel* p = [[NestedModel alloc] initWithString: jsonContents error:&err];
+    STAssertNil(p, @"Model is not nil, when input is invalid");
+    STAssertNotNil(err, @"No error when types mismatch.");
+
+    STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error for type mismatch");
+    NSString* mismatchDescription = err.userInfo[kJSONModelTypeMismatch];
+    STAssertTrue(mismatchDescription, @"error does not have kJSONModelTypeMismatch key in user info");
+	STAssertTrue([mismatchDescription rangeOfString:@"'imagesObject'"].location != NSNotFound, @"error should mention that the 'imagesObject' property (expecting a Dictionary) is mismatched.");
+}
+
 -(void)testBrokenJSON
 {
     NSString* jsonContents = @"{[1,23,4],\"123\":123,}";
