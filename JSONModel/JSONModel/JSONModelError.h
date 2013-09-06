@@ -33,7 +33,7 @@ extern NSString* const JSONModelErrorDomain;
 /** 
  * If the model JSON input misses keys that are required, check the
  * userInfo dictionary of the JSONModelError instance you get back - 
- * under the kJSONModelErrorInvalidData key you will find a list of the 
+ * under the kJSONModelMissingKeys key you will find a list of the
  * names of the missing keys.
  */
 extern NSString* const kJSONModelMissingKeys;
