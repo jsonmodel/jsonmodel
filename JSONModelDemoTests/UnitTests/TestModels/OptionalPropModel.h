@@ -16,6 +16,9 @@
 /* optional property, not required in the JSON data */
 @property (strong, nonatomic) NSString<Optional>* notRequredProperty;
 
+/* this is a property of the model class that gets completely ignored */
+@property (strong, nonatomic) NSString<Ignore>* ignoredProperty;
+
 /* optional struct property */
 @property (assign, nonatomic) CGPoint notRequiredPoint;
 

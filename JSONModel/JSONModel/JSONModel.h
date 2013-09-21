@@ -30,7 +30,17 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Property Protocols
-/** 
+/**
+ * Protocol for defining properties in a JSON Model class that should not be considered at all
+ * neither while importing nor when exporting JSON.
+ *
+ * @property (strong, nonatomic) NSString&lt;Ignore&gt;* propertyName;
+ *
+ */
+@protocol Ignore
+@end
+
+/**
  * Protocol for defining optional properties in a JSON Model class. Use like below to define 
  * model properties that are not required to have values in the JSON input:
  * 
@@ -53,7 +63,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 /**
  * Make all objects Optional compatible to avoid compiler warnings
  */
-@interface NSObject(JSONModelPropertyCompatibility)<Optional, Index>
+@interface NSObject(JSONModelPropertyCompatibility)<Optional, Index, Ignore>
 @end
 
 /**

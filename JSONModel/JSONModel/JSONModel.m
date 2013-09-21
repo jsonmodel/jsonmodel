@@ -491,6 +491,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                                  );
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.convertsOnDemand = YES;
+                    } else if([protocolName isEqualToString:@"Ignore"]) {
+                        p = nil;
                     } else {
                         p.protocol = protocolName;
                     }
@@ -533,7 +535,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             }
 
             //add the property object to the temp index
-            [propertyIndex setValue:p forKey:p.name];
+            if (p) {
+                [propertyIndex setValue:p forKey:p.name];
+            }
         }
         
         free(properties);
