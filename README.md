@@ -338,6 +338,32 @@ Examples
 </tr>
 </table>
 
+#### Ignored properties (i.e. JSONModel completely ignores them)
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "id": "123",
+  "name": null
+}
+</pre>
+</td>
+<td>
+<pre>
+@interface ProductModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString<b>&lt;Ignore&gt;</b>* customProperty;
+@end
+
+@implementation ProductModel
+@end
+</pre>
+</td>
+</tr>
+</table>
+
+
 #### Make all model properties optional (avoid if possible)
 <table>
 <tr>
