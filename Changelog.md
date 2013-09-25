@@ -1,5 +1,10 @@
 Change-log
 ==========
+**Version 0.9.3** @ 2013-09-25
+
+- Bug fixes up to issue #90
+- Added "Ignore" protocol, all Optional properties, better documentation
+
 **Version 0.9.2** @ 2013-08-23
 
 - Bug fixes up to issue #74
