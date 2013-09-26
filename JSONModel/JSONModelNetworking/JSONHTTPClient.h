@@ -39,7 +39,7 @@ extern NSString* const kContentTypeWWWEncoded;
  * @param json object derived from a JSON string
  * @param err JSONModelError or nil
  */
-typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
+typedef void (^JSONObjectBlock)(id json, JSONModelError* err);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - configuration methods

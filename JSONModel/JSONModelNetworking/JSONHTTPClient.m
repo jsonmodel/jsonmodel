@@ -266,7 +266,7 @@ static NSString* requestContentType = nil;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSDictionary* jsonObject = nil;
+        id jsonObject = nil;
         JSONModelError* error = nil;
         NSData* responseData = nil;
         NSString* etag = nil;
@@ -324,7 +324,7 @@ static NSString* requestContentType = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodGET
                          params:nil
-                   orBodyString:nil completion:^(NSDictionary *json, JSONModelError* e) {
+                   orBodyString:nil completion:^(id json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
@@ -333,7 +333,7 @@ static NSString* requestContentType = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodGET
                          params:params
-                   orBodyString:nil completion:^(NSDictionary *json, JSONModelError* e) {
+                   orBodyString:nil completion:^(id json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
@@ -342,7 +342,7 @@ static NSString* requestContentType = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
                          params:params
-                   orBodyString:nil completion:^(NSDictionary *json, JSONModelError* e) {
+                   orBodyString:nil completion:^(id json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 
@@ -352,7 +352,7 @@ static NSString* requestContentType = nil;
 {
     [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
                          params:nil
-                   orBodyString:bodyString completion:^(NSDictionary *json, JSONModelError* e) {
+                   orBodyString:bodyString completion:^(id json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
@@ -362,7 +362,7 @@ static NSString* requestContentType = nil;
     [self JSONFromURLWithString:urlString method:kHTTPMethodPOST
                          params:nil
                    orBodyString:[[NSString alloc] initWithData:bodyData encoding:defaultTextEncoding]
-                                 completion:^(NSDictionary *json, JSONModelError* e) {
+                                 completion:^(id json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
 }
