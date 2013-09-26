@@ -262,7 +262,17 @@ static NSString* requestContentType = nil;
 #pragma mark - Async network request
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
 {
-    NSDictionary* customHeaders = nil;
+    [self JSONFromURLWithString:urlString
+                         method:method
+                         params:params
+                   orBodyString:bodyString
+                        headers:nil
+                     completion:completeBlock];
+}
+
++(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString headers:(NSDictionary*)headers completion:(JSONObjectBlock)completeBlock
+{
+    NSDictionary* customHeaders = headers;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
