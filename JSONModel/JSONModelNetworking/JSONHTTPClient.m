@@ -156,21 +156,21 @@ static NSString* requestContentType = nil;
     if ([requestContentType isEqualToString:kContentTypeAutomatic]) {
         //automatic content type
         if (bodyString) {
-            [request addValue: [self contentTypeForRequestString: bodyString] forHTTPHeaderField:@"Content-type"];
+            [request setValue: [self contentTypeForRequestString: bodyString] forHTTPHeaderField:@"Content-type"];
         }
     } else {
         //user set content type
-        [request addValue: requestContentType forHTTPHeaderField:@"Content-type"];
+        [request setValue: requestContentType forHTTPHeaderField:@"Content-type"];
     }
     
     //add all the custom headers defined
     for (NSString* key in [requestHeaders allKeys]) {
-        [request addValue:requestHeaders[key] forHTTPHeaderField:key];
+        [request setValue:requestHeaders[key] forHTTPHeaderField:key];
     }
     
     //add the custom headers
     for (NSString* key in [headers allKeys]) {
-        [request addValue:headers[key] forHTTPHeaderField:key];
+        [request setValue:headers[key] forHTTPHeaderField:key];
     }
     
     if (bodyString) {
@@ -179,9 +179,9 @@ static NSString* requestContentType = nil;
         
         [request setHTTPBody: bodyData];
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-        [request addValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+        [request setValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 #else
-        [request addValue:[NSString stringWithFormat:@"%ld", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+        [request setValue:[NSString stringWithFormat:@"%ld", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 #endif
         
     }
@@ -262,7 +262,17 @@ static NSString* requestContentType = nil;
 #pragma mark - Async network request
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock
 {
-    NSDictionary* customHeaders = nil;
+    [self JSONFromURLWithString:urlString
+                         method:method
+                         params:params
+                   orBodyString:bodyString
+                        headers:nil
+                     completion:completeBlock];
+}
+
++(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString headers:(NSDictionary*)headers completion:(JSONObjectBlock)completeBlock
+{
+    NSDictionary* customHeaders = headers;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         

@@ -131,6 +131,17 @@ typedef void (^JSONObjectBlock)(NSDictionary* json, JSONModelError* err);
  */
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString completion:(JSONObjectBlock)completeBlock;
 
+/**
+ * Makes a request to the given URL address and fetches a JSON response.
+ * @param urlString the URL as a string
+ * @param method the method of the request as a string
+ * @param params a dictionary of key / value pairs to be send as variables to the request
+ * @param bodyString the body of the POST request as a string
+ * @param headers the headers to set on the request - overrides those in +requestHeaders
+ * @param completeBlock JSONObjectBlock to execute upon completion
+ */
++(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString headers:(NSDictionary*)headers completion:(JSONObjectBlock)completeBlock;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - POST synchronious JSON calls
 
