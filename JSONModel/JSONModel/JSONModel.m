@@ -220,7 +220,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         id jsonValue = [dict valueForKeyPath: jsonKeyPath];
         
         //check for Optional properties
-        if (jsonValue==nil && property.isOptional==YES) {
+        if (isNull(jsonValue) && property.isOptional==YES) {
             //skip this property, continue with next property
             continue;
         }
