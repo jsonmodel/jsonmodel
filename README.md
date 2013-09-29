@@ -456,10 +456,10 @@ ProductModel* pm = [[ProductModel alloc] initWithString:jsonString error:nil];
 pm.name = @"Changed Name";
 
 //convert to dictionary
-NSDictionary* dict = <b>[pm toDictionary]</b>;
+NSDictionary* dict = [pm toDictionary];
 
 //convert to text
-NSString* string = <b>[pm toJSONString]</b>;
+NSString* string = [pm toJSONString];
 
 ```
 
@@ -468,7 +468,6 @@ NSString* string = <b>[pm toJSONString]</b>;
 * error handling
 * custom data validation
 * automatic compare and equality features
-* export models back to NSDictionary or JSON text
 * and more.
 
 -------
