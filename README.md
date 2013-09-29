@@ -435,17 +435,17 @@ Examples
 
 ```ruby
 
-    //add extra headers
-    [[JSONHTTPClient requestHeaders] setValue:@"MySecret" forKey:@"AuthorizationToken"];
-    
-    //make post, get requests
-    [JSONHTTPClient postJSONFromURLWithString:@"http://mydomain.com/api"
-                                       params:@{@"postParam1":@"value1"}
-                                   completion:^(id json, JSONModelError *err) {
-                                       
-                                       //check err, process json ...
-                                       
-                                   }];
+//add extra headers
+[[JSONHTTPClient requestHeaders] setValue:@"MySecret" forKey:@"AuthorizationToken"];
+
+//make post, get requests
+[JSONHTTPClient postJSONFromURLWithString:@"http://mydomain.com/api"
+                                   params:@{@"postParam1":@"value1"}
+                               completion:^(id json, JSONModelError *err) {
+                                   
+                                   //check err, process json ...
+                                   
+                               }];
 ```
 
 #### Export model to NSDictionary or to JSON text
@@ -456,10 +456,10 @@ ProductModel* pm = [[ProductModel alloc] initWithString:jsonString error:nil];
 pm.name = @"Changed Name";
 
 //convert to dictionary
-NSDictionary* dict = **[pm toDictionary]**;
+NSDictionary* dict = <b>[pm toDictionary]</b>;
 
 //convert to text
-NSString* string = **[pm toJSONString]**;
+NSString* string = <b>[pm toJSONString]</b>;
 
 ```
 
