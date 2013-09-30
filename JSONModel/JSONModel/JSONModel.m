@@ -237,10 +237,12 @@ static JSONKeyMapper* globalKeyMapper = nil;
         
         if (isValueOfAllowedType==NO) {
             //type not allowed
-			NSString* msg = [NSString stringWithFormat:@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass)];
-            JMLog(msg);
+            JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
 
-            if (err) *err = [JSONModelError errorInvalidDataWithMessage:msg];
+            if (err) {
+				NSString* msg = [NSString stringWithFormat:@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass)];
+				*err = [JSONModelError errorInvalidDataWithMessage:msg];
+			}
             return nil;
         }
                 
