@@ -81,19 +81,32 @@
     STAssertTrue(err.code == kJSONModelErrorBadJSON, @"Wrong error for missing keys");
 }
 
--(void)testErrorsInNestedModels
+- (void)performTestErrorsInNestedModelFile:(NSString*)jsonFilename
 {
-    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedDataWithErrors.json"];
+    NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:jsonFilename];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
     STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
-    NSError* err;
+    NSError* err = nil;
     NestedModel* n = [[NestedModel alloc] initWithString: jsonContents error:&err];
     STAssertNotNil(err, @"No error thrown when loading invalid data");
     
     STAssertNil(n, @"Model is not nil, when invalid data input");
     STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
+
+	// Make sure that 'name' is listed as the missing key
+	STAssertTrue([err.userInfo[kJSONModelMissingKeys][0] isEqualToString:@"name"], @"'name' should be the missing key.");
+}
+
+-(void)testErrorsInNestedModelsArray
+{
+	[self performTestErrorsInNestedModelFile:@"nestedDataWithArrayError.json"];
+}
+
+-(void)testErrorsInNestedModelsDictionary
+{
+	[self performTestErrorsInNestedModelFile:@"nestedDataWithDictionaryError.json"];
 }
 
 -(void)testForNilInputFromString

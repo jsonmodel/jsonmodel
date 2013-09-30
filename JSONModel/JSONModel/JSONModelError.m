@@ -22,11 +22,12 @@ NSString* const kJSONModelTypeMismatch = @"kJSONModelTypeMismatch";
 
 @implementation JSONModelError
 
-+(id)errorInvalidData
++(id)errorInvalidDataWithMessage:(NSString*)message
 {
+	message = [NSString stringWithFormat:@"Invalid JSON data: %@", message];
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                                    code:kJSONModelErrorInvalidData
-                                                userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON data. Malformed JSON, server response invalid or other reason for invalid input to a JSONModel class."}];
+                                                userInfo:@{NSLocalizedDescriptionKey:message}];
 }
 
 +(id)errorInvalidDataWithMissingKeys:(NSSet *)keys
