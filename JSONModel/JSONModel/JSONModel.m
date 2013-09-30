@@ -770,6 +770,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
     //get the key mapper
     JSONKeyMapper* keyMapper = objc_getAssociatedObject(self.class, &kMapperObjectKey);
     
+    //if no custom mapper, check for a global mapper
+    if (keyMapper==nil && globalKeyMapper!=nil) keyMapper = globalKeyMapper;
+
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
         
