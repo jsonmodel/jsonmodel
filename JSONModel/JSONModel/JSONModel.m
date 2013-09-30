@@ -140,7 +140,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
     //invalid input, just create empty instance
     if (![dict isKindOfClass:[NSDictionary class]]) {
-        if (err) *err = [JSONModelError errorInvalidData];
+        if (err) *err = [JSONModelError errorInvalidDataWithMessage:@"Attempt to initialize JSONModel object using initWithDictionary:error: but the dictionary parameter was not an 'NSDictionary'."];
         return nil;
     }
 
@@ -237,9 +237,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
         
         if (isValueOfAllowedType==NO) {
             //type not allowed
-            JMLog(@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass));
+			NSString* msg = [NSString stringWithFormat:@"Type %@ is not allowed in JSON.", NSStringFromClass(jsonValueClass)];
+            JMLog(msg);
 
-            if (err) *err = [JSONModelError errorInvalidData];
+            if (err) *err = [JSONModelError errorInvalidDataWithMessage:msg];
             return nil;
         }
                 
@@ -278,7 +279,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 id value = [[property.type alloc] initWithDictionary: jsonValue error:&initError];
 
                 if (!value) {
-                    if (initError && err) *err = [JSONModelError errorInvalidData];
+					// Propagate the error
+                    if (initError && err) *err = initError;
                     return nil;
                 }
                 [self setValue:value forKey: property.name];
@@ -295,7 +297,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     //JMLog(@"proto: %@", p.protocol);
                     jsonValue = [self __transform:jsonValue forProperty:property error:err];
                     if (!jsonValue) {
-                        if ((err != nil) && (*err == nil)) *err = [JSONModelError errorInvalidData];
+                        if ((err != nil) && (*err == nil)) {
+							NSString* msg = [NSString stringWithFormat:@"Failed to transform value, but no error was set during transformation. (%@)", property];
+							*err = [JSONModelError errorInvalidDataWithMessage:msg];
+						}
                         return nil;
                     }
                 }
@@ -596,7 +601,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 
             } else {
                 //one shot conversion
-                value = [[protocolClass class] arrayOfModelsFromDictionaries: value];
+                value = [[protocolClass class] arrayOfModelsFromDictionaries:value error:err];
             }
         }
         
@@ -620,6 +625,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             for (NSString* key in [value allKeys]) {
                 id obj = [[[protocolClass class] alloc] initWithDictionary:value[key] error:&initErr];
                 if (initErr) {
+					if(err != nil) *err = initErr; // Propagate the error
                     return nil;
                 }
                 [res setValue:obj forKey:key];
@@ -896,21 +902,26 @@ static JSONKeyMapper* globalKeyMapper = nil;
 //loop over an NSArray of JSON objects and turn them into models
 +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array
 {
+	return [self arrayOfModelsFromDictionaries:array error:nil];
+}
+
+// Same as above, but with error reporting
++(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err
+{
     //bail early
     if (isNull(array)) return nil;
-    
+
     //parse dictionaries to objects
     NSMutableArray* list = [NSMutableArray arrayWithCapacity: [array count]];
-    JSONModelError* err = nil;
-    
+
     for (NSDictionary* d in array) {
-        
-        id obj = [[self alloc] initWithDictionary: d error:&err];
+
+        id obj = [[self alloc] initWithDictionary: d error:err];
         if (!obj) return nil;
-        
+
         [list addObject: obj];
     }
-    
+
     return list;
 }
 
