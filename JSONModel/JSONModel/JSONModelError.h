@@ -99,5 +99,14 @@ extern NSString* const kJSONModelKeyPath;
  */
 +(id)errorInputIsNil;
 
+/**
+ * Creates a new JSONModelError with the same values plus information about the key-path of the error.
+ * Properties in the new error object are the same as those from the receiver,
+ * except that a new key kJSONModelKeyPath is added to the userInfo dictionary.
+ * This key contains the component string parameter. If the key is already present
+ * then the new error object has the component string prepended to the existing value.
+ */
+- (instancetype)errorByPrependingKeyPathComponent:(NSString*)component;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 @end
