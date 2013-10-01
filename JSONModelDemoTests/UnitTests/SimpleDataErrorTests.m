@@ -81,7 +81,7 @@
     STAssertTrue(err.code == kJSONModelErrorBadJSON, @"Wrong error for missing keys");
 }
 
-- (void)performTestErrorsInNestedModelFile:(NSString*)jsonFilename
+- (NSError*)performTestErrorsInNestedModelFile:(NSString*)jsonFilename
 {
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:jsonFilename];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
@@ -96,17 +96,24 @@
     STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error for missing keys");
 
 	// Make sure that 'name' is listed as the missing key
-	STAssertTrue([err.userInfo[kJSONModelMissingKeys][0] isEqualToString:@"name"], @"'name' should be the missing key.");
+	STAssertEqualObjects(err.userInfo[kJSONModelMissingKeys][0], @"name", @"'name' should be the missing key.");
+	return err;
 }
 
 -(void)testErrorsInNestedModelsArray
 {
-	[self performTestErrorsInNestedModelFile:@"nestedDataWithArrayError.json"];
+	NSError* err = [self performTestErrorsInNestedModelFile:@"nestedDataWithArrayError.json"];
+
+	// Make sure that the error is at the expected key-path
+	STAssertEqualObjects(err.userInfo[kJSONModelKeyPath], @"images[1]", @"kJSONModelKeyPath does not contain the path of the error.");
 }
 
 -(void)testErrorsInNestedModelsDictionary
 {
-	[self performTestErrorsInNestedModelFile:@"nestedDataWithDictionaryError.json"];
+	NSError* err = [self performTestErrorsInNestedModelFile:@"nestedDataWithDictionaryError.json"];
+
+	// Make sure that the error is at the expected key-path
+	STAssertEqualObjects(err.userInfo[kJSONModelKeyPath], @"imageObject.image2", @"kJSONModelKeyPath does not contain the path of the error.");
 }
 
 -(void)testForNilInputFromString

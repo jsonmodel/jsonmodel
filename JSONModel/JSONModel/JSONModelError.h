@@ -46,6 +46,13 @@ extern NSString* const kJSONModelMissingKeys;
  */
 extern NSString* const kJSONModelTypeMismatch;
 
+/**
+ * If an error occurs in a nested model, check the userInfo dictionary of
+ * the JSONModelError instance you get back - under the kJSONModelKeyPath
+ * key you will find key-path at which the error occurred.
+ */
+extern NSString* const kJSONModelKeyPath;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * Custom NSError subclass with shortcut methods for creating 

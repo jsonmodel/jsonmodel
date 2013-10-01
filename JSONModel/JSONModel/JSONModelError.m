@@ -19,6 +19,7 @@
 NSString* const JSONModelErrorDomain = @"JSONModelErrorDomain";
 NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
 NSString* const kJSONModelTypeMismatch = @"kJSONModelTypeMismatch";
+NSString* const kJSONModelKeyPath = @"kJSONModelKeyPath";
 
 @implementation JSONModelError
 
