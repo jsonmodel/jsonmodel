@@ -113,7 +113,7 @@
 	NSError* err = [self performTestErrorsInNestedModelFile:@"nestedDataWithDictionaryError.json"];
 
 	// Make sure that the error is at the expected key-path
-	STAssertEqualObjects(err.userInfo[kJSONModelKeyPath], @"imageObject.image2", @"kJSONModelKeyPath does not contain the path of the error.");
+	STAssertEqualObjects(err.userInfo[kJSONModelKeyPath], @"imagesObject.image2", @"kJSONModelKeyPath does not contain the path of the error.");
 }
 
 -(void)testForNilInputFromString
