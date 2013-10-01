@@ -49,6 +49,9 @@
     NSString* mismatchDescription = err.userInfo[kJSONModelTypeMismatch];
     STAssertTrue(mismatchDescription, @"error does not have kJSONModelTypeMismatch key in user info");
 	STAssertTrue([mismatchDescription rangeOfString:@"'images'"].location != NSNotFound, @"error should mention that the 'images' property (expecting an Array) is mismatched.");
+
+	// Make sure that the error is at the expected key-path
+	STAssertEqualObjects(err.userInfo[kJSONModelKeyPath], @"images", @"kJSONModelKeyPath does not contain the expected path of the error.");
 }
 
 -(void)testTypeMismatchErrorImagesObject
@@ -67,6 +70,9 @@
     NSString* mismatchDescription = err.userInfo[kJSONModelTypeMismatch];
     STAssertTrue(mismatchDescription, @"error does not have kJSONModelTypeMismatch key in user info");
 	STAssertTrue([mismatchDescription rangeOfString:@"'imagesObject'"].location != NSNotFound, @"error should mention that the 'imagesObject' property (expecting a Dictionary) is mismatched.");
+
+	// Make sure that the error is at the expected key-path
+	STAssertEqualObjects(err.userInfo[kJSONModelKeyPath], @"imagesObject", @"kJSONModelKeyPath does not contain the expected path of the error.");
 }
 
 -(void)testBrokenJSON
@@ -78,7 +84,7 @@
     STAssertNil(p, @"Model is not nil, when input is invalid");
     STAssertNotNil(err, @"No error when keys are missing.");
     
-    STAssertTrue(err.code == kJSONModelErrorBadJSON, @"Wrong error for missing keys");
+    STAssertTrue(err.code == kJSONModelErrorBadJSON, @"Wrong error for bad JSON");
 }
 
 - (NSError*)performTestErrorsInNestedModelFile:(NSString*)jsonFilename
