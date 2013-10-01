@@ -58,7 +58,7 @@ extern NSString* const kJSONModelTypeMismatch;
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
  */
-+(id)errorInvalidData;
++(id)errorInvalidDataWithMessage:(NSString*)message;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69286BDA17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
+		69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */; };
 		697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
@@ -19,7 +21,7 @@
 		9C66DFAE168CEF420015CCDF /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6A168CEF420015CCDF /* github-iphone.json */; };
 		9C66DFAF168CEF420015CCDF /* jsonTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6B168CEF420015CCDF /* jsonTypes.json */; };
 		9C66DFB0168CEF420015CCDF /* nestedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6C168CEF420015CCDF /* nestedData.json */; };
-		9C66DFB1168CEF420015CCDF /* nestedDataWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6D168CEF420015CCDF /* nestedDataWithErrors.json */; };
+		9C66DFB1168CEF420015CCDF /* nestedDataWithArrayError.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6D168CEF420015CCDF /* nestedDataWithArrayError.json */; };
 		9C66DFB2168CEF420015CCDF /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6E168CEF420015CCDF /* post.json */; };
 		9C66DFB3168CEF420015CCDF /* primitives.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6F168CEF420015CCDF /* primitives.json */; };
 		9C66DFB4168CEF420015CCDF /* primitivesWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF70168CEF420015CCDF /* primitivesWithErrors.json */; };
@@ -42,7 +44,7 @@
 		9C66DFD3168CEF530015CCDF /* github-iphone.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6A168CEF420015CCDF /* github-iphone.json */; };
 		9C66DFD4168CEF530015CCDF /* jsonTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6B168CEF420015CCDF /* jsonTypes.json */; };
 		9C66DFD5168CEF530015CCDF /* nestedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6C168CEF420015CCDF /* nestedData.json */; };
-		9C66DFD6168CEF530015CCDF /* nestedDataWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6D168CEF420015CCDF /* nestedDataWithErrors.json */; };
+		9C66DFD6168CEF530015CCDF /* nestedDataWithArrayError.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6D168CEF420015CCDF /* nestedDataWithArrayError.json */; };
 		9C66DFD7168CEF530015CCDF /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6E168CEF420015CCDF /* post.json */; };
 		9C66DFD8168CEF530015CCDF /* primitives.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF6F168CEF420015CCDF /* primitives.json */; };
 		9C66DFD9168CEF530015CCDF /* primitivesWithErrors.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C66DF70168CEF420015CCDF /* primitivesWithErrors.json */; };
@@ -144,6 +146,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithDictionaryError.json; sourceTree = "<group>"; };
 		697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImages.json; sourceTree = "<group>"; };
 		697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImagesObject.json; sourceTree = "<group>"; };
 		9C0D023D166E6BBF001EA645 /* KivaViewControllerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewControllerNetworking.h; sourceTree = "<group>"; };
@@ -160,7 +163,7 @@
 		9C66DF6A168CEF420015CCDF /* github-iphone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "github-iphone.json"; sourceTree = "<group>"; };
 		9C66DF6B168CEF420015CCDF /* jsonTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonTypes.json; sourceTree = "<group>"; };
 		9C66DF6C168CEF420015CCDF /* nestedData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedData.json; sourceTree = "<group>"; };
-		9C66DF6D168CEF420015CCDF /* nestedDataWithErrors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithErrors.json; sourceTree = "<group>"; };
+		9C66DF6D168CEF420015CCDF /* nestedDataWithArrayError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithArrayError.json; sourceTree = "<group>"; };
 		9C66DF6E168CEF420015CCDF /* post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = post.json; sourceTree = "<group>"; };
 		9C66DF6F168CEF420015CCDF /* primitives.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = primitives.json; sourceTree = "<group>"; };
 		9C66DF70168CEF420015CCDF /* primitivesWithErrors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = primitivesWithErrors.json; sourceTree = "<group>"; };
@@ -417,7 +420,8 @@
 				9C66DF6A168CEF420015CCDF /* github-iphone.json */,
 				9C66DF6B168CEF420015CCDF /* jsonTypes.json */,
 				9C66DF6C168CEF420015CCDF /* nestedData.json */,
-				9C66DF6D168CEF420015CCDF /* nestedDataWithErrors.json */,
+				9C66DF6D168CEF420015CCDF /* nestedDataWithArrayError.json */,
+				69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */,
 				697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */,
 				697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */,
 				9C66DF6E168CEF420015CCDF /* post.json */,
@@ -817,6 +821,7 @@
 				9CBBBF78166BA80F008B4326 /* KivaViewController.xib in Resources */,
 				9CBBBF8F166BAC54008B4326 /* btnCheck.png in Resources */,
 				9CBBBF90166BAC54008B4326 /* btnCheck@2x.png in Resources */,
+				69286BDA17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */,
 				9CBBBF98166BAED2008B4326 /* GitHubViewController.xib in Resources */,
 				9CBBBFA2166BB29B008B4326 /* YouTubeViewController.xib in Resources */,
 				9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */,
@@ -827,7 +832,7 @@
 				9C66DFD3168CEF530015CCDF /* github-iphone.json in Resources */,
 				9C66DFD4168CEF530015CCDF /* jsonTypes.json in Resources */,
 				9C66DFD5168CEF530015CCDF /* nestedData.json in Resources */,
-				9C66DFD6168CEF530015CCDF /* nestedDataWithErrors.json in Resources */,
+				9C66DFD6168CEF530015CCDF /* nestedDataWithArrayError.json in Resources */,
 				9C66DFD7168CEF530015CCDF /* post.json in Resources */,
 				9C66DFD8168CEF530015CCDF /* primitives.json in Resources */,
 				9C66DFD9168CEF530015CCDF /* primitivesWithErrors.json in Resources */,
@@ -845,7 +850,7 @@
 				9C66DFAE168CEF420015CCDF /* github-iphone.json in Resources */,
 				9C66DFAF168CEF420015CCDF /* jsonTypes.json in Resources */,
 				9C66DFB0168CEF420015CCDF /* nestedData.json in Resources */,
-				9C66DFB1168CEF420015CCDF /* nestedDataWithErrors.json in Resources */,
+				9C66DFB1168CEF420015CCDF /* nestedDataWithArrayError.json in Resources */,
 				9C66DFB2168CEF420015CCDF /* post.json in Resources */,
 				9C66DFB3168CEF420015CCDF /* primitives.json in Resources */,
 				9C66DFB4168CEF420015CCDF /* primitivesWithErrors.json in Resources */,
@@ -853,6 +858,7 @@
 				9C66DFB6168CEF420015CCDF /* withoutOptProp.json in Resources */,
 				9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */,
 				697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */,
+				69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */,
 				697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
