@@ -72,7 +72,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 {
     //if first instance of this model, generate the property list
     if (!objc_getAssociatedObject(self.class, &kClassPropertiesKey)) {
-        [self __restrospectProperties];
+        [self __inspectProperties];
     }
 
     //if there's a custom key mapper, store it in the associated object
@@ -154,7 +154,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
     
     
-    //do initial class setup, retrospect properties
+    //do initial class setup, inspect properties
     [self __setup__];
     
     //check if all required properties are present
@@ -383,7 +383,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return self;
 }
 
-#pragma mark - property restrospection methods
+#pragma mark - property inspection methods
 //returns a set of the required keys for the model
 -(NSMutableSet*)__requiredPropertyNames
 {
@@ -414,7 +414,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSDictionary* classProperties = objc_getAssociatedObject(self.class, &kClassPropertiesKey);
     if (classProperties) return [classProperties allValues];
 
-    //if here, the class needs to retrospect itself
+    //if here, the class needs to inspect itself
     [self __setup__];
     
     //return the property list
@@ -422,10 +422,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return [classProperties allValues];
 }
 
-//retrospects the class, get's a list of the class properties
--(void)__restrospectProperties
+//inspects the class, get's a list of the class properties
+-(void)__inspectProperties
 {
-    //JMLog(@"Retrospect class: %@", [self class]);
+    //JMLog(@"Inspect class: %@", [self class]);
     
     NSMutableDictionary* propertyIndex = [NSMutableDictionary dictionary];
     
@@ -434,9 +434,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSScanner* scanner = nil;
     NSString* propertyType = nil;
     
-    // retrospect inherited properties up to the JSONModel class
+    // inspect inherited properties up to the JSONModel class
     while (class != [JSONModel class]) {
-        //JMLog(@"retrospecting: %@", NSStringFromClass(class));
+        //JMLog(@"inspecting: %@", NSStringFromClass(class));
         
         unsigned int propertyCount;
         objc_property_t *properties = class_copyPropertyList(class, &propertyCount);
