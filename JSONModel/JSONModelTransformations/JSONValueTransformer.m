@@ -33,7 +33,8 @@ extern BOOL isNull(id value)
     if (self) {
         _primitivesNames = @{@"f":@"float", @"i":@"int", @"d":@"double", @"l":@"long", @"c":@"BOOL", @"s":@"short", @"q":@"long",
                              //and some famos aliases of primitive types
-                             @"I":@"NSInteger"};
+                             // BOOL is now "B" on iOS __LP64 builds
+                             @"I":@"NSInteger", @"B":@"BOOL"};
     }
     return self;
 }
