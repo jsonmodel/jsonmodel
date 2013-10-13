@@ -19,6 +19,7 @@
 NSString* const JSONModelErrorDomain = @"JSONModelErrorDomain";
 NSString* const kJSONModelMissingKeys = @"kJSONModelMissingKeys";
 NSString* const kJSONModelTypeMismatch = @"kJSONModelTypeMismatch";
+NSString* const kJSONModelKeyPath = @"kJSONModelKeyPath";
 
 @implementation JSONModelError
 
@@ -26,8 +27,8 @@ NSString* const kJSONModelTypeMismatch = @"kJSONModelTypeMismatch";
 {
 	message = [NSString stringWithFormat:@"Invalid JSON data: %@", message];
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
-                                                   code:kJSONModelErrorInvalidData
-                                                userInfo:@{NSLocalizedDescriptionKey:message}];
+                                      code:kJSONModelErrorInvalidData
+                                  userInfo:@{NSLocalizedDescriptionKey:message}];
 }
 
 +(id)errorInvalidDataWithMissingKeys:(NSSet *)keys
@@ -72,5 +73,21 @@ NSString* const kJSONModelTypeMismatch = @"kJSONModelTypeMismatch";
                                   userInfo:@{NSLocalizedDescriptionKey:@"Initializing model with nil input object."}];
 }
 
+- (instancetype)errorByPrependingKeyPathComponent:(NSString*)component
+{
+    // Create a mutable  copy of the user info so that we can add to it and update it
+    NSMutableDictionary* userInfo = [self.userInfo mutableCopy];
+
+    // Create or update the key-path
+    NSString* existingPath = [userInfo objectForKey:kJSONModelKeyPath];
+    NSString* separator = [existingPath hasPrefix:@"["] ? @"" : @".";
+    NSString* updatedPath = (existingPath == nil) ? component : [component stringByAppendingFormat:@"%@%@", separator, existingPath];
+    [userInfo setObject:updatedPath forKey:kJSONModelKeyPath];
+
+    // Create the new error
+    return [JSONModelError errorWithDomain:self.domain
+                                      code:self.code
+                                  userInfo:[NSDictionary dictionaryWithDictionary:userInfo]];
+}
 
 @end
