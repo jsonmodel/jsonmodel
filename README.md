@@ -490,3 +490,6 @@ This code is distributed under the terms and conditions of the MIT license.
 #### Contribution guidelines
 
 **NB!** If you are fixing a bug you discovered, please add also a unit test so I know how exactly to reproduce the bug before merging.
+
+-------
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/icanzilb/jsonmodel/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
