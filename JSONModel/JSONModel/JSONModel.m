@@ -944,7 +944,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 			// Propagate the error, including the array index as the key-path component
 			if((err != nil) && (initErr != nil))
 			{
-				NSString* path = [NSString stringWithFormat:@"[%d]", list.count];
+				NSString* path = [NSString stringWithFormat:@"[%lu]", (unsigned long)list.count];
 				*err = [initErr errorByPrependingKeyPathComponent:path];
 			}
 			return nil;

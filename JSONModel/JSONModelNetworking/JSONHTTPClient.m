@@ -29,13 +29,8 @@ NSString* const kContentTypeWWWEncoded   = @"application/x-www-form-urlencoded";
 /**
  * Defaults for HTTP requests
  */
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-static int defaultTextEncoding = NSUTF8StringEncoding;
-static int defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-#else
-static long defaultTextEncoding = NSUTF8StringEncoding;
-static long defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-#endif
+static NSStringEncoding defaultTextEncoding = NSUTF8StringEncoding;
+static NSURLRequestCachePolicy defaultCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 
 static int defaultTimeoutInSeconds = 60;
 
@@ -178,12 +173,7 @@ static NSString* requestContentType = nil;
         NSData* bodyData = [bodyString dataUsingEncoding:defaultTextEncoding];
         
         [request setHTTPBody: bodyData];
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-        [request setValue:[NSString stringWithFormat:@"%i", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
-#else
-        [request setValue:[NSString stringWithFormat:@"%ld", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
-#endif
-        
+        [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)bodyData.length] forHTTPHeaderField:@"Content-Length"];
     }
     
     //prepare output
