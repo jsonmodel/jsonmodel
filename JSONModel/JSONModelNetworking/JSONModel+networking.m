@@ -61,4 +61,49 @@ BOOL _isLoading;
     return self;
 }
 
++ (void)getModelFromURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock
+{
+	[JSONHTTPClient getJSONFromURLWithString:urlString
+								  completion:^(NSDictionary* jsonDict, JSONModelError* err)
+	{
+		JSONModel* model = nil;
+
+		if(err == nil)
+		{
+			model = [[self alloc] initWithDictionary:jsonDict error:&err];
+		}
+
+		if(completeBlock != nil)
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				completeBlock(model, err);
+			});
+		}
+    }];
+}
+
++ (void)postModel:(JSONModel*)post toURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock
+{
+	[JSONHTTPClient postJSONFromURLWithString:urlString
+								   bodyString:[post toJSONString]
+								   completion:^(NSDictionary* jsonDict, JSONModelError* err)
+	{
+		JSONModel* model = nil;
+
+		if(err == nil)
+		{
+			model = [[self alloc] initWithDictionary:jsonDict error:&err];
+		}
+
+		if(completeBlock != nil)
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				completeBlock(model, err);
+			});
+		}
+	}];
+}
+
 @end

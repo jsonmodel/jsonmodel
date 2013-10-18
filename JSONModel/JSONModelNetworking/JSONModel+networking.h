@@ -37,4 +37,30 @@ typedef void (^JSONModelBlock)(id model, JSONModelError* err);
  */
 -(instancetype)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
 
+/**
+ * Asynchronously gets the contents of a URL and constructs a JSONModel object from the response.
+ * The constructed JSONModel object passed as the first parameter to the completion block will be of the same
+ * class as the receiver. So call this method on yourJSONModel sub-class rather than directly on JSONModel.
+ * @param	urlString		The absolute URL of the JSON resource, as a string
+ * @param	completeBlock	The block to be called upon completion.
+ *							JSONModelBlock type is defined as: void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
+ *							The first parameter is the initialized model (of the same JSONModel sub-class as the receiver) or nil if there was an error;
+ * 							The second parameter is the initialization error, if any.
+ */
++ (void)getModelFromURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock;
+
+/**
+ * Asynchronously posts a JSONModel object (as JSON) to a URL and constructs a JSONModel object from the response.
+ * The constructed JSONModel object passed as the first parameter to the completion block will be of the same
+ * class as the receiver. So call this method on yourJSONModel sub-class rather than directly on JSONModel.
+ * @param	post			A JSONModel object that will be converted to JSON and sent as the POST data to the HTTP request.
+ * @param	urlString		The absolute URL of the JSON resource, as a string
+ * @param	completeBlock	The block to be called upon completion.
+ *							JSONModelBlock type is defined as: void (^JSONModelBlock)(JSONModel* model, JSONModelError* err);
+ *							The first parameter is the initialized model (of the same JSONModel sub-class as the receiver) or nil if there was an error;
+ * 							The second parameter is the initialization error, if any.
+ */
++ (void)postModel:(JSONModel*)post toURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock;
+
+
 @end
