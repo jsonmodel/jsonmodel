@@ -476,8 +476,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
             //check if the property is an instance of a class
             if ([scanner scanString:@"@\"" intoString: &propertyType]) {
                 
-                [scanner scanCharactersFromSet:[NSCharacterSet alphanumericCharacterSet]
-                                    intoString:&propertyType];
+                [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\"<"]
+                                        intoString:&propertyType];
                 
                 //JMLog(@"type: %@", propertyClassName);
                 p.type = NSClassFromString(propertyType);
