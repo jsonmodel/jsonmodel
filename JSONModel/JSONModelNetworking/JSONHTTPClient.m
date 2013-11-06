@@ -138,7 +138,7 @@ static NSString* requestContentType = nil;
 }
 
 #pragma mark - networking worker methods
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSString*)bodyString headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSData*)bodyData headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
 {
     //turn on network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
@@ -150,7 +150,8 @@ static NSString* requestContentType = nil;
 
     if ([requestContentType isEqualToString:kContentTypeAutomatic]) {
         //automatic content type
-        if (bodyString) {
+        if (bodyData) {
+            NSString *bodyString = [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
             [request setValue: [self contentTypeForRequestString: bodyString] forHTTPHeaderField:@"Content-type"];
         }
     } else {
@@ -168,10 +169,7 @@ static NSString* requestContentType = nil;
         [request setValue:headers[key] forHTTPHeaderField:key];
     }
     
-    if (bodyString) {
-        //BODY params
-        NSData* bodyData = [bodyString dataUsingEncoding:defaultTextEncoding];
-        
+    if (bodyData) {
         [request setHTTPBody: bodyData];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)bodyData.length] forHTTPHeaderField:@"Content-Length"];
     }
@@ -243,7 +241,7 @@ static NSString* requestContentType = nil;
     //call the more general synq request method
     return [self syncRequestDataFromURL: url
                                  method: method
-                            requestBody: [method isEqualToString:kHTTPMethodPOST]?paramsString:nil
+                            requestBody: [method isEqualToString:kHTTPMethodPOST]?[paramsString dataUsingEncoding:NSUTF8StringEncoding]:nil
                                 headers: headers
                                    etag: etag
                                   error: err];
@@ -260,7 +258,17 @@ static NSString* requestContentType = nil;
                      completion:completeBlock];
 }
 
-+(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary*)params orBodyString:(NSString*)bodyString headers:(NSDictionary*)headers completion:(JSONObjectBlock)completeBlock
++(void)JSONFromURLWithString:(NSString *)urlString method:(NSString *)method params:(NSDictionary *)params orBodyString:(NSString *)bodyString headers:(NSDictionary *)headers completion:(JSONObjectBlock)completeBlock
+{
+    [self JSONFromURLWithString:urlString
+                         method:method
+                         params:params
+                     orBodyData:[bodyString dataUsingEncoding:NSUTF8StringEncoding]
+                        headers:headers
+                     completion:completeBlock];
+}
+
++(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary *)params orBodyData:(NSData*)bodyData headers:(NSDictionary*)headers completion:(JSONObjectBlock)completeBlock
 {
     NSDictionary* customHeaders = headers;
 
@@ -272,10 +280,10 @@ static NSString* requestContentType = nil;
         NSString* etag = nil;
         
         @try {
-            if (bodyString) {
+            if (bodyData) {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
-                                                requestBody: bodyString
+                                                requestBody: bodyData
                                                     headers: customHeaders
                                                        etag: &etag
                                                       error: &error];
