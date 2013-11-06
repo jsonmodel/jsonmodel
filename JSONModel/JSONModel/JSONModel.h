@@ -254,4 +254,13 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  */
 +(BOOL)propertyIsOptional:(NSString*)propertyName;
 
+/**
+ * Indicates whether the property with the given name is Ignored.
+ * To have a model with all of its properties being Ignored just return YES.
+ * This method returns by default NO, since the default behaviour is to have all properties required.
+ * @param propertyName the name of the property
+ * @return a BOOL result indicating whether the property is ignored
+ */
++(BOOL)propertyIsIgnored:(NSString*)propertyName;
+
 @end
