@@ -164,7 +164,7 @@ extern BOOL isNull(id value)
 #pragma mark - string <-> url
 -(NSURL*)NSURLFromNSString:(NSString*)string
 {
-    return [NSURL URLWithString: [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    return [NSURL URLWithString:string];
 }
 
 -(NSString*)JSONObjectFromNSURL:(NSURL*)url
