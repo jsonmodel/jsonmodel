@@ -1,5 +1,24 @@
 Change-log
 ==========
+
+## Nota Bene!
+
+Version 0.10 will be one of (if not) the last version for the "0" major version. 
+
+Currently I'm wrapping up the features to get into 1.0 and the list of breaking changes it will introduce.
+
+---
+
+**Version 0.10** @ 2013-11-10
+
+- fixed handling of *null* values in JSON, which was **broken until now**, make sure to test after upgrading. Now *null* values for required properties will result in a failed init of the model class.
+
+- a number of pull requests for *JSONHTTPClient*, slowly trying to polish it
+
+- added propertyIsIgnored: method, for ignoring primitive properties
+
+- fixes in globalKeyMapper import/export JSON, fixes for automatic snake_case convertions, added masking of BOOL as struct for custom convertors
+
 **Version 0.9.3** @ 2013-09-25
 
 - Bug fixes up to issue #90
