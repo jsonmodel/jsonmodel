@@ -148,15 +148,21 @@
     
     STAssertTrue([toDict[@"texts"][@"text1"] isEqualToString:@"TEST!!!"], @"toDict.texts.text1 is not 'TEST!!!'");
     STAssertTrue([toDict[@"texts"][@"text2"][@"value"] isEqualToString:@"MEST"], @"toDict.texts.text2.value is not 'MEST'");
+    
+    NSString* toString = [model toJSONString];
+    STAssertTrue([toString rangeOfString:@"text1\":\"TEST!!!"].location!=NSNotFound, @"model did not export text1 in string");
 }
 
--(void)testGlobalKeyMapper
+-(void)testGlobalKeyMapperImportAndExport
 {
+    //import
     NSString* jsonString1 = @"{\"name\": \"NAME IN CAPITALS\"}";
     GlobalModel* global1 = [[GlobalModel alloc] initWithString:jsonString1
                                                          error:nil];
     STAssertNotNil(global1, @"model did not initialize with proper json");
     
+    
+    //test import via gloabl key mapper
     [JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@{
         @"name1":@"name"
      }]];
@@ -165,6 +171,12 @@
     GlobalModel* global2 = [[GlobalModel alloc] initWithString:jsonString2
                                                          error:nil];
     STAssertNotNil(global2, @"model did not initialize with proper json");
+
+    //export
+    NSDictionary* dict = [global2 toDictionary];
+    STAssertNotNil(dict[@"name1"], @"model did not export name");
+    NSString* exportedString = [global2 toJSONString];
+    STAssertTrue([exportedString rangeOfString:@"name1\":\"NAME"].location!=NSNotFound, @"model did not export name in string");
     
     [JSONModel setGlobalKeyMapper:nil];
 
