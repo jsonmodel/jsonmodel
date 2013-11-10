@@ -547,6 +547,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     p.isOptional = YES;
             }
 
+            if([[self class] propertyIsIgnored:[NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding]]){
+                    p = nil;
+            }
+
             //add the property object to the temp index
             if (p) {
                 [propertyIndex setValue:p forKey:p.name];
@@ -1060,6 +1064,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 +(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return NO;
+}
+
++(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
     return NO;
 }
