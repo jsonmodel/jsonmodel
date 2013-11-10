@@ -121,7 +121,7 @@
 
 -(void)testKeyPathKeyMapping
 {
-    //input dictioanry for TestModel
+    //input dictionary for TestModel
     NSDictionary* dict = @{
         @"texts": @{
             @"text1": @"TEST!!!",
