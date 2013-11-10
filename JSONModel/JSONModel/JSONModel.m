@@ -20,6 +20,7 @@
 
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 #import "JSONModel.h"
 #import "JSONModelClassProperty.h"
@@ -719,10 +720,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
     
     if (property.setterType==kCustom) {
         //call the custom setter
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [self performSelector:property.customSetter withObject:value];
-        #pragma clang diagnostic pop
+        //https://github.com/steipete
+        ((void (*) (id, SEL, id))objc_msgSend)(self, property.customSetter, value);
         return YES;
     }
     
@@ -752,9 +751,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //call the custom getter
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        
         *value = [self performSelector:property.customGetter withObject:nil];
-        
         #pragma clang diagnostic pop
         return YES;
     }
