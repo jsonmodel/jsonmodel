@@ -148,4 +148,16 @@
     STAssertTrue(err.code == kJSONModelErrorNilInput, @"Wrong error for nil dictionary input");
 }
 
+-(void)testForNullValuesForRequiredProperty
+{
+    JSONModelError* err = nil;
+    NSString* jsonString = @"{\"author\":\"Marin\",\"year\":null}";
+
+    CopyrightModel* cpModel = [[CopyrightModel alloc] initWithString:jsonString
+                                                                   error:&err];
+    cpModel = nil;
+    STAssertTrue(err, @"No error returned when initialized with nil dictionary");
+    STAssertTrue(err.code == kJSONModelErrorInvalidData, @"Wrong error null value for a required property");
+}
+
 @end

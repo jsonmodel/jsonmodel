@@ -11,7 +11,7 @@
 @interface GitHubKeyMapRepoModel : JSONModel
 
 @property (strong, nonatomic) NSString* __description;
-@property (strong, nonatomic) NSString* language;
+@property (strong, nonatomic) NSString<Optional>* language;
 @property (assign, nonatomic) NSString<Index>* name;
 
 @end

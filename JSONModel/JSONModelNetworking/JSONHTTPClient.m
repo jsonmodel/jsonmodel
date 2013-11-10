@@ -99,7 +99,7 @@ static NSString* requestContentType = nil;
     //fetch the charset name from the default string encoding
     NSString* contentType = requestContentType;
 
-    if ([contentType isEqualToString:kContentTypeAutomatic]) {
+    if (requestString.length>0 && [contentType isEqualToString:kContentTypeAutomatic]) {
         //check for "eventual" JSON array or dictionary
         NSString* firstAndLastChar = [NSString stringWithFormat:@"%@%@",
                                       [requestString substringToIndex:1],

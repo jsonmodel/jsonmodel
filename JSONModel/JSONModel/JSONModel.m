@@ -221,9 +221,16 @@ static JSONKeyMapper* globalKeyMapper = nil;
         id jsonValue = [dict valueForKeyPath: jsonKeyPath];
         
         //check for Optional properties
-        if (isNull(jsonValue) && property.isOptional==YES) {
+        if (isNull(jsonValue)) {
             //skip this property, continue with next property
-            continue;
+            if (property.isOptional==YES) continue;
+            
+            //null value for required property
+            NSString* msg = [NSString stringWithFormat:@"Value of required model key %@ is null", property.name];
+            JSONModelError* dataErr = [JSONModelError errorInvalidDataWithMessage:msg];
+            *err = [dataErr errorByPrependingKeyPathComponent:property.name];
+            
+            return nil;
         }
         
         Class jsonValueClass = [jsonValue class];

@@ -35,6 +35,6 @@
 @property (strong, nonatomic) NSMutableDictionary* dynamicDictionary;
 
 /* null */
-@property (strong, nonatomic) NSString* notAvailable;
+@property (strong, nonatomic) NSString<Optional>* notAvailable;
 
 @end
