@@ -332,6 +332,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     ||
                     //the property is mutable
                     property.isMutable
+                    ||
+                    //custom struct property
+                    property.structName
                     ) {
                     
                     // searched around the web how to do this better
