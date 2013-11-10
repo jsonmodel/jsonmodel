@@ -89,14 +89,18 @@
 
 -(void)testUnderscoreMapper
 {
-    NSString* jsonString = @"{\"pushed_at\":\"2012-12-18T19:21:35-08:00\",\"created_at\":\"2012-12-18T19:21:35-08:00\",\"a_very_long_property_name\":10000}";
+    NSString* jsonString = @"{\"pushed_at\":\"2012-12-18T19:21:35-08:00\",\"created_at\":\"2012-12-18T19:21:35-08:00\",\"a_very_long_property_name\":10000, \"item_object_145\":\"TEST\", \"item_object_176_details\":\"OTHERTEST\"}";
     GitHubRepoModelForUSMapper* m = [[GitHubRepoModelForUSMapper alloc] initWithString:jsonString error:nil];
     STAssertNotNil(m, @"Could not initialize model from string");
     
+    //import
     STAssertTrue([m.pushedAt compare:[NSDate dateWithTimeIntervalSinceReferenceDate:0] ]==NSOrderedDescending, @"pushedAt is not initialized");
     STAssertTrue([m.createdAt compare:[NSDate dateWithTimeIntervalSinceReferenceDate:0] ]==NSOrderedDescending, @"createdAt is not initialized");
     STAssertTrue(m.aVeryLongPropertyName == 10000, @"aVeryLongPropertyName is not 10000");
-    
+
+    STAssertEqualObjects(m.itemObject145, @"TEST", @"itemObject145 does not equal 'TEST'");
+    STAssertEqualObjects(m.itemObject176Details, @"OTHERTEST", @"itemObject176Details does not equal 'OTHERTEST'");
+
     //export
     NSDictionary* dict = [m toDictionary];
     STAssertNotNil(dict, @"toDictionary failed");
@@ -105,6 +109,8 @@
     STAssertNotNil(dict[@"created_at"], @"pushed_at not exported");
     STAssertTrue([dict[@"a_very_long_property_name"] intValue]==10000,@"a_very_long_property_name not exported properly");
     
+    STAssertEqualObjects(dict[@"item_object_145"], m.itemObject145, @"item_object_145 does not equal 'TEST'");
+    STAssertEqualObjects(dict[@"item_object_176_details"], m.itemObject176Details, @"item_object_176_details does not equal 'OTHERTEST'");
 }
 
 -(void)testKeyMapperCaching

@@ -176,14 +176,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
         NSString* transformedName = nil;
 
         //loop over the required properties list
-        for (NSString* requiredPropertyName in requiredProperties) {
+        for (JSONModelClassProperty* property in [self __properties__]) {
 
             //get the mapped key path
-            transformedName = keyMapper.modelToJSONKeyBlock(requiredPropertyName);
+            transformedName = keyMapper.modelToJSONKeyBlock(property.name);
             
             //chek if exists and if so, add to incoming keys
             if ([dict valueForKeyPath:transformedName]) {
-                [transformedIncomingKeys addObject: requiredPropertyName];
+                [transformedIncomingKeys addObject: property.name];
             }
         }
         

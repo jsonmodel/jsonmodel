@@ -14,4 +14,7 @@
 @property (strong, nonatomic) NSDate* createdAt;
 @property (assign, nonatomic) int aVeryLongPropertyName;
 
+@property (strong, nonatomic) NSString* itemObject145;
+@property (strong, nonatomic) NSString<Optional>* itemObject176Details;
+
 @end

@@ -118,12 +118,30 @@
         NSMutableString* result = [NSMutableString stringWithString:keyName];
         NSRange upperCharRange = [result rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]];
 
+        //handle upper case chars
         while ( upperCharRange.location!=NSNotFound) {
 
             NSString* lowerChar = [[result substringWithRange:upperCharRange] lowercaseString];
             [result replaceCharactersInRange:upperCharRange
                                   withString:[NSString stringWithFormat:@"_%@", lowerChar]];
             upperCharRange = [result rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]];
+        }
+
+        //handle numbers
+        NSRange digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]];
+        while ( digitsRange.location!=NSNotFound) {
+            
+            NSRange digitsRangeEnd = [result rangeOfString:@"\\D" options:NSRegularExpressionSearch range:NSMakeRange(digitsRange.location, result.length-digitsRange.location)];
+            if (digitsRangeEnd.location == NSNotFound) {
+                //spands till the end of the key name
+                digitsRangeEnd = NSMakeRange(result.length, 1);
+            }
+            
+            NSRange replaceRange = NSMakeRange(digitsRange.location, digitsRangeEnd.location - digitsRange.location);
+            NSString* digits = [result substringWithRange:replaceRange];
+            
+            [result replaceCharactersInRange:replaceRange withString:[NSString stringWithFormat:@"_%@", digits]];
+            digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet] options:kNilOptions range:NSMakeRange(digitsRangeEnd.location+1, result.length-digitsRangeEnd.location-1)];
         }
         
         return result;
