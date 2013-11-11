@@ -151,6 +151,10 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
 /** @name Exporting model contents */
 
+  /**
+   * Export the whole object to a dictionary
+   * @return dictionary containing the data model
+   */
   -(NSDictionary*)toDictionary;
 
   /**
