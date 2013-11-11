@@ -1,7 +1,7 @@
 //
 //  JSONModel.m
 //
-//  @version 0.9.3
+//  @version 0.10.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -20,6 +20,7 @@
 
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 #import "JSONModel.h"
 #import "JSONModelClassProperty.h"
@@ -175,14 +176,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
         NSString* transformedName = nil;
 
         //loop over the required properties list
-        for (NSString* requiredPropertyName in requiredProperties) {
+        for (JSONModelClassProperty* property in [self __properties__]) {
 
             //get the mapped key path
-            transformedName = keyMapper.modelToJSONKeyBlock(requiredPropertyName);
+            transformedName = keyMapper.modelToJSONKeyBlock(property.name);
             
             //chek if exists and if so, add to incoming keys
             if ([dict valueForKeyPath:transformedName]) {
-                [transformedIncomingKeys addObject: requiredPropertyName];
+                [transformedIncomingKeys addObject: property.name];
             }
         }
         
@@ -220,9 +221,16 @@ static JSONKeyMapper* globalKeyMapper = nil;
         id jsonValue = [dict valueForKeyPath: jsonKeyPath];
         
         //check for Optional properties
-        if (isNull(jsonValue) && property.isOptional==YES) {
+        if (isNull(jsonValue)) {
             //skip this property, continue with next property
-            continue;
+            if (property.isOptional==YES) continue;
+            
+            //null value for required property
+            NSString* msg = [NSString stringWithFormat:@"Value of required model key %@ is null", property.name];
+            JSONModelError* dataErr = [JSONModelError errorInvalidDataWithMessage:msg];
+            *err = [dataErr errorByPrependingKeyPathComponent:property.name];
+            
+            return nil;
         }
         
         Class jsonValueClass = [jsonValue class];
@@ -331,6 +339,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     ||
                     //the property is mutable
                     property.isMutable
+                    ||
+                    //custom struct property
+                    property.structName
                     ) {
                     
                     // searched around the web how to do this better
@@ -723,10 +734,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
     
     if (property.setterType==kCustom) {
         //call the custom setter
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [self performSelector:property.customSetter withObject:value];
-        #pragma clang diagnostic pop
+        //https://github.com/steipete
+        ((void (*) (id, SEL, id))objc_msgSend)(self, property.customSetter, value);
         return YES;
     }
     
@@ -756,9 +765,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //call the custom getter
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        
         *value = [self performSelector:property.customGetter withObject:nil];
-        
         #pragma clang diagnostic pop
         return YES;
     }

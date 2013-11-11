@@ -45,4 +45,17 @@
 
 }
 
+-(void)testNullValuesForOptionalProperties
+{
+    NSString* jsonWithNulls = @"{\"notRequredProperty\":null,\"fillerNumber\":1}";
+
+    NSError* err;
+    o = [[OptionalPropModel alloc] initWithString: jsonWithNulls error:&err];
+    STAssertNil(err, [err localizedDescription]);
+    STAssertNotNil(o, @"Could not initialize the model");
+    
+    STAssertTrue(!o.notRequredProperty, @"notRequredProperty' is not nil");
+
+}
+
 @end

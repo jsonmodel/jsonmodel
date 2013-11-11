@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString* owner;
 @property (assign, nonatomic) int forks;
 @property (strong, nonatomic) NSString* description;
-@property (strong, nonatomic) NSString* language;
+@property (strong, nonatomic) NSString<Optional>* language;
 @property (assign, nonatomic) BOOL fork;
 @property (assign, nonatomic) double size;
 @property (assign, nonatomic) int followers;

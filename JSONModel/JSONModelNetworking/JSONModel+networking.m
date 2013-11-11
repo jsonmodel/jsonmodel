@@ -1,7 +1,7 @@
 //
 //  JSONModel+networking.m
 //
-//  @version 0.9.3
+//  @version 0.10.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -33,12 +33,12 @@ BOOL _isLoading;
     _isLoading = isLoading;
 }
 
--(id)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock
+-(instancetype)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock
 {
-    self = [super init];
+    id placeholder = [super init];
     __block id blockSelf = self;
     
-    if (self) {
+    if (placeholder) {
         //initialization
         self.isLoading = YES;
         
@@ -58,7 +58,7 @@ BOOL _isLoading;
                                           
                                       }];
     }
-    return self;
+    return placeholder;
 }
 
 + (void)getModelFromURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock

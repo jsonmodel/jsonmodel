@@ -8,7 +8,10 @@
 
 #import "PrimitiveTypesReadTests.h"
 #import "PrimitivesModel.h"
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
 #import "EnumModel.h"
+#endif
 
 @implementation PrimitiveTypesReadTests
 {
@@ -46,6 +49,7 @@
     STAssertTrue(p.boolYES==YES, @"boolYES read fail");
 }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
 -(void)testEnumerationTypes
 {
     NSString* jsonContents = @"{\"statusString\":\"open\",\"nsStatus\":\"closed\",\"nsuStatus\":\"open\"}";
@@ -62,5 +66,6 @@
 
     STAssertTrue([[p1 toJSONString] isEqualToString: jsonContents], @"Exporting enum value didn't work out");
 }
+#endif
 
 @end
