@@ -177,9 +177,17 @@ extern BOOL isNull(id value)
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
+ 
+    NSDate *date;
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
+    date = [dateFormatter dateFromString: string];
+
+    if (!date) {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmss.SSSZZZZ"];
+        date = [dateFormatter dateFromString: string];
+    }
     
-    return [dateFormatter dateFromString: string];
+    return date;
 }
 
 -(NSString*)JSONObjectFromNSDate:(NSDate*)date

@@ -11,6 +11,7 @@
     "numberFromString": "1230.99",
 
     "importantEvent": "2012-11-26T10:00:01+02:00",
+    "importantEventWithMilliSec": "2012-11-26T08:00:01.000Z",
     
     "websiteURL": "http://www.visir.is/jordan-slaer-milljard-af-villunni-sinni-|-myndir/article/2013130709873?key1=test"
 }

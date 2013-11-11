@@ -64,6 +64,10 @@
     
     STAssertTrue([b.importantEvent isKindOfClass:[NSDate class]], @"importantEvent is not an NSDate");
     STAssertTrue((long)[b.importantEvent timeIntervalSince1970] == 1353916801, @"importantEvent value was not read properly");
+
+    // Test dates with milliseconds
+    STAssertTrue([b.importantEventWithMilliSec isKindOfClass:[NSDate class]], @"importantEventWithMilliSec is not an NSDate");
+    STAssertTrue((long)[b.importantEventWithMilliSec timeIntervalSince1970] == 1353916801, @"importantEventWithMilliSec value was not read properly");
     
     //test for a valid URL
     //https://github.com/icanzilb/JSONModel/pull/60
