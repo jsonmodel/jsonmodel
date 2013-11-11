@@ -163,6 +163,20 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    */
   -(NSString*)toJSONString;
 
+  /**
+   * Export the specified properties of the object to a dictionary
+	 * @param toExport the properties to export; if nil, all properties exported
+   * @return dictionary containing the data model
+   */
+  -(NSDictionary*)toDictionary:(NSArray*)toExport;
+
+  /**
+   * Export the specified properties of the object to a JSON data text string
+	 * @param toExport the properties to export; if nil, all properties exported
+   * @return JSON text describing the data model
+   */
+  -(NSString*)toJSONString:(NSArray*)toExport;
+
 /** @name Batch methods */
 
   /**

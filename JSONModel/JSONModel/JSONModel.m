@@ -790,8 +790,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
     [*dict setValue:nextLevelDictionary  forKeyPath: nextHierarchyLevelKeyName];
 }
 
-//exports the model as a dictionary of JSON compliant objects
 -(NSDictionary*)toDictionary
+{
+    return [self toDictionary:nil];
+}
+
+-(NSString*)toJSONString
+{
+    return [self toJSONString:nil];
+}
+
+//exports the model as a dictionary of JSON compliant objects
+-(NSDictionary*)toDictionary:(NSArray*)toExport
 {
     NSArray* properties = [self __properties__];
     NSMutableDictionary* tempDictionary = [NSMutableDictionary dictionaryWithCapacity:properties.count];
@@ -806,6 +816,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
+
+        //skip if unwanted
+        if (toExport != nil && ![toExport containsObject:p.name])
+            continue;
         
         //fetch key and value
         NSString* keyPath = p.name;
@@ -904,13 +918,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //exports model to a dictionary and then to a JSON string
--(NSString*)toJSONString
+-(NSString*)toJSONString:(NSArray*)toExport
 {
     NSData* jsonData = nil;
     NSError* jsonError = nil;
     
     @try {
-        NSDictionary* dict = [self toDictionary];
+        NSDictionary* dict = [self toDictionary:toExport];
         jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
     }
     @catch (NSException *exception) {
