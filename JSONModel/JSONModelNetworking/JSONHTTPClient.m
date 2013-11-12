@@ -308,12 +308,16 @@ static NSString* requestContentType = nil;
 
         //step 4: if there's a response at this and no errors, convert to object
         if (error==nil && jsonObject==nil) {
-            //convert to an object
-            jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+			// Note: it is possible to have a valid response with empty response data (204 No Content).
+			// So only create the JSON object if there is some response data.
+			if(responseData.length > 0)
+			{
+				//convert to an object
+				jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+			}
         }
-        
         //step 4.5: cover an edge case in which meaningful content is return along an error HTTP status code
-        if (error && responseData && jsonObject==nil) {
+        else if (error && responseData && jsonObject==nil) {
             //try to get the JSON object, while preserving the origianl error object
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
         }
