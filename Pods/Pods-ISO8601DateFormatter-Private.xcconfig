@@ -1,0 +1,5 @@
+#include "Pods-ISO8601DateFormatter.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/ISO8601DateFormatter" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ISO8601DateFormatter"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}

@@ -11,6 +11,8 @@
 		69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */; };
 		697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */; };
+		709B15D718340E3200F2F623 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 709B15D618340E3200F2F623 /* libPods.a */; };
+		709B15D918340E3900F2F623 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 709B15D818340E3900F2F623 /* libPods.a */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
 		9C66DFA8168CEF420015CCDF /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C66DF60168CEF420015CCDF /* ArrayTests.m */; };
@@ -149,6 +151,8 @@
 		69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithDictionaryError.json; sourceTree = "<group>"; };
 		697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImages.json; sourceTree = "<group>"; };
 		697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImagesObject.json; sourceTree = "<group>"; };
+		709B15D618340E3200F2F623 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = Pods/build/Debug/libPods.a; sourceTree = "<group>"; };
+		709B15D818340E3900F2F623 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = Pods/build/Debug/libPods.a; sourceTree = "<group>"; };
 		9C0D023D166E6BBF001EA645 /* KivaViewControllerNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KivaViewControllerNetworking.h; sourceTree = "<group>"; };
 		9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KivaViewControllerNetworking.m; sourceTree = "<group>"; };
 		9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KivaViewControllerNetworking.xib; sourceTree = "<group>"; };
@@ -325,6 +329,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709B15D918340E3900F2F623 /* libPods.a in Frameworks */,
 				9CA6B10216FCAAEE00B3E78E /* SystemConfiguration.framework in Frameworks */,
 				9CBBBEDD166B6CF0008B4326 /* UIKit.framework in Frameworks */,
 				9CBBBEDF166B6CF0008B4326 /* Foundation.framework in Frameworks */,
@@ -336,6 +341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709B15D718340E3200F2F623 /* libPods.a in Frameworks */,
 				9CA6B10016FCA5B400B3E78E /* SystemConfiguration.framework in Frameworks */,
 				9CBBBF65166B9E3E008B4326 /* CoreGraphics.framework in Frameworks */,
 				9CBBBF07166B6CF0008B4326 /* SenTestingKit.framework in Frameworks */,
@@ -518,6 +524,8 @@
 		9CBBBEDB166B6CF0008B4326 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				709B15D818340E3900F2F623 /* libPods.a */,
+				709B15D618340E3200F2F623 /* libPods.a */,
 				9CA6B0FF16FCA5B400B3E78E /* SystemConfiguration.framework */,
 				9CBBBEDC166B6CF0008B4326 /* UIKit.framework */,
 				9CBBBEDE166B6CF0008B4326 /* Foundation.framework */,
@@ -752,6 +760,7 @@
 				9CBBBED4166B6CF0008B4326 /* Sources */,
 				9CBBBED5166B6CF0008B4326 /* Frameworks */,
 				9CBBBED6166B6CF0008B4326 /* Resources */,
+				709B15D218340D4700F2F623 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -769,6 +778,7 @@
 				9CBBBF00166B6CF0008B4326 /* Sources */,
 				9CBBBF01166B6CF0008B4326 /* Frameworks */,
 				9CBBBF02166B6CF0008B4326 /* Resources */,
+				709B15D318340D9900F2F623 /* Copy Pods Resources */,
 				9CBBBF03166B6CF0008B4326 /* ShellScript */,
 			);
 			buildRules = (
@@ -866,6 +876,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		709B15D218340D4700F2F623 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"";
+			showEnvVarsInLog = 0;
+		};
+		709B15D318340D9900F2F623 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9CBBBF03166B6CF0008B4326 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1033,8 +1073,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Headers/ISO8601DateFormatter",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PODS_ROOT = "${SRCROOT}/Pods";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1054,8 +1100,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Headers/ISO8601DateFormatter",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PODS_ROOT = "${SRCROOT}/Pods";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

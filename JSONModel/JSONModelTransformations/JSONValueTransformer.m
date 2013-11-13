@@ -15,6 +15,7 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONValueTransformer.h"
+#import <ISO8601DateFormatter.h>
 
 #pragma mark - functions
 extern BOOL isNull(id value)
@@ -175,18 +176,8 @@ extern BOOL isNull(id value)
 #pragma mark - string <-> date
 -(NSDate*)NSDateFromNSString:(NSString*)string
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
- 
-    NSDate *date;
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
-    date = [dateFormatter dateFromString: string];
-
-    if (!date) {
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmss.SSSZZZZ"];
-        date = [dateFormatter dateFromString: string];
-    }
-    
+    ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init]; 
+    NSDate *date = [dateFormatter dateFromString: string];
     return date;
 }
 
