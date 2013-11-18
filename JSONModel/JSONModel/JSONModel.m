@@ -808,7 +808,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //exports the model as a dictionary of JSON compliant objects
--(NSDictionary*)toDictionary:(NSArray*)toExport
+-(NSDictionary*)toDictionary:(NSArray*)propertyNamesToExport
 {
     NSArray* properties = [self __properties__];
     NSMutableDictionary* tempDictionary = [NSMutableDictionary dictionaryWithCapacity:properties.count];
@@ -825,7 +825,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     for (JSONModelClassProperty* p in properties) {
 
         //skip if unwanted
-        if (toExport != nil && ![toExport containsObject:p.name])
+        if (propertyNamesToExport != nil && ![propertyNamesToExport containsObject:p.name])
             continue;
         
         //fetch key and value
@@ -925,13 +925,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //exports model to a dictionary and then to a JSON string
--(NSString*)toJSONString:(NSArray*)toExport
+-(NSString*)toJSONString:(NSArray*)propertyNamesToExport
 {
     NSData* jsonData = nil;
     NSError* jsonError = nil;
     
     @try {
-        NSDictionary* dict = [self toDictionary:toExport];
+        NSDictionary* dict = [self toDictionary:propertyNamesToExport];
         jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
     }
     @catch (NSException *exception) {
@@ -998,6 +998,49 @@ static JSONKeyMapper* globalKeyMapper = nil;
         [list addObject: obj];
     }
     return list;
+}
+
+//loop over NSArray of models and export them to JSON objects with specific properties
++(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport;
+{
+    //bail early
+    if (isNull(array)) return nil;
+    
+    //convert to dictionaries
+    NSMutableArray* list = [NSMutableArray arrayWithCapacity: [array count]];
+    
+    for (id<AbstractJSONModelProtocol> object in array) {
+        
+        id obj = [object toDictionary:propertyNamesToExport];
+        if (!obj) return nil;
+        
+        [list addObject: obj];
+    }
+    return list;
+}
+
+//loop over NSArray of models and export them to string specific properties
++(NSString*)toJSONStringOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport
+{
+    //bail early
+    if (isNull(array)) return nil;
+    
+    //convert to dictionaries
+    NSMutableArray* list = [NSMutableArray arrayWithCapacity: [array count]];
+    
+    for (id<AbstractJSONModelProtocol> object in array) {
+        
+        id obj = [object toDictionary:propertyNamesToExport];
+        if (!obj) return nil;
+        
+        [list addObject: obj];
+    }
+    
+    NSError *writeError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:list options:NSJSONWritingPrettyPrinted error:&writeError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    return jsonString;
 }
 
 #pragma mark - custom comparison methods
