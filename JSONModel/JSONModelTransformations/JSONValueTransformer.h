@@ -148,6 +148,21 @@ extern BOOL isNull(id value);
  */
 -(NSString*)NSStringFromNSNumber:(NSNumber*)number;
 
+/**
+ * Transforms a string object to a nsdecimalnumber object
+ * @param string the string to convert
+ * @return the resulting number
+ */
+-(NSDecimalNumber*)NSDecimalNumberFromNSString:(NSString*)string;
+
+/**
+ * Transforms a nsdecimalnumber object to a string object
+ * @param number the number to convert
+ * @return the resulting string
+ */
+-(NSString*)NSStringFromNSDecimalNumber:(NSDecimalNumber*)number;
+
+
 #pragma mark - string <-> url
 /** @name Transforming URLs */
 /**

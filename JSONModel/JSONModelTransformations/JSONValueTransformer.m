@@ -161,6 +161,16 @@ extern BOOL isNull(id value)
     return [number stringValue];
 }
 
+-(NSDecimalNumber*)NSDecimalNumberFromNSString:(NSString*)string
+{
+    return [NSDecimalNumber decimalNumberWithString:string];
+}
+
+-(NSString*)NSStringFromNSDecimalNumber:(NSDecimalNumber*)number
+{
+    return [number stringValue];
+}
+
 #pragma mark - string <-> url
 -(NSURL*)NSURLFromNSString:(NSString*)string
 {
