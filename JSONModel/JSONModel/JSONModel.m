@@ -224,12 +224,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
         if (isNull(jsonValue)) {
             //skip this property, continue with next property
             if (property.isOptional==YES) continue;
-            
-            //null value for required property
-            NSString* msg = [NSString stringWithFormat:@"Value of required model key %@ is null", property.name];
-            JSONModelError* dataErr = [JSONModelError errorInvalidDataWithMessage:msg];
-            *err = [dataErr errorByPrependingKeyPathComponent:property.name];
-            
+
+            if (err) {
+              //null value for required property
+              NSString* msg = [NSString stringWithFormat:@"Value of required model key %@ is null", property.name];
+              JSONModelError* dataErr = [JSONModelError errorInvalidDataWithMessage:msg];
+              *err = [dataErr errorByPrependingKeyPathComponent:property.name];
+            }
             return nil;
         }
         
