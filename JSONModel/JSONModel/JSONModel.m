@@ -517,6 +517,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
                         p.convertsOnDemand = YES;
                     } else if([protocolName isEqualToString:@"Ignore"]) {
                         p = nil;
+                    } else if ([self propertyIsReadOnly:p.name]) {
+                        p = nil;
                     } else {
                         p.protocol = protocolName;
                     }
@@ -554,14 +556,19 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             }
 
-            if([[self class] propertyIsOptional:[NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding]]){
-                    p.isOptional = YES;
+            NSString *nsPropertyName = [NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding];
+            if([[self class] propertyIsOptional:nsPropertyName]){
+                p.isOptional = YES;
             }
-
-            if([[self class] propertyIsIgnored:[NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding]]){
-                    p = nil;
+            
+            if([[self class] propertyIsIgnored:nsPropertyName]){
+                p = nil;
             }
-
+            
+            if([self propertyIsReadOnly:nsPropertyName]) {
+                p = nil;
+            }
+            
             //add the property object to the temp index
             if (p) {
                 [propertyIndex setValue:p forKey:p.name];
@@ -1096,6 +1103,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
     return NO;
+}
+
+-(BOOL)propertyIsReadOnly: (NSString*)key
+{
+    NSString *setterString = [NSString stringWithFormat:@"set%@%@:",
+                              [[key substringToIndex:1] capitalizedString],
+                              [key substringFromIndex:1]];
+    
+    if ([self respondsToSelector:NSSelectorFromString(setterString)]) {
+        return NO;
+    }
+    return YES;
 }
 
 @end
