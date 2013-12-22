@@ -46,7 +46,7 @@ Basic usage
 
 Consider you have a JSON like this:
 ```javascript
-{id:"10", "country":"Germany", "dialCode": 49, "isInEurope":true}
+{"id":"10", "country":"Germany", "dialCode": 49, "isInEurope":true}
 ```
 
  * Create a new Objective-C class for your data model and make it inherit the JSONModel class. 
