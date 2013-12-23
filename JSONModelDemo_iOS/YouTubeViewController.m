@@ -33,11 +33,13 @@
                           [NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=50&alt=json"]
                           ];
         //3
-        NSDictionary* json = [NSJSONSerialization
-                    JSONObjectWithData:ytData
-                    options:kNilOptions
-                    error:nil];
-
+       NSDictionary* json = nil;
+       if (ytData) {
+         json =[NSJSONSerialization
+                JSONObjectWithData:ytData
+                options:kNilOptions
+                error:nil];
+       }
         //4
         dispatch_async(dispatch_get_main_queue(), ^{
             //code executed on the main queue
