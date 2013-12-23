@@ -32,6 +32,7 @@
         NSData* ytData = [NSData dataWithContentsOfURL:
                           [NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=50&alt=json"]
                           ];
+        ytData = ytData ?: [NSData data];
         //3
         NSDictionary* json = [NSJSONSerialization
                     JSONObjectWithData:ytData
