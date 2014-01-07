@@ -77,11 +77,7 @@
         //initialize
 
         NSMutableDictionary* userToModelMap = [NSMutableDictionary dictionaryWithDictionary: map];
-        NSMutableDictionary* userToJSONMap  = [NSMutableDictionary dictionaryWithCapacity: map.count];
-        
-        for (NSString* key in map) {
-            userToJSONMap[ map[key] ] = key;
-        }
+        NSMutableDictionary* userToJSONMap  = [NSMutableDictionary dictionaryWithObjects:map.allKeys forKeys:map.allValues];
         
         _JSONToModelKeyBlock = ^NSString*(NSString* keyName) {
             NSString* result = [userToModelMap valueForKeyPath: keyName];
