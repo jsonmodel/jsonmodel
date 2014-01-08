@@ -52,8 +52,8 @@
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
 -(void)testEnumerationTypes
 {
-    NSString* jsonContents = @"{\"statusString\":\"open\",\"nsStatus\":\"closed\",\"nsuStatus\":\"open\",\"nested\":{\"status\":\"open\"}}";
-    
+    NSString* jsonContents = @"{\"nested\":{\"status\":\"open\"},\"nsStatus\":\"closed\",\"nsuStatus\":\"open\",\"statusString\":\"open\"}";
+
     NSError* err1;
     EnumModel* p1 = [[EnumModel alloc] initWithString: jsonContents error:&err1];
     STAssertNil(err1, [err1 localizedDescription]);
