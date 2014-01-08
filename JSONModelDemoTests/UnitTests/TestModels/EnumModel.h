@@ -31,5 +31,6 @@ typedef NS_ENUM(NSUInteger, NSEU_Status) {
 @property (nonatomic) Status status;
 @property (nonatomic) NSE_Status nsStatus;
 @property (nonatomic) NSEU_Status nsuStatus;
+@property (nonatomic) Status nestedStatus;
 
 @end

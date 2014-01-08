@@ -25,6 +25,11 @@
     _nsuStatus = [statusString isEqualToString:@"open"]?NSEU_StatusOpen:NSEU_StatusClosed;
 }
 
+-(void)setNestedStatusWithNSString:(NSString*)statusString
+{
+    _status = [statusString isEqualToString:@"open"]?StatusOpen:StatusClosed;
+}
+
 -(id)JSONObjectForStatus
 {
     return (self.status==StatusOpen)?@"open":@"closed";
@@ -40,10 +45,16 @@
     return (self.nsuStatus==NSEU_StatusOpen)?@"open":@"closed";
 }
 
+-(id)JSONObjectForNestedStatus
+{
+    return (self.status==StatusOpen)?@"open":@"closed";
+}
+
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                @"statusString":@"status"
+                @"statusString":@"status",
+                @"nested.status":@"nestedStatus"
             }];
 }
 
