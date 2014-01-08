@@ -849,7 +849,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //check for custom getter
         if ([self __customGetValue:&value forProperty:p]) {
             //custom getter, all done
-            [tempDictionary setValue:value forKey:keyPath];
+            [tempDictionary setValue:value forKeyPath:keyPath];
             continue;
         }
         
