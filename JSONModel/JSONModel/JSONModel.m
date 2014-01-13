@@ -146,17 +146,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
 
     //create a class instance
-    self = [super init];
+    self = [self init];
     if (!self) {
         
         //super init didn't succeed
         if (err) *err = [JSONModelError errorModelIsInvalid];
         return nil;
     }
-    
-    
-    //do initial class setup, inspect properties
-    [self __setup__];
     
     //check if all required properties are present
     NSArray* incomingKeysArray = [dict allKeys];
