@@ -803,16 +803,16 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 -(NSDictionary*)toDictionary
 {
-    return [self toDictionary:nil];
+    return [self toDictionaryWithKeys:nil];
 }
 
 -(NSString*)toJSONString
 {
-    return [self toJSONString:nil];
+    return [self toJSONStringWithKeys:nil];
 }
 
 //exports the model as a dictionary of JSON compliant objects
--(NSDictionary*)toDictionary:(NSArray*)toExport
+-(NSDictionary*)toDictionaryWithKeys:(NSArray*)toExport
 {
     NSArray* properties = [self __properties__];
     NSMutableDictionary* tempDictionary = [NSMutableDictionary dictionaryWithCapacity:properties.count];
@@ -929,13 +929,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //exports model to a dictionary and then to a JSON string
--(NSString*)toJSONString:(NSArray*)toExport
+-(NSString*)toJSONStringWithKeys:(NSArray*)toExport
 {
     NSData* jsonData = nil;
     NSError* jsonError = nil;
     
     @try {
-        NSDictionary* dict = [self toDictionary:toExport];
+        NSDictionary* dict = [self toDictionaryWithKeys:toExport];
         jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
     }
     @catch (NSException *exception) {
