@@ -178,7 +178,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             transformedName = keyMapper.modelToJSONKeyBlock(property.name);
             
             //chek if exists and if so, add to incoming keys
-            if ([dict valueForKeyPath:transformedName]) {
+            if (dict[transformedName]) {
                 [transformedIncomingKeys addObject: property.name];
             }
         }
@@ -214,7 +214,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //JMLog(@"keyPath: %@", jsonKeyPath);
         
         //general check for data type compliance
-        id jsonValue = [dict valueForKeyPath: jsonKeyPath];
+        id jsonValue = dict[jsonKeyPath];
         
         //check for Optional properties
         if (isNull(jsonValue)) {

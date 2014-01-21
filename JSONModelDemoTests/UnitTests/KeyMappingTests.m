@@ -32,6 +32,20 @@
 
 @end
 
+#pragma mark - at-name property
+@interface AtNameModel : JSONModel
+@property (assign) int type;
+@end
+
+@implementation AtNameModel
++(JSONKeyMapper*)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"@type": @"type"
+                                                       }];
+}
+@end
+
 #pragma mark - global key mapper test model
 @interface GlobalModel: JSONModel
 @property (strong, nonatomic) NSString* name;
@@ -183,6 +197,13 @@
     GlobalModel* global3 = [[GlobalModel alloc] initWithString:jsonString2
                                                          error:nil];
     STAssertNil(global3, @"model supposed to be nil");
+}
+
+//https://github.com/icanzilb/JSONModel/issues/132
+-(void)testAtNameProperty
+{
+    AtNameModel* at = [[AtNameModel alloc] initWithString:@"{\"@type\":157}" error:nil];
+    STAssertNotNil(at, @"model instance is nil");
 }
 
 @end
