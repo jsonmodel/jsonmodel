@@ -193,6 +193,8 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    */
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array;
 
+  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err;
+
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
    * matching dictionaries. This method does the opposite of arrayOfObjectsFromDictionaries:
