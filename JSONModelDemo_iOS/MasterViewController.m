@@ -138,7 +138,7 @@
         NSLog(@"%@ attr: %@", name, propertyAttributes);
     }
     
-    /*
+    
     NSString* json = @"{}";
     TopModel* mm = [[TopModel alloc] initWithString:json error:nil];
     NSLog(@"TopModel: %@", mm);
