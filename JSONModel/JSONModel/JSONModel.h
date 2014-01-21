@@ -113,6 +113,22 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @see JSONValueTransformer JSONObjectFromNSURL: for an example how to export custom class property to a JSON compliant object
    */
   -(NSDictionary*)toDictionary;
+
+  /**
+   * All JSONModel classes should be able to export themselves as a dictionary of
+   * JSON compliant objects.
+   * @param propertyNamesToExport the properties to export; if nil, all properties exported
+   *
+   * For most classes the inherited from JSONModel default toDictionary implementation
+   * should suffice.
+   *
+   * @return NSDictionary dictionary of JSON compliant objects
+   * @exception JSONModelTypeNotAllowedException thrown when one of your model's custom class properties
+   * does not have matching transformer method in an JSONValueTransformer.
+   * @see JSONValueTransformer JSONObjectFromNSURL: for an example how to export custom class property to a JSON compliant object
+   */
+    -(NSDictionary*)toDictionary:(NSArray*)propertyNamesToExport;
+
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,17 +181,17 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
   /**
    * Export the specified properties of the object to a dictionary
-	 * @param toExport the properties to export; if nil, all properties exported
+	 * @param propertyNamesToExport the properties to export; if nil, all properties exported
    * @return dictionary containing the data model
    */
-  -(NSDictionary*)toDictionary:(NSArray*)toExport;
+  -(NSDictionary*)toDictionary:(NSArray*)propertyNamesToExport;
 
   /**
    * Export the specified properties of the object to a JSON data text string
-	 * @param toExport the properties to export; if nil, all properties exported
+	 * @param propertyNamesToExport the properties to export; if nil, all properties exported
    * @return JSON text describing the data model
    */
-  -(NSString*)toJSONString:(NSArray*)toExport;
+  -(NSString*)toJSONString:(NSArray*)propertyNamesToExport;
 
 /** @name Batch methods */
 
@@ -205,6 +221,31 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @see arrayOfModelsFromDictionaries:
    */
   +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array;
+
+  /**
+   * If you have an NSArray of data model objects, this method takes it in and outputs a list of the
+   * matching dictionaries with specified properties of the object.
+   * @param array list of JSONModel objects
+   * @param array list of property of object to export, if nil all properties are exported
+   * @return a list of NSDictionary objects
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON,
+   * or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @see arrayOfModelsFromDictionaries:
+   */
+  +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport;
+
+  /**
+   * If you have an NSArray of data model objects, , this method export the specified properties of the
+   * all array objects to a JSON data text string.
+   * @param array list of JSONModel objects
+   * @param array list of property of object to export, if nil all properties are exported
+   * @return a list of NSDictionary objects
+   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON,
+   * or a property type in your model is not supported by JSONValueTransformer and its categories
+   * @see arrayOfModelsFromDictionaries:
+   */
+  +(NSString*)toJSONStringOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport;
+
 
 /** @name Comparing models */
 
