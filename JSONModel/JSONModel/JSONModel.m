@@ -178,7 +178,15 @@ static JSONKeyMapper* globalKeyMapper = nil;
             transformedName = keyMapper.modelToJSONKeyBlock(property.name);
             
             //chek if exists and if so, add to incoming keys
-            if ([dict valueForKeyPath:transformedName]) {
+            id value;
+            @try {
+                value = [dict valueForKeyPath:transformedName];
+            }
+            @catch (NSException *exception) {
+                value = dict[transformedName];
+            }
+            
+            if (value) {
                 [transformedIncomingKeys addObject: property.name];
             }
         }
@@ -214,7 +222,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //JMLog(@"keyPath: %@", jsonKeyPath);
         
         //general check for data type compliance
-        id jsonValue = [dict valueForKeyPath: jsonKeyPath];
+        id jsonValue;
+        @try {
+            jsonValue = [dict valueForKeyPath: jsonKeyPath];
+        }
+        @catch (NSException *exception) {
+            jsonValue = dict[jsonKeyPath];
+        }
         
         //check for Optional properties
         if (isNull(jsonValue)) {
@@ -812,7 +826,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //exports the model as a dictionary of JSON compliant objects
--(NSDictionary*)toDictionaryWithKeys:(NSArray*)toExport
+-(NSDictionary*)toDictionaryWithKeys:(NSArray*)propertyNames
 {
     NSArray* properties = [self __properties__];
     NSMutableDictionary* tempDictionary = [NSMutableDictionary dictionaryWithCapacity:properties.count];
@@ -829,7 +843,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     for (JSONModelClassProperty* p in properties) {
 
         //skip if unwanted
-        if (toExport != nil && ![toExport containsObject:p.name])
+        if (propertyNames != nil && ![propertyNames containsObject:p.name])
             continue;
         
         //fetch key and value
@@ -929,13 +943,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //exports model to a dictionary and then to a JSON string
--(NSString*)toJSONStringWithKeys:(NSArray*)toExport
+-(NSString*)toJSONStringWithKeys:(NSArray*)propertyNames
 {
     NSData* jsonData = nil;
     NSError* jsonError = nil;
     
     @try {
-        NSDictionary* dict = [self toDictionaryWithKeys:toExport];
+        NSDictionary* dict = [self toDictionaryWithKeys:propertyNames];
         jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
     }
     @catch (NSException *exception) {
@@ -997,6 +1011,25 @@ static JSONKeyMapper* globalKeyMapper = nil;
     for (id<AbstractJSONModelProtocol> object in array) {
         
         id obj = [object toDictionary];
+        if (!obj) return nil;
+        
+        [list addObject: obj];
+    }
+    return list;
+}
+
+//loop over NSArray of models and export them to JSON objects with specific properties
++(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport;
+{
+    //bail early
+    if (isNull(array)) return nil;
+    
+    //convert to dictionaries
+    NSMutableArray* list = [NSMutableArray arrayWithCapacity: [array count]];
+    
+    for (id<AbstractJSONModelProtocol> object in array) {
+        
+        id obj = [object toDictionaryWithKeys:propertyNamesToExport];
         if (!obj) return nil;
         
         [list addObject: obj];
