@@ -23,6 +23,6 @@
 @property (assign, nonatomic) BOOL fork;
 @property (assign, nonatomic) double size;
 @property (assign, nonatomic) int followers;
-@property (assign, nonatomic) NSString<Index>* name;
+@property (strong, nonatomic) NSString<Index>* name;
 
 @end
