@@ -183,7 +183,7 @@ extern BOOL isNull(id value)
 }
 
 #pragma mark - string <-> date
--(NSDate*)NSDateFromNSString:(NSString*)string
+-(NSDate*)__NSDateFromNSString:(NSString*)string
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
@@ -192,7 +192,7 @@ extern BOOL isNull(id value)
     return [dateFormatter dateFromString: string];
 }
 
--(NSString*)JSONObjectFromNSDate:(NSDate*)date
+-(NSString*)__JSONObjectFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];

@@ -367,8 +367,21 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                               sourceClass]; //source name
                     SEL selector = NSSelectorFromString(selectorName);
                     
-                    //check if there's a transformer with that name
+                    //check for custom transformer
+                    BOOL foundCustomTransformer = NO;
                     if ([valueTransformer respondsToSelector:selector]) {
+                        foundCustomTransformer = YES;
+                    } else {
+                        //try for hidden custom transformer
+                        selectorName = [NSString stringWithFormat:@"__%@",selectorName];
+                        selector = NSSelectorFromString(selectorName);
+                        if ([valueTransformer respondsToSelector:selector]) {
+                            foundCustomTransformer = YES;
+                        }
+                    }
+                    
+                    //check if there's a transformer with that name
+                    if (foundCustomTransformer) {
                         
                         //it's OK, believe me...
 #pragma clang diagnostic push
@@ -915,8 +928,20 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 NSString* selectorName = [NSString stringWithFormat:@"%@From%@:", @"JSONObject", p.type?p.type:p.structName];
                 SEL selector = NSSelectorFromString(selectorName);
                 
-                //check if there's a transformer declared
+                BOOL foundCustomTransformer = NO;
                 if ([valueTransformer respondsToSelector:selector]) {
+                    foundCustomTransformer = YES;
+                } else {
+                    //try for hidden transformer
+                    selectorName = [NSString stringWithFormat:@"__%@",selectorName];
+                    selector = NSSelectorFromString(selectorName);
+                    if ([valueTransformer respondsToSelector:selector]) {
+                        foundCustomTransformer = YES;
+                    }
+                }
+                
+                //check if there's a transformer declared
+                if (foundCustomTransformer) {
                     
                     //it's OK, believe me...
 #pragma clang diagnostic push
