@@ -147,6 +147,6 @@ static long jsonRpcId = 0;
 
 @end
 
-#pragma - helper rpc error model class implementation
+#pragma mark - helper rpc error model class implementation
 @implementation JSONAPIRPCErrorModel
 @end
