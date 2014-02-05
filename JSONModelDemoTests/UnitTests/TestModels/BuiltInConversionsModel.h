@@ -29,6 +29,7 @@
 
 /* predefined transformer */
 @property (strong, nonatomic) NSDate* importantEvent;
+@property (strong, nonatomic) NSDate* importantEventWithMilliSec;
 
 /* URLs */
 @property (strong, nonatomic) NSURL* websiteURL;
