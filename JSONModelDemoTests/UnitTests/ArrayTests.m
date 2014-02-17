@@ -35,7 +35,7 @@
 -(void)testLoading
 {
     STAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
-    STAssertTrue([repos.repositories[0] isMemberOfClass:[GitHubRepoModel class]], @".properties[0] is not a GitHubRepoModel");
+    STAssertTrue([[[repos.repositories[0] class] description] isEqualToString:@"GitHubRepoModel"], @".properties[0] is not a GitHubRepoModel");
 }
 
 /*

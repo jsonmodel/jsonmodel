@@ -174,7 +174,7 @@
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [NSString stringWithFormat:@"%i entities", self.entities.count];
+    return [NSString stringWithFormat:@"%lu entities", (unsigned long)self.entities.count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

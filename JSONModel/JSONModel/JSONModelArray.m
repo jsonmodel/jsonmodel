@@ -71,6 +71,12 @@
     return nil;
 }
 
+-(id)mutableCopy
+{
+    //it's already mutable
+    return self;
+}
+
 #pragma mark - description
 -(NSString*)description
 {

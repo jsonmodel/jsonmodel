@@ -49,6 +49,13 @@
     STAssertTrue(p.boolYES==YES, @"boolYES read fail");
 }
 
+-(void)testBoolExport
+{
+    NSString* exportedJSON = [p toJSONString];
+    STAssertTrue([exportedJSON rangeOfString:@"\"boolNO\":false"].location != NSNotFound, @"boolNO should export to 'false'");
+    STAssertTrue([exportedJSON rangeOfString:@"\"boolYES\":true"].location != NSNotFound, @"boolYES should export to 'true'");
+}
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
 -(void)testEnumerationTypes
 {

@@ -70,10 +70,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             // This is quite strange, but I found the test isSubclassOfClass: (line ~291) to fail if using [JSONModel class].
             // somewhat related: https://stackoverflow.com/questions/6524165/nsclassfromstring-vs-classnamednsstring
-            // //NSClassFromString(@"JSONModel"); seems to break the unit tests
-            if (!JSONModelClass) {
-                JSONModelClass = [JSONModel class];
-            }
+            // //; seems to break the unit tests
+            JSONModelClass = [JSONModel class];
 		}
     });
 }
@@ -316,7 +314,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             
             // 1) check if property is itself a JSONModel
-            if ([[property.type class] isSubclassOfClass:JSONModelClass]) {
+            
+            if ([self __isJSONModelSubClass:property.type]) {
                 
                 //initialize the property's model, store it
                 JSONModelError* initErr = nil;
@@ -446,6 +445,17 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - property inspection methods
+
+-(BOOL)__isJSONModelSubClass:(Class)class
+{
+// http://stackoverflow.com/questions/19883472/objc-nsobject-issubclassofclass-gives-incorrect-failure
+#ifdef UNIT_TESTING
+    return [@"JSONModel" isEqualToString: NSStringFromClass([class superclass])];
+#else
+    return [class isSubclassOfClass:JSONModelClass];
+#endif
+}
+
 //returns a set of the required keys for the model
 -(NSMutableSet*)__requiredPropertyNames
 {
@@ -654,7 +664,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
     
     //if the protocol is actually a JSONModel class
-    if ([[protocolClass class] isSubclassOfClass:JSONModelClass]) {
+    if ([self __isJSONModelSubClass:protocolClass]) {
 
         //check if it's a list of models
         if ([property.type isSubclassOfClass:[NSArray class]]) {
@@ -733,7 +743,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     if (!protocolClass) return value;
     
     //if the protocol is actually a JSONModel class
-    if ([[protocolClass class] isSubclassOfClass:JSONModelClass]) {
+    if ([self __isJSONModelSubClass:protocolClass]) {
 
         //check if should export list of dictionaries
         if (property.type == [NSArray class] || property.type == [NSMutableArray class]) {

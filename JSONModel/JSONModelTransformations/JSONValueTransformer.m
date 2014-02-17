@@ -15,6 +15,7 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONValueTransformer.h"
+#import "JSONModelArray.h"
 
 #pragma mark - functions
 extern BOOL isNull(id value)
@@ -79,6 +80,11 @@ extern BOOL isNull(id value)
 #pragma mark - NSMutableArray <-> NSArray
 -(NSMutableArray*)NSMutableArrayFromNSArray:(NSArray*)array
 {
+    if ([array isKindOfClass:[JSONModelArray class]]) {
+        //it's a jsonmodelarray already, just return it
+        return (id)array;
+    }
+    
     return [NSMutableArray arrayWithArray:array];
 }
 
@@ -109,24 +115,26 @@ extern BOOL isNull(id value)
     return [set allObjects];
 }
 
+//
+// 0 converts to NO, everything else converts to YES
+//
 
 #pragma mark - BOOL <-> number/string
 -(NSNumber*)BOOLFromNSNumber:(NSNumber*)number
 {
-    if (isNull(number)) return @0;
-    return number;
+    if (isNull(number)) return [NSNumber numberWithBool:NO];
+    return [NSNumber numberWithBool: number.intValue==0?NO:YES];
 }
 
 -(NSNumber*)BOOLFromNSString:(NSString*)string
 {
     int val = [string intValue];
-    if (val!=0) val=1;
-    return @(val);
+    return [NSNumber numberWithBool: val==0?NO:YES];
 }
 
 -(NSNumber*)JSONObjectFromBOOL:(NSNumber*)number
 {
-    return number;
+    return [NSNumber numberWithBool: number.intValue==0?NO:YES];
 }
 
 #pragma mark - string/number <-> float

@@ -13,6 +13,7 @@
 		697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */; };
 		9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D023E166E6BBF001EA645 /* KivaViewControllerNetworking.m */; };
 		9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D023F166E6BBF001EA645 /* KivaViewControllerNetworking.xib */; };
+		9C28A14118B2A4D2002AEC1E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C55AF0618903127004EBD8A /* CoreData.framework */; };
 		9C55AF0718903127004EBD8A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C55AF0618903127004EBD8A /* CoreData.framework */; };
 		9C55AF0C189031A8004EBD8A /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C55AF0A189031A8004EBD8A /* CoreDataViewController.m */; };
 		9C55AF0D189031A8004EBD8A /* CoreDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C55AF0B189031A8004EBD8A /* CoreDataViewController.xib */; };
@@ -356,6 +357,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C28A14118B2A4D2002AEC1E /* CoreData.framework in Frameworks */,
 				9CA6B10016FCA5B400B3E78E /* SystemConfiguration.framework in Frameworks */,
 				9CBBBF65166B9E3E008B4326 /* CoreGraphics.framework in Frameworks */,
 				9CBBBF07166B6CF0008B4326 /* SenTestingKit.framework in Frameworks */,
@@ -1141,6 +1143,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"UNIT_TESTING=1",
+				);
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
 				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
