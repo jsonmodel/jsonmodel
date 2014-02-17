@@ -1,5 +1,23 @@
 ## Magical Data Modelling Framework for JSON
 
+*New*: In version 0.12.0 I added experimental support for exporting **JSON models** to **CoreData**.
+
+Give it a try and let me know, post an issue or just get in touch. Try something like that:
+
+<pre lang="Objective-C">
+NSError* error = nil;
+GitHubRepoEntity* entity = [GitHubRepoEntity entityWithModel:model
+                                                   inContext:self.managedObjectContext
+                                                       error:&error];
+[self.managedObjectContext save: nil];
+</pre>
+
+---
+If you like JSONModel and use it can you please:
+1) star this repo 2)send me some feedback. Thanks!
+
+---
+
 ![JSONModel for iOS and OSX](http://jsonmodel.com/img/jsonmodel_logolike.png)
 
 JSONModel is a library, which allows rapid creation of smart data models. You can use it in your iOS or OSX apps.

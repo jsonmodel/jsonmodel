@@ -1,13 +1,13 @@
 Change-log
 ==========
 
-## Nota Bene!
+**Version 0.12** @ 2014-02-17
 
-Version 0.10 will be one of (if not) the last version for the "0" major version. 
+- fixes for BOOLs
 
-Currently I'm wrapping up the features to get into 1.0 and the list of breaking changes it will introduce.
+- hacked solution for unit tests checking subclassing
 
----
+- added experimental Core Data support
 
 **Version 0.10** @ 2013-11-10
 
