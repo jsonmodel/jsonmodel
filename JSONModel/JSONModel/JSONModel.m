@@ -107,6 +107,19 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return self;
 }
 
+-(instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)err
+{
+    //turn nsdata to an nsstring
+    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    if (!string) return nil;
+    
+    //create an instance
+    JSONModelError* initError = nil;
+    id objModel = [self initWithString:string usingEncoding:NSUTF8StringEncoding error:&initError];
+    if (initError && err) *err = initError;
+    return objModel;
+}
+
 -(id)initWithString:(NSString*)string error:(JSONModelError**)err
 {
     JSONModelError* initError = nil;
@@ -1001,6 +1014,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array
 {
 	return [self arrayOfModelsFromDictionaries:array error:nil];
+}
+
++(NSMutableArray*)arrayOfModelsFromData:(NSData *)data error:(NSError *__autoreleasing *)err
+{
+    id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:err];
+    if (!json || ![json isKindOfClass:[NSArray class]]) return nil;
+    
+    return [self arrayOfModelsFromDictionaries:json error:err];
 }
 
 // Same as above, but with error reporting

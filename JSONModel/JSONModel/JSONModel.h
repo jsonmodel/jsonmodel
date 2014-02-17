@@ -102,6 +102,17 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
 
 /**
+ * All JSONModel classes should implement initWithData:error:
+ *
+ * For most classes the default initWithData: inherited from JSONModel itself
+ * should suffice, but developers have the option ot also overwrite it if needed.
+ *
+ * @param data representing a JSON response (usually fetched from web), to be imported in the model.
+ * @param err an error or NULL
+ */
+-(instancetype)initWithData:(NSData*)data error:(NSError**)error;
+
+/**
  * All JSONModel classes should be able to export themselves as a dictionary of
  * JSON compliant objects.
  *
@@ -159,6 +170,8 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
   -(instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError **)err;
 
+  -(instancetype)initWithData:(NSData *)data error:(NSError **)error;
+
 /** @name Exporting model contents */
 
   /**
@@ -204,6 +217,8 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array;
 
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err;
+
+  +(NSMutableArray*)arrayOfModelsFromData:(NSData*)data error:(NSError**)err;
 
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
