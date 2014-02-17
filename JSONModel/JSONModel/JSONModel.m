@@ -65,13 +65,15 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 //and some famous aliases
                 @"NSInteger", @"NSUInteger"
             ];
+
+            valueTransformer = [[JSONValueTransformer alloc] init];
             
             // This is quite strange, but I found the test isSubclassOfClass: (line ~291) to fail if using [JSONModel class].
             // somewhat related: https://stackoverflow.com/questions/6524165/nsclassfromstring-vs-classnamednsstring
-            JSONModelClass = NSClassFromString(@"JSONModel");
-            NSAssert(JSONModelClass, @"Must be set.", nil);
-
-            valueTransformer = [[JSONValueTransformer alloc] init];
+            // //NSClassFromString(@"JSONModel"); seems to break the unit tests
+            if (!JSONModelClass) {
+                JSONModelClass = [JSONModel class];
+            }
 		}
     });
 }
