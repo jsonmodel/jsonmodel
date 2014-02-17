@@ -34,3 +34,6 @@
 #import "NSArray+JSONModel.h"
 #import "JSONModelArray.h"
 
+#ifdef COREDATA_EXTERN
+#import "JSONModel+CoreData.h"
+#endif

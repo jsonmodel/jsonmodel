@@ -11,6 +11,6 @@
 
 @interface ReposModel : JSONModel
 
-@property (strong, nonatomic) NSArray<ConvertOnDemand, GitHubRepoModel>* repositories;
+@property (strong, nonatomic) NSMutableArray<ConvertOnDemand, GitHubRepoModel>* repositories;
 
 @end
