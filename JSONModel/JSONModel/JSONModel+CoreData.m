@@ -95,12 +95,12 @@
         NSLog(@"class: %@", moProperties[key]);
         //exception classes - for core data should be NSDate by default
         if ([[moProperties[key]class] isEqual:[NSDate class]]) {
-            if ([self respondsToSelector:@selector(NSDateFromNSString:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            SEL NSDateFromNSStringSelector = sel_registerName("NSDateFromNSString:");
+            if ([self respondsToSelector:NSDateFromNSStringSelector]) {
+                IMP methodImpl = [self methodForSelector:NSDateFromNSStringSelector];
+                NSDate * (*method)(id, SEL, NSString *) = (void *)methodImpl;
                 //transform the value
-                value = [self performSelector:@selector(NSDateFromNSString:) withObject:dictionary[key]];
-#pragma clang diagnostic pop
+                value = method(self, NSDateFromNSStringSelector, dictionary[key]);
             } else {
                 value = [self __NSDateFromNSString: dictionary[key]];
             }
