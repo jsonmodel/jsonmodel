@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C008FE518B7AE54002DFD3A /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */; };
 		9C05B2A9168CE9600054215E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC27CAF1689B7BE008B5411 /* SenTestingKit.framework */; };
 		9C05B43F168CEB220054215E /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F7168CEB220054215E /* ArrayTests.m */; };
 		9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */; };
@@ -113,6 +114,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C008FE318B7AE54002DFD3A /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
+		1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
 		9C05B2A8168CE9600054215E /* JSONModelDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C05B2B0168CE9600054215E /* JSONModelDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9C05B2B7168CE9600054215E /* JSONModelDemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONModelDemoTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 				9C05B42A168CEB220054215E /* GitHubRepoModel.m */,
 				9C05B42B168CEB220054215E /* GitHubRepoModelForUSMapper.h */,
 				9C05B42C168CEB220054215E /* GitHubRepoModelForUSMapper.m */,
+				1C008FE318B7AE54002DFD3A /* ModelForUpperCaseMapper.h */,
+				1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */,
 				9C05B42D168CEB220054215E /* ImageModel.h */,
 				9C05B42E168CEB220054215E /* ImageModel.m */,
 				9C05B42F168CEB220054215E /* JSONTypesModel.h */,
@@ -760,6 +765,7 @@
 				9C05B456168CEB220054215E /* PersistTests.m in Sources */,
 				9C05B457168CEB220054215E /* PrimitiveTypesReadTests.m in Sources */,
 				9C05B458168CEB220054215E /* SimpleDataErrorTests.m in Sources */,
+				1C008FE518B7AE54002DFD3A /* ModelForUpperCaseMapper.m in Sources */,
 				9C05B459168CEB220054215E /* BuiltInConversionsModel.m in Sources */,
 				9C05B45A168CEB220054215E /* CustomPropertyModel.m in Sources */,
 				9C05B45B168CEB220054215E /* GitHubKeyMapRepoModel.m in Sources */,
