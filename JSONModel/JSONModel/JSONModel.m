@@ -1211,4 +1211,27 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return YES;
 }
 
+#pragma mark - support for NSCopying
+- (id)copyWithZone:(NSZone *)zone
+{
+    // first convert to a dictionary
+    NSDictionary *dict = self.toDictionary;
+
+    // this is necessary to perform a 'deep copy'
+    // explanation: http://stackoverflow.com/a/184745/743957
+    NSDictionary *dictCopy = [[NSDictionary alloc]
+                              initWithDictionary:dict
+                              copyItems:true];
+
+    NSError *error;
+    JSONModel *copy = [[[self class] allocWithZone:zone]
+                       initWithDictionary:dictCopy
+                       error:&error];
+
+    if (error)
+        return nil;
+
+    return copy;
+}
+
 @end
