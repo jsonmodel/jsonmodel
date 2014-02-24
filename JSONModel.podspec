@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'JSONModel/**/*.{m,h}'
   s.public_header_files = 'JSONModel/**/*.h'
+  s.framework    = 'CoreData'
 
   s.requires_arc = true
 
