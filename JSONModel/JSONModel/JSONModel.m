@@ -1025,7 +1025,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
   NSError* jsonError = nil;
   
   @try {
-    id  obj = [self toDictionaryWithKeys:[NSArray arrayWithObject:propertyName]];
+    id  obj = [[[self toDictionaryWithKeys:[NSArray arrayWithObject:propertyName]] allValues] objectAtIndex:0];
     jsonData = [NSJSONSerialization dataWithJSONObject:obj options:kNilOptions error:&jsonError];
   }
   @catch (NSException *exception) {
