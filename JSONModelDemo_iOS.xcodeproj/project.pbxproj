@@ -144,6 +144,7 @@
 		9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C5176E977C007B7DFA /* ReposModel.m */; };
 		9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */; };
 		9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */; };
+		D66F5792A312B021F52F7BFF /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -338,6 +339,8 @@
 		9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
 		9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		D66F555A1EB344B7A5FF0D85 /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
+		D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -777,6 +780,8 @@
 				9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */,
 				9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */,
 				9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */,
+				D66F555A1EB344B7A5FF0D85 /* ModelForUpperCaseMapper.h */,
+				D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -1018,6 +1023,7 @@
 				9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */,
 				9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */,
 				9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */,
+				D66F5792A312B021F52F7BFF /* ModelForUpperCaseMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
