@@ -148,4 +148,23 @@
     
 }
 
++(instancetype)mapperFromUpperCaseToLowerCase
+{
+    JSONModelKeyMapBlock toModel = ^ NSString* (NSString* keyName) {
+        NSString*lowercaseString = [keyName lowercaseString];
+        return lowercaseString;
+    };
+
+    JSONModelKeyMapBlock toJSON = ^ NSString* (NSString* keyName) {
+
+        NSString *uppercaseString = [keyName uppercaseString];
+
+        return uppercaseString;
+    };
+
+    return [[self alloc] initWithJSONToModelBlock:toModel
+                                 modelToJSONBlock:toJSON];
+
+}
+
 @end

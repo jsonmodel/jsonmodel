@@ -11,6 +11,7 @@
 #import "GitHubKeyMapRepoModel.h"
 #import "GitHubKeyMapRepoModelDict.h"
 #import "GitHubRepoModelForUSMapper.h"
+#import "ModelForUpperCaseMapper.h"
 
 
 #pragma mark - TestModel class
@@ -125,6 +126,22 @@
     
     STAssertEqualObjects(dict[@"item_object_145"], m.itemObject145, @"item_object_145 does not equal 'TEST'");
     STAssertEqualObjects(dict[@"item_object_176_details"], m.itemObject176Details, @"item_object_176_details does not equal 'OTHERTEST'");
+}
+
+-(void)testUpperCaseMapper
+{
+    NSString* jsonString = @"{\"UPPERTEST\":\"TEST\"}";
+    ModelForUpperCaseMapper * m = [[ModelForUpperCaseMapper alloc] initWithString:jsonString error:nil];
+    STAssertNotNil(m, @"Could not initialize model from string");
+
+    //import
+    STAssertEqualObjects(m.uppertest, @"TEST", @"uppertest does not equal 'TEST'");
+
+    //export
+    NSDictionary* dict = [m toDictionary];
+    STAssertNotNil(dict, @"toDictionary failed");
+
+    STAssertEqualObjects(dict[@"UPPERTEST"], m.uppertest, @"UPPERTEST does not equal 'TEST'");
 }
 
 -(void)testKeyMapperCaching
