@@ -84,4 +84,5 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  */
 +(instancetype)mapperFromUnderscoreCaseToCamelCase;
 
++ (instancetype)mapperFromUpperCaseToLowerCase;
 @end
