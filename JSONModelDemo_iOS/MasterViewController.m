@@ -89,109 +89,27 @@
 @end
 
 @interface JSONAnswer : JSONModel
-@property (nonatomic, modelOptional) NSString* name;
+@property (nonatomic, strong) NSString* name;
 @end
 
 @implementation JSONAnswer
 @end
 
 @interface TopModel : JSONModel
-@property (strong, nonatomic) NSArray<JSONAnswer>* answers;
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) JSONAnswer<Optional>* answer;
 @end
 
 @implementation TopModel
-+(BOOL)propertyIsOptional:(NSString*)propertyName {
-    if ([propertyName isEqualToString:@"answers"]) {
-        return YES;
-    }
-    return [super propertyIsOptional:propertyName];
-}
-@end
-
-@interface BoolModel: JSONModel
-@property (assign, nonatomic) BOOL detected;
-@end
-
-@implementation BoolModel
 @end
 
 @implementation MasterViewController
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    BoolModel* bm = [[BoolModel alloc] init];
-    bm.detected = YES;
-    
-    NSLog(@"%@", [bm toJSONString]);
-    
-    //[self tableView:nil didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
-    
-    
-    /*
-    Protocol *proto = objc_getProtocol(@"JSONAnswerJSON".UTF8String);
-    NSLog(@"proto: %@", proto);
-    
-    unsigned int propertyCount;
-    objc_property_t *properties = protocol_copyPropertyList(proto, &propertyCount);
-    
-    NSLog(@"%i properties found", propertyCount);
-    
-    for (unsigned int i = 0; i < propertyCount; i++) {
-        //get property name
-        objc_property_t property = properties[i];
-        const char *propertyName = property_getName(property);
-        NSString* name = [NSString stringWithUTF8String:propertyName];
-        
-        //JMLog(@"property: %@", p.name);
-        
-        //get property attributes
-        const char *attrs = property_getAttributes(property);
-        NSString* propertyAttributes = [NSString stringWithUTF8String:attrs];
-        
-        NSLog(@"%@ attr: %@", name, propertyAttributes);
-    }
-    
-    
-    NSString* json = @"{}";
-    TopModel* mm = [[TopModel alloc] initWithString:json error:nil];
-    NSLog(@"TopModel: %@", mm);
-    
-    
-    NSString* json = @"{\"im\":{\"name\": \"1\",\"oName\":null, \"mydate\":\"2013-09-20T07:56:16+0200\"}}";
-    NSError* err = nil;
-    TopModel* tm = [[TopModel alloc] initWithString:json error: &err];
-    
-    if (err) {
-        NSLog(@"Error: %@", err.localizedDescription);
-    }
-    
+    NSString* json = @"{\"id\":1, \"answer\": {\"name1\":\"marin\"}}";
+    TopModel* tm = [[TopModel alloc] initWithString:json error:nil];
     NSLog(@"tm: %@", tm);
-    NSLog(@"tm.im: %@", tm.im);
-    NSLog(@"tm.im.oname: %@", tm.im.oName);
-    NSLog(@"tm.mydate: %@ %@", [tm.im.mydate class], tm.im.mydate);
-    */
-    //[self tableView: self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-/*
-    [JSONHTTPClient setTimeoutInSeconds:2];
-    [JSONHTTPClient getJSONFromURLWithString:@"http://localhost/testapi/test.php"
-                                  completion:^(NSDictionary *json, JSONModelError *err) {
-                                      NSLog(@"success: got json %@", json);
-                                      NSLog(@"error: got %@", [err localizedDescription]);
-                                  }];
-    
-    [JSONCache sharedCache].expirationTimeInHours = kImmediatelyExpire;
-    [JSONCache sharedCache].expirationTimeInHoursWhenOffline = kNeverExpire;
-    [JSONCache sharedCache].revalidateCacheViaETagAfterTimeInHours = kAlwaysRevalidate;
-    [JSONCache sharedCache].revalidateCacheFromServerAfterTimeInHours = kAlwaysRevalidate;
-    
-    [[JSONCache sharedCache] loadCacheFromDisc];
-
-    NSLog(@"cache: %@", [JSONCache sharedCache]);
-    
-    [JSONHTTPClient setIsUsingJSONCache: YES];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(actionLoadCall:)];
- */
 }
 
 -(IBAction)actionLoadCall:(id)sender
