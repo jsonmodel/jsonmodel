@@ -63,7 +63,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
             allowedPrimitiveTypes = @[
                 @"BOOL", @"float", @"int", @"long", @"double", @"short",
                 //and some famous aliases
-                @"NSInteger", @"NSUInteger"
+                @"NSInteger", @"NSUInteger",
+                @"Block"
             ];
 
             valueTransformer = [[JSONValueTransformer alloc] init];
