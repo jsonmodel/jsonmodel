@@ -15,6 +15,7 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import <Foundation/Foundation.h>
+#import "JSONModelArray.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,6 +72,15 @@ extern BOOL isNull(id value);
  * @return mutable array
  */
 -(NSMutableArray*)NSMutableArrayFromNSArray:(NSArray*)array;
+
+#pragma mark - NS(Mutable)Array <- JSONModelArray
+/**
+ * Trasnforms an array to a JSONModelArray
+ * @param array incoming array
+ * @return JSONModelArray
+ */
+-(NSArray*)NSArrayFromJSONModelArray:(JSONModelArray*)array;
+-(NSMutableArray*)NSMutableArrayFromJSONModelArray:(JSONModelArray*)array;
 
 #pragma mark - NSMutableDictionary <-> NSDictionary
 /**

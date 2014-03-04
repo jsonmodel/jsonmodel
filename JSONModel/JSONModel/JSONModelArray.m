@@ -34,6 +34,16 @@
     return self;
 }
 
+-(id)firstObject
+{
+    return [self objectAtIndex:0];
+}
+
+-(id)lastObject
+{
+    return [self objectAtIndex: _storage.count-1];
+}
+
 -(id)objectAtIndex:(NSUInteger)index
 {
     id obj = _storage[index];
@@ -52,6 +62,16 @@
     [anInvocation invokeWithTarget:_storage];
 }
 
+-(id)forwardingTargetForSelector:(SEL)selector
+{
+    static NSArray* overridenMethods = nil;
+    if (!overridenMethods) overridenMethods = @[@"initWithArray:modelClass:",@"objectAtIndex:",@"count",@"modelWithIndexValue:",@"description",@"mutableCopy",@"firstObject",@"lastObject"];
+    if ([overridenMethods containsObject:NSStringFromSelector(selector)]) {
+        return self;
+    }
+    return _storage;
+}
+
 - (NSUInteger)count
 {
     return _storage.count;
@@ -60,9 +80,9 @@
 -(id)modelWithIndexValue:(id)indexValue
 {
     if (self.count==0) return nil;
-    if (![self[0] indexPropertyName]) return nil;
+    if (![_storage[0] indexPropertyName]) return nil;
     
-    for (JSONModel* model in self) {
+    for (JSONModel* model in _storage) {
         if ([[model valueForKey:model.indexPropertyName] isEqual:indexValue]) {
             return model;
         }
@@ -81,7 +101,7 @@
 -(NSString*)description
 {
     NSMutableString* res = [NSMutableString stringWithFormat:@"<JSONModelArray[%@]>\n", [_targetClass description]];
-    for (id m in self) {
+    for (id m in _storage) {
         [res appendString: [m description]];
         [res appendString: @",\n"];
     }

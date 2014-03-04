@@ -88,6 +88,18 @@ extern BOOL isNull(id value)
     return [NSMutableArray arrayWithArray:array];
 }
 
+#pragma mark - NS(Mutable)Array <- JSONModelArray
+-(NSArray*)NSArrayFromJSONModelArray:(JSONModelArray*)array
+{
+    return (NSMutableArray*)array;
+}
+
+-(NSMutableArray*)NSMutableArrayFromJSONModelArray:(JSONModelArray*)array
+{
+    return (NSMutableArray*)array;
+}
+
+
 #pragma mark - NSMutableDictionary <-> NSDictionary
 -(NSMutableDictionary*)NSMutableDictionaryFromNSDictionary:(NSDictionary*)dict
 {

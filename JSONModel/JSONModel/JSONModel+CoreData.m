@@ -92,7 +92,7 @@
     //copy values over
     for (NSString* key in [moProperties allKeys]) {
         id value = dictionary[key];
-        NSLog(@"class: %@", moProperties[key]);
+
         //exception classes - for core data should be NSDate by default
         if ([[moProperties[key]class] isEqual:[NSDate class]]) {
             SEL NSDateFromNSStringSelector = sel_registerName("NSDateFromNSString:");
