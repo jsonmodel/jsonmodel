@@ -57,6 +57,11 @@
     return obj;
 }
 
+-(id)objectAtIndexedSubscript:(NSUInteger)index
+{
+    return [self objectAtIndex:index];
+}
+
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     [anInvocation invokeWithTarget:_storage];
