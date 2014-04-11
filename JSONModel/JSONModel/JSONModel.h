@@ -317,4 +317,12 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  */
 +(BOOL)propertyIsIgnored:(NSString*)propertyName;
 
+/**
+ * Merges values from the given dictionary into the model instance.
+ * @param dict dictionary with values
+ * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO 
+ * it'll just try to match the dictionary keys to the model's properties
+ */
+-(void)mergeFromDictionary:(NSDictionary*)dict useKeyMapping:(BOOL)useKeyMapping;
+
 @end

@@ -223,4 +223,27 @@
     STAssertNotNil(at, @"model instance is nil");
 }
 
+-(void)testMergingData
+{
+    //import
+    GlobalModel* global1 = [[GlobalModel alloc] init];
+    STAssertNotNil(global1, @"model did not initialize");
+    STAssertNil(global1.name, @"name got a value when nil expected");
+    
+    NSDictionary* data = @{@"name":@"NAME IN CAPITALS"};
+    [global1 mergeFromDictionary:data useKeyMapping:NO];
+
+    STAssertEqualObjects(global1.name, @"NAME IN CAPITALS", @"did not import name property");
+    
+    //test import via gloabl key mapper
+    [JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@{
+                                                                              @"name1":@"name"
+                                                                              }]];
+    GlobalModel* global2 = [[GlobalModel alloc] init];
+    NSDictionary* data2 = @{@"name1":@"NAME IN CAPITALS"};
+    [global2 mergeFromDictionary:data2 useKeyMapping:YES];
+    
+    STAssertEqualObjects(global2.name, @"NAME IN CAPITALS", @"did not import name property");
+}
+
 @end
