@@ -125,7 +125,7 @@ static long jsonRpcId = 0;
     
     [self __rpcRequestWithObject:@{
                                   //rpc 1.0
-                                  @"id": [NSNumber numberWithLong: ++jsonRpcId],
+                                  @"id": @(++jsonRpcId),
                                   @"params": args,
                                   @"method": method
      } completion:completeBlock];
@@ -139,7 +139,7 @@ static long jsonRpcId = 0;
     [self __rpcRequestWithObject:@{
                                   //rpc 2.0
                                   @"jsonrpc": @"2.0",
-                                  @"id": [NSNumber numberWithLong: ++jsonRpcId],
+                                  @"id": @(++jsonRpcId),
                                   @"params": params,
                                   @"method": method
      } completion:completeBlock];
