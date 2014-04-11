@@ -57,7 +57,7 @@
             const char *propertyName = property_getName(property);
 
             const char *attrs = property_getAttributes(property);
-            NSString* propertyAttributes = [NSString stringWithUTF8String:attrs];
+            NSString* propertyAttributes = @(attrs);
             NSScanner* scanner = [NSScanner scannerWithString: propertyAttributes];
             NSString* propertyType = nil;
             [scanner scanUpToString:@"T" intoString: nil];
@@ -70,7 +70,7 @@
                                         intoString:&propertyType];
             }
             
-            moProperties[[NSString stringWithUTF8String:propertyName]] = NSClassFromString(propertyType);
+            moProperties[@(propertyName)] = NSClassFromString(propertyType);
         }
         
         free(properties);

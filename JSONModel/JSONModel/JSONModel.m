@@ -546,13 +546,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
             //get property name
             objc_property_t property = properties[i];
             const char *propertyName = property_getName(property);
-            p.name = [NSString stringWithUTF8String:propertyName];
+            p.name = @(propertyName);
             
             //JMLog(@"property: %@", p.name);
             
             //get property attributes
             const char *attrs = property_getAttributes(property);
-            NSString* propertyAttributes = [NSString stringWithUTF8String:attrs];
+            NSString* propertyAttributes = @(attrs);
             
             if ([propertyAttributes hasPrefix:@"Tc,"]) {
                 //mask BOOLs as structs so they can have custom convertors
@@ -636,7 +636,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             }
 
-            NSString *nsPropertyName = [NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding];
+            NSString *nsPropertyName = @(propertyName);
             if([[self class] propertyIsOptional:nsPropertyName]){
                 p.isOptional = YES;
             }
@@ -870,7 +870,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     
     //inspect next level
     NSString* nextHierarchyLevelKeyName = [keyPath substringToIndex: dotLocation];
-    NSDictionary* nextLevelDictionary = [*dict objectForKey:nextHierarchyLevelKeyName];
+    NSDictionary* nextLevelDictionary = (*dict)[nextHierarchyLevelKeyName];
 
     if (nextLevelDictionary==nil) {
         //create non-existing next level here
