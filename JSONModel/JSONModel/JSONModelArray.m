@@ -34,27 +34,32 @@
     return self;
 }
 
--(id)firstObject
+- (id)firstObject
 {
     return [self objectAtIndex:0];
 }
 
--(id)lastObject
+- (id)lastObject
 {
-    return [self objectAtIndex: _storage.count-1];
+    return [self objectAtIndex:_storage.count - 1];
 }
 
--(id)objectAtIndex:(NSUInteger)index
+- (id)objectAtIndex:(NSUInteger)index
 {
-    id obj = _storage[index];
-    if (![obj isMemberOfClass:_targetClass]) {
+	return [self objectAtIndexedSubscript:index];
+}
+
+- (id)objectAtIndexedSubscript:(NSUInteger)index
+{
+    id object = _storage[index];
+    if (![object isMemberOfClass:_targetClass]) {
         NSError* err = nil;
-        obj = [[_targetClass alloc] initWithDictionary:obj error:&err];
-        if (obj) {
-            _storage[index] = obj;
+        object = [[_targetClass alloc] initWithDictionary:object error:&err];
+        if (object) {
+            _storage[index] = object;
         }
     }
-    return obj;
+    return object;
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation

@@ -38,14 +38,24 @@
     XCTAssertEqualObjects([[repos.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
 }
 
--(void)testCount
+- (void)testCount
 {
     XCTAssertEqualObjects(@(repos.repositories.count), @100, @"wrong count");
+}
 
-	NSError *err;
-	repos = [[ReposModel alloc] initWithString:@"{}" error:&err];
+- (void)testReadArray
+{
+	JSONModelArray *array = [JSONModelArray new];
 
-	XCTAssertEqualObjects(@(repos.repositories.count), @0, @"wrong count");
+	XCTAssertEqualObjects(@(array.count), @0, @"wrong count");
+	XCTAssertNil([array firstObject], @"first object of an empty array should be nil");
+	XCTAssertNil([array lastObject], @"last object of an empty array should be nil");
+//	XCTAssertThrows(array[0], @"read of empty array should throw an exception");
+//	XCTAssertThrows(array[2], @"read of empty array should throw an exception");
+//	XCTAssertNilThrows(array[-2], @"read of empty array should throw an exception");
+	XCTAssertNil(array[0], @"read of empty array should be nil");
+	XCTAssertNil(array[2], @"read of empty array should be nil");
+	XCTAssertNil(array[-2], @"read of empty array should be nil");
 }
 
 -(void)testFirstObject
