@@ -22,20 +22,36 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"github-iphone.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+    XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
-    repos = [[ReposModel alloc] initWithString: jsonContents error:&err];
-    STAssertNil(err, [err localizedDescription]);
+    repos = [[ReposModel alloc] initWithString:jsonContents error:&err];
+    XCTAssertNil(err, @"%@", [err localizedDescription]);
     
-    STAssertNotNil(repos, @"Could not load the test data file.");
+    XCTAssertNotNil(repos, @"Could not load the test data file.");
 
 }
 
 -(void)testLoading
 {
-    STAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
-    STAssertTrue([[[repos.repositories[0] class] description] isEqualToString:@"GitHubRepoModel"], @".properties[0] is not a GitHubRepoModel");
+    XCTAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
+    XCTAssertEqualObjects([[repos.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
+}
+
+-(void)testCount
+{
+    XCTAssertEqualObjects(@(repos.repositories.count), @100, @"wrong count");
+
+	NSError *err;
+	repos = [[ReposModel alloc] initWithString:@"{}" error:&err];
+
+	XCTAssertEqualObjects(@(repos.repositories.count), @0, @"wrong count");
+}
+
+-(void)testFirstObject
+{
+    XCTAssertEqualObjects([[repos.repositories.firstObject class] description], @"GitHubRepoModel", @"wrong class");
+    XCTAssertEqualObjects([repos.repositories.firstObject description], @"cocos2d for iPhone", @"wrong description");
 }
 
 /*
@@ -44,7 +60,7 @@
 -(void)testArrayReverseTransformGitHubIssue_14
 {
     NSDictionary* dict = [repos toDictionary];
-    STAssertNotNil(dict, @"Could not convert ReposModel back to an NSDictionary");
+    XCTAssertNotNil(dict, @"Could not convert ReposModel back to an NSDictionary");
 }
 
 /*
@@ -53,7 +69,7 @@
 -(void)testArrayReverseTransformGitHubIssue_15
 {
     NSString* string = [repos toJSONString];
-    STAssertNotNil(string, @"Could not convert ReposModel back to a string");
+    XCTAssertNotNil(string, @"Could not convert ReposModel back to a string");
 }
 
 @end

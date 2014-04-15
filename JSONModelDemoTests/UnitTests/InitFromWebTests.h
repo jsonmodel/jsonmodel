@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Underplot ltd. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface InitFromWebTests : SenTestCase
+@interface InitFromWebTests : XCTestCase
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Underplot ltd. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface HTTPClientSuite : SenTestCase
+@interface HTTPClientSuite : XCTestCase
 
 @end

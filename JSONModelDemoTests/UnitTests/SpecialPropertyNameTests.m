@@ -16,12 +16,12 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"specialPropertyName.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+    XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     SpecialPropertyModel *p = [[SpecialPropertyModel alloc] initWithString: jsonContents error:&err];
     JMLog(@"%@", p);
-    STAssertNotNil(p, @"Could not initialize model.");
-    STAssertNil(err, [err localizedDescription]);
+    XCTAssertNotNil(p, @"Could not initialize model.");
+    XCTAssertNil(err, "%@", [err localizedDescription]);
 }
 @end

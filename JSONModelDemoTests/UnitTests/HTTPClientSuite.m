@@ -27,7 +27,7 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedData.json"];
     jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+    XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
 }
 
 -(void)testRequestHeaders
