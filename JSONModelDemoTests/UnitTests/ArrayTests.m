@@ -22,20 +22,46 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"github-iphone.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+    XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
-    repos = [[ReposModel alloc] initWithString: jsonContents error:&err];
-    STAssertNil(err, [err localizedDescription]);
+    repos = [[ReposModel alloc] initWithString:jsonContents error:&err];
+    XCTAssertNil(err, @"%@", [err localizedDescription]);
     
-    STAssertNotNil(repos, @"Could not load the test data file.");
+    XCTAssertNotNil(repos, @"Could not load the test data file.");
 
 }
 
 -(void)testLoading
 {
-    STAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
-    STAssertTrue([[[repos.repositories[0] class] description] isEqualToString:@"GitHubRepoModel"], @".properties[0] is not a GitHubRepoModel");
+    XCTAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
+    XCTAssertEqualObjects([[repos.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
+}
+
+- (void)testCount
+{
+    XCTAssertEqualObjects(@(repos.repositories.count), @100, @"wrong count");
+}
+
+- (void)testReadArray
+{
+	JSONModelArray *array = [JSONModelArray new];
+
+	XCTAssertEqualObjects(@(array.count), @0, @"wrong count");
+	XCTAssertNil([array firstObject], @"first object of an empty array should be nil");
+	XCTAssertNil([array lastObject], @"last object of an empty array should be nil");
+//	XCTAssertThrows(array[0], @"read of empty array should throw an exception");
+//	XCTAssertThrows(array[2], @"read of empty array should throw an exception");
+//	XCTAssertNilThrows(array[-2], @"read of empty array should throw an exception");
+	XCTAssertNil(array[0], @"read of empty array should be nil");
+	XCTAssertNil(array[2], @"read of empty array should be nil");
+	XCTAssertNil(array[-2], @"read of empty array should be nil");
+}
+
+-(void)testFirstObject
+{
+    XCTAssertEqualObjects([[repos.repositories.firstObject class] description], @"GitHubRepoModel", @"wrong class");
+    XCTAssertEqualObjects([repos.repositories.firstObject description], @"cocos2d for iPhone", @"wrong description");
 }
 
 /*
@@ -44,7 +70,7 @@
 -(void)testArrayReverseTransformGitHubIssue_14
 {
     NSDictionary* dict = [repos toDictionary];
-    STAssertNotNil(dict, @"Could not convert ReposModel back to an NSDictionary");
+    XCTAssertNotNil(dict, @"Could not convert ReposModel back to an NSDictionary");
 }
 
 /*
@@ -53,7 +79,7 @@
 -(void)testArrayReverseTransformGitHubIssue_15
 {
     NSString* string = [repos toJSONString];
-    STAssertNotNil(string, @"Could not convert ReposModel back to a string");
+    XCTAssertNotNil(string, @"Could not convert ReposModel back to a string");
 }
 
 @end

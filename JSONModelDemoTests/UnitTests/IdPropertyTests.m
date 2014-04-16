@@ -22,13 +22,13 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"post.json"];
     NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+    XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
     
     NSError* err;
     posts = [[PostsModel alloc] initWithString: jsonContents error:&err];
-    STAssertTrue(!err, [err localizedDescription]);
+    XCTAssertTrue(!err, "%@", [err localizedDescription]);
     
-    STAssertNotNil(posts, @"Could not load the test data file.");
+    XCTAssertNotNil(posts, @"Could not load the test data file.");
 }
 
 -(void)testEquality
@@ -39,17 +39,17 @@
     PostsModel* posts1 = [[PostsModel alloc] initWithString: jsonContents error:nil];
     PostModel* post = posts.posts[0];
     
-    STAssertTrue([post isEqual:posts1.posts[0]], @"Equal to another different model object");
+    XCTAssertTrue([post isEqual:posts1.posts[0]], @"Equal to another different model object");
     
-    STAssertTrue([posts.posts indexOfObject: posts1.posts[1]]==1, @"NSArray searching for a model object failed" );
+    XCTAssertTrue([posts.posts indexOfObject: posts1.posts[1]]==1, @"NSArray searching for a model object failed" );
 }
 
 -(void)testCompareInequality
 {
     PostModel* post = posts.posts[0];
-    STAssertTrue(![post isEqual:nil], @"Equal to nil object");
-    STAssertTrue(![post isEqual:[NSNull null]], @"Equal to NSNull object");
-    STAssertTrue(![post isEqual:posts.posts[1]], @"Equal to another different model object");
+    XCTAssertTrue(![post isEqual:nil], @"Equal to nil object");
+    XCTAssertTrue(![post isEqual:[NSNull null]], @"Equal to NSNull object");
+    XCTAssertTrue(![post isEqual:posts.posts[1]], @"Equal to another different model object");
 }
 
 

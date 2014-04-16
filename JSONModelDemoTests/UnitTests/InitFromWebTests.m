@@ -25,7 +25,7 @@
     NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"nestedData.json"];
     jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
-    STAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
+    XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
 }
 
 -(void)testInitFromWeb
@@ -44,14 +44,14 @@
     __block NestedModel* nested = [[NestedModel alloc] initFromURLWithString:jsonURLString
                                                           completion:^(NestedModel *model, JSONModelError *err) {
                                                               
-                                                              STAssertTrue(nested==model, @"async initialization didn't work");
-                                                              STAssertTrue(model.images.count>0, @"content not initialized from async init");
+                                                              XCTAssertTrue(nested==model, @"async initialization didn't work");
+                                                              XCTAssertTrue(model.images.count>0, @"content not initialized from async init");
                                                               
                                                               [NSURLConnection setResponseDelay:0];
                                                               [[MTTestSemaphor semaphore] lift: semaphorKey];
                                                           }];
     
-    STAssertTrue(nested.isLoading, @"isLoading property not set during load");
+    XCTAssertTrue(nested.isLoading, @"isLoading property not set during load");
     [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
 }
 

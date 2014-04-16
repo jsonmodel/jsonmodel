@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Underplot ltd. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface ValidationTestSuite : SenTestCase
+@interface ValidationTestSuite : XCTestCase
 
 @end

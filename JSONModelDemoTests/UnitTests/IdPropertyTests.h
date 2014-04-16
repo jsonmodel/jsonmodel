@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Underplot ltd. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface IdPropertyTests : SenTestCase
+@interface IdPropertyTests : XCTestCase
 
 
 
