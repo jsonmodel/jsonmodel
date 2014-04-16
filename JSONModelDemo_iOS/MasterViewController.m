@@ -96,11 +96,17 @@
 @end
 
 @interface TopModel : JSONModel
-@property (assign, nonatomic) int id;
-@property (strong, nonatomic) JSONAnswer<Optional>* answer;
+//@property (assign, nonatomic) int id;
+//@property (strong, nonatomic) JSONAnswer<Optional>* answer;
+
+@property (nonatomic, copy) void(^userLocationCompleted)();
 @end
 
 @implementation TopModel
++(BOOL)propertyIsIgnored:(NSString *)propertyName
+{
+    return YES;
+}
 @end
 
 @implementation MasterViewController

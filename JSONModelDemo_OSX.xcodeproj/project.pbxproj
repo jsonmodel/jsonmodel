@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1C008FE518B7AE54002DFD3A /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */; };
-		9C05B2A9168CE9600054215E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC27CAF1689B7BE008B5411 /* SenTestingKit.framework */; };
 		9C05B43F168CEB220054215E /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F7168CEB220054215E /* ArrayTests.m */; };
 		9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */; };
 		9C05B442168CEB220054215E /* CustomPropsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3FD168CEB220054215E /* CustomPropsTests.m */; };
@@ -93,6 +92,7 @@
 		9CB6BC29168DE35E0002535B /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC25168DE35E0002535B /* VideoModel.m */; };
 		9CB6BC2A168DE35E0002535B /* VideoTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC27168DE35E0002535B /* VideoTitle.m */; };
 		9CB6BC2E168E07730002535B /* GitHubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC2D168E07730002535B /* GitHubUserModel.m */; };
+		9CBD6D5218FF2FDD00DE66EC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD6D5118FF2FDD00DE66EC /* XCTest.framework */; };
 		9CC27C9C1689B7BE008B5411 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CC27C9A1689B7BE008B5411 /* InfoPlist.strings */; };
 		9CC27C9E1689B7BE008B5411 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC27C9D1689B7BE008B5411 /* main.m */; };
 		9CC27CA21689B7BE008B5411 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC27CA01689B7BE008B5411 /* Credits.rtf */; };
@@ -148,7 +148,7 @@
 		9C05B414168CEB220054215E /* KeyMappingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyMappingTests.h; sourceTree = "<group>"; };
 		9C05B415168CEB220054215E /* KeyMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyMappingTests.m; sourceTree = "<group>"; };
 		9C05B416168CEB220054215E /* NestedModelsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedModelsTests.h; sourceTree = "<group>"; };
-		9C05B417168CEB220054215E /* NestedModelsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedModelsTests.m; sourceTree = "<group>"; };
+		9C05B417168CEB220054215E /* NestedModelsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedModelsTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C05B418168CEB220054215E /* OptionalPropertiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalPropertiesTests.h; sourceTree = "<group>"; };
 		9C05B419168CEB220054215E /* OptionalPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalPropertiesTests.m; sourceTree = "<group>"; };
 		9C05B41A168CEB220054215E /* PersistTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistTests.h; sourceTree = "<group>"; };
@@ -231,6 +231,7 @@
 		9CB6BC27168DE35E0002535B /* VideoTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoTitle.m; path = JSONModelDemo_iOS/VideoTitle.m; sourceTree = SOURCE_ROOT; };
 		9CB6BC2C168E07730002535B /* GitHubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitHubUserModel.h; path = JSONModelDemo_iOS/GitHubUserModel.h; sourceTree = SOURCE_ROOT; };
 		9CB6BC2D168E07730002535B /* GitHubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitHubUserModel.m; path = JSONModelDemo_iOS/GitHubUserModel.m; sourceTree = SOURCE_ROOT; };
+		9CBD6D5118FF2FDD00DE66EC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9CC27C8D1689B7BE008B5411 /* JSONModelDemo_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONModelDemo_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC27C941689B7BE008B5411 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9CC27C951689B7BE008B5411 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -273,8 +274,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBD6D5218FF2FDD00DE66EC /* XCTest.framework in Frameworks */,
 				9C97441E168CF264004DA333 /* Cocoa.framework in Frameworks */,
-				9C05B2A9168CE9600054215E /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +530,7 @@
 		9CC27C901689B7BE008B5411 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CBD6D5118FF2FDD00DE66EC /* XCTest.framework */,
 				9C72A49C171447F70047C6AE /* SystemConfiguration.framework */,
 				9C97441D168CF264004DA333 /* Cocoa.framework */,
 				9C97441B168CF255004DA333 /* Cocoa.framework */,
@@ -868,6 +870,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemoTests/JSONModelDemoTests-Prefix.pch";
@@ -891,6 +894,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemoTests/JSONModelDemoTests-Prefix.pch";

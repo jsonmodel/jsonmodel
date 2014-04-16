@@ -214,6 +214,8 @@
     GlobalModel* global3 = [[GlobalModel alloc] initWithString:jsonString2
                                                          error:nil];
     XCTAssertNil(global3, @"model supposed to be nil");
+    
+    [JSONModel setGlobalKeyMapper:nil];
 }
 
 //https://github.com/icanzilb/JSONModel/issues/132
@@ -244,6 +246,8 @@
     [global2 mergeFromDictionary:data2 useKeyMapping:YES];
     
     XCTAssertEqualObjects(global2.name, @"NAME IN CAPITALS", @"did not import name property");
+    
+    [JSONModel setGlobalKeyMapper:nil];
 }
 
 @end

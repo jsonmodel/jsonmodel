@@ -37,7 +37,7 @@
     XCTAssertTrue([c.redColor isKindOfClass:[UIColor class]], @"redColor is not a Color instance");
     CGColorRef redColor = [UIColor redColor].CGColor;
 #else
-    STAssertTrue([c.redColor isKindOfClass:[NSColor class]], @"redColor is not a Color instance");
+    XCTAssertTrue([c.redColor isKindOfClass:[NSColor class]], @"redColor is not a Color instance");
     CGColorRef redColor = [NSColor redColor].CGColor;
 #endif
 

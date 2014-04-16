@@ -71,7 +71,10 @@
     XCTAssertTrue(p1.nsStatus==NSE_StatusClosed, @"nsStatus is not NSE_StatusClosed");
     XCTAssertTrue(p1.nsuStatus==NSEU_StatusOpen, @"nsuStatus is not NSEU_StatusOpen");
 
-    XCTAssertTrue([[p1 toJSONString] isEqualToString: jsonContents], @"Exporting enum value didn't work out");
+    NSString* json = [p1 toJSONString];
+    XCTAssertTrue([json rangeOfString:@"\"statusString\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+    XCTAssertTrue([json rangeOfString:@"\"nsuStatus\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+    XCTAssertTrue([json rangeOfString:@"\"nsStatus\":\"closed\""].location!=NSNotFound, @"Exporting enum value didn't work out");
 }
 #endif
 

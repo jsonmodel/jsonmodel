@@ -40,7 +40,7 @@
 
     XCTAssertNotNil(jsonContents, @"Can't fetch test data file contents.");
 
-    NSError* err;
+    NSError* err = nil;
     NestedModel* p = [[NestedModel alloc] initWithString: jsonContents error:&err];
     XCTAssertNil(p, @"Model is not nil, when input is invalid");
     XCTAssertNotNil(err, @"No error when types mismatch.");
