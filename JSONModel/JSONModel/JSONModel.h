@@ -86,7 +86,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * A protocol describing an abstract JSONModel class
  * JSONModel conforms to this protocol, so it can use itself abstractly
  */
-@protocol AbstractJSONModelProtocol <NSObject>
+@protocol AbstractJSONModelProtocol <NSObject, NSCopying, NSCoding>
 
 @required
   /**

@@ -206,7 +206,7 @@
 		9C66DF81168CEF420015CCDF /* OptionalPropertiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalPropertiesTests.h; sourceTree = "<group>"; };
 		9C66DF82168CEF420015CCDF /* OptionalPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OptionalPropertiesTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C66DF83168CEF420015CCDF /* PersistTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistTests.h; sourceTree = "<group>"; };
-		9C66DF84168CEF420015CCDF /* PersistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PersistTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9C66DF84168CEF420015CCDF /* PersistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PersistTests.m; sourceTree = "<group>"; };
 		9C66DF85168CEF420015CCDF /* PrimitiveTypesReadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveTypesReadTests.h; sourceTree = "<group>"; };
 		9C66DF86168CEF420015CCDF /* PrimitiveTypesReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PrimitiveTypesReadTests.m; sourceTree = "<group>"; };
 		9C66DF87168CEF420015CCDF /* SimpleDataErrorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDataErrorTests.h; sourceTree = "<group>"; };

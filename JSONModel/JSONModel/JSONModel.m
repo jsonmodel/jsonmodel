@@ -1242,4 +1242,25 @@ static JSONKeyMapper* globalKeyMapper = nil;
     [self __importDictionary:dict withKeyMapper:(useKeyMapping)?[self __keyMapper]:nil validation:NO error:nil];
 }
 
+#pragma mark - NSCopying, NSCoding
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+    return [NSKeyedUnarchiver unarchiveObjectWithData:
+        [NSKeyedArchiver archivedDataWithRootObject:self]
+     ];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)decoder
+{
+    NSString* json = [decoder decodeObjectForKey:@"json"];
+    
+    self = [self initWithString:json error:nil];
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.toJSONString forKey:@"json"];
+}
+
 @end
