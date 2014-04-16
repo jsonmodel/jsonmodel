@@ -1,6 +1,18 @@
 Change-log
 ==========
 
+**Version 0.13** @ 2014-04-17
+
+- methods to merge data into existing model
+
+- automatic NSCopying and NSCoding for all JSONModel subclasses
+
+- merged number of fixes for the networking library
+
+- XCTest unit tests, demo app runs only on iOS7+
+
+
+
 **Version 0.12** @ 2014-02-17
 
 - fixes for BOOLs

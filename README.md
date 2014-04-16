@@ -1,5 +1,7 @@
 ## Magical Data Modelling Framework for JSON
 
+*New*: In version 0.13.0 automatic NSCopying/NSCoding support.
+
 *New*: In version 0.12.0 I added experimental support for exporting **JSON models** to **CoreData**.
 
 Give it a try and let me know, post an issue or just get in touch. Try something like that:
