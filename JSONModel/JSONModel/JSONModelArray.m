@@ -62,6 +62,11 @@
     return object;
 }
 
+-(id)objectAtIndexedSubscript:(NSUInteger)index
+{
+    return [self objectAtIndex:index];
+}
+
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     [anInvocation invokeWithTarget:_storage];
@@ -70,7 +75,7 @@
 -(id)forwardingTargetForSelector:(SEL)selector
 {
     static NSArray* overridenMethods = nil;
-    if (!overridenMethods) overridenMethods = @[@"initWithArray:modelClass:",@"objectAtIndex:",@"count",@"modelWithIndexValue:",@"description",@"mutableCopy",@"firstObject",@"lastObject"];
+    if (!overridenMethods) overridenMethods = @[@"initWithArray:modelClass:",@"objectAtIndex:",@"objectAtIndexedSubscript:",@"count",@"modelWithIndexValue:",@"description",@"mutableCopy",@"firstObject",@"lastObject"];
     if ([overridenMethods containsObject:NSStringFromSelector(selector)]) {
         return self;
     }
