@@ -92,7 +92,6 @@
 		9CB6BC29168DE35E0002535B /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC25168DE35E0002535B /* VideoModel.m */; };
 		9CB6BC2A168DE35E0002535B /* VideoTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC27168DE35E0002535B /* VideoTitle.m */; };
 		9CB6BC2E168E07730002535B /* GitHubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6BC2D168E07730002535B /* GitHubUserModel.m */; };
-		9CBD6D5218FF2FDD00DE66EC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD6D5118FF2FDD00DE66EC /* XCTest.framework */; };
 		9CC27C9C1689B7BE008B5411 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CC27C9A1689B7BE008B5411 /* InfoPlist.strings */; };
 		9CC27C9E1689B7BE008B5411 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC27C9D1689B7BE008B5411 /* main.m */; };
 		9CC27CA21689B7BE008B5411 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC27CA01689B7BE008B5411 /* Credits.rtf */; };
@@ -103,6 +102,7 @@
 		9CC2FCB9168CE7340059FE67 /* KivaFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB4168CE7340059FE67 /* KivaFeed.m */; };
 		9CC2FCBA168CE7340059FE67 /* LoanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB6168CE7340059FE67 /* LoanModel.m */; };
 		9CC2FCBB168CE7340059FE67 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2FCB8168CE7340059FE67 /* LocationModel.m */; };
+		9CD22C8618FF32F7003E66AD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD6D5118FF2FDD00DE66EC /* XCTest.framework */; };
 		9CD425861702224F00A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425851702224F00A42AA1 /* HTTPClientSuite.m */; };
 		9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */; };
 		9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */; };
@@ -116,7 +116,7 @@
 /* Begin PBXFileReference section */
 		1C008FE318B7AE54002DFD3A /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
 		1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
-		9C05B2A8168CE9600054215E /* JSONModelDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C05B2A8168CE9600054215E /* JSONModelDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C05B2B0168CE9600054215E /* JSONModelDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JSONModelDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9C05B2B7168CE9600054215E /* JSONModelDemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONModelDemoTests-Prefix.pch"; sourceTree = "<group>"; };
 		9C05B3F6168CEB220054215E /* ArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayTests.h; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CBD6D5218FF2FDD00DE66EC /* XCTest.framework in Frameworks */,
+				9CD22C8618FF32F7003E66AD /* XCTest.framework in Frameworks */,
 				9C97441E168CF264004DA333 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,7 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				9CC27C8D1689B7BE008B5411 /* JSONModelDemo_OSX.app */,
-				9C05B2A8168CE9600054215E /* JSONModelDemoTests.octest */,
+				9C05B2A8168CE9600054215E /* JSONModelDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -630,7 +630,6 @@
 				9C05B2A3168CE9600054215E /* Sources */,
 				9C05B2A4168CE9600054215E /* Frameworks */,
 				9C05B2A5168CE9600054215E /* Resources */,
-				9C05B2A6168CE9600054215E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -638,7 +637,7 @@
 			);
 			name = JSONModelDemoTests;
 			productName = JSONModelDemoTests;
-			productReference = 9C05B2A8168CE9600054215E /* JSONModelDemoTests.octest */;
+			productReference = 9C05B2A8168CE9600054215E /* JSONModelDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		9CC27C8C1689B7BE008B5411 /* JSONModelDemo_OSX */ = {
@@ -666,6 +665,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Underplot ltd.";
+				TargetAttributes = {
+					9C05B2A7168CE9600054215E = {
+						TestTargetID = 9CC27C8C1689B7BE008B5411;
+					};
+				};
 			};
 			buildConfigurationList = 9CC27C871689B7BE008B5411 /* Build configuration list for PBXProject "JSONModelDemo_OSX" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -731,22 +735,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		9C05B2A6168CE9600054215E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9C05B2A3168CE9600054215E /* Sources */ = {
@@ -866,6 +854,7 @@
 		9C05B2B9168CE9600054215E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo_OSX.app/Contents/MacOS/JSONModelDemo_OSX";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -883,13 +872,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
-				WRAPPER_EXTENSION = octest;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		9C05B2BA168CE9600054215E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo_OSX.app/Contents/MacOS/JSONModelDemo_OSX";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -902,8 +893,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
