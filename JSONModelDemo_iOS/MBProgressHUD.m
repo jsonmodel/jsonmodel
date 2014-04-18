@@ -500,7 +500,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	totalSize.width = MAX(totalSize.width, indicatorF.size.width);
 	totalSize.height += indicatorF.size.height;
 	
-	CGSize labelSize = [label.text sizeWithFont:label.font];
+	CGSize labelSize = [label.text sizeWithAttributes:@{NSFontAttributeName:label.font}];
 	labelSize.width = MIN(labelSize.width, maxWidth);
 	totalSize.width = MAX(totalSize.width, labelSize.width);
 	totalSize.height += labelSize.height;

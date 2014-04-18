@@ -28,6 +28,15 @@
 @implementation RModel
 @end
 
+#pragma mark - empty array/dictionary
+@interface DModel: JSONModel
+@property (strong, nonatomic) NSDictionary* dict;
+@property (strong, nonatomic) NSMutableDictionary* mdict;
+@end
+
+@implementation DModel
+@end
+
 #pragma mark - test suite
 
 @interface SpecialPropertiesTests : XCTestCase
@@ -62,6 +71,16 @@
     NSString* json = @"{\"id\":1}";
     RModel* rm = [[RModel alloc] initWithString:json error:nil];
     XCTAssertNotNil(rm, @"model failed to crate");
+}
+
+//test auto-converting array to dict
+-(void)testEmtpyDictionary
+{
+    NSString* json = @"{\"dict\":[],\"mdict\":[]}";
+    DModel* dm = [[DModel alloc] initWithString:json error:nil];
+    XCTAssertNotNil(dm, @"model failed to crate");
+    XCTAssertTrue([dm.dict isKindOfClass:[NSDictionary class]], @"property did not convert to dictionary");
+    XCTAssertTrue([dm.mdict isKindOfClass:[NSMutableDictionary class]], @"property did not convert to mutable dictionary");
 }
 
 @end

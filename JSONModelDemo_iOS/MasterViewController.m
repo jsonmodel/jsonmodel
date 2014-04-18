@@ -100,6 +100,7 @@
 @property (strong, nonatomic) JSONAnswer<Optional>* answer;
 @property (assign, nonatomic, readonly) int rId;
 @property (nonatomic, copy) void(^userLocationCompleted)();
+@property (strong, nonatomic) NSDictionary* dict;
 @end
 
 @implementation TopModel
@@ -113,7 +114,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSString* json = @"{\"id\":1, \"answer\": {\"name1\":\"marin\"}}";
+    NSString* json = @"{\"id\":1, \"answer\": {\"name1\":\"marin\"}, \"dict\":[]}";
     TopModel* tm = [[TopModel alloc] initWithString:json error:nil];
     NSLog(@"tm: %@", tm);
 }

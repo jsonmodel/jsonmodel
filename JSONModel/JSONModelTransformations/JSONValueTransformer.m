@@ -222,4 +222,18 @@ extern BOOL isNull(id value)
     return [dateFormatter stringFromDate:date];
 }
 
+#pragma mark - hidden transform for empty dictionaries
+//https://github.com/icanzilb/JSONModel/issues/163
+-(NSDictionary*)__NSDictionaryFromNSArray:(NSArray*)array
+{
+    if (array.count==0) return @{};
+    return (id)array;
+}
+
+-(NSMutableDictionary*)__NSMutableDictionaryFromNSArray:(NSArray*)array
+{
+    if (array.count==0) return [[self __NSDictionaryFromNSArray:array] mutableCopy];
+    return (id)array;
+}
+
 @end
