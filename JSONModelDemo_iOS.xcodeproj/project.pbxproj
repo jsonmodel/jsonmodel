@@ -122,6 +122,7 @@
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
 		9CC2FD2B168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */; };
+		9CCAFD921901B44300314886 /* SpecialPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCAFD911901B44300314886 /* SpecialPropertiesTests.m */; };
 		9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */; };
 		9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */; };
 		9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */; };
@@ -296,6 +297,7 @@
 		9CBD6D4F18FF2D7D00DE66EC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9CC2FCD2168CE7830059FE67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CC2FCD5168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JSONModelDemo_iOSTests-Info.plist"; sourceTree = "<group>"; };
+		9CCAFD911901B44300314886 /* SpecialPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertiesTests.m; sourceTree = "<group>"; };
 		9CD425721701FDE500A42AA1 /* HTTPClientSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClientSuite.h; sourceTree = "<group>"; };
 		9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClientSuite.m; sourceTree = "<group>"; };
 		9CD425761701FF2100A42AA1 /* MTTestSemaphor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestSemaphor.h; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				9C735D63170B716300FF96F5 /* JSONAPITests.m */,
 				9C735D6E170C007900FF96F5 /* InitFromWebTests.h */,
 				9C735D6F170C007900FF96F5 /* InitFromWebTests.m */,
+				9CCAFD911901B44300314886 /* SpecialPropertiesTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				9C66E027168CF0AA0015CCDF /* JSONModelArray.m in Sources */,
 				9C66E029168CF0AA0015CCDF /* JSONModelClassProperty.m in Sources */,
 				9C66E02B168CF0AA0015CCDF /* JSONModelError.m in Sources */,
+				9CCAFD921901B44300314886 /* SpecialPropertiesTests.m in Sources */,
 				9C66E02D168CF0AA0015CCDF /* NSArray+JSONModel.m in Sources */,
 				9C66E02F168CF0AA0015CCDF /* JSONAPI.m in Sources */,
 				9C55AF1D1890494E004EBD8A /* GitHubRepoEntity.m in Sources */,

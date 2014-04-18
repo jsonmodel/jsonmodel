@@ -553,7 +553,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
             //get property attributes
             const char *attrs = property_getAttributes(property);
             NSString* propertyAttributes = @(attrs);
+            NSArray* attributeItems = [propertyAttributes componentsSeparatedByString:@","];
             
+            //ignore read-only properties
+            if ([attributeItems containsObject:@"R"]) {
+                continue; //to next property
+            }
+            
+            //check for 64b BOOLs
             if ([propertyAttributes hasPrefix:@"Tc,"]) {
                 //mask BOOLs as structs so they can have custom convertors
                 p.structName = @"BOOL";
@@ -596,8 +603,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.convertsOnDemand = YES;
                     } else if([protocolName isEqualToString:@"Ignore"]) {
-                        p = nil;
-                    } else if ([self propertyIsReadOnly:p.name]) {
                         p = nil;
                     } else {
                         p.protocol = protocolName;
@@ -645,7 +650,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 p = nil;
             }
             
-            if([self propertyIsReadOnly:nsPropertyName]) {
+            //few cases where JSONModel will ignore properties automatically
+            if ([propertyType isEqualToString:@"Block"]) {
                 p = nil;
             }
             
@@ -1222,18 +1228,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
     return NO;
-}
-
--(BOOL)propertyIsReadOnly: (NSString*)key
-{
-    NSString *setterString = [NSString stringWithFormat:@"set%@%@:",
-                              [[key substringToIndex:1] capitalizedString],
-                              [key substringFromIndex:1]];
-    
-    if ([self respondsToSelector:NSSelectorFromString(setterString)]) {
-        return NO;
-    }
-    return YES;
 }
 
 #pragma mark - working with incomplete models
