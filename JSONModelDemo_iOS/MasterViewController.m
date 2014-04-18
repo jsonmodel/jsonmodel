@@ -101,6 +101,7 @@
 @property (assign, nonatomic, readonly) int rId;
 @property (nonatomic, copy) void(^userLocationCompleted)();
 @property (strong, nonatomic) NSDictionary* dict;
+@property (strong, nonatomic) NSString* description;
 @end
 
 @implementation TopModel
@@ -108,15 +109,20 @@
 {
     return NO;
 }
+-(NSString*)getText
+{
+    return @"1123";
+}
 @end
 
 @implementation MasterViewController
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSString* json = @"{\"id\":1, \"answer\": {\"name1\":\"marin\"}, \"dict\":[]}";
+    NSString* json = @"{\"id\":1, \"answer\": {\"name1\":\"marin\"}, \"dict\":[], \"description\":\"Marin\"}";
     TopModel* tm = [[TopModel alloc] initWithString:json error:nil];
-    NSLog(@"tm: %@", tm);
+    NSLog(@"tm: %@", tm.toDictionary);
+    NSLog(@"to string: %@", tm.toJSONString);
 }
 
 -(IBAction)actionLoadCall:(id)sender
