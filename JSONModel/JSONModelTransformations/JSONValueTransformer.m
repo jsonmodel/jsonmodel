@@ -222,6 +222,16 @@ extern BOOL isNull(id value)
     return [dateFormatter stringFromDate:date];
 }
 
+#pragma mark - string <-> NSTimeZone
+
+- (NSTimeZone *)NSTimeZoneFromNSString:(NSString *)string {
+    return [NSTimeZone timeZoneWithName:string];
+}
+
+- (id)JSONObjectFromNSTimeZone:(NSTimeZone *)timeZone {
+    return [timeZone name];
+}
+
 #pragma mark - hidden transform for empty dictionaries
 //https://github.com/icanzilb/JSONModel/issues/163
 -(NSDictionary*)__NSDictionaryFromNSArray:(NSArray*)array
