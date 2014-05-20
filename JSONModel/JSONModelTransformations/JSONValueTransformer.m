@@ -142,6 +142,10 @@ extern BOOL isNull(id value)
 
 -(NSNumber*)BOOLFromNSString:(NSString*)string
 {
+    if ([string caseInsensitiveCompare:@"true"] == NSOrderedSame ||
+        [string caseInsensitiveCompare:@"yes"] == NSOrderedSame) {
+        return [NSNumber numberWithBool:YES];
+    }
     int val = [string intValue];
     return [NSNumber numberWithBool: val==0?NO:YES];
 }
