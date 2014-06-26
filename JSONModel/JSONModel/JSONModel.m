@@ -1118,7 +1118,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //loop over NSArray of models and export them to JSON objects with specific properties
-+(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport;
++(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array propertyNamesToExport:(NSArray*)propertyNamesToExport
 {
     //bail early
     if (isNull(array)) return nil;

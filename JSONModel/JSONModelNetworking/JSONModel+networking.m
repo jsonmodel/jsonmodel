@@ -17,7 +17,7 @@
 #import "JSONModel+networking.h"
 #import "JSONHTTPClient.h"
 
-BOOL _isLoading;
+static BOOL _isLoading;
 
 @implementation JSONModel(Networking)
 
