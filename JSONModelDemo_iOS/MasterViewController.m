@@ -97,7 +97,7 @@
 
 @interface TopModel : JSONModel
 @property (assign, nonatomic) int id;
-@property (strong, nonatomic) JSONAnswer<Optional>* answer;
+@property (strong, nonatomic) JSONAnswer<JMOptional>* answer;
 @property (assign, nonatomic, readonly) int rId;
 @property (nonatomic, copy) void(^userLocationCompleted)();
 @property (strong, nonatomic) NSDictionary* dict;
