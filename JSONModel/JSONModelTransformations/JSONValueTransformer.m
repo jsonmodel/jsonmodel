@@ -222,6 +222,12 @@ extern BOOL isNull(id value)
     return [dateFormatter stringFromDate:date];
 }
 
+#pragma mark - number <-> date
+- (NSDate*)NSDateFromNSNumber:(NSNumber*)number
+{
+    return [NSDate dateWithTimeIntervalSince1970:number.doubleValue];
+}
+
 #pragma mark - hidden transform for empty dictionaries
 //https://github.com/icanzilb/JSONModel/issues/163
 -(NSDictionary*)__NSDictionaryFromNSArray:(NSArray*)array

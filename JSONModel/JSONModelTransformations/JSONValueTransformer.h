@@ -201,4 +201,13 @@ extern BOOL isNull(id value);
 //-(NSDate*)NSDateFromNSString:(NSString*)string;
 //-(NSString*)JSONObjectFromNSDate:(NSDate*)date;
 
+#pragma mark - number <-> date
+
+/**
+ * Transforms a number to an NSDate object
+ * @param number the number to convert
+ * @return the resulting date
+ */
+- (NSDate*)NSDateFromNSNumber:(NSNumber*)number;
+
 @end
