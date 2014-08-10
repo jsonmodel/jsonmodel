@@ -144,6 +144,11 @@ static NSDateFormatter *_dateFormatter;
 
 -(NSNumber*)BOOLFromNSString:(NSString*)string
 {
+    if (string != nil && 
+        ([string caseInsensitiveCompare:@"true"] == NSOrderedSame ||
+        [string caseInsensitiveCompare:@"yes"] == NSOrderedSame)) {
+        return [NSNumber numberWithBool:YES];
+    }
     int val = [string intValue];
     return [NSNumber numberWithBool: val==0?NO:YES];
 }
