@@ -26,6 +26,8 @@ extern BOOL isNull(id value)
     return NO;
 }
 
+static NSDateFormatter *_dateFormatter;
+
 @implementation JSONValueTransformer
 
 -(id)init
