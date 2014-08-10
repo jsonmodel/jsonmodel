@@ -26,6 +26,8 @@ extern BOOL isNull(id value)
     return NO;
 }
 
+static NSDateFormatter *_dateFormatter;
+
 @implementation JSONValueTransformer
 
 -(id)init
@@ -205,21 +207,26 @@ extern BOOL isNull(id value)
 }
 
 #pragma mark - string <-> date
+- (void) initDateFormatter
+{
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
+    [_dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"]];    //this will force to parse datetimes in military format
+}
+
 -(NSDate*)__NSDateFromNSString:(NSString*)string
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //avoid multiple allocations when parsing dates by using a static reference
+    if (!_dateFormatter) [self initDateFormatter];
     string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
-    
-    return [dateFormatter dateFromString: string];
+    return [_dateFormatter dateFromString: string];
 }
 
 -(NSString*)__JSONObjectFromNSDate:(NSDate*)date
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
-    
-    return [dateFormatter stringFromDate:date];
+    //avoid multiple allocations when parsing dates by using a static reference
+    if (!_dateFormatter) [self initDateFormatter];
+    return [_dateFormatter stringFromDate:date];
 }
 
 #pragma mark - number <-> date
