@@ -1264,4 +1264,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
     [encoder encodeObject:self.toJSONString forKey:@"json"];
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 @end
