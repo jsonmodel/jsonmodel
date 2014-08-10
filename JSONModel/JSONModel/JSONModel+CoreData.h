@@ -16,8 +16,8 @@
 
 @interface NSManagedObject(JSONModel)
 
-+(instancetype)entityWithModel:(id<AbstractJSONModelProtocol>)model inContext:(NSManagedObjectContext*)context error:(NSError**)error;
-+(instancetype)entityWithDictionary:(NSDictionary*)dictionary inContext:(NSManagedObjectContext*)context error:(NSError**)error;
--(BOOL)updateWithDictionary:(NSDictionary*)dictionary error:(NSError**)error;
++(instancetype)entityWithModel:(id<AbstractJSONModelProtocol>)model inContext:(NSManagedObjectContext*)context error:(NSError**)error __attribute__ ((deprecated));
++(instancetype)entityWithDictionary:(NSDictionary*)dictionary inContext:(NSManagedObjectContext*)context error:(NSError**)error __attribute__ ((deprecated));
+-(BOOL)updateWithDictionary:(NSDictionary*)dictionary error:(NSError**)error __attribute__ ((deprecated));
 
 @end
