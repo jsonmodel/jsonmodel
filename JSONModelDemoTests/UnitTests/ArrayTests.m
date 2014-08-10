@@ -50,9 +50,6 @@
 	XCTAssertEqualObjects(@(array.count), @0, @"wrong count");
 	XCTAssertNil([array firstObject], @"first object of an empty array should be nil");
 	XCTAssertNil([array lastObject], @"last object of an empty array should be nil");
-//	XCTAssertThrows(array[0], @"read of empty array should throw an exception");
-//	XCTAssertThrows(array[2], @"read of empty array should throw an exception");
-//	XCTAssertNilThrows(array[-2], @"read of empty array should throw an exception");
 	XCTAssertNil(array[0], @"read of empty array should be nil");
 	XCTAssertNil(array[2], @"read of empty array should be nil");
 	XCTAssertNil(array[-2], @"read of empty array should be nil");

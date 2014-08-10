@@ -68,6 +68,8 @@
     
     XCTAssertNotNil(b.timeZone, @"Time zone parsing did return nil");
     XCTAssertEqualObjects([b.timeZone name], @"PST", @"Time zone is not PST");
+    
+    XCTAssertTrue([b.stringArray.firstObject isKindOfClass:[NSString class]], @"The array element is not a string");
 }
 
 @end
