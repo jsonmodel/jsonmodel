@@ -20,6 +20,8 @@
 @property (strong, nonatomic) NSString* text1;
 @property (strong, nonatomic) NSString<Optional>* text2;
 
+@property (strong, nonatomic) NSString<Optional>* text3;
+
 @end
 @implementation TestModel
 
@@ -246,6 +248,41 @@
     [global2 mergeFromDictionary:data2 useKeyMapping:YES];
     
     XCTAssertEqualObjects(global2.name, @"NAME IN CAPITALS", @"did not import name property");
+    
+    [JSONModel setGlobalKeyMapper:nil];
+}
+
+//https://github.com/icanzilb/JSONModel/issues/180
+-(void)testUsingBothGlobalAndCustomMappers
+{
+    //input dictionary for TestModel
+    NSDictionary* dict = @{
+                           @"texts": @{
+                                   @"text1": @"TEST!!!",
+                                   @"text2": @{@"value":@"MEST"},
+                                   @"text3": @"Marin"
+                                   }
+                           };
+
+    //test import via gloabl key mapper
+    [JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@{
+                                                                              @"texts.text3":@"text3"
+                                                                              }]];
+
+    NSError* err = nil;
+    TestModel* model = [[TestModel alloc] initWithDictionary:dict error:&err];
+    
+    XCTAssertTrue(err==nil, @"Error creating TestModel: %@", [err localizedDescription]);
+    XCTAssertTrue(model!=nil, @"TestModel instance is nil");
+    
+    XCTAssertTrue([model.text3 isEqualToString:@"Marin"], @"text3 is not 'Marin'");
+    
+    NSDictionary* toDict = [model toDictionary];
+    
+    XCTAssertTrue([toDict[@"texts"][@"text3"] isEqualToString:@"Marin"], @"toDict.texts.text3 is not 'Marin'");
+    
+    NSString* toString = [model toJSONString];
+    XCTAssertTrue([toString rangeOfString:@"text3\":\"Marin"].location!=NSNotFound, @"model did not export text3 in string");
     
     [JSONModel setGlobalKeyMapper:nil];
 }

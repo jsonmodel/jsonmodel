@@ -88,10 +88,14 @@
             NSString* result = [userToJSONMap valueForKeyPath: keyName];
             return result?result:keyName;
         };
-        
     }
     
     return self;
+}
+
+-(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing
+{
+    return !importing?_JSONToModelKeyBlock(value):_modelToJSONKeyBlock(value);
 }
 
 +(instancetype)mapperFromUnderscoreCaseToCamelCase

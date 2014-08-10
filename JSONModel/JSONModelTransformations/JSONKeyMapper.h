@@ -57,6 +57,13 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 /** Block, which takes in a property name and converts it to the corresponding JSON key name */
 @property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock;
 
+/** Combined convertor method
+* @param value the source name
+* @param importing YES invokes JSONToModelKeyBlock, NO - modelToJSONKeyBlock
+* @return JSONKeyMapper instance
+*/
+-(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing;
+
 /** @name Creating a key mapper */
 
 /**
@@ -84,5 +91,5 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  */
 +(instancetype)mapperFromUnderscoreCaseToCamelCase;
 
-+ (instancetype)mapperFromUpperCaseToLowerCase;
++(instancetype)mapperFromUpperCaseToLowerCase;
 @end
