@@ -189,6 +189,23 @@ extern BOOL isNull(id value);
  */
 -(NSString*)JSONObjectFromNSURL:(NSURL*)url;
 
+#pragma mark - string <-> time zone
+
+/** @name Transforming NSTimeZone */
+/**
+ * Transforms a string object to an NSTimeZone object
+ * @param string the string to convert
+ * @return the resulting NSTimeZone object
+ */
+- (NSTimeZone *)NSTimeZoneFromNSString:(NSString*)string;
+
+/**
+ * Transforms an NSTimeZone object to a string
+ * @param timeZone the time zone object to convert
+ * @return the resulting string
+ */
+- (NSString *)JSONObjectFromNSTimeZone:(NSTimeZone *)timeZone;
+
 #pragma mark - string <-> date
 /** @name Transforming Dates */
 /**

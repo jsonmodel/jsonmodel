@@ -12,5 +12,7 @@
 
     "importantEvent": "2012-11-26T10:00:01+02:00",
     
-    "websiteURL": "http://www.visir.is/jordan-slaer-milljard-af-villunni-sinni/article/2013130709873?key1=test"
+    "websiteURL": "http://www.visir.is/jordan-slaer-milljard-af-villunni-sinni/article/2013130709873?key1=test",
+    
+    "timeZone": "PST"
 }

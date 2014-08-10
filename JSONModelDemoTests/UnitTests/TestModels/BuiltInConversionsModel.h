@@ -33,4 +33,7 @@
 /* URLs */
 @property (strong, nonatomic) NSURL* websiteURL;
 
+/* Time zone */
+@property (strong, nonatomic) NSTimeZone *timeZone;
+
 @end
