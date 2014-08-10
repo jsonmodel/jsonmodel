@@ -33,9 +33,3 @@
 //models array
 #import "NSArray+JSONModel.h"
 #import "JSONModelArray.h"
-
-#ifdef COREDATA_EXTERN
- #ifndef UNIT_TESTING
-  #import "JSONModel+CoreData.h"
- #endif
-#endif

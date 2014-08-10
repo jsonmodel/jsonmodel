@@ -13,7 +13,6 @@
 #import "YouTubeViewController.h"
 #import "StorageViewController.h"
 #import "KivaViewControllerNetworking.h"
-#import "CoreDataViewController.h"
 
 #import "JSONModel+networking.h"
 #import "VideoModel.h"
@@ -140,7 +139,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Demos";
-        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage", @"Kiva.org + own networking", @"Core Data integration"]];
+        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage"]];
     }
     return self;
 }
@@ -195,16 +194,6 @@
             [self.navigationController pushViewController:sc animated:YES];
         }break;
 
-        case 4:{
-            KivaViewControllerNetworking* sc  = [[KivaViewControllerNetworking alloc] initWithNibName:@"KivaViewControllerNetworking" bundle:nil];
-            [self.navigationController pushViewController:sc animated:YES];
-        }break;
-
-        case 5:{
-            CoreDataViewController* cdvc = [[CoreDataViewController alloc] initWithNibName:@"CoreDataViewController" bundle:nil];
-            [self.navigationController pushViewController:cdvc animated:YES];
-        }break;
-            
         default:
             break;
     }
