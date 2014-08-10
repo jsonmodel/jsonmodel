@@ -149,8 +149,7 @@ static NSDateFormatter *_dateFormatter;
         [string caseInsensitiveCompare:@"yes"] == NSOrderedSame)) {
         return [NSNumber numberWithBool:YES];
     }
-    int val = [string intValue];
-    return [NSNumber numberWithBool: val==0?NO:YES];
+    return [NSNumber numberWithBool: ([string intValue]==0)?NO:YES];
 }
 
 -(NSNumber*)JSONObjectFromBOOL:(NSNumber*)number
