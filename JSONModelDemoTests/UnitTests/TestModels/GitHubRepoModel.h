@@ -20,7 +20,7 @@
 @property (assign, nonatomic) int forks;
 // It is not a good idea to have a description property, because description can not be used for debugging properly anymore. 
 @property (strong, nonatomic) NSString* description;
-@property (strong, nonatomic) NSString<Optional>* language;
+@property (strong, nonatomic) NSString<JMOptional>* language;
 @property (assign, nonatomic) BOOL fork;
 @property (assign, nonatomic) double size;
 @property (assign, nonatomic) int followers;

@@ -47,7 +47,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * @property (strong, nonatomic) NSString&lt;Optional&gt;* propertyName;
  *
  */
-@protocol Optional
+@protocol JMOptional
 @end
 
 /**
@@ -63,7 +63,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 /**
  * Make all objects Optional compatible to avoid compiler warnings
  */
-@interface NSObject(JSONModelPropertyCompatibility)<Optional, Index, Ignore>
+@interface NSObject(JSONModelPropertyCompatibility)<JMOptional, Index, Ignore>
 @end
 
 /**
