@@ -1,22 +1,16 @@
 ## Magical Data Modelling Framework for JSON
 
+### Version 1.0.0
+
+*New*: After 1.5 years of development JSONModel is now in version 1.0.0! 
+
+
+
 *New*: In version 0.13.0 automatic NSCopying/NSCoding support.
-
-*New*: In version 0.12.0 I added experimental support for exporting **JSON models** to **CoreData**.
-
-Give it a try and let me know, post an issue or just get in touch. Try something like that:
-
-<pre lang="Objective-C">
-NSError* error = nil;
-GitHubRepoEntity* entity = [GitHubRepoEntity entityWithModel:model
-                                                   inContext:self.managedObjectContext
-                                                       error:&error];
-[self.managedObjectContext save: nil];
-</pre>
 
 ---
 If you like JSONModel and use it can you please:
-1) star this repo 2)send me some feedback. Thanks!
+1) star this repo 2) send me some feedback. Thanks!
 
 ---
 

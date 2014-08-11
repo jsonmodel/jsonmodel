@@ -1,6 +1,10 @@
 Change-log
 ==========
 
+**Version 1.0** @ 2014-08-12
+
+- bug fix and merged pull requests
+
 **Version 0.13** @ 2014-04-17
 
 - methods to merge data into existing model
