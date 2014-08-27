@@ -217,7 +217,8 @@ static NSDateFormatter *_dateFormatter;
     static NSDateFormatter* dateFormatter;
     dispatch_once(&once, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZ"];
     });
     return dateFormatter;
 }
@@ -231,6 +232,7 @@ static NSDateFormatter *_dateFormatter;
 -(NSString*)__JSONObjectFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
     return [dateFormatter stringFromDate:date];
 }
