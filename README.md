@@ -4,13 +4,14 @@
 
 *New*: After 1.5 years of development JSONModel is now in version 1.0.0! 
 
-
-
-*New*: In version 0.13.0 automatic NSCopying/NSCoding support.
+#####NB: I haven’t had the time to test JSONModel in Swift projects and do not plan to do that before Swift has reached at least its 1.0 version.
 
 ---
-If you like JSONModel and use it can you please:
-1) star this repo 2) send me some feedback. Thanks!
+If you like JSONModel and use it, could you please:
+
+ * star this repo 
+
+ * send me some feedback. Thanks!
 
 ---
 
