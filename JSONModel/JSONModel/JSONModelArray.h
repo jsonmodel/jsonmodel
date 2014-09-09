@@ -27,7 +27,7 @@
  * of each of the objects stored in the array, it'll be converted to the target model class.
  * Thus saving time upon the very first model creation.
  */
-@interface JSONModelArray : NSObject
+@interface JSONModelArray : NSObject <NSFastEnumeration>
 
 /**
  * Don't make instances of JSONModelArray yourself, except you know what you are doing.
