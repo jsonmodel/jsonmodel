@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */; };
 		69286BDA17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */; };
@@ -151,6 +152,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitWithDataTests.m; sourceTree = "<group>"; };
 		69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithDictionaryError.json; sourceTree = "<group>"; };
 		697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImages.json; sourceTree = "<group>"; };
 		697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImagesObject.json; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				9C735D6E170C007900FF96F5 /* InitFromWebTests.h */,
 				9C735D6F170C007900FF96F5 /* InitFromWebTests.m */,
 				9CCAFD911901B44300314886 /* SpecialPropertiesTests.m */,
+				4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				9C66E035168CF0AA0015CCDF /* JSONKeyMapper.m in Sources */,
 				9C66E037168CF0AA0015CCDF /* JSONValueTransformer.m in Sources */,
 				9CB1EE42172C1136004BAA07 /* SpecialPropertyNameTests.m in Sources */,
+				4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */,
 				9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */,
 				9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */,
 				9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */,

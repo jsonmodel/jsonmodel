@@ -114,8 +114,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 -(instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)err
 {
-    if (!data) return nil;
-
+    //check for nil input
+    if (!data) {
+        if (err) *err = [JSONModelError errorInputIsNil];
+        return nil;
+    }
     //read the json
     JSONModelError* initError = nil;
     id obj = [NSJSONSerialization JSONObjectWithData:data
