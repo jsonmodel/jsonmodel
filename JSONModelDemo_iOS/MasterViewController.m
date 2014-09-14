@@ -122,6 +122,9 @@
     TopModel* tm = [[TopModel alloc] initWithString:json error:nil];
     NSLog(@"tm: %@", tm.toDictionary);
     NSLog(@"to string: %@", tm.toJSONString);
+    tm = [[TopModel alloc] initWithData:[json dataUsingEncoding:NSUTF8StringEncoding] error:nil];
+    NSLog(@"tm - WithData : %@", tm.toDictionary);
+    NSLog(@"to string - WithData : %@", tm.toJSONString);
 }
 
 -(IBAction)actionLoadCall:(id)sender
