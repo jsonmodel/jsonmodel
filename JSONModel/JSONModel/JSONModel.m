@@ -561,7 +561,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
             objc_property_t property = properties[i];
             const char *propertyName = property_getName(property);
             p.name = @(propertyName);
-            
+
+            //skip certian property for ios 8
+            NSString *skipProperty = [NSString stringWithUTF8String:propertyName];
+            if ([@[@"description",@"debugDescription",@"superclass"] containsObject:skipProperty])
+                continue;
             //JMLog(@"property: %@", p.name);
             
             //get property attributes
