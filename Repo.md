@@ -16,9 +16,10 @@ Long story short - make sure you are reporting something and not just asking how
 <a href="howtoreport"></a>
 #### How to report a problem/request a feature?
 
-Describe what you expected to happen and what actually happened instead.
-
-Add the piece of JSON relevant to the problem and your Objective-C model code.
+1. Describe what you expected to happen.
+2. What actually happened instead?
+3. Add the piece of JSON relevant to the problem
+4. Your Objective-C model code.
 
 I need to be able to **reproduce the problem** in order to fix it.
 
