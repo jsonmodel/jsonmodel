@@ -266,11 +266,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 {
     if (keyMapper) {
         //custom mapper
-        NSString* mappedName = [keyMapper convertValue:string isImportingToModel:importing];
-        if (globalKeyMapper && [mappedName isEqualToString: string]) {
-            mappedName = [globalKeyMapper convertValue:string isImportingToModel:importing];
-        }
-        string = mappedName;
+        string = [keyMapper convertValue:string isImportingToModel:importing];
     } else if (globalKeyMapper) {
         //global keymapper
         string = [globalKeyMapper convertValue:string isImportingToModel:importing];
