@@ -318,4 +318,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  */
 -(void)mergeFromDictionary:(NSDictionary*)dict useKeyMapping:(BOOL)useKeyMapping;
 
+/**
+ * If current model is invalid, it will continue parse next model in array.
+ */
++(BOOL)continueArrayNextItem;
+
 @end

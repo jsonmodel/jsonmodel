@@ -1091,7 +1091,12 @@ static JSONKeyMapper* globalKeyMapper = nil;
 				NSString* path = [NSString stringWithFormat:@"[%lu]", (unsigned long)list.count];
 				*err = [initErr errorByPrependingKeyPathComponent:path];
 			}
-			return nil;
+
+            if ([self continueArrayNextItem]) {
+                continue;
+            } else {
+                return nil;
+            }
 		}
 
         [list addObject: obj];
@@ -1112,7 +1117,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
     for (id<AbstractJSONModelProtocol> object in array) {
         
         id obj = [object toDictionary];
-        if (!obj) return nil;
+        if (!obj) {
+            if ([self continueArrayNextItem]) continue;
+            else return nil;
+        }
         
         [list addObject: obj];
     }
@@ -1266,6 +1274,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 + (BOOL)supportsSecureCoding
 {
     return YES;
+}
+
++(BOOL)continueArrayNextItem
+{
+    return NO;
 }
 
 @end
