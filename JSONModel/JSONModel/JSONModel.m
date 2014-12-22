@@ -670,7 +670,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             }
             
             //add the property object to the temp index
-            if (p) {
+            if (p && ![propertyIndex objectForKey:p.name]) {
                 [propertyIndex setValue:p forKey:p.name];
             }
         }
