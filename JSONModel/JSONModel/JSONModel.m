@@ -347,7 +347,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if (property.type == nil && property.structName==nil) {
                 
                 //generic setter
-                [self setValue:jsonValue forKey: property.name];
+                if (jsonValue != [self valueForKey:property.name]) {
+                    [self setValue:jsonValue forKey: property.name];
+                }
                 
                 //skip directly to the next key
                 continue;
@@ -355,7 +357,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             // 0.5) handle nils
             if (isNull(jsonValue)) {
-                [self setValue:nil forKey: property.name];
+                if ([self valueForKey:property.name] != nil) {
+                    [self setValue:nil forKey: property.name];
+                }
                 continue;
             }
             
@@ -378,7 +382,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 					}
                     return NO;
                 }
-                [self setValue:value forKey: property.name];
+                if (![value isEqual:[self valueForKey:property.name]]) {
+                    [self setValue:value forKey: property.name];
+                }
                 
                 //for clarity, does the same without continue
                 continue;
@@ -410,7 +416,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     }
                     
                     //set the property value
-                    [self setValue:jsonValue forKey: property.name];
+                    if (![jsonValue isEqual:[self valueForKey:property.name]]) {
+                        [self setValue:jsonValue forKey: property.name];
+                    }
                     continue;
                 }
                 
@@ -460,7 +468,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                         jsonValue = [valueTransformer performSelector:selector withObject:jsonValue];
 #pragma clang diagnostic pop
                         
-                        [self setValue:jsonValue forKey: property.name];
+                        if (![jsonValue isEqual:[self valueForKey:property.name]]) {
+                            [self setValue:jsonValue forKey: property.name];
+                        }
                         
                     } else {
                         
@@ -474,7 +484,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     
                 } else {
                     // 3.4) handle "all other" cases (if any)
-                    [self setValue:jsonValue forKey: property.name];
+                    if (![jsonValue isEqual:[self valueForKey:property.name]]) {
+                        [self setValue:jsonValue forKey: property.name];
+                    }
                 }
             }
         }
