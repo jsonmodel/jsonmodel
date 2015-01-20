@@ -856,7 +856,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //check for a custom property getter method
         NSString* ucfirstName = [property.name stringByReplacingCharactersInRange: NSMakeRange(0,1)
                                                                        withString: [[property.name substringToIndex:1] uppercaseString]];
-        NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@", ucfirstName];
+        NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@:", ucfirstName];
         
         SEL customPropertyGetter = NSSelectorFromString(selectorName);
         if (![self respondsToSelector: customPropertyGetter]) {
