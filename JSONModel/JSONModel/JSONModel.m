@@ -805,7 +805,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //check if should export list of dictionaries
         if (property.type == [NSArray class] || property.type == [NSMutableArray class]) {
             NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity: [(NSArray*)value count] ];
-            for (id<AbstractJSONModelProtocol> model in (NSArray*)value) {
+            for (NSObject<AbstractJSONModelProtocol>* model in (NSArray*)value) {
                 if ([model respondsToSelector:@selector(toDictionary)]) {
                     [tempArray addObject: [model toDictionary]];
                 } else
@@ -885,7 +885,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //call the custom getter
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        *value = [self performSelector:property.customGetter withObject:nil];
+        *value = [self performSelector:property.customGetter];
         #pragma clang diagnostic pop
         return YES;
     }
