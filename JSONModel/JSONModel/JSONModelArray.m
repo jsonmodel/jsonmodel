@@ -23,7 +23,7 @@
     Class _targetClass;
 }
 
-- (id)initWithArray:(NSArray *)array modelClass:(Class)cls
+-(id)initWithArray:(NSArray *)array modelClass:(Class)cls
 {
     self = [super init];
     
@@ -34,22 +34,22 @@
     return self;
 }
 
-- (id)firstObject
+-(id)firstObject
 {
     return [self objectAtIndex:0];
 }
 
-- (id)lastObject
+-(id)lastObject
 {
     return [self objectAtIndex:_storage.count - 1];
 }
 
-- (id)objectAtIndex:(NSUInteger)index
+-(id)objectAtIndex:(NSUInteger)index
 {
 	return [self objectAtIndexedSubscript:index];
 }
 
-- (id)objectAtIndexedSubscript:(NSUInteger)index
+-(id)objectAtIndexedSubscript:(NSUInteger)index
 {
     id object = _storage[index];
     if (![object isMemberOfClass:_targetClass]) {
@@ -62,7 +62,7 @@
     return object;
 }
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation
+-(void)forwardInvocation:(NSInvocation *)anInvocation
 {
     [anInvocation invokeWithTarget:_storage];
 }
@@ -70,14 +70,14 @@
 -(id)forwardingTargetForSelector:(SEL)selector
 {
     static NSArray* overridenMethods = nil;
-    if (!overridenMethods) overridenMethods = @[@"initWithArray:modelClass:",@"objectAtIndex:",@"objectAtIndexedSubscript:", @"count",@"modelWithIndexValue:",@"description",@"mutableCopy",@"firstObject",@"lastObject"];
+    if (!overridenMethods) overridenMethods = @[@"initWithArray:modelClass:",@"objectAtIndex:",@"objectAtIndexedSubscript:", @"count",@"modelWithIndexValue:",@"description",@"mutableCopy",@"firstObject",@"lastObject",@"countByEnumeratingWithState:objects:count:"];
     if ([overridenMethods containsObject:NSStringFromSelector(selector)]) {
         return self;
     }
     return _storage;
 }
 
-- (NSUInteger)count
+-(NSUInteger)count
 {
     return _storage.count;
 }
@@ -112,6 +112,34 @@
     }
     [res appendFormat:@"\n</JSONModelArray>"];
     return res;
+}
+
+-(NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+								 objects:(id __unsafe_unretained [])stackbuf
+								   count:(NSUInteger)stackbufLength
+{
+    NSUInteger count = 0;
+    
+    unsigned long countOfItemsAlreadyEnumerated = state->state;
+    
+    if (countOfItemsAlreadyEnumerated == 0) {
+        state->mutationsPtr = &state->extra[0];
+    }
+	
+    if (countOfItemsAlreadyEnumerated < [self count]) {
+        state->itemsPtr = stackbuf;
+        while ((countOfItemsAlreadyEnumerated < [self count]) && (count < stackbufLength)) {
+            stackbuf[count] = [self objectAtIndex:countOfItemsAlreadyEnumerated];
+            countOfItemsAlreadyEnumerated++;
+            count++;
+        }
+    } else {
+        count = 0;
+    }
+	
+    state->state = countOfItemsAlreadyEnumerated;
+    
+    return count;
 }
 
 @end

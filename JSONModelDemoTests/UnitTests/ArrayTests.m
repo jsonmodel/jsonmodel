@@ -38,12 +38,19 @@
     XCTAssertEqualObjects([[repos.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
 }
 
-- (void)testCount
+-(void)testCount
 {
     XCTAssertEqualObjects(@(repos.repositories.count), @100, @"wrong count");
 }
 
-- (void)testReadArray
+-(void)testFastEnumeration
+{
+	for (GitHubRepoModel *m in repos.repositories) {
+		XCTAssertNoThrow([m created], @"should not throw exception");
+	}
+}
+
+-(void)testReadArray
 {
 	JSONModelArray *array = [JSONModelArray new];
 
