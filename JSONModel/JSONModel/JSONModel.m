@@ -114,13 +114,24 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 -(instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)err
 {
-    //turn nsdata to an nsstring
-    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    if (!string) return nil;
-    
-    //create an instance
+    //check for nil input
+    if (!data) {
+        if (err) *err = [JSONModelError errorInputIsNil];
+        return nil;
+    }
+    //read the json
     JSONModelError* initError = nil;
-    id objModel = [self initWithString:string usingEncoding:NSUTF8StringEncoding error:&initError];
+    id obj = [NSJSONSerialization JSONObjectWithData:data
+                                             options:kNilOptions
+                                               error:&initError];
+    
+    if (initError) {
+        if (err) *err = [JSONModelError errorBadJSON];
+        return nil;
+    }
+    
+    //init with dictionary
+    id objModel = [self initWithDictionary:obj error:&initError];
     if (initError && err) *err = initError;
     return objModel;
 }
@@ -141,21 +152,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
         return nil;
     }
     
-    //read the json
     JSONModelError* initError = nil;
-    id obj = [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:encoding]
-                                             options:kNilOptions
-                                               error:&initError];
-
-    if (initError) {
-        if (err) *err = [JSONModelError errorBadJSON];
-        return nil;
-    }
-    
-    //init with dictionary
-    id objModel = [self initWithDictionary:obj error:&initError];
+    id objModel = [self initWithData:[string dataUsingEncoding:encoding] error:&initError];
     if (initError && err) *err = initError;
     return objModel;
+
 }
 
 -(id)initWithDictionary:(NSDictionary*)dict error:(NSError**)err
