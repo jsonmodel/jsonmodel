@@ -1,6 +1,11 @@
 Change-log
 ==========
 
+**Version 1.2** @ 2015-01-21
+
+- merged a number of pull requests that fix compatibility with iOS 8 and other issues
+
+
 **Version 1.0** @ 2014-08-12
 
 - bug fix and merged pull requests

@@ -1,7 +1,7 @@
 //
 //  JSONModelError.h
 //
-//  @version 1.0.0
+//  @version 1.0.2
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
