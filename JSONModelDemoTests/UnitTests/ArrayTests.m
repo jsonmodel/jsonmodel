@@ -58,7 +58,6 @@
 -(void)testFirstObject
 {
     XCTAssertEqualObjects([[repos.repositories.firstObject class] description], @"GitHubRepoModel", @"wrong class");
-    XCTAssertEqualObjects([repos.repositories.firstObject description], @"cocos2d for iPhone", @"wrong description");
 }
 
 /*

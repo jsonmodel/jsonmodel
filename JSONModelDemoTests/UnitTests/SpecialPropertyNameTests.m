@@ -11,7 +11,6 @@
 
 @interface DescModel : JSONModel
 @property (assign, nonatomic) int id;
-@property (strong, nonatomic) NSString* description;
 @end
 
 @implementation DescModel
@@ -31,17 +30,6 @@
 
     XCTAssertNotNil(p, @"Could not initialize model.");
     XCTAssertNil(err, "%@", [err localizedDescription]);
-}
-
--(void)testDescriptionProperty
-{
-    NSString* json = @"{\"id\":10, \"description\":\"Marin\"}";
-    DescModel* dm = [[DescModel alloc] initWithString:json error:nil];
-
-    XCTAssertNotNil(dm, @"Could not initialize model.");
-    XCTAssertEqualObjects(dm.description, @"Marin", @"could not initialize description proeprty");
-    NSDictionary* dict = dm.toDictionary;
-    XCTAssertEqualObjects(dict[@"description"], @"Marin", @"could not export description proeprty");
 }
 
 @end
