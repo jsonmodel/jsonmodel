@@ -105,7 +105,7 @@ static NSString* requestContentType = nil;
                                       [requestString substringToIndex:1],
                                       [requestString substringFromIndex: requestString.length -1]
                                       ];
-        
+
         if ([firstAndLastChar isEqualToString:@"{}"] || [firstAndLastChar isEqualToString:@"[]"]) {
             //guessing for a JSON request
             contentType = kContentTypeJSON;
@@ -126,9 +126,9 @@ static NSString* requestContentType = nil;
     if ([value isKindOfClass:[NSNumber class]]) {
         value = [(NSNumber*)value stringValue];
     }
-    
+
     NSAssert([value isKindOfClass:[NSString class]], @"request parameters can be only of NSString or NSNumber classes. '%@' is of class %@.", value, [value class]);
-        
+
     return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                  NULL,
                                                                                  (__bridge CFStringRef) value,
@@ -158,25 +158,25 @@ static NSString* requestContentType = nil;
         //user set content type
         [request setValue: requestContentType forHTTPHeaderField:@"Content-type"];
     }
-    
+
     //add all the custom headers defined
     for (NSString* key in [requestHeaders allKeys]) {
         [request setValue:requestHeaders[key] forHTTPHeaderField:key];
     }
-    
+
     //add the custom headers
     for (NSString* key in [headers allKeys]) {
         [request setValue:headers[key] forHTTPHeaderField:key];
     }
-    
+
     if (bodyData) {
         [request setHTTPBody: bodyData];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)bodyData.length] forHTTPHeaderField:@"Content-Length"];
     }
-    
+
     //prepare output
 	NSHTTPURLResponse* response = nil;
-    
+
     //fire the request
 	NSData *responseData = [NSURLConnection sendSynchronousRequest: request
                                                  returningResponse: &response
@@ -186,16 +186,16 @@ static NSString* requestContentType = nil;
         NSError* errObj = *err;
         *err = [JSONModelError errorWithDomain:errObj.domain code:errObj.code userInfo:errObj.userInfo];
     }
-    
+
     //turn off network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
-    
+
     //if not OK status set the err to a JSONModelError instance
 	if (response.statusCode >= 300 || response.statusCode < 200) {
         //create a new error
         if (*err==nil) *err = [JSONModelError errorBadResponse];
     }
-    
+
     //if there was an error, include the HTTP response and return
     if (*err) {
         //assign the response to the JSONModel instance
@@ -206,7 +206,7 @@ static NSString* requestContentType = nil;
             return nil;
         }
     }
-    
+
     //return the data fetched from web
     return responseData;
 }
@@ -226,7 +226,7 @@ static NSString* requestContentType = nil;
             paramsString = [[NSMutableString alloc] initWithString: [paramsString substringToIndex: paramsString.length-1]];
         }
     }
-    
+
     //set the request params
     if ([method isEqualToString:kHTTPMethodGET] && params) {
 
@@ -237,7 +237,7 @@ static NSString* requestContentType = nil;
                                     paramsString
                                     ]];
     }
-    
+
     //call the more general synq request method
     return [self syncRequestDataFromURL: url
                                  method: method
@@ -273,12 +273,12 @@ static NSString* requestContentType = nil;
     NSDictionary* customHeaders = headers;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
+
         id jsonObject = nil;
         JSONModelError* error = nil;
         NSData* responseData = nil;
         NSString* etag = nil;
-        
+
         @try {
             if (bodyData) {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
@@ -299,9 +299,9 @@ static NSString* requestContentType = nil;
         @catch (NSException *exception) {
             error = [JSONModelError errorBadResponse];
         }
-        
-        //step 3: if there's no response so far, return a basic error
-        if (!responseData && !jsonObject) {
+
+        //step 3: if there's no response or error so far, return a basic error
+        if (!responseData && !error) {
             //check for false response, but no network error
             error = [JSONModelError errorBadResponse];
         }
@@ -321,7 +321,7 @@ static NSString* requestContentType = nil;
             //try to get the JSON object, while preserving the origianl error object
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
         }
-        
+
         //step 5: invoke the complete block
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completeBlock) {
