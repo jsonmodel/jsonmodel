@@ -139,7 +139,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 /////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModel interface
 /**
- * The JSONModel is an abstract model class, you should ot instantiate it directly,
+ * The JSONModel is an abstract model class, you should not instantiate it directly,
  * as it does not have any properties, and therefore cannot serve as a data model.
  * Instead you should subclass it, and define the properties you want your data model
  * to have as properties of your own class.
