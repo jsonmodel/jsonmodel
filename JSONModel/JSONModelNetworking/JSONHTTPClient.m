@@ -190,6 +190,14 @@ static NSString* requestContentType = nil;
     //turn off network indicator
     if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
+    //special case for http error code 401
+    if ([*err code] == kCFURLErrorUserCancelledAuthentication) {
+        response = [[NSHTTPURLResponse alloc] initWithURL:url
+                                               statusCode:401
+                                              HTTPVersion:@"HTTP/1.1"
+                                             headerFields:@{}];
+    }
+    
     //if not OK status set the err to a JSONModelError instance
 	if (response.statusCode >= 300 || response.statusCode < 200) {
         //create a new error
@@ -301,13 +309,13 @@ static NSString* requestContentType = nil;
         }
         
         //step 3: if there's no response so far, return a basic error
-        if (!responseData && !jsonObject) {
+        if (!responseData && !error) {
             //check for false response, but no network error
             error = [JSONModelError errorBadResponse];
         }
 
         //step 4: if there's a response at this and no errors, convert to object
-        if (error==nil && jsonObject==nil) {
+        if (error==nil) {
 			// Note: it is possible to have a valid response with empty response data (204 No Content).
 			// So only create the JSON object if there is some response data.
 			if(responseData.length > 0)
