@@ -1279,7 +1279,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
     
     JSONModelError *error = nil;
     self = [self initWithString:json error:&error];
-    if(error) JMLog(@"%@",[error localizedDescription]);
+    if (error) {
+        JMLog(@"%@",[error localizedDescription]);
+    }
     return self;
 }
 
