@@ -1,1 +1,1 @@
-appledoc --project-name "JSONModel 1.0.2" --project-company "Marin Todorov, Underplot" --company-id com.underplot --output ~/help --no-create-docset --explicit-crossref JSONModel
+appledoc --project-name "JSONModel 1.1" --project-company "Marin Todorov, Underplot" --company-id com.underplot --output ~/help --no-create-docset --explicit-crossref JSONModel
