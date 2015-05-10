@@ -86,15 +86,6 @@ typedef void (^JSONObjectBlock)(id json, JSONModelError* err);
 +(void)setTimeoutInSeconds:(int)seconds;
 
 /**
- * A method to enable/disable automatic network indicator showing. 
- * Set to YES by default.
- * @param doesControlIndicator if YES, the library shows and hides the
- * system network indicator automatically on begin and end of 
- * network operations
- */
-+(void)setControlsNetworkIndicator:(BOOL)doesControlIndicator;
-
-/**
  * A method to set the default conent type of the request body
  * By default the content type is set to kContentTypeAutomatic
  * which checks the body request and decides between "application/json"

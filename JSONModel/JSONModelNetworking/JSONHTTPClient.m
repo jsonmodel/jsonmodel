@@ -35,11 +35,6 @@ static NSURLRequestCachePolicy defaultCachePolicy = NSURLRequestReloadIgnoringLo
 static int defaultTimeoutInSeconds = 60;
 
 /**
- * Whether the iPhone net indicator automatically shows when making requests
- */
-static BOOL doesControlIndicator = YES;
-
-/**
  * Custom HTTP headers to send over with *each* request
  */
 static NSMutableDictionary* requestHeaders = nil;
@@ -81,11 +76,6 @@ static NSString* requestContentType = nil;
 +(void)setTimeoutInSeconds:(int)seconds
 {
     defaultTimeoutInSeconds = seconds;
-}
-
-+(void)setControlsNetworkIndicator:(BOOL)does
-{
-    doesControlIndicator = does;
 }
 
 +(void)setRequestContentType:(NSString*)contentTypeString
@@ -140,9 +130,6 @@ static NSString* requestContentType = nil;
 #pragma mark - networking worker methods
 +(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSData*)bodyData headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
 {
-    //turn on network indicator
-    if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:YES];});
-
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url
                                                                 cachePolicy: defaultCachePolicy
                                                             timeoutInterval: defaultTimeoutInSeconds];
@@ -186,9 +173,6 @@ static NSString* requestContentType = nil;
         NSError* errObj = *err;
         *err = [JSONModelError errorWithDomain:errObj.domain code:errObj.code userInfo:errObj.userInfo];
     }
-    
-    //turn off network indicator
-    if (doesControlIndicator) dispatch_async(dispatch_get_main_queue(), ^{[self setNetworkIndicatorVisible:NO];});
     
     //special case for http error code 401
     if ([*err code] == kCFURLErrorUserCancelledAuthentication) {
@@ -385,14 +369,6 @@ static NSString* requestContentType = nil;
                                  completion:^(id json, JSONModelError* e) {
                        if (completeBlock) completeBlock(json, e);
                    }];
-}
-
-#pragma mark - iOS UI helper
-+(void)setNetworkIndicatorVisible:(BOOL)isVisible
-{
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isVisible];
-#endif
 }
 
 @end
