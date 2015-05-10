@@ -26,8 +26,6 @@ extern BOOL isNull(id value)
     return NO;
 }
 
-static NSDateFormatter *_dateFormatter;
-
 @implementation JSONValueTransformer
 
 -(id)init
@@ -213,14 +211,14 @@ static NSDateFormatter *_dateFormatter;
 #pragma mark - string <-> date
 -(NSDateFormatter*)importDateFormatter
 {
-    static dispatch_once_t once;
-    static NSDateFormatter* dateFormatter;
-    dispatch_once(&once, ^{
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZ"];
+    static dispatch_once_t onceInput;
+    static NSDateFormatter* inputDateFormatter;
+    dispatch_once(&onceInput, ^{
+        inputDateFormatter = [[NSDateFormatter alloc] init];
+        [inputDateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [inputDateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZ"];
     });
-    return dateFormatter;
+    return inputDateFormatter;
 }
 
 -(NSDate*)__NSDateFromNSString:(NSString*)string
@@ -231,10 +229,14 @@ static NSDateFormatter *_dateFormatter;
 
 -(NSString*)__JSONObjectFromNSDate:(NSDate*)date
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
-    return [dateFormatter stringFromDate:date];
+    static dispatch_once_t onceOutput;
+	static NSDateFormatter *outputDateFormatter;
+    dispatch_once(&onceOutput, ^{
+        outputDateFormatter = [[NSDateFormatter alloc] init];
+        [outputDateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [outputDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+    });
+    return [outputDateFormatter stringFromDate:date];
 }
 
 #pragma mark - number <-> date
