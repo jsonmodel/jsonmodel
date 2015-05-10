@@ -390,7 +390,7 @@ static NSString* requestContentType = nil;
 #pragma mark - iOS UI helper
 +(void)setNetworkIndicatorVisible:(BOOL)isVisible
 {
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED)  && !defined(JSM_APP_EXTENSIONS)
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isVisible];
 #endif
 }
