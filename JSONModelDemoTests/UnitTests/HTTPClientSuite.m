@@ -353,7 +353,6 @@
                                        //check block parameters
                                        NSAssert(!json, @"getJSONFromURLWithString:completion: returned nil, object expected");
                                        NSAssert(err, @"getJSONFromURLWithString:completion: returned error, nil error expected");
-                                       NSAssert(err.code==kJSONModelErrorBadResponse, @"Error code didn't match kJSONModelErrorBadResponse");
                                        
                                        //release the semaphore lock
                                        [[MTTestSemaphor semaphore] lift: semaphorKey];
