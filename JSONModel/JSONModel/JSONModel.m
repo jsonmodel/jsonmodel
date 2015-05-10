@@ -211,7 +211,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 {
     //check if all required properties are present
     NSArray* incomingKeysArray = [dict allKeys];
-    NSMutableSet* requiredProperties = [self __requiredPropertyNames];
+    NSMutableSet* requiredProperties = [self __requiredPropertyNames].mutableCopy;
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
     
     //transform the key names, if neccessary
