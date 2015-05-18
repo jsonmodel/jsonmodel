@@ -1,6 +1,6 @@
 ## Magical Data Modelling Framework for JSON
 
-### Version 1.0.2
+### Version 1.1
 
 #####NB: Swift works in a different way under the hood than Objective-C. Therefore I can't find a way to re-create JSONModel in Swift. JSONModel in Objective-C works in Swift apps through CocoaPods or as an imported Objective-C library.
 
@@ -492,6 +492,32 @@ NSString* string = [pm toJSONString];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:APIDateFormat];
     return [formatter stringFromDate:date];
+}
+
+@end
+
+```
+
+#### Custom handling for specific properties
+
+```objective-c
+
+@interface ProductModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString* name;
+@property (assign, nonatomic) float price;
+@property (strong, nonatomic) NSLocale *locale;
+@end
+
+@implementation ProductModel
+
+// Convert and assign the locale property
+- (void)setLocaleWithNSString:(NSString*)string {
+    self.locale = [NSLocale localeWithLocaleIdentifier:string];
+}
+
+- (NSString *)JSONObjectForLocale {
+    return self.locale.localeIdentifier;
 }
 
 @end
