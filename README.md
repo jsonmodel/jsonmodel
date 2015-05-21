@@ -323,6 +323,42 @@ Examples
 </tr>
 </table>
 
+#### Map automatically with exceptions
+<table>
+<tr>
+<td valign="top">
+<pre>
+{
+  "oid": 104,
+  "order_product" : @"Product#1",
+  "order_price" : 12.95
+}
+</pre>
+</td>
+<td valign="top">
+<pre>
+@interface OrderModel : JSONModel
+
+@property (assign, nonatomic) int orderId;
+@property (assign, nonatomic) float orderPrice;
+@property (strong, nonatomic) NSString* orderProduct;
+
+@end
+
+@implementation OrderModel
+
++(JSONKeyMapper*)keyMapper
+{
+  return <b>[JSONKeyMapper mapper:[JSONKeyMapper mapperFromUnderscoreCaseToCamelCase]
+                withExceptions:@{ @"oid": @"orderId" }];</b>
+}
+
+@end
+</pre>
+</td>
+</tr>
+</table>
+
 #### Optional properties (i.e. can be missing or null)
 <table>
 <tr>
