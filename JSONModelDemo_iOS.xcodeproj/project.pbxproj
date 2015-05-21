@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */; };
 		358FD078D3C0D56C77ACD770 /* ExtremeNestingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDBE28A19497358D1A6DA /* ExtremeNestingModel.m */; };
 		358FD179E0B41C47C67713B5 /* InteractionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDCB3CFE05DBA0DE27E5F /* InteractionModel.m */; };
 		358FD61804BD21F41035348E /* ExtremeNestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDBA42551FF88466BD5C3 /* ExtremeNestingTests.m */; };
 		358FD640BFEAB00349FBBA4A /* DrugModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FD25356988AC33EA6A935 /* DrugModel.m */; };
+		4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */; };
 		69286BDA17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */; };
@@ -142,6 +142,7 @@
 		9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C5176E977C007B7DFA /* ReposModel.m */; };
 		9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */; };
 		9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */; };
+		D2552E2B1B0E33F700B29ADF /* RenamedPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2552E2A1B0E33F700B29ADF /* RenamedPropertyModel.m */; };
 		D66F5792A312B021F52F7BFF /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */; };
 /* End PBXBuildFile section */
 
@@ -156,7 +157,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitWithDataTests.m; sourceTree = "<group>"; };
 		358FD25356988AC33EA6A935 /* DrugModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugModel.m; sourceTree = "<group>"; };
 		358FD7AD55FD213CBAAB460F /* ExtremeNestingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeNestingModel.h; sourceTree = "<group>"; };
 		358FD807C3E86F5DC4058645 /* ExtremeNestingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeNestingTests.h; sourceTree = "<group>"; };
@@ -165,6 +165,7 @@
 		358FDBE28A19497358D1A6DA /* ExtremeNestingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtremeNestingModel.m; sourceTree = "<group>"; };
 		358FDCB3CFE05DBA0DE27E5F /* InteractionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractionModel.m; sourceTree = "<group>"; };
 		358FDED5E028AA00D3E6564D /* InteractionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractionModel.h; sourceTree = "<group>"; };
+		4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitWithDataTests.m; sourceTree = "<group>"; };
 		69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithDictionaryError.json; sourceTree = "<group>"; };
 		697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImages.json; sourceTree = "<group>"; };
 		697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImagesObject.json; sourceTree = "<group>"; };
@@ -339,6 +340,8 @@
 		9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
 		9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		D2552E291B0E33F700B29ADF /* RenamedPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenamedPropertyModel.h; sourceTree = "<group>"; };
+		D2552E2A1B0E33F700B29ADF /* RenamedPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenamedPropertyModel.m; sourceTree = "<group>"; };
 		D66F555A1EB344B7A5FF0D85 /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
 		D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -761,6 +764,8 @@
 				9CFDD0C1176E977C007B7DFA /* PostsModel.m */,
 				9CFDD0C2176E977C007B7DFA /* PrimitivesModel.h */,
 				9CFDD0C3176E977C007B7DFA /* PrimitivesModel.m */,
+				D2552E291B0E33F700B29ADF /* RenamedPropertyModel.h */,
+				D2552E2A1B0E33F700B29ADF /* RenamedPropertyModel.m */,
 				9CFDD0C4176E977C007B7DFA /* ReposModel.h */,
 				9CFDD0C5176E977C007B7DFA /* ReposModel.m */,
 				9CFDD0C6176E977C007B7DFA /* RpcRequestModel.h */,
@@ -988,6 +993,7 @@
 				9CFDD0CF176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m in Sources */,
 				9CFDD0D0176E977C007B7DFA /* GitHubRepoModel.m in Sources */,
 				9CFDD0D1176E977C007B7DFA /* GitHubRepoModelForUSMapper.m in Sources */,
+				D2552E2B1B0E33F700B29ADF /* RenamedPropertyModel.m in Sources */,
 				9CFDD0D2176E977C007B7DFA /* ImageModel.m in Sources */,
 				9CFDD0D3176E977C007B7DFA /* JSONTypesModel.m in Sources */,
 				9CFDD0D4176E977C007B7DFA /* NestedModel.m in Sources */,
