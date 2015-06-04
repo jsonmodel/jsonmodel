@@ -46,6 +46,14 @@ pod 'JSONModel'
 ```
 If you want to read more about CocoaPods, have a look at [this short tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
 
+#### or 3) via Carthage
+
+In your project's **Cartfile** add the JSONModel:
+
+```ruby
+github "icanzilb/JSONModel"
+```
+
 #### Source code documentation
 The source code includes class docs, which you can build yourself and import into Xcode:
 
