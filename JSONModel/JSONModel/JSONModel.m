@@ -582,6 +582,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
             NSString* propertyAttributes = @(attrs);
             NSArray* attributeItems = [propertyAttributes componentsSeparatedByString:@","];
             
+            //ignore read-only properties
+            if (![self conformsToProtocol:@protocol(DoNotIgnoreReadonlyProperties)] && [attributeItems containsObject:@"R"]) {
+                continue; //to next property
+            }
+            
             //check for 64b BOOLs
             if ([propertyAttributes hasPrefix:@"Tc,"]) {
                 //mask BOOLs as structs so they can have custom convertors
