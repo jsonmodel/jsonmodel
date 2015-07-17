@@ -108,6 +108,7 @@
 		9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */; };
 		9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */; };
 		9CFDD0A4176E9742007B7DFA /* EnumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A3176E9742007B7DFA /* EnumModel.m */; };
+		A100A53C1B58F6DB005814CB /* ImmutableModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = A100A53B1B58F6DB005814CB /* ImmutableModel2.m */; };
 		A1B75A171B56341D0007FC1F /* ReadonlyPropertyReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A161B56341D0007FC1F /* ReadonlyPropertyReadTests.m */; };
 		A1B75A1B1B5634C00007FC1F /* ImmutableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A1A1B5634C00007FC1F /* ImmutableModel.m */; };
 		A1B75A1D1B5637280007FC1F /* allPropsPresent.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A1C1B5637280007FC1F /* allPropsPresent.json */; };
@@ -144,7 +145,7 @@
 		9C05B408168CEB220054215E /* withOptProp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = withOptProp.json; sourceTree = "<group>"; };
 		9C05B409168CEB220054215E /* withoutOptProp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = withoutOptProp.json; sourceTree = "<group>"; };
 		9C05B40A168CEB220054215E /* IdPropertyTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdPropertyTests.h; sourceTree = "<group>"; };
-		9C05B40B168CEB220054215E /* IdPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdPropertyTests.m; sourceTree = "<group>"; };
+		9C05B40B168CEB220054215E /* IdPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdPropertyTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C05B40C168CEB220054215E /* JSONTypesModelWithValidation1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesModelWithValidation1.h; sourceTree = "<group>"; };
 		9C05B40D168CEB220054215E /* JSONTypesModelWithValidation1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesModelWithValidation1.m; sourceTree = "<group>"; };
 		9C05B40E168CEB220054215E /* JSONTypesModelWithValidation2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesModelWithValidation2.h; sourceTree = "<group>"; };
@@ -271,6 +272,8 @@
 		9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTTestSemaphor.m; path = JSONModelDemoTests/MTTestSemaphor.m; sourceTree = SOURCE_ROOT; };
 		9CFDD0A2176E9742007B7DFA /* EnumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumModel.h; sourceTree = "<group>"; };
 		9CFDD0A3176E9742007B7DFA /* EnumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumModel.m; sourceTree = "<group>"; };
+		A100A53A1B58F6DB005814CB /* ImmutableModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel2.h; sourceTree = "<group>"; };
+		A100A53B1B58F6DB005814CB /* ImmutableModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmutableModel2.m; sourceTree = "<group>"; };
 		A1B75A161B56341D0007FC1F /* ReadonlyPropertyReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadonlyPropertyReadTests.m; sourceTree = "<group>"; };
 		A1B75A181B5634340007FC1F /* ReadonlyPropertyReadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadonlyPropertyReadTests.h; sourceTree = "<group>"; };
 		A1B75A191B5634C00007FC1F /* ImmutableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel.h; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 				9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */,
 				A1B75A191B5634C00007FC1F /* ImmutableModel.h */,
 				A1B75A1A1B5634C00007FC1F /* ImmutableModel.m */,
+				A100A53A1B58F6DB005814CB /* ImmutableModel2.h */,
+				A100A53B1B58F6DB005814CB /* ImmutableModel2.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 				9C66E003168CF09A0015CCDF /* JSONHTTPClient.m in Sources */,
 				9C66E005168CF09A0015CCDF /* JSONModel+networking.m in Sources */,
 				9C66E007168CF09A0015CCDF /* JSONKeyMapper.m in Sources */,
+				A100A53C1B58F6DB005814CB /* ImmutableModel2.m in Sources */,
 				9CCAFD941901B7F500314886 /* SpecialPropertiesTests.m in Sources */,
 				9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */,
 				D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */,

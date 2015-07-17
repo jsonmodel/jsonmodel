@@ -142,6 +142,7 @@
 		9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C5176E977C007B7DFA /* ReposModel.m */; };
 		9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */; };
 		9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */; };
+		A100A53F1B58F916005814CB /* ImmutableModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = A100A53D1B58F916005814CB /* ImmutableModel2.m */; };
 		A1B75A2B1B563FA90007FC1F /* requiredPropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A271B563FA90007FC1F /* requiredPropMissing.json */; };
 		A1B75A2C1B563FA90007FC1F /* optionalPropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A281B563FA90007FC1F /* optionalPropMissing.json */; };
 		A1B75A2D1B563FA90007FC1F /* ignorePropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A291B563FA90007FC1F /* ignorePropMissing.json */; };
@@ -346,6 +347,8 @@
 		9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
 		9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		A100A53D1B58F916005814CB /* ImmutableModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmutableModel2.m; sourceTree = "<group>"; };
+		A100A53E1B58F916005814CB /* ImmutableModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel2.h; sourceTree = "<group>"; };
 		A1B75A271B563FA90007FC1F /* requiredPropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requiredPropMissing.json; sourceTree = "<group>"; };
 		A1B75A281B563FA90007FC1F /* optionalPropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = optionalPropMissing.json; sourceTree = "<group>"; };
 		A1B75A291B563FA90007FC1F /* ignorePropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ignorePropMissing.json; sourceTree = "<group>"; };
@@ -782,6 +785,8 @@
 				9CFDD0BD176E977C007B7DFA /* OptionalPropModel.m */,
 				A1B75A2F1B563FC60007FC1F /* ImmutableModel.m */,
 				A1B75A301B563FC60007FC1F /* ImmutableModel.h */,
+				A100A53D1B58F916005814CB /* ImmutableModel2.m */,
+				A100A53E1B58F916005814CB /* ImmutableModel2.h */,
 				9CFDD0BE176E977C007B7DFA /* PostModel.h */,
 				9CFDD0BF176E977C007B7DFA /* PostModel.m */,
 				9CFDD0C0176E977C007B7DFA /* PostsModel.h */,
@@ -971,6 +976,7 @@
 				358FD078D3C0D56C77ACD770 /* ExtremeNestingModel.m in Sources */,
 				358FD640BFEAB00349FBBA4A /* DrugModel.m in Sources */,
 				358FD179E0B41C47C67713B5 /* InteractionModel.m in Sources */,
+				A100A53F1B58F916005814CB /* ImmutableModel2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

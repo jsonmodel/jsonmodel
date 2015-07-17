@@ -583,7 +583,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
             NSArray* attributeItems = [propertyAttributes componentsSeparatedByString:@","];
             
             //ignore read-only properties
-            if (![self conformsToProtocol:@protocol(DoNotIgnoreReadonlyProperties)] && [attributeItems containsObject:@"R"]) {
+            if ([attributeItems containsObject:@"R"] &&
+                ![self conformsToProtocol:@protocol(DoNotIgnoreReadonlyProperties)] && // if we dont have specified otherwise via protocol
+                [[self class] ignoresReadonlyProperties])                              // nor +ignoresReadonlyProperties
+            {
                 continue; //to next property
             }
             
@@ -1268,6 +1271,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
     return NO;
+}
+
++(BOOL)ignoresReadonlyProperties
+{
+    return YES;
 }
 
 #pragma mark - working with incomplete models
