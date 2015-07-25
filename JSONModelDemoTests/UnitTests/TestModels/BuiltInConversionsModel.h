@@ -31,7 +31,8 @@
 @property (strong, nonatomic) NSDate* importantEvent;
 
 /* URLs */
-@property (strong, nonatomic) NSURL* websiteURL;
+@property (strong, nonatomic) NSURL *websiteURL;
+@property (strong, nonatomic) NSURL *urlWithPercentEscapes;
 
 /* Time zone */
 @property (strong, nonatomic) NSTimeZone *timeZone;

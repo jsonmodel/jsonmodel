@@ -65,6 +65,7 @@
     //https://github.com/icanzilb/JSONModel/pull/60
     XCTAssertNotNil(b.websiteURL, @"URL parsing did return nil");
     XCTAssertNotNil(b.websiteURL.query, @"key1=test");
+    XCTAssertEqualObjects([b.urlWithPercentEscapes absoluteString], @"https://www.google.com/search?q=%CF%80"),
     
     XCTAssertNotNil(b.timeZone, @"Time zone parsing did return nil");
     XCTAssertEqualObjects([b.timeZone name], @"PST", @"Time zone is not PST");
