@@ -324,6 +324,15 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 +(BOOL)propertyIsIgnored:(NSString*)propertyName;
 
 /**
+ * Binds protocols for each property is array type explicitly.
+ * This method was created because Swift2 compatibility but worked also in Objective-C. It works on Xcode7 or above.
+ * You MUST call this method in class method 'initialize'.
+ * @param protocols dictionnary with property name keys and protocol name or class values
+ * @param cls class that protocols will be assigned.
+ */
++(void)bindProtocols:(NSDictionary *)protocols withClass:(__unsafe_unretained Class)cls;
+
+/**
  * Merges values from the given dictionary into the model instance.
  * @param dict dictionary with values
  * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO 
