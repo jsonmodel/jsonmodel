@@ -41,9 +41,8 @@
     XCTAssertTrue(p.intNumber==12, @"intNumber read fail");
     XCTAssertTrue(p.longNumber==12124, @"longNumber read fail");
     
-    XCTAssertTrue(fabsf(p.floatNumber-12.12)<FLT_EPSILON, @"floatNumber read fail");
-    XCTAssertTrue(fabs(p.doubleNumber-121231312.124)<DBL_EPSILON, @"doubleNumber read fail");
-    
+    XCTAssertEqualWithAccuracy(p.floatNumber, 12.12, FLT_EPSILON, @"floatNumber read fail");
+    XCTAssertEqualWithAccuracy(p.doubleNumber, 121231312.124, DBL_EPSILON, @"doubleNumber read fail");
     
     XCTAssertTrue(p.boolNO==NO, @"boolNO read fail");
     XCTAssertTrue(p.boolYES==YES, @"boolYES read fail");
