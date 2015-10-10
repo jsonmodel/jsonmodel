@@ -34,8 +34,9 @@
     return self;
 }
 
--(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
-                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON
+-(instancetype)initWithSuperKeyMapper:(JSONKeyMapper *)superKeyMapper
+                     JSONToModelBlock:(JSONModelKeyMapBlock)toModel
+                     modelToJSONBlock:(JSONModelKeyMapBlock)toJSON
 {
     self = [self init];
     
@@ -65,12 +66,13 @@
             
         };
         
+        _superKeyMapper = superKeyMapper;
     }
     
     return self;
 }
 
--(instancetype)initWithDictionary:(NSDictionary*)map
+-(instancetype)initWithSuperKeyMapper:(JSONKeyMapper *)superKeyMapper dictionary:(NSDictionary *)map
 {
     self = [super init];
     if (self) {
@@ -88,6 +90,7 @@
             NSString* result = [userToJSONMap valueForKeyPath: keyName];
             return result?result:keyName;
         };
+        _superKeyMapper = superKeyMapper;
     }
     
     return self;
@@ -95,7 +98,11 @@
 
 -(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing
 {
-    return !importing?_JSONToModelKeyBlock(value):_modelToJSONKeyBlock(value);
+    NSString *selfValue = !importing?_JSONToModelKeyBlock(value):_modelToJSONKeyBlock(value);
+    if (self.superKeyMapper && [selfValue isEqualToString:value]) {
+        return [_superKeyMapper convertValue:value isImportingToModel:importing];
+    }
+    return selfValue;
 }
 
 +(instancetype)mapperFromUnderscoreCaseToCamelCase
@@ -147,8 +154,9 @@
         return result;
     };
 
-    return [[self alloc] initWithJSONToModelBlock:toModel
-                                 modelToJSONBlock:toJSON];
+    return [[self alloc] initWithSuperKeyMapper:nil
+                               JSONToModelBlock:toModel
+                               modelToJSONBlock:toJSON];
     
 }
 
@@ -166,8 +174,9 @@
         return uppercaseString;
     };
 
-    return [[self alloc] initWithJSONToModelBlock:toModel
-                                 modelToJSONBlock:toJSON];
+    return [[self alloc] initWithSuperKeyMapper:nil
+                               JSONToModelBlock:toModel
+                               modelToJSONBlock:toJSON];
 
 }
 

@@ -13,7 +13,7 @@
 
 +(JSONKeyMapper*)keyMapper
 {
-    return [[JSONKeyMapper alloc] initWithDictionary:@{
+    return [[JSONKeyMapper alloc] initWithSuperKeyMapper:[super keyMapper] dictionary:@{
             @"generic_alternatives.items.data" : @"drugs"
     }];
 }
