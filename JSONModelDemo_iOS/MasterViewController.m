@@ -94,13 +94,25 @@
 @implementation JSONAnswer
 @end
 
-@interface TopModel : JSONModel
-@property (assign, nonatomic) int id;
+@interface BaseModel : JSONModel
+@property (assign, nonatomic) int Id;
 @property (strong, nonatomic) JSONAnswer<Optional>* answer;
+@end
+
+@implementation BaseModel
++ (JSONKeyMapper *)keyMapper {
+    JSONKeyMapper *keyMapper = [[JSONKeyMapper alloc] initWithSuperKeyMapper:[super keyMapper] dictionary:@{
+                                                                           @"id" : @"Id"
+                                                                           }];
+    return keyMapper;
+}
+@end
+
+@interface TopModel : BaseModel
 @property (assign, nonatomic, readonly) int rId;
 @property (nonatomic, copy) void(^userLocationCompleted)();
-@property (strong, nonatomic) NSDictionary* dict;
-@property (strong, nonatomic) NSString* description;
+@property (strong, nonatomic) NSDictionary* dict1;
+@property (strong, nonatomic) NSString* description1;
 @end
 
 @implementation TopModel
@@ -112,14 +124,23 @@
 {
     return @"1123";
 }
++ (JSONKeyMapper *)keyMapper {
+#if 0
+    JSONKeyMapper *keyMapper = [[JSONKeyMapper alloc] initWithSuperKeyMapper:nil dictionary:@{@"dict" : @"dict1"}];
+#else
+    JSONKeyMapper *keyMapper = [[JSONKeyMapper alloc] initWithSuperKeyMapper:[super keyMapper] dictionary:@{@"dict" : @"dict1"}];
+#endif
+    return keyMapper;
+}
 @end
 
 @implementation MasterViewController
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSString* json = @"{\"id\":1, \"answer\": {\"name1\":\"marin\"}, \"dict\":[], \"description\":\"Marin\"}";
+    NSString* json = @"{\"id\":1, \"answer\": {\"name\":\"marin\"}, \"dict\":{}, \"description1\":\"Marin\"}";
     TopModel* tm = [[TopModel alloc] initWithString:json error:nil];
+    NSLog(@"%@", tm);
     NSLog(@"tm: %@", tm.toDictionary);
     NSLog(@"to string: %@", tm.toJSONString);
     tm = [[TopModel alloc] initWithData:[json dataUsingEncoding:NSUTF8StringEncoding] error:nil];
