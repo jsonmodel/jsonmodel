@@ -50,6 +50,8 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  */
 @interface JSONKeyMapper : NSObject
 
+@property (readonly, nonatomic) JSONKeyMapper *superKeyMapper;
+
 /** @name Name convertors */
 /** Block, which takes in a JSON key and converts it to the corresponding property name */
 @property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock;
@@ -74,8 +76,9 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  * @param toModel transforms JSON key name to your model property name
  * @param toJSON transforms your model property name to a JSON key
  */
--(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
-                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
+-(instancetype)initWithSuperKeyMapper:(JSONKeyMapper *)superKeyMapper
+                     JSONToModelBlock:(JSONModelKeyMapBlock)toModel
+                     modelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
 
 /**
  * Creates a JSONKeyMapper instance, based on the mapping you provide
@@ -84,7 +87,8 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  * @param map map dictionary, in the format: <pre>@{@"crazy_JSON_name":@"myCamelCaseName"}</pre>
  * @return JSONKeyMapper instance
  */
--(instancetype)initWithDictionary:(NSDictionary*)map;
+-(instancetype)initWithSuperKeyMapper:(JSONKeyMapper *)superKeyMapper
+                           dictionary:(NSDictionary*)map;
 
 /**
  * Creates a JSONKeyMapper, which converts underscore_case to camelCase and vice versa.
