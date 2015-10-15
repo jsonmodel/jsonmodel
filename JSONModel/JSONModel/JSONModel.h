@@ -108,7 +108,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * should suffice, but developers have the option ot also overwrite it if needed.
  *
  * @param data representing a JSON response (usually fetched from web), to be imported in the model.
- * @param err an error or NULL
+ * @param error an error or NULL
  */
 -(instancetype)initWithData:(NSData*)data error:(NSError**)error;
 
