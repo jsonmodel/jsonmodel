@@ -81,6 +81,28 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Model Protocols
+
+
+/**
+ *  All readonly properties will be Ignored, regardless of modifier. This is default
+ *  behaviour, but can be explicitly stated:
+ *
+ *  @interface ModelObject : JSONModel &lt;IgnoreReadonlyProperties&gt;
+ */
+@protocol IgnoreReadonlyProperties
+@end
+
+/**
+ *  Readonly properties will be treated the same way as readwrite ones, meaning they will be
+ *  required by default and will respect Ignore / Optional modifiers.
+ *
+ *  @interface ModelObject : JSONModel &lt;DoNotIgnoreReadonlyProperties&gt;
+ */
+@protocol DoNotIgnoreReadonlyProperties
+@end
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModel protocol
 /**
  * A protocol describing an abstract JSONModel class
@@ -322,6 +344,13 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * @return a BOOL result indicating whether the property is ignored
  */
 +(BOOL)propertyIsIgnored:(NSString*)propertyName;
+
+/**
+ *  Indicates whether readonly properties should be Ignored by default.
+ *  This method returns YES by default
+ *  @return a BOOL result indicating whether readonly properties are ignored
+ */
++(BOOL)ignoresReadonlyProperties;
 
 /**
  * Merges values from the given dictionary into the model instance.

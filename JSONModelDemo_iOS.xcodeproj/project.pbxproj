@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */; };
 		358FD078D3C0D56C77ACD770 /* ExtremeNestingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDBE28A19497358D1A6DA /* ExtremeNestingModel.m */; };
 		358FD179E0B41C47C67713B5 /* InteractionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDCB3CFE05DBA0DE27E5F /* InteractionModel.m */; };
 		358FD61804BD21F41035348E /* ExtremeNestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDBA42551FF88466BD5C3 /* ExtremeNestingTests.m */; };
 		358FD640BFEAB00349FBBA4A /* DrugModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FD25356988AC33EA6A935 /* DrugModel.m */; };
+		4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */; };
 		69286BDA17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */ = {isa = PBXBuildFile; fileRef = 69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */; };
 		697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */; };
@@ -142,6 +142,14 @@
 		9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C5176E977C007B7DFA /* ReposModel.m */; };
 		9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */; };
 		9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */; };
+		A100A53F1B58F916005814CB /* ImmutableModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = A100A53D1B58F916005814CB /* ImmutableModel2.m */; };
+		A1B75A2B1B563FA90007FC1F /* requiredPropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A271B563FA90007FC1F /* requiredPropMissing.json */; };
+		A1B75A2C1B563FA90007FC1F /* optionalPropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A281B563FA90007FC1F /* optionalPropMissing.json */; };
+		A1B75A2D1B563FA90007FC1F /* ignorePropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A291B563FA90007FC1F /* ignorePropMissing.json */; };
+		A1B75A2E1B563FA90007FC1F /* allPropsPresent.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A2A1B563FA90007FC1F /* allPropsPresent.json */; };
+		A1B75A311B563FC60007FC1F /* ImmutableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A2F1B563FC60007FC1F /* ImmutableModel.m */; };
+		A1B75A361B563FDB0007FC1F /* ReadonlyPropertyWriteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A321B563FDB0007FC1F /* ReadonlyPropertyWriteTests.m */; };
+		A1B75A371B563FDB0007FC1F /* ReadonlyPropertyReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A341B563FDB0007FC1F /* ReadonlyPropertyReadTests.m */; };
 		D66F5792A312B021F52F7BFF /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */; };
 /* End PBXBuildFile section */
 
@@ -156,7 +164,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitWithDataTests.m; sourceTree = "<group>"; };
 		358FD25356988AC33EA6A935 /* DrugModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugModel.m; sourceTree = "<group>"; };
 		358FD7AD55FD213CBAAB460F /* ExtremeNestingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeNestingModel.h; sourceTree = "<group>"; };
 		358FD807C3E86F5DC4058645 /* ExtremeNestingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeNestingTests.h; sourceTree = "<group>"; };
@@ -165,6 +172,7 @@
 		358FDBE28A19497358D1A6DA /* ExtremeNestingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtremeNestingModel.m; sourceTree = "<group>"; };
 		358FDCB3CFE05DBA0DE27E5F /* InteractionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractionModel.m; sourceTree = "<group>"; };
 		358FDED5E028AA00D3E6564D /* InteractionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractionModel.h; sourceTree = "<group>"; };
+		4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitWithDataTests.m; sourceTree = "<group>"; };
 		69286BD917FA280900D1BA81 /* nestedDataWithDictionaryError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithDictionaryError.json; sourceTree = "<group>"; };
 		697852FC17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImages.json; sourceTree = "<group>"; };
 		697852FE17D93546006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedDataWithTypeMismatchOnImagesObject.json; sourceTree = "<group>"; };
@@ -339,6 +347,18 @@
 		9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
 		9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		A100A53D1B58F916005814CB /* ImmutableModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmutableModel2.m; sourceTree = "<group>"; };
+		A100A53E1B58F916005814CB /* ImmutableModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel2.h; sourceTree = "<group>"; };
+		A1B75A271B563FA90007FC1F /* requiredPropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requiredPropMissing.json; sourceTree = "<group>"; };
+		A1B75A281B563FA90007FC1F /* optionalPropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = optionalPropMissing.json; sourceTree = "<group>"; };
+		A1B75A291B563FA90007FC1F /* ignorePropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ignorePropMissing.json; sourceTree = "<group>"; };
+		A1B75A2A1B563FA90007FC1F /* allPropsPresent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allPropsPresent.json; sourceTree = "<group>"; };
+		A1B75A2F1B563FC60007FC1F /* ImmutableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmutableModel.m; sourceTree = "<group>"; };
+		A1B75A301B563FC60007FC1F /* ImmutableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel.h; sourceTree = "<group>"; };
+		A1B75A321B563FDB0007FC1F /* ReadonlyPropertyWriteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadonlyPropertyWriteTests.m; sourceTree = "<group>"; };
+		A1B75A331B563FDB0007FC1F /* ReadonlyPropertyWriteTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadonlyPropertyWriteTests.h; sourceTree = "<group>"; };
+		A1B75A341B563FDB0007FC1F /* ReadonlyPropertyReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadonlyPropertyReadTests.m; sourceTree = "<group>"; };
+		A1B75A351B563FDB0007FC1F /* ReadonlyPropertyReadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadonlyPropertyReadTests.h; sourceTree = "<group>"; };
 		D66F555A1EB344B7A5FF0D85 /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
 		D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -420,6 +440,10 @@
 				9C66DF84168CEF420015CCDF /* PersistTests.m */,
 				9C66DF85168CEF420015CCDF /* PrimitiveTypesReadTests.h */,
 				9C66DF86168CEF420015CCDF /* PrimitiveTypesReadTests.m */,
+				A1B75A321B563FDB0007FC1F /* ReadonlyPropertyWriteTests.m */,
+				A1B75A331B563FDB0007FC1F /* ReadonlyPropertyWriteTests.h */,
+				A1B75A341B563FDB0007FC1F /* ReadonlyPropertyReadTests.m */,
+				A1B75A351B563FDB0007FC1F /* ReadonlyPropertyReadTests.h */,
 				9C66DF87168CEF420015CCDF /* SimpleDataErrorTests.h */,
 				9C66DF88168CEF420015CCDF /* SimpleDataErrorTests.m */,
 				9CB1EE40172C1136004BAA07 /* SpecialPropertyNameTests.h */,
@@ -458,6 +482,10 @@
 				9C66DF71168CEF420015CCDF /* withOptProp.json */,
 				9C66DF72168CEF420015CCDF /* withoutOptProp.json */,
 				9CB1EE46172C1205004BAA07 /* specialPropertyName.json */,
+				A1B75A271B563FA90007FC1F /* requiredPropMissing.json */,
+				A1B75A281B563FA90007FC1F /* optionalPropMissing.json */,
+				A1B75A291B563FA90007FC1F /* ignorePropMissing.json */,
+				A1B75A2A1B563FA90007FC1F /* allPropsPresent.json */,
 			);
 			name = DataFiles;
 			path = UnitTests/DataFiles;
@@ -755,6 +783,10 @@
 				9CFDD0BB176E977C007B7DFA /* NestedModel.m */,
 				9CFDD0BC176E977C007B7DFA /* OptionalPropModel.h */,
 				9CFDD0BD176E977C007B7DFA /* OptionalPropModel.m */,
+				A1B75A2F1B563FC60007FC1F /* ImmutableModel.m */,
+				A1B75A301B563FC60007FC1F /* ImmutableModel.h */,
+				A100A53D1B58F916005814CB /* ImmutableModel2.m */,
+				A100A53E1B58F916005814CB /* ImmutableModel2.h */,
 				9CFDD0BE176E977C007B7DFA /* PostModel.h */,
 				9CFDD0BF176E977C007B7DFA /* PostModel.m */,
 				9CFDD0C0176E977C007B7DFA /* PostsModel.h */,
@@ -882,6 +914,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B75A2C1B563FA90007FC1F /* optionalPropMissing.json in Resources */,
+				A1B75A2E1B563FA90007FC1F /* allPropsPresent.json in Resources */,
 				9C66DFAC168CEF420015CCDF /* colors.json in Resources */,
 				9C66DFAD168CEF420015CCDF /* converts.json in Resources */,
 				9C66DFAE168CEF420015CCDF /* github-iphone.json in Resources */,
@@ -894,9 +928,11 @@
 				9C66DFB5168CEF420015CCDF /* withOptProp.json in Resources */,
 				9C66DFB6168CEF420015CCDF /* withoutOptProp.json in Resources */,
 				9CB1EE47172C1205004BAA07 /* specialPropertyName.json in Resources */,
+				A1B75A2B1B563FA90007FC1F /* requiredPropMissing.json in Resources */,
 				697852FD17D934B5006BFCD0 /* nestedDataWithTypeMismatchOnImages.json in Resources */,
 				69286BDB17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */,
 				697852FF17D93547006BFCD0 /* nestedDataWithTypeMismatchOnImagesObject.json in Resources */,
+				A1B75A2D1B563FA90007FC1F /* ignorePropMissing.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +976,7 @@
 				358FD078D3C0D56C77ACD770 /* ExtremeNestingModel.m in Sources */,
 				358FD640BFEAB00349FBBA4A /* DrugModel.m in Sources */,
 				358FD179E0B41C47C67713B5 /* InteractionModel.m in Sources */,
+				A100A53F1B58F916005814CB /* ImmutableModel2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,6 +985,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C66DFA8168CEF420015CCDF /* ArrayTests.m in Sources */,
+				A1B75A361B563FDB0007FC1F /* ReadonlyPropertyWriteTests.m in Sources */,
 				9C66DFA9168CEF420015CCDF /* BuiltInConversionsTests.m in Sources */,
 				9C66DFAB168CEF420015CCDF /* CustomPropsTests.m in Sources */,
 				9C66DFB7168CEF420015CCDF /* IdPropertyTests.m in Sources */,
@@ -955,6 +993,7 @@
 				9C66DFB9168CEF420015CCDF /* JSONTypesModelWithValidation2.m in Sources */,
 				9C66DFBA168CEF420015CCDF /* JSONTypesReadTests.m in Sources */,
 				9C66DFBB168CEF420015CCDF /* JSONValueTransformer+UIColor.m in Sources */,
+				A1B75A311B563FC60007FC1F /* ImmutableModel.m in Sources */,
 				9C66DFBC168CEF420015CCDF /* KeyMappingTests.m in Sources */,
 				9C66DFBD168CEF420015CCDF /* NestedModelsTests.m in Sources */,
 				9C66DFBE168CEF420015CCDF /* OptionalPropertiesTests.m in Sources */,
@@ -977,6 +1016,7 @@
 				4A50001D19C5DCCF00C161A0 /* InitWithDataTests.m in Sources */,
 				9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */,
 				9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */,
+				A1B75A371B563FDB0007FC1F /* ReadonlyPropertyReadTests.m in Sources */,
 				9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */,
 				9C735D64170B716300FF96F5 /* JSONAPITests.m in Sources */,
 				9C735D70170C007900FF96F5 /* InitFromWebTests.m in Sources */,

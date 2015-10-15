@@ -108,6 +108,14 @@
 		9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */; };
 		9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */; };
 		9CFDD0A4176E9742007B7DFA /* EnumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A3176E9742007B7DFA /* EnumModel.m */; };
+		A100A53C1B58F6DB005814CB /* ImmutableModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = A100A53B1B58F6DB005814CB /* ImmutableModel2.m */; };
+		A1B75A171B56341D0007FC1F /* ReadonlyPropertyReadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A161B56341D0007FC1F /* ReadonlyPropertyReadTests.m */; };
+		A1B75A1B1B5634C00007FC1F /* ImmutableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A1A1B5634C00007FC1F /* ImmutableModel.m */; };
+		A1B75A1D1B5637280007FC1F /* allPropsPresent.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A1C1B5637280007FC1F /* allPropsPresent.json */; };
+		A1B75A1F1B5639FF0007FC1F /* optionalPropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A1E1B5639FF0007FC1F /* optionalPropMissing.json */; };
+		A1B75A211B563A0E0007FC1F /* requiredPropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A201B563A0E0007FC1F /* requiredPropMissing.json */; };
+		A1B75A231B563A1F0007FC1F /* ignorePropMissing.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B75A221B563A1F0007FC1F /* ignorePropMissing.json */; };
+		A1B75A251B563B830007FC1F /* ReadonlyPropertyWriteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B75A241B563B830007FC1F /* ReadonlyPropertyWriteTests.m */; };
 		D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */; };
 		D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */; };
 		D5F918EE172ADAF900AC2C8E /* SpecialPropertyNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918ED172ADAF800AC2C8E /* SpecialPropertyNameTests.m */; };
@@ -137,13 +145,13 @@
 		9C05B408168CEB220054215E /* withOptProp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = withOptProp.json; sourceTree = "<group>"; };
 		9C05B409168CEB220054215E /* withoutOptProp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = withoutOptProp.json; sourceTree = "<group>"; };
 		9C05B40A168CEB220054215E /* IdPropertyTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdPropertyTests.h; sourceTree = "<group>"; };
-		9C05B40B168CEB220054215E /* IdPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdPropertyTests.m; sourceTree = "<group>"; };
+		9C05B40B168CEB220054215E /* IdPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdPropertyTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C05B40C168CEB220054215E /* JSONTypesModelWithValidation1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesModelWithValidation1.h; sourceTree = "<group>"; };
 		9C05B40D168CEB220054215E /* JSONTypesModelWithValidation1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesModelWithValidation1.m; sourceTree = "<group>"; };
 		9C05B40E168CEB220054215E /* JSONTypesModelWithValidation2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesModelWithValidation2.h; sourceTree = "<group>"; };
 		9C05B40F168CEB220054215E /* JSONTypesModelWithValidation2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesModelWithValidation2.m; sourceTree = "<group>"; };
 		9C05B410168CEB220054215E /* JSONTypesReadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONTypesReadTests.h; sourceTree = "<group>"; };
-		9C05B411168CEB220054215E /* JSONTypesReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesReadTests.m; sourceTree = "<group>"; };
+		9C05B411168CEB220054215E /* JSONTypesReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONTypesReadTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C05B412168CEB220054215E /* JSONValueTransformer+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONValueTransformer+UIColor.h"; sourceTree = "<group>"; };
 		9C05B413168CEB220054215E /* JSONValueTransformer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONValueTransformer+UIColor.m"; sourceTree = "<group>"; };
 		9C05B414168CEB220054215E /* KeyMappingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyMappingTests.h; sourceTree = "<group>"; };
@@ -151,7 +159,7 @@
 		9C05B416168CEB220054215E /* NestedModelsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedModelsTests.h; sourceTree = "<group>"; };
 		9C05B417168CEB220054215E /* NestedModelsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedModelsTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C05B418168CEB220054215E /* OptionalPropertiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalPropertiesTests.h; sourceTree = "<group>"; };
-		9C05B419168CEB220054215E /* OptionalPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalPropertiesTests.m; sourceTree = "<group>"; };
+		9C05B419168CEB220054215E /* OptionalPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalPropertiesTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9C05B41A168CEB220054215E /* PersistTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistTests.h; sourceTree = "<group>"; };
 		9C05B41B168CEB220054215E /* PersistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistTests.m; sourceTree = "<group>"; };
 		9C05B41C168CEB220054215E /* PrimitiveTypesReadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveTypesReadTests.h; sourceTree = "<group>"; };
@@ -264,6 +272,18 @@
 		9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTTestSemaphor.m; path = JSONModelDemoTests/MTTestSemaphor.m; sourceTree = SOURCE_ROOT; };
 		9CFDD0A2176E9742007B7DFA /* EnumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumModel.h; sourceTree = "<group>"; };
 		9CFDD0A3176E9742007B7DFA /* EnumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumModel.m; sourceTree = "<group>"; };
+		A100A53A1B58F6DB005814CB /* ImmutableModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel2.h; sourceTree = "<group>"; };
+		A100A53B1B58F6DB005814CB /* ImmutableModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmutableModel2.m; sourceTree = "<group>"; };
+		A1B75A161B56341D0007FC1F /* ReadonlyPropertyReadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadonlyPropertyReadTests.m; sourceTree = "<group>"; };
+		A1B75A181B5634340007FC1F /* ReadonlyPropertyReadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadonlyPropertyReadTests.h; sourceTree = "<group>"; };
+		A1B75A191B5634C00007FC1F /* ImmutableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableModel.h; sourceTree = "<group>"; };
+		A1B75A1A1B5634C00007FC1F /* ImmutableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmutableModel.m; sourceTree = "<group>"; };
+		A1B75A1C1B5637280007FC1F /* allPropsPresent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allPropsPresent.json; sourceTree = "<group>"; };
+		A1B75A1E1B5639FF0007FC1F /* optionalPropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = optionalPropMissing.json; sourceTree = "<group>"; };
+		A1B75A201B563A0E0007FC1F /* requiredPropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requiredPropMissing.json; sourceTree = "<group>"; };
+		A1B75A221B563A1F0007FC1F /* ignorePropMissing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ignorePropMissing.json; sourceTree = "<group>"; };
+		A1B75A241B563B830007FC1F /* ReadonlyPropertyWriteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadonlyPropertyWriteTests.m; sourceTree = "<group>"; };
+		A1B75A261B563B900007FC1F /* ReadonlyPropertyWriteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadonlyPropertyWriteTests.h; sourceTree = "<group>"; };
 		D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = specialPropertyName.json; sourceTree = "<group>"; };
 		D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
@@ -316,7 +336,6 @@
 			children = (
 				9CD4257D1702220300A42AA1 /* Class */,
 				9C05B3FE168CEB220054215E /* DataFiles */,
-				9C05B420168CEB220054215E /* TestModels */,
 				9C05B3F6168CEB220054215E /* ArrayTests.h */,
 				9C05B3F7168CEB220054215E /* ArrayTests.m */,
 				9C05B3F8168CEB220054215E /* BuiltInConversionsTests.h */,
@@ -343,6 +362,10 @@
 				9C05B41B168CEB220054215E /* PersistTests.m */,
 				9C05B41C168CEB220054215E /* PrimitiveTypesReadTests.h */,
 				9C05B41D168CEB220054215E /* PrimitiveTypesReadTests.m */,
+				A1B75A181B5634340007FC1F /* ReadonlyPropertyReadTests.h */,
+				A1B75A161B56341D0007FC1F /* ReadonlyPropertyReadTests.m */,
+				A1B75A261B563B900007FC1F /* ReadonlyPropertyWriteTests.h */,
+				A1B75A241B563B830007FC1F /* ReadonlyPropertyWriteTests.m */,
 				9C05B41E168CEB220054215E /* SimpleDataErrorTests.h */,
 				9C05B41F168CEB220054215E /* SimpleDataErrorTests.m */,
 				D5F918EC172ADAF800AC2C8E /* SpecialPropertyNameTests.h */,
@@ -379,6 +402,10 @@
 				D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */,
 				9C05B408168CEB220054215E /* withOptProp.json */,
 				9C05B409168CEB220054215E /* withoutOptProp.json */,
+				A1B75A1C1B5637280007FC1F /* allPropsPresent.json */,
+				A1B75A1E1B5639FF0007FC1F /* optionalPropMissing.json */,
+				A1B75A201B563A0E0007FC1F /* requiredPropMissing.json */,
+				A1B75A221B563A1F0007FC1F /* ignorePropMissing.json */,
 			);
 			path = DataFiles;
 			sourceTree = "<group>";
@@ -424,6 +451,10 @@
 				D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */,
 				9C735D6B170B7A2D00FF96F5 /* RpcRequestModel.h */,
 				9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */,
+				A1B75A191B5634C00007FC1F /* ImmutableModel.h */,
+				A1B75A1A1B5634C00007FC1F /* ImmutableModel.m */,
+				A100A53A1B58F6DB005814CB /* ImmutableModel2.h */,
+				A100A53B1B58F6DB005814CB /* ImmutableModel2.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -641,7 +672,7 @@
 			name = JSONModelDemoTests;
 			productName = JSONModelDemoTests;
 			productReference = 9C05B2A8168CE9600054215E /* JSONModelDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		9CC27C8C1689B7BE008B5411 /* JSONModelDemo_OSX */ = {
 			isa = PBXNativeTarget;
@@ -697,8 +728,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B75A1F1B5639FF0007FC1F /* optionalPropMissing.json in Resources */,
 				9C6C35E0181CF7B500BEE72D /* nestedDataWithDictionaryError.json in Resources */,
 				9C05B443168CEB220054215E /* colors.json in Resources */,
+				A1B75A1D1B5637280007FC1F /* allPropsPresent.json in Resources */,
 				9C05B444168CEB220054215E /* converts.json in Resources */,
 				9C05B445168CEB220054215E /* github-iphone.json in Resources */,
 				9C6C35DF181CF7B500BEE72D /* nestedDataWithArrayError.json in Resources */,
@@ -711,6 +744,8 @@
 				D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */,
 				9C6C35E1181CF7B500BEE72D /* nestedDataWithTypeMismatchOnImages.json in Resources */,
 				9C05B44C168CEB220054215E /* withOptProp.json in Resources */,
+				A1B75A231B563A1F0007FC1F /* ignorePropMissing.json in Resources */,
+				A1B75A211B563A0E0007FC1F /* requiredPropMissing.json in Resources */,
 				9C05B44D168CEB220054215E /* withoutOptProp.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -748,6 +783,7 @@
 				9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */,
 				9C05B442168CEB220054215E /* CustomPropsTests.m in Sources */,
 				9C05B44E168CEB220054215E /* IdPropertyTests.m in Sources */,
+				A1B75A1B1B5634C00007FC1F /* ImmutableModel.m in Sources */,
 				9C05B44F168CEB220054215E /* JSONTypesModelWithValidation1.m in Sources */,
 				9C05B450168CEB220054215E /* JSONTypesModelWithValidation2.m in Sources */,
 				9C05B451168CEB220054215E /* JSONTypesReadTests.m in Sources */,
@@ -757,6 +793,7 @@
 				9C05B455168CEB220054215E /* OptionalPropertiesTests.m in Sources */,
 				9C05B456168CEB220054215E /* PersistTests.m in Sources */,
 				9C05B457168CEB220054215E /* PrimitiveTypesReadTests.m in Sources */,
+				A1B75A251B563B830007FC1F /* ReadonlyPropertyWriteTests.m in Sources */,
 				9C05B458168CEB220054215E /* SimpleDataErrorTests.m in Sources */,
 				1C008FE518B7AE54002DFD3A /* ModelForUpperCaseMapper.m in Sources */,
 				9C05B459168CEB220054215E /* BuiltInConversionsModel.m in Sources */,
@@ -783,6 +820,7 @@
 				9C66E003168CF09A0015CCDF /* JSONHTTPClient.m in Sources */,
 				9C66E005168CF09A0015CCDF /* JSONModel+networking.m in Sources */,
 				9C66E007168CF09A0015CCDF /* JSONKeyMapper.m in Sources */,
+				A100A53C1B58F6DB005814CB /* ImmutableModel2.m in Sources */,
 				9CCAFD941901B7F500314886 /* SpecialPropertiesTests.m in Sources */,
 				9C66E009168CF09A0015CCDF /* JSONValueTransformer.m in Sources */,
 				D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */,
@@ -792,6 +830,7 @@
 				9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */,
 				9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */,
 				9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */,
+				A1B75A171B56341D0007FC1F /* ReadonlyPropertyReadTests.m in Sources */,
 				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
 				9C08C1AF1749750100AA8CC9 /* CopyrightModel.m in Sources */,
 				9CFDD0A4176E9742007B7DFA /* EnumModel.m in Sources */,
