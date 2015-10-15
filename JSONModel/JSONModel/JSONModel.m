@@ -1270,6 +1270,60 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return NO;
 }
 
+#pragma mark - Swift support
+
+//private methods
++(void)addProtocolName:(NSString *)protocolName withClass:(__unsafe_unretained Class)cls withPropertyName:(NSString *)propertyName {
+    const char *protocol_name = [protocolName cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *property_name = [propertyName cStringUsingEncoding:NSUTF8StringEncoding];
+    
+    objc_property_t prop = class_getProperty(cls, property_name);
+    if (prop == NULL) {
+        NSLog(@"Class '%s' doesn't have property '%s'.", class_getName(cls), property_name);
+        return;
+    }
+    
+    if (protocol_name == NULL || strlen(protocol_name) == 0) {
+        return;
+    }
+    
+    unsigned int count = 0;
+    objc_property_attribute_t *attrs = property_copyAttributeList(prop, &count);
+    
+    for (int i = 0; i < count; i++) {
+        objc_property_attribute_t *attr = attrs + i;
+        if (strcmp(attr->name, "T") == 0) {
+            NSScanner *scanner = [NSScanner scannerWithString: @(attr->value)];
+            
+            NSString *propertyType = nil;
+            //check if the property is an instance of a class
+            if ([scanner scanString:@"@\"" intoString: &propertyType]) {
+                
+                [scanner scanUpToCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\"<"]
+                                        intoString:&propertyType];
+            }
+            
+            NSString *newType = [NSString stringWithFormat:@"@\"%@<%s>\"", propertyType, protocol_name];
+            attr->value = [newType cStringUsingEncoding:NSUTF8StringEncoding];
+        }
+    }
+    
+    class_replaceProperty(cls, property_name, attrs, count);
+    free(attrs);
+}
+
++(void)bindProtocols:(NSDictionary *)protocols withClass:(__unsafe_unretained Class)cls {
+    for (NSString *key in protocols.allKeys) {
+        NSString *value = protocols[key];
+        if (![value isKindOfClass:[NSString class]]) {
+            Class aClass = [value class];
+            value = NSStringFromClass(aClass);
+        }
+        
+        [self addProtocolName:value withClass:cls withPropertyName:key];
+    }
+}
+
 #pragma mark - working with incomplete models
 -(void)mergeFromDictionary:(NSDictionary*)dict useKeyMapping:(BOOL)useKeyMapping
 {

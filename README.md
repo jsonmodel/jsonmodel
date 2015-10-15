@@ -498,6 +498,43 @@ NSString* string = [pm toJSONString];
 
 ```
 
+#### Explicit Binding Protocols (works on Xcode7 or above)
+
+```objective-c
+@interface ProductModel : JSONModel
+@property (strong, nonatomic) NSString *name;
+@property (assign, nonatomic) NSInteger price;
+@end
+
+// products property is regarded as '[ProductModel]!' type in Swift2
+@interface OrderModel : JSONModel
+@property (strong, nonatomic) NSArray<ProductModel*> *products;// NOT 'NSArray<ProductModel>'.
+@end
+
+@implementation OrderModel
+
++(void)initialize {
+	[JSONModel bindProtocols:@{@"products", [ProductModel class]} withClass:self];
+}
+
+@end
+```
+
+```swift
+class ProductModel : JSONModel {
+	var name = ""
+	var price = 0
+}
+
+class OrderModel : JSONModel {
+	var products : [ProductModel]? = nil
+
+    override static func initialize() {
+    	JSONModel.bindProtocols(["products": ProductModel.self], withClass:self)
+    }
+}
+```
+
 * json validation
 * error handling
 * custom data validation
