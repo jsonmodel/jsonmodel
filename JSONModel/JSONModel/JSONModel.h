@@ -324,6 +324,20 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 +(BOOL)propertyIsIgnored:(NSString*)propertyName;
 
 /**
+ * Indicates the protocol name for an array property.
+ * Rather than using:
+ *     @property (strong) NSArray<MyType>* things;
+ * You can implement protocolForArrayProperty: and keep your property 
+ * defined like:
+ *     @property (strong) NSArray* things;
+ * @param propertyName the name of the property
+ * @return an NSString result indicating the name of the protocol/class
+ * that should be contained in this array property. Return nil to indicate
+ * no contained protocol.
+ */
++(NSString*)protocolForArrayProperty:(NSString *)propertyName;
+
+/**
  * Merges values from the given dictionary into the model instance.
  * @param dict dictionary with values
  * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO 

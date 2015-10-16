@@ -676,6 +676,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if([[self class] propertyIsIgnored:nsPropertyName]){
                 p = nil;
             }
+
+            NSString* customProtocol = [[self class] protocolForArrayProperty:nsPropertyName];
+            if (customProtocol) {
+                p.protocol = customProtocol;
+            }
             
             //few cases where JSONModel will ignore properties automatically
             if ([propertyType isEqualToString:@"Block"]) {
@@ -1268,6 +1273,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
     return NO;
+}
+
++(NSString*)protocolForArrayProperty:(NSString *)propertyName
+{
+    return nil;
 }
 
 #pragma mark - working with incomplete models

@@ -11,3 +11,16 @@
 @implementation ReposModel
 
 @end
+
+
+@implementation ReposProtocolArrayModel
+
++(NSString*)protocolForArrayProperty:(NSString *)propertyName
+{
+    if ([propertyName isEqualToString:@"repositories"]) {
+        return NSStringFromClass(GitHubRepoModel.class);
+    }
+    return nil;
+}
+
+@end
