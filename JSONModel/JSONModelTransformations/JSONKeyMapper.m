@@ -70,27 +70,39 @@
     return self;
 }
 
--(instancetype)initWithDictionary:(NSDictionary*)map
+-(instancetype)initWithDictionary:(NSDictionary *)map
 {
     self = [super init];
     if (self) {
-        //initialize
-
-        NSMutableDictionary* userToModelMap = [NSMutableDictionary dictionaryWithDictionary: map];
-        NSMutableDictionary* userToJSONMap  = [NSMutableDictionary dictionaryWithObjects:map.allKeys forKeys:map.allValues];
         
-        _JSONToModelKeyBlock = ^NSString*(NSString* keyName) {
-            NSString* result = [userToModelMap valueForKeyPath: keyName];
-            return result?result:keyName;
+        NSDictionary *userToModelMap = [map copy];
+        NSDictionary *userToJSONMap  = [self swapKeysAndValuesInDictionary:map];
+        
+        _JSONToModelKeyBlock = ^NSString *(NSString *keyName) {
+            NSString *result = [userToModelMap valueForKeyPath:keyName];
+            return result ? result : keyName;
         };
         
-        _modelToJSONKeyBlock = ^NSString*(NSString* keyName) {
-            NSString* result = [userToJSONMap valueForKeyPath: keyName];
-            return result?result:keyName;
+        _modelToJSONKeyBlock = ^NSString *(NSString *keyName) {
+            NSString *result = [userToJSONMap valueForKeyPath:keyName];
+            return result ? result : keyName;
         };
     }
     
     return self;
+}
+
+- (NSDictionary *)swapKeysAndValuesInDictionary:(NSDictionary *)dictionary
+{
+    NSMutableDictionary *swapped = [NSMutableDictionary new];
+    
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        NSAssert([value isKindOfClass:[NSString class]], @"Expect keys and values to be NSString");
+        NSAssert([key isKindOfClass:[NSString class]], @"Expect keys and values to be NSString");
+        swapped[value] = key;
+    }];
+    
+    return swapped;
 }
 
 -(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing
