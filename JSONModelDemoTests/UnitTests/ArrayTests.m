@@ -13,6 +13,7 @@
 @implementation ArrayTests
 {
     ReposModel* repos;
+    ReposProtocolArrayModel* reposProtocolArray;
 }
 
 -(void)setUp
@@ -28,6 +29,9 @@
     repos = [[ReposModel alloc] initWithString:jsonContents error:&err];
     XCTAssertNil(err, @"%@", [err localizedDescription]);
     
+    reposProtocolArray = [[ReposProtocolArrayModel alloc] initWithString:jsonContents error:&err];
+    XCTAssertNil(err, @"%@", [err localizedDescription]);
+    
     XCTAssertNotNil(repos, @"Could not load the test data file.");
 
 }
@@ -36,11 +40,15 @@
 {
     XCTAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
     XCTAssertEqualObjects([[repos.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
+    
+    XCTAssertTrue([reposProtocolArray.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
+    XCTAssertEqualObjects([[reposProtocolArray.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
 }
 
 -(void)testCount
 {
     XCTAssertEqualObjects(@(repos.repositories.count), @100, @"wrong count");
+    XCTAssertEqualObjects(@(reposProtocolArray.repositories.count), @100, @"wrong count");
 }
 
 -(void)testFastEnumeration
@@ -48,6 +56,10 @@
 	for (GitHubRepoModel *m in repos.repositories) {
 		XCTAssertNoThrow([m created], @"should not throw exception");
 	}
+    
+    for (GitHubRepoModel *m in reposProtocolArray.repositories) {
+        XCTAssertNoThrow([m created], @"should not throw exception");
+    }
 }
 
 -(void)testReadArray
@@ -65,6 +77,7 @@
 -(void)testFirstObject
 {
     XCTAssertEqualObjects([[repos.repositories.firstObject class] description], @"GitHubRepoModel", @"wrong class");
+    XCTAssertEqualObjects([[reposProtocolArray.repositories.firstObject class] description], @"GitHubRepoModel", @"wrong class");
 }
 
 /*
@@ -74,6 +87,9 @@
 {
     NSDictionary* dict = [repos toDictionary];
     XCTAssertNotNil(dict, @"Could not convert ReposModel back to an NSDictionary");
+    
+    NSDictionary* dict2 = [reposProtocolArray toDictionary];
+    XCTAssertNotNil(dict2, @"Could not convert ReposProtocolArrayModel back to an NSDictionary");
 }
 
 /*
@@ -83,6 +99,9 @@
 {
     NSString* string = [repos toJSONString];
     XCTAssertNotNil(string, @"Could not convert ReposModel back to a string");
+    
+    NSString* string2 = [reposProtocolArray toJSONString];
+    XCTAssertNotNil(string2, @"Could not convert ReposProtocolArrayModel back to a string");
 }
 
 @end
