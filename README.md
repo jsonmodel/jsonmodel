@@ -498,6 +498,32 @@ NSString* string = [pm toJSONString];
 
 ```
 
+#### Custom handling for specific properties
+
+```objective-c
+
+@interface ProductModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString* name;
+@property (assign, nonatomic) float price;
+@property (strong, nonatomic) NSLocale *locale;
+@end
+
+@implementation ProductModel
+
+// Convert and assign the locale property
+- (void)setLocaleWithNSString:(NSString*)string {
+    self.locale = [NSLocale localeWithLocaleIdentifier:string];
+}
+
+- (NSString *)JSONObjectForLocale {
+    return self.locale.localeIdentifier;
+}
+
+@end
+
+```
+
 * json validation
 * error handling
 * custom data validation
