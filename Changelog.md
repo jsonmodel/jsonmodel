@@ -1,7 +1,15 @@
 Change-log
 ==========
 
-**Version 1.2** @ 2015-01-21
+**Version 1.1.2** @2015-10-19
+
+Merging more requests re: iOS9
+
+**Version 1.1** @2015-05
+
+Merging more requests
+
+**Version 1.0.2** @ 2015-01-21
 
 - merged a number of pull requests that fix compatibility with iOS 8 and other issues
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>--project-name</key>
-	<string>JSONModel 1.1</string>
+	<string>JSONModel 1.1.2</string>
 	<key>--print-settings</key>
 	<true/>
 	<key>--project-company</key>

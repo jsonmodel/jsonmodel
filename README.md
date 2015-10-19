@@ -1,6 +1,6 @@
 ## Magical Data Modelling Framework for JSON
 
-### Version 1.1
+### Version 1.1.2
 
 #####NB: Swift works in a different way under the hood than Objective-C. Therefore I can't find a way to re-create JSONModel in Swift. JSONModel in Objective-C works in Swift apps through CocoaPods or as an imported Objective-C library.
 

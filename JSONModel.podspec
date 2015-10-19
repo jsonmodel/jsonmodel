@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name         = "JSONModel"
-  s.version      = "1.1"
+  s.version      = "1.1.2"
   s.summary      = "Magical Data Modelling Framework for JSON. Create rapidly powerful, atomic and smart data model classes."
   s.homepage     = "http://www.jsonmodel.com"
 
   s.license      = { :type => 'MIT', :file => 'LICENSE_jsonmodel.txt' }
   s.author       = { "Marin Todorov" => "touch-code-magazine@underplot.com" }
 
-  s.source       = { :git => "https://github.com/icanzilb/JSONModel.git", :tag => "1.1" }
+  s.source       = { :git => "https://github.com/icanzilb/JSONModel.git", :tag => "1.1.2" }
 
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
