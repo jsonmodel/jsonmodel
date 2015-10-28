@@ -306,6 +306,15 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 +(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper;
 
 /**
+ * <u><b>For supporting Swift typed arrays</b></u><br/>
+ * Determines what is the type of each array.
+ * The typed array's class should inherit from JSONModel.
+ * This method returns by default an empty dictionary if not overridden.
+ * @return a dictionary indicating the array property name as key and the proper class as value
+ */
++(NSDictionary *)typedArrays;
+
+/**
  * Indicates whether the property with the given name is Optional.
  * To have a model with all of its properties being Optional just return YES.
  * This method returns by default NO, since the default behaviour is to have all properties required.
