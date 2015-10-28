@@ -416,6 +416,26 @@ static JSONKeyMapper* globalKeyMapper = nil;
                         jsonValue = [jsonValue mutableCopy];
                     }
                     
+                    //dive into the array and deserialize its objects, should work in case they're subclassing from JSONModel
+                    if ([jsonValue isKindOfClass:[NSArray class]]) {
+                        NSDictionary *typedArrays = [[self class] typedArrays];
+                        if (typedArrays.count) {
+                            Class propertyClass = typedArrays[property.name];
+                            if ([propertyClass isSubclassOfClass:[JSONModel class]]) {
+                                NSMutableArray *jsonArr = [NSMutableArray new];
+                                for (NSObject *obj in jsonValue) {
+                                    if ([obj isKindOfClass:[NSDictionary class]]) {
+                                        [jsonArr addObject:[[propertyClass alloc] initWithDictionary:(NSDictionary *)obj error:nil]];
+                                    }
+                                }
+
+                                if (jsonArr.count > 0) {
+                                    jsonValue = jsonArr;
+                                }
+                            }
+                        }
+                    }
+
                     //set the property value
                     if (![jsonValue isEqual:[self valueForKey:property.name]]) {
                         [self setValue:jsonValue forKey: property.name];
@@ -1252,6 +1272,12 @@ static JSONKeyMapper* globalKeyMapper = nil;
     
     [text appendFormat:@"</%@>", [self class]];
     return text;
+}
+
+#pragma mark - Swift array support
++(NSDictionary *)typedArrays
+{
+    return [NSDictionary new];
 }
 
 #pragma mark - key mapping
