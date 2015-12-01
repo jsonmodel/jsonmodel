@@ -15,10 +15,12 @@
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONKeyMapper.h"
+#import <libkern/OSAtomic.h>
 
 @interface JSONKeyMapper()
 @property (nonatomic, strong) NSMutableDictionary *toModelMap;
 @property (nonatomic, strong) NSMutableDictionary *toJSONMap;
+@property (nonatomic, assign) OSSpinLock lock;
 @end
 
 @implementation JSONKeyMapper
@@ -40,30 +42,48 @@
     self = [self init];
     
     if (self) {
-        __weak JSONKeyMapper *myself = self;
-        //the json to model convertion block
-        _JSONToModelKeyBlock = ^NSString*(NSString* keyName) {
+        
+        __weak JSONKeyMapper* weakSelf = self;
+        
+        _JSONToModelKeyBlock = [^NSString* (NSString* keyName) {
+            
+            __strong JSONKeyMapper* strongSelf = weakSelf;
 
             //try to return cached transformed key
-            if (myself.toModelMap[keyName]) return myself.toModelMap[keyName];
+            if (strongSelf.toModelMap[keyName]) {
+                return strongSelf.toModelMap[keyName];
+            }
             
             //try to convert the key, and store in the cache
             NSString* result = toModel(keyName);
-            myself.toModelMap[keyName] = result;
+            
+            OSSpinLockLock(&strongSelf->_lock);
+            strongSelf.toModelMap[keyName] = result;
+            OSSpinLockUnlock(&strongSelf->_lock);
+            
             return result;
-        };
+            
+        } copy];
         
-        _modelToJSONKeyBlock = ^NSString*(NSString* keyName) {
+        _modelToJSONKeyBlock = [^NSString* (NSString* keyName) {
+            
+            __strong JSONKeyMapper *strongSelf = weakSelf;
             
             //try to return cached transformed key
-            if (myself.toJSONMap[keyName]) return myself.toJSONMap[keyName];
+            if (strongSelf.toJSONMap[keyName]) {
+                return strongSelf.toJSONMap[keyName];
+            }
             
             //try to convert the key, and store in the cache
             NSString* result = toJSON(keyName);
-            myself.toJSONMap[keyName] = result;
+            
+            OSSpinLockLock(&strongSelf->_lock);
+            strongSelf.toJSONMap[keyName] = result;
+            OSSpinLockUnlock(&strongSelf->_lock);
+            
             return result;
             
-        };
+        } copy];
         
     }
     
