@@ -22,7 +22,6 @@ enum kCustomizationTypes {
     kNo
     };
 
-typedef enum kCustomizationTypes PropertySetterType;
 typedef enum kCustomizationTypes PropertyGetterType;
 
 /**
@@ -68,10 +67,7 @@ typedef enum kCustomizationTypes PropertyGetterType;
 /** a custom getter for this property, found in the owning model */
 @property (assign, nonatomic) SEL customGetter;
 
-/** The status of property setter introspection in a model */
-@property (assign, nonatomic) PropertySetterType setterType;
-
-/** a custom setter for this property, found in the owning model */
-@property (assign, nonatomic) SEL customSetter;
+/** custom setters for this property, found in the owning model */
+@property (strong, nonatomic) NSMutableDictionary<NSString *, id> *customSetters;
 
 @end
