@@ -837,31 +837,34 @@ static JSONKeyMapper* globalKeyMapper = nil;
 #pragma mark - custom transformations
 -(BOOL)__customSetValue:(id<NSObject>)value forProperty:(JSONModelClassProperty*)property
 {
-    if (property.setterType == kNotInspected) {
+    if (!property.customSetters)
+        property.customSetters = [NSMutableDictionary new];
+
+    NSString *className = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:[value class]]);
+
+    if (!property.customSetters[className]) {
         //check for a custom property setter method
         NSString* ucfirstName = [property.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
                                                                        withString:[[property.name substringToIndex:1] uppercaseString]];
-        NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName,
-                                  [JSONValueTransformer classByResolvingClusterClasses:[value class]]
-                                  ];
+        NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName, className];
 
         SEL customPropertySetter = NSSelectorFromString(selectorName);
         
         //check if there's a custom selector like this
         if (![self respondsToSelector: customPropertySetter]) {
-            property.setterType = kNo;
+            property.customSetters[className] = [NSNull null];
             return NO;
         }
         
         //cache the custom setter selector
-        property.setterType = kCustom;
-        property.customSetter = customPropertySetter;
+        property.customSetters[className] = selectorName;
     }
     
-    if (property.setterType==kCustom) {
+    if (property.customSetters[className] != [NSNull null]) {
         //call the custom setter
         //https://github.com/steipete
-        ((void (*) (id, SEL, id))objc_msgSend)(self, property.customSetter, value);
+        SEL selector = NSSelectorFromString(property.customSetters[className]);
+        ((void (*) (id, SEL, id))objc_msgSend)(self, selector, value);
         return YES;
     }
     
