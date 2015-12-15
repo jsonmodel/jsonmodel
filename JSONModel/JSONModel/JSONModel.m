@@ -1094,12 +1094,17 @@ static JSONKeyMapper* globalKeyMapper = nil;
 	return [self arrayOfModelsFromDictionaries:array error:nil];
 }
 
-+(NSMutableArray*)arrayOfModelsFromData:(NSData *)data error:(NSError *__autoreleasing *)err
++ (NSMutableArray *)arrayOfModelsFromData:(NSData *)data error:(NSError **)err
 {
     id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:err];
     if (!json || ![json isKindOfClass:[NSArray class]]) return nil;
     
     return [self arrayOfModelsFromDictionaries:json error:err];
+}
+
++ (NSMutableArray *)arrayOfModelsFromString:(NSString *)string error:(NSError **)err
+{
+    return [self arrayOfModelsFromData:[string dataUsingEncoding:NSUTF8StringEncoding] error:err];
 }
 
 // Same as above, but with error reporting

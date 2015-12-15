@@ -228,10 +228,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @see arrayOfDictionariesFromModels:
    */
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array __attribute__((deprecated("use arrayOfModelsFromDictionaries:error:")));
-
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err;
-
   +(NSMutableArray*)arrayOfModelsFromData:(NSData*)data error:(NSError**)err;
+  +(NSMutableArray*)arrayOfModelsFromString:(NSString*)string error:(NSError**)err;
 
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
