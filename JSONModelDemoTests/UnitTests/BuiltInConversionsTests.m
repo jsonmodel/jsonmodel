@@ -65,6 +65,9 @@
     //https://github.com/icanzilb/JSONModel/pull/60
     XCTAssertNotNil(b.websiteURL, @"URL parsing did return nil");
     XCTAssertNotNil(b.websiteURL.query, @"key1=test");
+
+    // see: https://github.com/icanzilb/JSONModel/pull/119
+    XCTAssertEqualObjects(b.websiteURL.absoluteString, @"http://www.visir.is/jordan-slaer-milljard-af-villunni-sinni/article/2013130709873?key1=test&q=search%20terms");
     
     XCTAssertNotNil(b.timeZone, @"Time zone parsing did return nil");
     XCTAssertEqualObjects([b.timeZone name], @"PST", @"Time zone is not PST");

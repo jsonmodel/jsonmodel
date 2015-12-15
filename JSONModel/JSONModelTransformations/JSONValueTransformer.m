@@ -200,6 +200,8 @@ extern BOOL isNull(id value)
 #pragma mark - string <-> url
 -(NSURL*)NSURLFromNSString:(NSString*)string
 {
+    // do not change this behavior - there are other ways of overriding it
+    // see: https://github.com/icanzilb/JSONModel/pull/119
     return [NSURL URLWithString:string];
 }
 
