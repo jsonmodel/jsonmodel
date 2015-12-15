@@ -227,7 +227,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromModels:
    */
-  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array;
+  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array __attribute__((deprecated("use arrayOfModelsFromDictionaries:error:")));
 
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err;
 
