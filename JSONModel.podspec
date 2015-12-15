@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/icanzilb/JSONModel.git", :tag => "1.1.2" }
 
-  s.ios.deployment_target = '5.0'
+  s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.7'
   s.watchos.deployment_target = '2.0'
 
