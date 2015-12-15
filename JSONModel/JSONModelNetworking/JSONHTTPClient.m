@@ -310,8 +310,10 @@ static NSString* requestContentType = nil;
         }
         //step 4.5: cover an edge case in which meaningful content is return along an error HTTP status code
         else if (error && responseData && jsonObject==nil) {
-            //try to get the JSON object, while preserving the origianl error object
+            //try to get the JSON object, while preserving the original error object
             jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
+            //keep responseData just in case it contains error information
+            error.responseData = responseData;
         }
         
         //step 5: invoke the complete block
