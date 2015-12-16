@@ -92,4 +92,11 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 +(instancetype)mapperFromUnderscoreCaseToCamelCase;
 
 +(instancetype)mapperFromUpperCaseToLowerCase;
+
+/**
+ * Creates a JSONKeyMapper based on a built-in JSONKeyMapper, with specific exceptions.
+ * Use the original JSON key names as keys, and your JSONModel property names as values.
+ */
++ (instancetype)mapper:(JSONKeyMapper *)baseKeyMapper withExceptions:(NSDictionary *)exceptions;
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AE9CA931C21F50C00B8F5C1 /* RenamedPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE9CA921C21F50C00B8F5C1 /* RenamedPropertyModel.m */; };
 		1C008FE518B7AE54002DFD3A /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */; };
 		9C05B43F168CEB220054215E /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F7168CEB220054215E /* ArrayTests.m */; };
 		9C05B440168CEB220054215E /* BuiltInConversionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B3F9168CEB220054215E /* BuiltInConversionsTests.m */; };
@@ -115,6 +116,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AE9CA911C21F50C00B8F5C1 /* RenamedPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenamedPropertyModel.h; sourceTree = "<group>"; };
+		1AE9CA921C21F50C00B8F5C1 /* RenamedPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenamedPropertyModel.m; sourceTree = "<group>"; };
 		1C008FE318B7AE54002DFD3A /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
 		1C008FE418B7AE54002DFD3A /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
 		9C05B2A8168CE9600054215E /* JSONModelDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONModelDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -423,6 +426,8 @@
 				D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */,
 				9C735D6B170B7A2D00FF96F5 /* RpcRequestModel.h */,
 				9C735D6C170B7A2D00FF96F5 /* RpcRequestModel.m */,
+				1AE9CA911C21F50C00B8F5C1 /* RenamedPropertyModel.h */,
+				1AE9CA921C21F50C00B8F5C1 /* RenamedPropertyModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -793,6 +798,7 @@
 				9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */,
 				9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */,
 				9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */,
+				1AE9CA931C21F50C00B8F5C1 /* RenamedPropertyModel.m in Sources */,
 				9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */,
 				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
 				9C08C1AF1749750100AA8CC9 /* CopyrightModel.m in Sources */,

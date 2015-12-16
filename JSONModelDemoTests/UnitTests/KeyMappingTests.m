@@ -12,7 +12,7 @@
 #import "GitHubKeyMapRepoModelDict.h"
 #import "GitHubRepoModelForUSMapper.h"
 #import "ModelForUpperCaseMapper.h"
-
+#import "RenamedPropertyModel.h"
 
 #pragma mark - TestModel class
 @interface TestModel: JSONModel
@@ -285,6 +285,24 @@
     XCTAssertTrue([toString rangeOfString:@"text3\":\"Marin"].location!=NSNotFound, @"model did not export text3 in string");
     
     [JSONModel setGlobalKeyMapper:nil];
+}
+
+- (void)testExceptionsMapper
+{
+    NSString *jsonString = @"{\"ID\":\"12345\",\"NAME\":\"TEST\"}";
+    RenamedPropertyModel *m = [[RenamedPropertyModel alloc] initWithString:jsonString error:nil];
+    XCTAssertNotNil(m, @"Could not initialize model from string");
+
+    // import
+    XCTAssertEqualObjects(m.identifier, @"12345", @"identifier does not equal '12345'");
+    XCTAssertEqualObjects(m.name, @"TEST", @"name does not equal 'TEST'");
+
+    // export
+    NSDictionary *dict = [m toDictionary];
+    XCTAssertNotNil(dict, @"toDictionary failed");
+
+    XCTAssertEqualObjects(dict[@"ID"], m.identifier, @"ID does not equal '12345'");
+    XCTAssertEqualObjects(dict[@"NAME"], m.name, @"NAME does not equal 'TEST'");
 }
 
 @end

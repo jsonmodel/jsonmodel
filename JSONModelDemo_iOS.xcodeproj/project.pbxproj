@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AE9CA901C21F47600B8F5C1 /* RenamedPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE9CA8F1C21F47600B8F5C1 /* RenamedPropertyModel.m */; };
 		358FD078D3C0D56C77ACD770 /* ExtremeNestingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDBE28A19497358D1A6DA /* ExtremeNestingModel.m */; };
 		358FD179E0B41C47C67713B5 /* InteractionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDCB3CFE05DBA0DE27E5F /* InteractionModel.m */; };
 		358FD61804BD21F41035348E /* ExtremeNestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 358FDBA42551FF88466BD5C3 /* ExtremeNestingTests.m */; };
@@ -156,6 +157,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AE9CA8E1C21F47600B8F5C1 /* RenamedPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenamedPropertyModel.h; sourceTree = "<group>"; };
+		1AE9CA8F1C21F47600B8F5C1 /* RenamedPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenamedPropertyModel.m; sourceTree = "<group>"; };
 		358FD25356988AC33EA6A935 /* DrugModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugModel.m; sourceTree = "<group>"; };
 		358FD7AD55FD213CBAAB460F /* ExtremeNestingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeNestingModel.h; sourceTree = "<group>"; };
 		358FD807C3E86F5DC4058645 /* ExtremeNestingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeNestingTests.h; sourceTree = "<group>"; };
@@ -778,6 +781,8 @@
 				358FDA6A1D0805B6ABE4720D /* DrugModel.h */,
 				358FDCB3CFE05DBA0DE27E5F /* InteractionModel.m */,
 				358FDED5E028AA00D3E6564D /* InteractionModel.h */,
+				1AE9CA8E1C21F47600B8F5C1 /* RenamedPropertyModel.h */,
+				1AE9CA8F1C21F47600B8F5C1 /* RenamedPropertyModel.m */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -929,6 +934,7 @@
 				9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */,
 				9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */,
 				9C0D0240166E6BBF001EA645 /* KivaViewControllerNetworking.m in Sources */,
+				1AE9CA901C21F47600B8F5C1 /* RenamedPropertyModel.m in Sources */,
 				9C55AF0E18903300004EBD8A /* ReposModel.m in Sources */,
 				9C66E024168CF0AA0015CCDF /* JSONModel.m in Sources */,
 				9C66E026168CF0AA0015CCDF /* JSONModelArray.m in Sources */,
