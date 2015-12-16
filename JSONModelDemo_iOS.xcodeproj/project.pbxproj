@@ -532,7 +532,10 @@
 				9CBBBEDB166B6CF0008B4326 /* Frameworks */,
 				9CBBBED9166B6CF0008B4326 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		9CBBBED9166B6CF0008B4326 /* Products */ = {
 			isa = PBXGroup;

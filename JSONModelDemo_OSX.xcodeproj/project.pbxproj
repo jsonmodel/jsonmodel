@@ -518,7 +518,10 @@
 				9CC27C901689B7BE008B5411 /* Frameworks */,
 				9CC27C8E1689B7BE008B5411 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		9CC27C8E1689B7BE008B5411 /* Products */ = {
 			isa = PBXGroup;

@@ -78,7 +78,10 @@
 				92C9BC401B19A51100D79B06 /* Supporting Files */,
 				92C9BC3E1B19A51100D79B06 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		92C9BC3E1B19A51100D79B06 /* Products */ = {
 			isa = PBXGroup;
