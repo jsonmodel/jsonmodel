@@ -182,6 +182,7 @@ enum kServices {
                                       
                                       videos = [VideoModel arrayOfModelsFromDictionaries:
                                                 json[@"feed"][@"entry"]
+                                                error:nil
                                                 ];
                                       [table reloadData];
                                       if (e) {
