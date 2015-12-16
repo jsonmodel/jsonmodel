@@ -142,6 +142,7 @@
 		9CFDD0D9176E977C007B7DFA /* ReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C5176E977C007B7DFA /* ReposModel.m */; };
 		9CFDD0DA176E977C007B7DFA /* RpcRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */; };
 		9CFDD0DB176E977C007B7DFA /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */; };
+		D2552E2B1B0E33F700B29ADF /* RenamedPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2552E2A1B0E33F700B29ADF /* RenamedPropertyModel.m */; };
 		D66F5792A312B021F52F7BFF /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */; };
 /* End PBXBuildFile section */
 
@@ -339,6 +340,8 @@
 		9CFDD0C7176E977C007B7DFA /* RpcRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcRequestModel.m; sourceTree = "<group>"; };
 		9CFDD0C8176E977C007B7DFA /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		9CFDD0C9176E977C007B7DFA /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
+		D2552E291B0E33F700B29ADF /* RenamedPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenamedPropertyModel.h; sourceTree = "<group>"; };
+		D2552E2A1B0E33F700B29ADF /* RenamedPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenamedPropertyModel.m; sourceTree = "<group>"; };
 		D66F555A1EB344B7A5FF0D85 /* ModelForUpperCaseMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelForUpperCaseMapper.h; sourceTree = "<group>"; };
 		D66F58FBC6313C65C9357A2F /* ModelForUpperCaseMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelForUpperCaseMapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -764,6 +767,8 @@
 				9CFDD0C1176E977C007B7DFA /* PostsModel.m */,
 				9CFDD0C2176E977C007B7DFA /* PrimitivesModel.h */,
 				9CFDD0C3176E977C007B7DFA /* PrimitivesModel.m */,
+				D2552E291B0E33F700B29ADF /* RenamedPropertyModel.h */,
+				D2552E2A1B0E33F700B29ADF /* RenamedPropertyModel.m */,
 				9CFDD0C4176E977C007B7DFA /* ReposModel.h */,
 				9CFDD0C5176E977C007B7DFA /* ReposModel.m */,
 				9CFDD0C6176E977C007B7DFA /* RpcRequestModel.h */,
@@ -991,6 +996,7 @@
 				9CFDD0CF176E977C007B7DFA /* GitHubKeyMapRepoModelDict.m in Sources */,
 				9CFDD0D0176E977C007B7DFA /* GitHubRepoModel.m in Sources */,
 				9CFDD0D1176E977C007B7DFA /* GitHubRepoModelForUSMapper.m in Sources */,
+				D2552E2B1B0E33F700B29ADF /* RenamedPropertyModel.m in Sources */,
 				9CFDD0D2176E977C007B7DFA /* ImageModel.m in Sources */,
 				9CFDD0D3176E977C007B7DFA /* JSONTypesModel.m in Sources */,
 				9CFDD0D4176E977C007B7DFA /* NestedModel.m in Sources */,

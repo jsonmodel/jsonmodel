@@ -108,6 +108,7 @@
 		9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD42588170222AF00A42AA1 /* MockNSURLConnection.m */; };
 		9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */; };
 		9CFDD0A4176E9742007B7DFA /* EnumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A3176E9742007B7DFA /* EnumModel.m */; };
+		D2552E2E1B0E340300B29ADF /* RenamedPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2552E2D1B0E340300B29ADF /* RenamedPropertyModel.m */; };
 		D5F918E5172AD99600AC2C8E /* specialPropertyName.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */; };
 		D5F918EB172ADA3F00AC2C8E /* SpecialPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */; };
 		D5F918EE172ADAF900AC2C8E /* SpecialPropertyNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F918ED172ADAF800AC2C8E /* SpecialPropertyNameTests.m */; };
@@ -264,6 +265,8 @@
 		9CD4258A170222AF00A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTTestSemaphor.m; path = JSONModelDemoTests/MTTestSemaphor.m; sourceTree = SOURCE_ROOT; };
 		9CFDD0A2176E9742007B7DFA /* EnumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumModel.h; sourceTree = "<group>"; };
 		9CFDD0A3176E9742007B7DFA /* EnumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumModel.m; sourceTree = "<group>"; };
+		D2552E2C1B0E340300B29ADF /* RenamedPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenamedPropertyModel.h; sourceTree = "<group>"; };
+		D2552E2D1B0E340300B29ADF /* RenamedPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenamedPropertyModel.m; sourceTree = "<group>"; };
 		D5F918E1172AD8CF00AC2C8E /* specialPropertyName.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = specialPropertyName.json; sourceTree = "<group>"; };
 		D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPropertyModel.h; sourceTree = "<group>"; };
 		D5F918EA172ADA3F00AC2C8E /* SpecialPropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPropertyModel.m; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				9C05B438168CEB220054215E /* PostsModel.m */,
 				9C05B439168CEB220054215E /* PrimitivesModel.h */,
 				9C05B43A168CEB220054215E /* PrimitivesModel.m */,
+				D2552E2C1B0E340300B29ADF /* RenamedPropertyModel.h */,
+				D2552E2D1B0E340300B29ADF /* RenamedPropertyModel.m */,
 				9C05B43B168CEB220054215E /* ReposModel.h */,
 				9C05B43C168CEB220054215E /* ReposModel.m */,
 				D5F918E9172ADA3F00AC2C8E /* SpecialPropertyModel.h */,
@@ -793,6 +798,7 @@
 				9CD4258B170222AF00A42AA1 /* MockNSURLConnection.m in Sources */,
 				9CD4258C170222AF00A42AA1 /* MTTestSemaphor.m in Sources */,
 				9C735D67170B717F00FF96F5 /* JSONAPITests.m in Sources */,
+				D2552E2E1B0E340300B29ADF /* RenamedPropertyModel.m in Sources */,
 				9C735D6D170B7A2D00FF96F5 /* RpcRequestModel.m in Sources */,
 				9C735D73170C048C00FF96F5 /* InitFromWebTests.m in Sources */,
 				9C08C1AF1749750100AA8CC9 /* CopyrightModel.m in Sources */,

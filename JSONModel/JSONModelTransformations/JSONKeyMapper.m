@@ -203,4 +203,45 @@
 
 }
 
++ (instancetype)mapper:(JSONKeyMapper *)baseKeyMapper
+        withExceptions:(NSDictionary *)exceptions
+{
+    NSDictionary* userToModelMap = [exceptions copy];
+    NSDictionary* userToJSONMap  = [NSDictionary dictionaryWithObjects:exceptions.allKeys forKeys:exceptions.allValues];
+    
+    JSONModelKeyMapBlock JSONtoModel = ^NSString *(NSString* keyName) {
+        if ( !keyName )
+        {
+            return nil;
+        }
+        else if ( userToModelMap[keyName] )
+        {
+            return userToModelMap[keyName];
+        }
+        else
+        {
+            return baseKeyMapper.JSONToModelKeyBlock(keyName);
+        }
+    };
+    
+    JSONModelKeyMapBlock ModeltoJSON = ^NSString *(NSString* keyName) {
+        if ( !keyName )
+        {
+            return nil;
+        }
+        else if ( userToJSONMap[keyName] )
+        {
+            return userToJSONMap[keyName];
+        }
+        else
+        {
+            return baseKeyMapper.modelToJSONKeyBlock(keyName);
+        }
+    };
+    
+    return [[self alloc] initWithJSONToModelBlock:JSONtoModel
+                                 modelToJSONBlock:ModeltoJSON];
+    
+}
+
 @end
