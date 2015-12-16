@@ -1125,12 +1125,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo_iOS.app/JSONModelDemo_iOS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1140,7 +1134,6 @@
 				);
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1151,17 +1144,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JSONModelDemo_iOS.app/JSONModelDemo_iOS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";

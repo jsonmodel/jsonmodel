@@ -100,7 +100,6 @@
 @property (assign, nonatomic, readonly) int rId;
 @property (nonatomic, copy) void(^userLocationCompleted)();
 @property (strong, nonatomic) NSDictionary* dict;
-@property (strong, nonatomic) NSString* description;
 @end
 
 @implementation TopModel

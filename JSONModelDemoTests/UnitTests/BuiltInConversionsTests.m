@@ -56,8 +56,8 @@
     
     //TODO: I had to hardcode the float epsilon below, bcz actually [NSNumber floatValue] was returning a bigger deviation than FLT_EPSILON
     // IDEAS?
-    XCTAssertTrue(fabsf([b.numberFromString floatValue]-1230.99)<0.001, @"numberFromString's value is not 1230.99");
-    
+    XCTAssertEqualWithAccuracy([b.numberFromString floatValue], 1230.99, 0.001, @"numberFromString's value is not 1230.99");
+
     XCTAssertTrue([b.importantEvent isKindOfClass:[NSDate class]], @"importantEvent is not an NSDate");
     XCTAssertTrue((long)[b.importantEvent timeIntervalSince1970] == 1353916801, @"importantEvent value was not read properly");
     
