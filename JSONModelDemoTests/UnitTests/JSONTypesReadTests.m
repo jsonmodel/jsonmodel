@@ -42,7 +42,7 @@
     XCTAssertTrue([t.year intValue]==2012, @"year value is not 2012");
 
     XCTAssertTrue([t.pi isKindOfClass:[NSNumber class]], @"pi is not NSNumber object");
-    XCTAssertTrue(fabsf([t.pi floatValue]-3.14159)<FLT_EPSILON, @"pi value is not 3.14159");
+    XCTAssertEqualWithAccuracy([t.pi floatValue], 3.14159, FLT_EPSILON, @"pi value is not 3.14159");
     
     XCTAssertTrue([t.list isKindOfClass:[NSArray class]], @"list failed to read");
     XCTAssertTrue([t.list[0] isEqualToString:@"111"], @"list - first obect is not \"111\"");
