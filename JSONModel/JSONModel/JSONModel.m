@@ -1289,9 +1289,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - working with incomplete models
--(void)mergeFromDictionary:(NSDictionary*)dict useKeyMapping:(BOOL)useKeyMapping
+- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping
 {
-    [self __importDictionary:dict withKeyMapper:(useKeyMapping)? self.__keyMapper:nil validation:NO error:nil];
+    [self mergeFromDictionary:dict useKeyMapping:useKeyMapping error:nil];
+}
+
+- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping error:(NSError **)error
+{
+    [self __importDictionary:dict withKeyMapper:(useKeyMapping)? self.__keyMapper:nil validation:NO error:error];
 }
 
 #pragma mark - NSCopying, NSCoding

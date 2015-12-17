@@ -342,6 +342,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO 
  * it'll just try to match the dictionary keys to the model's properties
  */
--(void)mergeFromDictionary:(NSDictionary*)dict useKeyMapping:(BOOL)useKeyMapping;
+- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping __attribute__((deprecated("use mergeFromDictionary:useKeyMapping:error:")));
+- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping error:(NSError **)error;
 
 @end

@@ -235,7 +235,7 @@
     XCTAssertNil(global1.name, @"name got a value when nil expected");
     
     NSDictionary* data = @{@"name":@"NAME IN CAPITALS"};
-    [global1 mergeFromDictionary:data useKeyMapping:NO];
+    [global1 mergeFromDictionary:data useKeyMapping:NO error:nil];
 
     XCTAssertEqualObjects(global1.name, @"NAME IN CAPITALS", @"did not import name property");
     
@@ -245,7 +245,7 @@
                                                                               }]];
     GlobalModel* global2 = [[GlobalModel alloc] init];
     NSDictionary* data2 = @{@"name1":@"NAME IN CAPITALS"};
-    [global2 mergeFromDictionary:data2 useKeyMapping:YES];
+    [global2 mergeFromDictionary:data2 useKeyMapping:YES error:nil];
     
     XCTAssertEqualObjects(global2.name, @"NAME IN CAPITALS", @"did not import name property");
     
