@@ -1226,9 +1226,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 - (NSUInteger)hash
 {
     if (self.indexPropertyName) {
-        return [self.indexPropertyName hash];
+        id val = [self valueForKey:self.indexPropertyName];
+        if (val)
+            return [val hash];
     }
-    
+
     return [super hash];
 }
 
