@@ -1227,8 +1227,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
 {
     if (self.indexPropertyName) {
         id val = [self valueForKey:self.indexPropertyName];
-        if (val)
+
+        if (val) {
             return [val hash];
+        }
     }
 
     return [super hash];
