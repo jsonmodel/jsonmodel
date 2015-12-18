@@ -2,7 +2,7 @@
 //  JSONModelArray.h
 //
 //  @version 0.8.0
-//  @author Marin Todorov, http://www.underplot.com
+//  @author Marin Todorov (http://www.underplot.com) and contributors
 //
 
 // Copyright (c) 2012-2015 Marin Todorov, Underplot ltd.
