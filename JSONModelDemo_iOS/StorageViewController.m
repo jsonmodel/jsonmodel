@@ -11,7 +11,7 @@
 
 @interface StorageViewController ()
 {
-    IBOutlet UITextView* txtContent;
+    IBOutlet UITextField* txtContent;
     IBOutlet UILabel* lblTimes;
     
     NSString* filePath;
@@ -61,6 +61,7 @@
     
     //save to disc
     [[data toDictionary] writeToFile:filePath atomically:YES];
+    NSLog(@"%@", [data toDictionary]);
 }
 
 @end

@@ -30,7 +30,7 @@
     self.title = @"Kiva.org latest loans";
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
-    [JSONHTTPClient getJSONFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json"
+    [JSONHTTPClient getJSONFromURLWithString:@"https://api.kivaws.org/v1/loans/search.json"
                                       params:@{@"status":@"fundraising"}
                                   completion:^(NSDictionary *json, JSONModelError *err) {
                                                                             

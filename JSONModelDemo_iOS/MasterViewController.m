@@ -10,15 +10,10 @@
 
 #import "KivaViewController.h"
 #import "GitHubViewController.h"
-#import "YouTubeViewController.h"
 #import "StorageViewController.h"
 #import "KivaViewControllerNetworking.h"
 
 #import "JSONModel+networking.h"
-#import "VideoModel.h"
-
-#import <objc/runtime.h>
-#import <objc/message.h>
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -42,7 +37,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Demos";
-        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Youtube demo", @"Used for storage"]];
+        _objects = [NSMutableArray arrayWithArray:@[@"Kiva.org demo", @"GitHub demo", @"Used for storage"]];
     }
     return self;
 }
@@ -88,11 +83,6 @@
         }break;
             
         case 2:{
-            YouTubeViewController* yt  = [[YouTubeViewController alloc] initWithNibName:@"YouTubeViewController" bundle:nil];
-            [self.navigationController pushViewController:yt animated:YES];
-        }break;
-            
-        case 3:{
             StorageViewController* sc  = [[StorageViewController alloc] initWithNibName:@"StorageViewController" bundle:nil];
             [self.navigationController pushViewController:sc animated:YES];
         }break;

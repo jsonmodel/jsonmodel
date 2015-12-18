@@ -112,11 +112,6 @@
 		9CBBBF97166BAED2008B4326 /* GitHubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF95166BAED2008B4326 /* GitHubViewController.m */; };
 		9CBBBF98166BAED2008B4326 /* GitHubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBF96166BAED2008B4326 /* GitHubViewController.xib */; };
 		9CBBBF9C166BAEF5008B4326 /* GitHubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF9B166BAEF5008B4326 /* GitHubUserModel.m */; };
-		9CBBBFA1166BB29B008B4326 /* YouTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBF9F166BB29B008B4326 /* YouTubeViewController.m */; };
-		9CBBBFA2166BB29B008B4326 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFA0166BB29B008B4326 /* YouTubeViewController.xib */; };
-		9CBBBFA5166BB2AD008B4326 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFA4166BB2AD008B4326 /* VideoModel.m */; };
-		9CBBBFA9166BB3E1008B4326 /* VideoTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFA8166BB3E1008B4326 /* VideoTitle.m */; };
-		9CBBBFAC166BB3EC008B4326 /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFAB166BB3EC008B4326 /* VideoLink.m */; };
 		9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB0166BBB05008B4326 /* MyDataModel.m */; };
 		9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB3166BBB21008B4326 /* StorageViewController.m */; };
 		9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBBBFB4166BBB21008B4326 /* StorageViewController.xib */; };
@@ -282,15 +277,6 @@
 		9CBBBF96166BAED2008B4326 /* GitHubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitHubViewController.xib; sourceTree = "<group>"; };
 		9CBBBF9A166BAEF5008B4326 /* GitHubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUserModel.h; sourceTree = "<group>"; };
 		9CBBBF9B166BAEF5008B4326 /* GitHubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUserModel.m; sourceTree = "<group>"; };
-		9CBBBF9E166BB29B008B4326 /* YouTubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeViewController.h; sourceTree = "<group>"; };
-		9CBBBF9F166BB29B008B4326 /* YouTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeViewController.m; sourceTree = "<group>"; };
-		9CBBBFA0166BB29B008B4326 /* YouTubeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouTubeViewController.xib; sourceTree = "<group>"; };
-		9CBBBFA3166BB2AD008B4326 /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
-		9CBBBFA4166BB2AD008B4326 /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
-		9CBBBFA7166BB3E1008B4326 /* VideoTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTitle.h; sourceTree = "<group>"; };
-		9CBBBFA8166BB3E1008B4326 /* VideoTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTitle.m; sourceTree = "<group>"; };
-		9CBBBFAA166BB3EC008B4326 /* VideoLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLink.h; sourceTree = "<group>"; };
-		9CBBBFAB166BB3EC008B4326 /* VideoLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoLink.m; sourceTree = "<group>"; };
 		9CBBBFAF166BBB05008B4326 /* MyDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataModel.h; sourceTree = "<group>"; };
 		9CBBBFB0166BBB05008B4326 /* MyDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataModel.m; sourceTree = "<group>"; };
 		9CBBBFB2166BBB21008B4326 /* StorageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageViewController.h; sourceTree = "<group>"; };
@@ -567,7 +553,6 @@
 			children = (
 				9CBBBFAD166BB87B008B4326 /* DemoApp */,
 				9CBBBF87166BAC31008B4326 /* libs */,
-				9CBBBF9D166BB27E008B4326 /* YouTubeDemo */,
 				9CBBBF93166BAEB2008B4326 /* GitHubDemo */,
 				9CBBBFAE166BBADA008B4326 /* UsedAsStorageDemo */,
 				9CBBBF73166BA7E1008B4326 /* KivaJSONDemo */,
@@ -653,30 +638,6 @@
 				9CBBBF9B166BAEF5008B4326 /* GitHubUserModel.m */,
 			);
 			name = GitHubModels;
-			sourceTree = "<group>";
-		};
-		9CBBBF9D166BB27E008B4326 /* YouTubeDemo */ = {
-			isa = PBXGroup;
-			children = (
-				9CBBBFA6166BB2B3008B4326 /* YouTubeModels */,
-				9CBBBF9E166BB29B008B4326 /* YouTubeViewController.h */,
-				9CBBBF9F166BB29B008B4326 /* YouTubeViewController.m */,
-				9CBBBFA0166BB29B008B4326 /* YouTubeViewController.xib */,
-			);
-			name = YouTubeDemo;
-			sourceTree = "<group>";
-		};
-		9CBBBFA6166BB2B3008B4326 /* YouTubeModels */ = {
-			isa = PBXGroup;
-			children = (
-				9CBBBFA3166BB2AD008B4326 /* VideoModel.h */,
-				9CBBBFA4166BB2AD008B4326 /* VideoModel.m */,
-				9CBBBFA7166BB3E1008B4326 /* VideoTitle.h */,
-				9CBBBFA8166BB3E1008B4326 /* VideoTitle.m */,
-				9CBBBFAA166BB3EC008B4326 /* VideoLink.h */,
-				9CBBBFAB166BB3EC008B4326 /* VideoLink.m */,
-			);
-			name = YouTubeModels;
 			sourceTree = "<group>";
 		};
 		9CBBBFAD166BB87B008B4326 /* DemoApp */ = {
@@ -868,7 +829,6 @@
 				9CBBBF90166BAC54008B4326 /* btnCheck@2x.png in Resources */,
 				69286BDA17FA280900D1BA81 /* nestedDataWithDictionaryError.json in Resources */,
 				9CBBBF98166BAED2008B4326 /* GitHubViewController.xib in Resources */,
-				9CBBBFA2166BB29B008B4326 /* YouTubeViewController.xib in Resources */,
 				9CBBBFB6166BBB21008B4326 /* StorageViewController.xib in Resources */,
 				9C0D0241166E6BBF001EA645 /* KivaViewControllerNetworking.xib in Resources */,
 				9CC2FD2B168CE7830059FE67 /* JSONModelDemo_iOSTests-Info.plist in Resources */,
@@ -926,10 +886,6 @@
 				9CBBBF92166BAC54008B4326 /* MBProgressHUD.m in Sources */,
 				9CBBBF97166BAED2008B4326 /* GitHubViewController.m in Sources */,
 				9CBBBF9C166BAEF5008B4326 /* GitHubUserModel.m in Sources */,
-				9CBBBFA1166BB29B008B4326 /* YouTubeViewController.m in Sources */,
-				9CBBBFA5166BB2AD008B4326 /* VideoModel.m in Sources */,
-				9CBBBFA9166BB3E1008B4326 /* VideoTitle.m in Sources */,
-				9CBBBFAC166BB3EC008B4326 /* VideoLink.m in Sources */,
 				9C55AF0F189033AE004EBD8A /* GitHubRepoModel.m in Sources */,
 				9CBBBFB1166BBB05008B4326 /* MyDataModel.m in Sources */,
 				9CBBBFB5166BBB21008B4326 /* StorageViewController.m in Sources */,

@@ -12,11 +12,6 @@
 #import "KivaFeed.h"
 #import "LoanModel.h"
 
-//youtube models
-#import "VideoLink.h"
-#import "VideoTitle.h"
-#import "VideoModel.h"
-
 //github
 #import "GitHubUserModel.h"
 
@@ -81,18 +76,6 @@ enum kServices {
                 
             }    break;
                 
-            case kServiceYoutube:
-            {
-                if (row>=videos.count) return nil;
-                
-                VideoModel* video = videos[row];
-                NSString* message = [NSString stringWithFormat:@"%@",
-                                     video.title.$t
-                                     ];
-                cellView.textField.stringValue = message;
-                
-            }   break;
-            
             case kServiceGithub:
             {
                 if (row>=items.count) return nil;
@@ -115,9 +98,6 @@ enum kServices {
         case kServiceKiva:
             return kiva.loans.count;
             break;
-        case kServiceYoutube:
-            return videos.count;
-            break;
         case kServiceGithub:
             return items.count;
             break;
@@ -130,13 +110,6 @@ enum kServices {
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
 {
     switch (currentService) {
-        case kServiceYoutube:
-        {
-            VideoModel* video = videos[rowIndex];
-            [[NSWorkspace sharedWorkspace] openURL:video.link.href];
-            
-        }   break;
-        
         case kServiceGithub:
         {
             id item = items[rowIndex];
@@ -158,7 +131,7 @@ enum kServices {
     currentService = kServiceKiva;
     [self setLoaderVisible:YES];
     
-    kiva = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"
+    kiva = [[KivaFeed alloc] initFromURLWithString:@"https://api.kivaws.org/v1/loans/search.json?status=fundraising"
             completion:^(JSONModel *model, JSONModelError *e) {
                 
                 [table reloadData];
@@ -170,27 +143,6 @@ enum kServices {
                 [self setLoaderVisible:NO];
             }];
     
-}
-
--(IBAction)actionYoutube:(id)sender
-{
-    currentService = kServiceYoutube;
-    [self setLoaderVisible:YES];
-    
-    [JSONHTTPClient getJSONFromURLWithString:@"http://gdata.youtube.com/feeds/api/videos?q=pomplamoose&max-results=50&alt=json"
-                                  completion:^(NSDictionary *json, JSONModelError *e) {
-                                      
-                                      videos = [VideoModel arrayOfModelsFromDictionaries:
-                                                json[@"feed"][@"entry"]
-                                                error:nil
-                                                ];
-                                      [table reloadData];
-                                      if (e) {
-                                          [[NSAlert alertWithError:e] beginSheetModalForWindow:self.view.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-                                      }
-                                      
-                                      [self setLoaderVisible:NO];
-                                  }];
 }
 
 -(IBAction)actionGithub:(id)sender

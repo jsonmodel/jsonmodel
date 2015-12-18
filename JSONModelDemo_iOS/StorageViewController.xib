@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StorageViewController">
             <connections>
                 <outlet property="lblTimes" destination="18" id="42"/>
-                <outlet property="txtContent" destination="4" id="41"/>
+                <outlet property="txtContent" destination="CLH-gx-EDR" id="HhL-P8-x0f"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,16 +17,6 @@
             <rect key="frame" x="0.0" y="64" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text ..." translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="0.0" y="193" width="319" height="63"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="319" id="9"/>
-                        <constraint firstAttribute="height" constant="63" id="62"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14">
                     <rect key="frame" x="172" y="261" width="127" height="30"/>
                     <constraints>
@@ -55,14 +45,18 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="48"/>
                     </constraints>
-                    <string key="text">This screen uses a JSONModel object to save data to the device's disc. The model persists the text that you can edit in the gray box below + the number of times you saved to the file. </string>
+                    <string key="text">This screen uses a JSONModel object to save data to the device's disc. The model persists the text that you can edit in the text box below + the number of times you saved to the file. </string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLH-gx-EDR">
+                    <rect key="frame" x="15" y="198" width="291" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="11"/>
                 <constraint firstItem="14" firstAttribute="centerY" secondItem="18" secondAttribute="centerY" id="21"/>
                 <constraint firstItem="30" firstAttribute="top" secondItem="1" secondAttribute="top" constant="90" id="37"/>
                 <constraint firstItem="30" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="38"/>
@@ -71,7 +65,6 @@
                 <constraint firstItem="14" firstAttribute="baseline" secondItem="18" secondAttribute="baseline" id="45"/>
                 <constraint firstItem="18" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="19" id="54"/>
                 <constraint firstItem="14" firstAttribute="top" secondItem="1" secondAttribute="top" constant="261" id="65"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="193" id="67"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
         </view>
