@@ -118,13 +118,18 @@ static NSString* requestContentType = nil;
     }
     
     NSAssert([value isKindOfClass:[NSString class]], @"request parameters can be only of NSString or NSNumber classes. '%@' is of class %@.", value, [value class]);
-        
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+    
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_9_0
+    
+        return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                  NULL,
                                                                                  (__bridge CFStringRef) value,
                                                                                  NULL,
                                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                  kCFStringEncodingUTF8));
+
+    #endif
+        return (NSString *)CFBridgingRelease((__bridge CFTypeRef _Nullable)([((NSString *)value) stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]));
 }
 
 #pragma mark - networking worker methods
