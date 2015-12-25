@@ -214,7 +214,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSMutableSet* requiredProperties = [self __requiredPropertyNames].mutableCopy;
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
     
-    //transform the key names, if neccessary
+    //transform the key names, if necessary
     if (keyMapper || globalKeyMapper) {
         
         NSMutableSet* transformedIncomingKeys = [NSMutableSet setWithCapacity: requiredProperties.count];
@@ -225,7 +225,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             transformedName = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper importing:YES] : property.name;
             
-            //chek if exists and if so, add to incoming keys
+            //check if exists and if so, add to incoming keys
             id value;
             @try {
                 value = [dict valueForKeyPath:transformedName];
@@ -589,7 +589,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             //check for 64b BOOLs
             if ([propertyAttributes hasPrefix:@"Tc,"]) {
-                //mask BOOLs as structs so they can have custom convertors
+                //mask BOOLs as structs so they can have custom converters
                 p.structName = @"BOOL";
             }
             
@@ -660,7 +660,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 
                 if (![allowedPrimitiveTypes containsObject:propertyType]) {
                     
-                    //type not allowed - programmer mistaked -> exception
+                    //type not allowed - programmer mistaken -> exception
                     @throw [NSException exceptionWithName:@"JSONModelProperty type not allowed"
                                                    reason:[NSString stringWithFormat:@"Property type of %@.%@ is not supported by JSONModel.", self.class, p.name]
                                                  userInfo:nil];

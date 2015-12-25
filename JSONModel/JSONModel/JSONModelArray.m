@@ -69,9 +69,9 @@
 
 -(id)forwardingTargetForSelector:(SEL)selector
 {
-    static NSArray* overridenMethods = nil;
-    if (!overridenMethods) overridenMethods = @[@"initWithArray:modelClass:",@"objectAtIndex:",@"objectAtIndexedSubscript:", @"count",@"modelWithIndexValue:",@"description",@"mutableCopy",@"firstObject",@"lastObject",@"countByEnumeratingWithState:objects:count:"];
-    if ([overridenMethods containsObject:NSStringFromSelector(selector)]) {
+    static NSArray *overriddenMethods = nil;
+    if (!overriddenMethods) overriddenMethods = @[@"initWithArray:modelClass:", @"objectAtIndex:", @"objectAtIndexedSubscript:", @"count", @"modelWithIndexValue:", @"description", @"mutableCopy", @"firstObject", @"lastObject", @"countByEnumeratingWithState:objects:count:"];
+    if ([overriddenMethods containsObject:NSStringFromSelector(selector)]) {
         return self;
     }
     return _storage;

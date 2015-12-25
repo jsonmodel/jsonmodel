@@ -255,14 +255,14 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   -(NSString*)indexPropertyName;
 
   /**
-   * Overriden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
+   * Overridden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
    * if an index property is defined.
    * @param object a JSONModel instance to compare to for equality
    */
   -(BOOL)isEqual:(id)object;
 
   /**
-   * Comparision method, which uses the defined &lt;Index&gt; property of the two models, to compare them.
+   * Comparison method, which uses the defined &lt;Index&gt; property of the two models, to compare them.
    * If there isn't an index property throws an exception. If the Index property does not have a compare: method
    * also throws an exception. NSString and NSNumber have compare: methods, and in case the Index property is 
    * a another custom class, the programmer should create a custom compare: method then.
