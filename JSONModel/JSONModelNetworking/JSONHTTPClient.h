@@ -33,7 +33,7 @@ extern NSString* const kContentTypeWWWEncoded;
 
 /**
  * A block type to handle incoming JSON object and an error. 
- * You pass it to methods which fetch JSON asynchroniously. When the operation is finished
+ * You pass it to methods which fetch JSON asynchronously. When the operation is finished
  * you receive back the fetched JSON (or nil) and an error (or nil)
  *
  * @param json object derived from a JSON string
@@ -55,7 +55,7 @@ typedef void (^JSONObjectBlock)(id json, JSONModelError* err);
 
 /** @name HTTP Client configuration */
 /**
- * Returns a modifyable dictionary of the client's default HTTP headers.
+ * Returns a modifiable dictionary of the client's default HTTP headers.
  * @result A mutable dictionary of pairs - HTTP header names and values.
  * @discussion You can use the result to modify the http client headers like so:
  * <pre>
@@ -86,7 +86,7 @@ typedef void (^JSONObjectBlock)(id json, JSONModelError* err);
 +(void)setTimeoutInSeconds:(int)seconds;
 
 /**
- * A method to set the default conent type of the request body
+ * A method to set the default content type of the request body
  * By default the content type is set to kContentTypeAutomatic
  * which checks the body request and decides between "application/json"
  * and "application/x-www-form-urlencoded"
@@ -94,9 +94,9 @@ typedef void (^JSONObjectBlock)(id json, JSONModelError* err);
 +(void)setRequestContentType:(NSString*)contentTypeString;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - GET asynchronious JSON calls
+#pragma mark - GET asynchronous JSON calls
 
-/** @name Making asynchronious HTTP requests */
+/** @name Making asynchronous HTTP requests */
 /**
  * Makes GET request to the given URL address and fetches a JSON response.
  * @param urlString the URL as a string
@@ -145,7 +145,7 @@ typedef void (^JSONObjectBlock)(id json, JSONModelError* err);
 +(void)JSONFromURLWithString:(NSString*)urlString method:(NSString*)method params:(NSDictionary *)params orBodyData:(NSData*)bodyData headers:(NSDictionary*)headers completion:(JSONObjectBlock)completeBlock;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - POST synchronious JSON calls
+#pragma mark - POST synchronous JSON calls
 
 /**
  * Makes POST request to the given URL address and fetches a JSON response. Sends the bodyString param as the POST request body.

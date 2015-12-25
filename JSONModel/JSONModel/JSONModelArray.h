@@ -50,7 +50,7 @@
  *
  * Will return nil if no matching model is found. Will return nil if there's no index property
  * defined on the models found in the array (will sample the first object, assuming the array
- * contains homogenous collection of objects)
+ * contains homogeneous collection of objects)
  *
  * @param indexValue the id value to search for
  * @return the found model or nil

@@ -393,7 +393,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             } else {
                 
                 // 2) check if there's a protocol to the property
-                //  ) might or not be the case there's a built in transofrm for it
+                //  ) might or not be the case there's a built in transform for it
                 if (property.protocol) {
                     
                     //JMLog(@"proto: %@", p.protocol);
@@ -476,7 +476,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     } else {
                         
                         // it's not a JSON data type, and there's no transformer for it
-                        // if property type is not supported - that's a programmer mistaked -> exception
+                        // if property type is not supported - that's a programmer mistake -> exception
                         @throw [NSException exceptionWithName:@"Type not allowed"
                                                        reason:[NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name]
                                                      userInfo:nil];
@@ -799,7 +799,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return value;
 }
 
-//built-in reverse transormations (export to JSON compliant objects)
+//built-in reverse transformations (export to JSON compliant objects)
 -(id)__reverseTransform:(id)value forProperty:(JSONModelClassProperty*)property
 {
     Class protocolClass = NSClassFromString(property.protocol);
@@ -1048,7 +1048,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 } else {
 
                     //in this case most probably a custom property was defined in a model
-                    //but no default reverse transofrmer for it
+                    //but no default reverse transformer for it
                     @throw [NSException exceptionWithName:@"Value transformer not found"
                                                    reason:[NSString stringWithFormat:@"[JSONValueTransformer %@] not found", selectorName]
                                                  userInfo:nil];

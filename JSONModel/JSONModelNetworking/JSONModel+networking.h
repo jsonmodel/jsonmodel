@@ -28,9 +28,9 @@ typedef void (^JSONModelBlock)(id model, JSONModelError* err);
 @interface JSONModel(Networking)
 
 @property (assign, nonatomic) BOOL isLoading;
-/** @name Asynchroniously create a model over the network */
+/** @name Asynchronously create a model over the network */
 /**
- * Asynchroniously create a model over the network. Create a new model instance and initialize it with the JSON fetched from the given URL
+ * Asynchronously create a model over the network. Create a new model instance and initialize it with the JSON fetched from the given URL
  * @param urlString the absolute URL address of the JSON feed as a string
  * @param completeBlock JSONModelBlock executed upon completion. The JSONModelBlock type is defined as: void (^JSONModelBlock)(JSONModel* model, JSONModelError* e); the first parameter is the initialized model or nil, 
  * and second parameter holds the model initialization error, if any

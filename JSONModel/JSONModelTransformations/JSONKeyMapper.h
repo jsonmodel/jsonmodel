@@ -50,14 +50,14 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  */
 @interface JSONKeyMapper : NSObject
 
-/** @name Name convertors */
+/** @name Name converters */
 /** Block, which takes in a JSON key and converts it to the corresponding property name */
 @property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock;
 
 /** Block, which takes in a property name and converts it to the corresponding JSON key name */
 @property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock;
 
-/** Combined convertor method
+/** Combined converter method
 * @param value the source name
 * @param importing YES invokes JSONToModelKeyBlock, NO - modelToJSONKeyBlock
 * @return JSONKeyMapper instance
