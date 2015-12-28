@@ -19,7 +19,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark - extern definitons
+#pragma mark - extern definitions
 /**
  * Boolean function to check for null values. Handy when you need to both check
  * for nil and [NSNUll null]
@@ -48,10 +48,10 @@ extern BOOL isNull(id value);
 
 /** @name Resolving cluster class names */
 /**
- * This method returns the ubmrella class for any standard class cluster members.
+ * This method returns the umbrella class for any standard class cluster members.
  * For example returns NSString when given as input NSString, NSMutableString, __CFString and __CFConstantString
  * The method currently looksup a pre-defined list.
- * @param sourceClass the class to get the umrella class for
+ * @param sourceClass the class to get the umbrella class for
  * @return Class
  */
 +(Class)classByResolvingClusterClasses:(Class)sourceClass;
@@ -59,7 +59,7 @@ extern BOOL isNull(id value);
 #pragma mark - NSMutableString <-> NSString
 /** @name Transforming to Mutable copies */
 /**
- * Trasnforms a string value to a mutable string value
+ * Transforms a string value to a mutable string value
  * @param string incoming string
  * @return mutable string
  */
@@ -67,7 +67,7 @@ extern BOOL isNull(id value);
 
 #pragma mark - NSMutableArray <-> NSArray
 /**
- * Trasnforms an array to a mutable array
+ * Transforms an array to a mutable array
  * @param array incoming array
  * @return mutable array
  */
@@ -75,7 +75,7 @@ extern BOOL isNull(id value);
 
 #pragma mark - NS(Mutable)Array <- JSONModelArray
 /**
- * Trasnforms an array to a JSONModelArray
+ * Transforms an array to a JSONModelArray
  * @param array incoming array
  * @return JSONModelArray
  */
@@ -84,7 +84,7 @@ extern BOOL isNull(id value);
 
 #pragma mark - NSMutableDictionary <-> NSDictionary
 /**
- * Trasnforms a dictionary to a mutable dictionary
+ * Transforms a dictionary to a mutable dictionary
  * @param dict incoming dictionary
  * @return mutable dictionary
  */

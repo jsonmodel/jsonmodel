@@ -46,7 +46,7 @@
 
 /** @name Making GET API requests */
 /**
- * Makes an asynchronious GET request to the API
+ * Makes an asynchronous GET request to the API
  * @param path the URL path to add to the base API URL for this HTTP call
  * @param params the variables to pass to the API
  * @param completeBlock a JSONObjectBlock block to execute upon completion
@@ -68,7 +68,7 @@
 
 /** @name JSON RPC methods */
 /**
- * Makes an asynchronious JSON RPC request to the API. Read more: http://www.jsonrpc.org
+ * Makes an asynchronous JSON RPC request to the API. Read more: http://www.jsonrpc.org
  * @param method the HTTP method name; GET or POST only
  * @param args the list of arguments to pass to the API
  * @param completeBlock JSONObjectBlock to execute upon completion
@@ -77,7 +77,7 @@
 
 /** @name JSON RPC (2.0) request method */
 /**
- * Makes an asynchronious JSON RPC 2.0 request to the API. Read more: http://www.jsonrpc.org
+ * Makes an asynchronous JSON RPC 2.0 request to the API. Read more: http://www.jsonrpc.org
  * @param method the HTTP method name; GET or POST only
  * @param params the params to pass to the API - an NSArray or an NSDictionary, 
  * depending whether you're using named or unnamed parameters

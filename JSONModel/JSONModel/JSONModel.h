@@ -152,7 +152,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
    * @param string JSON text data
    * @param err an initialization error or nil
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * @exception JSONModelTypeNotAllowedException thrown when unsupported type is found in the incoming JSON,
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see initWithString:usingEncoding:error: for use of custom text encodings
    */
@@ -163,7 +163,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @param string JSON text data
    * @param encoding the text encoding to use when parsing the string (see NSStringEncoding)
    * @param err an initialization error or nil
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * @exception JSONModelTypeNotAllowedException thrown when unsupported type is found in the incoming JSON,
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    */
   -(instancetype)initWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding error:(JSONModelError**)err;
@@ -222,7 +222,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    *
    * @param array list of dictionaries to be imported as models
    * @return list of initialized data model objects
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * @exception JSONModelTypeNotAllowedException thrown when unsupported type is found in the incoming JSON,
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromModels:
@@ -237,7 +237,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * matching dictionaries. This method does the opposite of arrayOfObjectsFromDictionaries:
    * @param array list of JSONModel objects
    * @return a list of NSDictionary objects
-   * @exception JSONModelTypeNotAllowedException thrown when unsported type is found in the incoming JSON, 
+   * @exception JSONModelTypeNotAllowedException thrown when unsupported type is found in the incoming JSON,
    * or a property type in your model is not supported by JSONValueTransformer and its categories
    * @see arrayOfModelsFromDictionaries:
    */
@@ -255,14 +255,14 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   -(NSString*)indexPropertyName;
 
   /**
-   * Overriden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
+   * Overridden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
    * if an index property is defined.
    * @param object a JSONModel instance to compare to for equality
    */
   -(BOOL)isEqual:(id)object;
 
   /**
-   * Comparision method, which uses the defined &lt;Index&gt; property of the two models, to compare them.
+   * Comparison method, which uses the defined &lt;Index&gt; property of the two models, to compare them.
    * If there isn't an index property throws an exception. If the Index property does not have a compare: method
    * also throws an exception. NSString and NSNumber have compare: methods, and in case the Index property is 
    * a another custom class, the programmer should create a custom compare: method then.
@@ -275,7 +275,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   /**
    * Overwrite the validate method in your own models if you need to perform some custom validation over the model data.
    * This method gets called at the very end of the JSONModel initializer, thus the model is in the state that you would
-   * get it back when initialzed. Check the values of any property that needs to be validated and if any invalid values
+   * get it back when initialized. Check the values of any property that needs to be validated and if any invalid values
    * are encountered return NO and set the error parameter to an NSError object. If the model is valid return YES.
    *
    * NB: Only setting the error parameter is not enough to fail the validation, you also need to return a NO value.
@@ -297,7 +297,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * Sets a key mapper which affects ALL the models in your project. Use this if you need only one mapper to work
  * with your API. For example if you are using the [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase] it is more
  * likely that you will need to use it with ALL of your models.
- * NB: Custom key mappers take precendence over the global key mapper.
+ * NB: Custom key mappers take precedence over the global key mapper.
  * @param globalKeyMapper a key mapper to apply to all models in your project.
  *
  * Lookup JSONKeyMapper docs for more details.
