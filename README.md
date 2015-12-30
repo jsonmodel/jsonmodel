@@ -70,7 +70,7 @@ Consider you have a JSON like this:
 {"id":"10", "country":"Germany", "dialCode": 49, "isInEurope":true}
 ```
 
- * Create a new Objective-C class for your data model and make it inherit the JSONModel class. 
+ * Create a new Objective-C class for your data model and make it inherit the JSONModel class.
  * Declare properties in your header file with the name of the JSON keys:
 
 ```objective-c
@@ -93,7 +93,7 @@ There's no need to do anything in the **.m** file.
 #import "CountryModel.h"
 ...
 
-NSString* json = (fetch here JSON from Internet) ... 
+NSString* json = (fetch here JSON from Internet) ...
 NSError* err = nil;
 CountryModel* country = [[CountryModel alloc] initWithString:json error:&err];
 
@@ -103,7 +103,7 @@ If the validation of the JSON passes you have all the corresponding properties i
 
 * convert "id" from string (in the JSON) to an int for your class
 * just copy country's value
-* convert dialCode from number (in the JSON) to an NSString value 
+* convert dialCode from number (in the JSON) to an NSString value
 * finally convert isInEurope to a BOOL for your BOOL property
 
 And the good news is all you had to do is define the properties and their expected types.
@@ -118,7 +118,7 @@ Class docs online: [http://jsonmodel.com/docs/](http://jsonmodel.com/docs/)
 
 Step-by-step tutorials:
 
- * [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/) 
+ * [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/)
 
  * [Performance optimisation for working with JSON feeds via JSONModel](http://www.touch-code-magazine.com/performance-optimisation-for-working-with-json-feeds-via-jsonmodel/)
 
@@ -463,9 +463,9 @@ Examples
 [JSONHTTPClient postJSONFromURLWithString:@"http://mydomain.com/api"
                                    params:@{@"postParam1":@"value1"}
                                completion:^(id json, JSONModelError *err) {
-                                   
+
                                    //check err, process json ...
-                                   
+
                                }];
 ```
 
@@ -552,7 +552,7 @@ Change log : [https://github.com/icanzilb/JSONModel/blob/master/Changelog.md](ht
 
 -------
 #### License
-This code is distributed under the terms and conditions of the MIT license. 
+This code is distributed under the terms and conditions of the MIT license.
 
 -------
 #### Contribution guidelines
