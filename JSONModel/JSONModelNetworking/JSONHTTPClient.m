@@ -128,7 +128,7 @@ static NSString* requestContentType = nil;
 }
 
 #pragma mark - networking worker methods
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSData*)bodyData headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method requestBody:(NSData*)bodyData headers:(NSDictionary*)headers error:(JSONModelError**)err
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url
                                                                 cachePolicy: defaultCachePolicy
@@ -203,7 +203,7 @@ static NSString* requestContentType = nil;
     return responseData;
 }
 
-+(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers etag:(NSString**)etag error:(JSONModelError**)err
++(NSData*)syncRequestDataFromURL:(NSURL*)url method:(NSString*)method params:(NSDictionary*)params headers:(NSDictionary*)headers error:(JSONModelError**)err
 {
     //create the request body
     NSMutableString* paramsString = nil;
@@ -235,7 +235,6 @@ static NSString* requestContentType = nil;
                                  method: method
                             requestBody: [method isEqualToString:kHTTPMethodPOST]?[paramsString dataUsingEncoding:NSUTF8StringEncoding]:nil
                                 headers: headers
-                                   etag: etag
                                   error: err];
 }
 
@@ -269,7 +268,6 @@ static NSString* requestContentType = nil;
         id jsonObject = nil;
         JSONModelError* error = nil;
         NSData* responseData = nil;
-        NSString* etag = nil;
         
         @try {
             if (bodyData) {
@@ -277,14 +275,12 @@ static NSString* requestContentType = nil;
                                                      method: method
                                                 requestBody: bodyData
                                                     headers: customHeaders
-                                                       etag: &etag
                                                       error: &error];
             } else {
                 responseData = [self syncRequestDataFromURL: [NSURL URLWithString:urlString]
                                                      method: method
                                                      params: params
                                                     headers: customHeaders
-                                                       etag: &etag
                                                       error: &error];
             }
         }
