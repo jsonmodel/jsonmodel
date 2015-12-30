@@ -53,6 +53,7 @@
     XCTAssertTrue([b.stringFromNumber isEqualToString:@"19.95"], @"stringFromNumber's value is not 19.95");
     
     XCTAssertTrue([b.numberFromString isKindOfClass:[NSNumber class]], @"numberFromString is not an NSNumber");
+    XCTAssertEqualObjects(b.doubleFromString, @16909129);
     
     //TODO: I had to hardcode the float epsilon below, bcz actually [NSNumber floatValue] was returning a bigger deviation than FLT_EPSILON
     // IDEAS?

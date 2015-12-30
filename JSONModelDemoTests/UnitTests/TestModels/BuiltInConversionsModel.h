@@ -26,6 +26,7 @@
 /* automatically convert JSON data types */
 @property (strong, nonatomic) NSString* stringFromNumber;
 @property (strong, nonatomic) NSNumber* numberFromString;
+@property (strong, nonatomic) NSNumber* doubleFromString;
 
 /* predefined transformer */
 @property (strong, nonatomic) NSDate* importantEvent;

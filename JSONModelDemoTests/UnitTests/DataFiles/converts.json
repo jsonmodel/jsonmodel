@@ -9,6 +9,7 @@
 
     "stringFromNumber": 19.95,
     "numberFromString": "1230.99",
+    "doubleFromString": "16909129",
 
     "importantEvent": "2012-11-26T10:00:01+02:00",
     

@@ -179,7 +179,7 @@ extern BOOL isNull(id value)
 #pragma mark - string <-> number
 -(NSNumber*)NSNumberFromNSString:(NSString*)string
 {
-    return [NSNumber numberWithFloat: [string doubleValue]];
+    return [NSNumber numberWithDouble:[string doubleValue]];
 }
 
 -(NSString*)NSStringFromNSNumber:(NSNumber*)number
