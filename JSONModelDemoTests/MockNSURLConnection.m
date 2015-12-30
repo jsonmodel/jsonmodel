@@ -42,6 +42,24 @@ static int responseDelayInSeconds = 0;
     return nextData;
 }
 
++ (void)sendAsynchronousRequest:(NSURLRequest *)request queue:(NSOperationQueue *)queue completionHandler:(void (^)(NSURLResponse *, NSData *, NSError *))handler
+{
+    lastRequest = request;
+
+    dispatch_queue_t dQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    dispatch_block_t dBlock = ^{
+        handler(nextResponse, nextData, nextError);
+    };
+
+    if (responseDelayInSeconds > 0) {
+        dispatch_time_t dTime = dispatch_time(DISPATCH_TIME_NOW, responseDelayInSeconds * NSEC_PER_SEC);
+        dispatch_after(dTime, dQueue, dBlock);
+    } else {
+        dispatch_async(dQueue, dBlock);
+    }
+}
+
 +(void)setResponseDelay:(int)seconds
 {
     responseDelayInSeconds = seconds;

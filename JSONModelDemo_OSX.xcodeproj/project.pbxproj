@@ -850,7 +850,6 @@
 					"UNIT_TESTING=1",
 				);
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemoTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
@@ -867,7 +866,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemoTests/JSONModelDemoTests-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemoTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";

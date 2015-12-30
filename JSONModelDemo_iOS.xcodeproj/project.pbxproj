@@ -1063,7 +1063,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemo_iOS/JSONModelDemo_iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JSONModelDemo_iOS;
 				WRAPPER_EXTENSION = app;
@@ -1076,7 +1075,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemo_iOS/JSONModelDemo_iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JSONModelDemo_iOS;
 				WRAPPER_EXTENSION = app;
@@ -1095,7 +1093,6 @@
 					"UNIT_TESTING=1",
 				);
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1109,7 +1106,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONModelDemo_iOS/JSONModelDemo_iOS-Prefix.pch";
 				INFOPLIST_FILE = "JSONModelDemoTests/JSONModelDemo_iOSTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touch-code-magazine.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = JSONModelDemo_iOSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
