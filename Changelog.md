@@ -1,6 +1,23 @@
 Change-log
 ==========
 
+**Version 1.2.0** @2015-12-30
+
+- support added for watchOS and tvOS
+- minimum iOS version bumped to 6.0
+- support added for Carthage
+- deprecated `+arrayOfModelsFromDictionaries:` in favor of `+arrayOfModelsFromDictionaries:error:`
+- added `+arrayOfModelsFromString:error:`
+- deprecated `+mergeFromDictionary:` in favor of `mergeFromDictionary:useKeyMapping:error:`
+- added support for multiple custom setters
+- fixed `-hash` implementation
+- added `responseData` property to `JSONModelError`
+- added support for creating a key mapper with exceptions (`+mapper:withExceptions:`)
+- locks now used in key mapper implementation for additional safety
+- fixed behavior of `NSURLFromNSString` transformer
+- updated project files to latest Xcode
+- updated demo apps to work with the latest JSONModel & external API code
+
 **Version 1.1.2** @2015-10-19
 
 Merging more requests re: iOS9
