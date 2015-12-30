@@ -8,6 +8,12 @@
       location = "container:JSONModelDemo_iOS.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:JSONModelDemo_watchOS/JSONModelDemo_watchOS.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:JSONModelDemo_tvOS/JSONModelDemo_tvOS.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:JSONModel.xcodeproj">
    </FileRef>
 </Workspace>
