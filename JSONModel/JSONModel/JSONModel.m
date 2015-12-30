@@ -1147,6 +1147,49 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return list;
 }
 
++ (NSMutableDictionary *)dictionaryOfModelsFromString:(NSString *)string error:(NSError **)err
+{
+    return [self dictionaryOfModelsFromData:[string dataUsingEncoding:NSUTF8StringEncoding] error:err];
+}
+
++ (NSMutableDictionary *)dictionaryOfModelsFromData:(NSData *)data error:(NSError **)err
+{
+    id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:err];
+    if (!json || ![json isKindOfClass:[NSDictionary class]]) return nil;
+
+    return [self dictionaryOfModelsFromDictionary:json error:err];
+}
+
++ (NSMutableDictionary *)dictionaryOfModelsFromDictionary:(NSDictionary *)dictionary error:(NSError **)err
+{
+    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
+
+    for (NSString *key in dictionary.allKeys)
+    {
+        id object = dictionary[key];
+
+        if ([object isKindOfClass:NSDictionary.class])
+        {
+            id obj = [[self alloc] initWithDictionary:object error:err];
+            if (obj == nil) return nil;
+            output[key] = obj;
+        }
+        else if ([object isKindOfClass:NSArray.class])
+        {
+            id obj = [self arrayOfModelsFromDictionaries:object error:err];
+            if (obj == nil) return nil;
+            output[key] = obj;
+        }
+        else
+        {
+            *err = [JSONModelError errorInvalidDataWithTypeMismatch:@"Only dictionaries and arrays are supported"];
+            return nil;
+        }
+    }
+
+    return output;
+}
+
 //loop over NSArray of models and export them to JSON objects
 +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array
 {
@@ -1183,6 +1226,23 @@ static JSONKeyMapper* globalKeyMapper = nil;
         [list addObject: obj];
     }
     return list;
+}
+
++(NSMutableDictionary *)dictionaryOfDictionariesFromModels:(NSDictionary *)dictionary
+{
+    //bail early
+    if (isNull(dictionary)) return nil;
+
+    NSMutableDictionary *output = [NSMutableDictionary dictionaryWithCapacity:dictionary.count];
+
+    for (NSString *key in dictionary.allKeys) {
+        id <AbstractJSONModelProtocol> object = dictionary[key];
+        id obj = [object toDictionary];
+        if (!obj) return nil;
+        output[key] = obj;
+    }
+
+    return output;
 }
 
 #pragma mark - custom comparison methods

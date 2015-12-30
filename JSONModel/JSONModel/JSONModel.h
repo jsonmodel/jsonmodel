@@ -231,6 +231,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err;
   +(NSMutableArray*)arrayOfModelsFromData:(NSData*)data error:(NSError**)err;
   +(NSMutableArray*)arrayOfModelsFromString:(NSString*)string error:(NSError**)err;
+  +(NSMutableDictionary*)dictionaryOfModelsFromDictionary:(NSDictionary*)dictionary error:(NSError**)err;
+  +(NSMutableDictionary*)dictionaryOfModelsFromData:(NSData*)data error:(NSError**)err;
+  +(NSMutableDictionary*)dictionaryOfModelsFromString:(NSString*)string error:(NSError**)err;
 
   /**
    * If you have an NSArray of data model objects, this method takes it in and outputs a list of the 
@@ -242,8 +245,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * @see arrayOfModelsFromDictionaries:
    */
   +(NSMutableArray*)arrayOfDictionariesFromModels:(NSArray*)array;
-
-
+  +(NSMutableDictionary*)dictionaryOfDictionariesFromModels:(NSDictionary*)dictionary;
 
 /** @name Comparing models */
 
