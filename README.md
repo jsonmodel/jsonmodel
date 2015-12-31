@@ -550,6 +550,8 @@ Also everyone who did successful [pull requests](https://github.com/icanzilb/JSO
 
 Change log : [https://github.com/icanzilb/JSONModel/blob/master/Changelog.md](https://github.com/icanzilb/JSONModel/blob/master/Changelog.md)
 
+Utility to generate JSONModel classes from JSON data: https://github.com/dofork/json2object
+
 -------
 #### License
 This code is distributed under the terms and conditions of the MIT license.
