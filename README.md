@@ -232,6 +232,8 @@ Examples
 @implementation OrderModel
 @end
 </pre>
+
+Note: the angle brackets after <code>NSArray</code> contain a protocol. This is not the same as the new Objective-C generics system. They are not mutually exclusive, but for JSONModel to work, the protocol must be in place.
 </td>
 </tr>
 </table>
