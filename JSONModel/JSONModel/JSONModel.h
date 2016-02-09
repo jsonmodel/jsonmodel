@@ -93,7 +93,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
    * All JSONModel classes should implement initWithDictionary:
    *
    * For most classes the default initWithDictionary: inherited from JSONModel itself
-   * should suffice, but developers have the option ot also overwrite it if needed.
+   * should suffice, but developers have the option to also overwrite it if needed.
    *
    * @param dict a dictionary holding JSON objects, to be imported in the model.
    * @param err an error or NULL
@@ -105,7 +105,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  * All JSONModel classes should implement initWithData:error:
  *
  * For most classes the default initWithData: inherited from JSONModel itself
- * should suffice, but developers have the option ot also overwrite it if needed.
+ * should suffice, but developers have the option to also overwrite it if needed.
  *
  * @param data representing a JSON response (usually fetched from web), to be imported in the model.
  * @param error an error or NULL
