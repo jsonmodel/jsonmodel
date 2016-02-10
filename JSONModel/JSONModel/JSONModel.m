@@ -285,7 +285,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     //loop over the incoming keys and set self's properties
     for (JSONModelClassProperty* property in [self __properties__]) {
         
-        //convert key name ot model keys, if a mapper is provided
+        //convert key name to model keys, if a mapper is provided
         NSString* jsonKeyPath = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper importing:YES] : property.name;
         //JMLog(@"keyPath: %@", jsonKeyPath);
         
