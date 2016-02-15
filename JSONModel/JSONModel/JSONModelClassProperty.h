@@ -68,6 +68,6 @@ typedef enum kCustomizationTypes PropertyGetterType;
 @property (assign, nonatomic) SEL customGetter;
 
 /** custom setters for this property, found in the owning model */
-@property (strong, nonatomic) NSMutableDictionary<NSString *, id> *customSetters;
+@property (strong, nonatomic) NSMutableDictionary *customSetters;
 
 @end
