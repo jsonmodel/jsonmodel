@@ -534,7 +534,34 @@ NSString* string = [pm toJSONString];
 
 ```
 
-* json validation
+#### Custom JSON validation
+
+```objective-c
+
+@interface ProductModel : JSONModel
+@property (assign, nonatomic) int id;
+@property (strong, nonatomic) NSString* name;
+@property (assign, nonatomic) float price;
+@property (strong, nonatomic) NSLocale *locale;
+@property (strong, nonatomic) NSInteger <Ignore> minNameLength;
+@end
+
+@implementation ProductModel
+
+- (BOOL)validate:(NSError *__autoreleasing *)error {
+    BOOL valid = [super validate:error];
+    
+    if (self.name.length < self.minNameLength) {
+        *error = [NSError errorWithDomain:@"me.mycompany.com" code:1 userInfo:nil];
+        valid = NO;
+    }
+    
+    return valid;
+}
+
+@end
+
+```
 * error handling
 * custom data validation
 * automatic compare and equality features
