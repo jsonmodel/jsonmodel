@@ -543,7 +543,7 @@ NSString* string = [pm toJSONString];
 @property (strong, nonatomic) NSString* name;
 @property (assign, nonatomic) float price;
 @property (strong, nonatomic) NSLocale *locale;
-@property (strong, nonatomic) NSInteger <Ignore> minNameLength;
+@property (strong, nonatomic) NSNumber<Ignore> *minNameLength;
 @end
 
 @implementation ProductModel
@@ -551,7 +551,7 @@ NSString* string = [pm toJSONString];
 - (BOOL)validate:(NSError *__autoreleasing *)error {
     BOOL valid = [super validate:error];
     
-    if (self.name.length < self.minNameLength) {
+    if (self.name.length < [self.minNameLength integerValue]) {
         *error = [NSError errorWithDomain:@"me.mycompany.com" code:1 userInfo:nil];
         valid = NO;
     }
