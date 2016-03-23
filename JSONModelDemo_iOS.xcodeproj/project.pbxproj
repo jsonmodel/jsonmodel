@@ -120,6 +120,7 @@
 		9CD425751701FE0000A42AA1 /* HTTPClientSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425731701FDE500A42AA1 /* HTTPClientSuite.m */; };
 		9CD425781701FF2100A42AA1 /* MTTestSemaphor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */; };
 		9CD4257B1702002900A42AA1 /* MockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */; };
+		9CF21CE91CA28A200076A4C7 /* SpecialValuesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF21CE81CA28A200076A4C7 /* SpecialValuesTests.m */; };
 		9CFDD0CA176E977C007B7DFA /* BuiltInConversionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A7176E977C007B7DFA /* BuiltInConversionsModel.m */; };
 		9CFDD0CB176E977C007B7DFA /* CopyrightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0A9176E977C007B7DFA /* CopyrightModel.m */; };
 		9CFDD0CC176E977C007B7DFA /* CustomPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDD0AB176E977C007B7DFA /* CustomPropertyModel.m */; };
@@ -292,6 +293,7 @@
 		9CD425771701FF2100A42AA1 /* MTTestSemaphor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestSemaphor.m; sourceTree = "<group>"; };
 		9CD425791702002900A42AA1 /* MockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockNSURLConnection.h; sourceTree = "<group>"; };
 		9CD4257A1702002900A42AA1 /* MockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockNSURLConnection.m; sourceTree = "<group>"; };
+		9CF21CE81CA28A200076A4C7 /* SpecialValuesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialValuesTests.m; sourceTree = "<group>"; };
 		9CFDD0A6176E977C007B7DFA /* BuiltInConversionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInConversionsModel.h; sourceTree = "<group>"; };
 		9CFDD0A7176E977C007B7DFA /* BuiltInConversionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInConversionsModel.m; sourceTree = "<group>"; };
 		9CFDD0A8176E977C007B7DFA /* CopyrightModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightModel.h; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				4A50001C19C5DCCF00C161A0 /* InitWithDataTests.m */,
 				358FDBA42551FF88466BD5C3 /* ExtremeNestingTests.m */,
 				358FD807C3E86F5DC4058645 /* ExtremeNestingTests.h */,
+				9CF21CE81CA28A200076A4C7 /* SpecialValuesTests.m */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -919,6 +922,7 @@
 				9C66DFB8168CEF420015CCDF /* JSONTypesModelWithValidation1.m in Sources */,
 				9C66DFB9168CEF420015CCDF /* JSONTypesModelWithValidation2.m in Sources */,
 				9C66DFBA168CEF420015CCDF /* JSONTypesReadTests.m in Sources */,
+				9CF21CE91CA28A200076A4C7 /* SpecialValuesTests.m in Sources */,
 				9C66DFBB168CEF420015CCDF /* JSONValueTransformer+UIColor.m in Sources */,
 				9C66DFBC168CEF420015CCDF /* KeyMappingTests.m in Sources */,
 				9C66DFBD168CEF420015CCDF /* NestedModelsTests.m in Sources */,
