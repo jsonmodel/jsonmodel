@@ -38,10 +38,10 @@
 
 -(void)testLoading
 {
-    XCTAssertTrue([repos.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
+    XCTAssertTrue([repos.repositories isKindOfClass:[NSArray class]], @".properties is not a NSArray");
     XCTAssertEqualObjects([[repos.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
     
-    XCTAssertTrue([reposProtocolArray.repositories isMemberOfClass:[JSONModelArray class]], @".properties is not a JSONModelArray");
+    XCTAssertTrue([reposProtocolArray.repositories isKindOfClass:[NSArray class]], @".properties is not a NSArray");
     XCTAssertEqualObjects([[reposProtocolArray.repositories[0] class] description], @"GitHubRepoModel", @".properties[0] is not a GitHubRepoModel");
 }
 
@@ -60,18 +60,6 @@
     for (GitHubRepoModel *m in reposProtocolArray.repositories) {
         XCTAssertNoThrow([m created], @"should not throw exception");
     }
-}
-
--(void)testReadArray
-{
-	JSONModelArray *array = [JSONModelArray new];
-
-	XCTAssertEqualObjects(@(array.count), @0, @"wrong count");
-	XCTAssertNil([array firstObject], @"first object of an empty array should be nil");
-	XCTAssertNil([array lastObject], @"last object of an empty array should be nil");
-	XCTAssertNil(array[0], @"read of empty array should be nil");
-	XCTAssertNil(array[2], @"read of empty array should be nil");
-	XCTAssertNil(array[-2], @"read of empty array should be nil");
 }
 
 -(void)testFirstObject

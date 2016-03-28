@@ -14,10 +14,8 @@
 		1ACA08F31C33F8FD00234DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA08F21C33F8FD00234DA6 /* Assets.xcassets */; };
 		1ACA09151C33F91900234DA6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1ACA08FB1C33F91900234DA6 /* Info.plist */; };
 		1ACA09161C33F91900234DA6 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA08FE1C33F91900234DA6 /* JSONModel.m */; };
-		1ACA09171C33F91900234DA6 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA09001C33F91900234DA6 /* JSONModelArray.m */; };
 		1ACA09181C33F91900234DA6 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA09021C33F91900234DA6 /* JSONModelClassProperty.m */; };
 		1ACA09191C33F91900234DA6 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA09041C33F91900234DA6 /* JSONModelError.m */; };
-		1ACA091A1C33F91900234DA6 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA09071C33F91900234DA6 /* NSArray+JSONModel.m */; };
 		1ACA091B1C33F91900234DA6 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA090B1C33F91900234DA6 /* JSONAPI.m */; };
 		1ACA091C1C33F91900234DA6 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA090D1C33F91900234DA6 /* JSONHTTPClient.m */; };
 		1ACA091D1C33F91900234DA6 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACA090F1C33F91900234DA6 /* JSONModel+networking.m */; };
@@ -38,14 +36,10 @@
 		1ACA08FB1C33F91900234DA6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ACA08FD1C33F91900234DA6 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		1ACA08FE1C33F91900234DA6 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
-		1ACA08FF1C33F91900234DA6 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
-		1ACA09001C33F91900234DA6 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
 		1ACA09011C33F91900234DA6 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
 		1ACA09021C33F91900234DA6 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
 		1ACA09031C33F91900234DA6 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
 		1ACA09041C33F91900234DA6 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
-		1ACA09061C33F91900234DA6 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
-		1ACA09071C33F91900234DA6 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
 		1ACA09081C33F91900234DA6 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
 		1ACA090A1C33F91900234DA6 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
 		1ACA090B1C33F91900234DA6 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
@@ -118,7 +112,6 @@
 			children = (
 				1ACA08FB1C33F91900234DA6 /* Info.plist */,
 				1ACA08FC1C33F91900234DA6 /* JSONModel */,
-				1ACA09051C33F91900234DA6 /* JSONModelCategories */,
 				1ACA09081C33F91900234DA6 /* JSONModelLib.h */,
 				1ACA09091C33F91900234DA6 /* JSONModelNetworking */,
 				1ACA09101C33F91900234DA6 /* JSONModelTransformations */,
@@ -132,23 +125,12 @@
 			children = (
 				1ACA08FD1C33F91900234DA6 /* JSONModel.h */,
 				1ACA08FE1C33F91900234DA6 /* JSONModel.m */,
-				1ACA08FF1C33F91900234DA6 /* JSONModelArray.h */,
-				1ACA09001C33F91900234DA6 /* JSONModelArray.m */,
 				1ACA09011C33F91900234DA6 /* JSONModelClassProperty.h */,
 				1ACA09021C33F91900234DA6 /* JSONModelClassProperty.m */,
 				1ACA09031C33F91900234DA6 /* JSONModelError.h */,
 				1ACA09041C33F91900234DA6 /* JSONModelError.m */,
 			);
 			path = JSONModel;
-			sourceTree = "<group>";
-		};
-		1ACA09051C33F91900234DA6 /* JSONModelCategories */ = {
-			isa = PBXGroup;
-			children = (
-				1ACA09061C33F91900234DA6 /* NSArray+JSONModel.h */,
-				1ACA09071C33F91900234DA6 /* NSArray+JSONModel.m */,
-			);
-			path = JSONModelCategories;
 			sourceTree = "<group>";
 		};
 		1ACA09091C33F91900234DA6 /* JSONModelNetworking */ = {
@@ -246,7 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ACA091C1C33F91900234DA6 /* JSONHTTPClient.m in Sources */,
-				1ACA09171C33F91900234DA6 /* JSONModelArray.m in Sources */,
 				1ACA09191C33F91900234DA6 /* JSONModelError.m in Sources */,
 				1ACA091B1C33F91900234DA6 /* JSONAPI.m in Sources */,
 				1ACA091F1C33F91900234DA6 /* JSONValueTransformer.m in Sources */,
@@ -254,7 +235,6 @@
 				1ACA09161C33F91900234DA6 /* JSONModel.m in Sources */,
 				1ACA091E1C33F91900234DA6 /* JSONKeyMapper.m in Sources */,
 				1ACA091D1C33F91900234DA6 /* JSONModel+networking.m in Sources */,
-				1ACA091A1C33F91900234DA6 /* NSArray+JSONModel.m in Sources */,
 				1ACA08EB1C33F8FD00234DA6 /* AppDelegate.m in Sources */,
 				1ACA08E81C33F8FD00234DA6 /* main.m in Sources */,
 				1ACA09181C33F91900234DA6 /* JSONModelClassProperty.m in Sources */,

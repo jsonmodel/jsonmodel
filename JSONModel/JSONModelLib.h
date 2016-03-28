@@ -29,7 +29,3 @@
 #import "JSONHTTPClient.h"
 #import "JSONModel+networking.h"
 #import "JSONAPI.h"
-
-//models array
-#import "NSArray+JSONModel.h"
-#import "JSONModelArray.h"

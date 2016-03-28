@@ -66,18 +66,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 @interface NSObject(JSONModelPropertyCompatibility)<Optional, Index, Ignore>
 @end
 
-/**
- * ConvertOnDemand enables lazy model initialization for NSArrays of models
- *
- * @property (strong, nonatomic) NSArray&lt;JSONModel, ConvertOnDemand&gt;* propertyName;
- */
+// no longer used
+__attribute__ ((deprecated))
 @protocol ConvertOnDemand
-@end
-
-/**
- * Make all arrays ConvertOnDemand compatible to avoid compiler warnings
- */
-@interface NSArray(JSONModelPropertyCompatibility)<ConvertOnDemand>
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
