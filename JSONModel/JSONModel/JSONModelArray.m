@@ -13,133 +13,57 @@
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-
 #import "JSONModelArray.h"
 #import "JSONModel.h"
 
 @implementation JSONModelArray
 {
-    NSMutableArray* _storage;
+    NSMutableArray *_storage;
     Class _targetClass;
 }
 
--(id)initWithArray:(NSArray *)array modelClass:(Class)cls
+- (id)initWithArray:(NSArray *)array modelClass:(Class)cls
 {
-    self = [super init];
-    
-    if (self) {
-        _storage = [NSMutableArray arrayWithArray:array];
-        _targetClass = cls;
-    }
+    if (!(self = [super init])) return nil;
+
+    _storage = [NSMutableArray arrayWithArray:array];
+    _targetClass = cls;
+
     return self;
 }
 
--(id)firstObject
-{
-    return [self objectAtIndex:0];
-}
-
--(id)lastObject
-{
-    return [self objectAtIndex:_storage.count - 1];
-}
-
--(id)objectAtIndex:(NSUInteger)index
-{
-	return [self objectAtIndexedSubscript:index];
-}
-
--(id)objectAtIndexedSubscript:(NSUInteger)index
-{
-    id object = _storage[index];
-    if (![object isMemberOfClass:_targetClass]) {
-        NSError* err = nil;
-        object = [[_targetClass alloc] initWithDictionary:object error:&err];
-        if (object) {
-            _storage[index] = object;
-        }
-    }
-    return object;
-}
-
--(void)forwardInvocation:(NSInvocation *)anInvocation
-{
-    [anInvocation invokeWithTarget:_storage];
-}
-
--(id)forwardingTargetForSelector:(SEL)selector
-{
-    static NSArray *overriddenMethods = nil;
-    if (!overriddenMethods) overriddenMethods = @[@"initWithArray:modelClass:", @"objectAtIndex:", @"objectAtIndexedSubscript:", @"count", @"modelWithIndexValue:", @"description", @"mutableCopy", @"firstObject", @"lastObject", @"countByEnumeratingWithState:objects:count:"];
-    if ([overriddenMethods containsObject:NSStringFromSelector(selector)]) {
-        return self;
-    }
-    return _storage;
-}
-
--(NSUInteger)count
+- (NSUInteger)count
 {
     return _storage.count;
 }
 
--(id)modelWithIndexValue:(id)indexValue
+- (id)objectAtIndex:(NSUInteger)index
 {
-    if (self.count==0) return nil;
+    id object = _storage[index];
+
+    if (![object isMemberOfClass:_targetClass])
+    {
+        object = [[_targetClass alloc] initWithDictionary:object error:nil];
+        if (object) _storage[index] = object;
+    }
+
+    return object;
+}
+
+- (id)modelWithIndexValue:(id)indexValue
+{
+    if (self.count == 0) return nil;
     if (![_storage[0] indexPropertyName]) return nil;
-    
-    for (JSONModel* model in _storage) {
-        if ([[model valueForKey:model.indexPropertyName] isEqual:indexValue]) {
+
+    for (JSONModel *model in _storage)
+    {
+        if ([[model valueForKey:model.indexPropertyName] isEqual:indexValue])
+        {
             return model;
         }
     }
     
     return nil;
-}
-
--(id)mutableCopy
-{
-    //it's already mutable
-    return self;
-}
-
-#pragma mark - description
--(NSString*)description
-{
-    NSMutableString* res = [NSMutableString stringWithFormat:@"<JSONModelArray[%@]>\n", [_targetClass description]];
-    for (id m in _storage) {
-        [res appendString: [m description]];
-        [res appendString: @",\n"];
-    }
-    [res appendFormat:@"\n</JSONModelArray>"];
-    return res;
-}
-
--(NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
-								 objects:(id __unsafe_unretained [])stackbuf
-								   count:(NSUInteger)stackbufLength
-{
-    NSUInteger count = 0;
-    
-    unsigned long countOfItemsAlreadyEnumerated = state->state;
-    
-    if (countOfItemsAlreadyEnumerated == 0) {
-        state->mutationsPtr = &state->extra[0];
-    }
-	
-    if (countOfItemsAlreadyEnumerated < [self count]) {
-        state->itemsPtr = stackbuf;
-        while ((countOfItemsAlreadyEnumerated < [self count]) && (count < stackbufLength)) {
-            stackbuf[count] = [self objectAtIndex:countOfItemsAlreadyEnumerated];
-            countOfItemsAlreadyEnumerated++;
-            count++;
-        }
-    } else {
-        count = 0;
-    }
-	
-    state->state = countOfItemsAlreadyEnumerated;
-    
-    return count;
 }
 
 @end
