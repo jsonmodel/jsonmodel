@@ -56,7 +56,7 @@ github "icanzilb/JSONModel"
 
 #### Docs
 
-You can find the generated docs online at: [http://cocoadocs.org/docsets/JSONModel/][http://cocoadocs.org/docsets/JSONModel/]
+You can find the generated docs online at: [http://cocoadocs.org/docsets/JSONModel/](http://cocoadocs.org/docsets/JSONModel/)
 
 ------------------------------------
 Basic usage
