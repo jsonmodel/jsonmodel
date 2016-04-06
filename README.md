@@ -37,7 +37,7 @@ Adding JSONModel to your project
 2. Copy the JSONModel sub-folder into your Xcode project
 3. Link your app to SystemConfiguration.framework
 
-#### or 2) via Cocoa pods
+#### or 2) via CocoaPods
 
 In your project's **Podfile** add the JSONModel pod:
 
