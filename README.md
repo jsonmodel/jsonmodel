@@ -1,4 +1,4 @@
-## Magical Data Modelling Framework for JSON
+## Magical Data Modeling Framework for JSON
 
 ### Version 1.2.0
 
@@ -54,12 +54,9 @@ In your project's **Cartfile** add the JSONModel:
 github "icanzilb/JSONModel"
 ```
 
-#### Source code documentation
-The source code includes class docs, which you can build yourself and import into Xcode:
+#### Docs
 
-1. If you don't already have [appledoc](http://gentlebytes.com/appledoc/) installed, install it with [homebrew](http://brew.sh/) by typing `brew install appledoc`.
-2. Install the documentation into Xcode by typing `appledoc .` in the root directory of the repository.
-3. Restart Xcode if it's already running.
+You can find the generated docs online at: [http://cocoadocs.org/docsets/JSONModel/][http://cocoadocs.org/docsets/JSONModel/]
 
 ------------------------------------
 Basic usage
