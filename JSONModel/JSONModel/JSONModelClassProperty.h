@@ -55,9 +55,6 @@ typedef enum kCustomizationTypes PropertyGetterType;
 /** If YES - create a mutable object for the value of the property */
 @property (assign, nonatomic) BOOL isMutable;
 
-/** If YES - create models on demand for the array members */
-@property (assign, nonatomic) BOOL convertsOnDemand;
-
 /** If YES - the value of this property determines equality to other models */
 @property (assign, nonatomic) BOOL isIndex;
 

@@ -25,7 +25,6 @@
 
 #import "JSONModel.h"
 #import "JSONModelClassProperty.h"
-#import "JSONModelArray.h"
 
 #pragma mark - associated objects names
 static const char * kMapperObjectKey;
@@ -627,8 +626,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                                  p.name,
                                                  OBJC_ASSOCIATION_RETAIN // This is atomic
                                                  );
-                    } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
-                        p.convertsOnDemand = YES;
                     } else if([protocolName isEqualToString:@"Ignore"]) {
                         p = nil;
                     } else {
@@ -744,19 +741,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
 				return nil;
 			}
 
-            if (property.convertsOnDemand) {
-                //on demand conversion
-                value = [[JSONModelArray alloc] initWithArray:value modelClass:[protocolClass class]];
-                
-            } else {
-                //one shot conversion
-				JSONModelError* arrayErr = nil;
-                value = [[protocolClass class] arrayOfModelsFromDictionaries:value error:&arrayErr];
-				if((err != nil) && (arrayErr != nil))
-				{
-					*err = [arrayErr errorByPrependingKeyPathComponent:property.name];
-					return nil;
-				}
+            //one shot conversion
+            JSONModelError* arrayErr = nil;
+            value = [[protocolClass class] arrayOfModelsFromDictionaries:value error:&arrayErr];
+            if((err != nil) && (arrayErr != nil))
+            {
+                *err = [arrayErr errorByPrependingKeyPathComponent:property.name];
+                return nil;
             }
         }
         
@@ -1313,7 +1304,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         id value = ([p.name isEqualToString:@"description"])?self->_description:[self valueForKey:p.name];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
-        if (p.isStandardJSONType && ![value respondsToSelector:@selector(count)] && [valueDescription length]>60 && !p.convertsOnDemand) {
+        if (p.isStandardJSONType && ![value respondsToSelector:@selector(count)] && [valueDescription length]>60) {
 
             //cap description for longer values
             valueDescription = [NSString stringWithFormat:@"%@...", [valueDescription substringToIndex:59]];

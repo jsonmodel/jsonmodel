@@ -400,57 +400,6 @@ Note: the angle brackets after <code>NSArray</code> contain a protocol. This is 
 </tr>
 </table>
 
-
-#### Lazy convert collection items from dictionaries to models
-<table>
-<tr>
-<td valign="top">
-<pre>
-{
-  "order_id": 104,
-  "total_price": 103.45,
-  "products" : [
-    {
-      "id": "123",
-      "name": "Product #1",
-      "price": 12.95
-    },
-    {
-      "id": "137",
-      "name": "Product #2",
-      "price": 82.95
-    }
-  ]
-}
-</pre>
-</td>
-<td valign="top">
-<pre>
-@protocol ProductModel
-@end
-
-@interface ProductModel : JSONModel
-@property (assign, nonatomic) int id;
-@property (strong, nonatomic) NSString* name;
-@property (assign, nonatomic) float price;
-@end
-
-@implementation ProductModel
-@end
-
-@interface OrderModel : JSONModel
-@property (assign, nonatomic) int order_id;
-@property (assign, nonatomic) float total_price;
-@property (strong, nonatomic) NSArray&lt;ProductModel, <b>ConvertOnDemand</b>&gt;* products;
-@end
-
-@implementation OrderModel
-@end
-</pre>
-</td>
-</tr>
-</table>
-
 #### Using the built-in thin HTTP client
 
 ```objective-c

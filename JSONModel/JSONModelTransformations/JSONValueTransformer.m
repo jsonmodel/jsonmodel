@@ -15,7 +15,6 @@
 
 
 #import "JSONValueTransformer.h"
-#import "JSONModelArray.h"
 
 #pragma mark - functions
 extern BOOL isNull(id value)
@@ -82,25 +81,8 @@ extern BOOL isNull(id value)
 #pragma mark - NSMutableArray <-> NSArray
 -(NSMutableArray*)NSMutableArrayFromNSArray:(NSArray*)array
 {
-    if ([array isKindOfClass:[JSONModelArray class]]) {
-        //it's a jsonmodelarray already, just return it
-        return (id)array;
-    }
-    
     return [NSMutableArray arrayWithArray:array];
 }
-
-#pragma mark - NS(Mutable)Array <- JSONModelArray
--(NSArray*)NSArrayFromJSONModelArray:(JSONModelArray*)array
-{
-    return (NSMutableArray*)array;
-}
-
--(NSMutableArray*)NSMutableArrayFromJSONModelArray:(JSONModelArray*)array
-{
-    return (NSMutableArray*)array;
-}
-
 
 #pragma mark - NSMutableDictionary <-> NSDictionary
 -(NSMutableDictionary*)NSMutableDictionaryFromNSDictionary:(NSDictionary*)dict

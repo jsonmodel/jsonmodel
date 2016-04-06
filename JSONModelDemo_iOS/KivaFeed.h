@@ -11,6 +11,6 @@
 
 @interface KivaFeed : JSONModel
 
-@property (strong, nonatomic) NSArray<LoanModel, ConvertOnDemand>* loans;
+@property (strong, nonatomic) NSArray<LoanModel>* loans;
 
 @end

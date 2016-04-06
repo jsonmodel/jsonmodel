@@ -26,7 +26,6 @@
     if (self.isIndex) [properties addObject:@"Index"];
     if (self.isOptional) [properties addObject:@"Optional"];
     if (self.isMutable) [properties addObject:@"Mutable"];
-    if (self.convertsOnDemand) [properties addObject:@"ConvertOnDemand"];
     if (self.isStandardJSONType) [properties addObject:@"Standard JSON type"];
     if (self.customGetter) [properties addObject:[NSString stringWithFormat: @"Getter = %@", NSStringFromSelector(self.customGetter)]];
 

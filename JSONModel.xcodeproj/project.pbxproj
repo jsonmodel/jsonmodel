@@ -9,14 +9,10 @@
 /* Begin PBXBuildFile section */
 		92C9BC7C1B19A5B600D79B06 /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC7D1B19A5B600D79B06 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
-		92C9BC7E1B19A5B600D79B06 /* JSONModelArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC661B19A5B600D79B06 /* JSONModelArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		92C9BC7F1B19A5B600D79B06 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC671B19A5B600D79B06 /* JSONModelArray.m */; };
 		92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC811B19A5B600D79B06 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */; };
 		92C9BC821B19A5B600D79B06 /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC831B19A5B600D79B06 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC6B1B19A5B600D79B06 /* JSONModelError.m */; };
-		92C9BC841B19A5B600D79B06 /* NSArray+JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6D1B19A5B600D79B06 /* NSArray+JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		92C9BC851B19A5B600D79B06 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC6E1B19A5B600D79B06 /* NSArray+JSONModel.m */; };
 		92C9BC861B19A5B600D79B06 /* JSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6F1B19A5B600D79B06 /* JSONModelLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC871B19A5B600D79B06 /* JSONAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC711B19A5B600D79B06 /* JSONAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC881B19A5B600D79B06 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC721B19A5B600D79B06 /* JSONAPI.m */; };
@@ -35,14 +31,10 @@
 		92C9BC411B19A51100D79B06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C9BC641B19A5B600D79B06 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		92C9BC651B19A5B600D79B06 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
-		92C9BC661B19A5B600D79B06 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
-		92C9BC671B19A5B600D79B06 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
 		92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
 		92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		92C9BC6B1B19A5B600D79B06 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
-		92C9BC6D1B19A5B600D79B06 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		92C9BC6E1B19A5B600D79B06 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
 		92C9BC6F1B19A5B600D79B06 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONModelLib.h; path = JSONModel/JSONModelLib.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		92C9BC711B19A5B600D79B06 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		92C9BC721B19A5B600D79B06 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
@@ -72,7 +64,6 @@
 			children = (
 				92C9BC6F1B19A5B600D79B06 /* JSONModelLib.h */,
 				92C9BC631B19A5B600D79B06 /* JSONModel */,
-				92C9BC6C1B19A5B600D79B06 /* JSONModelCategories */,
 				92C9BC701B19A5B600D79B06 /* JSONModelNetworking */,
 				92C9BC771B19A5B600D79B06 /* JSONModelTransformations */,
 				92C9BC401B19A51100D79B06 /* Supporting Files */,
@@ -105,8 +96,6 @@
 			children = (
 				92C9BC641B19A5B600D79B06 /* JSONModel.h */,
 				92C9BC651B19A5B600D79B06 /* JSONModel.m */,
-				92C9BC661B19A5B600D79B06 /* JSONModelArray.h */,
-				92C9BC671B19A5B600D79B06 /* JSONModelArray.m */,
 				92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */,
 				92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */,
 				92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */,
@@ -114,16 +103,6 @@
 			);
 			name = JSONModel;
 			path = JSONModel/JSONModel;
-			sourceTree = "<group>";
-		};
-		92C9BC6C1B19A5B600D79B06 /* JSONModelCategories */ = {
-			isa = PBXGroup;
-			children = (
-				92C9BC6D1B19A5B600D79B06 /* NSArray+JSONModel.h */,
-				92C9BC6E1B19A5B600D79B06 /* NSArray+JSONModel.m */,
-			);
-			name = JSONModelCategories;
-			path = JSONModel/JSONModelCategories;
 			sourceTree = "<group>";
 		};
 		92C9BC701B19A5B600D79B06 /* JSONModelNetworking */ = {
@@ -161,9 +140,7 @@
 			files = (
 				92C9BC8B1B19A5B600D79B06 /* JSONModel+networking.h in Headers */,
 				92C9BC861B19A5B600D79B06 /* JSONModelLib.h in Headers */,
-				92C9BC7E1B19A5B600D79B06 /* JSONModelArray.h in Headers */,
 				92C9BC8F1B19A5B600D79B06 /* JSONValueTransformer.h in Headers */,
-				92C9BC841B19A5B600D79B06 /* NSArray+JSONModel.h in Headers */,
 				92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */,
 				92C9BC871B19A5B600D79B06 /* JSONAPI.h in Headers */,
 				92C9BC7C1B19A5B600D79B06 /* JSONModel.h in Headers */,
@@ -242,12 +219,10 @@
 			files = (
 				92C9BC8A1B19A5B600D79B06 /* JSONHTTPClient.m in Sources */,
 				92C9BC831B19A5B600D79B06 /* JSONModelError.m in Sources */,
-				92C9BC851B19A5B600D79B06 /* NSArray+JSONModel.m in Sources */,
 				92C9BC901B19A5B600D79B06 /* JSONValueTransformer.m in Sources */,
 				92C9BC8E1B19A5B600D79B06 /* JSONKeyMapper.m in Sources */,
 				92C9BC881B19A5B600D79B06 /* JSONAPI.m in Sources */,
 				92C9BC7D1B19A5B600D79B06 /* JSONModel.m in Sources */,
-				92C9BC7F1B19A5B600D79B06 /* JSONModelArray.m in Sources */,
 				92C9BC811B19A5B600D79B06 /* JSONModelClassProperty.m in Sources */,
 				92C9BC8C1B19A5B600D79B06 /* JSONModel+networking.m in Sources */,
 			);
