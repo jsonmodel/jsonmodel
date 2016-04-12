@@ -948,7 +948,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             continue;
         
         //fetch key and value
-        NSString* keyPath = (self.__keyMapper||globalKeyMapper) ? [self __mapString:p.name withKeyMapper:self.__keyMapper importing:YES] : p.name;
+        NSString* keyPath = (self.__keyMapper||globalKeyMapper) ? [self __mapString:p.name withKeyMapper:self.__keyMapper importing:NO] : p.name;
         value = [self valueForKey: p.name];
         
         //JMLog(@"toDictionary[%@]->[%@] = '%@'", p.name, keyPath, value);
