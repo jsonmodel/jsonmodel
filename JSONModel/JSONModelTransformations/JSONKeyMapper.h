@@ -52,7 +52,7 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 
 /** @name Name converters */
 /** Block, which takes in a JSON key and converts it to the corresponding property name */
-@property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock;
+@property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock DEPRECATED_ATTRIBUTE;
 
 /** Block, which takes in a property name and converts it to the corresponding JSON key name */
 @property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock;
@@ -62,7 +62,8 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 * @param importing YES invokes JSONToModelKeyBlock, NO - modelToJSONKeyBlock
 * @return JSONKeyMapper instance
 */
--(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing;
+-(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing DEPRECATED_MSG_ATTRIBUTE("use convertValue:");
+-(NSString*)convertValue:(NSString*)value;
 
 /** @name Creating a key mapper */
 
@@ -75,7 +76,8 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  * @param toJSON transforms your model property name to a JSON key
  */
 -(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
-                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
+                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONBlock:");
+-(instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
 
 /**
  * Creates a JSONKeyMapper instance, based on the mapping you provide
