@@ -12,15 +12,7 @@
 
 +(JSONKeyMapper*)keyMapper
 {
-    return [[JSONKeyMapper alloc] initWithJSONToModelBlock:^NSString *(NSString *keyName) {
-        
-        if ([keyName isEqual:@"description"]) {
-            return @"__description";
-        } else {
-            return keyName;
-        }
-        
-    } modelToJSONBlock:^NSString *(NSString *keyName) {
+    return [[JSONKeyMapper alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName) {
 
         if ([keyName isEqual:@"__description"]) {
             return @"description";
