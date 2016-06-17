@@ -791,7 +791,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 //built-in reverse transformations (export to JSON compliant objects)
--(id)__reverseTransform:(id)value forProperty:(JSONModelClassProperty*)property
+-(id)__reverseTransform:(id)value forProperty:(JSONModelClassProperty*)property forPropertyNames:(NSArray *)propertyNames
 {
     Class protocolClass = NSClassFromString(property.protocol);
     if (!protocolClass) return value;
@@ -803,8 +803,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
         if (property.type == [NSArray class] || property.type == [NSMutableArray class]) {
             NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity: [(NSArray*)value count] ];
             for (NSObject<AbstractJSONModelProtocol>* model in (NSArray*)value) {
-                if ([model respondsToSelector:@selector(toDictionary)]) {
-                    [tempArray addObject: [model toDictionary]];
+                if ([model respondsToSelector:@selector(toDictionaryWithKeys:)]) {
+                    [tempArray addObject: [model toDictionaryWithKeys:propertyNames]];
                 } else
                     [tempArray addObject: model];
             }
@@ -816,7 +816,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             NSMutableDictionary* res = [NSMutableDictionary dictionary];
             for (NSString* key in [(NSDictionary*)value allKeys]) {
                 id<AbstractJSONModelProtocol> model = value[key];
-                [res setValue: [model toDictionary] forKey: key];
+                [res setValue: [model toDictionaryWithKeys:propertyNames] forKey: key];
             }
             return [NSDictionary dictionaryWithDictionary:res];
         }
@@ -995,7 +995,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             
             // 1) check for built-in transformation
             if (p.protocol) {
-                value = [self __reverseTransform:value forProperty:p];
+                value = [self __reverseTransform:value forProperty:p forPropertyNames:propertyNames];
             }
             
             // 2) check for standard types OR 2.1) primitives
