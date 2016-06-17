@@ -984,7 +984,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
         if ([value isKindOfClass:JSONModelClass]) {
 
             //recurse models
-            value = [(JSONModel*)value toDictionary];
+            //another model also have some property not used
+            value = [(JSONModel*)value toDictionaryWithKeys:propertyNames];
             [tempDictionary setValue:value forKeyPath: keyPath];
             
             //for clarity
