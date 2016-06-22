@@ -22,6 +22,10 @@
 @property (assign, nonatomic) BOOL fork;
 @property (assign, nonatomic) double size;
 @property (assign, nonatomic) int followers;
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 @property (strong, nonatomic) NSString<Index>* name;
+#pragma GCC diagnostic pop
 
 @end

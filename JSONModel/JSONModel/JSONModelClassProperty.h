@@ -56,7 +56,7 @@ typedef enum kCustomizationTypes PropertyGetterType;
 @property (assign, nonatomic) BOOL isMutable;
 
 /** If YES - the value of this property determines equality to other models */
-@property (assign, nonatomic) BOOL isIndex;
+@property (assign, nonatomic) BOOL isIndex DEPRECATED_ATTRIBUTE;
 
 /** The status of property getter introspection in a model */
 @property (assign, nonatomic) PropertyGetterType getterType;

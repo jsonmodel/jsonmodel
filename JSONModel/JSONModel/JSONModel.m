@@ -619,7 +619,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     if ([protocolName isEqualToString:@"Optional"]) {
                         p.isOptional = YES;
                     } else if([protocolName isEqualToString:@"Index"]) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                         p.isIndex = YES;
+#pragma GCC diagnostic pop
+
                         objc_setAssociatedObject(
                                                  self.class,
                                                  &kIndexPropertyNameKey,
@@ -1237,6 +1241,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - custom comparison methods
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 -(NSString*)indexPropertyName
 {
     //custom getter for an associated object
@@ -1286,6 +1293,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
     return [super hash];
 }
+
+#pragma GCC diagnostic pop
 
 #pragma mark - custom data validation
 -(BOOL)validate:(NSError**)error
