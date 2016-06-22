@@ -55,7 +55,11 @@ static NSString* requestContentType = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         requestHeaders = [NSMutableDictionary dictionary];
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         requestContentType = kContentTypeAutomatic;
+#pragma GCC diagnostic pop
     });
 }
 

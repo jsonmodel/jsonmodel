@@ -13,6 +13,8 @@
 
 #import "NestedModel.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 @implementation InitFromWebTests
 {
     NSString* jsonContents;

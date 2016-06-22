@@ -29,7 +29,10 @@
 
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     feed = [[KivaFeed alloc] initFromURLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"
+#pragma GCC diagnostic pop
                                         completion:^(JSONModel *model, JSONModelError* e) {
         
         [HUD hideUIBlockingIndicator];
