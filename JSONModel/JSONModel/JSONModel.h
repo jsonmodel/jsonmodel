@@ -29,6 +29,14 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #endif
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+DEPRECATED_ATTRIBUTE
+@protocol ConvertOnDemand
+@end
+
+DEPRECATED_ATTRIBUTE
+@protocol Index
+@end
+
 #pragma mark - Property Protocols
 /**
  * Protocol for defining properties in a JSON Model class that should not be considered at all
@@ -51,23 +59,9 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 @end
 
 /**
- * Protocol for defining index properties in a JSON Model class. Use like below to define
- * model properties that are considered the Model's identifier (id).
- *
- * @property (strong, nonatomic) NSString&lt;Index&gt; *propertyName;
- *
+ * Make all objects compatible to avoid compiler warnings
  */
-@protocol Index
-@end
-
-/**
- * Make all objects Optional compatible to avoid compiler warnings
- */
-@interface NSObject(JSONModelPropertyCompatibility)<Optional, Index, Ignore>
-@end
-
-DEPRECATED_ATTRIBUTE
-@protocol ConvertOnDemand
+@interface NSObject(JSONModelPropertyCompatibility)<Optional, Ignore>
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,6 +134,8 @@ DEPRECATED_ATTRIBUTE
 + (NSMutableArray *)arrayOfModelsFromDictionaries:(NSArray *)array DEPRECATED_MSG_ATTRIBUTE("use arrayOfModelsFromDictionaries:error:");
 + (void)setGlobalKeyMapper:(JSONKeyMapper *)globalKeyMapper DEPRECATED_MSG_ATTRIBUTE("override +keyMapper in a base model class instead");
 - (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping DEPRECATED_MSG_ATTRIBUTE("use mergeFromDictionary:useKeyMapping:error:");
+- (NSString *)indexPropertyName DEPRECATED_ATTRIBUTE;
+- (NSComparisonResult)compare:(id)object DEPRECATED_ATTRIBUTE;
 
 /** @name Creating and initializing models */
 
@@ -240,31 +236,6 @@ DEPRECATED_ATTRIBUTE
  */
 + (NSMutableArray *)arrayOfDictionariesFromModels:(NSArray *)array;
 + (NSMutableDictionary *)dictionaryOfDictionariesFromModels:(NSDictionary *)dictionary;
-
-/** @name Comparing models */
-
-/**
- * The name of the model's property, which is considered the model's unique identifier.
- * You can define Index property by using the Index protocol:
- * @property (strong, nonatomic) NSString&lt;Index&gt; *id;
- */
-- (NSString *)indexPropertyName;
-
-/**
- * Overridden NSObject method to compare model objects. Compares the &lt;Index&gt; property of the two models,
- * if an index property is defined.
- * @param object a JSONModel instance to compare to for equality
- */
-- (BOOL)isEqual:(id)object;
-
-/**
- * Comparison method, which uses the defined &lt;Index&gt; property of the two models, to compare them.
- * If there isn't an index property throws an exception. If the Index property does not have a compare: method
- * also throws an exception. NSString and NSNumber have compare: methods, and in case the Index property is
- * a another custom class, the programmer should create a custom compare: method then.
- * @param object a JSONModel instance to compare to
- */
-- (NSComparisonResult)compare:(id)object;
 
 /** @name Validation */
 
