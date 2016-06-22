@@ -33,7 +33,7 @@ Adding JSONModel to your project
 
 #### Get it as: 1) source files
 
-1. Download the JSONModel repository as a [zip file](https://github.com/icanzilb/JSONModel/archive/master.zip) or clone it
+1. Download the JSONModel repository as a [zip file](https://github.com/JSONModel/JSONModel/archive/master.zip) or clone it
 2. Copy the JSONModel sub-folder into your Xcode project
 3. Link your app to SystemConfiguration.framework
 
@@ -51,7 +51,7 @@ If you want to read more about CocoaPods, have a look at [this short tutorial](h
 In your project's **Cartfile** add the JSONModel:
 
 ```ruby
-github "icanzilb/JSONModel"
+github "JSONModel/JSONModel"
 ```
 
 #### Docs
@@ -521,9 +521,9 @@ Misc
 Author: [Marin Todorov](http://www.touch-code-magazine.com)
 
 Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
-Also everyone who did successful [pull requests](https://github.com/icanzilb/JSONModel/graphs/contributors).
+Also everyone who did successful [pull requests](https://github.com/JSONModel/JSONModel/graphs/contributors).
 
-Change log : [https://github.com/icanzilb/JSONModel/blob/master/Changelog.md](https://github.com/icanzilb/JSONModel/blob/master/Changelog.md)
+Change log : [https://github.com/JSONModel/JSONModel/blob/master/Changelog.md](https://github.com/JSONModel/JSONModel/blob/master/Changelog.md)
 
 Utility to generate JSONModel classes from JSON data: https://github.com/dofork/json2object
 
