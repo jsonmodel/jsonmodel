@@ -295,7 +295,7 @@ __attribute__ ((deprecated))
  *
  * Lookup JSONKeyMapper docs for more details.
  */
-+(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper;
++(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper DEPRECATED_MSG_ATTRIBUTE("override +keyMapper in a base model class instead");
 
 /**
  * Indicates whether the property with the given name is Optional.

@@ -14,6 +14,8 @@
 #import "ModelForUpperCaseMapper.h"
 #import "RenamedPropertyModel.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #pragma mark - TestModel class
 @interface TestModel: JSONModel
 
