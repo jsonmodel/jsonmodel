@@ -50,10 +50,12 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
  */
 @interface JSONKeyMapper : NSObject
 
-/** @name Name converters */
-/** Block, which takes in a JSON key and converts it to the corresponding property name */
+// deprecated
 @property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock DEPRECATED_ATTRIBUTE;
+- (NSString *)convertValue:(NSString *)value isImportingToModel:(BOOL)importing DEPRECATED_MSG_ATTRIBUTE("use convertValue:");
+- (instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel modelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONBlock:");
 
+/** @name Name converters */
 /** Block, which takes in a property name and converts it to the corresponding JSON key name */
 @property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock;
 
@@ -62,21 +64,17 @@ typedef NSString* (^JSONModelKeyMapBlock)(NSString* keyName);
 * @param importing YES invokes JSONToModelKeyBlock, NO - modelToJSONKeyBlock
 * @return JSONKeyMapper instance
 */
--(NSString*)convertValue:(NSString*)value isImportingToModel:(BOOL)importing DEPRECATED_MSG_ATTRIBUTE("use convertValue:");
 -(NSString*)convertValue:(NSString*)value;
 
 /** @name Creating a key mapper */
 
 /**
  * Creates a JSONKeyMapper instance, based on the two blocks you provide this initializer.
- * The two parameters take in a JSONModelKeyMapBlock block:
+ * The parameter takes in a JSONModelKeyMapBlock block:
  * <pre>NSString* (^JSONModelKeyMapBlock)(NSString* keyName)</pre>
  * The block takes in a string and returns the transformed (if at all) string.
- * @param toModel transforms JSON key name to your model property name
  * @param toJSON transforms your model property name to a JSON key
  */
--(instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel
-                       modelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONBlock:");
 -(instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
 
 /**

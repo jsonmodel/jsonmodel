@@ -66,8 +66,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 @interface NSObject(JSONModelPropertyCompatibility)<Optional, Index, Ignore>
 @end
 
-// no longer used
-__attribute__ ((deprecated))
+DEPRECATED_ATTRIBUTE
 @protocol ConvertOnDemand
 @end
 
@@ -136,6 +135,11 @@ __attribute__ ((deprecated))
  * to have as properties of your own class.
  */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol, NSSecureCoding>
+
+// deprecated
++ (NSMutableArray *)arrayOfModelsFromDictionaries:(NSArray *)array DEPRECATED_MSG_ATTRIBUTE("use arrayOfModelsFromDictionaries:error:");
++ (void)setGlobalKeyMapper:(JSONKeyMapper *)globalKeyMapper DEPRECATED_MSG_ATTRIBUTE("override +keyMapper in a base model class instead");
+- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping DEPRECATED_MSG_ATTRIBUTE("use mergeFromDictionary:useKeyMapping:error:");
 
 /** @name Creating and initializing models */
 
@@ -218,7 +222,6 @@ __attribute__ ((deprecated))
    * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
    * @see arrayOfDictionariesFromModels:
    */
-  +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array __attribute__((deprecated("use arrayOfModelsFromDictionaries:error:")));
   +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array error:(NSError**)err;
   +(NSMutableArray*)arrayOfModelsFromData:(NSData*)data error:(NSError**)err;
   +(NSMutableArray*)arrayOfModelsFromString:(NSString*)string error:(NSError**)err;
@@ -287,17 +290,6 @@ __attribute__ ((deprecated))
 +(JSONKeyMapper*)keyMapper;
 
 /**
- * Sets a key mapper which affects ALL the models in your project. Use this if you need only one mapper to work
- * with your API. For example if you are using the [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase] it is more
- * likely that you will need to use it with ALL of your models.
- * NB: Custom key mappers take precedence over the global key mapper.
- * @param globalKeyMapper a key mapper to apply to all models in your project.
- *
- * Lookup JSONKeyMapper docs for more details.
- */
-+(void)setGlobalKeyMapper:(JSONKeyMapper*)globalKeyMapper DEPRECATED_MSG_ATTRIBUTE("override +keyMapper in a base model class instead");
-
-/**
  * Indicates whether the property with the given name is Optional.
  * To have a model with all of its properties being Optional just return YES.
  * This method returns by default NO, since the default behaviour is to have all properties required.
@@ -335,7 +327,6 @@ __attribute__ ((deprecated))
  * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO 
  * it'll just try to match the dictionary keys to the model's properties
  */
-- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping __attribute__((deprecated("use mergeFromDictionary:useKeyMapping:error:")));
 - (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping error:(NSError **)error;
 
 @end

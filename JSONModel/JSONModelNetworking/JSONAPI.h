@@ -13,78 +13,17 @@
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-
 #import <Foundation/Foundation.h>
 #import "JSONHTTPClient.h"
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+DEPRECATED_ATTRIBUTE
+@interface JSONAPI : NSObject
 
-/**
- * @discussion Class for working with JSON APIs. It builds upon the JSONHTTPClient class
- * and facilitates making requests to the same web host. Also features helper
- * method for making calls to a JSON RPC service
- */
-DEPRECATED_ATTRIBUTE @interface JSONAPI : NSObject
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-/** @name Configuring the API */
-/**
- * Sets the API url
- * @param base the API url as a string
- */
-+(void)setAPIBaseURLWithString:(NSString*)base DEPRECATED_ATTRIBUTE;
-
-/**
- * Sets the default content type for the requests/responses
- * @param ctype The content-type as a string. Some possible types, 
- * depending on the service: application/json, text/json, x-application/javascript, etc.
- */
-+(void)setContentType:(NSString*)ctype DEPRECATED_ATTRIBUTE;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-/** @name Making GET API requests */
-/**
- * Makes an asynchronous GET request to the API
- * @param path the URL path to add to the base API URL for this HTTP call
- * @param params the variables to pass to the API
- * @param completeBlock a JSONObjectBlock block to execute upon completion
- */
-+(void)getWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-/** @name Making POST API requests */
-/**
- * Makes a POST request to the API
- * @param path the URL path to add to the base API URL for this HTTP call
- * @param params the variables to pass to the API
- * @param completeBlock a JSONObjectBlock block to execute upon completion
- */
-+(void)postWithPath:(NSString*)path andParams:(NSDictionary*)params completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-/** @name JSON RPC methods */
-/**
- * Makes an asynchronous JSON RPC request to the API. Read more: http://www.jsonrpc.org
- * @param method the HTTP method name; GET or POST only
- * @param args the list of arguments to pass to the API
- * @param completeBlock JSONObjectBlock to execute upon completion
- */
-+(void)rpcWithMethodName:(NSString*)method andArguments:(NSArray*)args completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
-
-/** @name JSON RPC (2.0) request method */
-/**
- * Makes an asynchronous JSON RPC 2.0 request to the API. Read more: http://www.jsonrpc.org
- * @param method the HTTP method name; GET or POST only
- * @param params the params to pass to the API - an NSArray or an NSDictionary, 
- * depending whether you're using named or unnamed parameters
- * @param completeBlock JSONObjectBlock to execute upon completion
- */
-+(void)rpc2WithMethodName:(NSString*)method andParams:(id)params completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
++ (void)setAPIBaseURLWithString:(NSString *)base DEPRECATED_ATTRIBUTE;
++ (void)setContentType:(NSString *)ctype DEPRECATED_ATTRIBUTE;
++ (void)getWithPath:(NSString *)path andParams:(NSDictionary *)params completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
++ (void)postWithPath:(NSString *)path andParams:(NSDictionary *)params completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
++ (void)rpcWithMethodName:(NSString *)method andArguments:(NSArray *)args completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
++ (void)rpc2WithMethodName:(NSString *)method andParams:(id)params completion:(JSONObjectBlock)completeBlock DEPRECATED_ATTRIBUTE;
 
 @end
