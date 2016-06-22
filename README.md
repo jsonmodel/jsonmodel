@@ -13,8 +13,7 @@ If you like JSONModel and use it, could you please:
 
 ---
 
-![JSONModel for iOS and OSX](h
-ttp://jsonmodel.com/img/jsonmodel_logolike.png)
+![JSONModel for iOS and OSX](http://jsonmodel.com/img/jsonmodel_logolike.png)
 
 JSONModel is a library, which allows rapid creation of smart data models. You can use it in your iOS or OSX apps.
 
