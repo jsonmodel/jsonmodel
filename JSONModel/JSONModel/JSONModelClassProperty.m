@@ -23,7 +23,11 @@
     //build the properties string for the current class property
     NSMutableArray* properties = [NSMutableArray arrayWithCapacity:8];
     
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     if (self.isIndex) [properties addObject:@"Index"];
+#pragma GCC diagnostic pop
+    
     if (self.isOptional) [properties addObject:@"Optional"];
     if (self.isMutable) [properties addObject:@"Mutable"];
     if (self.isStandardJSONType) [properties addObject:@"Standard JSON type"];
