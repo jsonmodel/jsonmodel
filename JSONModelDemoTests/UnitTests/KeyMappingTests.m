@@ -222,7 +222,7 @@
     [JSONModel setGlobalKeyMapper:nil];
 }
 
-//https://github.com/icanzilb/JSONModel/issues/132
+//https://github.com/JSONModel/JSONModel/issues/132
 -(void)testAtNameProperty
 {
     AtNameModel* at = [[AtNameModel alloc] initWithString:@"{\"@type\":157}" error:nil];
@@ -254,7 +254,7 @@
     [JSONModel setGlobalKeyMapper:nil];
 }
 
-//https://github.com/icanzilb/JSONModel/issues/180
+//https://github.com/JSONModel/JSONModel/issues/180
 -(void)testUsingBothGlobalAndCustomMappers
 {
     //input dictionary for TestModel

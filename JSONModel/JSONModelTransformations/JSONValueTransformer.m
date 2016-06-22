@@ -183,7 +183,7 @@ extern BOOL isNull(id value)
 -(NSURL*)NSURLFromNSString:(NSString*)string
 {
     // do not change this behavior - there are other ways of overriding it
-    // see: https://github.com/icanzilb/JSONModel/pull/119
+    // see: https://github.com/JSONModel/JSONModel/pull/119
     return [NSURL URLWithString:string];
 }
 
@@ -240,7 +240,7 @@ extern BOOL isNull(id value)
 }
 
 #pragma mark - hidden transform for empty dictionaries
-//https://github.com/icanzilb/JSONModel/issues/163
+//https://github.com/JSONModel/JSONModel/issues/163
 -(NSDictionary*)__NSDictionaryFromNSArray:(NSArray*)array
 {
     if (array.count==0) return @{};

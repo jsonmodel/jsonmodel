@@ -363,7 +363,7 @@
     [[MTTestSemaphor semaphore] waitForKey: semaphorKey];
 }
 
-//https://github.com/icanzilb/JSONModel/issues/58
+//https://github.com/JSONModel/JSONModel/issues/58
 -(void)testNumberQueryParams
 {
     NSString* jsonURLString = @"http://localhost/test.json?testGetJSONFromURLWithParamsNumber";
@@ -396,7 +396,7 @@
 
 }
 
-//https://github.com/icanzilb/JSONModel/issues/59
+//https://github.com/JSONModel/JSONModel/issues/59
 -(void)testHttpStatusCodes
 {
     //check if the header is sent along the http request

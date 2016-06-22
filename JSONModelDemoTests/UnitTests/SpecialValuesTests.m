@@ -38,7 +38,7 @@
     XCTAssertNotNil(_model, @"Could not load the test data file.");
 }
 
-// tests: https://github.com/icanzilb/JSONModel/issues/460
+// tests: https://github.com/JSONModel/JSONModel/issues/460
 - (void)testExample {
     XCTAssertTrue([_model.name isEqualToString:@"FIRST_SECOND"]);
 }

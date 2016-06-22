@@ -69,7 +69,7 @@
 }
 
 /*
- * https://github.com/icanzilb/JSONModel/pull/14
+ * https://github.com/JSONModel/JSONModel/pull/14
  */
 -(void)testArrayReverseTransformGitHubIssue_14
 {
@@ -81,7 +81,7 @@
 }
 
 /*
- * https://github.com/icanzilb/JSONModel/issues/15
+ * https://github.com/JSONModel/JSONModel/issues/15
  */
 -(void)testArrayReverseTransformGitHubIssue_15
 {

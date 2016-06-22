@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>2454A7C0A4BC2A09472718EB55354F320600B245</key>
-		<string>github.com:icanzilb/JSONModel.git</string>
+		<string>github.com:JSONModel/JSONModel.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>JSONModel.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:icanzilb/JSONModel.git</string>
+	<string>github.com:JSONModel/JSONModel.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
