@@ -28,15 +28,15 @@ typedef NS_ENUM(int, kJSONModelErrorTypes)
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /** The domain name used for the JSONModelError instances */
-extern NSString* const JSONModelErrorDomain;
+extern NSString *const JSONModelErrorDomain;
 
-/** 
+/**
  * If the model JSON input misses keys that are required, check the
- * userInfo dictionary of the JSONModelError instance you get back - 
+ * userInfo dictionary of the JSONModelError instance you get back -
  * under the kJSONModelMissingKeys key you will find a list of the
  * names of the missing keys.
  */
-extern NSString* const kJSONModelMissingKeys;
+extern NSString *const kJSONModelMissingKeys;
 
 /**
  * If JSON input has a different type than expected by the model, check the
@@ -44,62 +44,62 @@ extern NSString* const kJSONModelMissingKeys;
  * under the kJSONModelTypeMismatch key you will find a description
  * of the mismatched types.
  */
-extern NSString* const kJSONModelTypeMismatch;
+extern NSString *const kJSONModelTypeMismatch;
 
 /**
  * If an error occurs in a nested model, check the userInfo dictionary of
  * the JSONModelError instance you get back - under the kJSONModelKeyPath
  * key you will find key-path at which the error occurred.
  */
-extern NSString* const kJSONModelKeyPath;
+extern NSString *const kJSONModelKeyPath;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * Custom NSError subclass with shortcut methods for creating 
+ * Custom NSError subclass with shortcut methods for creating
  * the common JSONModel errors
  */
 @interface JSONModelError : NSError
 
-@property (strong, nonatomic) NSHTTPURLResponse* httpResponse;
+@property (strong, nonatomic) NSHTTPURLResponse *httpResponse;
 
-@property (strong, nonatomic) NSData* responseData;
+@property (strong, nonatomic) NSData *responseData;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
  */
-+(id)errorInvalidDataWithMessage:(NSString*)message;
++ (id)errorInvalidDataWithMessage:(NSString *)message;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
  * @param keys a set of field names that were required, but not found in the input
  */
-+(id)errorInvalidDataWithMissingKeys:(NSSet*)keys;
++ (id)errorInvalidDataWithMissingKeys:(NSSet *)keys;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
  * @param mismatchDescription description of the type mismatch that was encountered.
  */
-+(id)errorInvalidDataWithTypeMismatch:(NSString*)mismatchDescription;
++ (id)errorInvalidDataWithTypeMismatch:(NSString *)mismatchDescription;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorBadResponse = 2
  */
-+(id)errorBadResponse;
++ (id)errorBadResponse;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorBadJSON = 3
  */
-+(id)errorBadJSON;
++ (id)errorBadJSON;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorModelIsInvalid = 4
  */
-+(id)errorModelIsInvalid;
++ (id)errorModelIsInvalid;
 
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorNilInput = 5
  */
-+(id)errorInputIsNil;
++ (id)errorInputIsNil;
 
 /**
  * Creates a new JSONModelError with the same values plus information about the key-path of the error.
@@ -108,7 +108,7 @@ extern NSString* const kJSONModelKeyPath;
  * This key contains the component string parameter. If the key is already present
  * then the new error object has the component string prepended to the existing value.
  */
-- (instancetype)errorByPrependingKeyPathComponent:(NSString*)component;
+- (instancetype)errorByPrependingKeyPathComponent:(NSString *)component;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 @end

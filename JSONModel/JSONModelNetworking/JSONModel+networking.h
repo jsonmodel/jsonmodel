@@ -16,7 +16,7 @@
 #import "JSONModel.h"
 #import "JSONHTTPClient.h"
 
-typedef void (^JSONModelBlock)(id model, JSONModelError* err) DEPRECATED_ATTRIBUTE;
+typedef void (^JSONModelBlock)(id model, JSONModelError *err) DEPRECATED_ATTRIBUTE;
 
 @interface JSONModel (Networking)
 
