@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE_jsonmodel.txt' }
   s.author       = { "Marin Todorov" => "touch-code-magazine@underplot.com" }
 
-  s.source       = { :git => "https://github.com/icanzilb/JSONModel.git", :tag => "1.2.0" }
+  s.source       = { :git => "https://github.com/JSONModel/JSONModel.git", :tag => "1.2.0" }
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.7'
