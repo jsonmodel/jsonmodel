@@ -17,7 +17,7 @@
 #import "JSONModel.h"
 #import "JSONHTTPClient.h"
 
-typedef void (^JSONModelBlock)(id model, JSONModelError* err);
+typedef void (^JSONModelBlock)(id model, JSONModelError* err) DEPRECATED_ATTRIBUTE;
 
 /**
  * The JSONModel(networking) class category adds networking to JSONModel.
@@ -27,7 +27,7 @@ typedef void (^JSONModelBlock)(id model, JSONModelError* err);
  */
 @interface JSONModel(Networking)
 
-@property (assign, nonatomic) BOOL isLoading;
+@property (assign, nonatomic) BOOL isLoading DEPRECATED_ATTRIBUTE;
 /** @name Asynchronously create a model over the network */
 /**
  * Asynchronously create a model over the network. Create a new model instance and initialize it with the JSON fetched from the given URL
@@ -35,7 +35,7 @@ typedef void (^JSONModelBlock)(id model, JSONModelError* err);
  * @param completeBlock JSONModelBlock executed upon completion. The JSONModelBlock type is defined as: void (^JSONModelBlock)(JSONModel* model, JSONModelError* e); the first parameter is the initialized model or nil, 
  * and second parameter holds the model initialization error, if any
  */
--(instancetype)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock;
+-(instancetype)initFromURLWithString:(NSString *)urlString completion:(JSONModelBlock)completeBlock DEPRECATED_ATTRIBUTE;
 
 /**
  * Asynchronously gets the contents of a URL and constructs a JSONModel object from the response.
@@ -47,7 +47,7 @@ typedef void (^JSONModelBlock)(id model, JSONModelError* err);
  *							The first parameter is the initialized model (of the same JSONModel sub-class as the receiver) or nil if there was an error;
  * 							The second parameter is the initialization error, if any.
  */
-+ (void)getModelFromURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock;
++ (void)getModelFromURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock DEPRECATED_ATTRIBUTE;
 
 /**
  * Asynchronously posts a JSONModel object (as JSON) to a URL and constructs a JSONModel object from the response.
@@ -60,7 +60,7 @@ typedef void (^JSONModelBlock)(id model, JSONModelError* err);
  *							The first parameter is the initialized model (of the same JSONModel sub-class as the receiver) or nil if there was an error;
  * 							The second parameter is the initialization error, if any.
  */
-+ (void)postModel:(JSONModel*)post toURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock;
++ (void)postModel:(JSONModel*)post toURLWithString:(NSString*)urlString completion:(JSONModelBlock)completeBlock DEPRECATED_ATTRIBUTE;
 
 
 @end

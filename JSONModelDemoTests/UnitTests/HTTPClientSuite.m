@@ -15,6 +15,8 @@
 #import "MockNSURLConnection.h"
 #import "MTTestSemaphor.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 @implementation HTTPClientSuite
 {
     NSString* jsonContents;

@@ -25,7 +25,11 @@
 
 #pragma mark - static variables
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 static JSONAPI* sharedInstance = nil;
+#pragma GCC diagnostic pop
+
 static long jsonRpcId = 0;
 
 #pragma mark - JSONAPI() private interface
@@ -44,7 +48,10 @@ static long jsonRpcId = 0;
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         sharedInstance = [[JSONAPI alloc] init];
+#pragma GCC diagnostic pop
     });
 }
 

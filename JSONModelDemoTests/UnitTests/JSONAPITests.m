@@ -13,6 +13,8 @@
 #import "JSONModelLib.h"
 #import "RpcRequestModel.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 @implementation JSONAPITests
 
 -(void)testBaseURL

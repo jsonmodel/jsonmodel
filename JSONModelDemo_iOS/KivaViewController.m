@@ -30,7 +30,10 @@
     self.title = @"Kiva.org latest loans";
     [HUD showUIBlockingIndicatorWithText:@"Fetching JSON"];
     
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     [JSONHTTPClient getJSONFromURLWithString:@"https://api.kivaws.org/v1/loans/search.json"
+#pragma GCC diagnostic pop
                                       params:@{@"status":@"fundraising"}
                                   completion:^(NSDictionary *json, JSONModelError *err) {
                                                                             

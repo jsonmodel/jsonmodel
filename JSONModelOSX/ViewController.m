@@ -131,7 +131,10 @@ enum kServices {
     currentService = kServiceKiva;
     [self setLoaderVisible:YES];
     
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     kiva = [[KivaFeed alloc] initFromURLWithString:@"https://api.kivaws.org/v1/loans/search.json?status=fundraising"
+#pragma GCC diagnostic pop
             completion:^(JSONModel *model, JSONModelError *e) {
                 
                 [table reloadData];
@@ -150,7 +153,10 @@ enum kServices {
     currentService = kServiceGithub;
     [self setLoaderVisible:YES];
     
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     user = [[GitHubUserModel alloc] initFromURLWithString:@"https://api.github.com/users/icanzilb"
+#pragma GCC diagnostic pop
                                                completion:^(JSONModel *model, JSONModelError *e) {
 
                                                    items = @[user.login, user.html_url, user.company, user.name, user.blog];
