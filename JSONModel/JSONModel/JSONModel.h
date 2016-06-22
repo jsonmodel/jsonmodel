@@ -61,7 +61,7 @@ DEPRECATED_ATTRIBUTE
 /**
  * Make all objects compatible to avoid compiler warnings
  */
-@interface NSObject(JSONModelPropertyCompatibility)<Optional, Ignore>
+@interface NSObject (JSONModelPropertyCompatibility) <Optional, Ignore>
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,17 +159,7 @@ DEPRECATED_ATTRIBUTE
  */
 - (instancetype)initWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding error:(JSONModelError **)err;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict error:(NSError **)err;
-
-- (instancetype)initWithData:(NSData *)data error:(NSError **)error;
-
 /** @name Exporting model contents */
-
-/**
- * Export the whole object to a dictionary
- * @return dictionary containing the data model
- */
-- (NSDictionary *)toDictionary;
 
 /**
  * Export the whole object to a JSON data text string
@@ -182,13 +172,6 @@ DEPRECATED_ATTRIBUTE
  * @return JSON text data describing the data model
  */
 - (NSData *)toJSONData;
-
-/**
- * Export the specified properties of the object to a dictionary
- * @param propertyNames the properties to export; if nil, all properties exported
- * @return dictionary containing the data model
- */
-- (NSDictionary *)toDictionaryWithKeys:(NSArray *)propertyNames;
 
 /**
  * Export the specified properties of the object to a JSON data text string
@@ -281,7 +264,7 @@ DEPRECATED_ATTRIBUTE
 /**
  * Indicates the protocol name for an array property.
  * Rather than using:
- *     @property (strong) NSArray<MyType> *things;
+ *     @property (strong) NSArray <MyType> *things;
  * You can implement protocolForArrayProperty: and keep your property
  * defined like:
  *     @property (strong) NSArray *things;
