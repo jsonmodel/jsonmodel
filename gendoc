@@ -1,1 +1,0 @@
-appledoc --project-name "JSONModel 1.2.0" --project-company "JSONModel" --company-id com.jsonmodel --output ~/help --no-create-docset --explicit-crossref JSONModel
