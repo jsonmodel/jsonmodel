@@ -7,6 +7,20 @@
 //
 
 #import "NestedModel.h"
+#import "ImageModel.h"
 
 @implementation NestedModel
+@end
+
+@implementation NestedModelWithoutProtocols
+
++ (Class)classForCollectionProperty:(NSString *)propertyName
+{
+    if ([propertyName isEqualToString:@"images"])
+        return [ImageModel class];
+    if ([propertyName isEqualToString:@"imagesObject"])
+        return [ImageModel class];
+    return nil;
+}
+
 @end

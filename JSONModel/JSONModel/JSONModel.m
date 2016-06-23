@@ -678,9 +678,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 p = nil;
             }
 
-            NSString* customProtocol = [[self class] protocolForArrayProperty:nsPropertyName];
-            if (customProtocol) {
-                p.protocol = customProtocol;
+            Class customClass = [[self class] classForCollectionProperty:nsPropertyName];
+            if (customClass) {
+                p.protocol = NSStringFromClass(customClass);
             }
             
             //few cases where JSONModel will ignore properties automatically
@@ -1350,6 +1350,19 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(NSString*)protocolForArrayProperty:(NSString *)propertyName
 {
     return nil;
+}
+
++(Class)classForCollectionProperty:(NSString *)propertyName
+{
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+    NSString *protocolName = [self protocolForArrayProperty:propertyName];
+#pragma GCC diagnostic pop
+
+    if (!protocolName)
+        return nil;
+
+    return NSClassFromString(protocolName);
 }
 
 #pragma mark - working with incomplete models

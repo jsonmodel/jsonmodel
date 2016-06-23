@@ -133,6 +133,7 @@ DEPRECATED_ATTRIBUTE
 // deprecated
 + (NSMutableArray *)arrayOfModelsFromDictionaries:(NSArray *)array DEPRECATED_MSG_ATTRIBUTE("use arrayOfModelsFromDictionaries:error:");
 + (void)setGlobalKeyMapper:(JSONKeyMapper *)globalKeyMapper DEPRECATED_MSG_ATTRIBUTE("override +keyMapper in a base model class instead");
++ (NSString *)protocolForArrayProperty:(NSString *)propertyName DEPRECATED_MSG_ATTRIBUTE("use classForCollectionProperty:");
 - (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping DEPRECATED_MSG_ATTRIBUTE("use mergeFromDictionary:useKeyMapping:error:");
 - (NSString *)indexPropertyName DEPRECATED_ATTRIBUTE;
 - (NSComparisonResult)compare:(id)object DEPRECATED_ATTRIBUTE;
@@ -262,18 +263,16 @@ DEPRECATED_ATTRIBUTE
 + (BOOL)propertyIsIgnored:(NSString *)propertyName;
 
 /**
- * Indicates the protocol name for an array property.
+ * Indicates the class used for the elements of a collection property.
  * Rather than using:
  *     @property (strong) NSArray <MyType> *things;
- * You can implement protocolForArrayProperty: and keep your property
+ * You can implement classForCollectionProperty: and keep your property
  * defined like:
  *     @property (strong) NSArray *things;
  * @param propertyName the name of the property
- * @return an NSString result indicating the name of the protocol/class
- * that should be contained in this array property. Return nil to indicate
- * no contained protocol.
+ * @return Class the class used to deserialize the elements of the collection
  */
-+ (NSString *)protocolForArrayProperty:(NSString *)propertyName;
++ (Class)classForCollectionProperty:(NSString *)propertyName;
 
 /**
  * Merges values from the given dictionary into the model instance.

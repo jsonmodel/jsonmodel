@@ -18,3 +18,11 @@
 @property (strong, nonatomic) NSDictionary<ImageModel>* imagesObject;
 
 @end
+
+@interface NestedModelWithoutProtocols : JSONModel
+
+@property (strong, nonatomic) ImageModel* singleImage;
+@property (strong, nonatomic) NSArray* images;
+@property (strong, nonatomic) NSDictionary* imagesObject;
+
+@end
