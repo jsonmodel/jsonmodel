@@ -1,0 +1,33 @@
+use_frameworks!
+
+target 'iOS' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'macOS' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'tvOS' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'watchOS' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'watchOS-extension' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'iOSTests' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'macOSTests' do
+	pod 'JSONModel', path: '..'
+end
+
+target 'tvOSTests' do
+	pod 'JSONModel', path: '..'
+end

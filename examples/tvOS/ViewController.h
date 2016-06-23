@@ -1,0 +1,13 @@
+//
+//  ViewController.h
+//  tvOS
+//
+//  Created by James Billingham on 23/06/2016.
+//  Copyright © 2012-2016, JSONModel contributors. MIT licensed.
+//
+
+@import UIKit;
+
+@interface ViewController : UIViewController
+
+@end
