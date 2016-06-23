@@ -1,9 +1,0 @@
-{
-    "posts": [
-              {"id":1, "name":"My first post!!"},
-              {"id":2, "name":"My second post!!"},
-              {"id":3, "name":"My third post!!"},
-              {"id":4, "name":"My fourth post!!"},
-              {"id":5, "name":"My fifth post!!"}
-    ]
-}
