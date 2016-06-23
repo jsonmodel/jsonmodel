@@ -16,16 +16,15 @@
 
 #import <Foundation/Foundation.h>
 
-//JSONModel transformations
+// core
+#import "JSONModel.h"
+#import "JSONModelError.h"
+
+// transformations
 #import "JSONValueTransformer.h"
 #import "JSONKeyMapper.h"
 
-//basic JSONModel classes
-#import "JSONModelError.h"
-#import "JSONModelClassProperty.h"
-#import "JSONModel.h"
-
-//network classes
+// networking (deprecated)
 #import "JSONHTTPClient.h"
 #import "JSONModel+networking.h"
 #import "JSONAPI.h"

@@ -34,6 +34,9 @@ typedef enum kCustomizationTypes PropertyGetterType;
  */
 @interface JSONModelClassProperty : NSObject
 
+// deprecated
+@property (assign, nonatomic) BOOL isIndex DEPRECATED_ATTRIBUTE;
+
 /** The name of the declared property (not the ivar name) */
 @property (copy, nonatomic) NSString *name;
 
@@ -54,9 +57,6 @@ typedef enum kCustomizationTypes PropertyGetterType;
 
 /** If YES - create a mutable object for the value of the property */
 @property (assign, nonatomic) BOOL isMutable;
-
-/** If YES - the value of this property determines equality to other models */
-@property (assign, nonatomic) BOOL isIndex DEPRECATED_ATTRIBUTE;
 
 /** The status of property getter introspection in a model */
 @property (assign, nonatomic) PropertyGetterType getterType;

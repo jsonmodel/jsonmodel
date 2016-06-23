@@ -7,9 +7,9 @@
 	<key>--print-settings</key>
 	<true/>
 	<key>--project-company</key>
-	<string>Marin Todorov, Underplot</string>
+	<string>JSONModel</string>
 	<key>--company-id</key>
-	<string>com.underplot</string>
+	<string>com.jsonmodel</string>
 	<key>--create-docset</key>
 	<true/>
 	<key>--verbose</key>
