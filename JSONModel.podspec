@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "Magical Data Modelling Framework for JSON. Create rapidly powerful, atomic and smart data model classes."
   s.homepage     = "http://www.jsonmodel.com"
 
-  s.license      = { :type => 'MIT', :file => 'LICENSE_jsonmodel.txt' }
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Marin Todorov" => "touch-code-magazine@underplot.com" }
 
   s.source       = { :git => "https://github.com/JSONModel/JSONModel.git", :tag => "1.2.0" }
