@@ -1,0 +1,14 @@
+{
+	"caption": "This is a text element",
+	"dynamicString": "A piece of text",
+
+	"year": 2012,
+	"pi": 3.14159,
+
+	"list": ["111","222","333"],
+	"dynamicList": ["12", 12, 0.12],
+	"dictionary": {"test":"mest", "value": 123.29},
+	"dynamicDictionary": {"key":"value", "otherKey": 1200},
+
+	"notAvailable": null
+}

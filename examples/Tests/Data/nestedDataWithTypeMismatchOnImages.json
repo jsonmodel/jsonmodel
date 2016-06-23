@@ -1,0 +1,15 @@
+{
+	"singleImage": {"idImage": 2, "name": "lake.jpg"},
+
+	"images": {
+		"x" : {"idImage": 1, "name": "house.jpg", "copyright":{"author":"Marin Todorov", "year":2012} },
+		"y" : {"idImage": 2, "name": "lake.jpg"},
+		"z" : {"idImage": 3, "name": "peak.jpg"}
+	},
+
+	"imagesObject": {
+		"image2": {"idImage": 2, "name": "lake.jpg"},
+		"image3": {"idImage": 3, "name": "peak.jpg"}
+	}
+
+}

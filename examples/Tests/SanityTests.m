@@ -29,7 +29,7 @@
 
 - (void)testJsonModel
 {
-	NSString *json = @"{\"foo\":\"bar\", \"a\": 1}";
+	NSString *json = @"{\"foo\":\"bar\",\"a\":1}";
 
 	NSError *error = nil;
 	MyModel *obj = [[MyModel alloc] initWithString:json error:&error];
