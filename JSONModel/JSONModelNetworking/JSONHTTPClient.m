@@ -16,6 +16,9 @@
 
 #import "JSONHTTPClient.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Wdeprecated-implementations"
+
 typedef void (^RequestResultBlock)(NSData *data, JSONModelError *error);
 
 #pragma mark - constants
@@ -55,11 +58,7 @@ static NSString* requestContentType = nil;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         requestHeaders = [NSMutableDictionary dictionary];
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         requestContentType = kContentTypeAutomatic;
-#pragma GCC diagnostic pop
     });
 }
 

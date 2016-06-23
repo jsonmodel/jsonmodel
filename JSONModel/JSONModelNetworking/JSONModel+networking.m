@@ -17,6 +17,9 @@
 #import "JSONModel+networking.h"
 #import "JSONHTTPClient.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Wdeprecated-implementations"
+
 BOOL _isLoading;
 
 @implementation JSONModel(Networking)

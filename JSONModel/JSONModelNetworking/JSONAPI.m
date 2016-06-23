@@ -16,6 +16,9 @@
 
 #import "JSONAPI.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Wdeprecated-implementations"
+
 #pragma mark - helper error model class
 @interface JSONAPIRPCErrorModel: JSONModel
 @property (assign, nonatomic) int code;
@@ -25,10 +28,7 @@
 
 #pragma mark - static variables
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 static JSONAPI* sharedInstance = nil;
-#pragma GCC diagnostic pop
 
 static long jsonRpcId = 0;
 
@@ -48,10 +48,7 @@ static long jsonRpcId = 0;
 {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         sharedInstance = [[JSONAPI alloc] init];
-#pragma GCC diagnostic pop
     });
 }
 
