@@ -1,4 +1,4 @@
-Change-log
+Changelog
 ==========
 
 **Version 1.2.0** @2015-12-30
