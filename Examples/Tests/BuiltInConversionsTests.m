@@ -67,11 +67,11 @@
 	XCTAssertTrue((long)[b.importantEvent timeIntervalSince1970] == 1353916801, @"importantEvent value was not read properly");
 
 	//test for a valid URL
-	//https://github.com/JSONModel/JSONModel/pull/60
+	//https://github.com/jsonmodel/jsonmodel/pull/60
 	XCTAssertNotNil(b.websiteURL, @"URL parsing did return nil");
 	XCTAssertNotNil(b.websiteURL.query, @"key1=test");
 
-	// see: https://github.com/JSONModel/JSONModel/pull/119
+	// see: https://github.com/jsonmodel/jsonmodel/pull/119
 	XCTAssertEqualObjects(b.websiteURL.absoluteString, @"http://www.visir.is/jordan-slaer-milljard-af-villunni-sinni/article/2013130709873?key1=test&q=search%20terms");
 
 	XCTAssertNotNil(b.timeZone, @"Time zone parsing did return nil");

@@ -33,7 +33,7 @@ Adding JSONModel to your project
 
 #### Get it as: 1) source files
 
-1. Download the JSONModel repository as a [zip file](https://github.com/JSONModel/JSONModel/archive/master.zip) or clone it
+1. Download the JSONModel repository as a [zip file](https://github.com/jsonmodel/jsonmodel/archive/master.zip) or clone it
 2. Copy the JSONModel sub-folder into your Xcode project
 3. Link your app to SystemConfiguration.framework
 
@@ -51,12 +51,12 @@ If you want to read more about CocoaPods, have a look at [this short tutorial](h
 In your project's **Cartfile** add the JSONModel:
 
 ```ruby
-github "JSONModel/JSONModel"
+github "jsonmodel/jsonmodel"
 ```
 
 #### Docs
 
-You can find the generated docs online at: [http://cocoadocs.org/docsets/JSONModel/](http://cocoadocs.org/docsets/JSONModel/)
+You can find the generated docs online at: [http://cocoadocs.org/docsets/JSONModel](http://cocoadocs.org/docsets/JSONModel)
 
 ------------------------------------
 Basic usage
@@ -64,7 +64,7 @@ Basic usage
 
 Consider you have a JSON like this:
 ```javascript
-{"id":"10", "country":"Germany", "dialCode": 49, "isInEurope":true}
+{ "id": "10", "country": "Germany", "dialCode": 49, "isInEurope": true }
 ```
 
  * Create a new Objective-C class for your data model and make it inherit the JSONModel class.
@@ -496,12 +496,12 @@ NSString* string = [pm toJSONString];
 
 - (BOOL)validate:(NSError *__autoreleasing *)error {
     BOOL valid = [super validate:error];
-    
+
     if (self.name.length < self.minNameLength.integerValue) {
         *error = [NSError errorWithDomain:@"me.mycompany.com" code:1 userInfo:nil];
         valid = NO;
     }
-    
+
     return valid;
 }
 
@@ -521,9 +521,9 @@ Misc
 Author: [Marin Todorov](http://www.touch-code-magazine.com)
 
 Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
-Also everyone who did successful [pull requests](https://github.com/JSONModel/JSONModel/graphs/contributors).
+Also everyone who did successful [pull requests](https://github.com/jsonmodel/jsonmodel/graphs/contributors).
 
-Change log : [https://github.com/JSONModel/JSONModel/blob/master/Changelog.md](https://github.com/JSONModel/JSONModel/blob/master/Changelog.md)
+Change log : [https://github.com/jsonmodel/jsonmodel/blob/master/Changelog.md](https://github.com/jsonmodel/jsonmodel/blob/master/Changelog.md)
 
 Utility to generate JSONModel classes from JSON data: https://github.com/dofork/json2object
 
