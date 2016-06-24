@@ -25,7 +25,7 @@ NSString* const kJSONModelKeyPath = @"kJSONModelKeyPath";
 
 +(id)errorInvalidDataWithMessage:(NSString*)message
 {
-	message = [NSString stringWithFormat:@"Invalid JSON data: %@", message];
+    message = [NSString stringWithFormat:@"Invalid JSON data: %@", message];
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorInvalidData
                                   userInfo:@{NSLocalizedDescriptionKey:message}];
@@ -56,7 +56,7 @@ NSString* const kJSONModelKeyPath = @"kJSONModelKeyPath";
 {
     return [JSONModelError errorWithDomain:JSONModelErrorDomain
                                       code:kJSONModelErrorBadJSON
-                                  userInfo:@{NSLocalizedDescriptionKey:@"Malformed JSON. Check the JSONModel data input."}];    
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Malformed JSON. Check the JSONModel data input."}];
 }
 
 +(id)errorModelIsInvalid

@@ -43,33 +43,33 @@
 -(instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON
 {
     self = [self init];
-    
+
     if (self) {
-        
+
         __weak JSONKeyMapper* weakSelf = self;
-        
+
         _modelToJSONKeyBlock = [^NSString* (NSString* keyName) {
-            
+
             __strong JSONKeyMapper *strongSelf = weakSelf;
-            
+
             //try to return cached transformed key
             if (strongSelf.toJSONMap[keyName]) {
                 return strongSelf.toJSONMap[keyName];
             }
-            
+
             //try to convert the key, and store in the cache
             NSString* result = toJSON(keyName);
-            
+
             OSSpinLockLock(&strongSelf->_lock);
             strongSelf.toJSONMap[keyName] = result;
             OSSpinLockUnlock(&strongSelf->_lock);
-            
+
             return result;
-            
+
         } copy];
-        
+
     }
-    
+
     return self;
 }
 
@@ -77,28 +77,28 @@
 {
     self = [super init];
     if (self) {
-        
+
         NSDictionary *userToJSONMap  = [self swapKeysAndValuesInDictionary:map];
-        
+
         _modelToJSONKeyBlock = ^NSString *(NSString *keyName) {
             NSString *result = [userToJSONMap valueForKeyPath:keyName];
             return result ? result : keyName;
         };
     }
-    
+
     return self;
 }
 
 - (NSDictionary *)swapKeysAndValuesInDictionary:(NSDictionary *)dictionary
 {
     NSMutableDictionary *swapped = [NSMutableDictionary new];
-    
+
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         NSAssert([value isKindOfClass:[NSString class]], @"Expect keys and values to be NSString");
         NSAssert([key isKindOfClass:[NSString class]], @"Expect keys and values to be NSString");
         swapped[value] = key;
     }];
-    
+
     return swapped;
 }
 
@@ -115,7 +115,7 @@
 +(instancetype)mapperFromUnderscoreCaseToCamelCase
 {
     JSONModelKeyMapBlock toJSON = ^ NSString* (NSString* keyName) {
-        
+
         NSMutableString* result = [NSMutableString stringWithString:keyName];
         NSRange upperCharRange = [result rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]];
 
@@ -131,25 +131,25 @@
         //handle numbers
         NSRange digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]];
         while ( digitsRange.location!=NSNotFound) {
-            
+
             NSRange digitsRangeEnd = [result rangeOfString:@"\\D" options:NSRegularExpressionSearch range:NSMakeRange(digitsRange.location, result.length-digitsRange.location)];
             if (digitsRangeEnd.location == NSNotFound) {
                 //spands till the end of the key name
                 digitsRangeEnd = NSMakeRange(result.length, 1);
             }
-            
+
             NSRange replaceRange = NSMakeRange(digitsRange.location, digitsRangeEnd.location - digitsRange.location);
             NSString* digits = [result substringWithRange:replaceRange];
-            
+
             [result replaceCharactersInRange:replaceRange withString:[NSString stringWithFormat:@"_%@", digits]];
             digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet] options:kNilOptions range:NSMakeRange(digitsRangeEnd.location+1, result.length-digitsRangeEnd.location-1)];
         }
-        
+
         return result;
     };
 
     return [[self alloc] initWithModelToJSONBlock:toJSON];
-    
+
 }
 
 +(instancetype)mapperFromUpperCaseToLowerCase
