@@ -280,6 +280,6 @@ DEPRECATED_ATTRIBUTE
  * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO
  * it'll just try to match the dictionary keys to the model's properties
  */
-- (void)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping error:(NSError **)error;
+- (BOOL)mergeFromDictionary:(NSDictionary *)dict useKeyMapping:(BOOL)useKeyMapping error:(NSError **)error;
 
 @end
