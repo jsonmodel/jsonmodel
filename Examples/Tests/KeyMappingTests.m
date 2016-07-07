@@ -14,6 +14,7 @@
 #import "GitHubRepoModelForUSMapper.h"
 #import "ModelForUpperCaseMapper.h"
 #import "RenamedPropertyModel.h"
+#import "NestedModel.h"
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
@@ -257,6 +258,62 @@
 	[global2 mergeFromDictionary:data2 useKeyMapping:YES error:nil];
 
 	XCTAssertEqualObjects(global2.name, @"NAME IN CAPITALS", @"did not import name property");
+
+	[JSONModel setGlobalKeyMapper:nil];
+}
+
+-(void)testMergingDataWithInvalidType
+{
+	GlobalModel* global1 = [[GlobalModel alloc] init];
+	XCTAssertNotNil(global1, @"model did not initialize");
+	XCTAssertNil(global1.name, @"name got a value when nil expected");
+
+	NSDictionary* data = @{@"name":[NSDate date]};
+	BOOL glob1Success = [global1 mergeFromDictionary:data useKeyMapping:NO error:nil];
+
+	XCTAssertNil(global1.name, @"should not be able to parse NSDate");
+	XCTAssertEqual(glob1Success, NO);
+
+	//test import via global key mapper
+	[JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@
+	{
+		@"name1":@"name"
+	}]];
+
+	GlobalModel* global2 = [[GlobalModel alloc] init];
+	NSDictionary* data2 = @{@"name1":[NSDate date]};
+	BOOL glob2Success = [global2 mergeFromDictionary:data2 useKeyMapping:YES error:nil];
+
+	XCTAssertNil(global2.name, @"should not be able to parse NSDate");
+	XCTAssertEqual(glob2Success, NO);
+
+	[JSONModel setGlobalKeyMapper:nil];
+}
+
+-(void)testMergingWithInvalidNestedModel
+{
+	NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"../../nestedDataWithArrayError.json"];
+	NSString* jsonContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+	NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[jsonContents dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+	XCTAssertNotNil(jsonDict, @"Can't fetch test data file contents.");
+
+	//import
+	NestedModel* nested1 = [[NestedModel alloc] init];
+	XCTAssertNotNil(nested1, @"model did not initialize");
+	BOOL glob1Success = [nested1 mergeFromDictionary:jsonDict useKeyMapping:NO error:nil];
+	XCTAssertEqual(glob1Success, NO);
+
+	//test import via global key mapper
+	[JSONModel setGlobalKeyMapper:[[JSONKeyMapper alloc] initWithDictionary:@
+	{
+		@"name1":@"name"
+	}]];
+
+	NestedModel* nested2 = [[NestedModel alloc] init];
+	XCTAssertNotNil(nested2, @"model did not initialize");
+	BOOL glob2Success = [nested2 mergeFromDictionary:jsonDict useKeyMapping:YES error:nil];
+	XCTAssertEqual(glob2Success, NO);
 
 	[JSONModel setGlobalKeyMapper:nil];
 }
