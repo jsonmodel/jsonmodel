@@ -59,7 +59,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         @autoreleasepool {
             allowedJSONTypes = @[
                 [NSString class], [NSNumber class], [NSDecimalNumber class], [NSArray class], [NSDictionary class], [NSNull class], //immutable JSON classes
-                [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class] //mutable JSON classes
+                [NSMutableString class], [NSMutableArray class], [NSMutableDictionary class], [NSObject class] //mutable JSON classes
             ];
 
             allowedPrimitiveTypes = @[
