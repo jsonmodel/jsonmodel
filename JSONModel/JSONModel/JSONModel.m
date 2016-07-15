@@ -1386,7 +1386,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 -(instancetype)initWithCoder:(NSCoder *)decoder
 {
-    NSString* json = [decoder decodeObjectForKey:@"json"];
+    NSString* json;
+    
+    if ([decoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)]) {
+        json = [decoder decodeObjectOfClass:[NSString class] forKey:@"json"];
+    } else {
+        json = [decoder decodeObjectForKey:@"json"];
+    }
 
     JSONModelError *error = nil;
     self = [self initWithString:json error:&error];
