@@ -523,7 +523,7 @@ Author: [Marin Todorov](http://www.touch-code-magazine.com)
 Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
 Also everyone who did successful [pull requests](https://github.com/jsonmodel/jsonmodel/graphs/contributors).
 
-Change log : [https://github.com/jsonmodel/jsonmodel/blob/master/Changelog.md](https://github.com/jsonmodel/jsonmodel/blob/master/Changelog.md)
+Change log : [https://github.com/jsonmodel/jsonmodel/blob/master/CHANGELOG.md](https://github.com/jsonmodel/jsonmodel/blob/master/CHANGELOG.md)
 
 Utility to generate JSONModel classes from JSON data: https://github.com/dofork/json2object
 
