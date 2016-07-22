@@ -17,7 +17,7 @@ more rapid release schedule going forwards.
 - success return value added to `mergeFromDictionary:useKeyMapping:error:`
 - JSONModel has now been moved out into its own GitHub organization, etc. - now maintained by multiple people
 
-### Potentially breaking changes
+### Potential Breaking Changes
 
 - new behavior for handling null values when serializing:
 	- values of `NSNull` will now always `null` in JSON output
