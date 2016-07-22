@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.3.0 (2016-07-22)
+
+Sorry for the long time since the last release. We'll be trying to maintain a
+more rapid release schedule going forwards.
+
+- precision issue fixed with deserializing numbers
+- support added for deserializing into a 'root' dictionary (`dictionaryOfModelsFromDictionary:error:`, etc.)
+- lazy collection-type conversion (`ConvertOnDemand`) is no longer supported
+- deprecated two way key mapping deprecated - only Model->JSON has ever worked anyway
+- deprecated all networking support
+- deprecated the global key mapper
+- deprecated `Index` protocol
+- deprecated `protocolForArrayProperty:` in favor of `classForCollectionProperty:`
+- modulemap file added to handle use as a framework better
+- success return value added to `mergeFromDictionary:useKeyMapping:error:`
+- JSONModel has now been moved out into its own GitHub organization, etc. - now maintained by multiple people
+
+### Potentially breaking changes
+
+- new behavior for handling null values when serializing:
+	- values of `NSNull` will now always `null` in JSON output
+	- values of `nil` will now never be included in JSON output
+
 ## v1.2.0 (2015-12-30)
 
 - support added for watchOS and tvOS

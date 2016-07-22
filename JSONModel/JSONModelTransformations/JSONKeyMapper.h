@@ -1,7 +1,7 @@
 //
 //  JSONKeyMapper.h
 //
-//  @version 1.2
+//  @version 1.3
 //  @author Marin Todorov (http://www.underplot.com) and contributors
 //
 
