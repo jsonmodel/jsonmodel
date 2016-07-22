@@ -973,7 +973,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //is still valid if it's to be imported as a model again
         if (isNull(value)) {
 
-            if (p.isOptional)
+            if (value == nil)
             {
                 [tempDictionary removeObjectForKey:keyPath];
             }

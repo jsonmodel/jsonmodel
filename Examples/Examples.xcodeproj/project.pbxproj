@@ -207,6 +207,9 @@
 		1A84BC421D1C0359005234F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC411D1C0359005234F4 /* ViewController.m */; };
 		1A84BC451D1C0359005234F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A84BC431D1C0359005234F4 /* Main.storyboard */; };
 		1A84BC471D1C0359005234F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A84BC461D1C0359005234F4 /* Assets.xcassets */; };
+		1AF8B9171D423D5500A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
+		1AF8B9181D423D5500A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
+		1AF8B9191D423D5700A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
 		5CB2A425167A8E07ED4DE275 /* Pods_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B339E24F89A9DA2A76B966 /* Pods_watchOS.framework */; };
 		72EAF1AC1B81C8A14DD60AD9 /* Pods_watchOS_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5692CCAD15B02E148B7DA7 /* Pods_watchOS_extension.framework */; };
 		781D56C813A5E3442DB017EB /* Pods_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAA3D8D5BD344CFA7833A86 /* Pods_iOS.framework */; };
@@ -389,6 +392,7 @@
 		1A84BC441D1C0359005234F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A84BC461D1C0359005234F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A84BC481D1C0359005234F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AF8B9151D423B9300A1AAD3 /* NullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullTests.m; sourceTree = "<group>"; };
 		21CE3B1BB8B2A3D33C54BE59 /* Pods-macOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-macOSTests/Pods-macOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		38F03B2DA2344C07E5EF16B1 /* Pods-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tvOSTests/Pods-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C370B412DC108AAC99B3A13 /* Pods_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -496,6 +500,7 @@
 				1A4BAA141D1C79260069D735 /* JSONTypesReadTests.m */,
 				1A4BAA151D1C79260069D735 /* KeyMappingTests.m */,
 				1A4BAA311D1C79260069D735 /* NestedModelsTests.m */,
+				1AF8B9151D423B9300A1AAD3 /* NullTests.m */,
 				1A4BAA321D1C79260069D735 /* OptionalPropertiesTests.m */,
 				1A4BAA331D1C79260069D735 /* PersistTests.m */,
 				1A4BAA341D1C79260069D735 /* PrimitiveTypesReadTests.m */,
@@ -1474,6 +1479,7 @@
 				1A4BAB081D1C7DA80069D735 /* DrugModel.m in Sources */,
 				1A4BAB0B1D1C7DA80069D735 /* GitHubKeyMapRepoModel.m in Sources */,
 				1A4BAB171D1C7DA80069D735 /* OptionalPropModel.m in Sources */,
+				1AF8B9171D423D5500A1AAD3 /* NullTests.m in Sources */,
 				1A4BAB151D1C7DA80069D735 /* ModelForUpperCaseMapper.m in Sources */,
 				1A4BAA891D1C79480069D735 /* CustomPropsTests.m in Sources */,
 				1A4BAA931D1C79480069D735 /* OptionalPropertiesTests.m in Sources */,
@@ -1525,6 +1531,7 @@
 				1A4BAB221D1C7DA80069D735 /* DrugModel.m in Sources */,
 				1A4BAB251D1C7DA80069D735 /* GitHubKeyMapRepoModel.m in Sources */,
 				1A4BAB311D1C7DA80069D735 /* OptionalPropModel.m in Sources */,
+				1AF8B9181D423D5500A1AAD3 /* NullTests.m in Sources */,
 				1A4BAB2F1D1C7DA80069D735 /* ModelForUpperCaseMapper.m in Sources */,
 				1A4BAA751D1C79460069D735 /* CustomPropsTests.m in Sources */,
 				1A4BAA7F1D1C79460069D735 /* OptionalPropertiesTests.m in Sources */,
@@ -1576,6 +1583,7 @@
 				1A4BAB3C1D1C7DA90069D735 /* DrugModel.m in Sources */,
 				1A4BAB3F1D1C7DA90069D735 /* GitHubKeyMapRepoModel.m in Sources */,
 				1A4BAB4B1D1C7DA90069D735 /* OptionalPropModel.m in Sources */,
+				1AF8B9191D423D5700A1AAD3 /* NullTests.m in Sources */,
 				1A4BAB491D1C7DA90069D735 /* ModelForUpperCaseMapper.m in Sources */,
 				1A4BAA611D1C79460069D735 /* CustomPropsTests.m in Sources */,
 				1A4BAA6B1D1C79460069D735 /* OptionalPropertiesTests.m in Sources */,
