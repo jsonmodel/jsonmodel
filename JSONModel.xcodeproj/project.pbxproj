@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		92C9BC7C1B19A5B600D79B06 /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC7D1B19A5B600D79B06 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
-		92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; };
 		92C9BC811B19A5B600D79B06 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */; };
 		92C9BC821B19A5B600D79B06 /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC831B19A5B600D79B06 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC6B1B19A5B600D79B06 /* JSONModelError.m */; };
