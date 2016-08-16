@@ -64,6 +64,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             allowedPrimitiveTypes = @[
                 @"BOOL", @"float", @"int", @"long", @"double", @"short",
+                //generics
+                @"ObjectType",
                 //and some famous aliases
                 @"NSInteger", @"NSUInteger",
                 @"Block"
