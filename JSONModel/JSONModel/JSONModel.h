@@ -65,28 +65,6 @@ DEPRECATED_ATTRIBUTE
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Model Protocols
-
-
-/**
- *  All readonly properties will be Ignored, regardless of modifier. This is default
- *  behaviour, but can be explicitly stated:
- *
- *  @interface ModelObject : JSONModel &lt;IgnoreReadonlyProperties&gt;
- */
-@protocol IgnoreReadonlyProperties
-@end
-
-/**
- *  Readonly properties will be treated the same way as readwrite ones, meaning they will be
- *  required by default and will respect Ignore / Optional modifiers.
- *
- *  @interface ModelObject : JSONModel &lt;DoNotIgnoreReadonlyProperties&gt;
- */
-@protocol DoNotIgnoreReadonlyProperties
-@end
-
-/////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - JSONModel protocol
 /**
  * A protocol describing an abstract JSONModel class

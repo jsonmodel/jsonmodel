@@ -585,7 +585,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             //ignore read-only properties
             if ([attributeItems containsObject:@"R"] &&
-                ![self conformsToProtocol:@protocol(DoNotIgnoreReadonlyProperties)] && // if we dont have specified otherwise via protocol
                 [[self class] ignoresReadonlyProperties])                              // nor +ignoresReadonlyProperties
             {
                 continue; //to next property
