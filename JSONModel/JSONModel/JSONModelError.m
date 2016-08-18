@@ -1,7 +1,7 @@
 //
 //  JSONModelError.m
 //
-//  @version 1.3
+//  @version 1.4
 //  @author Marin Todorov (http://www.underplot.com) and contributors
 //
 

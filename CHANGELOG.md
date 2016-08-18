@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.4.0 (2016-08-18)
+
+- deprecated all JSON->Model key mapper methods for consistency's sake - replaced with equivalent Model->JSON methods with clearer naming
+
 ## v1.3.0 (2016-07-22)
 
 Sorry for the long time since the last release. We'll be trying to maintain a
