@@ -9,9 +9,9 @@
 
 +(JSONKeyMapper*)keyMapper
 {
-	return [[JSONKeyMapper alloc] initWithDictionary:@
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@
 	{
-		@"generic_alternatives.items.data" : @"drugs"
+		@"drugs" : @"generic_alternatives.items.data"
 	}];
 }
 

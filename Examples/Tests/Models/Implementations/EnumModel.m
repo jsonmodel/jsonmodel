@@ -52,10 +52,10 @@
 
 +(JSONKeyMapper*)keyMapper
 {
-	return [[JSONKeyMapper alloc] initWithDictionary:@
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@
 	{
-		@"statusString":@"status",
-		@"nested.status":@"nestedStatus"
+		@"status":@"statusString",
+		@"nestedStatus":@"nested.status"
 	}];
 }
 
