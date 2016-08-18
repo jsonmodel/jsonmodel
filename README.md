@@ -484,7 +484,7 @@ Misc
 
 Author: [Marin Todorov](http://www.touch-code-magazine.com)
 
-Contributors: Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
+Contributors: James Billingham, Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
 Also everyone who did successful [pull requests](https://github.com/jsonmodel/jsonmodel/graphs/contributors).
 
 Change log : [https://github.com/jsonmodel/jsonmodel/blob/master/CHANGELOG.md](https://github.com/jsonmodel/jsonmodel/blob/master/CHANGELOG.md)
