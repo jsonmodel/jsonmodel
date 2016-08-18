@@ -276,23 +276,6 @@ Note: the angle brackets after <code>NSArray</code> contain a protocol. This is 
 </tr>
 </table>
 
-#### Global key mapping (applies to all models in your app)
-<table>
-<tr>
-<td valign="top">
-<pre>
-<b>[JSONModel setGlobalKeyMapper:[</b>
-    [JSONKeyMapper alloc] initWithDictionary:@{
-      @"item_id":@"ID",
-      @"item.name": @"itemName"
-   }]
-<b>];</b>
-
-</pre>
-</td>
-</tr>
-</table>
-
 #### Map automatically under_score case to camelCase
 <table>
 <tr>
@@ -397,23 +380,6 @@ Note: the angle brackets after <code>NSArray</code> contain a protocol. This is 
 </td>
 </tr>
 </table>
-
-#### Using the built-in thin HTTP client
-
-```objective-c
-
-//add extra headers
-[[JSONHTTPClient requestHeaders] setValue:@"MySecret" forKey:@"AuthorizationToken"];
-
-//make post, get requests
-[JSONHTTPClient postJSONFromURLWithString:@"http://mydomain.com/api"
-                                   params:@{@"postParam1":@"value1"}
-                               completion:^(id json, JSONModelError *err) {
-
-                                   //check err, process json ...
-
-                               }];
-```
 
 #### Export model to NSDictionary or to JSON text
 
