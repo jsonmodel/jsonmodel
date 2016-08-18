@@ -263,10 +263,10 @@ Note: the angle brackets after <code>NSArray</code> contain a protocol. This is 
 
 +(JSONKeyMapper*)keyMapper
 {
-  return [[JSONKeyMapper alloc] initWithDictionary:@{
-  <b>  @"order_id": @"id",
-    @"order_details.name": @"productName",
-    @"order_details.price.usd": @"price"</b>
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+  <b>  @"id": @"order_id",
+    @"productName": @"order_details.name",
+    @"price": @"order_details.price.usd"</b>
   }];
 }
 
