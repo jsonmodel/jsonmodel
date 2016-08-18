@@ -53,7 +53,9 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
 // deprecated
 @property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock DEPRECATED_ATTRIBUTE;
 - (NSString *)convertValue:(NSString *)value isImportingToModel:(BOOL)importing DEPRECATED_MSG_ATTRIBUTE("use convertValue:");
+- (instancetype)initWithDictionary:(NSDictionary *)map DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONDictionary:");
 - (instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel modelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONBlock:");
++ (instancetype)mapper:(JSONKeyMapper *)baseKeyMapper withExceptions:(NSDictionary *)exceptions DEPRECATED_MSG_ATTRIBUTE("use baseMapper:withModelToJSONExceptions:");
 
 /** @name Name converters */
 /** Block, which takes in a property name and converts it to the corresponding JSON key name */
@@ -77,13 +79,12 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
 - (instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
 
 /**
- * Creates a JSONKeyMapper instance, based on the mapping you provide
- * in the map parameter. Use the JSON key names as keys, your JSONModel
- * property names as values.
- * @param map map dictionary, in the format: <pre>@{@"crazy_JSON_name":@"myCamelCaseName"}</pre>
+ * Creates a JSONKeyMapper instance, based on the mapping you provide.
+ * Use your JSONModel property names as keys, and the JSON key names as values.
+ * @param toJSON map dictionary, in the format: <pre>@{@"myCamelCaseName":@"crazy_JSON_name"}</pre>
  * @return JSONKeyMapper instance
  */
-- (instancetype)initWithDictionary:(NSDictionary *)map;
+- (instancetype)initWithModelToJSONDictionary:(NSDictionary *)toJSON;
 
 /**
  * Creates a JSONKeyMapper, which converts underscore_case to camelCase and vice versa.
@@ -94,8 +95,8 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
 
 /**
  * Creates a JSONKeyMapper based on a built-in JSONKeyMapper, with specific exceptions.
- * Use the original JSON key names as keys, and your JSONModel property names as values.
+ * Use your JSONModel property names as keys, and the JSON key names as values.
  */
-+ (instancetype)mapper:(JSONKeyMapper *)baseKeyMapper withExceptions:(NSDictionary *)exceptions;
++ (instancetype)baseMapper:(JSONKeyMapper *)baseKeyMapper withModelToJSONExceptions:(NSDictionary *)toJSON;
 
 @end
