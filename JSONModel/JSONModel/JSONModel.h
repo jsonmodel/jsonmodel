@@ -275,6 +275,13 @@ DEPRECATED_ATTRIBUTE
 + (Class)classForCollectionProperty:(NSString *)propertyName;
 
 /**
+ *  Indicates whether readonly properties should be Ignored by default.
+ *  This method returns YES by default
+ *  @return a BOOL result indicating whether readonly properties are ignored
+ */
++(BOOL)ignoresReadonlyProperties;
+
+/**
  * Merges values from the given dictionary into the model instance.
  * @param dict dictionary with values
  * @param useKeyMapping if YES the method will use the model's key mapper and the global key mapper, if NO

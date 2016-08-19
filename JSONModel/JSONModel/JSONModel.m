@@ -64,6 +64,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             allowedPrimitiveTypes = @[
                 @"BOOL", @"float", @"int", @"long", @"double", @"short",
+                //generics
+                @"ObjectType",
                 //and some famous aliases
                 @"NSInteger", @"NSUInteger",
                 @"Block"
@@ -582,7 +584,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             NSArray* attributeItems = [propertyAttributes componentsSeparatedByString:@","];
 
             //ignore read-only properties
-            if ([attributeItems containsObject:@"R"]) {
+            if ([attributeItems containsObject:@"R"] &&
+                [[self class] ignoresReadonlyProperties])                              // nor +ignoresReadonlyProperties
+            {
                 continue; //to next property
             }
 
@@ -1363,6 +1367,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
         return nil;
 
     return NSClassFromString(protocolName);
+}
+
++(BOOL)ignoresReadonlyProperties
+{
+    return YES;
 }
 
 #pragma mark - working with incomplete models
