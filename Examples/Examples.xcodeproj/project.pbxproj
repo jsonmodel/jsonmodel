@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008077B81D81B91C006A0187 /* ConcurrentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 008077B71D81B91C006A0187 /* ConcurrentTests.m */; };
+		008077BD1D81C035006A0187 /* ConcurrentReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 008077BC1D81C035006A0187 /* ConcurrentReposModel.m */; };
 		0DB9D559E428E7124986BF07 /* Pods_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37BF9082B944335670E6BC4 /* Pods_iOSTests.framework */; };
 		1A46AB611D1C71CB00E10D9D /* SanityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A46AB601D1C71CB00E10D9D /* SanityTests.m */; };
 		1A46AB7A1D1C741900E10D9D /* SanityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A46AB601D1C71CB00E10D9D /* SanityTests.m */; };
@@ -262,6 +264,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		008077B71D81B91C006A0187 /* ConcurrentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentTests.m; sourceTree = "<group>"; };
+		008077B91D81BEF1006A0187 /* ConcurrentReposModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentReposModel.h; sourceTree = "<group>"; };
+		008077BC1D81C035006A0187 /* ConcurrentReposModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentReposModel.m; path = ../Headers/ConcurrentReposModel.m; sourceTree = "<group>"; };
 		0A4DE5B5DC624A64AA75870C /* Pods-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-macOS/Pods-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		107DC0780200A72176B28827 /* Pods-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTests/Pods-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		10A3600BED7471EF4FB3C34D /* Pods_macOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -509,6 +514,7 @@
 				1A4BAA371D1C79260069D735 /* SpecialPropertyNameTests.m */,
 				1A4BAA381D1C79260069D735 /* SpecialValuesTests.m */,
 				1A4BAA391D1C79260069D735 /* ValidationTests.m */,
+				008077B71D81B91C006A0187 /* ConcurrentTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -573,6 +579,7 @@
 				1A4BAA2E1D1C79260069D735 /* ReposModel.h */,
 				1A4BAA2F1D1C79260069D735 /* RpcRequestModel.h */,
 				1A4BAA301D1C79260069D735 /* SpecialPropertyModel.h */,
+				008077B91D81BEF1006A0187 /* ConcurrentReposModel.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -606,6 +613,7 @@
 				1A4BAAE81D1C7D590069D735 /* ReposModel.m */,
 				1A4BAAE91D1C7D590069D735 /* RpcRequestModel.m */,
 				1A4BAAEA1D1C7D590069D735 /* SpecialPropertyModel.m */,
+				008077BC1D81C035006A0187 /* ConcurrentReposModel.m */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1472,6 +1480,7 @@
 				1A4BAA921D1C79480069D735 /* NestedModelsTests.m in Sources */,
 				1A4BAA9A1D1C79480069D735 /* ValidationTests.m in Sources */,
 				1A4BAA971D1C79480069D735 /* SpecialPropertiesTests.m in Sources */,
+				008077BD1D81C035006A0187 /* ConcurrentReposModel.m in Sources */,
 				1A4BAA871D1C79480069D735 /* ArrayTests.m in Sources */,
 				1A4BAB131D1C7DA80069D735 /* JSONTypesModelWithValidation2.m in Sources */,
 				1A4BAB0D1D1C7DA80069D735 /* GitHubRepoModel.m in Sources */,
@@ -1483,6 +1492,7 @@
 				1A4BAB151D1C7DA80069D735 /* ModelForUpperCaseMapper.m in Sources */,
 				1A4BAA891D1C79480069D735 /* CustomPropsTests.m in Sources */,
 				1A4BAA931D1C79480069D735 /* OptionalPropertiesTests.m in Sources */,
+				008077B81D81B91C006A0187 /* ConcurrentTests.m in Sources */,
 				1A4BAA901D1C79480069D735 /* JSONTypesReadTests.m in Sources */,
 				1A4BAB101D1C7DA80069D735 /* InteractionModel.m in Sources */,
 				1A4BAB071D1C7DA80069D735 /* CustomPropertyModel.m in Sources */,
