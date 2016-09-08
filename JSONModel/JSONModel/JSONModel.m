@@ -692,6 +692,31 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if (p && ![propertyIndex objectForKey:p.name]) {
                 [propertyIndex setValue:p forKey:p.name];
             }
+            
+            //generate custom setters
+            if (p) {
+                p.customSetters = [[NSMutableDictionary alloc] init];
+                for (Class allowedType in allowedJSONTypes) {
+                    NSString *className = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:allowedType]);
+                    
+                    if (!p.customSetters[className]) {
+                        //check for a custom property setter method
+                        NSString* ucfirstName = [p.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                withString:[[p.name substringToIndex:1] uppercaseString]];
+                        NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName, className];
+                        
+                        SEL customPropertySetter = NSSelectorFromString(selectorName);
+                        
+                        //check if there's a custom selector like this
+                        if ([self respondsToSelector: customPropertySetter]) {
+                            //cache the custom setter selector
+                            p.customSetters[className] = selectorName;
+                        } else {
+                            p.customSetters[className] = [NSNull null];
+                        }
+                    }
+                }
+            }
         }
 
         free(properties);
@@ -832,30 +857,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 #pragma mark - custom transformations
 -(BOOL)__customSetValue:(id<NSObject>)value forProperty:(JSONModelClassProperty*)property
 {
-    if (!property.customSetters)
-        property.customSetters = [NSMutableDictionary new];
-
     NSString *className = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:[value class]]);
-
-    if (!property.customSetters[className]) {
-        //check for a custom property setter method
-        NSString* ucfirstName = [property.name stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                       withString:[[property.name substringToIndex:1] uppercaseString]];
-        NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName, className];
-
-        SEL customPropertySetter = NSSelectorFromString(selectorName);
-
-        //check if there's a custom selector like this
-        if (![self respondsToSelector: customPropertySetter]) {
-            property.customSetters[className] = [NSNull null];
-            return NO;
-        }
-
-        //cache the custom setter selector
-        property.customSetters[className] = selectorName;
-    }
-
-    if (property.customSetters[className] != [NSNull null]) {
+    
+    if (property.customSetters[className] && (property.customSetters[className] != [NSNull null])) {
         //call the custom setter
         //https://github.com/steipete
         SEL selector = NSSelectorFromString(property.customSetters[className]);
