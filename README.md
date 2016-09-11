@@ -17,9 +17,6 @@ JSONModel is a library, which allows rapid creation of smart data models. You ca
 
 JSONModel automatically introspects your model classes and the structure of your JSON input and reduces drastically the amount of code you have to write.
 
-[![](http://www.touch-code-magazine.com/img/json.png)](http://www.touch-code-magazine.com/img/json.png)
-
-
 ------------------------------------
 Adding JSONModel to your project
 ====================================
@@ -105,19 +102,6 @@ And the good news is all you had to do is define the properties and their expect
 
 -------
 #### Online tutorials
-
-
-Official website: [http://www.jsonmodel.com](http://www.jsonmodel.com)
-
-Class docs online: [http://jsonmodel.com/docs/](http://jsonmodel.com/docs/)
-
-Step-by-step tutorials:
-
- * [How to fetch and parse JSON by using data models](http://www.touch-code-magazine.com/how-to-fetch-and-parse-json-by-using-data-models/)
-
- * [Performance optimisation for working with JSON feeds via JSONModel](http://www.touch-code-magazine.com/performance-optimisation-for-working-with-json-feeds-via-jsonmodel/)
-
- * [How to make a YouTube app using MGBox and JSONModel](http://www.touch-code-magazine.com/how-to-make-a-youtube-app-using-mgbox-and-jsonmodel/)
 
 -------
 Examples
@@ -482,7 +466,7 @@ NSString* string = [pm toJSONString];
 Misc
 =======
 
-Author: [Marin Todorov](http://www.touch-code-magazine.com)
+Author: [Marin Todorov](http://www.underplot.com)
 
 Contributors: James Billingham, Christian Hoffmann, Mark Joslin, Julien Vignali, Symvaro GmbH, BB9z.
 Also everyone who did successful [pull requests](https://github.com/jsonmodel/jsonmodel/graphs/contributors).
