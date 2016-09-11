@@ -23,9 +23,9 @@
 	[super setUp];
 	NSString* filePath = [[NSBundle bundleForClass:[JSONModel class]].resourcePath stringByAppendingPathComponent:@"../../github-iphone.json"];
 	NSData* jsonData = [NSData dataWithContentsOfFile:filePath];
-	
+
 	XCTAssertNotNil(jsonData, @"Can't fetch test data file contents.");
-	
+
 	NSError* err;
 	self.jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&err];
 }
@@ -39,9 +39,9 @@
 	NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 	queue.maxConcurrentOperationCount = 50;
 	[queue setSuspended:YES];
-	
+
 	XCTestExpectation *expectation = [self expectationWithDescription:@"Wait for queue...."];
-	
+
 	__block int count = 0;
 	for (int i = 0; i < 100; i++) {
 		[queue addOperationWithBlock:^{
@@ -54,7 +54,7 @@
 		}];
 	}
 	[queue setSuspended:NO];
-	[self waitForExpectationsWithTimeout:10 handler:nil];
+	[self waitForExpectationsWithTimeout:30 handler:nil];
 }
 
 @end
