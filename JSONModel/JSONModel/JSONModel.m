@@ -692,35 +692,35 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if (p && ![propertyIndex objectForKey:p.name]) {
                 [propertyIndex setValue:p forKey:p.name];
             }
-            
-            //generate custom setters and getter
-            if (p) {
-                NSString* ucfirstName = [p.name stringByReplacingCharactersInRange: NSMakeRange(0,1)
-                                                                        withString: [[p.name substringToIndex:1] uppercaseString]];
+
+            // generate custom setters and getter
+            if (p)
+            {
+                NSString *ucfirstName = [p.name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[p.name substringToIndex:1].uppercaseString];
+
+                // getter
+                SEL customPropertyGetter = NSSelectorFromString([NSString stringWithFormat:@"JSONObjectFor%@", ucfirstName]);
+
+                if ([self respondsToSelector:customPropertyGetter])
+                    p.customGetter = customPropertyGetter;
+
                 // setters
                 p.customSetters = [NSMutableDictionary new];
-                for (Class allowedType in allowedJSONTypes) {
+
+                for (Class allowedType in allowedJSONTypes)
+                {
                     NSString *className = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:allowedType]);
-                    
-                    if (!p.customSetters[className]) {
-                        //check for a custom property setter method
-                        NSString* selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName, className];
-                        SEL customPropertySetter = NSSelectorFromString(selectorName);
-                        
-                        //check if there's a custom selector like this
-                        if ([self respondsToSelector: customPropertySetter]) {
-                            //cache the custom setter selector
-                            p.customSetters[className] = selectorName;
-                        }
-                    }
-                }
-                
-                // getter
-                NSString* selectorName = [NSString stringWithFormat:@"JSONObjectFor%@", ucfirstName];
-                SEL customPropertyGetter = NSSelectorFromString(selectorName);
-                
-                if ([self respondsToSelector: customPropertyGetter]) {
-                    p.customGetter = customPropertyGetter;
+
+                    if (p.customSetters[className])
+                        continue;
+
+                    //check for a custom property setter method
+                    NSString *selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName, className];
+                    SEL customPropertySetter = NSSelectorFromString(selectorName);
+
+                    //check if there's a custom selector like this
+                    if ([self respondsToSelector:customPropertySetter])
+                        p.customSetters[className] = selectorName;
                 }
             }
         }
