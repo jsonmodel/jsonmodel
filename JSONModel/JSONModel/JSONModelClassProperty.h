@@ -16,14 +16,6 @@
 
 #import <Foundation/Foundation.h>
 
-enum kCustomizationTypes {
-    kNotInspected = 0,
-    kCustom,
-    kNo
-};
-
-typedef enum kCustomizationTypes PropertyGetterType;
-
 /**
  * **You do not need to instantiate this class yourself.** This class is used internally by JSONModel
  * to inspect the declared properties of your model class.
@@ -57,9 +49,6 @@ typedef enum kCustomizationTypes PropertyGetterType;
 
 /** If YES - create a mutable object for the value of the property */
 @property (assign, nonatomic) BOOL isMutable;
-
-/** The status of property getter introspection in a model */
-@property (assign, nonatomic) PropertyGetterType getterType;
 
 /** a custom getter for this property, found in the owning model */
 @property (assign, nonatomic) SEL customGetter;
