@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.4.2 (2016-09-11)
+
+- change use of `performSelector` to [a safer implementation](https://stackoverflow.com/a/20058585/743957)
+
 ## v1.4.1 (2016-09-11)
 
 - restructured custom getter/setter system to resolve crash reported in #436 (thanks @robinzhangx & @hfossli)

@@ -1,6 +1,6 @@
 ## Magical Data Modeling Framework for JSON
 
-### Version 1.4.1
+### Version 1.4.2
 
 ---
 If you like JSONModel and use it, could you please:
