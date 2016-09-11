@@ -868,16 +868,24 @@ static JSONKeyMapper* globalKeyMapper = nil;
     if (!setter)
         return NO;
 
-    [self performSelector:setter withObject:value];
+    IMP imp = [self methodForSelector:setter];
+    void (*func)(id, SEL, id <NSObject>) = (void *)imp;
+    func(self, setter, value);
+
     return YES;
 }
 
 - (BOOL)__customGetValue:(id *)value forProperty:(JSONModelClassProperty *)property
 {
-    if (!property.customGetter)
+    SEL getter = property.customGetter;
+
+    if (!getter)
         return NO;
 
-    *value = [self performSelector:property.customGetter];
+    IMP imp = [self methodForSelector:getter];
+    id (*func)(id, SEL) = (void *)imp;
+    *value = func(self, getter);
+
     return YES;
 }
 
