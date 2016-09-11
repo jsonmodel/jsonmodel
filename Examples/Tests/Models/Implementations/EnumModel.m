@@ -30,6 +30,11 @@
 	_status = [statusString isEqualToString:@"open"]?StatusOpen:StatusClosed;
 }
 
+-(void)setNestedStatusWithNSNumber:(NSNumber*)statusNumber
+{
+	_status = statusNumber.boolValue?StatusOpen:StatusClosed;
+}
+
 -(id)JSONObjectForStatus
 {
 	return (self.status==StatusOpen)?@"open":@"closed";

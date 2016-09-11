@@ -59,7 +59,6 @@
 	XCTAssertTrue([exportedJSON rangeOfString:@"\"boolYES\":true"].location != NSNotFound, @"boolYES should export to 'true'");
 }
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
 -(void)testEnumerationTypes
 {
 	NSString* jsonContents = @"{\"nested\":{\"status\":\"open\"},\"nsStatus\":\"closed\",\"nsuStatus\":\"open\",\"statusString\":\"open\"}";
@@ -79,6 +78,39 @@
 	XCTAssertTrue([json rangeOfString:@"\"nsuStatus\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
 	XCTAssertTrue([json rangeOfString:@"\"nsStatus\":\"closed\""].location!=NSNotFound, @"Exporting enum value didn't work out");
 }
-#endif
+
+-(void)testCustomSetters
+{
+	NSString* json1 = @"{\"nested\":{\"status\":\"open\"},\"nsStatus\":\"closed\",\"nsuStatus\":\"open\",\"statusString\":\"open\"}";
+	NSString* json2 = @"{\"nested\":{\"status\":true},\"nsStatus\":\"closed\",\"nsuStatus\":\"open\",\"statusString\":\"open\"}";
+
+	NSError* err;
+
+	EnumModel* p1 = [[EnumModel alloc] initWithString: json1 error:&err];
+	XCTAssertNil(err, "%@", [err localizedDescription]);
+	XCTAssertNotNil(p1, @"Could not read input json text");
+
+	EnumModel* p2 = [[EnumModel alloc] initWithString: json2 error:&err];
+	XCTAssertNil(err, "%@", [err localizedDescription]);
+	XCTAssertNotNil(p2, @"Could not read input json text");
+
+	XCTAssertTrue(p1.status==StatusOpen, @"Status is not StatusOpen");
+	XCTAssertTrue(p1.nsStatus==NSE_StatusClosed, @"nsStatus is not NSE_StatusClosed");
+	XCTAssertTrue(p1.nsuStatus==NSEU_StatusOpen, @"nsuStatus is not NSEU_StatusOpen");
+
+	XCTAssertTrue(p2.status==StatusOpen, @"Status is not StatusOpen");
+	XCTAssertTrue(p2.nsStatus==NSE_StatusClosed, @"nsStatus is not NSE_StatusClosed");
+	XCTAssertTrue(p2.nsuStatus==NSEU_StatusOpen, @"nsuStatus is not NSEU_StatusOpen");
+
+	NSString* out1 = [p1 toJSONString];
+	XCTAssertTrue([out1 rangeOfString:@"\"statusString\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+	XCTAssertTrue([out1 rangeOfString:@"\"nsuStatus\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+	XCTAssertTrue([out1 rangeOfString:@"\"nsStatus\":\"closed\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+
+	NSString* out2 = [p2 toJSONString];
+	XCTAssertTrue([out2 rangeOfString:@"\"statusString\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+	XCTAssertTrue([out2 rangeOfString:@"\"nsuStatus\":\"open\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+	XCTAssertTrue([out2 rangeOfString:@"\"nsStatus\":\"closed\""].location!=NSNotFound, @"Exporting enum value didn't work out");
+}
 
 @end
