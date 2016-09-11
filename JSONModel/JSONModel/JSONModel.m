@@ -717,7 +717,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@With%@:", name, class]);
 
                     if ([self respondsToSelector:setter])
-                        p.customSetters[class] = NSStringFromSelector(setter);
+                        p.customSetters[class] = [NSValue valueWithBytes:&setter objCType:@encode(SEL)];
                 }
             }
         }
@@ -858,33 +858,27 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - custom transformations
--(BOOL)__customSetValue:(id<NSObject>)value forProperty:(JSONModelClassProperty*)property
+- (BOOL)__customSetValue:(id <NSObject>)value forProperty:(JSONModelClassProperty *)property
 {
-    NSString *className = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:[value class]]);
-    
-    if (property.customSetters[className]) {
-        //call the custom setter
-        //https://github.com/steipete
-        SEL selector = NSSelectorFromString(property.customSetters[className]);
-        ((void (*) (id, SEL, id))objc_msgSend)(self, selector, value);
-        return YES;
-    }
+    NSString *class = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:[value class]]);
 
-    return NO;
+    SEL setter = nil;
+    [property.customSetters[class] getValue:&setter];
+
+    if (!setter)
+        return NO;
+
+    [self performSelector:setter withObject:value];
+    return YES;
 }
 
--(BOOL)__customGetValue:(id<NSObject>*)value forProperty:(JSONModelClassProperty*)property
+- (BOOL)__customGetValue:(id *)value forProperty:(JSONModelClassProperty *)property
 {
-    if (property.customGetter) {
-        //call the custom getter
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        *value = [self performSelector:property.customGetter];
-        #pragma clang diagnostic pop
-        return YES;
-    }
+    if (!property.customGetter)
+        return NO;
 
-    return NO;
+    *value = [self performSelector:property.customGetter];
+    return YES;
 }
 
 #pragma mark - persistance
