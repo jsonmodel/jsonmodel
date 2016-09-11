@@ -1,34 +1,78 @@
-Since JSONModel is becoming more and more popular I need to set some ground rules.
+# Contribution Rules
 
-Reporting an issue on GitHub
-====================================
+## General Help/Support
 
-------------------------------------
-<a href="whattoreport"></a>
-#### What to report?
+If you're struggling to use JSONModel, the following options are available to
+you:
 
-Be sure you are reporting either 1) a bug you have discovered or 2) a feature request. 
+- read the [readme](README.md) in detail
+- check out [StackOverflow](https://stackoverflow.com/questions/tagged/jsonmodel)
 
-People have been abusing the GitHub issues system for a while to ask all kind of vague questions and I’ve been helping some, but to be honest I just don’t have the time to clarify with the reporting what they need and try to find a solution for each and every case.
+You should not open an issue on GitHub if you are simply struggling to
+understand JSONModel. Issues are only for bugs and feature requests.
 
-Long story short - make sure you are reporting something and not just asking how this or that is done.
+## Issues
 
-<a href="howtoreport"></a>
-#### How to report a problem/request a feature?
+### Bugs
 
-1. Describe what you expected to happen.
-2. What actually happened instead?
-3. Add the piece of JSON relevant to the problem
-4. Your Objective-C model code.
+First and foremost - you must be running the latest version of JSONModel. No
+support will be offered if you are running anything other than the latest.
+Even if you think you're on the latest version, please quickly check for any new
+releases.
 
-I need to be able to **reproduce the problem** in order to fix it.
+First, create the smallest/simplest possible example which exhibits the bug.
 
-Of course the best would be if you already have fixed the problem yourself, then create a pull request. If you do - before you send a pull request run ALL TEST CASES on both IOS and OSX! Add a test case for what you have fixed, since it obviously haven’t been covered with one if there was a problem to be fixed.
+Then open an issue providing the following code:
 
-<a href="helpwithcode"></a>
-#### In case you need help with your code/models …
+- the JSON you're (de)serializing
+- your model class(es) - both interface and implementation
+- the code you're running
 
-In case you **do need help** with your code: your best start is to **read the repo README**, many people don’t and it really is the best place to find many answers.
+Then explain:
 
-In case the README does not answer your question, try StackOverflow. There’s a **hashtag jsonmodel** - search the questions [answered so far](http://stackoverflow.com/questions/tagged/jsonmodel), and if you don’t find a solution create a new question and give it the tag **jsonmodel**.
+- what you expected to happen
+- what actually happened
+- what debugging steps you have taken
+- any additional context/details
 
+Remember: if we can't reproduce the problem, we can't fix it. If we aren't able
+to replicate, your issue will be closed.
+
+Please also consider opening a pull request with the fix, if you are able.
+
+### Improvements
+
+Feel free to open an issue requesting a change. Provide the following details:
+
+- what JSONModel should do
+- why this would be helpful (use cases, etc.)
+- why the existing code is insufficient
+- an example of how it could work
+
+The maintainers are quite opinionated about what JSONModel should/shouldn't do,
+so be aware that we may not agree with you.
+
+Assuming we agree on a way forward for the change, please consider opening a
+pull request with the implementation.
+
+## Pull Requests
+
+### Bugs
+
+Before fixing the bug, you must write a unit test which fails, but should pass.
+After that, write the relevant code to fix the bug. Ensure that all tests pass
+on **all** platforms.
+
+Then please open a pull request with the changes. If you haven't added unit
+any tests to cover the bug, or the tests don't pass, your PR _will not_ be
+merged.
+
+Please also provide the same details as above.
+
+### Improvements
+
+For any complex changes, please open an issue to discuss the changes before
+implementing them. If you implement before discussion, there is a chance that
+we will disagree and decide not to merge.
+
+Please also provide the same details as above.

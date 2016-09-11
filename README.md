@@ -8,6 +8,8 @@ can use it in your iOS and macOS apps.
 JSONModel automatically introspects your model classes and the structure of your
 JSON input and reduces drastically the amount of code you have to write.
 
+See [CHANGELOG.md] file for details on changes.
+
 ## Installation
 
 ### CocoaPods
@@ -389,20 +391,10 @@ NSString *string = [pm toJSONString];
 @end
 ```
 
-## Misc
-
-Author: [Marin Todorov](http://www.underplot.com)
-
-Contributors: James Billingham, Christian Hoffmann, Mark Joslin, Julien Vignali,
-Symvaro GmbH, BB9z. Also everyone who did successful
-[pull requests](https://github.com/jsonmodel/jsonmodel/graphs/contributors).
-
-Change log: [CHANGELOG.md](CHANGELOG.md)
-
 ## License
 
-This code is distributed under the terms and conditions of the MIT license.
+MIT licensed - see [LICENSE](LICENSE) file
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+We love pull requests! See [CONTRIBUTING.md](CONTRIBUTING.md) file for full details.
