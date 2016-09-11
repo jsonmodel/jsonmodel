@@ -45,25 +45,26 @@
     self = [self init];
 
     if (self) {
+        __weak JSONKeyMapper *weakSelf = self;
 
-        __weak JSONKeyMapper* weakSelf = self;
-
-        _modelToJSONKeyBlock = [^NSString* (NSString* keyName) {
-
+        _modelToJSONKeyBlock = ^NSString *(NSString *keyName)
+        {
             __strong JSONKeyMapper *strongSelf = weakSelf;
 
-            //try to return cached transformed key
-            if (strongSelf.toJSONMap[keyName]) {
-                return strongSelf.toJSONMap[keyName];
-            }
+            id cached = strongSelf.toJSONMap[keyName];
 
-            //try to convert the key, and store in the cache
-            NSString* result = toJSON(keyName);
+            if (cached == [NSNull null])
+                return nil;
+
+            if (cached)
+                return strongSelf.toJSONMap[keyName];
+
+            NSString *result = toJSON(keyName);
 
             OSSpinLockLock(&strongSelf->_lock);
-            strongSelf.toJSONMap[keyName] = result;
+            strongSelf.toJSONMap[keyName] = result ? result : [NSNull null];
             OSSpinLockUnlock(&strongSelf->_lock);
-
+            
             return result;
 
         } copy];
