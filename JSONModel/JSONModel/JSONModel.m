@@ -696,31 +696,28 @@ static JSONKeyMapper* globalKeyMapper = nil;
             // generate custom setters and getter
             if (p)
             {
-                NSString *ucfirstName = [p.name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[p.name substringToIndex:1].uppercaseString];
+                NSString *name = [p.name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[p.name substringToIndex:1].uppercaseString];
 
                 // getter
-                SEL customPropertyGetter = NSSelectorFromString([NSString stringWithFormat:@"JSONObjectFor%@", ucfirstName]);
+                SEL getter = NSSelectorFromString([NSString stringWithFormat:@"JSONObjectFor%@", name]);
 
-                if ([self respondsToSelector:customPropertyGetter])
-                    p.customGetter = customPropertyGetter;
+                if ([self respondsToSelector:getter])
+                    p.customGetter = getter;
 
                 // setters
                 p.customSetters = [NSMutableDictionary new];
 
-                for (Class allowedType in allowedJSONTypes)
+                for (Class type in allowedJSONTypes)
                 {
-                    NSString *className = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:allowedType]);
+                    NSString *class = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:type]);
 
-                    if (p.customSetters[className])
+                    if (p.customSetters[class])
                         continue;
 
-                    //check for a custom property setter method
-                    NSString *selectorName = [NSString stringWithFormat:@"set%@With%@:", ucfirstName, className];
-                    SEL customPropertySetter = NSSelectorFromString(selectorName);
+                    SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@With%@:", name, class]);
 
-                    //check if there's a custom selector like this
-                    if ([self respondsToSelector:customPropertySetter])
-                        p.customSetters[className] = selectorName;
+                    if ([self respondsToSelector:setter])
+                        p.customSetters[class] = NSStringFromSelector(setter);
                 }
             }
         }
