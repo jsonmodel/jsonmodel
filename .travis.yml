@@ -4,6 +4,7 @@ before_install:
   - cd Examples/
   - pod install
 script:
+  - set -o pipefail
   - xcodebuild $XCODE_ACTION 
       -workspace "Examples.xcworkspace"
       -scheme "$TRAVIS_XCODE_SCHEME"
