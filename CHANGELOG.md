@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.4.1 (2016-09-11)
+
+- restructured custom getter/setter system to resolve crash reported in #436 (thanks @robinzhangx & @hfossli)
+
 ## v1.4.0 (2016-08-18)
 
 - deprecated all JSON->Model key mapper methods for consistency's sake - replaced with equivalent Model->JSON methods with clearer naming

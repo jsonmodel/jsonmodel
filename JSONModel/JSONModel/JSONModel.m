@@ -1,7 +1,7 @@
 //
 //  JSONModel.m
 //
-//  @version 1.4
+//  @version 1.4.1
 //  @author Marin Todorov (http://www.underplot.com) and contributors
 //
 
@@ -1371,7 +1371,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 -(instancetype)initWithCoder:(NSCoder *)decoder
 {
     NSString* json;
-    
+
     if ([decoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)]) {
         json = [decoder decodeObjectOfClass:[NSString class] forKey:@"json"];
     } else {
