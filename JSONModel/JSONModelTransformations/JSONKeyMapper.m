@@ -111,7 +111,12 @@
     return _modelToJSONKeyBlock(value);
 }
 
-+(instancetype)mapperFromUnderscoreCaseToCamelCase
++ (instancetype)mapperFromUnderscoreCaseToCamelCase
+{
+    return [self mapperForSnakeCase];
+}
+
++ (instancetype)mapperForSnakeCase
 {
     JSONModelKeyMapBlock toJSON = ^ NSString* (NSString* keyName) {
 
