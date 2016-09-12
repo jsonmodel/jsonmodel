@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.1 (2016-09-12)
+
+- when a data transformer is missing, we now return an error rather than throwing an exception
+
 ## v1.5.0 (2016-09-12)
 
 Minor version bump due to deprecations. No breaking changes.
