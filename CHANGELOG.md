@@ -2,6 +2,9 @@
 
 ## v1.5.0 (2016-09-12)
 
+Minor version bump due to deprecations. No breaking changes.
+
+- lots of improvements to readme/contribution docs
 - deprecated `mapperFromUpperCaseToLowerCase` (not replaced - it didn't really make sense)
 - renamed `mapperFromUnderscoreCaseToCamelCase` to `mapperForSnakeCase` for clarity
 
