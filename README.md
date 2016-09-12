@@ -1,8 +1,8 @@
 # JSONModel - Magical Data Modeling Framework for JSON
 
-JSONModel allows rapid creation of smart data models. You can use it in your iOS
-and macOS apps. Automatic introspection of your model classes and JSON input
-drastically reduces the amount of code you have to write.
+JSONModel allows rapid creation of smart data models. You can use it in your
+iOS, macOS, watchOS and tvOS apps. Automatic introspection of your model classes
+and JSON input drastically reduces the amount of code you have to write.
 
 See [CHANGELOG.md](CHANGELOG.md) for details on changes.
 
