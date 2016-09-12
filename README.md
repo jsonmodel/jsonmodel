@@ -4,7 +4,7 @@ JSONModel allows rapid creation of smart data models. You can use it in your iOS
 and macOS apps. Automatic introspection of your model classes and JSON input
 drastically reduces the amount of code you have to write.
 
-See the [CHANGELOG.md]([CHANGELOG.md]) file for details on changes.
+See [CHANGELOG.md]([CHANGELOG.md]) for details on changes.
 
 ## Installation
 
@@ -381,9 +381,8 @@ NSString *string = [pm toJSONString];
 
 ## License
 
-MIT licensed - see the [LICENSE](LICENSE) file.
+MIT licensed - see [LICENSE](LICENSE) file.
 
 ## Contributing
 
-We love pull requests! See the [CONTRIBUTING.md](CONTRIBUTING.md) file for full
-details.
+We love pull requests! See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
