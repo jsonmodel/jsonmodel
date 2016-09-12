@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.5.0 (2016-09-12)
+
+- deprecated `mapperFromUpperCaseToLowerCase` (not replaced - it didn't really make sense)
+- renamed `mapperFromUnderscoreCaseToCamelCase` to `mapperForSnakeCase` for clarity
+
 ## v1.4.2 (2016-09-11)
 
 - change use of `performSelector` to [a safer implementation](https://stackoverflow.com/a/20058585/743957)
