@@ -11,6 +11,6 @@
 @interface RenamedPropertyModel : JSONModel
 
 @property (copy, nonatomic) NSString *identifier;
-@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *propName;
 
 @end

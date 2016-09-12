@@ -5,6 +5,8 @@
 
 #import "ModelForUpperCaseMapper.h"
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 @implementation ModelForUpperCaseMapper
 
 +(JSONKeyMapper*)keyMapper

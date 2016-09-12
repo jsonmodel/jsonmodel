@@ -12,7 +12,7 @@
 
 +(JSONKeyMapper*)keyMapper
 {
-	return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+	return [JSONKeyMapper mapperForSnakeCase];
 }
 
 @end
