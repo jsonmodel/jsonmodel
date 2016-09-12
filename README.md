@@ -1,28 +1,20 @@
 # JSONModel - Magical Data Modeling Framework for JSON
 
-![JSONModel for iOS and OSX](http://jsonmodel.com/img/jsonmodel_logolike.png)
+JSONModel allows rapid creation of smart data models. You can use it in your iOS
+and macOS apps. Automatic introspection of your model classes and JSON input
+drastically reduces the amount of code you have to write.
 
-JSONModel is a library, which allows rapid creation of smart data models. You
-can use it in your iOS and macOS apps.
-
-JSONModel automatically introspects your model classes and the structure of your
-JSON input and reduces drastically the amount of code you have to write.
-
-See [CHANGELOG.md] file for details on changes.
+See the [CHANGELOG.md]([CHANGELOG.md]) file for details on changes.
 
 ## Installation
 
 ### CocoaPods
-
-Add to your `Podfile`:
 
 ```ruby
 pod 'JSONModel'
 ```
 
 ### Carthage
-
-Add to your `Cartfile`:
 
 ```ruby
 github "jsonmodel/jsonmodel"
@@ -34,11 +26,7 @@ github "jsonmodel/jsonmodel"
 0. copy the JSONModel sub-folder into your Xcode project
 0. link your app to SystemConfiguration.framework
 
-## Docs
-
-You can find the generated docs at: http://cocoadocs.org/docsets/JSONModel
-
-## Basic usage
+## Basic Usage
 
 Consider you have JSON like this:
 
@@ -393,8 +381,9 @@ NSString *string = [pm toJSONString];
 
 ## License
 
-MIT licensed - see [LICENSE](LICENSE) file
+MIT licensed - see the [LICENSE](LICENSE) file.
 
 ## Contributing
 
-We love pull requests! See [CONTRIBUTING.md](CONTRIBUTING.md) file for full details.
+We love pull requests! See the [CONTRIBUTING.md](CONTRIBUTING.md) file for full
+details.
