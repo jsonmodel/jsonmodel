@@ -209,6 +209,10 @@
 		1A84BC421D1C0359005234F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC411D1C0359005234F4 /* ViewController.m */; };
 		1A84BC451D1C0359005234F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A84BC431D1C0359005234F4 /* Main.storyboard */; };
 		1A84BC471D1C0359005234F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A84BC461D1C0359005234F4 /* Assets.xcassets */; };
+		1AB943561D86AA3E0031E315 /* ConcurrentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 008077B71D81B91C006A0187 /* ConcurrentTests.m */; };
+		1AB943571D86AA3F0031E315 /* ConcurrentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 008077B71D81B91C006A0187 /* ConcurrentTests.m */; };
+		1AB943581D86AA540031E315 /* ConcurrentReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 008077BC1D81C035006A0187 /* ConcurrentReposModel.m */; };
+		1AB943591D86AA540031E315 /* ConcurrentReposModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 008077BC1D81C035006A0187 /* ConcurrentReposModel.m */; };
 		1AF8B9171D423D5500A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
 		1AF8B9181D423D5500A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
 		1AF8B9191D423D5700A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
@@ -1505,6 +1509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB943581D86AA540031E315 /* ConcurrentReposModel.m in Sources */,
 				1A4BAB231D1C7DA80069D735 /* EnumModel.m in Sources */,
 				1A4BAB201D1C7DA80069D735 /* CopyrightModel.m in Sources */,
 				1A4BAB291D1C7DA80069D735 /* ImageModel.m in Sources */,
@@ -1545,6 +1550,7 @@
 				1A4BAB2F1D1C7DA80069D735 /* ModelForUpperCaseMapper.m in Sources */,
 				1A4BAA751D1C79460069D735 /* CustomPropsTests.m in Sources */,
 				1A4BAA7F1D1C79460069D735 /* OptionalPropertiesTests.m in Sources */,
+				1AB943571D86AA3F0031E315 /* ConcurrentTests.m in Sources */,
 				1A4BAA7C1D1C79460069D735 /* JSONTypesReadTests.m in Sources */,
 				1A4BAB2A1D1C7DA80069D735 /* InteractionModel.m in Sources */,
 				1A4BAB211D1C7DA80069D735 /* CustomPropertyModel.m in Sources */,
@@ -1557,6 +1563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB943591D86AA540031E315 /* ConcurrentReposModel.m in Sources */,
 				1A4BAB3D1D1C7DA90069D735 /* EnumModel.m in Sources */,
 				1A4BAB3A1D1C7DA90069D735 /* CopyrightModel.m in Sources */,
 				1A4BAB431D1C7DA90069D735 /* ImageModel.m in Sources */,
@@ -1597,6 +1604,7 @@
 				1A4BAB491D1C7DA90069D735 /* ModelForUpperCaseMapper.m in Sources */,
 				1A4BAA611D1C79460069D735 /* CustomPropsTests.m in Sources */,
 				1A4BAA6B1D1C79460069D735 /* OptionalPropertiesTests.m in Sources */,
+				1AB943561D86AA3E0031E315 /* ConcurrentTests.m in Sources */,
 				1A4BAA681D1C79460069D735 /* JSONTypesReadTests.m in Sources */,
 				1A4BAB441D1C7DA90069D735 /* InteractionModel.m in Sources */,
 				1A4BAB3B1D1C7DA90069D735 /* CustomPropertyModel.m in Sources */,
