@@ -462,12 +462,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
                         }
 
                     } else {
-
-                        // it's not a JSON data type, and there's no transformer for it
-                        // if property type is not supported - that's a programmer mistake -> exception
-                        @throw [NSException exceptionWithName:@"Type not allowed"
-                                                       reason:[NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name]
-                                                     userInfo:nil];
+                        NSString* msg = [NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name];
+                        JSONModelError* dataErr = [JSONModelError errorInvalidDataWithTypeMismatch:msg];
+                        *err = [dataErr errorByPrependingKeyPathComponent:property.name];
                         return NO;
                     }
 
