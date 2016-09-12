@@ -1,3 +1,5 @@
+notifications:
+  email: false
 language: objective-c
 osx_image: xcode8
 before_install:
@@ -5,7 +7,7 @@ before_install:
   - pod install
 script:
   - set -o pipefail
-  - xcodebuild $XCODE_ACTION 
+  - xcodebuild $XCODE_ACTION
       -workspace "Examples.xcworkspace"
       -scheme "$TRAVIS_XCODE_SCHEME"
       -sdk "$XCODE_SDK"
