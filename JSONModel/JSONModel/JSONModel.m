@@ -953,7 +953,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             if (value == nil)
             {
-                [tempDictionary removeObjectForKey:keyPath];
+                if ([[self class] keepOptionalNilValues] ){
+                    [tempDictionary setValue:[NSNull null] forKeyPath:keyPath];
+                } else {
+                    [tempDictionary removeObjectForKey:keyPath];
+                }
             }
             else
             {
@@ -1322,6 +1326,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 +(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
+    return NO;
+}
+
++(BOOL) keepOptionalNilValues {
     return NO;
 }
 

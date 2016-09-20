@@ -252,6 +252,15 @@ DEPRECATED_ATTRIBUTE
 + (BOOL)propertyIsIgnored:(NSString *)propertyName;
 
 /**
+ * By default the optional properties are removed from the JSON if there is no value assigned (== nil).
+ * In same cases optional values could mean the value can be null, but shall be presented in the JSON.
+ * To keep the nil/null values in the model just return YES.
+ * This method returns by default NO.
+ * @return a BOOL result indicating whether the nil/null values are presented
+ */
++ (BOOL)keepOptionalNilValues;
+
+/**
  * Indicates the class used for the elements of a collection property.
  * Rather than using:
  *     @property (strong) NSArray <MyType> *things;
