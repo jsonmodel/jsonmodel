@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.6.0 (2016-10-05)
+
+- added `mapperForTitleCase`
+
 ## v1.5.1 (2016-09-12)
 
 - when a data transformer is missing, we now return an error rather than throwing an exception
