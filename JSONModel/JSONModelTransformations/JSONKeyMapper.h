@@ -83,6 +83,11 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
 + (instancetype)mapperForSnakeCase;
 
 /**
+ * Given a camelCase model property, this mapper finds JSON keys using the TitleCase equivalent.
+ */
++ (instancetype)mapperForTitleCase;
+
+/**
  * Creates a JSONKeyMapper based on a built-in JSONKeyMapper, with specific exceptions.
  * Use your JSONModel property names as keys, and the JSON key names as values.
  */

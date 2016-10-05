@@ -358,7 +358,7 @@
 
 - (void)testExceptionsMapper
 {
-	NSString *jsonString = @"{\"id\":\"12345\",\"prop_name\":\"TEST\"}";
+	NSString *jsonString = @"{\"ID\":\"12345\",\"PropName\":\"TEST\"}";
 	RenamedPropertyModel *m = [[RenamedPropertyModel alloc] initWithString:jsonString error:nil];
 	XCTAssertNotNil(m, @"Could not initialize model from string");
 
@@ -370,8 +370,8 @@
 	NSDictionary *dict = [m toDictionary];
 	XCTAssertNotNil(dict, @"toDictionary failed");
 
-	XCTAssertEqualObjects(dict[@"id"], m.identifier, @"id does not equal '12345'");
-	XCTAssertEqualObjects(dict[@"prop_name"], m.propName, @"prop_name does not equal 'TEST'");
+	XCTAssertEqualObjects(dict[@"ID"], m.identifier, @"ID does not equal '12345'");
+	XCTAssertEqualObjects(dict[@"PropName"], m.propName, @"PropName does not equal 'TEST'");
 }
 
 @end

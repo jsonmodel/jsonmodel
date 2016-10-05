@@ -138,6 +138,14 @@
     }];
 }
 
++ (instancetype)mapperForTitleCase
+{
+    return [[self alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName)
+    {
+        return [keyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[keyName substringToIndex:1].uppercaseString];
+    }];
+}
+
 + (instancetype)mapperFromUpperCaseToLowerCase
 {
     return [[self alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName)
