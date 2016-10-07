@@ -35,6 +35,14 @@
 	_status = statusNumber.boolValue?StatusOpen:StatusClosed;
 }
 
+- (void)setNestedStatusWithJSONObject:(id <NSObject>)object
+{
+	if ([object isKindOfClass:[NSArray class]])
+		_status = [((NSArray *)object).firstObject isEqualToString:@"open"] ? StatusOpen : StatusClosed;
+	else
+		_status = StatusClosed;
+}
+
 -(id)JSONObjectForStatus
 {
 	return (self.status==StatusOpen)?@"open":@"closed";
