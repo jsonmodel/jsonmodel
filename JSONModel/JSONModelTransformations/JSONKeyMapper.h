@@ -5,7 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
+typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName) DEPRECATED_MSG_ATTRIBUTE("use JSONModelKeyMappingBlock");
+typedef NSString *(^JSONModelKeyMappingBlock)(Class cls, NSString *modelKey);
 
 /**
  * **You won't need to create or store instances of this class yourself.** If you want your model
@@ -41,22 +42,25 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
 
 // deprecated
 @property (readonly, nonatomic) JSONModelKeyMapBlock JSONToModelKeyBlock DEPRECATED_ATTRIBUTE;
-- (NSString *)convertValue:(NSString *)value isImportingToModel:(BOOL)importing DEPRECATED_MSG_ATTRIBUTE("use convertValue:");
+@property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock DEPRECATED_MSG_ATTRIBUTE("use keyMappingBlock");
+- (NSString *)convertValue:(NSString *)value isImportingToModel:(BOOL)importing DEPRECATED_MSG_ATTRIBUTE("use convertValue:forClass:");
+- (NSString *)convertValue:(NSString *)value DEPRECATED_MSG_ATTRIBUTE("use convertValue:forClass:");
 - (instancetype)initWithDictionary:(NSDictionary *)map DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONDictionary:");
-- (instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel modelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithModelToJSONBlock:");
+- (instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel modelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithKeyMappingBlock:");
+- (instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON DEPRECATED_MSG_ATTRIBUTE("use initWithKeyMappingBlock:");
 + (instancetype)mapper:(JSONKeyMapper *)baseKeyMapper withExceptions:(NSDictionary *)exceptions DEPRECATED_MSG_ATTRIBUTE("use baseMapper:withModelToJSONExceptions:");
 + (instancetype)mapperFromUnderscoreCaseToCamelCase DEPRECATED_MSG_ATTRIBUTE("use mapperForSnakeCase:");
 + (instancetype)mapperFromUpperCaseToLowerCase DEPRECATED_ATTRIBUTE;
 
 /** @name Name converters */
 /** Block, which takes in a property name and converts it to the corresponding JSON key name */
-@property (readonly, nonatomic) JSONModelKeyMapBlock modelToJSONKeyBlock;
+@property (readonly, nonatomic) JSONModelKeyMappingBlock keyMappingBlock;
 
 /** Combined converter method
  * @param value the source name
  * @return JSONKeyMapper instance
  */
-- (NSString *)convertValue:(NSString *)value;
+- (NSString *)convertValue:(NSString *)value forClass:(Class)cls;
 
 /** @name Creating a key mapper */
 
@@ -65,9 +69,9 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
  * The parameter takes in a JSONModelKeyMapBlock block:
  * <pre>NSString *(^JSONModelKeyMapBlock)(NSString *keyName)</pre>
  * The block takes in a string and returns the transformed (if at all) string.
- * @param toJSON transforms your model property name to a JSON key
+ * @param keyMappingBlock transforms your model property name to a JSON key
  */
-- (instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON;
+- (instancetype)initWithKeyMappingBlock:(JSONModelKeyMappingBlock)keyMappingBlock;
 
 /**
  * Creates a JSONKeyMapper instance, based on the mapping you provide.
