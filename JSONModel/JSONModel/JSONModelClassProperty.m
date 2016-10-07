@@ -28,8 +28,9 @@
 
         for (id obj in self.customSetters.allValues)
         {
-            if (obj != [NSNull null])
-                [setters addObject:obj];
+            SEL selector;
+            [obj getValue:&selector];
+            [setters addObject:NSStringFromSelector(selector)];
         }
 
         [properties addObject:[NSString stringWithFormat: @"Setters = [%@]", [setters componentsJoinedByString:@", "]]];
