@@ -42,6 +42,11 @@
     return self;
 }
 
+- (JSONModelKeyMapBlock)JSONToModelKeyBlock
+{
+    return nil;
+}
+
 + (NSDictionary *)swapKeysAndValuesInDictionary:(NSDictionary *)dictionary
 {
     NSArray *keys = dictionary.allKeys;
