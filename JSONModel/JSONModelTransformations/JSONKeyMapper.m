@@ -4,24 +4,8 @@
 //
 
 #import "JSONKeyMapper.h"
-#import <libkern/OSAtomic.h>
-
-@interface JSONKeyMapper()
-@property (nonatomic, strong) NSMutableDictionary *toJSONMap;
-@property (nonatomic, assign) OSSpinLock lock;
-@end
 
 @implementation JSONKeyMapper
-
-- (instancetype)init
-{
-    if (!(self = [super init]))
-        return nil;
-
-    _toJSONMap  = [NSMutableDictionary new];
-
-    return self;
-}
 
 - (instancetype)initWithJSONToModelBlock:(JSONModelKeyMapBlock)toModel modelToJSONBlock:(JSONModelKeyMapBlock)toJSON
 {
@@ -33,28 +17,7 @@
     if (!(self = [self init]))
         return nil;
 
-    __weak JSONKeyMapper *weakSelf = self;
-
-    _modelToJSONKeyBlock = ^NSString *(NSString *keyName)
-    {
-        __strong JSONKeyMapper *strongSelf = weakSelf;
-
-        id cached = strongSelf.toJSONMap[keyName];
-
-        if (cached == [NSNull null])
-            return nil;
-
-        if (cached)
-            return strongSelf.toJSONMap[keyName];
-
-        NSString *result = toJSON(keyName);
-
-        OSSpinLockLock(&strongSelf->_lock);
-        strongSelf.toJSONMap[keyName] = result ? result : [NSNull null];
-        OSSpinLockUnlock(&strongSelf->_lock);
-
-        return result;
-    };
+    _modelToJSONKeyBlock = toJSON;
 
     return self;
 }
