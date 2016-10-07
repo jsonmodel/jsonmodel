@@ -693,6 +693,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 // setters
                 p.customSetters = [NSMutableDictionary new];
 
+                SEL genericSetter = NSSelectorFromString([NSString stringWithFormat:@"set%@WithJSONObject:", name]);
+
+                if ([self respondsToSelector:genericSetter])
+                    p.customSetters[@"generic"] = [NSValue valueWithBytes:&genericSetter objCType:@encode(SEL)];
+
                 for (Class type in allowedJSONTypes)
                 {
                     NSString *class = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:type]);
@@ -850,6 +855,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
     SEL setter = nil;
     [property.customSetters[class] getValue:&setter];
+
+    if (!setter)
+        [property.customSetters[@"generic"] getValue:&setter];
 
     if (!setter)
         return NO;
