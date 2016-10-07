@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.7.0 (2016-10-07)
+
+- added generic custom setter method - `setPropertyNameWithJSONObject`
+
 ## v1.6.0 (2016-10-05)
 
 - added new built-in key mapper - `mapperForTitleCase`
