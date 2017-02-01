@@ -7,6 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01D68A031E4219B800CFE82F /* JSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6F1B19A5B600D79B06 /* JSONModelLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A041E4219BE00CFE82F /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A051E4219C300CFE82F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
+		01D68A061E4219C800CFE82F /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; };
+		01D68A071E4219CC00CFE82F /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */; };
+		01D68A081E4219D000CFE82F /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A091E4219D600CFE82F /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC6B1B19A5B600D79B06 /* JSONModelError.m */; };
+		01D68A0A1E4219DA00CFE82F /* JSONAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC711B19A5B600D79B06 /* JSONAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A0B1E4219DF00CFE82F /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC721B19A5B600D79B06 /* JSONAPI.m */; };
+		01D68A0C1E4219E100CFE82F /* JSONHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC731B19A5B600D79B06 /* JSONHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A0D1E4219E600CFE82F /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC741B19A5B600D79B06 /* JSONHTTPClient.m */; };
+		01D68A0E1E4219E900CFE82F /* JSONModel+networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC751B19A5B600D79B06 /* JSONModel+networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A0F1E4219ED00CFE82F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC761B19A5B600D79B06 /* JSONModel+networking.m */; };
+		01D68A101E4219F100CFE82F /* JSONKeyMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC781B19A5B600D79B06 /* JSONKeyMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A111E4219F600CFE82F /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC791B19A5B600D79B06 /* JSONKeyMapper.m */; };
+		01D68A121E4219F900CFE82F /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC7A1B19A5B600D79B06 /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A131E4219FE00CFE82F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC7B1B19A5B600D79B06 /* JSONValueTransformer.m */; };
+		01D68A2F1E421B9000CFE82F /* JSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6F1B19A5B600D79B06 /* JSONModelLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A301E421B9300CFE82F /* JSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6F1B19A5B600D79B06 /* JSONModelLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A311E421B9A00CFE82F /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A321E421B9C00CFE82F /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A331E421BA100CFE82F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
+		01D68A341E421BA100CFE82F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
+		01D68A351E421BA500CFE82F /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; };
+		01D68A361E421BA500CFE82F /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; };
+		01D68A371E421BA800CFE82F /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */; };
+		01D68A381E421BA900CFE82F /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */; };
+		01D68A391E421BAB00CFE82F /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A3A1E421BAE00CFE82F /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A3B1E421BB300CFE82F /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC6B1B19A5B600D79B06 /* JSONModelError.m */; };
+		01D68A3C1E421BB300CFE82F /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC6B1B19A5B600D79B06 /* JSONModelError.m */; };
+		01D68A3D1E421BB600CFE82F /* JSONAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC711B19A5B600D79B06 /* JSONAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A3E1E421BB900CFE82F /* JSONAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC711B19A5B600D79B06 /* JSONAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A3F1E421BBE00CFE82F /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC721B19A5B600D79B06 /* JSONAPI.m */; };
+		01D68A401E421BBE00CFE82F /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC721B19A5B600D79B06 /* JSONAPI.m */; };
+		01D68A411E421BC100CFE82F /* JSONHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC731B19A5B600D79B06 /* JSONHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A421E421BC300CFE82F /* JSONHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC731B19A5B600D79B06 /* JSONHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A431E421BC800CFE82F /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC741B19A5B600D79B06 /* JSONHTTPClient.m */; };
+		01D68A441E421BC800CFE82F /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC741B19A5B600D79B06 /* JSONHTTPClient.m */; };
+		01D68A451E421BCB00CFE82F /* JSONModel+networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC751B19A5B600D79B06 /* JSONModel+networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A461E421BCD00CFE82F /* JSONModel+networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC751B19A5B600D79B06 /* JSONModel+networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A471E421BD200CFE82F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC761B19A5B600D79B06 /* JSONModel+networking.m */; };
+		01D68A481E421BD200CFE82F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC761B19A5B600D79B06 /* JSONModel+networking.m */; };
+		01D68A491E421BD500CFE82F /* JSONKeyMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC781B19A5B600D79B06 /* JSONKeyMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A4A1E421BD800CFE82F /* JSONKeyMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC781B19A5B600D79B06 /* JSONKeyMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A4B1E421BDD00CFE82F /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC791B19A5B600D79B06 /* JSONKeyMapper.m */; };
+		01D68A4C1E421BDD00CFE82F /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC791B19A5B600D79B06 /* JSONKeyMapper.m */; };
+		01D68A4D1E421BE000CFE82F /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC7A1B19A5B600D79B06 /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A4E1E421BE300CFE82F /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC7A1B19A5B600D79B06 /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01D68A4F1E421BE900CFE82F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC7B1B19A5B600D79B06 /* JSONValueTransformer.m */; };
+		01D68A501E421BE900CFE82F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC7B1B19A5B600D79B06 /* JSONValueTransformer.m */; };
 		92C9BC7C1B19A5B600D79B06 /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC7D1B19A5B600D79B06 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
 		92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; };
@@ -27,6 +78,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01D689FB1E42150100CFE82F /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01D689FE1E42150100CFE82F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01D68A1A1E421A8400CFE82F /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01D68A1D1E421A8500CFE82F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01D68A271E421AC100CFE82F /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01D68A2A1E421AC100CFE82F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C9BC3D1B19A51100D79B06 /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C9BC411B19A51100D79B06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C9BC641B19A5B600D79B06 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -49,6 +106,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		01D689F71E42150100CFE82F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A161E421A8400CFE82F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A231E421AC100CFE82F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92C9BC391B19A51100D79B06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +137,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01D689FC1E42150100CFE82F /* JSONModel-mac */ = {
+			isa = PBXGroup;
+			children = (
+				01D689FE1E42150100CFE82F /* Info.plist */,
+			);
+			path = "JSONModel-mac";
+			sourceTree = "<group>";
+		};
+		01D68A1B1E421A8400CFE82F /* JSONModel-watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				01D68A1D1E421A8500CFE82F /* Info.plist */,
+			);
+			path = "JSONModel-watchOS";
+			sourceTree = "<group>";
+		};
+		01D68A281E421AC100CFE82F /* JSONModel-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				01D68A2A1E421AC100CFE82F /* Info.plist */,
+			);
+			path = "JSONModel-tvOS";
+			sourceTree = "<group>";
+		};
 		1A5B9D3F1D1C8D72006FE4B1 /* JSONModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				1A5B9D3F1D1C8D72006FE4B1 /* JSONModel */,
+				01D689FC1E42150100CFE82F /* JSONModel-mac */,
+				01D68A1B1E421A8400CFE82F /* JSONModel-watchOS */,
+				01D68A281E421AC100CFE82F /* JSONModel-tvOS */,
 				92C9BC3E1B19A51100D79B06 /* Products */,
 			);
 			indentWidth = 4;
@@ -86,6 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				92C9BC3D1B19A51100D79B06 /* JSONModel.framework */,
+				01D689FB1E42150100CFE82F /* JSONModel.framework */,
+				01D68A1A1E421A8400CFE82F /* JSONModel.framework */,
+				01D68A271E421AC100CFE82F /* JSONModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +238,54 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		01D689F81E42150100CFE82F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D68A061E4219C800CFE82F /* JSONModelClassProperty.h in Headers */,
+				01D68A041E4219BE00CFE82F /* JSONModel.h in Headers */,
+				01D68A0E1E4219E900CFE82F /* JSONModel+networking.h in Headers */,
+				01D68A101E4219F100CFE82F /* JSONKeyMapper.h in Headers */,
+				01D68A031E4219B800CFE82F /* JSONModelLib.h in Headers */,
+				01D68A081E4219D000CFE82F /* JSONModelError.h in Headers */,
+				01D68A0A1E4219DA00CFE82F /* JSONAPI.h in Headers */,
+				01D68A121E4219F900CFE82F /* JSONValueTransformer.h in Headers */,
+				01D68A0C1E4219E100CFE82F /* JSONHTTPClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A171E421A8400CFE82F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D68A351E421BA500CFE82F /* JSONModelClassProperty.h in Headers */,
+				01D68A311E421B9A00CFE82F /* JSONModel.h in Headers */,
+				01D68A451E421BCB00CFE82F /* JSONModel+networking.h in Headers */,
+				01D68A491E421BD500CFE82F /* JSONKeyMapper.h in Headers */,
+				01D68A2F1E421B9000CFE82F /* JSONModelLib.h in Headers */,
+				01D68A391E421BAB00CFE82F /* JSONModelError.h in Headers */,
+				01D68A3D1E421BB600CFE82F /* JSONAPI.h in Headers */,
+				01D68A4D1E421BE000CFE82F /* JSONValueTransformer.h in Headers */,
+				01D68A411E421BC100CFE82F /* JSONHTTPClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A241E421AC100CFE82F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D68A361E421BA500CFE82F /* JSONModelClassProperty.h in Headers */,
+				01D68A321E421B9C00CFE82F /* JSONModel.h in Headers */,
+				01D68A461E421BCD00CFE82F /* JSONModel+networking.h in Headers */,
+				01D68A4A1E421BD800CFE82F /* JSONKeyMapper.h in Headers */,
+				01D68A301E421B9300CFE82F /* JSONModelLib.h in Headers */,
+				01D68A3A1E421BAE00CFE82F /* JSONModelError.h in Headers */,
+				01D68A3E1E421BB900CFE82F /* JSONAPI.h in Headers */,
+				01D68A4E1E421BE300CFE82F /* JSONValueTransformer.h in Headers */,
+				01D68A421E421BC300CFE82F /* JSONHTTPClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92C9BC3A1B19A51100D79B06 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +305,60 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		01D689FA1E42150100CFE82F /* JSONModel-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01D68A021E42150100CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-mac" */;
+			buildPhases = (
+				01D689F61E42150100CFE82F /* Sources */,
+				01D689F71E42150100CFE82F /* Frameworks */,
+				01D689F81E42150100CFE82F /* Headers */,
+				01D689F91E42150100CFE82F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JSONModel-mac";
+			productName = "JSONModel-mac";
+			productReference = 01D689FB1E42150100CFE82F /* JSONModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		01D68A191E421A8400CFE82F /* JSONModel-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01D68A1F1E421A8500CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-watchOS" */;
+			buildPhases = (
+				01D68A151E421A8400CFE82F /* Sources */,
+				01D68A161E421A8400CFE82F /* Frameworks */,
+				01D68A171E421A8400CFE82F /* Headers */,
+				01D68A181E421A8400CFE82F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JSONModel-watchOS";
+			productName = "JSONModel-watchOS";
+			productReference = 01D68A1A1E421A8400CFE82F /* JSONModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		01D68A261E421AC100CFE82F /* JSONModel-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01D68A2C1E421AC100CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-tvOS" */;
+			buildPhases = (
+				01D68A221E421AC100CFE82F /* Sources */,
+				01D68A231E421AC100CFE82F /* Frameworks */,
+				01D68A241E421AC100CFE82F /* Headers */,
+				01D68A251E421AC100CFE82F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JSONModel-tvOS";
+			productName = "JSONModel-tvOS";
+			productReference = 01D68A271E421AC100CFE82F /* JSONModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		92C9BC3C1B19A51100D79B06 /* JSONModel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92C9BC531B19A51100D79B06 /* Build configuration list for PBXNativeTarget "JSONModel" */;
@@ -176,6 +386,18 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = com.jsonmodel;
 				TargetAttributes = {
+					01D689FA1E42150100CFE82F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					01D68A191E421A8400CFE82F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					01D68A261E421AC100CFE82F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
 					92C9BC3C1B19A51100D79B06 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -194,11 +416,35 @@
 			projectRoot = "";
 			targets = (
 				92C9BC3C1B19A51100D79B06 /* JSONModel */,
+				01D689FA1E42150100CFE82F /* JSONModel-mac */,
+				01D68A191E421A8400CFE82F /* JSONModel-watchOS */,
+				01D68A261E421AC100CFE82F /* JSONModel-tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		01D689F91E42150100CFE82F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A181E421A8400CFE82F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A251E421AC100CFE82F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92C9BC3B1B19A51100D79B06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,6 +455,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		01D689F61E42150100CFE82F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D68A0D1E4219E600CFE82F /* JSONHTTPClient.m in Sources */,
+				01D68A0F1E4219ED00CFE82F /* JSONModel+networking.m in Sources */,
+				01D68A0B1E4219DF00CFE82F /* JSONAPI.m in Sources */,
+				01D68A131E4219FE00CFE82F /* JSONValueTransformer.m in Sources */,
+				01D68A091E4219D600CFE82F /* JSONModelError.m in Sources */,
+				01D68A111E4219F600CFE82F /* JSONKeyMapper.m in Sources */,
+				01D68A051E4219C300CFE82F /* JSONModel.m in Sources */,
+				01D68A071E4219CC00CFE82F /* JSONModelClassProperty.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A151E421A8400CFE82F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D68A431E421BC800CFE82F /* JSONHTTPClient.m in Sources */,
+				01D68A471E421BD200CFE82F /* JSONModel+networking.m in Sources */,
+				01D68A3F1E421BBE00CFE82F /* JSONAPI.m in Sources */,
+				01D68A4F1E421BE900CFE82F /* JSONValueTransformer.m in Sources */,
+				01D68A3B1E421BB300CFE82F /* JSONModelError.m in Sources */,
+				01D68A4B1E421BDD00CFE82F /* JSONKeyMapper.m in Sources */,
+				01D68A331E421BA100CFE82F /* JSONModel.m in Sources */,
+				01D68A371E421BA800CFE82F /* JSONModelClassProperty.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D68A221E421AC100CFE82F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D68A441E421BC800CFE82F /* JSONHTTPClient.m in Sources */,
+				01D68A481E421BD200CFE82F /* JSONModel+networking.m in Sources */,
+				01D68A401E421BBE00CFE82F /* JSONAPI.m in Sources */,
+				01D68A501E421BE900CFE82F /* JSONValueTransformer.m in Sources */,
+				01D68A3C1E421BB300CFE82F /* JSONModelError.m in Sources */,
+				01D68A4C1E421BDD00CFE82F /* JSONKeyMapper.m in Sources */,
+				01D68A341E421BA100CFE82F /* JSONModel.m in Sources */,
+				01D68A381E421BA900CFE82F /* JSONModelClassProperty.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92C9BC381B19A51100D79B06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +518,159 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		01D68A001E42150100CFE82F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "JSONModel-mac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-mac";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		01D68A011E42150100CFE82F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "JSONModel-mac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-mac";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		01D68A201E421A8500CFE82F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "JSONModel-watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-watchOS";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		01D68A211E421A8500CFE82F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "JSONModel-watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-watchOS";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		01D68A2D1E421AC100CFE82F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "JSONModel-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-tvOS";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		01D68A2E1E421AC100CFE82F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "JSONModel-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-tvOS";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
 		92C9BC511B19A51100D79B06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -359,6 +803,30 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		01D68A021E42150100CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01D68A001E42150100CFE82F /* Debug */,
+				01D68A011E42150100CFE82F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		01D68A1F1E421A8500CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01D68A201E421A8500CFE82F /* Debug */,
+				01D68A211E421A8500CFE82F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		01D68A2C1E421AC100CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01D68A2D1E421AC100CFE82F /* Debug */,
+				01D68A2E1E421AC100CFE82F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		92C9BC371B19A51100D79B06 /* Build configuration list for PBXProject "JSONModel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
