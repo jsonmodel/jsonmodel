@@ -810,6 +810,7 @@
 				01D68A011E42150100CFE82F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01D68A1F1E421A8500CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-watchOS" */ = {
 			isa = XCConfigurationList;
@@ -818,6 +819,7 @@
 				01D68A211E421A8500CFE82F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01D68A2C1E421AC100CFE82F /* Build configuration list for PBXNativeTarget "JSONModel-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -826,6 +828,7 @@
 				01D68A2E1E421AC100CFE82F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92C9BC371B19A51100D79B06 /* Build configuration list for PBXProject "JSONModel" */ = {
 			isa = XCConfigurationList;
