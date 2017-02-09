@@ -58,6 +58,8 @@
 		01D68A4E1E421BE300CFE82F /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC7A1B19A5B600D79B06 /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01D68A4F1E421BE900CFE82F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC7B1B19A5B600D79B06 /* JSONValueTransformer.m */; };
 		01D68A501E421BE900CFE82F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC7B1B19A5B600D79B06 /* JSONValueTransformer.m */; };
+		752943461E5F837D005BFB1C /* JSONModelCustomSetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 752943441E5F837D005BFB1C /* JSONModelCustomSetter.h */; };
+		752943471E5F837D005BFB1C /* JSONModelCustomSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943451E5F837D005BFB1C /* JSONModelCustomSetter.m */; };
 		92C9BC7C1B19A5B600D79B06 /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC641B19A5B600D79B06 /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92C9BC7D1B19A5B600D79B06 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C9BC651B19A5B600D79B06 /* JSONModel.m */; };
 		92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */; };
@@ -84,6 +86,8 @@
 		01D68A1D1E421A8500CFE82F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D68A271E421AC100CFE82F /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D68A2A1E421AC100CFE82F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		752943441E5F837D005BFB1C /* JSONModelCustomSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelCustomSetter.h; sourceTree = "<group>"; };
+		752943451E5F837D005BFB1C /* JSONModelCustomSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelCustomSetter.m; sourceTree = "<group>"; };
 		92C9BC3D1B19A51100D79B06 /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C9BC411B19A51100D79B06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C9BC641B19A5B600D79B06 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -203,6 +207,8 @@
 			children = (
 				92C9BC641B19A5B600D79B06 /* JSONModel.h */,
 				92C9BC651B19A5B600D79B06 /* JSONModel.m */,
+				752943441E5F837D005BFB1C /* JSONModelCustomSetter.h */,
+				752943451E5F837D005BFB1C /* JSONModelCustomSetter.m */,
 				92C9BC681B19A5B600D79B06 /* JSONModelClassProperty.h */,
 				92C9BC691B19A5B600D79B06 /* JSONModelClassProperty.m */,
 				92C9BC6A1B19A5B600D79B06 /* JSONModelError.h */,
@@ -292,6 +298,7 @@
 			files = (
 				92C9BC8B1B19A5B600D79B06 /* JSONModel+networking.h in Headers */,
 				92C9BC861B19A5B600D79B06 /* JSONModelLib.h in Headers */,
+				752943461E5F837D005BFB1C /* JSONModelCustomSetter.h in Headers */,
 				92C9BC8F1B19A5B600D79B06 /* JSONValueTransformer.h in Headers */,
 				92C9BC801B19A5B600D79B06 /* JSONModelClassProperty.h in Headers */,
 				92C9BC871B19A5B600D79B06 /* JSONAPI.h in Headers */,
@@ -508,6 +515,7 @@
 				92C9BC831B19A5B600D79B06 /* JSONModelError.m in Sources */,
 				92C9BC901B19A5B600D79B06 /* JSONValueTransformer.m in Sources */,
 				92C9BC8E1B19A5B600D79B06 /* JSONKeyMapper.m in Sources */,
+				752943471E5F837D005BFB1C /* JSONModelCustomSetter.m in Sources */,
 				92C9BC881B19A5B600D79B06 /* JSONAPI.m in Sources */,
 				92C9BC7D1B19A5B600D79B06 /* JSONModel.m in Sources */,
 				92C9BC811B19A5B600D79B06 /* JSONModelClassProperty.m in Sources */,
