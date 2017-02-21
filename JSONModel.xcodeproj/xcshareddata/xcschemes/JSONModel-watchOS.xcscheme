@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92C9BC3C1B19A51100D79B06"
+               BlueprintIdentifier = "01D68A191E421A8400CFE82F"
                BuildableName = "JSONModel.framework"
-               BlueprintName = "JSONModel"
-               ReferencedContainer = "container:JSONModel.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92C9BC471B19A51100D79B06"
-               BuildableName = "JSONModelTests.xctest"
-               BlueprintName = "JSONModelTests"
+               BlueprintName = "JSONModel-watchOS"
                ReferencedContainer = "container:JSONModel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92C9BC471B19A51100D79B06"
-               BuildableName = "JSONModelTests.xctest"
-               BlueprintName = "JSONModelTests"
-               ReferencedContainer = "container:JSONModel.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92C9BC3C1B19A51100D79B06"
-            BuildableName = "JSONModel.framework"
-            BlueprintName = "JSONModel"
-            ReferencedContainer = "container:JSONModel.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -78,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92C9BC3C1B19A51100D79B06"
+            BlueprintIdentifier = "01D68A191E421A8400CFE82F"
             BuildableName = "JSONModel.framework"
-            BlueprintName = "JSONModel"
+            BlueprintName = "JSONModel-watchOS"
             ReferencedContainer = "container:JSONModel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -96,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92C9BC3C1B19A51100D79B06"
+            BlueprintIdentifier = "01D68A191E421A8400CFE82F"
             BuildableName = "JSONModel.framework"
-            BlueprintName = "JSONModel"
+            BlueprintName = "JSONModel-watchOS"
             ReferencedContainer = "container:JSONModel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
