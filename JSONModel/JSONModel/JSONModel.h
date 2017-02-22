@@ -260,8 +260,18 @@ DEPRECATED_ATTRIBUTE
  *     @property (strong) NSArray *things;
  * @param propertyName the name of the property
  * @return Class the class used to deserialize the elements of the collection
+ *
+ * Example in Swift 3.0:
+ * override static func classForCollectionProperty(propertyName: String) -> AnyClass? {
+ *   switch propertyName {
+ *     case "childModel":
+ *       return ChildModel.self
+ *     default:
+ *       return nil
+ *   }
+ * }
  */
-+ (Class)classForCollectionProperty:(NSString *)propertyName;
++ (Class)classForCollectionProperty:(NSString *)propertyName NS_SWIFT_NAME(classForCollectionProperty(propertyName:));
 
 /**
  * Merges values from the given dictionary into the model instance.
