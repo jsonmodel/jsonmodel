@@ -10,9 +10,13 @@
 
 @interface JSONModelCustomSetter : NSObject
 
-@property ( nonatomic, readonly, strong) NSValue* value;
-@property ( nonatomic, readonly, assign) BOOL withErrorOutParam;
+@property ( nonatomic, readonly, assign) SEL selector;
+@property ( nonatomic, readonly, assign) BOOL withError;
 
-- (instancetype)initWithValue:(NSValue*)value withErrorOutParam:(BOOL) withErrorOutParam;
+@end
+
+@interface JSONModelCustomSetterBuilder : NSObject
+
++ (JSONModelCustomSetter*) buildCustomSetterForObj:(NSObject*) object propertyName:(NSString*) property type:(NSString*) type;
 
 @end

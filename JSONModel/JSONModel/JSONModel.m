@@ -16,6 +16,8 @@
 #import "JSONModelClassProperty.h"
 #import "JSONModelCustomSetter.h"
 
+static NSString *const JSONObjectGenericType = @"JSONObject";
+
 #pragma mark - associated objects names
 static const char * kMapperObjectKey;
 static const char * kClassPropertiesKey;
@@ -328,9 +330,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             // check for custom setter, than the model doesn't need to do any guessing
             // how to read the property's value from JSON
-            NSError* customSetErr = nil;
+            NSError *customSetErr = nil;
             if ([self __customSetValue:jsonValue forProperty:property error:&customSetErr]) {
-                if((err != nil) && (customSetErr != nil))
+                if(err != nil && customSetErr != nil)
                 {
                     *err = customSetErr;
                 }
@@ -681,7 +683,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if (p)
             {
                 NSString *name = [p.name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[p.name substringToIndex:1].uppercaseString];
-
+                
                 // getter
                 SEL getter = NSSelectorFromString([NSString stringWithFormat:@"JSONObjectFor%@", name]);
 
@@ -691,13 +693,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 // setters
                 p.customSetters = [NSMutableDictionary new];
 
-                [self __addCustomSetterForName:name withSuffix:@"JSONObject" key:@"generic" toProperty:p];
+                [self __tryToAddCustomSetterWithType:JSONObjectGenericType forProperty:p];
 
                 for (Class type in allowedJSONTypes)
                 {
                     NSString *class = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:type]);
                     
-                    [self __addCustomSetterForName:name withSuffix:class key:class toProperty:p];
+                    [self __tryToAddCustomSetterWithType:class forProperty:p];
                 }
             }
         }
@@ -718,27 +720,16 @@ static JSONKeyMapper* globalKeyMapper = nil;
                              );
 }
 
--(void)__addCustomSetterForName:(NSString*) name
-                     withSuffix:(NSString*) suffix
-                            key:(NSString*) key
-                     toProperty:(JSONModelClassProperty*) p{
-    if (p.customSetters[key])
+-(void)__tryToAddCustomSetterWithType:(NSString *)type forProperty:(JSONModelClassProperty *)property
+{
+    if (property.customSetters[type])
         return;
     
-    SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@With%@:", name, suffix]);
+    JSONModelCustomSetter *setter = [JSONModelCustomSetterBuilder buildCustomSetterForObj:self propertyName:property.name type:type];
     
-    if ([self respondsToSelector:setter]){
-        NSValue* setterValue = [NSValue valueWithBytes:&setter objCType:@encode(SEL)];
-        p.customSetters[key] = [[JSONModelCustomSetter alloc] initWithValue:setterValue withErrorOutParam:NO];
+    if (setter){
+        property.customSetters[type] = setter;
     }
-
-    SEL setterWithError = NSSelectorFromString([NSString stringWithFormat:@"set%@With%@:error:", name, suffix]);
-    
-    if ([self respondsToSelector:setterWithError]){
-        NSValue* setterValue = [NSValue valueWithBytes:&setterWithError objCType:@encode(SEL)];
-        p.customSetters[key] = [[JSONModelCustomSetter alloc] initWithValue:setterValue withErrorOutParam:YES];
-    }
-
 }
 
 #pragma mark - built-in transformer methods
@@ -861,29 +852,31 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - custom transformations
-- (BOOL)__customSetValue:(id <NSObject>)value forProperty:(JSONModelClassProperty *)property error:(NSError**) error
+- (BOOL)__customSetValue:(id <NSObject>)value forProperty:(JSONModelClassProperty *)property error:(NSError **) error
 {
     NSString *class = NSStringFromClass([JSONValueTransformer classByResolvingClusterClasses:[value class]]);
 
-    JSONModelCustomSetter* customSetter = property.customSetters[class];
+    JSONModelCustomSetter *customSetter = property.customSetters[class];
 
     if (!customSetter)
-        customSetter = property.customSetters[@"generic"];
+        customSetter = property.customSetters[JSONObjectGenericType];
 
     if (!customSetter)
         return NO;
 
-    SEL setter = nil;
-    [customSetter.value getValue:&setter];
+    SEL setterSelector = customSetter.selector;
 
-    IMP imp = [self methodForSelector:setter];
+    IMP imp = [self methodForSelector:setterSelector];
     
-    if(customSetter.withErrorOutParam){
-        void (*func)(id, SEL, id <NSObject>, NSError**) = (void *)imp;
-        func(self, setter, value, error);
-    }else{
+    if(customSetter.withError)
+    {
+        void (*func)(id, SEL, id <NSObject>, NSError **) = (void *)imp;
+        func(self, setterSelector, value, error);
+    }
+    else
+    {
         void (*func)(id, SEL, id <NSObject>) = (void *)imp;
-        func(self, setter, value);
+        func(self, setterSelector, value);
     }
 
     return YES;
