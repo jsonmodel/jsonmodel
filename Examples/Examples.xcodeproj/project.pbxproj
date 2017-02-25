@@ -221,6 +221,12 @@
 		1AF8B9191D423D5700A1AAD3 /* NullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8B9151D423B9300A1AAD3 /* NullTests.m */; };
 		5CB2A425167A8E07ED4DE275 /* Pods_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B339E24F89A9DA2A76B966 /* Pods_watchOS.framework */; };
 		72EAF1AC1B81C8A14DD60AD9 /* Pods_watchOS_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5692CCAD15B02E148B7DA7 /* Pods_watchOS_extension.framework */; };
+		7529434C1E61B69D005BFB1C /* CustomSetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943491E61B513005BFB1C /* CustomSetterModel.m */; };
+		7529434D1E61B69E005BFB1C /* CustomSetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943491E61B513005BFB1C /* CustomSetterModel.m */; };
+		7529434E1E61B69E005BFB1C /* CustomSetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943491E61B513005BFB1C /* CustomSetterModel.m */; };
+		752943551E61D22B005BFB1C /* CustomSetterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943531E61C19C005BFB1C /* CustomSetterTests.m */; };
+		752943561E61D22C005BFB1C /* CustomSetterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943531E61C19C005BFB1C /* CustomSetterTests.m */; };
+		752943571E61D22C005BFB1C /* CustomSetterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 752943531E61C19C005BFB1C /* CustomSetterTests.m */; };
 		781D56C813A5E3442DB017EB /* Pods_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAA3D8D5BD344CFA7833A86 /* Pods_iOS.framework */; };
 		7ECB7F2AD9F9D0721CF10411 /* Pods_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C370B412DC108AAC99B3A13 /* Pods_tvOSTests.framework */; };
 		931ECCC61B449E69C9F60862 /* Pods_macOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A3600BED7471EF4FB3C34D /* Pods_macOSTests.framework */; };
@@ -415,6 +421,9 @@
 		6AE4B6F1DE912D9546E61997 /* Pods-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTests/Pods-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F379CB8EFD3B5F0453D5AB6 /* Pods-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-tvOS/Pods-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		710BEE33C9D054DF6DC501EC /* Pods-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchOS/Pods-watchOS.release.xcconfig"; sourceTree = "<group>"; };
+		752943491E61B513005BFB1C /* CustomSetterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSetterModel.m; sourceTree = "<group>"; };
+		7529434B1E61B52B005BFB1C /* CustomSetterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSetterModel.h; sourceTree = "<group>"; };
+		752943531E61C19C005BFB1C /* CustomSetterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSetterTests.m; sourceTree = "<group>"; };
 		7CAA3D8D5BD344CFA7833A86 /* Pods_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E225E30531704F049BE5B4C /* Pods_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9247828CB3D42AA7BA5AED53 /* Pods-macOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-macOSTests/Pods-macOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -507,6 +516,7 @@
 				1A4BA9FB1D1C79260069D735 /* ArrayTests.m */,
 				1A4BA9FC1D1C79260069D735 /* BuiltInConversionsTests.m */,
 				1A4BA9FD1D1C79260069D735 /* CustomPropsTests.m */,
+				752943531E61C19C005BFB1C /* CustomSetterTests.m */,
 				1A4BAA0E1D1C79260069D735 /* ExtremeNestingTests.m */,
 				1A4BAA101D1C79260069D735 /* IdPropertyTests.m */,
 				1A4BAA121D1C79260069D735 /* InitWithDataTests.m */,
@@ -565,6 +575,7 @@
 				1A4BAA171D1C79260069D735 /* BuiltInConversionsModel.h */,
 				1A4BAA181D1C79260069D735 /* CopyrightModel.h */,
 				1A4BAA191D1C79260069D735 /* CustomPropertyModel.h */,
+				7529434B1E61B52B005BFB1C /* CustomSetterModel.h */,
 				1A4BAA1A1D1C79260069D735 /* DrugModel.h */,
 				1A4BAA1B1D1C79260069D735 /* EnumModel.h */,
 				1A4BAA1C1D1C79260069D735 /* ExtremeNestingModel.h */,
@@ -599,6 +610,7 @@
 				1A4BAAD11D1C7D590069D735 /* BuiltInConversionsModel.m */,
 				1A4BAAD21D1C7D590069D735 /* CopyrightModel.m */,
 				1A4BAAD31D1C7D590069D735 /* CustomPropertyModel.m */,
+				752943491E61B513005BFB1C /* CustomSetterModel.m */,
 				1A4BAAD41D1C7D590069D735 /* DrugModel.m */,
 				1A4BAAD51D1C7D590069D735 /* EnumModel.m */,
 				1A4BAAD61D1C7D590069D735 /* ExtremeNestingModel.m */,
@@ -1180,7 +1192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		66D6DFC455CD55F69AC1F3FA /* [CP] Check Pods Manifest.lock */ = {
@@ -1195,7 +1207,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		793704CBF138F3DF9E79ABF0 /* [CP] Check Pods Manifest.lock */ = {
@@ -1210,7 +1222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7A4FD822901F223367A54653 /* [CP] Embed Pods Frameworks */ = {
@@ -1255,7 +1267,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		99BB77F9E8A20CC16FABF04B /* [CP] Copy Pods Resources */ = {
@@ -1285,7 +1297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B1CE7620B4418313D5AC5B80 /* [CP] Copy Pods Resources */ = {
@@ -1360,7 +1372,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CDF4BA0066EAED2C8DE2EF2D /* [CP] Copy Pods Resources */ = {
@@ -1405,7 +1417,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E1D3201AC8B197487989E8EE /* [CP] Copy Pods Resources */ = {
@@ -1435,7 +1447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F67D1C90D29A153292B9651A /* [CP] Embed Pods Frameworks */ = {
@@ -1504,10 +1516,12 @@
 				008077B81D81B91C006A0187 /* ConcurrentTests.m in Sources */,
 				1A4BAA901D1C79480069D735 /* JSONTypesReadTests.m in Sources */,
 				1AB9435D1D86ACAB0031E315 /* TransformerExceptionTests.m in Sources */,
+				7529434C1E61B69D005BFB1C /* CustomSetterModel.m in Sources */,
 				1A4BAB101D1C7DA80069D735 /* InteractionModel.m in Sources */,
 				1A4BAB071D1C7DA80069D735 /* CustomPropertyModel.m in Sources */,
 				1A4BAB111D1C7DA80069D735 /* JSONTypesModel.m in Sources */,
 				1A4BAB1B1D1C7DA80069D735 /* RenamedPropertyModel.m in Sources */,
+				752943551E61D22B005BFB1C /* CustomSetterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1559,10 +1573,12 @@
 				1AB943571D86AA3F0031E315 /* ConcurrentTests.m in Sources */,
 				1A4BAA7C1D1C79460069D735 /* JSONTypesReadTests.m in Sources */,
 				1AB9435E1D86ACAC0031E315 /* TransformerExceptionTests.m in Sources */,
+				7529434D1E61B69E005BFB1C /* CustomSetterModel.m in Sources */,
 				1A4BAB2A1D1C7DA80069D735 /* InteractionModel.m in Sources */,
 				1A4BAB211D1C7DA80069D735 /* CustomPropertyModel.m in Sources */,
 				1A4BAB2B1D1C7DA80069D735 /* JSONTypesModel.m in Sources */,
 				1A4BAB351D1C7DA80069D735 /* RenamedPropertyModel.m in Sources */,
+				752943561E61D22C005BFB1C /* CustomSetterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1614,10 +1630,12 @@
 				1AB943561D86AA3E0031E315 /* ConcurrentTests.m in Sources */,
 				1A4BAA681D1C79460069D735 /* JSONTypesReadTests.m in Sources */,
 				1AB9435F1D86ACAC0031E315 /* TransformerExceptionTests.m in Sources */,
+				7529434E1E61B69E005BFB1C /* CustomSetterModel.m in Sources */,
 				1A4BAB441D1C7DA90069D735 /* InteractionModel.m in Sources */,
 				1A4BAB3B1D1C7DA90069D735 /* CustomPropertyModel.m in Sources */,
 				1A4BAB451D1C7DA90069D735 /* JSONTypesModel.m in Sources */,
 				1A4BAB4F1D1C7DA90069D735 /* RenamedPropertyModel.m in Sources */,
+				752943571E61D22C005BFB1C /* CustomSetterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
