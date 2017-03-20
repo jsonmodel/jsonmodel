@@ -5,7 +5,15 @@
 
 	"floatNumber": 12.12,
 	"doubleNumber": 121231312.124,
-
+	
 	"boolYES": true,
-	"boolNO": false
+	"boolNO": false,
+	
+	"unsignedIntNumber": 6666,
+	"unsignedLongNumber": 666666,
+	"longLongNumber": 121231312,
+	"unsignedLongLongNumber": 4121231312,
+	"unsignedShortNumber": 5555,
+	"charNumber": 30,
+	"unsignedCharNumber": 255
 }

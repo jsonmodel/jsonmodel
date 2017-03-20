@@ -50,6 +50,14 @@
 
 	XCTAssertTrue(p.boolNO==NO, @"boolNO read fail");
 	XCTAssertTrue(p.boolYES==YES, @"boolYES read fail");
+	
+	XCTAssertTrue(p.unsignedIntNumber==6666, @"unsignedIntNumber read fail");
+	XCTAssertTrue(p.unsignedLongNumber==666666, @"unsignedLongNumber read fail");
+	XCTAssertTrue(p.longLongNumber==121231312, @"longLongNumber read fail");
+	XCTAssertTrue(p.unsignedLongLongNumber==4121231312, @"unsignedLongLongNumber read fail");
+	XCTAssertTrue(p.unsignedShortNumber==5555, @"unsignedShortNumber read fail");
+	XCTAssertTrue(p.charNumber==30, @"charNumber read fail");
+	XCTAssertTrue(p.unsignedCharNumber==255, @"unsignedCharNumber read fail");
 }
 
 -(void)testBoolExport
