@@ -456,9 +456,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
                         if (![jsonValue isEqual:[self valueForKey:property.name]])
                             [self setValue:jsonValue forKey:property.name];
                     } else {
-                        NSString* msg = [NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name];
-                        JSONModelError* dataErr = [JSONModelError errorInvalidDataWithTypeMismatch:msg];
-                        *err = [dataErr errorByPrependingKeyPathComponent:property.name];
+                        if (err) {
+                            NSString* msg = [NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name];
+                            JSONModelError* dataErr = [JSONModelError errorInvalidDataWithTypeMismatch:msg];
+                            *err = [dataErr errorByPrependingKeyPathComponent:property.name];
+                        }
                         return NO;
                     }
                 } else {
@@ -1150,7 +1152,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
         }
         else
         {
-            *err = [JSONModelError errorInvalidDataWithTypeMismatch:@"Only dictionaries and arrays are supported"];
+            if (err) {
+                *err = [JSONModelError errorInvalidDataWithTypeMismatch:@"Only dictionaries and arrays are supported"];
+            }
             return nil;
         }
     }
