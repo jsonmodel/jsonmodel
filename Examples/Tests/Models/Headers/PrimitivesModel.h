@@ -18,4 +18,12 @@
 @property (assign, nonatomic) BOOL boolYES;
 @property (assign, nonatomic) BOOL boolNO;
 
+@property (assign, nonatomic) unsigned int unsignedIntNumber;
+@property (assign, nonatomic) unsigned long unsignedLongNumber;
+@property (assign, nonatomic) long long longLongNumber;
+@property (assign, nonatomic) unsigned long long unsignedLongLongNumber;
+@property (assign, nonatomic) unsigned short unsignedShortNumber;
+@property (assign, nonatomic) char charNumber;
+@property (assign, nonatomic) unsigned char unsignedCharNumber;
+
 @end
