@@ -775,7 +775,7 @@
 				INFOPLIST_FILE = JSONModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = JSONModel/module.modulemap;
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jsonmodel.JSONModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -793,7 +793,7 @@
 				INFOPLIST_FILE = JSONModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = JSONModel/module.modulemap;
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jsonmodel.JSONModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
