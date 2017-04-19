@@ -53,6 +53,8 @@ extern NSString *const kJSONModelKeyPath;
 
 @property (strong, nonatomic) NSData *responseData;
 
+@property (strong, nonatomic) NSData* responseData;
+
 /**
  * Creates a JSONModelError instance with code kJSONModelErrorInvalidData = 1
  */
