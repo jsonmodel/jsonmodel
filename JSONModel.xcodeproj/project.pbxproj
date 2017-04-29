@@ -538,6 +538,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-mac";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
@@ -564,6 +565,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-mac";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
@@ -588,6 +590,7 @@
 				INFOPLIST_FILE = "JSONModel-watchOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-watchOS";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = watchos;
@@ -613,6 +616,7 @@
 				INFOPLIST_FILE = "JSONModel-watchOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-watchOS";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = watchos;
@@ -638,6 +642,7 @@
 				INFOPLIST_FILE = "JSONModel-tvOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-tvOS";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = appletvos;
@@ -662,6 +667,7 @@
 				INFOPLIST_FILE = "JSONModel-tvOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "$(SRCROOT)/JSONModel/JSONModel.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jsonmodel.JSONModel-tvOS";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = appletvos;
