@@ -426,6 +426,7 @@
 		D1A4E88CC1575485760915E8 /* Pods-watchOS-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS-extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchOS-extension/Pods-watchOS-extension.release.xcconfig"; sourceTree = "<group>"; };
 		E1D48E23848723BCB420F544 /* Pods_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE84FC3D9B36E8214BE605D6 /* Pods-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-macOS/Pods-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		F2D7549F1D2E5E7C00A142E9 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Examples-aadsuwwkwdnusodufchnlyfioiud/Build/Products/Debug-iphonesimulator/JSONModel-iOS/JSONModel.framework"; sourceTree = "<group>"; };
 		F37BF9082B944335670E6BC4 /* Pods_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -731,6 +732,7 @@
 		6A800556EEA0169D370265C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2D7549F1D2E5E7C00A142E9 /* JSONModel.framework */,
 				7CAA3D8D5BD344CFA7833A86 /* Pods_iOS.framework */,
 				F37BF9082B944335670E6BC4 /* Pods_iOSTests.framework */,
 				E1D48E23848723BCB420F544 /* Pods_macOS.framework */,
