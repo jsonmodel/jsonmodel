@@ -14,6 +14,7 @@
 
 #import "JSONModel.h"
 #import "JSONModelClassProperty.h"
+#import "JSONModel+Primitive.h"
 
 #pragma mark - associated objects names
 static const char * kMapperObjectKey;
@@ -290,7 +291,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //check for Optional properties
         if (isNull(jsonValue)) {
             //skip this property, continue with next property
-            if (property.isOptional || !validation) continue;
+            if (property.isOptional || [self allowPrimitiveTypeAsOptioanl] || !validation) continue;
 
             if (err) {
                 //null value for required property
@@ -497,7 +498,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     if (!classRequiredPropertyNames) {
         classRequiredPropertyNames = [NSMutableSet set];
         [[self __properties__] enumerateObjectsUsingBlock:^(JSONModelClassProperty* p, NSUInteger idx, BOOL *stop) {
-            if (!p.isOptional) [classRequiredPropertyNames addObject:p.name];
+            if (!p.isOptional && ![self allowPrimitiveTypeAsOptioanl]) [classRequiredPropertyNames addObject:p.name];
         }];
 
         //persist the list
