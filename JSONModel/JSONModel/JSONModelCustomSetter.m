@@ -7,6 +7,7 @@
 //
 
 #import "JSONModelCustomSetter.h"
+#import "JSONModel.h"
 
 @implementation JSONModelCustomSetter
 
@@ -43,6 +44,7 @@
     SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@With%@:", capitalizedName, type]);
     
     if ([object respondsToSelector:setter]){
+        JMLog(@"%@: Custom setter format 'set<>With<>:' is deprecated, please use 'set<>With<>:error:' instead.", NSStringFromSelector(setter));
         return  [[JSONModelCustomSetter alloc] initWithSelector:setter withError:NO];
     }
     
