@@ -1052,6 +1052,25 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                  encoding: NSUTF8StringEncoding];
 }
 
+-(NSString*)toJSONArrayStringWithKey:(NSString*)propertyName
+{
+  NSData* jsonData = nil;
+  NSError* jsonError = nil;
+  
+  @try {
+    id  obj = [[[self toDictionaryWithKeys:[NSArray arrayWithObject:propertyName]] allValues] objectAtIndex:0];
+    jsonData = [NSJSONSerialization dataWithJSONObject:obj options:kNilOptions error:&jsonError];
+  }
+  @catch (NSException *exception) {
+      //this should not happen in properly design JSONModel
+      //usually means there was no reverse transformer for a custom property
+    JMLog(@"EXCEPTION: %@", exception.description);
+    return nil;
+  }
+  
+  return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
 #pragma mark - import/export of lists
 //loop over an NSArray of JSON objects and turn them into models
 +(NSMutableArray*)arrayOfModelsFromDictionaries:(NSArray*)array

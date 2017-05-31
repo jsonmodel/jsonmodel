@@ -177,6 +177,13 @@ DEPRECATED_ATTRIBUTE
  */
 - (NSData *)toJSONDataWithKeys:(NSArray *)propertyNames;
 
+  /**
+   * Export the specified property of the object to a JSON data text string
+   * @param propertyName the property to export; if nil, empty JSON array string will be return
+   * @return JSON text describing the data model
+   */
+  -(NSString*)toJSONArrayStringWithKey:(NSString*)propertyName;
+
 /** @name Batch methods */
 
 /**
