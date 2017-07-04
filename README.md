@@ -160,14 +160,12 @@ for JSONModel to work, the protocol must be in place.
 ```json
 {
 	"orderId": 104,
-	"orderDetails": [
-		{
-			"name": "Product #1",
-			"price": {
-				"usd": 12.95
-			}
-		}
-	]
+	"orderDetails": {
+            "name": "Product #1",
+		    "price": {
+		            "usd": 12.95
+		     }
+	}
 }
 ```
 
