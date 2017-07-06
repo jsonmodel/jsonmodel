@@ -566,6 +566,12 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if ([attributeItems containsObject:@"R"]) {
                 continue; //to next property
             }
+            
+            //check for 64b BOOLs
+            if ([propertyAttributes hasPrefix:@"Tc,"]) {
+                //mask BOOLs as structs so they can have custom converters
+                p.structName = @"BOOL";
+            }
 
             scanner = [NSScanner scannerWithString: propertyAttributes];
 
