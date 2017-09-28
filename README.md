@@ -147,7 +147,7 @@ All you have to do is define the properties and their expected types.
 @interface OrderModel : JSONModel
 @property (nonatomic) NSInteger orderId;
 @property (nonatomic) float totalPrice;
-@property (nonatomic) NSArray <ProductModel> *products;
+@property (nonatomic) NSArray<ProductModel *> <ProductModel> *products;
 @end
 ```
 
