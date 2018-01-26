@@ -106,7 +106,7 @@ DEPRECATED_ATTRIBUTE
  * @exception JSONModelTypeNotAllowedException thrown when one of your model's custom class properties
  * does not have matching transformer method in an JSONValueTransformer.
  */
-- (NSDictionary *)toDictionaryWithKeys:(NSArray *)propertyNames;
+- (NSDictionary *)toDictionaryWithKeys:(NSArray <NSString *> *)propertyNames;
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -168,14 +168,14 @@ DEPRECATED_ATTRIBUTE
  * @param propertyNames the properties to export; if nil, all properties exported
  * @return JSON text describing the data model
  */
-- (NSString *)toJSONStringWithKeys:(NSArray *)propertyNames;
+- (NSString *)toJSONStringWithKeys:(NSArray <NSString *> *)propertyNames;
 
 /**
  * Export the specified properties of the object to a JSON data text string
  * @param propertyNames the properties to export; if nil, all properties exported
  * @return JSON text data describing the data model
  */
-- (NSData *)toJSONDataWithKeys:(NSArray *)propertyNames;
+- (NSData *)toJSONDataWithKeys:(NSArray <NSString *> *)propertyNames;
 
 /** @name Batch methods */
 
