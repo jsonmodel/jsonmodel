@@ -31,7 +31,7 @@ DEPRECATED_ATTRIBUTE
  * Protocol for defining properties in a JSON Model class that should not be considered at all
  * neither while importing nor when exporting JSON.
  *
- * @property (strong, nonatomic) NSString&lt;Ignore&gt; *propertyName;
+ * @property (strong, nonatomic) NSString <Ignore> *propertyName;
  *
  */
 @protocol Ignore
@@ -41,7 +41,7 @@ DEPRECATED_ATTRIBUTE
  * Protocol for defining optional properties in a JSON Model class. Use like below to define
  * model properties that are not required to have values in the JSON input:
  *
- * @property (strong, nonatomic) NSString&lt;Optional&gt; *propertyName;
+ * @property (strong, nonatomic) NSString <Optional> *propertyName;
  *
  */
 @protocol Optional

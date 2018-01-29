@@ -75,7 +75,7 @@ typedef NSString *(^JSONModelKeyMapBlock)(NSString *keyName);
  * @param toJSON map dictionary, in the format: <pre>@{@"myCamelCaseName":@"crazy_JSON_name"}</pre>
  * @return JSONKeyMapper instance
  */
-- (instancetype)initWithModelToJSONDictionary:(NSDictionary *)toJSON;
+- (instancetype)initWithModelToJSONDictionary:(NSDictionary <NSString *, NSString *> *)toJSON;
 
 /**
  * Given a camelCase model property, this mapper finds JSON keys using the snake_case equivalent.
