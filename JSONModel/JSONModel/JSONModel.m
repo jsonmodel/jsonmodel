@@ -30,6 +30,14 @@ static Class JSONModelClass = NULL;
 #pragma mark - model cache
 static JSONKeyMapper* globalKeyMapper = nil;
 
+
+@interface JSONModel ()
+
+@property (nonatomic, class, copy) NSDictionary *__classProperties__;
+
+@end
+
+
 #pragma mark - JSONModel implementation
 @implementation JSONModel
 {
@@ -75,7 +83,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 -(void)__setup__
 {
     //if first instance of this model, generate the property list
-    if (!objc_getAssociatedObject(self.class, &kClassPropertiesKey)) {
+    if (!self.class.__classProperties__) {
         [self __inspectProperties];
     }
 
@@ -478,6 +486,21 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - property inspection methods
 
++ (void)set__classProperties__:(NSDictionary *)__classProperties__
+{
+    objc_setAssociatedObject(
+                             self.class,
+                             &kClassPropertiesKey,
+                             [__classProperties__ copy],
+                             OBJC_ASSOCIATION_RETAIN // This is atomic
+                             );
+}
+
++ (NSDictionary *)__classProperties__
+{
+    return objc_getAssociatedObject(self.class, &kClassPropertiesKey);
+}
+
 -(BOOL)__isJSONModelSubClass:(Class)class
 {
 // http://stackoverflow.com/questions/19883472/objc-nsobject-issubclassofclass-gives-incorrect-failure
@@ -515,14 +538,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
 -(NSArray*)__properties__
 {
     //fetch the associated object
-    NSDictionary* classProperties = objc_getAssociatedObject(self.class, &kClassPropertiesKey);
+    NSDictionary* classProperties = self.class.__classProperties__;
     if (classProperties) return [classProperties allValues];
 
     //if here, the class needs to inspect itself
     [self __setup__];
 
     //return the property list
-    classProperties = objc_getAssociatedObject(self.class, &kClassPropertiesKey);
+    classProperties = self.class.__classProperties__;
     return [classProperties allValues];
 }
 
@@ -710,12 +733,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
 
     //finally store the property index in the static property index
-    objc_setAssociatedObject(
-                             self.class,
-                             &kClassPropertiesKey,
-                             [propertyIndex copy],
-                             OBJC_ASSOCIATION_RETAIN // This is atomic
-                             );
+    self.class.__classProperties__ = propertyIndex;
 }
 
 #pragma mark - built-in transformer methods
