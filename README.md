@@ -303,7 +303,7 @@ NSString *string = [pm toJSONString];
 ### Custom data transformers
 
 ```objc
-@interface JSONValueTransformer (CustomNSDate)
+@interface JSONValueTransformer (CustomTransformer)
 @end
 
 @implementation JSONValueTransformer (CustomTransformer)
