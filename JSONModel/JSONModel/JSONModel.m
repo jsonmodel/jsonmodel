@@ -37,7 +37,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - initialization methods
-
 +(void)load
 {
     static dispatch_once_t once;
@@ -1086,7 +1085,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
         if ([d isKindOfClass:NSDictionary.class])
         {
             JSONModelError* initErr = nil;
-            id obj = [[self alloc] initWithDictionary:d error:&initErr];
+            Class c = [self classForModel:d];
+            id obj = [[c alloc] initWithDictionary:d error:&initErr];
             if (obj == nil)
             {
                 // Propagate the error, including the array index as the key-path component
@@ -1135,7 +1135,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
         if ([object isKindOfClass:NSDictionary.class])
         {
-            id obj = [[self alloc] initWithDictionary:object error:err];
+            Class c = [self classForModel:object];
+            id obj = [[c alloc] initWithDictionary:object error:err];
             if (obj == nil) return nil;
             output[key] = obj;
         }
@@ -1317,6 +1318,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 +(BOOL)propertyIsIgnored:(NSString *)propertyName
 {
     return NO;
+}
+
++ (Class)classForModel:(NSDictionary *)dict
+{
+    return [self class];
 }
 
 +(NSString*)protocolForArrayProperty:(NSString *)propertyName

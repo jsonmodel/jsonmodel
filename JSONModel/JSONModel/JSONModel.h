@@ -273,6 +273,17 @@ DEPRECATED_ATTRIBUTE
  */
 + (Class)classForCollectionProperty:(NSString *)propertyName NS_SWIFT_NAME(classForCollectionProperty(propertyName:));
 
+
+/**
+ * Custom model class for every element.
+ * In the same location, if there are multiple models, this method can be used to output the corresponding model.
+ * This method returns by default [self class], since the default behavior is current class.
+
+ * @param dict source data
+ * @return Class the class of current model.
+ */
++ (Class)classForModel:(NSDictionary *)dict;
+
 /**
  * Merges values from the given dictionary into the model instance.
  * @param dict dictionary with values
