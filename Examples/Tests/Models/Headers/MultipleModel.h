@@ -11,3 +11,13 @@
 @interface MultipleModel : JSONModel
 @property (strong, nonatomic) NSString *typeField;
 @end
+
+@interface MultipleCarModel : MultipleModel
+@property (strong, nonatomic) NSString *body;
+@property (strong, nonatomic) NSString *tire;
+@end
+
+@interface MultiplePicModel : MultipleModel
+@property (strong, nonatomic) NSString *background;
+@property (strong, nonatomic) NSString *foreground;
+@end

@@ -232,12 +232,6 @@
 		F12E69E32047E831002D37D1 /* MultipleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E22047E831002D37D1 /* MultipleModel.m */; };
 		F12E69E42047E831002D37D1 /* MultipleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E22047E831002D37D1 /* MultipleModel.m */; };
 		F12E69E52047E831002D37D1 /* MultipleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E22047E831002D37D1 /* MultipleModel.m */; };
-		F12E69E82047E858002D37D1 /* MultiplePicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E72047E858002D37D1 /* MultiplePicModel.m */; };
-		F12E69E92047E858002D37D1 /* MultiplePicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E72047E858002D37D1 /* MultiplePicModel.m */; };
-		F12E69EA2047E858002D37D1 /* MultiplePicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E72047E858002D37D1 /* MultiplePicModel.m */; };
-		F12E69ED2047E862002D37D1 /* MultipleCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69EC2047E862002D37D1 /* MultipleCarModel.m */; };
-		F12E69EE2047E862002D37D1 /* MultipleCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69EC2047E862002D37D1 /* MultipleCarModel.m */; };
-		F12E69EF2047E862002D37D1 /* MultipleCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69EC2047E862002D37D1 /* MultipleCarModel.m */; };
 		F12E69F12047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */; };
 		F12E69F22047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */; };
 		F12E69F32047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */; };
@@ -444,10 +438,6 @@
 		F12E69DD2047E6BF002D37D1 /* multipleTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multipleTypes.json; sourceTree = "<group>"; };
 		F12E69E12047E831002D37D1 /* MultipleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleModel.h; sourceTree = "<group>"; };
 		F12E69E22047E831002D37D1 /* MultipleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleModel.m; sourceTree = "<group>"; };
-		F12E69E62047E858002D37D1 /* MultiplePicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiplePicModel.h; sourceTree = "<group>"; };
-		F12E69E72047E858002D37D1 /* MultiplePicModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiplePicModel.m; sourceTree = "<group>"; };
-		F12E69EB2047E862002D37D1 /* MultipleCarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleCarModel.h; sourceTree = "<group>"; };
-		F12E69EC2047E862002D37D1 /* MultipleCarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleCarModel.m; sourceTree = "<group>"; };
 		F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleModelClassTests.m; sourceTree = "<group>"; };
 		F37BF9082B944335670E6BC4 /* Pods_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -615,8 +605,6 @@
 				1A4BAA301D1C79260069D735 /* SpecialPropertyModel.h */,
 				008077B91D81BEF1006A0187 /* ConcurrentReposModel.h */,
 				F12E69E12047E831002D37D1 /* MultipleModel.h */,
-				F12E69E62047E858002D37D1 /* MultiplePicModel.h */,
-				F12E69EB2047E862002D37D1 /* MultipleCarModel.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -652,8 +640,6 @@
 				1A4BAAEA1D1C7D590069D735 /* SpecialPropertyModel.m */,
 				008077BC1D81C035006A0187 /* ConcurrentReposModel.m */,
 				F12E69E22047E831002D37D1 /* MultipleModel.m */,
-				F12E69E72047E858002D37D1 /* MultiplePicModel.m */,
-				F12E69EC2047E862002D37D1 /* MultipleCarModel.m */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1553,7 +1539,6 @@
 				1A4BAB191D1C7DA80069D735 /* PostsModel.m in Sources */,
 				1A4BAA941D1C79480069D735 /* PersistTests.m in Sources */,
 				1A4BAA8C1D1C79480069D735 /* IdPropertyTests.m in Sources */,
-				F12E69E82047E858002D37D1 /* MultiplePicModel.m in Sources */,
 				1A46AB611D1C71CB00E10D9D /* SanityTests.m in Sources */,
 				1A4BAA8A1D1C79480069D735 /* ExtremeNestingTests.m in Sources */,
 				1A4BAA8E1D1C79480069D735 /* InitWithDataTests.m in Sources */,
@@ -1589,7 +1574,6 @@
 				1A4BAB101D1C7DA80069D735 /* InteractionModel.m in Sources */,
 				1A4BAB071D1C7DA80069D735 /* CustomPropertyModel.m in Sources */,
 				1A4BAB111D1C7DA80069D735 /* JSONTypesModel.m in Sources */,
-				F12E69ED2047E862002D37D1 /* MultipleCarModel.m in Sources */,
 				1A4BAB1B1D1C7DA80069D735 /* RenamedPropertyModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1612,7 +1596,6 @@
 				1A4BAB2C1D1C7DA80069D735 /* JSONTypesModelWithValidation1.m in Sources */,
 				1A4BAB331D1C7DA80069D735 /* PostsModel.m in Sources */,
 				1A4BAA801D1C79460069D735 /* PersistTests.m in Sources */,
-				F12E69E92047E858002D37D1 /* MultiplePicModel.m in Sources */,
 				1A4BAA781D1C79460069D735 /* IdPropertyTests.m in Sources */,
 				1A46AB7A1D1C741900E10D9D /* SanityTests.m in Sources */,
 				1A4BAA761D1C79460069D735 /* ExtremeNestingTests.m in Sources */,
@@ -1648,7 +1631,6 @@
 				1A4BAB2A1D1C7DA80069D735 /* InteractionModel.m in Sources */,
 				1A4BAB211D1C7DA80069D735 /* CustomPropertyModel.m in Sources */,
 				1A4BAB2B1D1C7DA80069D735 /* JSONTypesModel.m in Sources */,
-				F12E69EE2047E862002D37D1 /* MultipleCarModel.m in Sources */,
 				1A4BAB351D1C7DA80069D735 /* RenamedPropertyModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1671,7 +1653,6 @@
 				1A4BAB461D1C7DA90069D735 /* JSONTypesModelWithValidation1.m in Sources */,
 				1A4BAB4D1D1C7DA90069D735 /* PostsModel.m in Sources */,
 				1A4BAA6C1D1C79460069D735 /* PersistTests.m in Sources */,
-				F12E69EA2047E858002D37D1 /* MultiplePicModel.m in Sources */,
 				1A4BAA641D1C79460069D735 /* IdPropertyTests.m in Sources */,
 				1A46AB7B1D1C741A00E10D9D /* SanityTests.m in Sources */,
 				1A4BAA621D1C79460069D735 /* ExtremeNestingTests.m in Sources */,
@@ -1707,7 +1688,6 @@
 				1A4BAB441D1C7DA90069D735 /* InteractionModel.m in Sources */,
 				1A4BAB3B1D1C7DA90069D735 /* CustomPropertyModel.m in Sources */,
 				1A4BAB451D1C7DA90069D735 /* JSONTypesModel.m in Sources */,
-				F12E69EF2047E862002D37D1 /* MultipleCarModel.m in Sources */,
 				1A4BAB4F1D1C7DA90069D735 /* RenamedPropertyModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

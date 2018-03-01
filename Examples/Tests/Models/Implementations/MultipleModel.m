@@ -7,8 +7,8 @@
 //
 
 #import "MultipleModel.h"
-#import "MultipleCarModel.h"
-#import "MultiplePicModel.h"
+@class MultipleCarModel;
+@class MultiplePicModel;
 
 @implementation MultipleModel
 
@@ -22,4 +22,12 @@
 	}
 	return [self class];
 }
+@end
+
+@implementation MultiplePicModel
+
+@end
+
+@implementation MultipleCarModel
+
 @end
