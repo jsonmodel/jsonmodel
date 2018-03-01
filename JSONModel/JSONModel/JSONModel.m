@@ -781,7 +781,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             for (NSString* key in [value allKeys]) {
                 JSONModelError* initErr = nil;
-                id obj = [[[protocolClass class] classForModel:value[key]] alloc] initWithDictionary:value[key] error:&initErr];
+                id obj = [[[[protocolClass class] classForModel:value[key]] alloc] initWithDictionary:value[key] error:&initErr];
                 if (obj == nil)
                 {
                     // Propagate the error, including the property name as the key-path component
