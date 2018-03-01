@@ -31,3 +31,12 @@
 @implementation MultipleCarModel
 
 @end
+
+@implementation MultipleTestModel
++ (Class)classForCollectionProperty:(NSString *)propertyName
+{
+	if ([propertyName isEqualToString:@"models"])
+		return [MultipleModel class];
+	return nil;
+}
+@end

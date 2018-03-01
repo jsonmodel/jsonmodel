@@ -21,3 +21,7 @@
 @property (strong, nonatomic) NSString *background;
 @property (strong, nonatomic) NSString *foreground;
 @end
+
+@interface MultipleTestModel: JSONModel
+@property (strong, nonatomic) NSArray *models;
+@end

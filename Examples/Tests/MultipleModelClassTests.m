@@ -54,4 +54,15 @@
 	XCTAssertEqualObjects([[[MultipleModel modelWithDictionary:self.jsonArray[1] error:nil] class] description], @"MultipleCarModel", @"wrong class");
 }
 
+- (void)testCollectionProperty
+{
+	NSError *err = nil;
+	MultipleTestModel *m = [MultipleTestModel modelWithDictionary:@{@"models":self.jsonArray} error:&err];
+	XCTAssertNil(err);
+	
+	XCTAssertEqualObjects([[m.models.firstObject class] description], @"MultiplePicModel", @"wrong class");
+	
+	XCTAssertEqualObjects([[m.models.lastObject class] description], @"MultipleCarModel", @"wrong class");
+}
+
 @end
