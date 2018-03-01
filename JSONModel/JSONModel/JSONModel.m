@@ -90,6 +90,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
     }
 }
 
++ (id)modelWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err
+{
+    return [[[self classForModel:dict] alloc] initWithDictionary:dict error:err];
+}
+
 -(id)init
 {
     self = [super init];
@@ -781,7 +786,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             for (NSString* key in [value allKeys]) {
                 JSONModelError* initErr = nil;
-                id obj = [[[[protocolClass class] classForModel:value[key]] alloc] initWithDictionary:value[key] error:&initErr];
+                id obj = [[protocolClass class] modelWithDictionary:value[key] error:&initErr];
                 if (obj == nil)
                 {
                     // Propagate the error, including the property name as the key-path component
@@ -1085,8 +1090,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         if ([d isKindOfClass:NSDictionary.class])
         {
             JSONModelError* initErr = nil;
-            Class c = [self classForModel:d];
-            id obj = [[c alloc] initWithDictionary:d error:&initErr];
+            id obj = [self modelWithDictionary:d error:&initErr];
             if (obj == nil)
             {
                 // Propagate the error, including the array index as the key-path component
@@ -1135,8 +1139,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
         if ([object isKindOfClass:NSDictionary.class])
         {
-            Class c = [self classForModel:object];
-            id obj = [[c alloc] initWithDictionary:object error:err];
+            id obj = [self modelWithDictionary:object error:err];
             if (obj == nil) return nil;
             output[key] = obj;
         }

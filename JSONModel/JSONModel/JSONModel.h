@@ -130,6 +130,16 @@ DEPRECATED_ATTRIBUTE
 /** @name Creating and initializing models */
 
 /**
+ * Create a new model instance and initialize it with dictinory.
+ *
+ * different with other initialize method, modelWithDictionary will call classForModel to initialize the corresponding model.
+ *
+ * @param dict a dictionary holding JSON objects, to be imported in the model.
+ * @param err an error or NULL
+ */
++ (id)modelWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err;
+
+/**
  * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
  * @param string JSON text data
  * @param err an initialization error or nil
