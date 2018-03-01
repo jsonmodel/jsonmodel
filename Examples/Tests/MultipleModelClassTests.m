@@ -47,4 +47,11 @@
 	XCTAssertEqualObjects([[self.modelArray.lastObject class] description], @"MultipleCarModel", @"wrong class");
 }
 
+- (void)testModelFromDictionary
+{
+	XCTAssertEqualObjects([[[MultipleModel modelWithDictionary:self.jsonArray[0] error:nil] class] description], @"MultiplePicModel", @"wrong class");
+	
+	XCTAssertEqualObjects([[[MultipleModel modelWithDictionary:self.jsonArray[1] error:nil] class] description], @"MultipleCarModel", @"wrong class");
+}
+
 @end
