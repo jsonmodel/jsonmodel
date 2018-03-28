@@ -363,7 +363,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
                 //initialize the property's model, store it
                 JSONModelError* initErr = nil;
-                id value = [[property.type alloc] modelWithDictionary: jsonValue error:&initErr];
+                id value = [property.type modelWithDictionary: jsonValue error:&initErr];
 
                 if (!value) {
                     //skip this property, continue with next property
