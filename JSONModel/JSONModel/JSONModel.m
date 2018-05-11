@@ -457,8 +457,12 @@ static JSONKeyMapper* globalKeyMapper = nil;
                         if (![jsonValue isEqual:[self valueForKey:property.name]])
                             [self setValue:jsonValue forKey:property.name];
                     } else {
+                        NSString* msg = [NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name];
+                        JMLog(@"%@", msg);
+                        //skip this property, continue with next property
+                        if (property.isOptional || !validation) continue;
+                        
                         if (err) {
-                            NSString* msg = [NSString stringWithFormat:@"%@ type not supported for %@.%@", property.type, [self class], property.name];
                             JSONModelError* dataErr = [JSONModelError errorInvalidDataWithTypeMismatch:msg];
                             *err = [dataErr errorByPrependingKeyPathComponent:property.name];
                         }
