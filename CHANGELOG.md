@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.8.0 (2018-09-19)
+
+See: https://github.com/jsonmodel/jsonmodel/compare/1.7.0...1.8.0
+
+- support for macOS, tvOS, watchOS
+- support for Swift 3
+- support for more primitive types
+- lots of small fixes
+
 ## v1.7.0 (2016-10-07)
 
 - added generic custom setter method - `setPropertyNameWithJSONObject`
