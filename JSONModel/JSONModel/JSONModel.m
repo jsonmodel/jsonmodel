@@ -212,7 +212,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //loop over the required properties list
         for (JSONModelClassProperty* property in [self __properties__]) {
 
-            transformedName = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper] : property.name;
+            transformedName = (keyMapper||globalKeyMapper) ? [self __mapString:property.name forClass:[self class] withKeyMapper:keyMapper] : property.name;
 
             //check if exists and if so, add to incoming keys
             id value;
@@ -252,18 +252,18 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return YES;
 }
 
--(NSString*)__mapString:(NSString*)string withKeyMapper:(JSONKeyMapper*)keyMapper
+-(NSString*)__mapString:(NSString*)string forClass:(Class)cls withKeyMapper:(JSONKeyMapper*)keyMapper
 {
     if (keyMapper) {
         //custom mapper
-        NSString* mappedName = [keyMapper convertValue:string];
+        NSString* mappedName = [keyMapper convertValue:string forClass:cls];
         if (globalKeyMapper && [mappedName isEqualToString: string]) {
-            mappedName = [globalKeyMapper convertValue:string];
+            mappedName = [globalKeyMapper convertValue:string forClass:cls];
         }
         string = mappedName;
     } else if (globalKeyMapper) {
         //global keymapper
-        string = [globalKeyMapper convertValue:string];
+        string = [globalKeyMapper convertValue:string forClass:cls];
     }
 
     return string;
@@ -275,7 +275,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     for (JSONModelClassProperty* property in [self __properties__]) {
 
         //convert key name to model keys, if a mapper is provided
-        NSString* jsonKeyPath = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper] : property.name;
+        NSString* jsonKeyPath = (keyMapper||globalKeyMapper) ? [self __mapString:property.name forClass:[self class] withKeyMapper:keyMapper] : property.name;
         //JMLog(@"keyPath: %@", jsonKeyPath);
 
         //general check for data type compliance
@@ -927,7 +927,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             continue;
 
         //fetch key and value
-        NSString* keyPath = (self.__keyMapper||globalKeyMapper) ? [self __mapString:p.name withKeyMapper:self.__keyMapper] : p.name;
+        NSString* keyPath = (self.__keyMapper||globalKeyMapper) ? [self __mapString:p.name forClass:[self class] withKeyMapper:self.__keyMapper] : p.name;
         value = [self valueForKey: p.name];
 
         //JMLog(@"toDictionary[%@]->[%@] = '%@'", p.name, keyPath, value);

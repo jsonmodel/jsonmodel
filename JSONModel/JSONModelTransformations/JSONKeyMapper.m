@@ -14,10 +14,18 @@
 
 - (instancetype)initWithModelToJSONBlock:(JSONModelKeyMapBlock)toJSON
 {
+    return [self initWithKeyMappingBlock:^NSString *(Class cls, NSString *modelKey)
+    {
+        return toJSON(modelKey);
+    }];
+}
+
+- (instancetype)initWithKeyMappingBlock:(JSONModelKeyMappingBlock)keyMappingBlock
+{
     if (!(self = [self init]))
         return nil;
 
-    _modelToJSONKeyBlock = toJSON;
+    _keyMappingBlock = keyMappingBlock;
 
     return self;
 }
@@ -34,9 +42,9 @@
     if (!(self = [super init]))
         return nil;
 
-    _modelToJSONKeyBlock = ^NSString *(NSString *keyName)
+    _keyMappingBlock = ^NSString *(Class cls, NSString *modelKey)
     {
-        return [toJSON valueForKeyPath:keyName] ?: keyName;
+        return [toJSON valueForKeyPath:modelKey] ?: modelKey;
     };
 
     return self;
@@ -45,6 +53,14 @@
 - (JSONModelKeyMapBlock)JSONToModelKeyBlock
 {
     return nil;
+}
+
+- (JSONModelKeyMapBlock)modelToJSONKeyBlock
+{
+    return ^NSString *(NSString *keyName)
+    {
+        return _keyMappingBlock(nil, keyName);
+    };
 }
 
 + (NSDictionary *)swapKeysAndValuesInDictionary:(NSDictionary *)dictionary
@@ -57,12 +73,17 @@
 
 - (NSString *)convertValue:(NSString *)value isImportingToModel:(BOOL)importing
 {
-    return [self convertValue:value];
+    return [self convertValue:value forClass:nil];
 }
 
 - (NSString *)convertValue:(NSString *)value
 {
-    return _modelToJSONKeyBlock(value);
+    return [self convertValue:value forClass:nil];
+}
+
+- (NSString *)convertValue:(NSString *)value forClass:(Class)cls
+{
+    return _keyMappingBlock(cls, value);
 }
 
 + (instancetype)mapperFromUnderscoreCaseToCamelCase
@@ -72,9 +93,9 @@
 
 + (instancetype)mapperForSnakeCase
 {
-    return [[self alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName)
+    return [[self alloc] initWithKeyMappingBlock:^NSString *(Class cls, NSString *modelKey)
     {
-        NSMutableString *result = [NSMutableString stringWithString:keyName];
+        NSMutableString *result = [NSMutableString stringWithString:modelKey];
         NSRange range;
 
         // handle upper case chars
@@ -108,17 +129,17 @@
 
 + (instancetype)mapperForTitleCase
 {
-    return [[self alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName)
+    return [[self alloc] initWithKeyMappingBlock:^NSString *(Class cls, NSString *modelKey)
     {
-        return [keyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[keyName substringToIndex:1].uppercaseString];
+        return [modelKey stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[modelKey substringToIndex:1].uppercaseString];
     }];
 }
 
 + (instancetype)mapperFromUpperCaseToLowerCase
 {
-    return [[self alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName)
+    return [[self alloc] initWithKeyMappingBlock:^NSString *(Class cls, NSString *modelKey)
     {
-        return keyName.uppercaseString;
+        return modelKey.uppercaseString;
     }];
 }
 
@@ -131,15 +152,15 @@
 
 + (instancetype)baseMapper:(JSONKeyMapper *)baseKeyMapper withModelToJSONExceptions:(NSDictionary *)toJSON
 {
-    return [[self alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName)
+    return [[self alloc] initWithKeyMappingBlock:^NSString *(Class cls, NSString *modelKey)
     {
-        if (!keyName)
+        if (!modelKey)
             return nil;
 
-        if (toJSON[keyName])
-            return toJSON[keyName];
+        if (toJSON[modelKey])
+            return toJSON[modelKey];
 
-        return baseKeyMapper.modelToJSONKeyBlock(keyName);
+        return baseKeyMapper.keyMappingBlock(cls, modelKey);
     }];
 }
 
