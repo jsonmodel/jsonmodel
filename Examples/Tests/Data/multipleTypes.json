@@ -1,0 +1,10 @@
+[{
+	"background": "#ff0000",
+	"foreground": "#0000ff",
+	"typeField": "picture"
+},
+{
+	"body": "#ff0000",
+	"tire": "#0000ff",
+	"typeField": "car"
+}]

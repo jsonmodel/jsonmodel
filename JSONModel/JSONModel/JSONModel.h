@@ -130,6 +130,16 @@ DEPRECATED_ATTRIBUTE
 /** @name Creating and initializing models */
 
 /**
+ * Create a new model instance and initialize it with dictinory.
+ *
+ * different with other initialize method, modelWithDictionary will call classForModel to initialize the corresponding model.
+ *
+ * @param dict a dictionary holding JSON objects, to be imported in the model.
+ * @param err an error or NULL
+ */
++ (id)modelWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err;
+
+/**
  * Create a new model instance and initialize it with the JSON from a text parameter. The method assumes UTF8 encoded input text.
  * @param string JSON text data
  * @param err an initialization error or nil
@@ -272,6 +282,17 @@ DEPRECATED_ATTRIBUTE
  * }
  */
 + (Class)classForCollectionProperty:(NSString *)propertyName NS_SWIFT_NAME(classForCollectionProperty(propertyName:));
+
+
+/**
+ * Custom model class for every element.
+ * In the same location, if there are multiple models, this method can be used to output the corresponding model.
+ * This method returns by default [self class], since the default behavior is current class.
+
+ * @param dict source data
+ * @return Class the class of current model.
+ */
++ (Class)classForModel:(NSDictionary *)dict;
 
 /**
  * Merges values from the given dictionary into the model instance.

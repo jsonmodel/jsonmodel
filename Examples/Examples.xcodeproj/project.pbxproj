@@ -226,6 +226,15 @@
 		931ECCC61B449E69C9F60862 /* Pods_macOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A3600BED7471EF4FB3C34D /* Pods_macOSTests.framework */; };
 		AA4DDDDDE4080D745F0D096B /* Pods_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D48E23848723BCB420F544 /* Pods_macOS.framework */; };
 		C1468B4CA8357FFE0AEB2715 /* Pods_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E225E30531704F049BE5B4C /* Pods_tvOS.framework */; };
+		F12E69DE2047E6C0002D37D1 /* multipleTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = F12E69DD2047E6BF002D37D1 /* multipleTypes.json */; };
+		F12E69DF2047E6C0002D37D1 /* multipleTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = F12E69DD2047E6BF002D37D1 /* multipleTypes.json */; };
+		F12E69E02047E6C0002D37D1 /* multipleTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = F12E69DD2047E6BF002D37D1 /* multipleTypes.json */; };
+		F12E69E32047E831002D37D1 /* MultipleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E22047E831002D37D1 /* MultipleModel.m */; };
+		F12E69E42047E831002D37D1 /* MultipleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E22047E831002D37D1 /* MultipleModel.m */; };
+		F12E69E52047E831002D37D1 /* MultipleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69E22047E831002D37D1 /* MultipleModel.m */; };
+		F12E69F12047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */; };
+		F12E69F22047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */; };
+		F12E69F32047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,6 +435,10 @@
 		D1A4E88CC1575485760915E8 /* Pods-watchOS-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS-extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchOS-extension/Pods-watchOS-extension.release.xcconfig"; sourceTree = "<group>"; };
 		E1D48E23848723BCB420F544 /* Pods_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE84FC3D9B36E8214BE605D6 /* Pods-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-macOS/Pods-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		F12E69DD2047E6BF002D37D1 /* multipleTypes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multipleTypes.json; sourceTree = "<group>"; };
+		F12E69E12047E831002D37D1 /* MultipleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleModel.h; sourceTree = "<group>"; };
+		F12E69E22047E831002D37D1 /* MultipleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleModel.m; sourceTree = "<group>"; };
+		F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleModelClassTests.m; sourceTree = "<group>"; };
 		F37BF9082B944335670E6BC4 /* Pods_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -524,6 +537,7 @@
 				1A4BAA391D1C79260069D735 /* ValidationTests.m */,
 				008077B71D81B91C006A0187 /* ConcurrentTests.m */,
 				1AB9435B1D86AB260031E315 /* TransformerExceptionTests.m */,
+				F12E69F02047E8E8002D37D1 /* MultipleModelClassTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -531,6 +545,7 @@
 		1A4BA9FE1D1C79260069D735 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F12E69DD2047E6BF002D37D1 /* multipleTypes.json */,
 				1A4BA9FF1D1C79260069D735 /* colors.json */,
 				1A4BAA001D1C79260069D735 /* converts.json */,
 				1A4BAA011D1C79260069D735 /* github-iphone.json */,
@@ -589,6 +604,7 @@
 				1A4BAA2F1D1C79260069D735 /* RpcRequestModel.h */,
 				1A4BAA301D1C79260069D735 /* SpecialPropertyModel.h */,
 				008077B91D81BEF1006A0187 /* ConcurrentReposModel.h */,
+				F12E69E12047E831002D37D1 /* MultipleModel.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -623,6 +639,7 @@
 				1A4BAAE91D1C7D590069D735 /* RpcRequestModel.m */,
 				1A4BAAEA1D1C7D590069D735 /* SpecialPropertyModel.m */,
 				008077BC1D81C035006A0187 /* ConcurrentReposModel.m */,
+				F12E69E22047E831002D37D1 /* MultipleModel.m */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1010,6 +1027,7 @@
 				1A4BAAA81D1C79550069D735 /* withOptProp.json in Resources */,
 				1A4BAAA01D1C79550069D735 /* nestedDataWithArrayError.json in Resources */,
 				1A4BAA9B1D1C79550069D735 /* colors.json in Resources */,
+				F12E69DE2047E6C0002D37D1 /* multipleTypes.json in Resources */,
 				1A4BAAA91D1C79550069D735 /* withoutOptProp.json in Resources */,
 				1A4BAA9C1D1C79550069D735 /* converts.json in Resources */,
 				1A4BAAA11D1C79550069D735 /* nestedDataWithDictionaryError.json in Resources */,
@@ -1032,6 +1050,7 @@
 				1A4BAAB71D1C79550069D735 /* withOptProp.json in Resources */,
 				1A4BAAAF1D1C79550069D735 /* nestedDataWithArrayError.json in Resources */,
 				1A4BAAAA1D1C79550069D735 /* colors.json in Resources */,
+				F12E69DF2047E6C0002D37D1 /* multipleTypes.json in Resources */,
 				1A4BAAB81D1C79550069D735 /* withoutOptProp.json in Resources */,
 				1A4BAAAB1D1C79550069D735 /* converts.json in Resources */,
 				1A4BAAB01D1C79550069D735 /* nestedDataWithDictionaryError.json in Resources */,
@@ -1054,6 +1073,7 @@
 				1A4BAAC61D1C79560069D735 /* withOptProp.json in Resources */,
 				1A4BAABE1D1C79560069D735 /* nestedDataWithArrayError.json in Resources */,
 				1A4BAAB91D1C79560069D735 /* colors.json in Resources */,
+				F12E69E02047E6C0002D37D1 /* multipleTypes.json in Resources */,
 				1A4BAAC71D1C79560069D735 /* withoutOptProp.json in Resources */,
 				1A4BAABA1D1C79560069D735 /* converts.json in Resources */,
 				1A4BAABF1D1C79560069D735 /* nestedDataWithDictionaryError.json in Resources */,
@@ -1129,9 +1149,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOSTests/Pods-iOSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-iOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1159,9 +1182,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-macOS/Pods-macOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-macOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1174,13 +1200,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watchOS-extension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66D6DFC455CD55F69AC1F3FA /* [CP] Check Pods Manifest.lock */ = {
@@ -1189,13 +1218,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		793704CBF138F3DF9E79ABF0 /* [CP] Check Pods Manifest.lock */ = {
@@ -1204,13 +1236,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A4FD822901F223367A54653 /* [CP] Embed Pods Frameworks */ = {
@@ -1219,9 +1254,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-tvOSTests/Pods-tvOSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-tvOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1249,13 +1287,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99BB77F9E8A20CC16FABF04B /* [CP] Copy Pods Resources */ = {
@@ -1279,13 +1320,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B1CE7620B4418313D5AC5B80 /* [CP] Copy Pods Resources */ = {
@@ -1309,9 +1353,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-watchOS-extension/Pods-watchOS-extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-watchOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1324,9 +1371,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-macOSTests/Pods-macOSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-macOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1339,9 +1389,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-tvOS/Pods-tvOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-tvOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1354,13 +1407,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CDF4BA0066EAED2C8DE2EF2D /* [CP] Copy Pods Resources */ = {
@@ -1399,13 +1455,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1D3201AC8B197487989E8EE /* [CP] Copy Pods Resources */ = {
@@ -1429,13 +1488,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watchOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F67D1C90D29A153292B9651A /* [CP] Embed Pods Frameworks */ = {
@@ -1444,9 +1506,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOS/Pods-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel-iOS/JSONModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1493,8 +1558,10 @@
 				1A4BAA871D1C79480069D735 /* ArrayTests.m in Sources */,
 				1A4BAB131D1C7DA80069D735 /* JSONTypesModelWithValidation2.m in Sources */,
 				1A4BAB0D1D1C7DA80069D735 /* GitHubRepoModel.m in Sources */,
+				F12E69F12047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */,
 				1A4BAA981D1C79480069D735 /* SpecialPropertyNameTests.m in Sources */,
 				1A4BAB081D1C7DA80069D735 /* DrugModel.m in Sources */,
+				F12E69E32047E831002D37D1 /* MultipleModel.m in Sources */,
 				1A4BAB0B1D1C7DA80069D735 /* GitHubKeyMapRepoModel.m in Sources */,
 				1A4BAB171D1C7DA80069D735 /* OptionalPropModel.m in Sources */,
 				1AF8B9171D423D5500A1AAD3 /* NullTests.m in Sources */,
@@ -1548,8 +1615,10 @@
 				1A4BAA731D1C79460069D735 /* ArrayTests.m in Sources */,
 				1A4BAB2D1D1C7DA80069D735 /* JSONTypesModelWithValidation2.m in Sources */,
 				1A4BAB271D1C7DA80069D735 /* GitHubRepoModel.m in Sources */,
+				F12E69F22047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */,
 				1A4BAA841D1C79460069D735 /* SpecialPropertyNameTests.m in Sources */,
 				1A4BAB221D1C7DA80069D735 /* DrugModel.m in Sources */,
+				F12E69E42047E831002D37D1 /* MultipleModel.m in Sources */,
 				1A4BAB251D1C7DA80069D735 /* GitHubKeyMapRepoModel.m in Sources */,
 				1A4BAB311D1C7DA80069D735 /* OptionalPropModel.m in Sources */,
 				1AF8B9181D423D5500A1AAD3 /* NullTests.m in Sources */,
@@ -1603,8 +1672,10 @@
 				1A4BAA5F1D1C79460069D735 /* ArrayTests.m in Sources */,
 				1A4BAB471D1C7DA90069D735 /* JSONTypesModelWithValidation2.m in Sources */,
 				1A4BAB411D1C7DA90069D735 /* GitHubRepoModel.m in Sources */,
+				F12E69F32047E8E8002D37D1 /* MultipleModelClassTests.m in Sources */,
 				1A4BAA701D1C79460069D735 /* SpecialPropertyNameTests.m in Sources */,
 				1A4BAB3C1D1C7DA90069D735 /* DrugModel.m in Sources */,
+				F12E69E52047E831002D37D1 /* MultipleModel.m in Sources */,
 				1A4BAB3F1D1C7DA90069D735 /* GitHubKeyMapRepoModel.m in Sources */,
 				1A4BAB4B1D1C7DA90069D735 /* OptionalPropModel.m in Sources */,
 				1AF8B9191D423D5700A1AAD3 /* NullTests.m in Sources */,
