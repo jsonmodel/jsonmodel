@@ -150,7 +150,6 @@
 		1A4BAB2B1D1C7DA80069D735 /* JSONTypesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAADD1D1C7D590069D735 /* JSONTypesModel.m */; };
 		1A4BAB2C1D1C7DA80069D735 /* JSONTypesModelWithValidation1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAADE1D1C7D590069D735 /* JSONTypesModelWithValidation1.m */; };
 		1A4BAB2D1D1C7DA80069D735 /* JSONTypesModelWithValidation2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAADF1D1C7D590069D735 /* JSONTypesModelWithValidation2.m */; };
-		1A4BAB2E1D1C7DA80069D735 /* JSONValueTransformer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAAE01D1C7D590069D735 /* JSONValueTransformer+UIColor.m */; };
 		1A4BAB2F1D1C7DA80069D735 /* ModelForUpperCaseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAAE11D1C7D590069D735 /* ModelForUpperCaseMapper.m */; };
 		1A4BAB301D1C7DA80069D735 /* NestedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAAE21D1C7D590069D735 /* NestedModel.m */; };
 		1A4BAB311D1C7DA80069D735 /* OptionalPropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BAAE31D1C7D590069D735 /* OptionalPropModel.m */; };
@@ -1520,7 +1519,6 @@
 				1A4BAB201D1C7DA80069D735 /* CopyrightModel.m in Sources */,
 				1A4BAB291D1C7DA80069D735 /* ImageModel.m in Sources */,
 				1A4BAB241D1C7DA80069D735 /* ExtremeNestingModel.m in Sources */,
-				1A4BAB2E1D1C7DA80069D735 /* JSONValueTransformer+UIColor.m in Sources */,
 				1A4BAA7D1D1C79460069D735 /* KeyMappingTests.m in Sources */,
 				1A4BAB281D1C7DA80069D735 /* GitHubRepoModelForUSMapper.m in Sources */,
 				1A4BAB261D1C7DA80069D735 /* GitHubKeyMapRepoModelDict.m in Sources */,

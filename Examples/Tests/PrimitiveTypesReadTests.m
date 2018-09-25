@@ -10,7 +10,11 @@
 
 #import "PrimitivesModel.h"
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
+#if TARGET_OS_IPHONE
+	#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
+		#import "EnumModel.h"
+	#endif
+#elif TARGET_OS_MAC
 #import "EnumModel.h"
 #endif
 
