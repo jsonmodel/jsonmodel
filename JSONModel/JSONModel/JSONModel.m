@@ -645,15 +645,15 @@ static JSONKeyMapper* globalKeyMapper = nil;
             }
 
             NSString *nsPropertyName = @(propertyName);
-            if([[self class] propertyIsOptional:nsPropertyName]){
+            if([class propertyIsOptional:nsPropertyName]){
                 p.isOptional = YES;
             }
 
-            if([[self class] propertyIsIgnored:nsPropertyName]){
+            if([class propertyIsIgnored:nsPropertyName]){
                 p = nil;
             }
 
-            Class customClass = [[self class] classForCollectionProperty:nsPropertyName];
+            Class customClass = [class classForCollectionProperty:nsPropertyName];
             if (customClass) {
                 p.protocol = NSStringFromClass(customClass);
             }
