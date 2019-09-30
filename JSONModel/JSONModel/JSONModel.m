@@ -480,12 +480,19 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 -(BOOL)__isJSONModelSubClass:(Class)class
 {
-// http://stackoverflow.com/questions/19883472/objc-nsobject-issubclassofclass-gives-incorrect-failure
-#ifdef UNIT_TESTING
-    return [@"JSONModel" isEqualToString: NSStringFromClass([class superclass])];
-#else
-    return [class isSubclassOfClass:JSONModelClass];
-#endif
+    // JSONModel may be statically linked into multiple loaded binaries (e.g. a dynamic framework and the app itself)
+    // In that case, isSubclassOfClass:JSONModelClass will erroneously return FALSE. Therefore, we'll move the class
+    // hierarchy comparing class names to JSONModel
+    Class superclass = [class superclass];
+    while(superclass)
+    {
+        if([@"JSONModel" isEqualToString: NSStringFromClass(superclass)])
+        {
+            return TRUE;
+        }
+        superclass = [superclass superclass];
+    }
+    return FALSE;
 }
 
 //returns a set of the required keys for the model
