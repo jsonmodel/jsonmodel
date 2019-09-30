@@ -481,7 +481,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 -(BOOL)__isJSONModelSubClass:(Class)class
 {
     // JSONModel may be statically linked into multiple loaded binaries (e.g. a dynamic framework and the app itself)
-    // In that case, isSubclassOfClass:JSONModelClass will erroneously return FALSE. Therefore, we'll move the class
+    // In that case, isSubclassOfClass:JSONModelClass will erroneously return FALSE. Therefore, we'll move up the class
     // hierarchy comparing class names to JSONModel
     Class superclass = [class superclass];
     while(superclass)
