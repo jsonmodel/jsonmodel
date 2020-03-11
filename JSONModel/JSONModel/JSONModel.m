@@ -591,9 +591,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
                     [scanner scanUpToString:@">" intoString: &protocolName];
 
-                    if ([protocolName isEqualToString:@"Optional"]) {
+                    if ([protocolName isEqualToString:NSStringFromProtocol(@protocol(Optional))]) {
                         p.isOptional = YES;
-                    } else if([protocolName isEqualToString:@"Index"]) {
+                    } else if([protocolName isEqualToString:NSStringFromProtocol(@protocol(Index))]) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                         p.isIndex = YES;
@@ -605,7 +605,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
                                                  p.name,
                                                  OBJC_ASSOCIATION_RETAIN // This is atomic
                                                  );
-                    } else if([protocolName isEqualToString:@"Ignore"]) {
+                    } else if([protocolName isEqualToString:NSStringFromProtocol(@protocol(Ignore))]) {
                         p = nil;
                     } else {
                         p.protocol = protocolName;
