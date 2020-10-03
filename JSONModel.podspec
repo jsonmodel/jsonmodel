@@ -14,8 +14,8 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
 
-  s.source_files = 'JSONModel/**/*.{m,h}'
-  s.public_header_files = 'JSONModel/**/*.h'
+  s.source_files = 'Sources/jsonmodel/JSONModel/**/*.{m,h}'
+  s.public_header_files = 'Sources/jsonmodel/JSONModel/**/*.h'
 
   s.requires_arc = true
 
