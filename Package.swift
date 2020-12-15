@@ -24,9 +24,6 @@ let package = Package(
                 "JSONModelTransformations"
             ],
             path: "JSONModel/JSONModel",
-            exclude: [
-                "Info.plist",
-            ],
             sources: [
                 ""
             ],
@@ -38,9 +35,6 @@ let package = Package(
                 "JSONModel"
             ],
             path: "JSONModel/JSONModelNetworking",
-            exclude: [
-                "Info.plist",
-            ],
             sources: [
                 ""
             ],
@@ -49,9 +43,6 @@ let package = Package(
         .target(
             name: "JSONModelTransformations",
             path: "JSONModel/JSONModelTransformations",
-            exclude: [
-                "Info.plist",
-            ],
             sources: [
                 ""
             ],
