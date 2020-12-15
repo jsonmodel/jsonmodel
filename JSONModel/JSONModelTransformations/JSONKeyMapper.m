@@ -29,7 +29,7 @@
     return [self initWithModelToJSONDictionary:toJSON];
 }
 
-- (instancetype)initWithModelToJSONDictionary:(NSDictionary *)toJSON
+- (instancetype)initWithModelToJSONDictionary:(NSDictionary <NSString *, NSString *> *)toJSON
 {
     if (!(self = [super init]))
         return nil;

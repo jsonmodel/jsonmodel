@@ -31,7 +31,7 @@ DEPRECATED_ATTRIBUTE
  * Protocol for defining properties in a JSON Model class that should not be considered at all
  * neither while importing nor when exporting JSON.
  *
- * @property (strong, nonatomic) NSString&lt;Ignore&gt; *propertyName;
+ * @property (strong, nonatomic) NSString <Ignore> *propertyName;
  *
  */
 @protocol Ignore
@@ -41,7 +41,7 @@ DEPRECATED_ATTRIBUTE
  * Protocol for defining optional properties in a JSON Model class. Use like below to define
  * model properties that are not required to have values in the JSON input:
  *
- * @property (strong, nonatomic) NSString&lt;Optional&gt; *propertyName;
+ * @property (strong, nonatomic) NSString <Optional> *propertyName;
  *
  */
 @protocol Optional
@@ -106,7 +106,7 @@ DEPRECATED_ATTRIBUTE
  * @exception JSONModelTypeNotAllowedException thrown when one of your model's custom class properties
  * does not have matching transformer method in an JSONValueTransformer.
  */
-- (NSDictionary *)toDictionaryWithKeys:(NSArray *)propertyNames;
+- (NSDictionary *)toDictionaryWithKeys:(NSArray <NSString *> *)propertyNames;
 @end
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -168,14 +168,14 @@ DEPRECATED_ATTRIBUTE
  * @param propertyNames the properties to export; if nil, all properties exported
  * @return JSON text describing the data model
  */
-- (NSString *)toJSONStringWithKeys:(NSArray *)propertyNames;
+- (NSString *)toJSONStringWithKeys:(NSArray <NSString *> *)propertyNames;
 
 /**
  * Export the specified properties of the object to a JSON data text string
  * @param propertyNames the properties to export; if nil, all properties exported
  * @return JSON text data describing the data model
  */
-- (NSData *)toJSONDataWithKeys:(NSArray *)propertyNames;
+- (NSData *)toJSONDataWithKeys:(NSArray <NSString *> *)propertyNames;
 
 /** @name Batch methods */
 
