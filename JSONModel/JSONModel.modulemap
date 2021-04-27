@@ -1,6 +1,7 @@
 framework module JSONModel {
 	umbrella header "JSONModelLib.h"
-
+	exclude header "JSONModelClassProperty.h"
+	
 	export *
 	module * { export * }
 }
