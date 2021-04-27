@@ -18,3 +18,4 @@ DerivedData
 Carthage
 Pods/
 Podfile.lock
+.swiftpm
