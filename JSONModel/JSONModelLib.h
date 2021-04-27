@@ -8,7 +8,6 @@
 // core
 #import "JSONModel.h"
 #import "JSONModelError.h"
-#import "JSONModelClassProperty.h"
 
 // transformations
 #import "JSONValueTransformer.h"
