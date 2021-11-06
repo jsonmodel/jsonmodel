@@ -225,8 +225,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
             if (value) {
                 [transformedIncomingKeys addObject: property];
-            } else {
-                return NO;
             }
         }
 
