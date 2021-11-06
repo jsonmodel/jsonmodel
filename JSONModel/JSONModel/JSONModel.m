@@ -210,9 +210,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
         NSString* transformedName = nil;
 
         //loop over the required properties list
-        for (JSONModelClassProperty* property in [self __properties__]) {
+        for (NSString* property in requiredProperties) {
 
-            transformedName = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper] : property.name;
+            transformedName = (keyMapper||globalKeyMapper) ? [self __mapString:property withKeyMapper:keyMapper] : property;
 
             //check if exists and if so, add to incoming keys
             id value;
@@ -224,7 +224,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             }
 
             if (value) {
-                [transformedIncomingKeys addObject: property.name];
+                [transformedIncomingKeys addObject: property];
             }
         }
 
